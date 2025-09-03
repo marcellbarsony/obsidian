@@ -11,10 +11,14 @@
             "id": "b88b01e015297176",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "Linux/General/fd/permissions.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "permissions"
             }
           }
         ]
@@ -90,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "create a link.md",
+                "file": "Linux/General/fd/permissions.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for create a link"
+              "title": "Backlinks for permissions"
             }
           },
           {
@@ -109,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "create a link.md",
+                "file": "Linux/General/fd/permissions.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from create a link"
+              "title": "Outgoing links from permissions"
             }
           },
           {
@@ -138,16 +142,17 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "Linux/General/fd/permissions.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of permissions"
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -158,21 +163,23 @@
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
+      "daily-notes:Open today's daily note": true,
+      "bases:Create new base": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "command-palette:Open command palette": false
     }
   },
   "active": "b88b01e015297176",
   "lastOpenFiles": [
-    "create a link.md",
-    "Welcome.md",
-    "Linux/General/fd/permissions.md",
     "Linux/General/fd/find.md",
     "Linux/General/fd/filter.md",
-    "Linux/General/fd/fhs.md",
     "Linux/General/fd/elf.md",
+    "Linux/General/fd/fhs.md",
+    "Microsoft/AD/Active Directory.md",
+    "Linux/General/fd/permissions.md",
+    "Welcome.md",
+    "2025-09-03.md",
+    "create a link.md",
     "Linux/General/fd/README.md",
     "Linux/test.md",
     "Linux/General/fd",
