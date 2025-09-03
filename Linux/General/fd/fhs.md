@@ -1,3 +1,10 @@
+---
+id: fhs
+aliases: []
+tags:
+  - Linux
+---
+
 # Filesystem Hierarchy Standard
 
 

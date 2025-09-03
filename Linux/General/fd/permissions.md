@@ -1,5 +1,11 @@
-# Premissions
+---
+id: permissions
+aliases: []
+tags:
+  - Linux
+---
 
+# Premissions
 
 There are three different types of permissions a file or directory can be
 assigned:

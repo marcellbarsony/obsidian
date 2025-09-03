@@ -1,3 +1,10 @@
+---
+id: find
+aliases: []
+tags:
+  - Linux
+---
+
 # Find Files and Directories
 
 ## Which

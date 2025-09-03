@@ -1,7 +1,9 @@
 {
   "showIndentGuide": true,
-  "rightToLeft": true,
+  "rightToLeft": false,
   "vimMode": true,
   "strictLineBreaks": true,
-  "readableLineLength": true
+  "readableLineLength": true,
+  "livePreview": true,
+  "defaultViewMode": "preview"
 }

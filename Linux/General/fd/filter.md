@@ -1,9 +1,9 @@
 ---
 id: filter
 aliases: []
-tags: []
+tags:
+  - Linux
 ---
-
 # Filter contents
 
 <!-- Pagers {{{-->
