@@ -1,10 +1,11 @@
 ---
-id: elf
+id: ELF
 aliases:
   - Executable and Linkable Format
   - Exucutable File Format
 tags:
   - Linux
+links: "[[Files-Directories]]"
 ---
 
 # ELF - Executable and Linkable Format
@@ -17,9 +18,11 @@ code, [shared libraries](https://en.wikipedia.org/wiki/Library_(computing)) and
 ## File layout
 
 Each ELF file is made up of one ELF header, followed by file data. The data can
-include: - **Program header table**, describing zero or more memory segments -
-**Section header table**, describing zero or more sections - **Data** referred
-to by entries in the program header table or section header table
+include:
+- **Program header table**, describing zero or more memory segments
+- **Section header table**, describing zero or more sections
+- **Data** referred to by entries in the program header table or section header
+  table
 
 ### Segments
 

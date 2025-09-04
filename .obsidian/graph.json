@@ -11,14 +11,21 @@
       "query": "path:Linux  ",
       "color": {
         "a": 1,
-        "rgb": 14701138
+        "rgb": 16773360
       }
     },
     {
-      "query": "path:Microsoft/Windows  ",
+      "query": "path:Microsoft",
       "color": {
         "a": 1,
         "rgb": 5405920
+      }
+    },
+    {
+      "query": "path:Microsoft/AD  ",
+      "color": {
+        "a": 1,
+        "rgb": 7075
       }
     }
   ],
@@ -32,6 +39,6 @@
   "repelStrength": 10,
   "linkStrength": 1,
   "linkDistance": 250,
-  "scale": 1,
+  "scale": 0.6757621765136719,
   "close": true
 }

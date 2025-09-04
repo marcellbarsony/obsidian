@@ -1,9 +1,11 @@
 ---
-id: filter
+id: Filter
 aliases: []
 tags:
   - Linux
+links: "[[Files-Directories]]"
 ---
+
 # Filter contents
 
 <!-- Pagers {{{-->

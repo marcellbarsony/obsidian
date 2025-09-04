@@ -1,8 +1,9 @@
 ---
-id: permissions
+id: Permissions
 aliases: []
 tags:
   - Linux
+links: "[[Files-Directories]]"
 ---
 
 # Premissions

@@ -1,8 +1,10 @@
 ---
-id: fhs
-aliases: []
+id: FHS
+aliases:
+  - Filesystem Hierarchy Standard
 tags:
   - Linux
+links: "[[Files-Directories]]"
 ---
 
 # Filesystem Hierarchy Standard

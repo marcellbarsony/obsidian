@@ -1,8 +1,10 @@
 ---
-id: find
-aliases: []
+id: Find
+aliases:
+  - Find Files and Directories
 tags:
   - Linux
+links: "[[Files-Directories]]"
 ---
 
 # Find Files and Directories

@@ -1,7 +1,9 @@
 ---
 id: Active Directory
 aliases: []
-tags: []
+tags:
+  - Microsoft
+links: "[[Microsoft]]"
 ---
 
 # Active Directory
