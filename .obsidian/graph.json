@@ -27,6 +27,20 @@
         "a": 1,
         "rgb": 7075
       }
+    },
+    {
+      "query": "path:Networking  ",
+      "color": {
+        "a": 1,
+        "rgb": 5431378
+      }
+    },
+    {
+      "query": "path:Webapp  ",
+      "color": {
+        "a": 1,
+        "rgb": 13958912
+      }
     }
   ],
   "collapse-display": true,
@@ -39,6 +53,6 @@
   "repelStrength": 10,
   "linkStrength": 1,
   "linkDistance": 250,
-  "scale": 0.6757621765136719,
+  "scale": 0.45050811767578125,
   "close": true
 }
