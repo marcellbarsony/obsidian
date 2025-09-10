@@ -2,7 +2,7 @@
 id: Pivoting
 aliases: []
 tags:
-  - Pivoting
+  - Networking/Tools
 links: "[[Tools]]"
 ---
 

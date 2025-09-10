@@ -1,14 +1,14 @@
 ---
-id: Connection
+id: Usage
 aliases: []
 tags:
-  - FTP
+  - Networking/Services/FTP
 links: "[[FTP]]"
 ---
 
-# FTP Connection
+# Usage
 
-## FTP
+## FTP connection
 
 Synopsis
 
@@ -16,14 +16,15 @@ Synopsis
 ftp <ip> [port]
 ```
 
-## LFTP
+## LFTP connection
 
 Connect using [lftp](https://linux.die.net/man/1/lftp)
+
 ```sh
 lftp <ip>
 ```
 
-## Web browser
+## Web browser connection
 
 Access the FTP server using a web browser
 

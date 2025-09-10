@@ -3,9 +3,7 @@ id: ARP
 aliases:
   - Address Resolution Protocol
 tags:
-  - Networking
-  - Layer-3
-  - ARP
+  - Networking/Layer3/ARP
 links: "[[Layer-3]]"
 ---
 

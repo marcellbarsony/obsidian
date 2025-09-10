@@ -3,8 +3,7 @@ id: SQL-injection
 aliases:
   - SQLi
 tags:
-  - SQL
-  - SQLi
+  - Networking/Services/SQL
 links: "[[SQL]]"
 ---
 

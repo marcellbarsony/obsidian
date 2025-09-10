@@ -1,7 +1,8 @@
 ---
 id: Enumeration
 aliases: []
-tags: []
+tags:
+  - Webapp/Enumeration
 links: "[[Webapp]]"
 ---
 
@@ -9,27 +10,35 @@ links: "[[Webapp]]"
 
 ## Fingerprinting
 
-- [ ] <a href="/webapp/enumeration/fingerprinting.md#type--version-of-the-web-server" target="_blank">Web server version</a>
-- [ ] <a href="/webapp/enumeration/fingerprinting.md#version-details--cves" target="_blank">Web server details & CVEs</a>
+- [ ] [[Fingerprinting#Banner grabbing]]
+- [ ] [[Fingerprinting#Version details & CVEs]]
 
 ## Applications
 
-- [ ] <a href="/webapp/enumeration/nmap.md" target="_blank">Nmap scan</a>
-- [ ] <a href="/webapp/enumeration/ncat.md" target="_blank">Netcat</a>
-- [ ] <a href="/services/dns/dns-lookup.md" target="_blank">DNS lookup</a>
+- [ ] [[Fingerprinting#Nmap scan]]
+- [ ] [[DNS-lookup]]
 
 ## Execution paths
 
-- [ ] <a href="/webapp/enumeration/execution-paths.md#burp-suite" target="_blank">Burp Suite</a>
-- [ ] <a href="/webapp/enumeration/execution-paths.md#dirsearch" target="_blank">Dirsearch</a>
-- [ ] <a href="/webapp/enumeration/execution-paths.md#gobuster" target="_blank">Gobuster</a>
+- [ ] [[Burp Suite]]
+- [ ] [[Dirsearch]]
+- [ ] [[Gobuster]]
+- [ ] [[Fuff]]
+
+## DNS subdomain enumeration
+
+- [ ] [[Gobuster]]
+
+## Certificates
+
+- Inspect the certificate (HTTPS only)
 
 ## Metafiles
 
-- [ ] <a href="/webapp/enumeration/metafiles.md#humans" target="_blank">humans.txt</a>
-- [ ] <a href="/webapp/enumeration/metafiles.md#robots" target="_blank">robots.txt</a>
-- [ ] <a href="/webapp/enumeration/metafiles.md#security" target="_blank">security.txt</a>
-- [ ] <a href="/webapp/enumeration/metafiles.md#sitemap" target="_blank">sitemap.txt</a>
+- [ ] [[Metafiles#humans.txt]]
+- [ ] [[Metafiles#robots.txt]]
+- [ ] [[Metafiles#security.txt]]
+- [ ] [[Metafiles#sitemap.xml]]
 
 ## Web contents
 

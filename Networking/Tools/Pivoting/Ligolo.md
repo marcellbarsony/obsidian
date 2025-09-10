@@ -3,8 +3,7 @@ id: Ligolo
 aliases:
   - Ligolo-ng
 tags:
-  - Networking
-  - Pivoting
+  - Networking/Tools/Ligolo
 links: "[[Pivoting]]"
 ---
 

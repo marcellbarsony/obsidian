@@ -1,3 +1,9 @@
+---
+id: proxy
+aliases: []
+tags: []
+---
+
 # Proxy
 
 A proxy is when a device or service sits in the middle of a connection and acts
@@ -41,7 +47,7 @@ bypass firewalls or evade logging.
 
 ## Forward Proxy vs Reverse Proxy
 
-![proxy](./pics/proxy-01.png)
+![proxy](proxy-01.png)
 
 ## (Non-) Transparent Proxy
 

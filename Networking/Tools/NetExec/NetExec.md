@@ -3,8 +3,7 @@ id: NetExec
 aliases:
   - CrackMapExec
 tags:
-  - NetExec
-  - CrackMapExec
+  - Networking/Tools/NetExec
 links: "[[Tools]]"
 ---
 

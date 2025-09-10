@@ -2,8 +2,7 @@
 id: Tools
 aliases: []
 tags:
-  - Networking
-  - Tools
+  - Networking/Tools
 links: "[[Networking]]"
 ---
 

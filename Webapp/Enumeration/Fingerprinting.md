@@ -1,6 +1,17 @@
+---
+id: Fingerprinting
+aliases: []
+tags:
+  - Webapp/Enumeration/Fingerprinting
+links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
+---
+
 # Fingerprinting
 
-## Type & version of the web server
+Fingerpring the web server for version, application framework, authentication
+options, and missing security options.
+
+## Type & Web server version
 
 ### Banner grabbing
 
@@ -16,15 +27,23 @@ curl -I http://{target_url}
 Example
 
 ```sh
-curl -I http://example.com
-```
+# Banner grabbing & Web server headers
+curl -IL http://example.com
 
-Spoof user agent and follow redirects
-
-```sh
+# Spoof user agent and follow redirects
 curl -A "Custom user-agent" -L {target_ip}
 ```
 <!-- }}} -->
+
+#### Whatweb
+
+Extract the version of the web server, supporting frameworks, and applications.
+
+```sh
+whatweb {target_ip}
+
+whatweb --no-errors 10.10.10.0/24
+```
 
 <!-- Netcat {{{-->
 #### Netcat

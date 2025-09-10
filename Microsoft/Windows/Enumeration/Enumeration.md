@@ -2,8 +2,7 @@
 id: Enumeration
 aliases: []
 tags:
-  - Microsoft
-  - Windows
+  - Microsoft/Windows
 links: "[[Windows]]"
 ---
 

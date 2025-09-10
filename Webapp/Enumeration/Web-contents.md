@@ -1,3 +1,11 @@
+---
+id: Web-contents
+aliases: []
+tags:
+  - Webapp/Enumeration/Web-contents
+links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
+---
+
 # Web contents
 
 ## Autocompletion
@@ -16,9 +24,9 @@ Setting `autocomplete="off"` on input fields has two effects:
 
 - [MDN - How to turn off autocompletion](https://developer.mozilla.org/en-US/docs/Web/Security/Practical_implementation_guides/Turning_off_form_autocompletion)
 
-## Page source
+## Page source code
 
-Inspect the page soruce for sensitive information:
+Inspect the page soruce code (`Ctrl + U`) for sensitive information:
 
 - IDs
 - Keys
@@ -26,4 +34,4 @@ Inspect the page soruce for sensitive information:
 - Passwords
 - Other useful information
 
-## JavaScript code
+### JavaScript code

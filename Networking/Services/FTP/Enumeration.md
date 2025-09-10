@@ -2,7 +2,7 @@
 id: Enumeration
 aliases: []
 tags:
-  - FTP
+  - NEtworking/Services/FTP
 links: "[[FTP]]"
 ---
 

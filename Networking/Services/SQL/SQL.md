@@ -3,7 +3,7 @@ id: SQL
 aliases:
   - Simple Query Language
 tags:
-  - SQL
+  - Networking/Services/SQL
 links: "[[Services]]"
 ---
 

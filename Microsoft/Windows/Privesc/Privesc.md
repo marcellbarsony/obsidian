@@ -2,8 +2,7 @@
 id: Privesc
 aliases: []
 tags:
-  - Microsoft
-  - Windows
+  - Microsoft/Windows/Privesc
 links: "[[Windows]]"
 ---
 

@@ -2,8 +2,7 @@
 id: WinPEAS
 aliases: []
 tags:
-  - Microsoft
-  - Windows
+  - Microsoft/Windows/Privesc
 links: "[[Privesc]]"
 ---
 

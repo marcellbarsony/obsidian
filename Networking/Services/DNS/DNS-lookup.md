@@ -3,24 +3,19 @@ id: dns-lookup
 aliases:
   - DNS Lookup
 tags:
-  - DNS
+  - Networking/Services/DNS
 links: "[[DNS]]"
+resources:
+  - https://dnsdumpster.com/
 ---
 
 # DNS lookup
-
-## Resources
-
-- [DNSDumpster.com](https://dnsdumpster.com/)
-
-## DNS lookup
 
 Resolve a given hostname to the corresponding IP.
 
 ```sh
 nslookup <target_domain>
 ```
-
 
 ## Reverse DNS lookup
 

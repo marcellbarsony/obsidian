@@ -2,9 +2,8 @@
 id: PowerShell-history
 aliases: []
 tags:
-  - Microsoft
-  - Windows
-  - PowerShell
+  - Microsoft/Windows/PowerShell
+  - Microsoft/Windows/Privesc
 links: "[[Privesc]]"
 ---
 

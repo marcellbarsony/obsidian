@@ -1,10 +1,9 @@
 ---
 id: IPv6
-aliases: []
+aliases:
+  - Internet Protocol v6
 tags:
-  - Networking
-  - Layer-3
-  - IPv6
+  - Networking/Layer3/IPv6
 links: "[[Layer-3]]"
 ---
 

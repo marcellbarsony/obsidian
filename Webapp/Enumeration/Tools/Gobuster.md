@@ -1,35 +1,22 @@
-# Execution paths
+---
+id: Gobuster
+aliases: []
+tags:
+  - Webapp/Enumeration/Tools/Gobuster
+links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
+---
 
-<!-- Burp Suite {{{-->
-## Burp Suite
+# Gobuster
 
-- Check **Site Map** for directories
-- Check intercepted requests for
-    - Cookies
-    - Parameters
-
-<!-- }}} -->
-
-<!-- Dirsearch {{{-->
-## Dirsearch
-
-[dirsearch](https://github.com/maurosoria/dirsearch) web path scanner
-
-```sh
-dirsearch.py [-u|--url] {target} [-e|--extensions] {extensions} [options]
-```
-<!-- }}} -->
-
-<!-- Gobuster {{{-->
-## Gobuster
+GoBuster is a directory/file, DNS and virtual host brute-forcing tool
 
 - [Gobuster - GitHub](https://github.com/OJ/gobuster)
 - [Gobuster - Man (Debian)](https://manpages.debian.org/testing/gobuster/gobuster.1.en.html)
 - [Gobuster - Man (Ubuntu)](https://manpages.ubuntu.com/manpages/focal/man1/gobuster.1.html)
 
-### Usage
+## Usage
 
-Modes
+### Modes
 
 ```sh
 # Help
@@ -38,22 +25,39 @@ gobuster help
 # Help <mode>
 gobuster help <mode>
 
-# Directory brute-forcing mode
+# Directory enumeration
 gobuster dir <flags>
 
-# DNS subdomain brute-forcing mode
+# DNS subdomain enumeration
 gobuster dns <flags>
 
-# S3 open bucket enumeration and look for existence and bucket
+# Amazon Web Services (AWS) S3 bucket enumeration
 gobuster s3 <flags>
 
+# Google Cloud Storage (GCS) bucket enumeration
 gobuster gcs <flags>
+
+# Virtual Host brute-forcing
 gobuster vhost <flags>
+
+# General purpose fuzzing
 gobuster fuzz <flags>
+
+# TFTP file path brute-forcing
 gobuster tftp <flags>
 ```
 
-Flags
+### Examples
+
+```sh
+# Directory enumeration
+gobuster dir -u 10.10.10.10:1000 -w /usr/share/seclists/Discovery/Web-Content/common.txt
+
+# DNS subdomain enumeration
+gobuster dns -d inlanefreight.com -w /usr/share/SecLists/Discovery/DNS/namelist.txt
+```
+
+### Options
 
 ```sh
 # Don't display progress
@@ -77,12 +81,3 @@ Flags
 # Path to the wordlist
 -w, --wordlist string
 ```
-
-Examples
-
-```sh
-# Directory brute-forcing
-gobuster dir -u {target} -w /usr/share/wordlists/list.txt
-```
-
-<!-- }}} -->

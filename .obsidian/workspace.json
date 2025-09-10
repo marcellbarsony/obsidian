@@ -4,17 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "cc55e25538a42c57",
+        "id": "73796f391c673e7a",
         "type": "tabs",
         "children": [
           {
-            "id": "3f72ff07fadc9e38",
+            "id": "1ba6f2e94577c19f",
             "type": "leaf",
             "state": {
-              "type": "graph",
+              "type": "empty",
               "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "icon": "lucide-file",
+              "title": "New tab"
             }
           }
         ]
@@ -37,10 +37,25 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": true
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
+            }
+          },
+          {
+            "id": "bf32257a01952d8f",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "alphabetical",
+                "useHierarchy": true,
+                "showSearch": true,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -49,8 +64,8 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
-                "matchingCase": false,
+                "query": "stty",
+                "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
@@ -61,7 +76,7 @@
             }
           },
           {
-            "id": "1ed1502af10a1105",
+            "id": "14ca13906d4a930f",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -74,7 +89,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 320.5
+    "width": 231.5
   },
   "right": {
     "id": "d9ceb6f94f351234",
@@ -85,12 +100,27 @@
         "type": "tabs",
         "children": [
           {
+            "id": "de7400c63f642849",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Pentest/Reverse shell/Reverse shell.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Reverse shell"
+            }
+          },
+          {
             "id": "0ddb3b2bf2614fac",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Linux/General/fd/elf.md",
+                "file": "Networking/Services/SQL/SQL.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +130,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for elf"
+              "title": "Backlinks for SQL"
             }
           },
           {
@@ -109,14 +139,20 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "create a link.md",
+                "file": "Networking/Services/SQL/SQL.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from create a link"
+              "title": "Outgoing links from SQL"
             }
-          },
+          }
+        ]
+      },
+      {
+        "id": "5459046f6e7e8111",
+        "type": "tabs",
+        "children": [
           {
             "id": "d5c9af9ed92f45fd",
             "type": "leaf",
@@ -145,49 +181,19 @@
                   "repelStrength": 10,
                   "linkStrength": 1,
                   "linkDistance": 250,
-                  "scale": 1,
+                  "scale": 5.0625,
                   "close": true
                 }
               },
               "icon": "lucide-git-fork",
               "title": "Graph view"
             }
-          },
-          {
-            "id": "bf32257a01952d8f",
-            "type": "leaf",
-            "state": {
-              "type": "tag",
-              "state": {
-                "sortOrder": "frequency",
-                "useHierarchy": true,
-                "showSearch": false,
-                "searchQuery": ""
-              },
-              "icon": "lucide-tags",
-              "title": "Tags"
-            }
-          },
-          {
-            "id": "de7400c63f642849",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "followCursor": false,
-                "showSearch": false,
-                "searchQuery": ""
-              },
-              "icon": "lucide-list",
-              "title": "Outline"
-            }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 377.5
+    "width": 261.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -200,44 +206,44 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "3f72ff07fadc9e38",
+  "active": "de7400c63f642849",
   "lastOpenFiles": [
-    "Networking/Tools/Tools.md",
-    "Networking/Tools/Pivoting/Pivoting.md",
-    "Networking/Tools/Pivoting/Chisel.md",
-    "Webapp/Enumeration/Enumeration.md",
-    "Webapp/Webapp.md",
-    "Webapp/Exploitation/Authorization/traversal/path-traversal.md",
-    "Webapp/Exploitation/Authorization/traversal/README.md",
-    "Webapp/Exploitation/Authorization/traversal",
-    "Webapp/Exploitation/Authorization",
-    "Webapp/Exploitation/authorization/traversal/path-traversal.md",
-    "Webapp/Exploitation/authorization/traversal/README.md",
-    "Webapp/Exploitation/reverse-shell/python.md",
+    "Pentest/Reverse Shell/Reverse Shell.md",
+    "Pentest/Reverse Shell/Reverse shell.md",
+    "Pentest/Reverse Shell",
+    "Pentest/Reverse hell/Reverse shell.md",
+    "Pentest/Reverse hell",
     "Webapp/Exploitation/reverse-shell/meterpreter.md",
+    "Pentest/Reverse shell/Reverse shell.md",
+    "Pentest/Reverse shell/python.md",
+    "Pentest/Reverse shell/bash.md",
+    "Pentest/Reverse shell",
+    "Pentest/reverse-shell/python.md",
+    "Pentest/reverse-shell/bash.md",
+    "Pentest/reverse-shell",
     "Webapp/Exploitation/reverse-shell/bash.md",
-    "Webapp/Exploitation/reverse-shell/README.md",
-    "Webapp/Exploitation/metasploit/meterpreter.md",
+    "Pentest/Tools/Metasploit.md",
+    "Pentest/Tools/Searchsploit.md",
+    "Pentest/Tools/Metasploit/meterpreter.md",
+    "Pentest/Tools/Metasploit/Metasploit.md",
+    "Pentest/Tools/Searchsploit/Searchsploit.md",
+    "Webapp/Enumeration/Enumeration.md",
+    "Networking/Networking.md",
+    "Networking/Services/DNS/DNS-lookup.md",
     "Webapp/Exploitation/metasploit/metasploit.md",
-    "Webapp/Exploitation/metasploit/README.md",
-    "Webapp/Exploitation/brute-force/hydra.md",
-    "Webapp/Exploitation/brute-force/README.md",
-    "Webapp/Exploitation/authorization/traversal",
-    "Webapp/Privesc/web-server-root.md",
-    "Webapp/Exploitation/reverse-shell",
-    "Webapp/Exploitation/metasploit",
-    "Webapp/Exploitation/checklist.md",
-    "Webapp/Exploitation/brute-force",
-    "Webapp/Exploitation/authorization",
-    "Webapp/Exploitation/README.md",
-    "Webapp/Enumeration/web-contents.md",
-    "Webapp/Enumeration/metafiles.md",
-    "Webapp/Enumeration/fingerprinting.md",
-    "Webapp/Enumeration/execution-paths.md",
-    "Webapp/Enumeration/checklist.md",
-    "Webapp/Privesc",
-    "Webapp/Exploitation",
-    "Webapp/Enumeration",
+    "Pentest/Tools/Searchsploit",
+    "Pentest/Tools/Metasploit/metasploit.md",
+    "Pentest/Tools/Metasploit",
+    "Pentest/Tools/metasploit/meterpreter.md",
+    "Pentest/Tools/metasploit/metasploit.md",
+    "Pentest/Tools/metasploit",
+    "Pentest/Tools",
+    "Webapp/Exploitation/metasploit/meterpreter.md",
+    "Webapp/Exploitation/Exploitation.md",
+    "Networking/Tools/Tools.md",
+    "Networking/Services/SMB/Exploitation.md",
+    "Webapp/Enumeration/Tools",
+    "Networking/Services/SNMP",
     "Networking/General/_uncategorized/proxy-01.png",
     "Networking/pics/proxy-01.png"
   ]
