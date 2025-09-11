@@ -4,7 +4,7 @@ aliases: []
 tags:
   - Microsoft/Windows/PowerShell
   - Microsoft/Windows/Privesc
-links: "[[Privesc]]"
+links:
 ---
 
 # PowerShell History

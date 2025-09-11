@@ -4,17 +4,31 @@
     "type": "split",
     "children": [
       {
-        "id": "73796f391c673e7a",
+        "id": "a7105e5e3194317e",
         "type": "tabs",
         "children": [
           {
-            "id": "1ba6f2e94577c19f",
+            "id": "522f53e263adb807",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Webapp/Enumeration/Enumeration.md",
+                "mode": "preview",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Enumeration"
             }
           }
         ]
@@ -105,13 +119,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Pentest/Reverse shell/Reverse shell.md",
+                "file": "Webapp/Enumeration/Enumeration.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Reverse shell"
+              "title": "Outline of Enumeration"
             }
           },
           {
@@ -159,6 +173,7 @@
             "state": {
               "type": "localgraph",
               "state": {
+                "file": "Webapp/Enumeration/Enumeration.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -181,12 +196,12 @@
                   "repelStrength": 10,
                   "linkStrength": 1,
                   "linkDistance": 250,
-                  "scale": 5.0625,
+                  "scale": 0.6666666666666666,
                   "close": true
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "title": "Graph of Enumeration"
             }
           }
         ]
@@ -206,44 +221,44 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "de7400c63f642849",
+  "active": "522f53e263adb807",
   "lastOpenFiles": [
-    "Pentest/Reverse Shell/Reverse Shell.md",
-    "Pentest/Reverse Shell/Reverse shell.md",
-    "Pentest/Reverse Shell",
-    "Pentest/Reverse hell/Reverse shell.md",
-    "Pentest/Reverse hell",
-    "Webapp/Exploitation/reverse-shell/meterpreter.md",
-    "Pentest/Reverse shell/Reverse shell.md",
-    "Pentest/Reverse shell/python.md",
-    "Pentest/Reverse shell/bash.md",
-    "Pentest/Reverse shell",
-    "Pentest/reverse-shell/python.md",
-    "Pentest/reverse-shell/bash.md",
-    "Pentest/reverse-shell",
-    "Webapp/Exploitation/reverse-shell/bash.md",
-    "Pentest/Tools/Metasploit.md",
-    "Pentest/Tools/Searchsploit.md",
-    "Pentest/Tools/Metasploit/meterpreter.md",
-    "Pentest/Tools/Metasploit/Metasploit.md",
-    "Pentest/Tools/Searchsploit/Searchsploit.md",
+    "Webapp/Enumeration/Fingerprinting.md",
     "Webapp/Enumeration/Enumeration.md",
-    "Networking/Networking.md",
+    "Networking/Services/FTP/Enumeration.md",
     "Networking/Services/DNS/DNS-lookup.md",
-    "Webapp/Exploitation/metasploit/metasploit.md",
+    "Networking/General/Layer-3/Layer-3.md",
+    "Networking/General/Layer-2/Layer-2.md",
+    "Networking/General/General.md",
+    "Microsoft/Windows/Privesc/Privesc.md",
+    "Microsoft/Windows/Enumeration/Enumeration.md",
+    "Microsoft/Windows/General/General.md",
+    "Microsoft/Windows/Privesc/Vulnerable Software.md",
+    "Microsoft/Windows/Privesc/PowerShell-history.md",
+    "Microsoft/Windows/Privesc/Kernel Exploits.md",
+    "Microsoft/Windows/Windows.md",
+    "Microsoft/Windows/Privesc/Enumeration Scripts.md",
+    "Linux/Privesc/Privesc.md",
+    "Linux/Privesc/_uncategorized/system-info.md",
+    "Linux/Privesc/Enumeration Scripts.md",
+    "Linux/Privesc/Kernel Exploits.md",
+    "Linux/Privesc/User Privileges.md",
+    "Linux/Privesc/sudo.md",
+    "Linux/Privesc/Vulnerable Software.md",
+    "Microsoft/Windows/Privesc.md",
+    "Microsoft/Windows/PrivescWin.md",
+    "Networking/Networking.md",
+    "Microsoft/Windows/Enumeration Scripts.md",
+    "Windowr",
+    "Pentest/Reverse Shell",
+    "Pentest/Reverse hell",
+    "Pentest/Reverse shell",
+    "Pentest/reverse-shell",
     "Pentest/Tools/Searchsploit",
-    "Pentest/Tools/Metasploit/metasploit.md",
     "Pentest/Tools/Metasploit",
-    "Pentest/Tools/metasploit/meterpreter.md",
-    "Pentest/Tools/metasploit/metasploit.md",
     "Pentest/Tools/metasploit",
     "Pentest/Tools",
-    "Webapp/Exploitation/metasploit/meterpreter.md",
-    "Webapp/Exploitation/Exploitation.md",
-    "Networking/Tools/Tools.md",
-    "Networking/Services/SMB/Exploitation.md",
     "Webapp/Enumeration/Tools",
-    "Networking/Services/SNMP",
     "Networking/General/_uncategorized/proxy-01.png",
     "Networking/pics/proxy-01.png"
   ]

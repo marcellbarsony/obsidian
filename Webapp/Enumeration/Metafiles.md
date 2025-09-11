@@ -40,7 +40,7 @@ https://example.com/robots.txt
 
 ## Security.txt
 
-`security.txt` is a standard which allows websites to define security standards.
+`security.txt` is a standard which allows websites to define security standards
 
 ### Sources
 
@@ -51,6 +51,7 @@ https://example.com/robots.txt
 ### Implementation
 
 `security.txt` is located in the [`/.well-known/`](https://en.wikipedia.org/wiki/Well-known_URI) directory
+
 ```http
 https://www.google.com/.well-known/security.txt
 https://www.facebook.com/.well-known/security.txt
@@ -58,6 +59,9 @@ https://github.com/.well-known/security.txt
 ```
 
 ## Sitemap.xml
+
+`sitemap.xml` informs search engines about URLs on a website that are available
+for web crawling
 
 ### Sources
 

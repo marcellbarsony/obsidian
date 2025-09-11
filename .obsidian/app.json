@@ -5,5 +5,6 @@
   "strictLineBreaks": true,
   "readableLineLength": true,
   "livePreview": true,
-  "defaultViewMode": "preview"
+  "defaultViewMode": "preview",
+  "alwaysUpdateLinks": true
 }

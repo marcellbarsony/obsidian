@@ -10,8 +10,11 @@ links: "[[Webapp]]"
 
 ## Fingerprinting
 
-- [ ] [[Fingerprinting#Banner grabbing]]
-- [ ] [[Fingerprinting#Version details & CVEs]]
+- [ ] [[Fingerprinting]]
+    - [ ] [[Fingerprinting#Banner grabbing|Banner grabbing]]
+    - [ ] [[Fingerprinting#Nmap scan|Nmap scan]]
+    - [ ] [[Fingerprinting#Error page|Error page]]
+    - [ ] [[Fingerprinting#Version details & CVEs|Version details & CVEs]]
 
 ## Applications
 
@@ -35,10 +38,10 @@ links: "[[Webapp]]"
 
 ## Metafiles
 
-- [ ] [[Metafiles#humans.txt]]
-- [ ] [[Metafiles#robots.txt]]
-- [ ] [[Metafiles#security.txt]]
-- [ ] [[Metafiles#sitemap.xml]]
+- [ ] [[Metafiles#humans.txt|humans.txt]]
+- [ ] [[Metafiles#robots.txt|robots.txt]]
+- [ ] [[Metafiles#security.txt|security.txt]]
+- [ ] [[Metafiles#sitemap.xml|sitemap.txt]]
 
 ## Web contents
 
