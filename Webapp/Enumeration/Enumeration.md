@@ -38,10 +38,11 @@ links: "[[Webapp]]"
 
 ## Metafiles
 
-- [ ] [[Metafiles#humans.txt|humans.txt]]
-- [ ] [[Metafiles#robots.txt|robots.txt]]
-- [ ] [[Metafiles#security.txt|security.txt]]
-- [ ] [[Metafiles#sitemap.xml|sitemap.txt]]
+- [ ] [[Metafiles]]
+    - [ ] [[Metafiles#humans.txt|humans.txt]]
+    - [ ] [[Metafiles#robots.txt|robots.txt]]
+    - [ ] [[Metafiles#security.txt|security.txt]]
+    - [ ] [[Metafiles#sitemap.xml|sitemap.txt]]
 
 ## Web contents
 

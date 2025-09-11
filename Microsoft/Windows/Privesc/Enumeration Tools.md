@@ -1,5 +1,5 @@
 ---
-id: Enumeration Scripts
+id: Enumeration Tools
 aliases:
   - WinPEAS
 tags:
@@ -7,18 +7,24 @@ tags:
 links: PrivescWin
 ---
 
-# Enumeration Scripts
+# Enumeration Tools
 
 ## Resources
 
 - [HackTricks - Windows Local Privilege Escalation](https://book.hacktricks.wiki/en/windows-hardening/windows-local-privilege-escalation/index.html?highlight=winpeas#best-tool-to-look-for-windows-local-privilege-escalation-vectors----winpeas)
 
-## WinPEAS-ng
+## Enumeration Scripts
+
+**NOTE**: Running enumeration scripts can generate a significant amount of
+"noise," potentially triggering anti-virus or security monitoring software.
+In some cases, it may be preferable to conduct manual enumeration instead.
+
+### WinPEAS-ng
 
 [WinPEAS-ng](https://github.com/peass-ng/PEASS-ng) -
 Privilege Escalation Awesome Scripts SUITE (with colors)
 
-### Usage
+#### Usage
 
 Run `WinPEAS-ng` on the target
 
