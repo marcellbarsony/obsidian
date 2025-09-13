@@ -11,17 +11,44 @@ links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
 Fingerpring the web server for version, application framework, authentication
 options, and missing security options.
 
-## Type & Web server version
+## Type & Web Server Version
 
-### Banner grabbing
+<!-- Nmap {{{-->
+### Nmap Scan
+
+```sh
+nmap -sV [--version-all] <target_url>
+```
+
+Example
+
+```sh
+nmap -sV --version-all example.com
+```
+
+#### Script Scan
+
+Run the [http-enum script](https://nmap.org/nsedoc/scripts/http-enum.html)
+to enumerate common web application directories
+
+```sh
+nmap -sV --script=http-enum -oA target_http_enum_scan <target_ip>
+```
+
+- `-sV`: Enable service/version detection
+- `--script=http-enum`: Run `http-enum` scripp
+- `-oA`: Save output in all fomats
+<!-- }}} -->
+
+### Banner Grabbing
 
 <!-- cURL {{{-->
 #### cURL
 
-Synopsis
+Banner grabbing with cURL
 
 ```sh
-curl -I http://{target_url}
+curl -I http://<target_url>
 ```
 
 Example
@@ -35,64 +62,73 @@ curl -A "Custom user-agent" -L {target_ip}
 ```
 <!-- }}} -->
 
-#### Whatweb
+<!-- WhatWeb {{{-->
+#### WhatWeb
 
-Extract the version of the web server, supporting frameworks, and applications.
+Extract the version of the web server, supporting frameworks, and applications
+with [WhatWeb](https://whatweb.net/)
 
 ```sh
-whatweb {target_ip}
+whatweb <target_ip>
 
 whatweb --no-errors 10.10.10.0/24
 ```
+<!-- }}} -->
 
 <!-- Netcat {{{-->
 #### Netcat
 
+Grab the banner with [netcat](https://nmap.org/ncat/)
+
 ```sh
-nc {target_url} 80
-```
-```sh
-nc example.com 80
+nc <target_url> 80
 ```
 
 Then type
 
 ```sh
 HEAD / HTTP/1.0
-Host: {target_url}
+Host: <target_url>
 ```
 <!-- }}} -->
 
-<!-- Nmap {{{-->
-### Nmap scan
+<!-- Error Page {{{-->
+### Error Page
 
-```sh
-nmap -sV [--version-all] {target_url}
-```
-```sh
-nmap -sV --version-all example.com
-```
-<!-- }}} -->
-
-<!-- Error page {{{-->
-### Error page
+Retrieve the error page
 
 ```sh
 curl -X GET http://example.com/404page
 ```
 <!-- }}} -->
 
-<!-- Nikto vulnerability scanner {{{-->
-### Nikto vulnerability scanner
+<!-- Nikto Vulnerability Scanner {{{-->
+### Nikto Vulnerability Scanner
+
+Scan the page with [Nikto](https://github.com/sullo/nikto)
+
 ```sh
-nikto -h http://{target_url}
+nikto -h http://<target_url>
 ```
+
+Example
+
 ```sh
 nikto -h http://example.com
 ```
 <!-- }}} -->
 
-## Version details & CVEs
+## Version Details & CVEs
 
-- Search for additional version information
-- Search the web for well-known vulnerabilities and exploits
+Search for additional version information
+
+### Version Number
+
+Identify the version number of the underlying web technologies
+
+### Public Exploits
+
+Search for well-known vulnerabilities and exploits
+
+- Web
+- Searchsploit

@@ -21,16 +21,16 @@ nmap [Scan Type(s)] [Options] {target specification}
 
 ```sh
 # IP address scan (TCP)
-nmap {target_ip}
-nmap {target_ip} --reason
-nmap --open {target_ip}
-nmap --packet-trace {target_ip}
+nmap <target_ip>
+nmap <target_ip> --reason
+nmap --open <target_ip>
+nmap --packet-trace <target_ip>
 
 # Script & Service scan
-nmap -sC -sV {target_ip}
+nmap -sC -sV <target_ip>
 
 # TCP scan
-nmap -sT {target_ip}
+nmap -sT <target_ip>
 ```
 <!-- }}} -->
 
@@ -48,17 +48,17 @@ map -sV --script=banner <target>
 ### Network scan
 
 ```sh
-nmap {target_ip}/{CIDR}
+nmap <target_ip>/<CIDR>
 
 # Exclude address(es)
-nmap {target_ip}/{CIDR} --exclude {ip_address}
-nmap {target_ip}/{CIDR} --exclude {ip_list.txt}
+nmap <target_ip>/<CIDR> --exclude <ip_address>
+nmap <target_ip>/<CIDR> --exclude <ip_list.txt>
 ```
 
 Scan from list
 ```sh
-nmap -iL {ip_list.txt}
-{ip_list.txt} nmap
+nmap -iL <ip_list.txt>
+<ip_list.txt> nmap
 ```
 <!-- }}} -->
 
@@ -66,7 +66,7 @@ nmap -iL {ip_list.txt}
 ### OS scan
 
 ```sh
-nmap {target_ip} -O
+nmap <target_ip> -O
 ```
 <!-- }}} -->
 
@@ -75,17 +75,17 @@ nmap {target_ip} -O
 
 ```sh
 # ICMP ping scan
-nmap -sP {target_ip}
-nmap -sP {target_ip}/{CIDR}
+nmap -sP <target_ip>
+nmap -sP <target_ip>/{CIDR}
 
 # TCP ping scan
-nmap -PS {target_ip}
+nmap -PS <target_ip>
 
 # TCP ACK ping scan
-nmap -PA {target_ip}
+nmap -PA <target_ip>
 
 # UDP ping scan
-nmap -PU [port] {target_ip}
+nmap -PU [port] <target_ip>
 ```
 <!-- }}} -->
 
@@ -94,25 +94,25 @@ nmap -PU [port] {target_ip}
 
 ```sh
 # All ports
-nmap -p- {target_ip}
+nmap -p- <target_ip>
 
 # Specific ports
-nmap -p {port1},{port2} {target_ip}
+nmap -p <port1>,<port2> <target_ip>
 
 # Specific TCP/UDP ports
-nmap -p T:{port1},U:{port2} {target_ip}
+nmap -p T:<port1>,U:<port2> <target_ip>
 
 # Range of ports
-nmap -p {port1}-{port2} {target_ip}
+nmap -p <port1>-<port2> <target_ip>
 
 # All named ports
-nmap -p "*" {target_ip}
+nmap -p "*" <target_ip>
 
 # 100 most common ports
-nmap -F {target_ip}
+nmap -F <target_ip>
 
 # x most common ports
-nmap --top-ports {x} {target_ip}
+nmap --top-ports <x> <target_ip>
 ```
 </details>
 <!-- }}} -->
@@ -142,6 +142,24 @@ locate scripts/citrix
 /usr/share/nmap/scripts/citrix-enum-servers.nse
 ```
 <!--}}}-->
+
+## Options
+
+Output in all formats (normal, XML, and grepable)
+
+```sh
+nmap -sV --open -oA nibbles_initial_scan <ip address>
+```
+
+- Normal: `nibbles_initial_scan.nmap`
+- XML: `nibbles_initial_scan.xml`
+- Grepable: `nibbles_initial_scan.gnmap`
+
+Check which ports are scanned for a given scan type
+
+```sh
+nmap -v -oG -
+```
 
 ## Resources
 

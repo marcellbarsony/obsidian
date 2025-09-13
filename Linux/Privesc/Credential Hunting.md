@@ -9,10 +9,20 @@ tags: []
 Look for exposed credentials in configuration files, log files, and user history
 files.
 
-## Home directory
+## root directory
+
+Check `/root` directory for secrets
 
 ```sh
-grep -iE 'user.*|pass.*|key.*|secret.*|api.*' ~/* -R
+grep -iE 'user.*|pass.*|key.*|secret.*|api.*' /root -R
+```
+
+## Home directory
+
+Check `home` directory for secrets
+
+```sh
+grep -iE 'user.*|pass.*|key.*|secret.*|api.*' ~/ -R
 ```
 
 <!-- Shell {{{-->
@@ -62,3 +72,16 @@ grep -iE 'user.*|pass.*|key.*|secret.*|api.*' /var/www/* -R
 find /var/www/ -type f -exec cat {} + | grep -iE 'user.*|pass.*|key.*|secret.*|api.*'
 ```
 <!-- }}} -->
+
+# Found Secrets
+
+| Secret             | Action                                 |
+| ------------------ | -------------------------------------- |
+| NTLM hash          | Crack it or spray with CME             |
+| Password string    | Try RDP, SMB, WinRM immediately        |
+| SSH Key            | Pivot SSH into other boxes             |
+| Database creds     | Try MySQL/MSSQL pivot and xp_cmdshell  |
+| Browser creds      | Pivot web apps, internal portals       |
+| Wi-Fi key          | Try new wireless pivot                 |
+| Sticky Notes/Notes | Decode plaintext secrets               |
+| .kdbx (KeePass)    | Hash dump → crack with hashcat         |

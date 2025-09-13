@@ -14,11 +14,9 @@ links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
 It's a TXT file that contains information about the people who have contributed
 to building the website.
 
-### Sources
-
 - [Humanstxt.org](https://humanstxt.org/)
 
-### Location
+### Implementation
 
 `humans.txt` is located in the web server root, next to `robots.txt`.
 
@@ -32,6 +30,10 @@ https://www.example.com/humans.txt
 ([RFC 9309](https://www.rfc-editor.org/rfc/rfc9309.html)),
 telling the search engine crawlers which URLs they cannot access.
 
+- [Robots.txt](https://en.wikipedia.org/wiki/Robots.txt)
+
+### Implementation
+
 `robots.txt` is located in the web server root
 
 ```http
@@ -41,8 +43,6 @@ https://example.com/robots.txt
 ## Security.txt
 
 `security.txt` is a standard which allows websites to define security standards
-
-### Sources
 
 - [securitytxt.org](https://securitytxt.org/)
 - [Wikipedia - security.txt](https://en.wikipedia.org/wiki/Security.txt)
@@ -63,6 +63,12 @@ https://github.com/.well-known/security.txt
 `sitemap.xml` informs search engines about URLs on a website that are available
 for web crawling
 
-### Sources
-
 - [Wikipedia - Sitemaps](https://en.wikipedia.org/wiki/Sitemaps)
+
+### Output
+
+Prettify the output of `.xml` files by piping them into it
+
+```sh
+sitemap.xml | xmllint  --format -
+```

@@ -1,6 +1,14 @@
-# User Management
+---
+id: Users & Groups
+aliases: []
+tags: []
+---
 
-## Shadow
+# Users & Groups
+
+## User Management
+
+### Shadow
 
 The `/etc/shadow` file stores encrypted password information for all user
 accounts.
@@ -17,3 +25,5 @@ accounts.
 | addgroup | Adds a group to the system. |
 | delgroup | Removes a group from the system. |
 | passwd   | Changes user password.  |
+
+## Group Management

@@ -1,0 +1,55 @@
+---
+id: Login Functionality
+aliases: []
+tags: []
+---
+
+# Login Functionality
+
+Discover and test the login functionality of the web application
+
+## Discover Login Page
+
+Discover the login page, typically
+
+- `/admin.php`
+- `/login.php`
+- `/login.aspx`
+- `/adminpanel`
+- `/phpmyadmin`
+- `/cms/login.aspx`
+- `/admin/login.aspx`
+- `/wp-login.php`
+
+## Credentials
+
+Try common/default credentials
+
+### Default Credentials
+
+Search the Internet and try factory default passwords set by the vendor
+
+### Common Credentials
+
+Try combination of common credentials
+
+- `admin` : `admin`
+- `admin` : `password`
+- `admin` : `1234`
+- `admin` : `12345`
+- `admin` : (blank)
+- `user` : `user`
+
+### Custom Credentials
+
+Look for custom credentials unique for the current engagement
+
+- Client company's name (e.g., `E-corp Inc.`)
+- Website crawl (e.g. with [[CeWL]])
+- Box's name (e.g., `nibbles`, `puppy`)
+- Technology's name (e.g., `wordperss`)
+
+## Brute-Force
+
+Consider the possibility of brute-forcing the credentials with [[hydra]] or
+[[CeWL]] if there is no brute-force protection

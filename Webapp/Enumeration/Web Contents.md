@@ -1,8 +1,8 @@
 ---
-id: Web-contents
+id: Web Contents
 aliases: []
 tags:
-  - Webapp/Enumeration/Web-contents
+  - Webapp/Enumeration/Web-Contents
 links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
 ---
 
@@ -24,14 +24,14 @@ Setting `autocomplete="off"` on input fields has two effects:
 
 - [MDN - How to turn off autocompletion](https://developer.mozilla.org/en-US/docs/Web/Security/Practical_implementation_guides/Turning_off_form_autocompletion)
 
-## Page source code
+## Page Source Code
 
 Inspect the page soruce code (`Ctrl + U`) for sensitive information:
 
 - IDs
-- Keys
+- API Keys
 - Usernames (`admin`)
 - Passwords
 - Other useful information
 
-### JavaScript code
+### JavaScript Code

