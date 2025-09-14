@@ -2,7 +2,7 @@
 id: Usage
 aliases: []
 tags:
-  - Networking/Services/FTP
+  - Networking/Services/FTP/Usage
 links: "[[FTP]]"
 ---
 

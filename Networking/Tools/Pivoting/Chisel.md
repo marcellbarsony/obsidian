@@ -2,7 +2,7 @@
 id: Chisel
 aliases: []
 tags:
-  - Networking/Tools/Chisel
+  - Networking/Tools/Pivoting/Chisel
 links: "[[Pivoting]]"
 ---
 

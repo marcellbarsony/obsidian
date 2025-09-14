@@ -7,8 +7,9 @@ tags:
 links: "[[Services]]"
 port:
   - 53
-resources:
-  - https://en.wikipedia.org/wiki/Domain_Name_System
 ---
 
 # DNS (Domain Name System)
+
+
+- [Wikipedia - Domain Name System](https://en.wikipedia.org/wiki/Domain_Name_System)

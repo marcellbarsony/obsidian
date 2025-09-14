@@ -2,7 +2,7 @@
 id: Permissions
 aliases: []
 tags:
-  - Linux
+  - Linux/General/Permissions
 links: "[[Files-Directories]]"
 ---
 

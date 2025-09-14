@@ -1,7 +1,8 @@
 ---
 id: Credential Hunting
 aliases: []
-tags: []
+tags:
+  - Linux/Privesc/Credential-Hunting
 ---
 
 # Credential Hunting

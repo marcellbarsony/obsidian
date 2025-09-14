@@ -3,7 +3,7 @@ id: ICMP
 aliases:
   - Internet Control Message Protocol
 tags:
-  - Networking/Layer3/ICMP
+  - Networking/General/Layer-3/ICMP
 links: "[[Layer-3]]"
 ---
 

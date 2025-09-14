@@ -1,7 +1,9 @@
 ---
 id: Users & Groups
 aliases: []
-tags: []
+tags:
+  - Linux/General/Users
+  - Linux/General/Groups
 ---
 
 # Users & Groups

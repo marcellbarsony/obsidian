@@ -3,8 +3,7 @@ id: Find
 aliases:
   - Find Files and Directories
 tags:
-  - Linux/Files-directories
-  - Linux/Tools
+  - Linux/General/Tools/CLI
 links: "[[Files-Directories]]"
 ---
 

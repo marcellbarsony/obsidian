@@ -3,6 +3,7 @@ id: Scheduled Tasks
 aliases: []
 tags:
   - Linux/Privesc/Scheduled-Tasks
+  - Linux/Privesc/Cron
 ---
 
 # Scheduled Tasks

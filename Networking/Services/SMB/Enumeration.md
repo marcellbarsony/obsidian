@@ -2,7 +2,7 @@
 id: Enumeration
 aliases: []
 tags:
-  - Networking/Services/SMB
+  - Networking/Services/SMB/Enumeration
 links: "[[SMB]]"
 ---
 

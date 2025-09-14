@@ -2,7 +2,7 @@
 id: Layer-3
 aliases: []
 tags:
-  - Networking/Layer3
+  - Networking/General/Layer-3
 links: "[[Networking/General/General|General]]"
 ---
 

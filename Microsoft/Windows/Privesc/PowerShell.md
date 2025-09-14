@@ -1,13 +1,13 @@
 ---
-id: PowerShell-history
+id: PowerShell
 aliases: []
 tags:
-  - Microsoft/Windows/PowerShell
-  - Microsoft/Windows/Privesc
-links:
+  - Microsoft/Windows/Privesc/PowerShell
 ---
 
-# PowerShell History
+# PowerShell
+
+## PowerShell History
 
 ```sh
 C:\Users\user\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt

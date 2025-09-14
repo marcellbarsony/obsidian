@@ -45,7 +45,9 @@ tags:
     - [ ] [[Web Contents#Autocompletion|Autocompletion]]
     - [ ] [[Web Contents#JavaScript Code|JavaScript Code]]
 
-## Login Functionality
+## Application Functionality
+
+TODO: Move necessary parts under Exploitation
 
 - [ ] [[Login Functionality]]
     - [ ] [[Login Functionality#Discover Login Page|Discover Login Page]]
@@ -63,7 +65,7 @@ tags:
 
 ## Applications
 
-- [ ] [[DNS-lookup]]
+- [ ] [[DNS Lookup]]
 
 ## Certificates
 

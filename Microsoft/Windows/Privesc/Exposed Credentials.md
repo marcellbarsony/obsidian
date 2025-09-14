@@ -1,7 +1,8 @@
 ---
 id: Exposed Credentials
 aliases: []
-tags: []
+tags:
+  - Microsoft/Windows/Privesc/Exposed-Credentials
 ---
 
 # Exposed Credentials

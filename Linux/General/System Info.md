@@ -1,3 +1,10 @@
+---
+id: System Info
+aliases: []
+tags:
+  - Linux/General/System
+---
+
 # Sysinfo
 
 | Command  | Description  |

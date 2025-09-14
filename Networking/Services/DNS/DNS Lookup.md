@@ -3,13 +3,15 @@ id: dns-lookup
 aliases:
   - DNS Lookup
 tags:
-  - Networking/Services/DNS
+  - Networking/Services/DNS/DNS-Lookup
 links: "[[DNS]]"
-resources:
-  - https://dnsdumpster.com/
 ---
 
-# DNS lookup
+# DNS Lookup
+
+- [DNSDumpster](https://dnsdumpster.com/)
+
+## DNS Lookup
 
 Resolve a given hostname to the corresponding IP.
 

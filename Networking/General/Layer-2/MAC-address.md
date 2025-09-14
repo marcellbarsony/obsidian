@@ -2,7 +2,7 @@
 id: MAC-address
 aliases: []
 tags:
-  - Networking/Layer2/MAC
+  - Networking/General/Layer-2
 links: "[[Layer-2]]"
 ---
 

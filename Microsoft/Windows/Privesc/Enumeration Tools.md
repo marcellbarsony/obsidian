@@ -3,13 +3,11 @@ id: Enumeration Tools
 aliases:
   - WinPEAS
 tags:
-  - Microsoft/Windows/Privesc
+  - Microsoft/Windows/Privesc/Tools
 links: PrivescWin
 ---
 
 # Enumeration Tools
-
-## Resources
 
 - [HackTricks - Windows Local Privilege Escalation](https://book.hacktricks.wiki/en/windows-hardening/windows-local-privilege-escalation/index.html?highlight=winpeas#best-tool-to-look-for-windows-local-privilege-escalation-vectors----winpeas)
 

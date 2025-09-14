@@ -2,7 +2,7 @@
 id: Privesc
 aliases: []
 tags:
-  - Webapp
+  - Webapp/Privesc
 links: "[[Webapp]]"
 ---
 

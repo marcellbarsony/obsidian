@@ -3,7 +3,7 @@ id: Usage
 aliases:
   - Secure Shell
 tags:
-  - Networking/Services/SSH
+  - Networking/Services/SSH/Usage
 links: "[[SSH]]"
 ---
 

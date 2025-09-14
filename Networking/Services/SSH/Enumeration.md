@@ -1,8 +1,8 @@
 ---
 id: Enumeration
-aliases:
+aliases: []
 tags:
-  - Networking/Services/SSH
+  - Networking/Services/SSH/Enumeration
 links: "[[SSH]]"
 ---
 

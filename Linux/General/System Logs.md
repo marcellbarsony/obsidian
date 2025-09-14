@@ -1,3 +1,10 @@
+---
+id: System Logs
+aliases: []
+tags:
+  - Linux/General/Logs
+---
+
 # System Logs
 
 System logs on Linux are a set of files that contain information about the

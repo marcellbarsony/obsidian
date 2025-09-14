@@ -2,8 +2,7 @@
 id: Filter
 aliases: []
 tags:
-  - Linux/Files-directories
-  - Linux/Tools
+  - Linux/General/Tools/CLI
 links: "[[Files-Directories]]"
 ---
 

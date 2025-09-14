@@ -2,7 +2,7 @@
 id: Enumeration
 aliases: []
 tags:
-  - Networking/Services/SNMP
+  - Networking/Services/SNMP/Enumeration
 links: "[[SNMP]]"
 ---
 

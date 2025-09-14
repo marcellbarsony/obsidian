@@ -1,7 +1,8 @@
 ---
 id: _checklist
 aliases: []
-tags: []
+tags:
+  - Linux/Privesc/Checklist
 ---
 
 # Linux Privilege Escalation

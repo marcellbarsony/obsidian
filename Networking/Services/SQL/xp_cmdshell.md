@@ -2,7 +2,7 @@
 id: xp_cmdshell
 aliases: []
 tags:
-  - Networking/Services/SQL
+  - Networking/Services/SQL/xp_cdmshell
 links: "[[SQL]]"
 ---
 

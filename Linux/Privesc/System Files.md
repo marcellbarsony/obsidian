@@ -1,7 +1,8 @@
 ---
 id: System Files
 aliases: []
-tags: []
+tags:
+  - Linux/Privesc/System-Files
 ---
 
 # System Files

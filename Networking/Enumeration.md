@@ -1,7 +1,8 @@
 ---
 id: Enumeration
 aliases: []
-tags: []
+tags:
+  - Networking/Enumeration/Checklist
 ---
 
 # Enumeration Checklist

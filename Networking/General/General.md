@@ -1,7 +1,8 @@
 ---
 id: General
 aliases: []
-tags: []
+tags:
+  - Networking/General
 links: "[[Networking]]"
 ---
 

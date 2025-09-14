@@ -3,7 +3,7 @@ id: smbclient
 aliases:
   - smbclient
 tags:
-  - Networking/Services/SMB
+  - Networking/Services/SMB/Usage
 links: "[[SMB]]"
 ---
 

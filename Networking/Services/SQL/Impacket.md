@@ -2,7 +2,7 @@
 id: impacket
 aliases: []
 tags:
-  - Networking/Services/SQL
+  - Networking/Services/SQL/Impacket
 links: "[[SQL]]"
 ---
 

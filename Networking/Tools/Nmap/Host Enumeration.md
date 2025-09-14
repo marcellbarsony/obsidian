@@ -1,7 +1,8 @@
 ---
 id: Host Enumeration
 aliases: []
-tags: []
+tags:
+  - Networking/Tools/Nmap/Host-Enumeration
 ---
 
 # Host Enumeration

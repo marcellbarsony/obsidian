@@ -3,7 +3,7 @@ id: IPv6
 aliases:
   - Internet Protocol v6
 tags:
-  - Networking/Layer3/IPv6
+  - Networking/General/Layer-3/IPv6
 links: "[[Layer-3]]"
 ---
 

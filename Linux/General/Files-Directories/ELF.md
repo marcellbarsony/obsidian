@@ -4,7 +4,7 @@ aliases:
   - Executable and Linkable Format
   - Exucutable File Format
 tags:
-  - Linux/Files-directories
+  - Linux/General/Files
 links: "[[Files-Directories]]"
 ---
 

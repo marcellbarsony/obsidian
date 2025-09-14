@@ -3,7 +3,7 @@ id: FHS
 aliases:
   - Filesystem Hierarchy Standard
 tags:
-  - Linux/Files-directories
+  - Linux/General/Directories
 links: "[[Files-Directories]]"
 ---
 
