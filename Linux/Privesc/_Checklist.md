@@ -1,5 +1,5 @@
 ---
-id: _checklist
+id: _Checklist
 aliases: []
 tags:
   - Linux/Privesc/Checklist

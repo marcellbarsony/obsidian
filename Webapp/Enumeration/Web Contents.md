@@ -35,3 +35,10 @@ Inspect the page soruce code (`Ctrl + U`) for sensitive information:
 - Other useful information
 
 ### JavaScript Code
+
+Inspect JavaScript code for
+
+- hidden endpoints
+- credentials
+- tokens
+- keys

@@ -24,10 +24,12 @@ tags:
 ## Execution paths
 
 - [ ] [[Execution Paths]]
-    - [ ] [[Burp Suite]]
-    - [ ] [[Dirsearch]]
-    - [ ] [[Gobuster]]
-    - [ ] [[Fuff]]
+    - [ ] [[Execution Paths#Directory Enumeration|Directory Enumeration]]
+        - [ ] [[Burp Suite]]
+        - [ ] [[Dirsearch]]
+        - [ ] [[Gobuster]]
+        - [ ] [[Fuff]]
+    - [ ] [[Execution Paths#Directory Structure|Directory Structure]]
 - [ ] [[Execution Paths#Investigate Findings|Investigate Findings]]
 
 ## Metafiles
@@ -47,17 +49,8 @@ tags:
 
 ## Application Functionality
 
-TODO: Move necessary parts under Exploitation
-
-- [ ] [[Login Functionality]]
+- [ ] [[Login Functionality|Login Functionality]]
     - [ ] [[Login Functionality#Discover Login Page|Discover Login Page]]
-    - [ ] [[Login Functionality#Credentials|Credentials]]
-        - [ ] [[Login Functionality#Default Credentials|Default Credentials]]
-        - [ ] [[Login Functionality#Common Credentials|Common Credentials]]
-        - [ ] [[Login Functionality#Custom Credentials|Custom Credentials]]
-    - [ ] [[Login Functionality#Brute-Force|Brute-Force]]
-        - [ ] [[Hydra|Hydra]]
-        - [ ] [[CeWL|CeWL]]
 
 ## DNS subdomain enumeration
 

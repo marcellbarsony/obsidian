@@ -19,13 +19,22 @@ GoBuster is a directory/file, DNS and virtual host brute-forcing tool
 <!-- Examples {{{-->
 ### Examples
 
-Directory enumeration
+#### Directory Enumeration
+
+Basic directory enumeration
 
 ```sh
 gobuster dir -u 10.10.10.10:1000 -w /usr/share/seclists/Discovery/Web-Content/common.txt
 ```
 
-DNS subdomain enumeration
+#### Recursive Directory Enumeration
+
+```sh
+gobuster dir -u http://<host>/content/private/ -w wordlist.txt
+gobuster dir -u http://<host>/content/private/plugins/ -w wordlist.txt
+```
+
+#### DNS subdomain enumeration
 
 ```sh
 gobuster dns -d inlanefreight.com -w /usr/share/SecLists/Discovery/DNS/namelist.txt
@@ -64,7 +73,6 @@ gobuster fuzz <flags>
 gobuster tftp <flags>
 ```
 <!-- }}} -->
-
 
 <!-- Options {{{-->
 ### Options

@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Webapp/Enumeration/_Checklist.md",
+                "file": "Webapp/Privesc/Privesc.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "_Checklist"
+              "title": "Privesc"
             }
           }
         ]
@@ -66,7 +66,7 @@
                 "sortOrder": "alphabetical",
                 "useHierarchy": true,
                 "showSearch": true,
-                "searchQuery": "checklist"
+                "searchQuery": ""
               },
               "icon": "lucide-tags",
               "title": "Tags"
@@ -119,13 +119,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Webapp/Enumeration/_Checklist.md",
+                "file": "Webapp/Privesc/Privesc.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of _Checklist"
+              "title": "Outline of Privesc"
             }
           },
           {
@@ -173,7 +173,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Webapp/Enumeration/_Checklist.md",
+                "file": "Webapp/Privesc/Privesc.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -201,7 +201,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of _Checklist"
+              "title": "Graph of Privesc"
             }
           }
         ]
@@ -221,34 +221,34 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "2b351b60f06de572",
+  "active": "5f07e9f23936f1f0",
   "lastOpenFiles": [
     "Webapp/Exploitation/_Checklist.md",
+    "Webapp/Enumeration/_Checklist.md",
+    "Webapp/Enumeration/Certificates.md",
+    "Webapp/Enumeration/Execution Paths.md",
+    "Webapp/Exploitation/Upload Functionality.md",
     "Webapp/Exploitation/Plugins.md",
     "Webapp/Exploitation/Login Functionality.md",
+    "Webapp/Exploitation/Admin Panel.md",
+    "Webapp/Enumeration/Enumeration.md",
+    "Networking/Enumeration.md",
+    "Networking/Tools/Tools.md",
+    "Linux/Privesc/_Checklist.md",
+    "Linux/Privesc/Privesc.md",
+    "Pentest/General/Transferring Files.md",
+    "Microsoft/Windows/Privesc/Privesc.md",
+    "Microsoft/Windows/Windows.md",
+    "Pentest/Reverse Shell/Reverse Shell.md",
+    "Webapp/Webapp.md",
+    "Webapp/Enumeration/Tools/Gobuster.md",
+    "Webapp/Exploitation/Administrator Panel.md",
     "Webapp/Privesc/Privesc.md",
     "Webapp/Privesc/web-server-root.md",
-    "Webapp/Exploitation/Upload Functionality.md",
-    "Webapp/Enumeration/_Checklist.md",
     "Webapp/Exploitation/Exploitation.md",
     "Webapp/Exploitation/Brute-force/hydra.md",
     "Webapp/Exploitation/Brute-force/CeWL.md",
     "Webapp/Enumeration/Web Contents.md",
-    "Webapp/Enumeration/Metafiles.md",
-    "Webapp/Enumeration/Fingerprinting.md",
-    "Webapp/Enumeration/Certificates.md",
-    "Webapp/Enumeration/Tools/Gobuster.md",
-    "Webapp/Enumeration/Tools/Fuff.md",
-    "Webapp/Enumeration/Tools/Dirsearch.md",
-    "Webapp/Enumeration/Tools/Burp Suite.md",
-    "Webapp/Enumeration/Enumeration.md",
-    "Pentest/Tools/Searchsploit.md",
-    "Pentest/Tools/Metasploit.md",
-    "Pentest/Reverse Shell/Reverse Shell.md",
-    "Pentest/General/Transferring Files.md",
-    "Pentest/General/Reporting.md",
-    "Pentest/General/Preparation.md",
-    "Pentest/General/General.md",
     "Networking/General/_uncategorized/proxy-01.png",
     "Untitled",
     "Untitled 1.base",
