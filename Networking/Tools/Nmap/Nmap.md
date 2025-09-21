@@ -8,6 +8,9 @@ links: "[[Tools]]"
 
 # Nmap
 
+- [Nmap: the Network Mapper](https://nmap.org/)
+- [Nmap - man](https://linux.die.net/man/1/nmap)
+
 ## Usage
 
 Synopsis
@@ -51,7 +54,7 @@ map -sV --script=banner <target>
 nmap <target_ip>/<CIDR>
 
 # Exclude address(es)
-nmap <target_ip>/<CIDR> --exclude <ip_address>
+nmap <target_ip>/<CIDR> --exclude <target_ip>
 nmap <target_ip>/<CIDR> --exclude <ip_list.txt>
 ```
 
@@ -143,25 +146,67 @@ locate scripts/citrix
 ```
 <!--}}}-->
 
+<!-- Options {{{-->
 ## Options
+
+### Save Output
 
 Output in all formats (normal, XML, and grepable)
 
 ```sh
-nmap -sV --open -oA nibbles_initial_scan <ip address>
+nmap -sV --open -oA nibbles_initial_scan <target_ip>
 ```
 
 - Normal: `nibbles_initial_scan.nmap`
 - XML: `nibbles_initial_scan.xml`
 - Grepable: `nibbles_initial_scan.gnmap`
 
+### Display Stats
+
+Automatically display statistics every 5 seconds
+
+```sh
+--stats-every=5s
+```
+
+### Check Scan Type Options
+
 Check which ports are scanned for a given scan type
 
 ```sh
 nmap -v -oG -
 ```
+<!-- }}} -->
 
-## Resources
+<!-- Port States {{{-->
+## Port States
 
-- [Nmap: the Network Mapper](https://nmap.org/)
-- [Nmap - man](https://linux.die.net/man/1/nmap)
+| State           | Description                                                           |
+| --------------- | --------------------------------------------------------------------- |
+| open            | Connection (TCP, UDP, SCTP) established                               |
+| closed          | Response with `RST` flag is returned                                  |
+| filtered        | **Error** or **no response** is returned                              |
+| unfiltered      | TCP-ACK scan only: Port is accessible, state is unknown (open/closed) |
+| open/filtered   | No response; Firewall may protect the port                            |
+| closed/filtered | IP ID idle scan only: Port **closed or filtered by firewall**         |
+<!-- }}} -->
+
+<!-- Output Formats {{{-->
+## Output Formats
+
+**Nmap** can save the output in 3 different formats:
+
+- `-oN`: Normal output - `.nmap` extension
+- `-oG`: Grepable output - `.gnmap` extension
+- `-oX`: XML output - `.xml` extension
+
+`-oA` saves the reust in all formats
+
+### HTML Reports
+
+Convert `.xml` to HTML reports with [xsltproc](https://linux.die.net/man/1/xsltproc)
+
+```sh
+xsltproc target.xml -o target.html
+```
+<!-- }}} -->

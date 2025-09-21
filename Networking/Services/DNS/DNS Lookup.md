@@ -13,15 +13,15 @@ links: "[[DNS]]"
 
 ## DNS Lookup
 
-Resolve a given hostname to the corresponding IP.
+Resolve a **domain name** to the corresponding **IP address**.
 
 ```sh
 nslookup <target_domain>
 ```
 
-## Reverse DNS lookup
+## Reverse DNS Lookup
 
-Reverse DNS lookup
+Resolve an **IP address** to the corresponding **domain name**.
 
 ```sh
 nslookup -type=PTR <target_ip>

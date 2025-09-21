@@ -55,6 +55,8 @@ tags:
 ## DNS subdomain enumeration
 
 - [ ] [[Gobuster]]
+- [ ] [[Certificates|SSL Certificates]]
+    - [ ] [[Certificates#Subdomains|Subdomains]]
 
 ## Applications
 
@@ -62,4 +64,5 @@ tags:
 
 ## Certificates
 
-- Inspect the certificate (HTTPS only)
+- [ ] [[Certificates]]
+    - [ ] [[Certificates|Inspect SSL Certificates]]
