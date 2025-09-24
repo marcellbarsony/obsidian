@@ -1,5 +1,5 @@
 ---
-id: smbclient
+id: Usage
 aliases:
   - smbclient
 tags:
@@ -7,7 +7,9 @@ tags:
 links: "[[SMB]]"
 ---
 
-# Smbclient
+# Usage
+
+## Smbclient
 
 [Smbclient](https://www.samba.org/samba/docs/current/man-html/smbclient.1.html)
 is a FTP-like client used to access SMB/CIFS resources on servers, share files,
@@ -17,16 +19,10 @@ printers, serial ports, and communicate between nodes on a network.
 - [Microsoft SMB Protocol and CIFS protocol overview](https://learn.microsoft.com/en-us/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)
 - [Smbclient - Man](https://www.samba.org/samba/docs/current/man-html/smbclient.1.html)
 
-<!-- Usage {{{-->
-## Usage
+<!-- Connect {{{-->
+### Connect
 
-### Options
-
-- `-L`: List services
-- `-N`: suppress password prompt
-- `-U`: Connect as user with known credentials
-
-### Linux
+#### Linux
 
 Connect to an anonymous share
 
@@ -34,13 +30,33 @@ Connect to an anonymous share
 smbclient //{target_ip}/anonymous
 ```
 
-### Windows (UNC path)
+Connect to server and list shares
 
-Discover & connect to shares (Windows UNC path)
+```sh
+smbclient -N -L //10.129.14.128
+```
+
+- `-N`: Null session / Anonymous access
+- `-L`: List shares
+
+Connect to share as specified user
+
+```sh
+smbclient -U bob //10.129.14.128/users
+```
+
+- `-U`: Connect as user with known credentials
+
+#### Windows (UNC path)
+
+Connect to server and list shares (Windows UNC path)
 
 ```sh
 smbclient -N -L \\\\{target_ip}\\
 ```
+
+- `-N`: Null session / Anonymous access
+- `-L`: List shares
 
 Connect to a share
 
@@ -48,15 +64,19 @@ Connect to a share
 smbclient -N \\\\{target_ip}\\{share}
 ```
 
-Example
+- `-N`: Null session / Anonymous access
+
+Connect to a share as specified user
 
 ```sh
 smbclient -U bob \\\\10.129.42.253\\users
 ```
+
+- `-U`: Connect as user with known credentials
 <!-- }}} -->
 
 <!-- SMB Actions {{{-->
-## SMB Actions
+### SMB Actions
 
 ```sh
 # Change directory
@@ -67,6 +87,9 @@ smb: \> dir
 
 # Get file
 smb: \> get <remote_file_name> [local_file_name]
+
+# Execute local system command (`!`)
+smb: \> !ls
 
 # Exit
 smb: \> exit

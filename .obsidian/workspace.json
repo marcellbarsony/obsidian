@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Networking/Services/FTP/General.md",
+                "file": "Networking/Services/DNS/Enumeration.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,35 +28,10 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "General"
-            }
-          },
-          {
-            "id": "def082df0c373ef2",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Networking/Services/FTP/General.md",
-                "mode": "preview",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "General"
+              "title": "Enumeration"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -144,13 +119,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/Services/FTP/General.md",
+                "file": "Networking/Services/DNS/Enumeration.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of General"
+              "title": "Outline of Enumeration"
             }
           },
           {
@@ -198,7 +173,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/Services/FTP/General.md",
+                "file": "Networking/Services/DNS/Enumeration.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -226,14 +201,14 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of General"
+              "title": "Graph of Enumeration"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 244.5
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -246,35 +221,41 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "def082df0c373ef2",
+  "active": "63404f4803b22ee7",
   "lastOpenFiles": [
-    "Networking/Services/FTP/Usage.md",
+    "Networking/Services/DNS/Exploitation.md",
+    "Networking/Services/DNS/General.md",
+    "Networking/Services/DNS/Enumeration.md",
+    "Networking/Services/DNS/src/dns-structure.png",
+    "Networking/Enumeration/Infrastructure/src/infra-enum.png",
+    "Networking/Enumeration/Infrastructure/src",
+    "Networking/Services/DNS/Lookup.md",
+    "Networking/Services/DNS/src/tooldev-dns.png",
+    "Networking/Services/DNS/src",
+    "Networking/Services/NFS/General.md",
+    "Networking/Services/NFS/Enumeration.md",
+    "Networking/Services/NFS/Usage.md",
     "Networking/Services/FTP/General.md",
-    "Networking/Services/FTP/Exploitation.md",
-    "Networking/Services/FTP/Enumeration.md",
-    "Networking/Networking.md",
+    "Networking/Services/SMB/SMB.md",
+    "Networking/Services/NFS/NFS.md",
+    "Networking/Services/SMB/Enumeration.md",
+    "Networking/Services/NFS/Generl.md",
+    "Networking/Services/NFS",
     "Networking/Enumeration/_Checklist.md",
-    "Networking/Services/FTP/FTP.md",
     "Networking/Enumeration/Infrastructure/Staff.md",
+    "Networking/Enumeration/Infrastructure/Domain Information.md",
+    "Networking/Enumeration/Infrastructure/DNS Records.md",
     "Networking/Enumeration/Infrastructure/Cloud Resources.md",
     "Networking/General/General.md",
-    "Networking/Enumeration/Domain Information.md",
-    "Networking/Enumeration/DNS Records.md",
-    "Networking/Enumeration/Infrastructure/DNS Records.md",
-    "Networking/Enumeration/Infrastructure/Domain Information.md",
+    "Networking/Services/FTP/Enumeration.md",
+    "Networking/Services/FTP/FTP.md",
+    "Networking/Services/SMB/Exploitation.md",
+    "Networking/Services/SMB/General.md",
+    "Networking/Services/SMB/Usage.md",
+    "Networking/Services/FTP/Usage.md",
+    "Networking/Services/FTP/Exploitation.md",
+    "Networking/Services/SMB/Enumeration_1.md",
     "Networking/Enumeration/Infrastructure",
-    "Networking/Enumeration/DNS Lookup.md",
-    "Webapp/Enumeration/_Checklist.md",
-    "Webapp/Enumeration/Certificates.md",
-    "Networking/Enumeration/_checklist.md",
-    "Networking/Tools/Nmap/Detection Evasion.md",
-    "Networking/Services/DNS/DNS Lookup.md",
-    "Networking/Tools/Nmap/Nmap.md",
-    "Networking/Tools/Nmap/Performance.md",
-    "Networking/Tools/Nmap/Nmap Scripting Engine.md",
-    "Networking/Tools/Nmap/Service Enumeration.md",
-    "Networking/Tools/Nmap/Host Discovery.md",
-    "Networking/Tools/Nmap/Host Enumeration.md",
     "Networking/Enumeration",
     "check.xml",
     "check.gnmap",
@@ -282,9 +263,6 @@
     "Networking/General/_uncategorized/proxy-01.png",
     "Untitled",
     "Untitled 1.base",
-    "Untitled.base",
-    "Untitled 7.base",
-    "Untitled 6.base",
     "Networking/pics/proxy-01.png"
   ]
 }

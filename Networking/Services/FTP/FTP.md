@@ -5,9 +5,6 @@ aliases:
 tags:
   - Networking/Services/FTP
 links: "[[Services]]"
-port:
-  - 20
-  - 21
 ---
 
 # File Transfer Protocol (FTP)

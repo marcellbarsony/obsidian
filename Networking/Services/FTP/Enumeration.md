@@ -8,31 +8,49 @@ links: "[[FTP]]"
 
 # FTP Enumeration
 
-## Banner grabbing
+## Nmap Scripts
+
+Launch the default FTP script scan (Unauthenticated Enumeration)
 
 ```sh
-nc -vn <ip> 21
+sudo nmap -sC -sV -p21 -A <target_ip> --script-trace
+```
+
+- `-sC`: Default script scan
+- `-sV`: Version scan
+- `-A`: Aggressive scan
+- `--script-trace`: Trace the progress of the NSE script (*optional*)
+
+## Banner Grabbing
+
+Grab the FTP banner with netcat
+
+```sh
+nc -nv <target_ip> 21
+```
+
+Grab the FTP banner with telnet
+
+```sh
+telnet <target_ip> 21
 ```
 
 ## Certificate
 
+Update the connection to TLS, display the server's:
+
+- TLS certificate (e.g., hostname, e-mail)
+- connection details
+
 ```sh
-openssl s_client -connect <ip>:21 -starttls ftp
+openssl s_client -connect <target_ip>:21 -starttls ftp
 ```
 
-## Unauthenticated enumeration
+## Default and Common Directories
 
-FTP Unauth Enum gathers information without logging in with valid credentials
-
-```sh
-sudo nmap -sV -p21 -sC -A <ip>
-```
-
-## Default and common directories
-
-FTP servers may have default or common directories that may contain sensitive
-information.
+FTP servers can have default or common directories that may contain sensitive
+information
 
 ```sh
-gobuster dir -u ftp://<ip> -w <wordlist>
+gobuster dir -u ftp://<ip> -w <wordlist.txt>
 ```

@@ -59,3 +59,9 @@ wget -m --no-passive ftp://anonymous:anonymous@10.129.14.136
 Uploading files may allow for [LFI vulnerabilities](https://en.wikipedia.org/wiki/File_inclusion_vulnerability)
 leading to [Remote Command Execution](https://en.wikipedia.org/wiki/Arbitrary_code_execution)
 (RCE)
+
+```sh
+ftp> put testupload.txt
+```
+
+<!-- }}} -->

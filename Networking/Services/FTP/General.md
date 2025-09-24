@@ -5,6 +5,9 @@ aliases:
 tags:
   - Networking/Services/FTP/General
 links: "[[Services]]"
+port:
+  - 20
+  - 21
 ---
 
 <!-- File Transfer Protocol (FTP) {{{-->
@@ -147,9 +150,8 @@ drwxrwxr-x    2 1002     1002         4096 Sep 14 16:50 Employees
 -rw-rw-r--    1 1002     1002           41 Sep 14 16:45 Important Notes.txt
 226 Directory send OK.
 ```
-<!-- }}} -->
 
-### Recursive Listing
+#### Recursive Listing
 
 `ls_recurse_enable=YES` is often set on the vsFTPd server to have a better
 overview of the FTP directory structure
@@ -157,7 +159,6 @@ overview of the FTP directory structure
 ```sh
 ls -R
 ```
-
 <!-- }}} -->
 <!-- }}} -->
 
