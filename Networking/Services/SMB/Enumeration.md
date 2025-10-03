@@ -16,21 +16,35 @@ Nmap script scan the Samba server (*may take a long time*)
 ```sh
 sudo nmap 10.129.14.128 -sV -sC -p139,445
 ```
+
+Dump interesting information
+
+```sh
+nmap --script "safe or smb-enum-*" -p 445 <target_ip>
+```
 <!-- }}} -->
 
 <!-- RPCclient {{{-->
 ## RPCclient
 
-The **Remote Procedure Call** [RPC](https://www.geeksforgeeks.org/operating-systems/remote-procedure-call-rpc-in-operating-system/)
+The **Remote Procedure Call** ([RPC](https://www.geeksforgeeks.org/operating-systems/remote-procedure-call-rpc-in-operating-system/))
 is a concept and tool to realize operational and work-sharing structures in
 networks and client-server architectures.
 
+Connect without credentials
+
 ```sh
-rpcclient -U "" 10.129.14.128
+rpcclient -U "" <target_ip>
 ```
 ```sh
 Enter WORKGROUP\'s password:
 rpcclient $>
+```
+
+Connect with credentials
+
+```sh
+rpcclient -U "username%password" <target_ip>
 ```
 
 ### Enumeration
@@ -146,6 +160,16 @@ Enumerate SMB host
 ```sh
 ./enum4linux-ng.py <target_ip> -A
 ```
+
+Dump interesting information
+
+```sh
+enum4linux -a [-u "<username>" -p "<password>"] <target_ip>
+```
+
+```sh
+enum4linux-ng -A [-u "<username>" -p "<password>"] <target_ip>
+```
 <!-- }}} -->
 
 <!-- Port 445 {{{-->
@@ -153,8 +177,8 @@ Enumerate SMB host
 
 ### nbtscan
 
-[nbtscan](https://www.kali.org/tools/nbtscan/) -
 Scan a network searching for hosts via
+[nbtscan](https://www.kali.org/tools/nbtscan/)
 
 ```sh
 nbtscan -r <target_network>/24
@@ -162,7 +186,7 @@ nbtscan -r <target_network>/24
 
 ### Nmap scripts
 
-Enumerate SMB with [[Nmap]] scripts (e.g. [smb-os-discovery.nse](https://nmap.org/nsedoc/scripts/smb-os-discovery.html))
+Enumerate SMB with [[Nmap]] scripts (e.g. *[smb-os-discovery.nse](https://nmap.org/nsedoc/scripts/smb-os-discovery.html)*)
 
 ```sh
 nmap --script smb-os-discovery.nse -p445 <target_ip>
@@ -170,26 +194,38 @@ nmap --script smb-os-discovery.nse -p445 <target_ip>
 
 ### Scripts
 
-Grab SMB server version
+Useful scripts
 
-```sh
-#!/bin/sh
-# Author:
-# rewardone
-#
-# Description:
-# Requires root or enough permissions to use tcpdump
-# Will listen for the first 7 packets of a null login
-# and grab the SMB Version
-#
-# Notes:
-# Will sometimes not capture or will print multiple
-# lines. May need to run a second time for success.
-#
-if [ -z $1 ]; then echo "Usage: ./smbver.sh RHOST {RPORT}" && exit; else rhost=$1; fi
-if [ ! -z $2 ]; then rport=$2; else rport=139; fi
-tcpdump -s0 -n -i tap0 src $rhost and port $rport -A -c 7 2>/dev/null | grep -i "samba\|s.a.m" | tr -d '.' | grep -oP 'UnixSamba.*[0-9a-z]' | tr -d '\n' & echo -n "$rhost: " &
-echo "exit" | smbclient -L $rhost 1>/dev/null 2>/dev/null
-echo "" && sleep .1
-```
+> [!tip]-
+>
+> **Grab SMB server version**
+>
+>```sh
+>#!/bin/sh
+># Author:
+># rewardone
+>#
+># Description:
+># Requires root or enough permissions to use tcpdump
+># Will listen for the first 7 packets of a null login
+># and grab the SMB Version
+>#
+># Notes:
+># Will sometimes not capture or will print multiple
+># lines. May need to run a second time for success.
+>
+>if [ -z $1 ]; then \
+>    echo "Usage: ./smbver.sh RHOST {RPORT}" && exit; \
+>else \
+>    rhost=$1; \
+>fi
+>if [ ! -z $2 ]; then \
+>    rport=$2; \
+>else \
+>    rport=139; \
+>fi
+>tcpdump -s0 -n -i tap0 src $rhost and port $rport -A -c 7 2>/dev/null | grep -i "samba\|s.a.m" | tr -d '.' | grep -oP 'UnixSamba.*[0-9a-z]' | tr -d '\n' & echo -n "$rhost: " &
+>echo "exit" | smbclient -L $rhost 1>/dev/null 2>/dev/null
+>echo "" && sleep .1
+>```
 <!-- }}} -->

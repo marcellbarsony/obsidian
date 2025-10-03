@@ -11,6 +11,10 @@ links: "[[Tools]]"
 - [Nmap: the Network Mapper](https://nmap.org/)
 - [Nmap - man](https://linux.die.net/man/1/nmap)
 
+- [Reddit - Good nmap scan commands?](https://www.reddit.com/r/hackthebox/comments/dft53d/good_nmap_scan_commands/)
+- [Reddit - nmap -p- scans](https://www.reddit.com/r/hackthebox/comments/1aguh1o/nmap_p_scans/)
+- [Reddit - Nmap Cheat Sheet (figured yall could use this) ](https://www.reddit.com/r/hackthebox/comments/egcxkc/nmap_cheat_sheet_figured_yall_could_use_this/)
+
 ## Usage
 
 Synopsis
@@ -135,15 +139,17 @@ nmap --script voldemort-info -p- 10.10.10.10
 
 Nmap scripts are located at `/usr/share/nmap/scripts/`
 
-```sh
-locate scripts/citrix
-
-/usr/share/nmap/scripts/citrix-brute-xml.nse
-/usr/share/nmap/scripts/citrix-enum-apps-xml.nse
-/usr/share/nmap/scripts/citrix-enum-apps.nse
-/usr/share/nmap/scripts/citrix-enum-servers-xml.nse
-/usr/share/nmap/scripts/citrix-enum-servers.nse
-```
+> [!example]-
+>
+>```sh
+>locate scripts/citrix
+>
+>/usr/share/nmap/scripts/citrix-brute-xml.nse
+>/usr/share/nmap/scripts/citrix-enum-apps-xml.nse
+>/usr/share/nmap/scripts/citrix-enum-apps.nse
+>/usr/share/nmap/scripts/citrix-enum-servers-xml.nse
+>/usr/share/nmap/scripts/citrix-enum-servers.nse
+>```
 <!--}}}-->
 
 <!-- Options {{{-->
@@ -181,14 +187,14 @@ nmap -v -oG -
 <!-- Port States {{{-->
 ## Port States
 
-| State           | Description                                                           |
-| --------------- | --------------------------------------------------------------------- |
-| open            | Connection (TCP, UDP, SCTP) established                               |
-| closed          | Response with `RST` flag is returned                                  |
-| filtered        | **Error** or **no response** is returned                              |
-| unfiltered      | TCP-ACK scan only: Port is accessible, state is unknown (open/closed) |
-| open/filtered   | No response; Firewall may protect the port                            |
-| closed/filtered | IP ID idle scan only: Port **closed or filtered by firewall**         |
+| State               | Description                                                           |
+| ------------------- | --------------------------------------------------------------------- |
+| **open**            | Connection (TCP, UDP, SCTP) established                               |
+| **closed**          | Response with `RST` flag is returned                                  |
+| **filtered**        | **Error** or **no response** is returned                              |
+| **unfiltered**      | TCP-ACK scan only: Port is accessible, state is unknown (open/closed) |
+| **open/filtered**   | No response; Firewall may protect the port                            |
+| **closed/filtered** | IP ID idle scan only: Port **closed or filtered by firewall**         |
 <!-- }}} -->
 
 <!-- Output Formats {{{-->

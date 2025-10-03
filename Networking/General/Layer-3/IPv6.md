@@ -46,7 +46,8 @@ An IPv6 address can look like the following
 - Full: `fe80:0000:0000:0000:dd80:b1a9:6687:2d3b/64`
 - Short: `fe80::dd80:b1a9:6687:2d3b/64`
 
-In RFC 5952, the aforementioned IPv6 address notation was defined:
+In [RFC 5952](https://datatracker.ietf.org/doc/html/rfc5952), the aforementioned
+IPv6 address notation was defined:
 
 - All alphabetical characters are always written in lower case
 - All leading zeros of a block are always omitted

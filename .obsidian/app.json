@@ -3,7 +3,7 @@
   "rightToLeft": false,
   "vimMode": true,
   "strictLineBreaks": true,
-  "readableLineLength": true,
+  "readableLineLength": false,
   "livePreview": true,
   "defaultViewMode": "preview",
   "alwaysUpdateLinks": true

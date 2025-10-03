@@ -28,6 +28,22 @@ Connect using [lftp](https://linux.die.net/man/1/lftp)
 lftp <ip>
 ```
 
+> [!example]-
+>
+> **LFTP Connection**
+>
+>```sh
+>lftp 10.10.10.208
+>```
+>```sh
+>lftp :~> set ftp:ssl-force true
+>lftp :~> set ssl:verify-certificate no
+>lftp :~> connect 10.10.10.208
+>lftp 10.10.10.208:~> login
+>Usage: login <user|URL> [<pass>]
+>lftp 10.10.10.208:~> login username Password
+>```
+
 ### Web Browser Connection
 
 Access the FTP server using a web browser
@@ -51,7 +67,17 @@ ftp> get Important\ Notes.txt
 Download all files
 
 ```sh
+wget -m ftp://anonymous:anonymous@10.10.10.98
+```
+
+```sh
 wget -m --no-passive ftp://anonymous:anonymous@10.129.14.136
+```
+
+Supply credentials with special characters
+
+```sh
+wget -r --user="USERNAME" --password="PASSWORD" ftp://server.com/
 ```
 
 ### Upload Files
@@ -63,5 +89,4 @@ leading to [Remote Command Execution](https://en.wikipedia.org/wiki/Arbitrary_co
 ```sh
 ftp> put testupload.txt
 ```
-
 <!-- }}} -->

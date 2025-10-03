@@ -43,7 +43,12 @@ tags:
         - [ ] [[Host Enumeration#Full Port Scan|Full Port Scan]]
         - [ ] [[Host Enumeration#Script Scan|Script Scan]]
     - [ ] [[Host Enumeration#UDP Scan|UDP Scan]]
+        - [ ] [[Host Enumeration#Top 100 UDP Ports|Top 100 UDP Ports]]
+        - [ ] [[Host Enumeration#All UDP Ports|All UDP Ports]]
+        - [ ] [[Host Enumeration#Specific UDP Port|Specific UDP Port]]
 
 ## Service Enumeration
 
 - [ ] [[Service Enumeration|Service Enumeration]]
+    - [ ] [[Service Enumeration#Service Version Enumeration|Service Version Enumeration]]
+    - [ ] TODO

@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Networking/Services/DNS/Enumeration.md",
+                "file": "Webapp/Exploitation/Login Functionality.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Enumeration"
+              "title": "Login Functionality"
             }
           }
         ]
@@ -51,7 +51,7 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": true
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -119,13 +119,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/Services/DNS/Enumeration.md",
+                "file": "Webapp/Exploitation/Login Functionality.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Enumeration"
+              "title": "Outline of Login Functionality"
             }
           },
           {
@@ -173,7 +173,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/Services/DNS/Enumeration.md",
+                "file": "Webapp/Exploitation/Login Functionality.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -196,12 +196,12 @@
                   "repelStrength": 10,
                   "linkStrength": 1,
                   "linkDistance": 250,
-                  "scale": 0.6666666666666666,
+                  "scale": 1,
                   "close": true
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Enumeration"
+              "title": "Graph of Login Functionality"
             }
           }
         ]
@@ -223,46 +223,46 @@
   },
   "active": "63404f4803b22ee7",
   "lastOpenFiles": [
-    "Networking/Services/DNS/Exploitation.md",
-    "Networking/Services/DNS/General.md",
-    "Networking/Services/DNS/Enumeration.md",
+    "Webapp/Exploitation/Admin Panel.md",
+    "Webapp/Exploitation/_Checklist.md",
+    "Webapp/Exploitation/Brute-force/hydra.md",
+    "Webapp/Exploitation/Brute-force/CeWL.md",
+    "Webapp/Exploitation/Authorization/traversal/path-traversal.md",
+    "Webapp/Enumeration/Web Contents.md",
+    "Webapp/Enumeration/Metafiles.md",
+    "Webapp/Enumeration/Fingerprinting.md",
+    "Webapp/Enumeration/Execution Paths.md",
+    "Webapp/Enumeration/Certificates.md",
+    "Webapp/Enumeration/_Checklist.md",
+    "Webapp/Enumeration/Tools/Gobuster.md",
+    "Webapp/Enumeration/Tools/Fuff.md",
+    "Webapp/Enumeration/Tools/Dirsearch.md",
+    "Webapp/Enumeration/Tools/Burp Suite.md",
+    "Webapp/Webapp.md",
+    "Pentest/Tools/Metasploit.md",
+    "Pentest/Reverse Shell/Reverse Shell.md",
+    "Pentest/General/Transferring Files.md",
+    "Pentest/General/Reporting.md",
+    "Pentest/General/Preparation.md",
+    "Networking/Networking.md",
+    "Networking/Tools/Pivoting/Ligolo.md",
+    "Networking/Tools/Pivoting/Chisel.md",
+    "Networking/Tools/Nmap/Nmap.md",
+    "Networking/Tools/Nmap/Service Enumeration.md",
+    "Hacktricks - SMTP",
+    "Networking/Services/Telnet",
+    "Networking/Services/IMAP-POP3/General",
+    "Networking/Services/IMAP-POP3",
+    "Networking/Services/imap/pop3",
+    "Networking/Services/imap",
+    "Networking/Services/General",
+    "Networking/Services/SMTP",
     "Networking/Services/DNS/src/dns-structure.png",
     "Networking/Enumeration/Infrastructure/src/infra-enum.png",
     "Networking/Enumeration/Infrastructure/src",
-    "Networking/Services/DNS/Lookup.md",
     "Networking/Services/DNS/src/tooldev-dns.png",
     "Networking/Services/DNS/src",
-    "Networking/Services/NFS/General.md",
-    "Networking/Services/NFS/Enumeration.md",
-    "Networking/Services/NFS/Usage.md",
-    "Networking/Services/FTP/General.md",
-    "Networking/Services/SMB/SMB.md",
-    "Networking/Services/NFS/NFS.md",
-    "Networking/Services/SMB/Enumeration.md",
-    "Networking/Services/NFS/Generl.md",
-    "Networking/Services/NFS",
-    "Networking/Enumeration/_Checklist.md",
-    "Networking/Enumeration/Infrastructure/Staff.md",
-    "Networking/Enumeration/Infrastructure/Domain Information.md",
-    "Networking/Enumeration/Infrastructure/DNS Records.md",
-    "Networking/Enumeration/Infrastructure/Cloud Resources.md",
-    "Networking/General/General.md",
-    "Networking/Services/FTP/Enumeration.md",
-    "Networking/Services/FTP/FTP.md",
-    "Networking/Services/SMB/Exploitation.md",
-    "Networking/Services/SMB/General.md",
-    "Networking/Services/SMB/Usage.md",
-    "Networking/Services/FTP/Usage.md",
-    "Networking/Services/FTP/Exploitation.md",
-    "Networking/Services/SMB/Enumeration_1.md",
-    "Networking/Enumeration/Infrastructure",
-    "Networking/Enumeration",
-    "check.xml",
-    "check.gnmap",
-    "check.nmap",
     "Networking/General/_uncategorized/proxy-01.png",
-    "Untitled",
-    "Untitled 1.base",
     "Networking/pics/proxy-01.png"
   ]
 }

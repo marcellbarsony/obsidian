@@ -35,12 +35,14 @@ Query DNS server for NS records
 dig ns <domain> @<dns_server_ip>
 ```
 
-**EXAMPLE**: Ask the DNS server `10.129.14.128` for the NS records for the
-domain `inlanefreight.htb`
-
-```sh
-dig ns inlanefreight.htb @10.129.14.128
-```
+> [!example]
+>
+> Ask the DNS server `10.129.14.128` for the NS records for the
+> domain `inlanefreight.htb`
+>
+>```sh
+>dig ns inlanefreight.htb @10.129.14.128
+>```
 
 ### DIG - ANY Query
 
@@ -50,14 +52,17 @@ Query all available records
 dig any <domain> @<dns_server_ip>
 ```
 
-**EXAMPLE**: Ask the DNS server `10.129.14.128` for all available records for
-the domain `inlanefreight.htb`
+> [!example]
+>
+> Ask the DNS server `10.129.14.128` for all available records for
+> the domain `inlanefreight.htb`
+>
+>```sh
+>dig any inlanefreight.htb @10.129.14.128
+>```
 
-```sh
-dig any inlanefreight.htb @10.129.14.128
-```
-
-**NOTE**: Not all entries from the zones will be shown
+> [!note]
+> Not all entries from the zones will be shown
 
 ### DIG - AXFR Zone Transfer
 

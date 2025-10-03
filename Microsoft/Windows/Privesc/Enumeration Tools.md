@@ -13,9 +13,12 @@ links: PrivescWin
 
 ## Enumeration Scripts
 
-**NOTE**: Running enumeration scripts can generate a significant amount of
-"noise," potentially triggering anti-virus or security monitoring software.
-In some cases, it may be preferable to conduct manual enumeration instead.
+> [!note]
+> Running enumeration scripts can generate a significant amount of
+> "noise", **potentially triggering anti-virus** or **security monitoring
+> software**.<br>
+> In some cases, it may be preferable to conduct manual enumeration
+> instead.
 
 ### WinPEAS-ng
 

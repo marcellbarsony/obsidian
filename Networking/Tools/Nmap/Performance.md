@@ -21,9 +21,11 @@ Optimized RTT (Round-Trip-Time)
 sudo nmap 10.129.2.0/24 -F --initial-rtt-timeout 50ms --max-rtt-timeout 100ms
 ```
 
-- `-F`: Scan top 100 ports
-- `--initial-rtt-timeout 50ms`: Set initial RTT timeout
-- `--max-rtt-timeout 100ms`: Set maximum RTT timeout
+> [!info]-
+>
+> - `-F`: Scan top 100 ports
+> - `--initial-rtt-timeout 50ms`: Set initial RTT timeout
+> - `--max-rtt-timeout 100ms`: Set maximum RTT timeout
 
 ## Retries
 
@@ -39,8 +41,10 @@ Reduced retries (`0`)
 sudo nmap 10.129.2.0/24 -F --max-retries 0 | grep "/tcp" | wc -l
 ```
 
-- `-F`: Scan top 100 ports
-- `--max-retries 0`: Set number of retries
+> [!info]-
+>
+> - `-F`: Scan top 100 ports
+> - `--max-retries 0`: Set number of retries
 
 ## Rates
 
@@ -86,6 +90,8 @@ Insane scan
 sudo nmap 10.129.2.0/24 -F -oN tnet.T5 -T 5
 ```
 
-- `-F`: Scans top 100 ports
-- `-oN tnet.T5`: Saves the results in normal formats
-- `-T 5`: Specify the insane timing template
+> [!info]-
+>
+> - `-F`: Scans top 100 ports
+> - `-oN tnet.T5`: Saves the results in normal formats
+> - `-T 5`: Specify the insane timing template

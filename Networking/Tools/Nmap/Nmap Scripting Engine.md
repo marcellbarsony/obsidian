@@ -51,7 +51,9 @@ Run an agressive scan
 sudo nmap <target_ip> -p 80 -A
 ```
 
-- `-A`: Service detection, OS detection, traceroute and uses defaults scripts
+> [!info]-
+>
+> - `-A`: Service detection, OS detection, traceroute and uses defaults scripts
 
 ## Vulnerability Assesment
 
@@ -61,4 +63,6 @@ Run a vulnerability assesment script
 sudo nmap <target_ip> -p 80 -sV --script vuln
 ```
 
-- `--script vuln`: Uses all related scripts from specified category
+> [!info]-
+>
+> - `--script vuln`: Uses all related scripts from specified category

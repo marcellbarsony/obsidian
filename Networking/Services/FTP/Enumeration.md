@@ -23,13 +23,13 @@ sudo nmap -sC -sV -p21 -A <target_ip> --script-trace
 
 ## Banner Grabbing
 
-Grab the FTP banner with netcat
+Grab the FTP banner with [[netcat]]
 
 ```sh
 nc -nv <target_ip> 21
 ```
 
-Grab the FTP banner with telnet
+Grab the FTP banner with **telnet**
 
 ```sh
 telnet <target_ip> 21
@@ -44,6 +44,10 @@ Update the connection to TLS, display the server's:
 
 ```sh
 openssl s_client -connect <target_ip>:21 -starttls ftp
+```
+
+```sh
+openssl s_client -connect crossfit.htb:21 -starttls ftp
 ```
 
 ## Default and Common Directories

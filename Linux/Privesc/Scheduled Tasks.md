@@ -48,9 +48,8 @@ test -w /etc/cron.d && echo "Writable" || echo "Not Writable"
 test -w /var/spool/cron/crontabs/root && echo "Writable" || echo "Not Writable"
 ```
 
-## TODO
-
-
-To add Cron Jobs, write a bash script executing a reverse shell command
+> [!todo]
+>
+> To add Cron Jobs, write a bash script executing a reverse shell command
 
 

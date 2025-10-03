@@ -72,34 +72,42 @@ Default configuration parameters and values
 Global settings are defined under the `[global]` share, and can be overwritten
 in individual shares (e.g., `[printers]`, `[print$]`, etc.).
 
-| Setting                        | Description                                                      |
-| ------------------------------ | ---------------------------------------------------------------- |
-| `[sharename]`                  | Name of the network share                                        |
-| `workgroup = WORKGROUP/DOMAIN` | Workgroup that will appear when clients query                    |
-| `path = /path/here/`           | The directory to which user is to be given access                |
-| `server string = STRING`       | String that will show up when a connection is initiated          |
-| `unix password sync = yes`     | Synchronize UNIX password with the SMB password                  |
-| `usershare allow guests = yes` | Allow non-authenticated users to access defined share            |
-| `map to guest = bad user`      | Action when a user login request doesn't match a valid UNIX user |
-| `browseable = yes`             | Show share in the list of available shares                       |
-| `guest ok = yes`               | Allow connecting without using a password                        |
-| `read only = yes`              | Allow users to read files only                                   |
-| `create mask = 0700`           | Permissions set for newly created files                          |
+> [!info]-
+>
+> **Default Configuration**
+>
+>| Setting                        | Description                                                      |
+>| ------------------------------ | ---------------------------------------------------------------- |
+>| `[sharename]`                  | Name of the network share                                        |
+>| `workgroup = WORKGROUP/DOMAIN` | Workgroup that will appear when clients query                    |
+>| `path = /path/here/`           | The directory to which user is to be given access                |
+>| `server string = STRING`       | String that will show up when a connection is initiated          |
+>| `unix password sync = yes`     | Synchronize UNIX password with the SMB password                  |
+>| `usershare allow guests = yes` | Allow non-authenticated users to access defined share            |
+>| `map to guest = bad user`      | Action when a user login request doesn't match a valid UNIX user |
+>| `browseable = yes`             | Show share in the list of available shares                       |
+>| `guest ok = yes`               | Allow connecting without using a password                        |
+>| `read only = yes`              | Allow users to read files only                                   |
+>| `create mask = 0700`           | Permissions set for newly created files                          |
 
 #### Dangerous Settings
 
 Some of the settings enable sensitive options
 
-| Setting                     | Description                                                        |
-| --------------------------- | ------------------------------------------------------------------ |
-| `browseable = yes`          | Allow listing available shares in the current share                |
-| `read only = no`            | Forbid the creation and modification of files                      |
-| `writable = yes`            | Allow users to create and modify files                             |
-| `guest ok = yes`            | Allow connecting to the service without using a password           |
-| `enable privileges = yes`   | Honor privileges assigned to specific SID                          |
-| `create mask = 0777`        | What permissions must be assigned to the newly created files       |
-| `directory mask = 0777`     | What permissions must be assigned to the newly created directories |
-| `logon script = script.sh`  | What script needs to be executed on the user's login               |
-| `magic script = script.sh`  | Which script should be executed when the script gets closed        |
-| `magic output = script.out` | Where the output of the magic script needs to be stored            |
-<!-- }}} -->
+> [!danger]-
+>
+> **Dangerous Settings**
+>
+>| Setting                     | Description                                                        |
+>| --------------------------- | ------------------------------------------------------------------ |
+>| `browseable = yes`          | Allow listing available shares in the current share                |
+>| `read only = no`            | Forbid the creation and modification of files                      |
+>| `writable = yes`            | Allow users to create and modify files                             |
+>| `guest ok = yes`            | Allow connecting to the service without using a password           |
+>| `enable privileges = yes`   | Honor privileges assigned to specific SID                          |
+>| `create mask = 0777`        | What permissions must be assigned to the newly created files       |
+>| `directory mask = 0777`     | What permissions must be assigned to the newly created directories |
+>| `logon script = script.sh`  | What script needs to be executed on the user's login               |
+>| `magic script = script.sh`  | Which script should be executed when the script gets closed        |
+>| `magic output = script.out` | Where the output of the magic script needs to be stored            |
+><!-- }}} -->

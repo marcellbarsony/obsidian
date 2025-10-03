@@ -34,18 +34,48 @@ List SSL certificates
 curl -s https://crt.sh/\?q\=inlanefreight.com\&output\=json | jq .
 ```
 
-- `-s`: Silent mode, suppress progress bars and error messages
+> [!info]-
+>
+> - `-s`: Silent mode, suppress progress bars and error messages
 
 ##### List Subdomains
 
 Filter SSL certificate by unique subdomains
 
 ```sh
-curl -s https://crt.sh/\?q\=<example.com>\&output\=json | jq . | grep name | cut -d":" -f2 | grep -v "CN=" | cut -d'"' -f2 | awk '{gsub(/\\n/,"\n");}1;' | sort -ucurl -s https://crt.sh/\?q\=<example.com>\&output\=json | jq . | grep name | cut -d":" -f2 | grep -v "CN=" | cut -d'"' -f2 | awk '{gsub(/\\n/,"\n");}1;' | sort -u
+curl -s https://crt.sh/\?q\=<example.com>\&output\=json | \
+  jq . | \
+  grep name | \
+  cut -d":" -f2 | \
+  grep -v "CN=" | \
+  cut -d'"' -f2 | \
+  awk '{gsub(/\\n/,"\n");}1;' | \
+  sort -ucurl -s https://crt.sh/\?q\=<example.com>\&output\=json | \
+  jq . | \
+  grep name | \
+  cut -d":" -f2 | \
+  grep -v "CN=" | \
+  cut -d'"' -f2 | \
+  awk '{gsub(/\\n/,"\n");}1;' | \
+  sort -u
 ```
 
-Example
-
-```sh
-curl -s https://crt.sh/\?q\=inlanefreight.com\&output\=json | jq . | grep name | cut -d":" -f2 | grep -v "CN=" | cut -d'"' -f2 | awk '{gsub(/\\n/,"\n");}1;' | sort -ucurl -s https://crt.sh/\?q\=inlanefreight.com\&output\=json | jq . | grep name | cut -d":" -f2 | grep -v "CN=" | cut -d'"' -f2 | awk '{gsub(/\\n/,"\n");}1;' | sort -u
-```
+> [!example]-
+>
+>```sh
+>curl -s https://crt.sh/\?q\=inlanefreight.com\&output\=json | \
+>  jq . | \
+>  grep name | \
+>  cut -d":" -f2 | \
+>  grep -v "CN=" | \
+>  cut -d'"' -f2 | \
+>  awk '{gsub(/\\n/,"\n");}1;' | \
+>  sort -ucurl -s https://crt.sh/\?q\=inlanefreight.com\&output\=json | \
+>  jq . | \
+>  grep name | \
+>  cut -d":" -f2 | \
+>  grep -v "CN=" | \
+>  cut -d'"' -f2 | \
+>  awk '{gsub(/\\n/,"\n");}1;' | \
+>  sort -u
+>```

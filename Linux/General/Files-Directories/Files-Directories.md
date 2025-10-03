@@ -2,7 +2,7 @@
 id: Files-Directories
 aliases: []
 tags: []
-links: "[[General]]"
+links: "[[Linux/General/General]]"
 ---
 
 

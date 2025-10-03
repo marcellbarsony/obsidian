@@ -1,17 +1,17 @@
 ---
-id: impacket
+id: Usage
 aliases: []
 tags:
-  - Networking/Services/SQL/Impacket
+  - Networking/Services/SQL/Usag
 links: "[[SQL]]"
 ---
 
-# mssqlclient.py
+# Usage
+
+## mssqlclient.py
 
 [mssqlclient.py](https://github.com/fortra/impacket/blob/ff8c200fd040b04d3b5ff05449646737f836235d/examples/mssqlclient.py#L4)
 is a script from the [Impacket collection](https://github.com/fortra/impacket)
-
-## Usage
 
 Connect to a MSSQL server
 

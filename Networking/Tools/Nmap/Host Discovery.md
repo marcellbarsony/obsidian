@@ -20,20 +20,31 @@ List IPs with details
 sudo nmap 10.129.2.0/24 -sn -oA network_icmp_scan
 ```
 
-- `-sn`: Disable port scanning (send ARP ping)
-- `-oA`: Save scan results
+> [!info]-
+>
+> - `-sn`: Disable port scanning (send ARP ping)
+> - `-oA`: Save scan results
 
 ```sh
 sudo nmap 10.129.2.0/24 -sn -oA network_icmp_scan -PE
 ```
 
-- `-PE`: Make sure ICMP packet is sent
+> [!info]-
+>
+> - `-sn`: Disable port scanning (send ARP ping)
+> - `-oA`: Save scan results
+> - `-PE`: Make sure ICMP packet is sent
 
 ```sh
 sudo nmap 10.129.2.0/24 -sn -oA network_icmp_scan -PE --reason
 ```
 
-- `--reason`: Display reason for the result
+> [!info]-
+>
+> - `-sn`: Disable port scanning (send ARP ping)
+> - `-oA`: Save scan results
+> - `-PE`: Make sure ICMP packet is sent
+> - `--reason`: Display reason for the result
 
 List IPs only
 
@@ -65,4 +76,8 @@ Scan list of IPs
 sudo nmap -sn -oA network_icmp_scan -iL hosts.txt
 ```
 
-- `-iL`: Define a list of IPs
+> [!info]-
+>
+> - `-sn`: Disable port scanning (send ARP ping)
+> - `-oA`: Save scan results
+> - `-iL`: Define a list of IPs

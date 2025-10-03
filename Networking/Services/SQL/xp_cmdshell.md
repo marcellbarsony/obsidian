@@ -14,7 +14,7 @@ Server environment.
 
 ## Activation
 
-**xp_cmdshell** is desabled by default
+**xp_cmdshell** is disabled by default
 
 ```sh
 EXEC sp_configure 'show advanced options', 1;

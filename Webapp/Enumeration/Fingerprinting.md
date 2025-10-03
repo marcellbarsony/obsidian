@@ -20,11 +20,11 @@ options, and missing security options.
 nmap -sV [--version-all] <target_url>
 ```
 
-Example
-
-```sh
-nmap -sV --version-all example.com
-```
+> [!example]-
+>
+>```sh
+>nmap -sV --version-all example.com
+>```
 
 #### Script Scan
 
@@ -35,9 +35,11 @@ to enumerate common web application directories
 nmap -sV --script=http-enum -oA target_http_enum_scan <target_ip>
 ```
 
-- `-sV`: Enable service/version detection
-- `--script=http-enum`: Run `http-enum` scripp
-- `-oA`: Save output in all fomats
+> [!info]-
+>
+> - `-sV`: Enable service/version detection
+> - `--script=http-enum`: Run `http-enum` scripp
+> - `-oA`: Save output in all fomats
 <!-- }}} -->
 
 ### Banner Grabbing
@@ -51,15 +53,15 @@ Banner grabbing with cURL
 curl -I http://<target_url>
 ```
 
-Example
-
-```sh
-# Banner grabbing & Web server headers
-curl -IL http://example.com
-
-# Spoof user agent and follow redirects
-curl -A "Custom user-agent" -L {target_ip}
-```
+> [!example]-
+>
+>```sh
+># Banner grabbing & Web server headers
+>curl -IL http://example.com
+>
+># Spoof user agent and follow redirects
+>curl -A "Custom user-agent" -L {target_ip}
+>```
 <!-- }}} -->
 
 <!-- WhatWeb {{{-->
@@ -125,11 +127,11 @@ Scan the page with [Nikto](https://github.com/sullo/nikto)
 nikto -h http://<target_url>
 ```
 
-Example
-
-```sh
-nikto -h http://example.com
-```
+> [!example]-
+>
+>```sh
+>nikto -h http://example.com
+>```
 <!-- }}} -->
 
 ## Version Details & CVEs

@@ -26,12 +26,14 @@ SYN Scan (Full Connect Scan)
 sudo nmap 10.129.2.28 -p 21,22,25 -sS -Pn -n --disable-arp-ping
 ```
 
-```sh
-PORT   STATE    SERVICE
-21/tcp filtered ftp
-22/tcp open     ssh
-25/tcp filtered smtp
-```
+> [!example]-
+>
+>```sh
+>PORT   STATE    SERVICE
+>21/tcp filtered ftp
+>22/tcp open     ssh
+>25/tcp filtered smtp
+>```
 
 ACK Scan
 
@@ -39,12 +41,14 @@ ACK Scan
 sudo nmap 10.129.2.28 -p 21,22,25 -sA -Pn -n --disable-arp-ping
 ```
 
-```sh
-PORT   STATE      SERVICE
-21/tcp filtered   ftp
-22/tcp unfiltered ssh
-25/tcp filtered   smtp
-```
+> [!example]-
+>
+>```sh
+>PORT   STATE      SERVICE
+>21/tcp filtered   ftp
+>22/tcp unfiltered ssh
+>25/tcp filtered   smtp
+>```
 
 Port `21` and `25` are [[Nmap#Port States|filtered]] (returning **ICMP Port
 Unreachable** or **no response**, meaning the packets are dropped (most likely
@@ -69,7 +73,9 @@ The decoy addresses must be:
 sudo nmap 10.129.2.28 -p 80 -sS -Pn -n --disable-arp-ping --packet-trace -D RND:5
 ```
 
-- `-D RND:5`: Generate 5 random IP addresses, indicating the decoy source IP
+> [!info]-
+>
+> - `-D RND:5`: Generate 5 random IP addresses, indicating the decoy source IP
 
 ### Testing Firewall Rules
 
@@ -88,10 +94,14 @@ Scan by using a different source IP
 sudo nmap 10.129.2.28 -n -Pn -p 445 -O -S 10.129.2.200 -e tun0
 ```
 
-- `-O`: Enable OS detection
-- `-S`: Define different source IP
+> [!info]-
+>
+> - `-O`: Enable OS detection
+> - `-S`: Define different source IP
 <!-- }}} -->
 
 ## DNS Proxying
 
-
+> [!todo]
+>
+> DNS Proxying
