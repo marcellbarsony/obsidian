@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Webapp/Exploitation/Login Functionality.md",
+                "file": "Linux/General/System Info.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Login Functionality"
+              "title": "System Info"
             }
           }
         ]
@@ -103,7 +103,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 239.5
   },
   "right": {
     "id": "d9ceb6f94f351234",
@@ -119,13 +119,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Webapp/Exploitation/Login Functionality.md",
+                "file": "Linux/General/System Info.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Login Functionality"
+              "title": "Outline of System Info"
             }
           },
           {
@@ -173,7 +173,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Webapp/Exploitation/Login Functionality.md",
+                "file": "Linux/General/System Info.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -196,12 +196,12 @@
                   "repelStrength": 10,
                   "linkStrength": 1,
                   "linkDistance": 250,
-                  "scale": 1,
+                  "scale": 0.2962962962962963,
                   "close": true
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Login Functionality"
+              "title": "Graph of System Info"
             }
           }
         ]
@@ -221,47 +221,47 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "63404f4803b22ee7",
+  "active": "5f07e9f23936f1f0",
   "lastOpenFiles": [
-    "Webapp/Exploitation/Admin Panel.md",
-    "Webapp/Exploitation/_Checklist.md",
-    "Webapp/Exploitation/Brute-force/hydra.md",
-    "Webapp/Exploitation/Brute-force/CeWL.md",
-    "Webapp/Exploitation/Authorization/traversal/path-traversal.md",
-    "Webapp/Enumeration/Web Contents.md",
-    "Webapp/Enumeration/Metafiles.md",
-    "Webapp/Enumeration/Fingerprinting.md",
-    "Webapp/Enumeration/Execution Paths.md",
-    "Webapp/Enumeration/Certificates.md",
-    "Webapp/Enumeration/_Checklist.md",
-    "Webapp/Enumeration/Tools/Gobuster.md",
-    "Webapp/Enumeration/Tools/Fuff.md",
-    "Webapp/Enumeration/Tools/Dirsearch.md",
-    "Webapp/Enumeration/Tools/Burp Suite.md",
-    "Webapp/Webapp.md",
-    "Pentest/Tools/Metasploit.md",
-    "Pentest/Reverse Shell/Reverse Shell.md",
-    "Pentest/General/Transferring Files.md",
-    "Pentest/General/Reporting.md",
-    "Pentest/General/Preparation.md",
-    "Networking/Networking.md",
-    "Networking/Tools/Pivoting/Ligolo.md",
-    "Networking/Tools/Pivoting/Chisel.md",
-    "Networking/Tools/Nmap/Nmap.md",
-    "Networking/Tools/Nmap/Service Enumeration.md",
-    "Hacktricks - SMTP",
-    "Networking/Services/Telnet",
-    "Networking/Services/IMAP-POP3/General",
-    "Networking/Services/IMAP-POP3",
-    "Networking/Services/imap/pop3",
-    "Networking/Services/imap",
-    "Networking/Services/General",
-    "Networking/Services/SMTP",
+    "Programming/Python/Modules/Scapy.md",
+    "Programming/Python/Modules/Netfilterqueue.md",
+    "Programming/Python/Modules/Argparse.md",
+    "Programming/Python/Virtual Environment.md",
+    "Programming/Python/Modules/scapy.md",
+    "Programming/Python/Modules/netfilterqueue.md",
+    "Programming/Python/Modules/argparse.md",
+    "Programming/Python/Modules",
+    "Programming/C/Variables/Boolean-types.md",
+    "Programming/C/Variables/Constants.md",
+    "Programming/C/Variables/Variables.md",
+    "Programming/C/Unsafe-C/Unsafe-C.md",
+    "Programming/C/Unsafe-C/unsafe-c.md",
+    "Programming/C/Unsafe-C",
+    "Programming/C/File-IO/User-input.md",
+    "Programming/C/File-IO/user-input.md",
+    "Programming/C/Types/Type-qualifiers.md",
+    "Programming/C/Types/Character-types.md",
+    "Programming/C/Types/Signed-and-Unsigned.md",
+    "Programming/C/Typedef/Typedef-and-other-types.md",
+    "Programming/C/Typedef/Typedef-and-pointers.md",
+    "Programming/C/Typedef/Typedef-and-structs.md",
+    "Programming/C/Typedef/Typedef.md",
+    "Programming/C/Structs/Copying-and-returning-structs.md",
+    "Programming/C/Structs/Passing-structs-to-functions.md",
+    "Programming/C/Structs/Struct-initializers.md",
+    "Programming/C/Structs/Structs.md",
+    "Programming/C/Strings/String-copy.md",
+    "Programming/C/Sockets",
+    "Programming/C/Arrays/Pointers-and-Arrays",
+    "Programming/C/Building",
+    "Programming/Rust/Variable Binding",
+    "Programming/Rust/Types/Type-system",
+    "Programming/Rust/Types/Operators",
+    "Programming/Rust/Types/Keywords",
+    "Programming/Rust/Types",
     "Networking/Services/DNS/src/dns-structure.png",
     "Networking/Enumeration/Infrastructure/src/infra-enum.png",
-    "Networking/Enumeration/Infrastructure/src",
     "Networking/Services/DNS/src/tooldev-dns.png",
-    "Networking/Services/DNS/src",
     "Networking/General/_uncategorized/proxy-01.png",
     "Networking/pics/proxy-01.png"
   ]

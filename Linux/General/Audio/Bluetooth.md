@@ -1,7 +1,8 @@
 ---
 id: Bluetooth
 aliases: []
-tags: []
+tags:
+  - Linux/General/Audio/Bluetooth
 ---
 
 # Bluetooth
@@ -9,23 +10,31 @@ tags: []
 <!-- Installation {{{-->
 ## Installation
 
-```sh
-sudo pacman -S bluez bluez-utils
-```
-<!-- }}} -->
+1. Install the following packages:
 
-<!-- Service {{{-->
-## Service
+- [bluez](https://archlinux.org/packages/extra/x86_64/bluez/),
+  providing the Bluetooth protocol stack
 
-Enable and Start Bluetooth service
+- [bluez-utils](https://archlinux.org/packages/extra/x86_64/bluez-utils/),
+  providing the bluetoothctl utility
 
-```sh
-sudo systemctl enable --now bluetooth.service
-```
+> [!example]
+>
+>```sh
+>sudo pacman -S bluez bluez-utils
+>```
 
-```sh
-sudo systemctl start --now bluetooth.service
-```
+2. Enable and Start Bluetooth service
+
+> [!example]
+>
+>```sh
+>sudo systemctl enable --now bluetooth.service
+>```
+>
+>```sh
+>sudo systemctl start --now bluetooth.service
+>```
 <!-- }}} -->
 
 <!-- Bluetoothctl {{{-->

@@ -1,10 +1,42 @@
 ---
-id: Bluetooth Audio
+id: PipeWire
 aliases: []
-tags: []
+tags:
+  - Linux/General/Audio/PipeWire
 ---
 
 # PipeWire
+
+[PipeWire](https://pipewire.org/) is a project that aims to greatly improve
+handling of audio and video under Linux. It provides a low-latency, graph-based
+processing engine on top of audio and video devices that can be used to support
+the use cases currently handled by both PulseAudio and JACK. PipeWire was
+designed with a powerful security model that makes interacting with audio and
+video devices from containerized applications easy, with support for Flatpak
+applications being the primary goal. Alongside Wayland and Flatpak, we expect
+PipeWire to provide a core building block for the future of Linux application
+development.
+
+- Capture and playback of audio and video with minimal latency.
+- Real-time multimedia processing on audio and video.
+- Multiprocess architecture to let applications share multimedia content.
+- Seamless support for PulseAudio, JACK, ALSA, and GStreamer applications.
+- Sandboxed applications support. See Flatpak for more info.
+
+## ALSA vs. PipeWire
+
+Some may describe this as "replacing ALSA", but as the [PipeWire FAQ](https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/FAQ)
+clarifies:
+
+> [!quote]
+>No, ALSA is an essential part of the Linux audio stack, it provides the
+>interface to the kernel audio drivers
+
+That said, the [ALSA](https://www.alsa-project.org/wiki/Main_Page) user space
+library has a lot of stuff in it that is probably not desirable anymore these
+days, like effects plugins, mixing, routing, slaving, etc. PipeWire uses a small
+subset of the core ALSA functionality to access the hardware. All of the other
+features should be handled by PipeWire.
 
 <!-- Installation {{{-->
 ## Installation
@@ -21,6 +53,9 @@ sudo pacman -S pipewire pipewire-pulse wireplumber
 
 Default configurations should be copied from `/usr/share/pipewire` to
 `~/.config/pipewire/`.
+
+For configuration options read the [PipeWire Docs](https://docs.pipewire.org/)
+
 <!-- }}} -->
 
 <!-- WirePlumber {{{-->

@@ -3,7 +3,7 @@ id: Filter
 aliases: []
 tags:
   - Linux/General/Tools/CLI
-links: "[[Files-Directories]]"
+links: "[[Tools]]"
 ---
 
 # Filter contents

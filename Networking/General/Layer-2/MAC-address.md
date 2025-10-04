@@ -11,7 +11,9 @@ links: "[[Layer-2]]"
 **MAC address** is a 48-bit (6 byte) unique identifier (physical address,
 Layer 2) of a network interface.
 
-Example: `8c:3b:4a:b4:95:4b`
+> [!example]
+>
+> `8c:3b:4a:b4:95:4b`
 
 - The first 3 octets (24 bits) is the `Organization Unique Identifier (OUI)`
 - The last 3 octets (24 bits) is the `Network Interface Controller (NIC)` or
@@ -47,7 +49,7 @@ Broadcast is a **one-to-all communication**  where the packet is sent from one
 source MAC address to all devices on the local network using the broadcast MAC
 address (**FF:FF:FF:FF:FF:FF**).
 
-It is used when the sender doesn’t know the recipient’s MAC address.
+It is used when the sender does not know the recipient’s MAC address.
 
 ## Attack Vectors
 
