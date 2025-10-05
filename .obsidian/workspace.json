@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Linux/General/System Info.md",
+                "file": "Networking/General/Subnetting/General.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "System Info"
+              "title": "General"
             }
           }
         ]
@@ -119,13 +119,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Linux/General/System Info.md",
+                "file": "Networking/General/Subnetting/General.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of System Info"
+              "title": "Outline of General"
             }
           },
           {
@@ -173,7 +173,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Linux/General/System Info.md",
+                "file": "Networking/General/Subnetting/General.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -201,7 +201,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of System Info"
+              "title": "Graph of General"
             }
           }
         ]
@@ -221,44 +221,44 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "5f07e9f23936f1f0",
+  "active": "63404f4803b22ee7",
   "lastOpenFiles": [
+    "Networking/General/Firewalls/General.md",
+    "Networking/General/Subnetting/General.md",
+    "Networking/General/Subnetting",
+    "Networking/General/ACL.md",
+    "Networking/Networking.md",
+    "Programming/Bash/Functions/Character Classes.md",
+    "Networking/General/Firewalls/WAF.md",
+    "Networking/General/Firewalls",
+    "Programming/Bash/Functions/Function.md",
+    "Programming/Bash/Conditionals/Tests.md",
+    "Programming/Bash/Conditionals/Logical Operators.md",
+    "Programming/Bash/Conditionals/tests.md",
+    "Programming/Bash/Conditionals/case.md",
+    "Programming/Bash/stdin.md",
+    "Programming/Bash/Conditionals/if-elif-else.md",
+    "Programming/Bash/Conditionals/if-else.md",
+    "Programming/Bash/Conditionals/01-if.md",
+    "Programming/Bash/Conditionals/if.md",
+    "Programming/Bash/syslog.md",
+    "Programming/Bash/exit-status.md",
+    "Linux/General/Filesystem/NTFS/General.md",
+    "Linux/General/Filesystem/ELF.md",
+    "Linux/General/Filesystem/FHS.md",
+    "Linux/General/Filesystem/Permissions.md",
+    "Linux/General/General.md",
+    "Linux/General/System Info.md",
     "Programming/Python/Modules/Scapy.md",
     "Programming/Python/Modules/Netfilterqueue.md",
-    "Programming/Python/Modules/Argparse.md",
-    "Programming/Python/Virtual Environment.md",
-    "Programming/Python/Modules/scapy.md",
-    "Programming/Python/Modules/netfilterqueue.md",
-    "Programming/Python/Modules/argparse.md",
     "Programming/Python/Modules",
-    "Programming/C/Variables/Boolean-types.md",
-    "Programming/C/Variables/Constants.md",
-    "Programming/C/Variables/Variables.md",
-    "Programming/C/Unsafe-C/Unsafe-C.md",
-    "Programming/C/Unsafe-C/unsafe-c.md",
     "Programming/C/Unsafe-C",
-    "Programming/C/File-IO/User-input.md",
-    "Programming/C/File-IO/user-input.md",
-    "Programming/C/Types/Type-qualifiers.md",
-    "Programming/C/Types/Character-types.md",
-    "Programming/C/Types/Signed-and-Unsigned.md",
-    "Programming/C/Typedef/Typedef-and-other-types.md",
-    "Programming/C/Typedef/Typedef-and-pointers.md",
-    "Programming/C/Typedef/Typedef-and-structs.md",
-    "Programming/C/Typedef/Typedef.md",
-    "Programming/C/Structs/Copying-and-returning-structs.md",
-    "Programming/C/Structs/Passing-structs-to-functions.md",
-    "Programming/C/Structs/Struct-initializers.md",
-    "Programming/C/Structs/Structs.md",
-    "Programming/C/Strings/String-copy.md",
     "Programming/C/Sockets",
     "Programming/C/Arrays/Pointers-and-Arrays",
     "Programming/C/Building",
     "Programming/Rust/Variable Binding",
     "Programming/Rust/Types/Type-system",
     "Programming/Rust/Types/Operators",
-    "Programming/Rust/Types/Keywords",
-    "Programming/Rust/Types",
     "Networking/Services/DNS/src/dns-structure.png",
     "Networking/Enumeration/Infrastructure/src/infra-enum.png",
     "Networking/Services/DNS/src/tooldev-dns.png",

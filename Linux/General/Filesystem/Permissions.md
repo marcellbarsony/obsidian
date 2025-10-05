@@ -27,7 +27,9 @@ These permissions can be set for the `owner`, `group` and `others`
 >
 >```sh
 >ls -l /etc/passwd
+>```
 >
+>```sh
 >- rwx rw- r--   1 root root 1641 May  4 23:42 /etc/passwd
 >- --- --- ---   |  |    |    |   |__________|
 >|  |   |   |    |  |    |    |        |_ Date
@@ -41,19 +43,21 @@ These permissions can be set for the `owner`, `group` and `others`
 >|____________ File type (- = File, d = Directory, l = Link, ... )
 >```
 
-## Change permissions
+## Change Permissions
 
-Change permissions with the `chmod` command
+Apply permissions to a file (`read` to all users)
 
 ```sh
-# Apply read permissions for all users
 chmod a+r file.txt
+```
 
-# Apply read permissions to other users and execute to group
+Apply permissions to a file (`read` to other users, `execute` to group)
+
+```sh
 chmod 754 file.txt
 ```
 
-## Change owner/group
+## Change Owner/Group
 
 Change owner and/or group of a file
 
@@ -83,8 +87,10 @@ The presence of these permissions is indicated by an `s` in place of the usual
 drwxrws---. 2 marci marci  69 Apr  7  2022 my_articles
 ```
 
-When a program with the `SUID` or `SGID` bit set is executed, it runs with the
-permissions of the file's owner or group, rather than the user who launched.
+> [!warning]
+>
+>When a program with the `SUID` or `SGID` bit set is executed, it runs with the
+>permissions of the file's owner or group, rather than the user who launched
 
 ## Sticky Bit
 

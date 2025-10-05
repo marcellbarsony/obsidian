@@ -1,3 +1,9 @@
+---
+id: Tests
+aliases: []
+tags: []
+---
+
 # Tests
 
 ## Syntax
@@ -6,11 +12,11 @@
 [ condition-to-test-for ]
 ```
 
-Example
-
-```sh
-[ -e /etc/passwd ]
-```
+> [!example]-
+>
+>```sh
+>[ -e /etc/passwd ]
+>```
 
 ## File operators
 

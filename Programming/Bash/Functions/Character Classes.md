@@ -1,6 +1,12 @@
-# Character classes
+---
+id: Character Classes
+aliases: []
+tags: []
+---
 
-## [ ]
+# Character Classes
+
+## Brackets - [ ]
 
 - Matches any of the characters included between the brackets. Matches exactly
   one character.
