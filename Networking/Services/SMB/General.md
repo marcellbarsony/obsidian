@@ -11,27 +11,25 @@ port:
 
 # Server Message Block (SMB)
 
-**Server Message Block** ([SMB](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-smb/f210069c-7086-4dc2-885e-861d837df688))
+**SMB** ([Server Message Block](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-smb/f210069c-7086-4dc2-885e-861d837df688))
 is a client-server protocol over TCP, designed for sharing files, directories,
 and other resources (*e.g., printers, routers, interfaces*) over a network.
 
 ## Port 139 (NetBIOS)
 
-The **Network Basic Input Output System** ([NetBIOS](https://en.wikipedia.org/wiki/NetBIOS))
+The **NetBIOS** ([Network Basic Input Output System](https://en.wikipedia.org/wiki/NetBIOS))
 is a software protocol designed to enable applications, PCs, and Desktops within
-a Local Area Network (LAN) to interact with network hardware and facilitate the
-transmission of data across the network.
+a LAN to interact with network hardware and facilitate the transmission of data
+across the network.
 
 ## Port 445 (SMB)
 
-The **Server Message Block (SMB)** protocol operates over **port 445** to
-provide shared access to files, printers, and serial ports between nodes on a
-network.
+The **SMB** protocol operates over **port 445** to provide shared access to
+files, printers, and serial ports between nodes on a network.
 
-SMB over **port 445** allows direct TCP/IP transport without relying on the
-NetBIOS layer (over **port 139**), enabling more efficient and modern file
-sharing and remote administration within Local Area Networks (LANs) and across
-domain environments.
+**SMB** over TCP port `445` allows direct TCP/IP transport without relying on
+the NetBIOS layer (over TCP port `139`), enabling more efficient and modern file
+sharing and remote administration within LANs and across domain environments.
 
 ## Samba
 

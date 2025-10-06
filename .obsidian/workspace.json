@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Networking/General/Subnetting/General.md",
+                "file": "Networking/Services/SNMP/Enumeration.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "General"
+              "title": "Enumeration"
             }
           }
         ]
@@ -119,13 +119,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/General/Subnetting/General.md",
+                "file": "Networking/Services/SNMP/Enumeration.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of General"
+              "title": "Outline of Enumeration"
             }
           },
           {
@@ -173,7 +173,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/General/Subnetting/General.md",
+                "file": "Networking/Services/SNMP/Enumeration.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -196,12 +196,12 @@
                   "repelStrength": 10,
                   "linkStrength": 1,
                   "linkDistance": 250,
-                  "scale": 0.2962962962962963,
+                  "scale": 0.08779149519890259,
                   "close": true
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of General"
+              "title": "Graph of Enumeration"
             }
           }
         ]
@@ -223,11 +223,26 @@
   },
   "active": "63404f4803b22ee7",
   "lastOpenFiles": [
-    "Networking/General/Firewalls/General.md",
-    "Networking/General/Subnetting/General.md",
-    "Networking/General/Subnetting",
+    "Networking/Services/SNMP/General.md",
+    "Networking/Services/SNMP/Enumeration.md",
+    "Networking/Services/SNMP/Exploitation.md",
+    "Networking/Services/SMTP/General.md",
+    "Networking/Services/SMB/General.md",
+    "Networking/Services/NFS/General.md",
+    "Networking/Services/IMAP-POP3/General.md",
+    "Networking/Services/IMAP-POP3/Enumeration.md",
+    "Networking/Services/HTTP/General.md",
+    "Networking/Services/FTP/General.md",
+    "Networking/Services/DNS/General.md",
+    "Networking/Services/NFS/NFS.md",
+    "Networking/Services/Services.md",
     "Networking/General/ACL.md",
+    "Networking/General/IDS-IPS/General.md",
     "Networking/Networking.md",
+    "Networking/General/IDS-IPS",
+    "Networking/General/Subnetting/General.md",
+    "Networking/General/Firewalls/General.md",
+    "Networking/General/Subnetting",
     "Programming/Bash/Functions/Character Classes.md",
     "Networking/General/Firewalls/WAF.md",
     "Networking/General/Firewalls",
@@ -237,20 +252,6 @@
     "Programming/Bash/Conditionals/tests.md",
     "Programming/Bash/Conditionals/case.md",
     "Programming/Bash/stdin.md",
-    "Programming/Bash/Conditionals/if-elif-else.md",
-    "Programming/Bash/Conditionals/if-else.md",
-    "Programming/Bash/Conditionals/01-if.md",
-    "Programming/Bash/Conditionals/if.md",
-    "Programming/Bash/syslog.md",
-    "Programming/Bash/exit-status.md",
-    "Linux/General/Filesystem/NTFS/General.md",
-    "Linux/General/Filesystem/ELF.md",
-    "Linux/General/Filesystem/FHS.md",
-    "Linux/General/Filesystem/Permissions.md",
-    "Linux/General/General.md",
-    "Linux/General/System Info.md",
-    "Programming/Python/Modules/Scapy.md",
-    "Programming/Python/Modules/Netfilterqueue.md",
     "Programming/Python/Modules",
     "Programming/C/Unsafe-C",
     "Programming/C/Sockets",
@@ -258,7 +259,6 @@
     "Programming/C/Building",
     "Programming/Rust/Variable Binding",
     "Programming/Rust/Types/Type-system",
-    "Programming/Rust/Types/Operators",
     "Networking/Services/DNS/src/dns-structure.png",
     "Networking/Enumeration/Infrastructure/src/infra-enum.png",
     "Networking/Services/DNS/src/tooldev-dns.png",

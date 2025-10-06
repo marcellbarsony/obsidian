@@ -13,13 +13,18 @@ port:
 <!-- File Transfer Protocol (FTP) {{{-->
 # File Transfer Protocol (FTP)
 
-**FTP** ([RFC 959](https://datatracker.ietf.org/doc/html/rfc959)) is a standard
+**FTP** ([File Transfer Protocol](https://en.wikipedia.org/wiki/File_Transfer_Protocol))
+([RFC 959](https://datatracker.ietf.org/doc/html/rfc959)) is a standard
 *plain-text* server-client protocol for file transfer across a computer network.
 
-```sh
-PORT   STATE SERVICE
-21/tcp open  ftp
-```
+> [!example]
+>
+> Nmap FTP scan
+>
+>```sh
+>PORT   STATE SERVICE
+>21/tcp open  ftp
+>```
 
 - [Wikipedia - List of FTP server return codes](https://en.wikipedia.org/wiki/List_of_FTP_server_return_codes)
 

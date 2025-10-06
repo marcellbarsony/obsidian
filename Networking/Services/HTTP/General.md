@@ -1,10 +1,11 @@
 
 # HTTP
 
-[HTTP](https://en.wikipedia.org/wiki/HTTP) is a stateless (but not sessionless)
-application layer protocol that is sent over [TCP](https://developer.mozilla.org/en-US/docs/Glossary/TCP),
-or over a [TLS](https://developer.mozilla.org/en-US/docs/Glossary/TLS)-encrypted
-TCP connection.
+**HTTP** ([Hypertext Transfer Protocol](https://en.wikipedia.org/wiki/HTTP))
+is a stateless (but not sessionless) application layer protocol that is sent
+over [TCP](https://developer.mozilla.org/en-US/docs/Glossary/TCP), or over a
+[TLS](https://developer.mozilla.org/en-US/docs/Glossary/TLS)-encrypted TCP
+connection.
 
 <!-- Componets of HTTP-based systems {{{-->
 ## HTTP Componets

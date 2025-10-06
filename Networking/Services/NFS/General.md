@@ -12,7 +12,7 @@ ports:
 
 # Network File System (NFS)
 
-**Network File System** ([NFS](https://en.wikipedia.org/wiki/Network_File_System))
+**NFS** ([Network File System](https://en.wikipedia.org/wiki/Network_File_System))
 is a network file system developed by Sun Microsystems and has the same purpose
 as [[SMB]].
 

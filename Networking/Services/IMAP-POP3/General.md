@@ -28,9 +28,8 @@ assigned to the individual commands using identifiers.
 is a *client-server* protocol that allows synchronization and online management
 of e-mails directly on a remote server, and supports folder structures.
 
-**IMAP** works unencrypted by default (including
-credentials). Many e-mail servers require establishing an encrypted **IMAP**
-session:
+**IMAP** works unencrypted by default (including credentials).
+Many e-mail servers require establishing an encrypted **IMAP** session:
 - **Port** `143`: Explicitly upgraded via [STARTTLS](https://en.wikipedia.org/wiki/Opportunistic_TLS)
 - **Port** `993`: Encrypted by default, using SSL/TLS
 
@@ -45,7 +44,7 @@ is used to list, retrieve, and delete e-mails from the server, typically
 downloading them for offline use.
 
 **POP3** works unencrypted by default (including credentials).
-Many email servers require establishing an encrypted **POP3** session:
+Many e-mail servers require establishing an encrypted **POP3** session:
 - **Port** `110`: Explicitly upgraded via [STARTTLS](https://en.wikipedia.org/wiki/Post_Office_Protocol)
 - **Port** `995`: Encrypted by default, using SSL/TLS
 
@@ -54,7 +53,10 @@ and only download new messages (identified by the UIDL command).
 
 ## Default Configuration
 
-
+Both **IMAP** and **POP3** have a large number of configuration options, making
+it difficult to deep dive into each component ([dovecot-imapd](https://packages.debian.org/sid/dovecot-imapd)
+and [dovecot-pop3d](https://doc.dovecot.org/2.3/configuration_manual/protocols/pop3_server/))
+in more detail.
 
 <!-- IMAP Commands {{{-->
 ### IMAP Commands
