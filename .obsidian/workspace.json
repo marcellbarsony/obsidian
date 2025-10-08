@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Networking/Services/SNMP/Enumeration.md",
+                "file": "Networking/Services/MSSQL/Enumeration.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -29,6 +29,30 @@
               },
               "icon": "lucide-file",
               "title": "Enumeration"
+            }
+          },
+          {
+            "id": "48e9412d729ee398",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Pentest/Tools/Metasploit.md",
+                "mode": "preview",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Metasploit"
             }
           }
         ]
@@ -103,7 +127,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 239.5
+    "width": 200
   },
   "right": {
     "id": "d9ceb6f94f351234",
@@ -112,6 +136,7 @@
       {
         "id": "b37a0bb9d6a15ce6",
         "type": "tabs",
+        "dimension": 64.9325626204239,
         "children": [
           {
             "id": "de7400c63f642849",
@@ -119,7 +144,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/Services/SNMP/Enumeration.md",
+                "file": "Networking/Services/MSSQL/Enumeration.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -166,6 +191,7 @@
       {
         "id": "5459046f6e7e8111",
         "type": "tabs",
+        "dimension": 35.067437379576106,
         "children": [
           {
             "id": "d5c9af9ed92f45fd",
@@ -173,7 +199,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/Services/SNMP/Enumeration.md",
+                "file": "Networking/Services/MSSQL/Enumeration.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -196,7 +222,7 @@
                   "repelStrength": 10,
                   "linkStrength": 1,
                   "linkDistance": 250,
-                  "scale": 0.08779149519890259,
+                  "scale": 0.4444444444444442,
                   "close": true
                 }
               },
@@ -223,42 +249,46 @@
   },
   "active": "63404f4803b22ee7",
   "lastOpenFiles": [
-    "Networking/Services/SNMP/General.md",
-    "Networking/Services/SNMP/Enumeration.md",
-    "Networking/Services/SNMP/Exploitation.md",
-    "Networking/Services/SMTP/General.md",
-    "Networking/Services/SMB/General.md",
-    "Networking/Services/NFS/General.md",
     "Networking/Services/IMAP-POP3/General.md",
     "Networking/Services/IMAP-POP3/Enumeration.md",
-    "Networking/Services/HTTP/General.md",
-    "Networking/Services/FTP/General.md",
+    "Networking/Services/IMAP-POP3",
+    "Networking/Services/IMAP&POP3/General.md",
+    "Networking/Services/IMAP&POP3/Enumeration.md",
+    "Networking/Services/IMAP&POP3",
+    "Networking/Services/MSSQL/General.md",
+    "Networking/Services/Oracle TNS/General.md",
+    "Networking/Services/DNS/DNS.md",
+    "Networking/Services/MSSQL/Enumeration.md",
+    "Networking/Services/Oracle TNS",
+    "Pentest/Tools/Metasploit.md",
+    "Networking/Services/MSSQL/src/ssms-connect.png",
+    "Networking/Services/MSSQL/src/20251007-213129.png",
     "Networking/Services/DNS/General.md",
-    "Networking/Services/NFS/NFS.md",
-    "Networking/Services/Services.md",
-    "Networking/General/ACL.md",
-    "Networking/General/IDS-IPS/General.md",
-    "Networking/Networking.md",
+    "Networking/Services/MSSQL/src/ssms.webp",
+    "Networking/Services/MSSQL/src",
+    "Networking/Services/MSSQL/General_1.md",
+    "Networking/Services/MySQL/Enumeration.md",
+    "Networking/Services/MSSQL",
+    "Networking/Services/MySQL/General.md",
+    "Networking/Services/MySQL/Usage.md",
+    "Networking/Services/FTP/Usage.md",
+    "Networking/Services/SNMP/General.md",
+    "Networking/Services/MySQL",
+    "Networking/Services/SNMP/Exploitation.md",
+    "Networking/Services/SNMP/Enumeration.md",
+    "Networking/Services/SNMP/src/SNMP_OID_MIB_Tree.png",
+    "Networking/Services/SNMP/src",
+    "Linux/General/Networking/iptables.md",
+    "Linux/General/Networking/WireGuard.md",
+    "Linux/General/Networking/VPN/WireGuard.md",
+    "Linux/General/Networking/VPN",
+    "Linux/General/Networking/DNS/General.md",
+    "Linux/General/Networking/dnscrypt-proxy.md",
+    "Linux/General/Networking/DNS/dnscrypt-proxy.md",
+    "Linux/General/Networking/DNS/DNS.md",
+    "Linux/General/Networking/DNS",
+    "Pentest/General/Preparation.md",
     "Networking/General/IDS-IPS",
-    "Networking/General/Subnetting/General.md",
-    "Networking/General/Firewalls/General.md",
-    "Networking/General/Subnetting",
-    "Programming/Bash/Functions/Character Classes.md",
-    "Networking/General/Firewalls/WAF.md",
-    "Networking/General/Firewalls",
-    "Programming/Bash/Functions/Function.md",
-    "Programming/Bash/Conditionals/Tests.md",
-    "Programming/Bash/Conditionals/Logical Operators.md",
-    "Programming/Bash/Conditionals/tests.md",
-    "Programming/Bash/Conditionals/case.md",
-    "Programming/Bash/stdin.md",
-    "Programming/Python/Modules",
-    "Programming/C/Unsafe-C",
-    "Programming/C/Sockets",
-    "Programming/C/Arrays/Pointers-and-Arrays",
-    "Programming/C/Building",
-    "Programming/Rust/Variable Binding",
-    "Programming/Rust/Types/Type-system",
     "Networking/Services/DNS/src/dns-structure.png",
     "Networking/Enumeration/Infrastructure/src/infra-enum.png",
     "Networking/Services/DNS/src/tooldev-dns.png",

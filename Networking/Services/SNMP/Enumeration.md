@@ -10,6 +10,8 @@ links: "[[SNMP]]"
 
 > [!todo]
 
+- [HackTricks - SNMP](https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-snmp/index.html#brute-force-community-string-v1-and-v2c)
+
 Examination of process parameters might reveal
 - credentials
 - routing information
@@ -26,11 +28,65 @@ nmap -sU -p161 --open <target_ip>
 
 <!-- }}} -->
 
+<!-- Community Strings {{{-->
+## Community Strings
+
+**Community strings** should be discovered via dictionary attack
+
+> [!example]-
+>
+> ```sh
+> msf> use auxiliary/scanner/snmp/snmp_login
+> ```
+> ```sh
+> nmap -sU --script snmp-brute <target> [--script-args snmp-brute.communitiesdb=<wordlist> ]
+> ```
+> ```sh
+> onesixtyone -c /usr/share/metasploit-framework/data/wordlists/snmp_default_pass.txt <IP>
+> ```
+> ```sh
+> hydra -P /usr/share/seclists/Discovery/SNMP/common-snmp-community-strings.txt target.com snmp
+> ```
+
+### OneSixtyOne
+
+
+file included in the GitHub repo
+
+```sh
+onesixtyone -c dict.txt 10.129.42.254
+
+Scanning 1 hosts, 51 communities
+10.129.42.254 [public] Linux gs-svcscan 5.4.0-66-generic #74-Ubuntu SMP Wed Jan 27 22:54:38 UTC 2021 x86_64
+```
+
+[onesixtyone](https://github.com/trailofbits/onesixtyone)
+is used to **identify community strings** with
+[SecLists - SNMP Community Strings](https://github.com/danielmiessler/SecLists/tree/master/Discovery/SNMP)
+or via the default
+[dict.txt](https://github.com/trailofbits/onesixtyone/blob/master/dict.txt)`
+
+> [!example]-
+>
+>```sh
+>onesixtyone -c /opt/useful/seclists/Discovery/SNMP/snmp.txt 10.129.14.128
+>```
+>```sh
+>Scanning 1 hosts, 3220 communities
+>10.129.14.128 [public] Linux htb 5.11.0-37-generic #41~20.04.2-Ubuntu SMP Fri Sep 24 09:06:38 UTC 2021 x86_64
+>```
+
+<!-- }}} -->
+
 <!-- SNMPwalk {{{-->
 ## SNMPwalk
 
 [snmpwalk](https://linux.die.net/man/1/snmpwalk)
 is used to **query [[General#OID|OID]]s** with their information
+
+> [!important]
+>
+> A valid community string must be known (e.g., `public`, `private`, etc.)
 
 <!-- Example {{{-->
 > [!example]-
@@ -172,25 +228,6 @@ is used to **query [[General#OID|OID]]s** with their information
 
 <!-- }}} -->
 
-<!-- OneSixtyOne {{{-->
-## OneSixtyOne
-
-[onesixtyone](https://github.com/trailofbits/onesixtyone)
-is used to **identify community strings** with
-[SecLists - SNMP Community Strings](https://github.com/danielmiessler/SecLists/tree/master/Discovery/SNMP)
-
-> [!example]-
->
->```sh
->onesixtyone -c /opt/useful/seclists/Discovery/SNMP/snmp.txt 10.129.14.128
->```
->```sh
->Scanning 1 hosts, 3220 communities
->10.129.14.128 [public] Linux htb 5.11.0-37-generic #41~20.04.2-Ubuntu SMP Fri Sep 24 09:06:38 UTC 2021 x86_64
->```
-
-<!-- }}} -->
-
 <!-- Braa {{{-->
 ## Braa
 
@@ -199,7 +236,7 @@ brute-forcing** and information enumeration
 
 > [!important]
 >
-> The community string must be known
+> A valid community string must be known (e.g., `public`, `private`, etc.)
 
 ### Installation
 

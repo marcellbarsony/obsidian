@@ -3,7 +3,7 @@ id: SNMP
 aliases:
   - Simple Network Management Protocol
 tags:
-  - Networking/Services/SNMP
+  - Networking/Services/SNMP/General
 links: "[[Services]]"
 port:
   - 161
@@ -20,14 +20,21 @@ their configuration.
 **SNMP** transmits control commands using agents over UDP port `161`.
 
 While in classical communication, it is always the client who actively requests
-information from the server, **SNMP** also enables the use of traps over UDP
-port `162`.
+information from the server, **SNMP** also enables the use of [traps](https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol#Trap)
+and [InformRequests](https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol#InformRequest)
+over UDP port `162`.
+
+When used with [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security)
+or [DTLS](https://en.wikipedia.org/wiki/Datagram_Transport_Layer_Security):
+
+- Requests are received on port `10161`
+- Notifications are sent to port `10162`
 
 For the **SNMP** client and server to exchange values, the **SNMP** objects must
 have unique addresses known on both sides.
 
-<!-- MIB & OID {{{-->
-## MIB & OID
+<!-- General {{{-->
+## General
 
 ### MIB
 
@@ -57,6 +64,7 @@ position in the tree to be determined.
 
 **OID** associated **MIB**s are in the [Object Identifier Registry](https://www.alvestrand.no/objectid/)
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```
@@ -68,6 +76,45 @@ position in the tree to be determined.
 > 1.3.6.1.4.1 IANA enterprise numbers,
 > 1.3.6.1.4.1.343 Intel Corporation
 > ```
+>
+> The following sequence of numbers will be the same for all `OID`s, except when
+> the device is made by the government
+>
+> - `1`: `ISO` - Establishes the `OID`
+> - `3`: `ORG` - Specifies the organization that built the device
+> - `6`: `DoD` - [Department of Defense](https://en.wikipedia.org/wiki/United_States_Department_of_Defense)
+> - `1`: `Internet` - Denote that all communications will happen through the
+>   Internet
+> - `4`: `Private` - Device is made by a private organization (not a government
+>   one)
+> - `1`: `IANA entreprise number` - The device is made by a business entity
+> - `343`: `Intel Corporation` - Business entity identifier
+>
+> ![[SNMP_OID_MIB_Tree.png]]
+<!-- }}} -->
+
+### Community Strings
+
+**Community strings** can be seen as passwords that are used to determine
+whether the requested information can be viewed or not.
+
+**Community strings** has two types:
+
+- `public`: Mainly read-only functions
+- `private`: Mainly Read/Write
+
+The writeability of an [[General#OID|OID]] depends on the **community string**
+used:
+
+- Even if `public` is used, some values can be overwritten
+- There may be read-only objects
+
+> [!important]
+>
+> In order to access the information saved on the [[General#MIB|MIB]]s
+>
+> - `v1` & `v2c`: Community strings must be known
+> - `v3`: Credentials must be known
 <!-- }}} -->
 
 <!-- SNMP Versions {{{-->
@@ -87,14 +134,6 @@ in use in many small networks
 
 In **SNMP** versions 2c (`SNMPv2c`), access is controlled using a plain text
 community string, and if the name is known, access can be gained to it
-
-> [!info]- Info - Community Strings
->
->**Community strings** can be seen as passwords that are used to determine
->whether the requested information can be viewed or not.
->
->The lack of encryption of the data is also a problem, as every time community
-> strings are sent over a network, they can be intercepted and read.
 
 > [!danger]
 >
