@@ -4,7 +4,7 @@ aliases:
   - IMAP-POP3
 tags:
   - Networking/Services/IMAP-POP3/General
-links: ""
+links: "[[Services]]"
 ports:
   - 110
   - 143
@@ -61,7 +61,7 @@ in more detail.
 <!-- IMAP Commands {{{-->
 ### IMAP Commands
 
-> [!info]-
+> [!example]-
 >
 > **IMAP Commands**
 >
@@ -83,7 +83,7 @@ in more detail.
 <!-- POP3 Commands {{{-->
 ### POP3 Commands
 
-> [!info]-
+> [!example]-
 >
 > **POP3 Commands**
 >
@@ -110,11 +110,11 @@ Improper configuration could allow an attacker to obtain additional information
 >
 > **Dangerous Settings**
 >
->| Setting                 | Description                   |
->| ----------------------- | ----------------------------- |
->| auth_debug              | Enables all authentication debug logging |
->| auth_debug_passwords    | This setting adjusts log verbosity, the submitted passwords, and the scheme gets logged |
->| auth_verbose            | Logs unsuccessful authentication attempts and their reasons |
->| auth_verbose_passwords  | Passwords used for authentication are logged and can also be truncated |
->| auth_anonymous_username | This specifies the username to be used when logging in with the ANONYMOUS SASL mechanism |
+>| Setting                   | Description                   |
+>| ------------------------- | ----------------------------- |
+>| `auth_debug`              | Enables all authentication debug logging |
+>| `auth_debug_passwords`    | This setting adjusts log verbosity, the submitted passwords, and the scheme gets logged |
+>| `auth_verbose`            | Logs unsuccessful authentication attempts and their reasons |
+>| `auth_verbose_passwords`  | Passwords used for authentication are logged and can also be truncated |
+>| `auth_anonymous_username` | This specifies the username to be used when logging in with the ANONYMOUS SASL mechanism |
 <!-- }}} -->

@@ -3,6 +3,7 @@ id: General
 aliases: []
 tags:
   - Networking/Services/MSSQL/General
+links: "[[Services]]"
 port:
   - 1443
 ---

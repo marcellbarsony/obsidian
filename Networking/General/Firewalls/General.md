@@ -1,7 +1,10 @@
 ---
 id: General
 aliases: []
-tags: []
+links:
+  - "[[Networking/General/General|General]]"
+tags:
+  - Networking/General/Firewall
 ---
 
 # Firewall

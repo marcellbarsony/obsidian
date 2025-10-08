@@ -40,9 +40,9 @@ dig ns <domain> @<dns_server_ip>
 > Ask the DNS server `10.129.14.128` for the NS records for the
 > domain `inlanefreight.htb`
 >
->```sh
->dig ns inlanefreight.htb @10.129.14.128
->```
+> ```sh
+> dig ns inlanefreight.htb @10.129.14.128
+> ```
 
 ### DIG - ANY Query
 
@@ -57,9 +57,9 @@ dig any <domain> @<dns_server_ip>
 > Ask the DNS server `10.129.14.128` for all available records for
 > the domain `inlanefreight.htb`
 >
->```sh
->dig any inlanefreight.htb @10.129.14.128
->```
+> ```sh
+> dig any inlanefreight.htb @10.129.14.128
+> ```
 
 > [!note]
 > Not all entries from the zones will be shown
@@ -86,9 +86,6 @@ server**. This can be done manually, or by a dynamic update from a database.
 - **Master DNS server**: The DNS server that serves as direct source for
   synchronizing
 - **Slave DNS server**: The DNS server that obtains zone data from a master
-
-
-
 
 ```sh
 dig axfr inlanefreight.htb @10.129.14.128

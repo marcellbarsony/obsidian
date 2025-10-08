@@ -16,10 +16,12 @@ Launch the default FTP script scan (Unauthenticated Enumeration)
 sudo nmap -sC -sV -p21 -A <target_ip> --script-trace
 ```
 
-- `-sC`: Default script scan
-- `-sV`: Version scan
-- `-A`: Aggressive scan
-- `--script-trace`: Trace the progress of the NSE script (*optional*)
+> [!info]-
+>
+> - `-sC`: Default script scan
+> - `-sV`: Version scan
+> - `-A`: Aggressive scan
+> - `--script-trace`: Trace the progress of the NSE script (*optional*)
 
 ## Banner Grabbing
 

@@ -3,7 +3,7 @@ id: SSH
 aliases:
   - Secure Shell
 tags:
-  - Networking/Services/SSH
+  - Networking/Services/SSH/General
 port:
   - 22
 links: "[[Services]]"

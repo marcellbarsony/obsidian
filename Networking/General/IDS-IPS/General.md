@@ -1,7 +1,10 @@
 ---
 id: General
-aliases: []
-tags: []
+aliases: "Intrusion Detection & Prevention System"
+links:
+  - "[[Networking/General/General|General]]"
+tags:
+  - Networking/General/IDS-IPS
 ---
 
 # IPS & IDS

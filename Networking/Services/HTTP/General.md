@@ -1,3 +1,15 @@
+---
+id: General
+aliases:
+  - Hypertext Transfer Protocol
+tags:
+  - Networking/Services/HTTP/General
+links: "[[Services]]"
+port:
+  - 80
+  - 443
+---
+
 
 # HTTP
 
@@ -106,57 +118,90 @@ the Web:
 <!--}}}-->
 
 <!-- HTTP Messages -->
-## [HTTP Messages](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview#http_messages)
+## HTTP Messages
+
+[HTTP Messages](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview#http_messages)
+are the mechanism used to exchange data between a server and a client in the
+HTTP protocol.
+
+There are two types of messages:
+
+- **Requests** sent by the client, to trigger an action on the server
+- **Responses** the server sends to a request
 
 <!-- Requests{{{-->
-### [Requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview#requests)
+### Requests
 
-Example HTTP request
-```sh
-# [Method] [Path] [Protocol version]
-GET / HTTP/1.1
-# Headers
-Host: developer.mozilla.org
-Accept-Language: fr
-```
+[HTTP Requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview#requests)
+should contain
 
-1. The [HTTP method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) defines
-   operation the client wants to perform.
-2. The path of the resource fo fetch; the URL of the resource stripped from elements.
-3. The version of the HTTP protocol
-<!--}}}-->
+1. The [HTTP method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) —
+   definig the operation the client wants to perform
+2. The **path** of the resource fo fetch — the URL of the resource stripped from
+   elements
+3. The **version** of the HTTP protocol
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> # [Method] [Path] [Protocol version]
+> GET / HTTP/1.1
+>
+> # Headers
+> Host: developer.mozilla.org
+> Accept-Language: fr
+> ```
+<!-- }}} -->
+
+<!-- }}} -->
 
 <!-- Responses {{{-->
-### [Responses](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview#responses)
+### Responses
 
-Example HTTP respone
+[HTTP Responses](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview#responses)
+should contain
 
-```sh
-# [Protocol version] [Status code] [Status message]
-HTTP/1.1 200 OK
-# Headers
-date: Sat, 09 Oct 2010 14:28:02 GMT
-cache-control: public, max-age=3600
-content-Type: text/html
-```
+1. The **version** of the HTTP protocol
+2. The **status code**
+3. The **status message**, non-authoritative short description of the status
+4. The **HTTP headers**
+5. Optionally, a body containing the **fetched resource**
 
-1. Version of the HTTP protocol
-2. Status code
-3. Status message, non-authoritative short description of the status
-4. HTTP headers
-5. Optionally, a body containing the fetched resource
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> # [Protocol version] [Status code] [Status message]
+> HTTP/1.1 200 OK
+>
+> # Headers
+> date: Sat, 09 Oct 2010 14:28:02 GMT
+> cache-control: public, max-age=3600
+> content-Type: text/html
+> ```
+<!-- }}} -->
+
 <!--}}}-->
+
 <!--}}}-->
 
 ## HTTP/1.1 vs. HTTP/2
 
-HTTP messages, as defined in HTTP/1.1 and earlier, are human-readable. In HTTP/2, these messages
-are embedded into a binary structure, a frame, allowing optimizations like compression of headers
-and multiplexing. Even if only part of the original HTTP message is sent in this version of HTTP,
-the semantics of each message is unchanged and the client reconstitutes (virtually) the original
-HTTP/1.1 request. It is therefore useful to comprehend HTTP/2 messages in the HTTP/1.1 format.
+> [!todo]
+
+[Overview of HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview#http_messages)
+
+HTTP messages, as defined in **HTTP/1.1** and earlier, are human-readable.
+
+In **HTTP/2**, these messages are embedded into a binary structure, a frame,
+allowing optimizations like compression of headers and multiplexing.
+
+Even if only part of the original HTTP message is sent in this version of HTTP,
+the semantics of each message is unchanged and the client reconstitutes
+(virtually) the original HTTP/1.1 request.
+It is therefore useful to comprehend HTTP/2 messages in the HTTP/1.1 format.
 
 ## HTTP Redirections
 
 > [!todo]
->

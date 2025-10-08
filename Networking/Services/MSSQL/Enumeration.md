@@ -86,6 +86,10 @@ will scan the MSSQL service
 
 ### Without Credentials
 
+`mssql_ping` **doesn't require valid credentials** — it's a discovery probe that
+talks TDS/SQL Server Browser and can return basic server/instance info without
+logging in
+
 1. [[Metasploit#Launch Metasploit|Launch Metasploit]]
 
 2. [[Metasploit#Search Exploit|Search]] for auxiliary scanners
@@ -126,9 +130,11 @@ will scan the MSSQL service
 3. [[Metasploit#Select Exploit|Select]] the auxiliary scanner
 
 <!-- Example {{{-->
-```sh
-msf6 > use auxiliary/scanner/mssql/mssql_ping
-```
+> [!example]-
+>
+> ```sh
+> msf6 > use auxiliary/scanner/mssql/mssql_ping
+> ```
 <!-- }}} -->
 
 4. [[Metasploit#Show Options|Show options]]
@@ -182,37 +188,40 @@ msf6 > use auxiliary/scanner/mssql/mssql_ping
 
 [Metasploit (needs credentials)](https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-mssql-microsoft-sql-server/index.html#metasploit-need-creds)
 
-```sh
-#Set USERNAME, RHOSTS and PASSWORD
-#Set DOMAIN and USE_WINDOWS_AUTHENT if domain is used
-
-#Steal NTLM
-msf> use auxiliary/admin/mssql/mssql_ntlm_stealer #Steal NTLM hash, before executing run Responder
-
-#Info gathering
-msf> use admin/mssql/mssql_enum #Security checks
-msf> use admin/mssql/mssql_enum_domain_accounts
-msf> use admin/mssql/mssql_enum_sql_logins
-msf> use auxiliary/admin/mssql/mssql_findandsampledata
-msf> use auxiliary/scanner/mssql/mssql_hashdump
-msf> use auxiliary/scanner/mssql/mssql_schemadump
-
-#Search for insteresting data
-msf> use auxiliary/admin/mssql/mssql_findandsampledata
-msf> use auxiliary/admin/mssql/mssql_idf
-
-#Privesc
-msf> use exploit/windows/mssql/mssql_linkcrawler
-msf> use admin/mssql/mssql_escalate_execute_as #If the user has IMPERSONATION privilege, this will try to escalate
-msf> use admin/mssql/mssql_escalate_dbowner #Escalate from db_owner to sysadmin
-
-#Code execution
-msf> use admin/mssql/mssql_exec #Execute commands
-msf> use exploit/windows/mssql/mssql_payload #Uploads and execute a payload
-
-#Add new admin user from meterpreter session
-msf> use windows/manage/mssql_local_auth_bypass
-```
+> [!example]-
+>
+>
+> ```sh
+> #Set USERNAME, RHOSTS and PASSWORD
+> #Set DOMAIN and USE_WINDOWS_AUTHENT if domain is used
+>
+> #Steal NTLM
+> msf> use auxiliary/admin/mssql/mssql_ntlm_stealer #Steal NTLM hash, before executing run Responder
+>
+> #Info gathering
+> msf> use admin/mssql/mssql_enum #Security checks
+> msf> use admin/mssql/mssql_enum_domain_accounts
+> msf> use admin/mssql/mssql_enum_sql_logins
+> msf> use auxiliary/admin/mssql/mssql_findandsampledata
+> msf> use auxiliary/scanner/mssql/mssql_hashdump
+> msf> use auxiliary/scanner/mssql/mssql_schemadump
+>
+> #Search for insteresting data
+> msf> use auxiliary/admin/mssql/mssql_findandsampledata
+> msf> use auxiliary/admin/mssql/mssql_idf
+>
+> #Privesc
+> msf> use exploit/windows/mssql/mssql_linkcrawler
+> msf> use admin/mssql/mssql_escalate_execute_as #If the user has IMPERSONATION privilege, this will try to escalate
+> msf> use admin/mssql/mssql_escalate_dbowner #Escalate from db_owner to sysadmin
+>
+> #Code execution
+> msf> use admin/mssql/mssql_exec #Execute commands
+> msf> use exploit/windows/mssql/mssql_payload #Uploads and execute a payload
+>
+> #Add new admin user from meterpreter session
+> msf> use windows/manage/mssql_local_auth_bypass
+> ```
 
 <!-- }}} -->
 
@@ -220,7 +229,8 @@ msf> use windows/manage/mssql_local_auth_bypass
 ## Mssqlclient.py
 
 [Impacket's mssqlclient.py](https://github.com/fortra/impacket/blob/master/examples/mssqlclient.py)
-allows to remotely connect and to the MSSQL server using Transact-SQL ([T-SQL](https://learn.microsoft.com/en-us/sql/t-sql/language-reference?view=sql-server-ver17)).
+allows to remotely connect and to the MSSQL server using Transact-SQL
+([T-SQL](https://learn.microsoft.com/en-us/sql/t-sql/language-reference?view=sql-server-ver17)).
 
 <!-- Example {{{-->
 > [!example]-
@@ -228,6 +238,7 @@ allows to remotely connect and to the MSSQL server using Transact-SQL ([T-SQL](h
 > ```sh
 > python3 mssqlclient.py Administrator@10.129.201.248 -windows-auth
 > ```
+>
 > ```sh
 > Impacket v0.9.22 - Copyright 2020 SecureAuth Corporation
 >
@@ -240,9 +251,13 @@ allows to remotely connect and to the MSSQL server using Transact-SQL ([T-SQL](h
 > [*] INFO(SQL-01): Line 1: Changed language setting to us_english.
 > [*] ACK: Result: 1 - Microsoft SQL Server (150 7208) 
 > [!] Press help for extra shell commands
+> ```
 >
+> ```sql
 > SQL> select name from sys.databases
+> ```
 >
+> ```sh
 > name
 >
 > --------------------------------------------------------------------------------------
@@ -256,11 +271,13 @@ allows to remotely connect and to the MSSQL server using Transact-SQL ([T-SQL](h
 > msdb
 >
 > Transactions
->```
+> ```
 <!-- }}} -->
 
+<!-- Warning {{{-->
 > [!warning]
 >
-> Credentials must be known
+> Valid credentials required
+<!-- }}} -->
 
 <!-- }}} -->

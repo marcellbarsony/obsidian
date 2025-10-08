@@ -21,10 +21,10 @@ port:
 ### DNS Root Server
 
 The **Root Servers** responsible for the top-level domains
-([TLD](https://en.wikipedia.org/wiki/Top-level_domain)). As the last instance,
-they are only requested if the name server does not respond. The 13 root servers
-are coordinated by the The Internet Corporation for Assigned Names and Numbers
-([ICANN](https://www.icann.org/)).
+([TLD](https://en.wikipedia.org/wiki/Top-level_domain)).
+As the last instance, they are only requested if the name server does not
+respond. The 13 root servers are coordinated by the The Internet Corporation for
+Assigned Names and Numbers ([ICANN](https://www.icann.org/)).
 
 ### Authoritative Name Server
 
@@ -37,7 +37,7 @@ web server(s).
 ### Non-authoritative Nameserver
 
 **Non-Authoritative Name Servers** collect information on specific DNS zones via
-recursive or iterative DNS querying - they are not responsible for a particular
+recursive or iterative DNS querying — they are not responsible for a particular
 DNS zone
 
 ### Caching DNS Server
@@ -100,8 +100,10 @@ are
 - `etc/bind/named.conf.options`
 - `etc/bind/named.conf.log`
 
-The configuration is roughly divided into two sections: general settings and
-zone entries.
+The configuration is roughly divided into two sections:
+
+- general settings
+- zone entries
 
 #### Local DNS Configuration
 
@@ -129,10 +131,12 @@ into names.
 
 Some settings can lead to vulnerabilities
 
-| Option            | Description                                                                   |
-| ----------------- | ----------------------------------------------------------------------------- |
-| `allow-query`     | Defines which hosts are allowed to send requests to the DNS server            |
-| `allow-recursion` | Defines which hosts are allowed to send recursive requests to the DNS server  |
-| `allow-transfer`  | Defines which hosts are allowed to receive zone transfers from the DNS server |
-| `zone-statistics` | Collects statistical data of zones                                            |
+> [!danger]
+>
+> | Option            | Description                                                                   |
+> | ----------------- | ----------------------------------------------------------------------------- |
+> | `allow-query`     | Defines which hosts are allowed to send requests to the DNS server            |
+> | `allow-recursion` | Defines which hosts are allowed to send recursive requests to the DNS server  |
+> | `allow-transfer`  | Defines which hosts are allowed to receive zone transfers from the DNS server |
+> | `zone-statistics` | Collects statistical data of zones                                            |
 <!-- }}} -->

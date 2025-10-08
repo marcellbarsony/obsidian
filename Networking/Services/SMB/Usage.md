@@ -78,20 +78,35 @@ smbclient -U bob \\\\10.129.42.253\\users
 <!-- SMB Actions {{{-->
 ### SMB Actions
 
-```sh
-# Change directory
-smb: \> cd
-
-# List files
-smb: \> dir
-
-# Get file
-smb: \> get <remote_file_name> [local_file_name]
-
-# Execute local system command (`!`)
-smb: \> !ls
-
-# Exit
-smb: \> exit
-```
+> [!example]-
+>
+> Change directory
+>
+> ```sh
+> smb: \> cd
+> ```
+>
+> List files
+>
+> ```sh
+> smb: \> dir
+> ```
+>
+> Get file
+>
+> ```sh
+> smb: \> get <remote_file_name> [local_file_name]
+> ```
+>
+> Execute local system command (`!`)
+>
+> ```sh
+> smb: \> !ls
+> ```
+>
+> Exit
+>
+> ```
+> smb: \> exit
+> ```
 <!-- }}} -->

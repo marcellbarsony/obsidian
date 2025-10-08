@@ -28,13 +28,15 @@ ports.
 sudo nmap --script nfs* <target_ip> -sV -p111,2049
 ```
 
-Useful Nmap scripts
-
-```sh
-nfs-ls        # List NFS exports and check permissions
-nfs-showmount # Like showmount -e
-nfs-statfs    # Disk statistics and NFS share info
-```
+> [!tip]
+>
+> Useful Nmap scripts
+>
+> ```sh
+> nfs-ls        # List NFS exports and check permissions
+> nfs-showmount # Like showmount -e
+> nfs-statfs    # Disk statistics and NFS share info
+> ```
 <!-- }}} -->
 
 <!-- Discover & Mount {{{-->
@@ -42,39 +44,68 @@ nfs-statfs    # Disk statistics and NFS share info
 
 ### Show NFS Shares
 
-Ask the **NFS** server (the RPC mount daemon) what directories it is exporting
+Ask the **NFS server** (the RPC mount daemon) what directories it is exporting
 and to which clients
 
-```sh
-showmount -e <target_ip>
-```
+> [!example]-
+>
+> ```sh
+> showmount -e <target_ip>
+> ```
 
 ### Mount NFS Shares
 
-Mount remote **NFS** shares to the local machine
+Mount remote **NFS shares** to the local machine
 
 1. Create a mount directory
 
-```sh
-mkdir target-NFS
-```
+> [!example]-
+>
+> ```sh
+> mkdir target-NFS
+> ```
 
 2. Mount the NFS share(s)
 
 ```sh
 sudo mount -t nfs [-o vers=2] <target_ip>:<remote_folder> <local_folder> -o nolock
-
-# Example
-sudo mount -t nfs 10.129.14.128:/ ./target-NFS/ -o nolock
-sudo mount -t nfs [-o vers=2] 10.12.0.150:/backup /mnt/new_back -o nolock
 ```
+
+> [!example]-
+>
+> ```sh
+> sudo mount -t nfs 10.129.14.128:/ ./target-NFS/ -o nolock
+> ```
+>
+> > [!info]-
+> >
+> > - `mount`: Mount a filesystem to the Linux directory tree
+> > - `-t nfs`: Specify the filesystem type ([[General|NFS]])
+> > - `10.129.14.128:/`: NFS server IP and export path (directory)
+> > - `./target-NFS/`: Local mount point
+> > - `-o nolock`: Mount option (disable file locking)
+>
+> ```sh
+> sudo mount -t nfs [-o vers=2] 10.12.0.150:/backup /mnt/new_back -o nolock
+> ```
+>
+> > [!info]-
+> >
+> > - `mount`: Mount a filesystem to the Linux directory tree
+> > - `-t nfs`: Specify the filesystem type ([[General|NFS]])
+> > - `[-o vers=2]`: Force NFSv2 (compatibility instead of v3 or v4)
+> > - `10.12.0.150:/backup`: NFS server IP and export path (directory)
+> > - `./mnt/new_back/`: Local mount point
+> > - `-o nolock`: Mount option (disable file locking)
 
 3. Change to the mount directory and show content
 
-```sh
-cd target-NFS
-tree .
-```
+> [!example]-
+>
+> ```sh
+> cd target-NFS
+> tree .
+> ```
 <!-- }}} -->
 
 <!-- Unmount {{{-->
@@ -90,17 +121,29 @@ sudo umount ./target-NFS
 <!-- Metasploit {{{-->
 ## Metasploit
 
-1. Launch the Metasploit framework
+1. [[Metasploit#Launch Metasploit|Launch Metasploit]]
+
+
+2. [[Metasploit#Search Exploit|Search ]] for some useful modules
 
 ```sh
-msfconfsole
+search nfs
 ```
 
-2. Select some useful modules
+3. [[Metasploit#Select Exploit|Select]] the the scanner
+
+Scan NFS mounts and list permissions
 
 ```sh
-use scanner/nfs/nfsmount # Scan NFS mounts and list permissions
+use scanner/nfs/nfsmount
 ```
 
-3. Configure target `RHOST` (and other options)
+4. [[Metasploit#Show Options|Show options]]
+
+5. [[Metasploit#Set Options|Set options]]
+
+6. [[Metasploit#Check Exploit|Check Module]]
+
+7. [[Metasploit#Run Exploit|Run Module]]
+
 <!-- }}} -->
