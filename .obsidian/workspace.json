@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Networking/Services/Oracle TNS/Enumeration.md",
+                "file": "Networking/Services/Oracle TNS/General.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Enumeration"
+              "title": "General"
             }
           }
         ]
@@ -78,7 +78,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "var/www",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/Services/Oracle TNS/Enumeration.md",
+                "file": "Networking/Services/Oracle TNS/General.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Enumeration"
+              "title": "Outline of General"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/Services/Oracle TNS/Enumeration.md",
+                "file": "Networking/Services/Oracle TNS/General.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Enumeration"
+              "title": "Graph of General"
             }
           }
         ]
@@ -225,9 +225,21 @@
   },
   "active": "63404f4803b22ee7",
   "lastOpenFiles": [
-    "Networking/Services/Oracle TNS/General.md",
-    "Pentest/General/Preparation.md",
     "Networking/Services/Oracle TNS/Enumeration.md",
+    "Networking/Services/Oracle TNS/General.md",
+    "Webapp/General/Web Server Root.md",
+    "Webapp/General/Web Server",
+    "Webapp/Privesc/web-server-root.md",
+    "Webapp/General",
+    "Webapp/Privesc/Privesc.md",
+    "Webapp/Enumeration/_Checklist.md",
+    "Linux/General/Networking/DNS/dnscrypt-proxy.md",
+    "Networking/Networking.md",
+    "2025-10-09.md",
+    "note.md",
+    "Networking/General/Firewalls/General.md",
+    "Networking/General/Firewalls/WAF.md",
+    "Pentest/General/Preparation.md",
     "Networking/Services/FTP/Usage.md",
     "Networking/Services/FTP/General.md",
     "SMB.md",
@@ -236,21 +248,10 @@
     "Networking/Services/SMTP/Exploitation.md",
     "Linux/General/Filesystem/NTFS/General.md",
     "Networking/General/IDS-IPS/General.md",
-    "Networking/General/Firewalls/General.md",
     "Networking/Services/SNMP/General.md",
     "Networking/Services/SSH/General.md",
     "Networking/Services/SSH/Enumeration.md",
     "Networking/Services/SSH/Usage.md",
-    "Networking/Services/Telnet/General.md",
-    "Networking/Services/SQL/Exploitation.md",
-    "Networking/Services/SNMP/Enumeration.md",
-    "Networking/Services/SMTP/Usage.md",
-    "Networking/Services/SMTP/General.md",
-    "Networking/Services/SMB/Usage.md",
-    "Networking/Services/SMB/General.md",
-    "Networking/Services/SMB/Exploitation.md",
-    "Networking/Services/SMB/Enumeration.md",
-    "Networking/Services/NFS/Usage.md",
     "Networking/Services/IMAP-POP3",
     "Networking/Services/IMAP&POP3",
     "Networking/Services/Oracle TNS",
@@ -263,8 +264,6 @@
     "Networking/Services/SNMP/src/SNMP_OID_MIB_Tree.png",
     "Networking/Services/SNMP/src",
     "Linux/General/Networking/VPN",
-    "Linux/General/Networking/DNS",
-    "Networking/General/IDS-IPS",
     "Networking/Services/DNS/src/dns-structure.png",
     "Networking/Enumeration/Infrastructure/src/infra-enum.png",
     "Networking/Services/DNS/src/tooldev-dns.png",

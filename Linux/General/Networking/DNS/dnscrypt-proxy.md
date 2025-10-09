@@ -13,7 +13,8 @@ and [DNSCrypt](https://dnscrypt.info/)
 
 ## Installation
 
-Install the [dnscrypt-proxy](https://archlinux.org/packages/extra/x86_64/dnscrypt-proxy/)
+Install the
+[dnscrypt-proxy](https://archlinux.org/packages/extra/x86_64/dnscrypt-proxy/)
 package
 
 > [!example]
@@ -87,7 +88,8 @@ package
 
 ### Domain
 
-1. Whitelist the domain on [NextDNS's Allowlist](https://my.nextdns.io/<uid>/allowlist)
+1. Whitelist the domain on
+   [NextDNS's Allowlist](https://my.nextdns.io/<uid>/allowlist)
 
 2. Whitelist the domain in `/etc/dnscrypt-proxy/allowed-names.txt`
 
@@ -99,7 +101,7 @@ package
 > sudo systemctl restart dnscrypt-proxy.service
 > ```
 
-4. Restart `NetworkManager.service`
+4. Restart `NetworkManager.service` (*optional*)
 
 > [!example]
 >

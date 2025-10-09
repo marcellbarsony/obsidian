@@ -37,6 +37,37 @@ including `TCP`/`IP`, `UDP`, `IPX`/`SPX`, and `AppleTalk`.
 The **TNS Listener** will only accept connections from authorized hosts and
 perform basic authentication using a combination of hostnames, IP addresses,
 usernames and passwords.
+<!-- }}} -->
+
+<!-- Oracle RDBMS {{{-->
+## Oracle RDBMS
+
+An [Oracle Relational Database Management System](https://www.oracle.com/database/what-is-a-relational-database/)
+is a type of database that stores and provides access to data points that are
+related to one another.
+
+### System Identifier
+
+In [[General#Oracle RDBMS|Oracle RDBMS]], a System Identifier (**SID**)
+is a unique name that identifies a particular database instance.
+
+Database administrators can use the **SID** to monitor and manage
+(e.g, *start*, *stop*, *restart*, *adjust the memory allocation*, etc.)
+the individual instances of a database, using tools like
+[Oracle Enterprise Manager](https://www.oracle.com/enterprise-manager/).
+
+The client specifes the database's **SID** (along with its connection string)
+to identify which Oracle database it wants to connect to.
+
+> [!info]
+>
+> If a client doesn't specify a **SID**, the default value defined in the
+> [[General#Tnsnames.ora|tnsnames.ora]] is used.
+
+> [!warning]
+>
+> If a client specifies an **incorrect SID**,
+> the **connection attempt will fail**
 
 <!-- }}} -->
 
@@ -145,7 +176,40 @@ properties and parameters.
 
 #### PlsqlExclusionList
 
-> [!todo]
+Ocale databases can be protected by using **PL**/**SQL Exclusion List**:
+
+It is a user-created text file that needs to be placed in the
+`$ORACLE_HOME/sqldeveloper` directory, and it contains the names of
+**PL**/**SQL** packages or types that should be excluded from execution.
+Once the **PL**/**SQL Exclusion List** file is created, it can be loaded into
+the database instance. It serves as a blacklist that cannot be accessed through
+the Oracle Application Server.
+
+<!-- Settings {{{-->
+| Setting            | Description
+| ------------------ | -------------------------------------------------------------------------- |
+| DESCRIPTION        | A descriptor that provides a name for the database and its connection type |
+| ADDRESS            | The network address of the database, which includes the hostname and port number |
+| PROTOCOL           | The network protocol used for communication with the server
+| PORT               | The port number used for communication with the server
+| CONNECT_DATA       | Specifies the attributes of the connection, such as the service name or SID, protocol, and database instance identifier |
+| INSTANCE_NAME      | The name of the database instance the client wants to connect |
+| SERVICE_NAME       | The name of the service that the client wants to connect to |
+| SERVER             | The type of server used for the database connection, such as dedicated or shared |
+| USER               | The username used to authenticate with the database server |
+| PASSWORD           | The password used to authenticate with the database server |
+| SECURITY           | The type of security for the connection |
+| VALIDATE_CERT      | Whether to validate the certificate using SSL/TLS |
+| SSL_VERSION        | The version of SSL/TLS to use for the connection |
+| CONNECT_TIMEOUT    | The time limit in seconds for the client to establish a connection to the database |
+| RECEIVE_TIMEOUT    | The time limit in seconds for the client to receive a response from the database |
+| SEND_TIMEOUT       | The time limit in seconds for the client to send a request to the database |
+| SQLNET.EXPIRE_TIME | The time limit in seconds for the client to detect a connection has failed.
+| TRACE_LEVEL        | The level of tracing for the database connection |
+| TRACE_DIRECTORY    | The directory where the trace files are stored |
+| TRACE_FILE_NAME    | The name of the trace file |
+| LOG_FILE           | The file where the log information is stored |
+<!-- }}} -->
 
 <!-- }}} -->
 

