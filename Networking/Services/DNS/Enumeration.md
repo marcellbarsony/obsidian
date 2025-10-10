@@ -7,7 +7,7 @@ tags:
 links: "[[Services]]"
 ---
 
-# DNS Enumeration
+# Enumeration
 
 DNS servers can be footprinted via queries
 

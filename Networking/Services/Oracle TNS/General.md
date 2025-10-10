@@ -10,7 +10,7 @@ ports:
   - 1522-1529
 ---
 
-# General
+# Oracle TNS
 
 **TNS** ([Oracle Transparent Network Substrate](https://en.wikipedia.org/wiki/Transparent_Network_Substrate))
 is a communication protocol that facilitates communication between

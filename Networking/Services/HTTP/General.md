@@ -10,7 +10,6 @@ port:
   - 443
 ---
 
-
 # HTTP
 
 **HTTP** ([Hypertext Transfer Protocol](https://en.wikipedia.org/wiki/HTTP))
@@ -117,7 +116,7 @@ the Web:
 
 <!--}}}-->
 
-<!-- HTTP Messages -->
+<!-- HTTP Messages {{{-->
 ## HTTP Messages
 
 [HTTP Messages](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview#http_messages)

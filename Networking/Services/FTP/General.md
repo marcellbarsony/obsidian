@@ -10,8 +10,8 @@ port:
   - 21
 ---
 
-<!-- File Transfer Protocol (FTP) {{{-->
-# File Transfer Protocol (FTP)
+<!-- FTP {{{-->
+# FTP
 
 **FTP** ([File Transfer Protocol](https://en.wikipedia.org/wiki/File_Transfer_Protocol))
 ([RFC 959](https://datatracker.ietf.org/doc/html/rfc959)) is a standard
@@ -185,6 +185,7 @@ overview of the FTP directory structure
 ls -R
 ```
 <!-- }}} -->
+
 <!-- }}} -->
 
 <!-- TFTP {{{-->
@@ -196,12 +197,12 @@ and server processes.
 
 ## Usage
 
-| Commands | Description                                                |
-| -------- | ---------------------------------------------------------- |
-| connect  | Sets the remote host, and optionally the port              |
-| get      | Transfers file(s) from the remote host to the local host   |
-| put      | Transfers file(s) from the local host onto the remote host |
-| quit     | Exits TFTP                                                 |
-| status   | Shows FTFP status (e.g., transfer mode (ascii or binary)   |
-| verbose  | Toggles verbose mode                                       |
+| Commands   | Description                                                |
+| ---------- | ---------------------------------------------------------- |
+| `connect`  | Sets the remote host, and optionally the port              |
+| `get`      | Transfers file(s) from the remote host to the local host   |
+| `put`      | Transfers file(s) from the local host onto the remote host |
+| `quit`     | Exits TFTP                                                 |
+| `status`   | Shows FTFP status (e.g., transfer mode (ascii or binary)   |
+| `verbose`  | Toggles verbose mode                                       |
 <!-- }}} -->

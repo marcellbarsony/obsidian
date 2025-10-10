@@ -10,7 +10,7 @@ port:
   - 587
 ---
 
-# SMTP (Simple Mail Transfer Protocol)
+# SMTP
 
 **SMTP** ([Simple Mail Transfer Protocol](https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol))
 is a TCP/IP protocol for sending e-mails.

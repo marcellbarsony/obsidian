@@ -9,7 +9,7 @@ port:
   - 445
 ---
 
-# Server Message Block (SMB)
+# SMB
 
 **SMB** ([Server Message Block](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-smb/f210069c-7086-4dc2-885e-861d837df688))
 is a client-server protocol over TCP, designed for sharing files, directories,
@@ -17,10 +17,9 @@ and other resources (*e.g., printers, routers, interfaces*) over a network.
 
 ## Port 139 (NetBIOS)
 
-The **NetBIOS** ([Network Basic Input Output System](https://en.wikipedia.org/wiki/NetBIOS))
-is a software protocol designed to enable applications, PCs, and Desktops within
-a LAN to interact with network hardware and facilitate the transmission of data
-across the network.
+The [[Networking/Services/NetBIOS/General|NetBIOS]] is a software protocol
+designed to enable applications, PCs, and Desktops within a LAN to interact with
+network hardware and facilitate the transmission of data across the network.
 
 ## Port 445 (SMB)
 

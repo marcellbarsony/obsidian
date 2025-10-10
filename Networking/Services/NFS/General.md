@@ -10,7 +10,7 @@ ports:
     - 2049
 ---
 
-# Network File System (NFS)
+# NFS
 
 **NFS** ([Network File System](https://en.wikipedia.org/wiki/Network_File_System))
 is a network file system developed by Sun Microsystems and has the same purpose

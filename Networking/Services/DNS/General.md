@@ -9,7 +9,7 @@ port:
   - 53
 ---
 
-# Domain Name System (DNS)
+# DNS
 
 - [Wikipedia - Domain Name System](https://en.wikipedia.org/wiki/Domain_Name_System)
 

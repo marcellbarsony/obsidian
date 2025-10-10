@@ -12,16 +12,17 @@ ports:
   - 995
 ---
 
-# General
+# IMAP/POP3
 
-Clients access these structures online and can create local copies, resulting in
-a uniform database.
+Clients access these structures online and can create local copies,
+resulting in a uniform database.
 
 The client establishes the connection to the server via port `143`, using
 text-based commands in `ASCII` format. Several commands can be sent in
 succession without confirmation from the server. Later confirmations can be
 assigned to the individual commands using identifiers.
 
+<!-- Internet Message Access Protocol {{{-->
 ## Internet Message Access Protocol
 
 **IMAP** ([Internet Message Access Protocol](https://en.wikipedia.org/wiki/Internet_Message_Access_Protocol))
@@ -36,7 +37,9 @@ Many e-mail servers require establishing an encrypted **IMAP** session:
 **IMAP** was designed to normally leave all messages on the server to permit
 management with multiple client applications, and to support both *online* and
 *offline* modes of operation.
+<!-- }}} -->
 
+<!-- Post Office Protocol {{{-->
 ## Post Office Protocol
 
 **POP3** ([Post Office Protocol](https://en.wikipedia.org/wiki/Post_Office_Protocol))
@@ -50,13 +53,16 @@ Many e-mail servers require establishing an encrypted **POP3** session:
 
 **POP3** clients have the option to leave e-mails on the server after retrieval
 and only download new messages (identified by the UIDL command).
+<!-- }}} -->
 
+<!-- Default Configuration {{{-->
 ## Default Configuration
 
 Both **IMAP** and **POP3** have a large number of configuration options, making
 it difficult to deep dive into each component ([dovecot-imapd](https://packages.debian.org/sid/dovecot-imapd)
 and [dovecot-pop3d](https://doc.dovecot.org/2.3/configuration_manual/protocols/pop3_server/))
 in more detail.
+<!-- }}} -->
 
 <!-- IMAP Commands {{{-->
 ### IMAP Commands
