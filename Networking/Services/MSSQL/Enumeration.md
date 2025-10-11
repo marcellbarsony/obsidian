@@ -223,6 +223,11 @@ logging in
 > msf> use windows/manage/mssql_local_auth_bypass
 > ```
 
+<!-- Warning {{{-->
+> [!warning]
+>
+> Valid credentials required
+<!-- }}} -->
 <!-- }}} -->
 
 <!-- Mssqlclient.py {{{-->

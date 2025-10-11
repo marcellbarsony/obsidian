@@ -10,6 +10,7 @@ links: "[[Networking/Services/SMTP/General|SMTP]]"
 
 - [Hacktricks - SMTP/s](https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-smtp/index.html)
 
+<!-- Banner Grabbing {{{-->
 ## Banner Grabbing
 
 SMTP
@@ -25,6 +26,9 @@ openssl s_client -crlf -connect smtp.mailgun.org:465 #SSL/TLS without starttls c
 openssl s_client -starttls smtp -crlf -connect smtp.mailgun.org:587
 ```
 
+<!-- }}} -->
+
+<!-- Nmap {{{-->
 ## Nmap
 
 Scan port `25` using the default scripts
@@ -40,6 +44,9 @@ Use the `EHLO` command to list all possible commands that can be executed on the
 nmap -p25 --script smtp-commands <target_ip>
 ```
 
+<!-- }}} -->
+
+<!-- Open Relay {{{-->
 ### Open Relay
 
 Identify the target **SMTP Server** as an open relay, using 16 different tests,
@@ -50,4 +57,4 @@ NSE script
 nmap -p25 --script smtp-open-relay <target_ip> -v
 ```
 
-
+<!-- }}} -->

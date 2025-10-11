@@ -7,6 +7,7 @@ tags:
 
 # Enumeration
 
+<!-- Configuration File {{{-->
 ## Configuration File
 
 Often, the rights for the [[General#Configuration|configuration file]] of the
@@ -16,6 +17,8 @@ Often, the rights for the [[General#Configuration|configuration file]] of the
 >
 > If an attacker can read files or gain shell access, they may retrieve the file
 > containing the MySQL username and password
+
+<!-- }}} -->
 
 <!-- Scanning MySQL Server {{{-->
 ## Scanning MySQL Server

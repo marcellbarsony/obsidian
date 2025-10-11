@@ -64,7 +64,7 @@ Download a file
 ftp> get Important\ Notes.txt
 ```
 
-Download all files
+Download all files ([[Exploitation#Anonymous Login|Anonymous Login]])
 
 ```sh
 wget -m ftp://anonymous:anonymous@10.10.10.98

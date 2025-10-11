@@ -394,10 +394,9 @@ select * from user_role_privs;
 <!-- Extract Password Hashes {{{-->
 ### Extract Password Hashes
 
-Retrieve the password hashes of the `sys.user$` 
+Retrieve the password hashes of the `sys.user$`
 [SYS.USER$](https://docs.oracle.com/database/121/ADMQS/GUID-CF1CD853-AF15-41EC-BC80-61918C73FDB5.htm#ADMQS12003)
 (the default administrative user account) and try to crack them offline
-
 
 ```sql
 select name, password from sys.user$;
@@ -434,7 +433,6 @@ select name, password from sys.user$;
 
 <!-- }}} -->
 
-
 <!-- }}} -->
 
 <!-- Finger {{{-->
@@ -442,8 +440,8 @@ select name, password from sys.user$;
 
 If the [finger service](https://en.wikipedia.org/wiki/Finger_(protocol))
 is active on the same host as the [[General#TNS Listener|TNS listener]],
-and the Oracle OS account (often just `oracle`) is known, the **finger** output
-can leak:
+and the Oracle OS account (often just `oracle`) is known,
+the **finger** output can leak:
 
 - The exact home directory (e.g., `/home/oracle`, `/u01/app/oracle`, etc.)
 - The shell and sometimes system info

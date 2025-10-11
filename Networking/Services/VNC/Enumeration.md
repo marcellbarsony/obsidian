@@ -7,19 +7,25 @@ tags:
 
 # Enumeration
 
-
+<!-- Nmap {{{-->
 ## Nmap
 
 ```sh
 nmap -sV --script vnc-info,realvnc-auth-bypass,vnc-title -p <target_port> <target_ip>
 ```
 
+<!-- }}} -->
+
+<!-- Metasploit {{{-->
 ## Metasploit
 
 ```sh
 msf> use auxiliary/scanner/vnc/vnc_none_auth
 ```
 
+<!-- }}} -->
+
+<!-- Decrypting VNC Password {{{-->
 ## Decrypting VNC Password
 
 The default password is stored in `~/.vnc/passwd`
@@ -33,3 +39,5 @@ The password may be decrypted with
 ```sh
 vncpwd <vnc_password_file>
 ```
+
+<!-- }}} -->

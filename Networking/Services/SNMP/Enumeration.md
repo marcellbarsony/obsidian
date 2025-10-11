@@ -31,7 +31,8 @@ nmap -sU -p161 --open <target_ip>
 <!-- Community Strings {{{-->
 ## Community Strings
 
-**Community strings** should be discovered via dictionary attack
+[[General#Community Strings|Community Strings]]
+should be discovered via dictionary attack
 
 > [!example]-
 >
@@ -50,16 +51,6 @@ nmap -sU -p161 --open <target_ip>
 
 ### OneSixtyOne
 
-
-file included in the GitHub repo
-
-```sh
-onesixtyone -c dict.txt 10.129.42.254
-
-Scanning 1 hosts, 51 communities
-10.129.42.254 [public] Linux gs-svcscan 5.4.0-66-generic #74-Ubuntu SMP Wed Jan 27 22:54:38 UTC 2021 x86_64
-```
-
 [onesixtyone](https://github.com/trailofbits/onesixtyone)
 is used to **identify community strings** with
 [SecLists - SNMP Community Strings](https://github.com/danielmiessler/SecLists/tree/master/Discovery/SNMP)
@@ -68,13 +59,13 @@ or via the default
 
 > [!example]-
 >
->```sh
->onesixtyone -c /opt/useful/seclists/Discovery/SNMP/snmp.txt 10.129.14.128
->```
->```sh
->Scanning 1 hosts, 3220 communities
->10.129.14.128 [public] Linux htb 5.11.0-37-generic #41~20.04.2-Ubuntu SMP Fri Sep 24 09:06:38 UTC 2021 x86_64
->```
+> ```sh
+> onesixtyone -c /opt/useful/seclists/Discovery/SNMP/snmp.txt 10.129.14.128
+> ```
+> ```sh
+> Scanning 1 hosts, 3220 communities
+> 10.129.14.128 [public] Linux htb 5.11.0-37-generic #41~20.04.2-Ubuntu SMP Fri Sep 24 09:06:38 UTC 2021 x86_64
+> ```
 
 <!-- }}} -->
 

@@ -55,10 +55,19 @@ The most common [BMC](https://www.supermicro.com/en/glossary/baseboard-managemen
 - Review hardware logs
 <!-- }}} -->
 
+<!-- Configuration {{{-->
 ## Configuration
-
-> [!todo]
 
 ### Dangerous Settings
 
-> [!todo]
+> [!danger]
+>
+> Default passwords
+>
+> | Product         | Username        | Password         |
+> | --------------- | --------------- | ---------------- |
+> | Dell iDRAC      | `root`          | `calvin`         |
+> | HP iLO          | `Administrator` | randomized 8-character string consisting of numbers and uppercase letters |
+> | Supermicro IPMI | `ADMIN`         | `ADMIN`          |
+
+<!-- }}} -->

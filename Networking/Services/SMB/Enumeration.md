@@ -196,7 +196,9 @@ nmap --script smb-os-discovery.nse -p445 <target_ip>
 
 Useful scripts
 
-> [!tip]-
+1. Grab SMB server version
+
+> [!example]-
 >
 > **Grab SMB server version**
 >

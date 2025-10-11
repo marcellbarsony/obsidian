@@ -22,6 +22,7 @@ protocol to remotely control another computer.
 **VNC** transmits the keyboard and mouse events bidirectionally, allowing
 real-time access.
 
+<!-- Connect {{{-->
 ## Connect
 
 Connect with [Real VNC](https://www.realvnc.com/en/connect/download/viewer/)
@@ -29,3 +30,5 @@ Connect with [Real VNC](https://www.realvnc.com/en/connect/download/viewer/)
 ```sh
 vncviewer [-passwd passwd.txt] <IP>::5901
 ```
+
+<!-- }}} -->

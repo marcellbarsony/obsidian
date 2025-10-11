@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Networking/Services/IPMI/General.md",
+                "file": "Networking/Services/FTP/Exploitation.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "General"
+              "title": "Exploitation"
             }
           }
         ]
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/Services/IPMI/General.md",
+                "file": "Networking/Services/FTP/Exploitation.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of General"
+              "title": "Outline of Exploitation"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/Services/IPMI/General.md",
+                "file": "Networking/Services/FTP/Exploitation.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of General"
+              "title": "Graph of Exploitation"
             }
           }
         ]
@@ -223,42 +223,42 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "5f07e9f23936f1f0",
+  "active": "63404f4803b22ee7",
   "lastOpenFiles": [
-    "Network/Services/NetBIOS/General.md",
-    "Networking/Services/SMB/General.md",
+    "Networking/Services/FTP/General.md",
+    "Networking/Services/FTP/Usage.md",
+    "Networking/Services/FTP/Exploitation.md",
+    "Networking/Services/FTP/Enumeration.md",
+    "Networking/Services/IMAP-POP3/Enumeration.md",
+    "Networking/Services/SNMP/Enumeration.md",
+    "Networking/Services/SNMP/General.md",
+    "Networking/Services/SMTP/Enumeration.md",
+    "Networking/Services/SMB/Enumeration.md",
+    "Networking/Services/SMB/Exploitation.md",
+    "Networking/Services/Oracle TNS/Enumeration.md",
+    "Networking/Services/Oracle TNS/Exploitation.md",
+    "Networking/Services/NFS/Enumeration.md",
+    "Networking/Services/NFS/Exploitation.md",
+    "Networking/Services/MySQL/Enumeration.md",
+    "Networking/Services/MSSQL/Enumeration.md",
+    "Networking/Services/MSSQL/Exploitation.md",
+    "Networking/Services/NFS/General.md",
+    "Networking/Services/NFS/Usage.md",
+    "Networking/Services/Oracle TNS/General.md",
+    "Networking/Services/SMTP/Exploitation.md",
+    "Networking/Services/SQL/Exploitation.md",
+    "Networking/Services/SSH/Enumeration.md",
     "Networking/Services/SSH/General.md",
+    "Networking/Services/VNC/Enumeration.md",
+    "Networking/Services/VNC/General.md",
     "Network/Services/NetBIOS",
     "Network/Services",
     "Network",
-    "Networking/Services/NetBIOS/General.md",
-    "Networking/Services/NetBIOS/general.md",
     "Networking/Services/NetBIOS",
-    "Networking/Services/IPMI/General.md",
-    "Networking/Services/FTP/General.md",
-    "Networking/Services/SQL/General.md",
-    "Networking/Services/DNS/General.md",
-    "Networking/Services/DNS/Exploitation.md",
-    "Networking/Services/IPMI/Enumeration.md",
-    "Networking/Services/SQL/SQL.md",
-    "Networking/Services/Telnet/General.md",
-    "Networking/Services/VNC/General.md",
-    "Networking/Services/VNC/Enumeration.md",
-    "Networking/Services/ICMP/Exploitation.md",
-    "Networking/Services/ICMP/General.md",
-    "Networking/Services/ICMP/Enumeration.md",
-    "Networking/Services/Oracle TNS/General.md",
     "Networking/Services/VNC",
     "Networking/Services/IPMI",
-    "Networking/Services/Oracle TNS/Enumeration.md",
-    "Webapp/General/Web Server Root.md",
     "Webapp/General/Web Server",
-    "Webapp/Privesc/web-server-root.md",
     "Webapp/General",
-    "Webapp/Privesc/Privesc.md",
-    "Webapp/Enumeration/_Checklist.md",
-    "Linux/General/Networking/DNS/dnscrypt-proxy.md",
-    "Networking/Networking.md",
     "Networking/Services/IMAP-POP3",
     "Networking/Services/IMAP&POP3",
     "Networking/Services/MSSQL/src/ssms-connect.png",
