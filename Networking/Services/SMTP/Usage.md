@@ -13,7 +13,8 @@ tags:
 The communication is done by special commands causing the **SMTP Server** to
 perform the required action
 
-> [!info]-
+<!-- Example {{{-->
+> [!example]-
 >
 > **SMTP Commands** used in e-mail communication between a client (e-mail app)
 > and a server
@@ -30,9 +31,13 @@ perform the required action
 >| `EXPN`       | The client also checks if a mailbox is available for messaging with this command        |
 >| `NOOP`       | The client requests a response from the server to prevent disconnection due to time-out |
 >| `QUIT`       | The client terminates the session                                                       |
+<!-- }}} -->
 
-<!-- Telnet - HELO/EHLO {{{-->
-### Telnet - HELO/EHLO
+<!-- Telnet {{{-->
+### Telnet
+
+<!-- HELO/EHLO {{{-->
+#### HELO/EHLO
 
 [[Networking/Services/Telnet/General|Telnet]] can be used to interact with the
 **SMTP** server through TCP connection
@@ -41,8 +46,9 @@ perform the required action
 telnet <target_ip> <target_port>
 ```
 
-The initialization of the session is don with `HELO` or `EHLO`
+The initialization of the session is done with `HELO` or `EHLO`
 
+<!-- Example {{{ -->
 > [!example]-
 >
 > **HELO** & **EHLO**
@@ -75,52 +81,73 @@ The initialization of the session is don with `HELO` or `EHLO`
 >```
 <!-- }}} -->
 
-<!-- Telnet - VRFY {{{-->
-### Telnet - VRFY
+<!-- }}} -->
+
+<!-- VRFY {{{-->
+#### VRFY
 
 The `VRFY` command can be used to enumerate existing users on the system
 
+<!-- Example {{{-->
 > [!example]-
 >
-> **VRFY**
+> Connect to the service
 >
->```sh
->telnet 10.129.14.128 25
+> ```sh
+> telnet 10.129.14.128 25
+> ```
+> ```sh
+> Trying 10.129.14.128...
+> Connected to 10.129.14.128.
+> Escape character is '^]'.
+> 220 ESMTP Server
+> ```
 >
->Trying 10.129.14.128...
->Connected to 10.129.14.128.
->Escape character is '^]'.
->220 ESMTP Server
+> Check if user `root` exist
 >
->VRFY root
->252 2.0.0 root
+> ```sh
+> VRFY root
+> ```
+> ```sh
+> 252 2.0.0 root
 >
+> ```
 >
->VRFY cry0l1t3
->252 2.0.0 cry0l1t3
+> Check if user `cry0l1t3` exist
+> ```sh
+> VRFY cry0l1t3
+> ```
+> ```sh
+> 252 2.0.0 cry0l1t3
 >
+> ```
 >
->VRFY testuser
->252 2.0.0 testuser
+> Check if user `testuser` exist
 >
+> ```sh
+> VRFY testuser
+> 252 2.0.0 testuser
 >
->VRFY aaaaaaaaaaaaaaaaaaaaaaaaaaaa
->252 2.0.0 aaaaaaaaaaaaaaaaaaaaaaaaaaaa
->```
+> ```
+<!-- }}} -->
 
-> [!note]
+<!-- Warning {{{-->
+> [!warning]
 >
 >The **SMTP** server may issue [error code](https://serversmtp.com/smtp-error/)
 >`252` and confirm the existence of a user that doesn't exist on the system
 <!-- }}} -->
 
+<!-- }}} -->
+
 <!-- Send an Email {{{-->
-### Send an Email
+#### Send an Email
 
 Send an e-mail manually through an **SMTP Server** at IP `10.129.14.128` on port
 `25`. The structure of the header is defined in
 [RFC 5322](https://datatracker.ietf.org/doc/html/rfc5322).
 
+<!-- Example {{{ -->
 > [!example]-
 >
 > **Send an Email**
@@ -178,6 +205,10 @@ Send an e-mail manually through an **SMTP Server** at IP `10.129.14.128` on port
 >221 2.0.0 Bye
 >Connection closed by foreign host.
 >```
+<!-- }}} -->
 
 <!-- }}} -->
+
+<!-- }}} -->
+
 <!-- }}} -->

@@ -26,18 +26,6 @@ printers, serial ports, and communicate between nodes on a network.
 <!-- Linux {{{-->
 #### Linux
 
-Connect to server and list shares (Null session)
-
-```sh
-smbclient -N -L //<target_ip>
-```
-
-> [!info]-
->
-> - `-N`: Null session / Anonymous access
-> - `-L`: List shares
-
-
 Connect to a share
 
 ```sh
@@ -67,19 +55,6 @@ smbclient -U bob //10.129.14.128/users
 
 <!-- Windows {{{-->
 #### Windows
-
-Connect to server and list shares (*Windows UNC path*)
-
-```sh
-smbclient -N -L \\\\<target_ip>\\
-```
-
-<!-- Info {{{-->
-> [!info]-
->
-> - `-N`: Null session / Anonymous access
-> - `-L`: List shares
-<!-- }}} -->
 
 <!-- Warning {{{-->
 > [!warning]
@@ -137,7 +112,6 @@ smbclient -U bob \\\\<target_ip>\\users
 >
 > - `-U`: Connect as user with known credentials
 <!-- }}} -->
-
 
 <!-- }}} -->
 

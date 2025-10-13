@@ -26,16 +26,20 @@ links: "[[FTP]]"
 <!-- Nmap {{{-->
 ## Nmap
 
+### FTP Server
+
 Identify an FTP server
 
 ```sh
-nmap -p 21 <target_ip>
+nmap -p 21 <target_ip> -oA ftp-identify
 ```
+
+### FTP Server Features
 
 Identify FTP server features (*default FTP unauthantecated script scan*)
 
 ```sh
-sudo nmap -sC -sV -p21 -A <target_ip> --script-trace
+sudo nmap -sC -sV -p21 -A <target_ip> --script-trace -oA ftp-default-script
 ```
 
 <!-- Info {{{-->
@@ -47,6 +51,8 @@ sudo nmap -sC -sV -p21 -A <target_ip> --script-trace
 > - `--script-trace`: Trace the progress of the NSE script (*optional*)
 <!-- }}} -->
 
+### FTP Bounce Attack
+
 Check if the FTP server allows
 [[Exploitation#FTP Bounce Attack|FTP Bounce Attack]]
 via the
@@ -54,7 +60,7 @@ via the
 script
 
 ```sh
-nmap -p 21 --script ftp-bounce <target_ip>
+nmap -p 21 --script ftp-bounce <target_ip> -oA ftp-bounce
 ```
 
 <!-- }}} -->
@@ -62,11 +68,15 @@ nmap -p 21 --script ftp-bounce <target_ip>
 <!-- Banner Grabbing {{{-->
 ## Banner Grabbing
 
+### Netcat
+
 Grab the FTP banner with [[netcat]]
 
 ```sh
 nc -nv <target_ip> 21
 ```
+
+### Telnet
 
 Grab the FTP banner with [[Networking/Services/Telnet/General|Telnet]]
 
@@ -97,9 +107,10 @@ Update the connection to TLS, display the server's:
 ## Default and Common Directories
 
 FTP servers can have default or common directories
-that may contain sensitive information
+that may contain sensitive information — [[Gobuster]]
 
 ```sh
-gobuster dir -u ftp://<ip> -w <wordlist.txt>
+gobuster dir -u ftp://<ip> -w <dirlist.txt>
 ```
+
 <!-- }}} -->

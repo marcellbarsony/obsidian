@@ -206,7 +206,7 @@ nmap -v -oG -
 - `-oG`: Grepable output - `.gnmap` extension
 - `-oX`: XML output - `.xml` extension
 
-`-oA` saves the reust in all formats
+`-oA` saves the reusult in all formats
 
 ### HTML Reports
 

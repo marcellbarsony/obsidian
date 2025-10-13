@@ -13,6 +13,7 @@ links: "[[Networking/Services/SMTP/General|SMTP]]"
 <!-- Banner Grabbing {{{-->
 ## Banner Grabbing
 
+<!-- SMTP {{{-->
 ### SMTP
 
 #### Netcat
@@ -26,7 +27,7 @@ nc -vn <target_ip> 25
 Get banner with [[netcat]] `EHLO`
 
 ```sh
-echo "EHLO test" | nc target.com 25
+echo "EHLO test" | nc <target_ip> 25
 ```
 
 #### Telnet
@@ -37,6 +38,9 @@ Get banner with [[Telnet/General|Telnet]]
 telnet <target_ip> 25
 ```
 
+<!-- }}} -->
+
+<!-- SMTPS {{{-->
 ### SMTPS
 
 SSL/TLS with `starttls` command
@@ -53,28 +57,94 @@ openssl s_client -crlf -connect smtp.mailgun.org:465
 
 <!-- }}} -->
 
+<!-- }}} -->
+
 <!-- Nmap {{{-->
 ## Nmap
 
-Detect services and identify server capabilities
+Detect SMTP service
 
 ```sh
-nmap -p 25,465,587 <target_ip>
+nmap -p 25,465,587 <target_ip> -oA smtp-identify
 ```
 
-Scan port `25` using the default scripts
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> nmap -p 25,465,587 10.129.33.217 -oA smtp-identify
+> ```
+> ```sh
+> Nmap scan report for 10.129.33.217
+> Host is up (0.62s latency).
+>
+> PORT    STATE  SERVICE
+> 25/tcp  open   smtp
+> 465/tcp closed smtps
+> 587/tcp closed submission
+> ```
+<!-- }}} -->
+
+Discover SMTP services & server capabilities
 
 ```sh
-sudo nmap -sC -sV <target_ip> -p25
+sudo nmap -sC -sV -p 25 <target_ip> -oA smtp-default-scripts
 ```
 
-Use the `EHLO` command to list all possible commands that can be executed on the
-**SMTP Server**
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> sudo nmap -sC -sV -p25 10.129.33.217 -oA smtp-default-scripts
+> ```
+> ```sh
+> PORT   STATE SERVICE VERSION
+> 25/tcp open  smtp
+> |_smtp-commands: mail1, PIPELINING, SIZE 10240000, VRFY, ETRN, STARTTLS, ENHANCEDSTATUSCODES, 8BITMIME, DSN, SMTPUTF8, CHUNKING
+> | fingerprint-strings: 
+> |   Hello: 
+> |     220 InFreight ESMTP v2.11
+> |_    Syntax: EHLO hostname
+> ```
+<!-- }}} -->
+
+### Scripts
+
+Discover SMTP commands
 
 ```sh
-nmap -p25 --script smtp-commands <target_ip>
+nmap -p 25 --script smtp-commands <target_ip> -oA smtp-commands
 ```
 
+Discover SMTP users
+
+```sh
+nmap -p 25 --script smtp-enum-users <target_ip> -oA smtp-enum-users
+```
+
+Discover NTLM authentication details
+
+```sh
+nmap -p 25 --script smtp-ntlm-info <target_ip> -oA smtp-ntlm-info
+```
+
+Run all SMTP-related scripts
+
+```sh
+nmap -p 25,465,587 --script smtp-* <target_ip> -oA smtp-all-scripts
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> nmap -p25 --script smtp-commands 10.129.33.217 -oA smtp-commands
+> ```
+> ```sh
+> PORT   STATE SERVICE
+> 25/tcp open  smtp
+> |_smtp-commands: mail1, PIPELINING, SIZE 10240000, VRFY, ETRN, STARTTLS, ENHANCEDSTATUSCODES, 8BITMIME, DSN, SMTPUTF8, CHUNKING
+> ```
 <!-- }}} -->
 
 <!-- Open Relay {{{-->
@@ -85,7 +155,105 @@ using the [smtp-open-relay](https://nmap.org/nsedoc/scripts/smtp-open-relay.html
 NSE script
 
 ```sh
-nmap -p25 --script smtp-open-relay <target_ip> -v
+nmap -p25 --script smtp-open-relay <target_ip> -v -oA smtp-open-relay
 ```
+
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- User {{{-->
+## User
+
+<!-- smtp-user-enum {{{-->
+### smtp-user-enum
+
+Verify specific user
+
+```sh
+smtp-user-enum -M VRFY -u <user> -t <target_ip> -w 20
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> smtp-user-enum -M VRFY -u root -t 10.129.33.217
+> ```
+> ```sh
+>  ----------------------------------------------------------
+> |                   Scan Information                       |
+>  ----------------------------------------------------------
+>
+> Mode ..................... VRFY
+> Worker Processes ......... 5
+> Target count ............. 1
+> Username count ........... 1
+> Target TCP port .......... 25
+> Query timeout ............ 5 secs
+> Target domain ............ 
+> ```
+<!-- }}} -->
+
+Verify user list
+
+```sh
+smtp-user-enum -M VRFY -U <users.txt> -t <target_ip> -w 20
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> smtp-user-enum -M VRFY -U /usr/share/wordlists/metasploit/unix_users.txt -t 10.129.33.217
+> ```
+<!-- }}} -->
+
+<!-- Warning {{{-->
+> [!warning]-
+>
+> Some servers may have higher timeout
+>
+> > [!example]-
+> >
+> > Set timeout to `20` seconds (*default `10` seconds*)
+> >
+> > ```sh
+> > smtp-user-enum -M VRFY -U users.txt -t 10.129.33.217 -w 20
+> > ```
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- Metasploit {{{-->
+### Metasploit
+
+1. [[Metasploit#Launch Metasploit|Launch]]
+
+2. [[Metasploit#Search Exploit|Search Scanner]]
+
+```sh
+msf6 > search smtp
+```
+
+3. [[Metasploit#Select Exploit|Select Scanner]]
+
+```sh
+msf6 > auxiliary/scanner/smtp/smtp_enum
+```
+
+4. [[Metasploit#Show Options|Show Options]]
+
+5. [[Metasploit#Set Options|Set Options]]
+
+```sh
+set RHOSTS <target_ip>
+```
+
+6. [[Metasploit#Check Exploit|Check]]
+
+7. [[Metasploit#Run Exploit|Run]]
+
+<!-- }}} -->
 
 <!-- }}} -->

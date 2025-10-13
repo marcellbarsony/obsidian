@@ -19,10 +19,16 @@ links: "[[Services]]"
 <!-- Nmap {{{-->
 ## Nmap
 
+Detect NFS services and identify server capabilities
+
+```sh
+nmap -p 2049,111 <target_ip> -oA nfs-default
+```
+
 Enumerate TCP ports `111` and `2049`
 
 ```sh
-sudo nmap -sC -sV <target_ip> -p111,2049
+sudo nmap -sC -sV <target_ip> -p111,2049 -oA nfs-default-scripts
 ```
 
 The `rpcinfo` NSE script retrieves a list of running RPC services.
@@ -30,9 +36,10 @@ This checks whether the target share is connected to the network on all required
 ports.
 
 ```sh
-sudo nmap --script nfs* <target_ip> -sV -p111,2049
+sudo nmap --script nfs* <target_ip> -sV -p111,2049 -oA nfs-rpc-detection
 ```
 
+<!-- Tip {{{-->
 > [!tip]
 >
 > Useful Nmap scripts
@@ -42,6 +49,8 @@ sudo nmap --script nfs* <target_ip> -sV -p111,2049
 > nfs-showmount # Like showmount -e
 > nfs-statfs    # Disk statistics and NFS share info
 > ```
+<!-- }}} -->
+
 <!-- }}} -->
 
 <!-- Discover & Mount {{{-->

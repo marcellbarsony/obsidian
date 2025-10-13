@@ -10,26 +10,26 @@ links: "[[SMB]]"
 
 ## Checklist
 
-- [ ] [[Enumeration#Scanning|Scanning]]
+Reconnaissance [ ] [[Enumeration#Reconnaissance|Reconnaissance]]
     - [ ] [[Enumeration#nbtscan|nbtscan]]
     - [ ] [[Enumeration#Nmap|Nmap]]
 - [ ] [[Enumeration#RPC|RPC Enumeration]]
+    - [ ] [[Enumeration#Smbclient|Smbclient]]
+        - [ ] [[Enumeration#Linux|Linux]]
+        - [ ] [[Enumeration#Windows|Windows]]
     - [ ] [[Enumeration#SMBmap|SMBmap]]
         - [ ] [[Enumeration#SMBmap|Discover Shares]]
     - [ ] [[Enumeration#RPCclient|RPCclient]]
         - [ ] [[Enumeration#Connect|Connect]]
         - [ ] [[Enumeration#Enumerate|Enumerate]]
-            - [ ] [[Enumeration#User Enumeration|User Enumeration]]
-            - [ ] [[Enumeration#Group Enumeration|Group Enumeration]]
+            - [ ] [[Enumeration#General|General]]
+            - [ ] [[Enumeration#User|User]]
+            - [ ] [[Enumeration#Group|Group]]
 - [ ] [[Enumeration#Enum4linux-ng|Enum4linux-ng]]
-- [ ] [[Usage#Smbclient|Smbclient]]
-    - [ ] [[Usage#Connect|Connect]]
-        - [ ] [[Usage#Linux|Linux]]
-        - [ ] [[Usage#Windows|Windows]]
 - [ ] [[Enumeration#Additional Scripts|Additional Scripts]]
 
-<!-- Scanning {{{-->
-## Scanning
+<!-- Reconnaissance {{{-->
+## Reconnaissance
 
 <!-- nbtscan {{{-->
 ### nbtscan
@@ -45,35 +45,55 @@ nbtscan -r <target_network>/24
 <!-- Nmap {{{-->
 ### Nmap
 
-Run default scripts
+Banner grabbing with default scripts
 
-```sh
-sudo nmap <target_ip> -sV -sC -p139,445
-```
-
-> [!warning]
+<!-- Example {{{-->
+> [!example]-
 >
-> May take a long time
+> ```sh
+> sudo nmap -sV -sC -p 139,445 <target_ip> -oA smb-default-scripts
+> ```
+>
+> ```sh
+> PORT    STATE SERVICE     VERSION
+> 139/tcp open  netbios-ssn Samba smbd 4
+> 445/tcp open  netbios-ssn Samba smbd 4
+>
+> Host script results:
+> |_nbstat: NetBIOS name: DEVSMB, NetBIOS user: <unknown>, NetBIOS MAC: <unknown> (unknown)
+> | smb2-security-mode:
+> |   3:1:1:
+> |_    Message signing enabled but not required
+> | smb2-time:
+> |   date: 2025-10-13T15:19:02
+> |_  start_date: N/A
+> ```
+>
+> > [!warning]
+> >
+> > May take a long time
+<!-- }}} -->
 
 Run [smb-protocols](https://nmap.org/nsedoc/scripts/smb-protocols.html)
 to discover SMB versions and supported protocol features
 
 ```sh
-nmap --script smb-protocols -p 445 <target_ip>
+nmap --script smb-protocols -p 445 <target_ip> -oA smb-protocols
 ```
 
 Run all `safe` and `smp-enum-*` scripts for non-destructive SMB enumeration
 
 ```sh
-nmap --script "safe or smb-enum-*" -p 445 <target_ip>
+nmap --script "safe or smb-enum-*" -p 445 <target_ip> -oA smb-enumeration
 ```
 
 Run [smb-os-discovery.nse](https://nmap.org/nsedoc/scripts/smb-os-discovery.html)
 to extract OS/Host/Domain information
 
 ```sh
-nmap --script smb-os-discovery.nse -p 445 <target_ip>
+nmap --script smb-os-discovery.nse -p 445 <target_ip> -oA smb-os-discovery
 ```
+
 <!-- }}} -->
 
 <!-- }}} -->
@@ -81,17 +101,74 @@ nmap --script smb-os-discovery.nse -p 445 <target_ip>
 <!-- RPC {{{-->
 ## RPC
 
-[[General#RPC|RPC]] Enumeration
+Remote Procedure Call ([[General#RPC|RPC]]) Enumeration
+
+<!-- Smbclient {{{-->
+### Smbclient
+
+> [!tip]
+>
+> Check [[Usage]]
+
+<!-- Linux {{{-->
+#### Linux
+
+Connect to server and list shares (*[Anonymous Null Session](https://hackviser.com/tactics/pentesting/services/smb#smb-null-session)*)
+
+```sh
+smbclient -N -L //<target_ip>
+```
+
+> [!info]-
+>
+> - `-N`: Null session / Anonymous access
+> - `-L`: List shares
+
+<!-- }}} -->
+
+<!-- Windows {{{-->
+#### Windows
+
+Connect to server and list shares (*[Anonymous Null Session](https://hackviser.com/tactics/pentesting/services/smb#smb-null-session),
+Windows UNC path*)
+
+```sh
+smbclient -N -L \\\\<target_ip>\\
+```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `-N`: Null session / Anonymous access
+> - `-L`: List shares
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- }}} -->
 
 <!-- SMBmap {{{-->
 ### SMBmap
 
-[SMBmap](https://github.com/ShawnDEvans/smbmap) -
-Enumerate SMB shares on the host, using *anonymous access*
+[SMBmap](https://github.com/ShawnDEvans/smbmap) —
+Enumerate SMB shares on the host
+(*[Anonymous Null Session](https://hackviser.com/tactics/pentesting/services/smb#smb-null-session)*)
 
 ```sh
 smbmap -H <target_ip>
 ```
+
+```sh
+smbmap -H <target_ip> -u "" -p ""
+```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `-H`: Specify the host IP
+> - `-u ""`: Supply an empty username
+> - `-p ""`: Supply an empty password
+<!-- }}} -->
 
 <!-- Example {{{-->
 > [!example]-
@@ -113,16 +190,10 @@ smbmap -H <target_ip>
 > ```
 <!-- }}} -->
 
-```sh
-smbmap -H <target_ip> -u "" -p ""
-```
-
-<!-- Info {{{-->
-> [!info]-
+<!-- Warning {{{-->
+> [!warning]
 >
-> - `-H`: Specify the host IP
-> - `-u ""`: Supply an empty username
-> - `-p ""`: Supply an empty password
+> Smbmap is a more detailed and more aggressive automated script
 <!-- }}} -->
 
 <!-- }}} -->
@@ -139,10 +210,21 @@ Connect without credentials
 ```sh
 rpcclient -U "" <target_ip>
 ```
-```sh
-Enter WORKGROUP\'s password:
-rpcclient $>
-```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> rpcclient -U "" .10.129.244.136
+> ```
+>
+> Press `Enter` to bypass the password prompt
+>
+> ```sh
+> Enter WORKGROUP\'s password:
+> rpcclient $>
+> ```
+<!-- }}} -->
 
 Connect with credentials
 
@@ -154,6 +236,9 @@ rpcclient -U "username%password" <target_ip>
 
 <!-- Enumerate {{{-->
 #### Enumerate
+
+<!-- General {{{-->
+##### General
 
 Query server information
 
@@ -293,8 +378,10 @@ rpcclient $> netsharegetinfo <share>
 > ```
 <!-- }}} -->
 
-<!-- User Enumeration {{{-->
-##### User Enumeration
+<!-- }}} -->
+
+<!-- User {{{-->
+##### User
 
 Enumerate all domain users & get their `RID`
 
@@ -420,8 +507,8 @@ samrdump.py <target_ip>
 
 <!-- }}} -->
 
-<!-- Group Enumeration {{{-->
-##### Group Enumeration
+<!-- Group {{{-->
+##### Group
 
 Enumerate group information by `RID` (*acquired from
 [[Enumeration#User Enumeration|user information]]*)
