@@ -31,6 +31,7 @@ trunking mechanism (aka. NFS multipathing).
 The configuration file is located at `/etc/exports`, and the options are shown
 in the [NFS server export table](https://manpages.ubuntu.com/manpages/questing/en/man5/exports.5.html)
 
+<!-- Default Configuration {{{-->
 ### Default Configuration
 
 The default `exports` file contains examples of configuring NFS shares
@@ -50,6 +51,9 @@ The default `exports` file contains examples of configuring NFS shares
 >| `no_subtree_check` | This option disables the checking of subdirectory trees |
 >| `root_squash`      | Assigns all permissions to files of root UID/GID 0 to the UID/GID of anonymous, which prevents root from accessing files on an NFS mount |
 
+<!-- }}} -->
+
+<!-- Dangerous Settings {{{-->
 ### Dangerous Settings
 
 Some settings can be dangerous for the comapny infrastructure
@@ -69,4 +73,6 @@ Some settings can be dangerous for the comapny infrastructure
 The `insecure` option allows users to ues ports above 1024: The first 1024 ports
 can only be used by `root`. This prevents the fact that no users can use sockets
 above port 1024 for the NFS service and interact with it.
+<!-- }}} -->
+
 <!-- }}} -->

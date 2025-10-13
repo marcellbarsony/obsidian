@@ -45,7 +45,7 @@ client-side port it can transmit its responses:
 2. The **client** listens to port *N+1* and sends the port *N+1* to the
    **server**
 
-> [!note]
+> [!warning]
 >
 > If the client is protected by a firewall, the server cannot reply as
 > external connections are blocked

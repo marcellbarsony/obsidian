@@ -9,6 +9,13 @@ links: "[[Services]]"
 
 # Enumeration
 
+## Checklist
+
+- [ ] [[Enumeration#Nmap|Nmap]]
+- [ ] [[Enumeration#Discover & Mount|Discover & Mount]]
+    - [ ] [[Enumeration#Show NFS Shares|Show NFS Shares]]
+    - [ ] [[Enumeration#Mount NFS Shares|Mount NFS Shares]]
+
 <!-- Nmap {{{-->
 ## Nmap
 
@@ -17,8 +24,6 @@ Enumerate TCP ports `111` and `2049`
 ```sh
 sudo nmap -sC -sV <target_ip> -p111,2049
 ```
-
-### Nmap scripts
 
 The `rpcinfo` NSE script retrieves a list of running RPC services.
 This checks whether the target share is connected to the network on all required
@@ -44,14 +49,16 @@ sudo nmap --script nfs* <target_ip> -sV -p111,2049
 
 ### Show NFS Shares
 
-Ask the **NFS server** (the RPC mount daemon) what directories it is exporting
+Ask the **NFS server** (*the RPC mount daemon*) what directories it is exporting
 and to which clients
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sh
 > showmount -e <target_ip>
 > ```
+<!-- }}} -->
 
 ### Mount NFS Shares
 
@@ -59,11 +66,13 @@ Mount remote **NFS shares** to the local machine
 
 1. Create a mount directory
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sh
 > mkdir target-NFS
 > ```
+<!-- }}} -->
 
 2. Mount the NFS share(s)
 
@@ -71,6 +80,7 @@ Mount remote **NFS shares** to the local machine
 sudo mount -t nfs [-o vers=2] <target_ip>:<remote_folder> <local_folder> -o nolock
 ```
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sh
@@ -97,15 +107,19 @@ sudo mount -t nfs [-o vers=2] <target_ip>:<remote_folder> <local_folder> -o nolo
 > > - `10.12.0.150:/backup`: NFS server IP and export path (directory)
 > > - `./mnt/new_back/`: Local mount point
 > > - `-o nolock`: Mount option (disable file locking)
+<!-- }}} -->
 
 3. Change to the mount directory and show content
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sh
 > cd target-NFS
 > tree .
 > ```
+<!-- }}} -->
+
 <!-- }}} -->
 
 <!-- Unmount {{{-->

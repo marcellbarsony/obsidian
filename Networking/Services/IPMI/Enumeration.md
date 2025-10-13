@@ -7,8 +7,39 @@ tags:
 
 # Enumeration
 
+## Checklist
+
+- [ ] [[Enumeration#Nmap|Nmap]]
+    - [ ] [[Enumeration#Network Scan|Network Scan]]
+    - [ ] [[Enumeration#Service Enumeration|Service Enumeration]]
+- [ ] [[Enumeration#Metasploit|Metasploit]]
+    - [ ] [[Enumeration#Version Scan|Version Scan]]
+    - [ ] [[Enumeration#Dump Hashes|Dump Hashes]]
+
 <!-- Nmap {{{-->
 ## Nmap
+
+### Network Scan
+
+Scan the network for port TCP/UDP `623`
+
+```sh
+nmap -n -p 623 10.0.0./24
+```
+
+```sh
+nmap -n -sU -p 623 10.0.0./24
+```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `-n`: Desable DNS resolution
+> - `-p 623`: Scan port `623`
+> - `-sU`: Scan UDP port
+<!-- }}} -->
+
+### Service Enumeration
 
 Footprint the service with the `ipmi-version`
 [[Nmap Scripting Engine|NSE]] script
@@ -16,8 +47,6 @@ Footprint the service with the `ipmi-version`
 ```sh
 sudo nmap -sU --script ipmi-version -p 623 <target_domain>
 ```
-
-<!-- }}} -->
 
 <!-- Example {{{-->
 > [!example]-
@@ -47,9 +76,12 @@ sudo nmap -sU --script ipmi-version -p 623 <target_domain>
 >
 <!-- }}} -->
 
+<!-- }}} -->
+
 <!-- Metasploit {{{-->
 ## Metasploit
 
+<!-- Version Scan {{{-->
 ### Version Scan
 
 [IPMI Information Discovery](https://www.rapid7.com/db/modules/auxiliary/scanner/ipmi/ipmi_version/)
@@ -107,8 +139,8 @@ msf6 > use auxiliary/scanner/ipmi/ipmi_version
 
 <!-- }}} -->
 
-<!-- Dumping Hashes {{{-->
-## Dumping Hashes
+<!-- Dump Hashes {{{-->
+### Dump Hashes
 
 Retrieve [[General|IPMI]] hashes with the Metasploit
 [IPMI 2.0 RAKP Remote SHA1 Password Hash Retrieval](https://www.rapid7.com/db/modules/auxiliary/scanner/ipmi/ipmi_dumphashes/)
@@ -167,6 +199,8 @@ msf6 > use auxiliary/scanner/ipmi/ipmi_dumphashes
 >
 > This flaw is a critical component of the [[General|IPMI]] specification
 > ```
+<!-- }}} -->
+
 <!-- }}} -->
 
 <!-- }}} -->

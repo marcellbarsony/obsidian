@@ -12,25 +12,33 @@ links: "[[FTP]]"
 ## Checklist
 
 - [ ] [[Enumeration#Nmap|Nmap scan]]
+    - [ ] [[Enumeration#Nmap|Identify FTP server]]
+    - [ ] [[Enumeration#Nmap|Identify FTP server features]]
+        - [ ] [[Exploitation#FTP Bounce Attack|Check for FTP Bounce Attack]]
 - [ ] [[Enumeration#Banner Grabbing|Banner grabbing]]
     - [ ] [[netcat]]
     - [ ] [[Networking/Services/Telnet/General#Usage|Telnet]]
 - [ ] [[Enumeration#Certificate|TLS certificate enumeration]]
-- [ ] [[Enumeration#Default and Common Directories|Common default directories]]
+- [ ] [[Enumeration#Default and Common Directories|Default & Common directories]]
 
 <!-- }}} -->
 
 <!-- Nmap {{{-->
 ## Nmap
 
-Launch the default FTP script scan (*Unauthenticated Enumeration*)
+Identify an FTP server
+
+```sh
+nmap -p 21 <target_ip>
+```
+
+Identify FTP server features (*default FTP unauthantecated script scan*)
 
 ```sh
 sudo nmap -sC -sV -p21 -A <target_ip> --script-trace
 ```
 
 <!-- Info {{{-->
-
 > [!info]-
 >
 > - `-sC`: Default script scan
@@ -38,6 +46,16 @@ sudo nmap -sC -sV -p21 -A <target_ip> --script-trace
 > - `-A`: Aggressive scan
 > - `--script-trace`: Trace the progress of the NSE script (*optional*)
 <!-- }}} -->
+
+Check if the FTP server allows
+[[Exploitation#FTP Bounce Attack|FTP Bounce Attack]]
+via the
+[ftp-bounce](https://nmap.org/nsedoc/scripts/ftp-bounce.html)
+script
+
+```sh
+nmap -p 21 --script ftp-bounce <target_ip>
+```
 
 <!-- }}} -->
 
@@ -65,13 +83,14 @@ Update the connection to TLS, display the server's:
 - TLS certificate (e.g., *hostname*, *e-mail*)
 - connection details
 
-```sh
-openssl s_client -connect <target_ip>:21 -starttls ftp
-```
-
-```sh
-openssl s_client -connect crossfit.htb:21 -starttls ftp
-```
+> [!example]-
+>
+> ```sh
+> openssl s_client -connect <target_ip>:21 -starttls ftp
+> ```
+> ```sh
+> openssl s_client -connect crossfit.htb:21 -starttls ftp
+> ```
 <!-- }}} -->
 
 <!-- Default and Common Directories {{{-->

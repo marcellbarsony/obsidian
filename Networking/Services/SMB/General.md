@@ -15,8 +15,8 @@ port:
 is a client-server protocol over TCP, designed for sharing files, directories,
 and other resources (*e.g., printers, routers, interfaces*) over a network.
 
-<!-- Port 139 (NetBIOS) {{{-->
-## Port 139 (NetBIOS)
+<!-- NetBIOS (Port 139) {{{-->
+## NetBIOS (Port 139)
 
 The [[Networking/Services/NetBIOS/General|NetBIOS]] is a software protocol
 designed to enable applications, PCs, and Desktops within a LAN to interact with
@@ -24,8 +24,8 @@ network hardware and facilitate the transmission of data across the network.
 
 <!-- }}} -->
 
-<!-- Port 445 (SMB) {{{-->
-## Port 445 (SMB)
+<!-- SMB (Port 445) {{{-->
+## SMB (Port 445)
 
 The **SMB** protocol operates over **port 445** to provide shared access to
 files, printers, and serial ports between nodes on a network.
@@ -42,9 +42,7 @@ sharing and remote administration within LANs and across domain environments.
 **[Samba](https://www.samba.org/)** is an alternative implementation of the
 **SMB server** developed for Unix-based operating systems, that implements the
 Common Internet File System ([CIFS](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-cifs/934c2faa-54af-4526-ac74-6a24d126724e))
-network protocol (often referred as SMB/CIFS).
-
-<!-- }}} -->
+network protocol (*often referred as SMB/CIFS*).
 
 <!-- Service {{{-->
 ### Service
@@ -55,11 +53,27 @@ Display the Samba server's status
 sudo smbstatus
 ```
 
-Restart the SMB service (required on configuration change)
+Restart the SMB service (*required on configuration change*)
 
 ```sh
 sudo systemctl restart smbd
 ```
+
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- RPC {{{-->
+## RPC
+
+The **Remote Procedure Call** ([RPC](https://www.geeksforgeeks.org/operating-systems/remote-procedure-call-rpc-in-operating-system/))
+is a way for a program to run a function on another computer in a network
+as if it were local.
+
+1. The client sends a request (with arguments) to the server
+2. The server executes the function
+3. The server sends back the results
+
 <!-- }}} -->
 
 <!-- Configuration {{{-->
@@ -95,6 +109,7 @@ in individual shares (e.g., `[printers]`, `[print$]`, etc.).
 >| `guest ok = yes`               | Allow connecting without using a password                        |
 >| `read only = yes`              | Allow users to read files only                                   |
 >| `create mask = 0700`           | Permissions set for newly created files                          |
+
 <!-- }}} -->
 
 <!-- Dangerous Settings {{{-->
@@ -103,8 +118,6 @@ in individual shares (e.g., `[printers]`, `[print$]`, etc.).
 Some of the settings enable sensitive options
 
 > [!danger]-
->
-> **Dangerous Settings**
 >
 >| Setting                     | Description                                                        |
 >| --------------------------- | ------------------------------------------------------------------ |

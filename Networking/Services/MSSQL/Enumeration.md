@@ -7,6 +7,14 @@ tags:
 
 # Enumeration
 
+## Checklist
+
+- [ ] [[Enumeration#Nmap|Nmap]]
+- [ ] [[Enumeration#Metasploit|Metasploit]]
+    - [ ] [[Enumeration#Without Credentials|Without Credentials]]
+    - [ ] [[Enumeration#With Credentials|With Credentials]]
+- [ ] [[Enumeration#Mssqlclient.py|mssqlclient.py]]
+
 <!-- Nmap {{{-->
 ## Nmap
 
@@ -84,6 +92,7 @@ sudo nmap -sV -p 1433 \
 [[Metasploit]] can be used to run an auxiliary scanner called `mssql_ping` that
 will scan the MSSQL service
 
+<!-- Without Credentials {{{-->
 ### Without Credentials
 
 `mssql_ping` **doesn't require valid credentials** — it's a discovery probe that
@@ -184,10 +193,14 @@ logging in
 >```
 <!-- }}} -->
 
+<!-- }}} -->
+
+<!-- With Credentials {{{-->
 ### With Credentials
 
 [Metasploit (needs credentials)](https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-mssql-microsoft-sql-server/index.html#metasploit-need-creds)
 
+<!-- Example {{{-->
 > [!example]-
 >
 >
@@ -222,12 +235,16 @@ logging in
 > #Add new admin user from meterpreter session
 > msf> use windows/manage/mssql_local_auth_bypass
 > ```
+<!-- }}} -->
 
 <!-- Warning {{{-->
 > [!warning]
 >
 > Valid credentials required
 <!-- }}} -->
+
+<!-- }}} -->
+
 <!-- }}} -->
 
 <!-- Mssqlclient.py {{{-->
@@ -243,7 +260,6 @@ allows to remotely connect and to the MSSQL server using Transact-SQL
 > ```sh
 > python3 mssqlclient.py Administrator@10.129.201.248 -windows-auth
 > ```
->
 > ```sh
 > Impacket v0.9.22 - Copyright 2020 SecureAuth Corporation
 >
@@ -261,7 +277,6 @@ allows to remotely connect and to the MSSQL server using Transact-SQL
 > ```sql
 > SQL> select name from sys.databases
 > ```
->
 > ```sh
 > name
 >

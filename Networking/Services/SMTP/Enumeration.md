@@ -13,23 +13,54 @@ links: "[[Networking/Services/SMTP/General|SMTP]]"
 <!-- Banner Grabbing {{{-->
 ## Banner Grabbing
 
-SMTP
+### SMTP
+
+#### Netcat
+
+Get banner with [[netcat]]
 
 ```sh
 nc -vn <target_ip> 25
 ```
 
-SMTPS
+Get banner with [[netcat]] `EHLO`
 
 ```sh
-openssl s_client -crlf -connect smtp.mailgun.org:465 #SSL/TLS without starttls command
+echo "EHLO test" | nc target.com 25
+```
+
+#### Telnet
+
+Get banner with [[Telnet/General|Telnet]]
+
+```sh
+telnet <target_ip> 25
+```
+
+### SMTPS
+
+SSL/TLS with `starttls` command
+
+```sh
 openssl s_client -starttls smtp -crlf -connect smtp.mailgun.org:587
+```
+
+SSL/TLS without `starttls` command
+
+```sh
+openssl s_client -crlf -connect smtp.mailgun.org:465
 ```
 
 <!-- }}} -->
 
 <!-- Nmap {{{-->
 ## Nmap
+
+Detect services and identify server capabilities
+
+```sh
+nmap -p 25,465,587 <target_ip>
+```
 
 Scan port `25` using the default scripts
 
