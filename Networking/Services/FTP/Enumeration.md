@@ -11,15 +11,15 @@ links: "[[FTP]]"
 <!-- Checklist {{{-->
 ## Checklist
 
-- [ ] [[Enumeration#Nmap|Nmap scan]]
-    - [ ] [[Enumeration#Nmap|Identify FTP server]]
-    - [ ] [[Enumeration#Nmap|Identify FTP server features]]
-        - [ ] [[Exploitation#FTP Bounce Attack|Check for FTP Bounce Attack]]
-- [ ] [[Enumeration#Banner Grabbing|Banner grabbing]]
-    - [ ] [[netcat]]
-    - [ ] [[Networking/Services/Telnet/General#Usage|Telnet]]
-- [ ] [[Enumeration#Certificate|TLS certificate enumeration]]
-- [ ] [[Enumeration#Default and Common Directories|Default & Common directories]]
+- [ ] [[#Nmap|Nmap scan]]
+    - [ ] [[#Nmap#FTP Server|FTP Server]]
+    - [ ] [[#Nmap#FTP Server Features|FTP Server Features]]
+        - [ ] [[#FTP Bounce Attack|FTP Bounce Attack]]
+- [ ] [[#Banner Grabbing|Banner Grabbing]]
+    - [ ] [[#Banner Grabbing#Netcat|Netcat]]
+    - [ ] [[#Banner Grabbing#Telnet|Telnet]]
+- [ ] [[#Certificate|TLS Certificate]]
+- [ ] [[#Default and Common Directories|Default & Common Directories]]
 
 <!-- }}} -->
 

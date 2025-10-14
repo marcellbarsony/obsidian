@@ -10,7 +10,7 @@ links: "[[SMB]]"
 
 ## Checklist
 
-Reconnaissance [ ] [[Enumeration#Reconnaissance|Reconnaissance]]
+- [ ] [[Enumeration#Reconnaissance|Reconnaissance]]
     - [ ] [[Enumeration#nbtscan|nbtscan]]
     - [ ] [[Enumeration#Nmap|Nmap]]
 - [ ] [[Enumeration#RPC|RPC Enumeration]]
@@ -291,7 +291,6 @@ rpcclient $> querydominfo
 > rpcclient $> querydominfo
 > ```
 > ```sh
->
 > Domain:         DEVOPS
 > Server:         DEVSMB
 > Comment:        DEVSM
