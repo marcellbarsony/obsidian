@@ -59,6 +59,8 @@ distributions to install
 >```
 <!-- }}} -->
 
+___
+
 <!-- }}} -->
 
 <!-- MSSQL Database {{{-->
@@ -78,11 +80,14 @@ distributions to install
 > | resource                | Read-only database containing system objects included with SQL server |
 <!-- }}} -->
 
+___
+
 <!-- }}} -->
 
 <!-- Configuration {{{-->
 ## Configuration
 
+<!-- Default Configuration {{{-->
 ### Default Configuration
 
 Connecting form the client-side is possible through [Windows Authentication](https://learn.microsoft.com/en-us/windows-server/security/windows-authentication/windows-authentication-overview).
@@ -107,6 +112,9 @@ Initially, the SQL service will likely run as `NT SERVICE\MSSQLSERVER`.
 >
 > **Encryption is not enforced** by default
 
+<!-- }}} -->
+
+<!-- Dangerous Settings {{{-->
 ### Dangerous Settings
 
 The following settings may expose the system to danger
@@ -116,5 +124,9 @@ The following settings may expose the system to danger
   It is possible to spoof self-signed certificates
 - The use of [named pipes](https://learn.microsoft.com/en-us/sql/tools/configuration-manager/named-pipes-properties?view=sql-server-ver15)
 - Weak & default credentials on an enabled `sa` (*System Administrator*) account
+
+<!-- }}} -->
+
+___
 
 <!-- }}} -->

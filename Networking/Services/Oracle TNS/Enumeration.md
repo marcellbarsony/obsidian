@@ -1,7 +1,8 @@
 ---
 id: Enumeration
 aliases: []
-tags: []
+tags:
+  - Networking/Services/Oracle-TNS/Enumeration
 ---
 
 # Enumeration
@@ -12,7 +13,7 @@ tags: []
 Scan the default Oracle [[General#TNS Listener|TNS Listener]] port
 
 ```sh
-sudo nmap -p1521 -sV <target_ip> --open
+sudo nmap -p1521 -sV <target> --open -oA oracle-tns-default
 ```
 
 <!-- Example {{{-->
@@ -40,7 +41,7 @@ sudo nmap -p1521 -sV <target_ip> --open
 tools (e.g., `nmap`, `hydra`, `odat`)
 
 ```sh
-sudo nmap -p1521 -sV <target_ip> --open --script oracle-sid-brute
+sudo nmap -p1521 -sV <target> --open --script oracle-sid-brute -oA oracle-sid-brute
 ```
 
 <!-- Example {{{-->
@@ -64,6 +65,8 @@ sudo nmap -p1521 -sV <target_ip> --open --script oracle-sid-brute
 > ```
 <!-- }}} -->
 
+___
+
 <!-- }}} -->
 
 <!-- ODAT {{{-->
@@ -74,6 +77,7 @@ is designed to enumerate and exploit security flaws
 (e.g., *SQL injection*, *remote code execution*, *privilege escalation*)
 in Oracle databases
 
+<!-- Install {{{-->
 ### Install
 
 Install [odat](https://www.kali.org/tools/odat/) with
@@ -120,6 +124,8 @@ Install [[Enumeration#ODAT|ODAT]] manually
 > ```
 <!-- }}} -->
 
+<!-- }}} -->
+
 <!-- Enumeration {{{-->
 ### Enumeration
 
@@ -127,7 +133,7 @@ Install [[Enumeration#ODAT|ODAT]] manually
 vulnerabilities, misconfigurations
 
 ```sh
-./odat.py all -s <target_ip>
+./odat.py all -s <target>
 ```
 
 <!-- Example {{{-->
@@ -174,7 +180,7 @@ echo "Oracle File Upload Test" > testing.txt
 2. Upload the file to the database
 
 ```sh
-./odat.py utlfile -s <target_ip> -d XE -U <use> -P <password> --sysdba --putFile C:\\path\\to <file.ext> ./testing.txt
+./odat.py utlfile -s <target> -d XE -U <use> -P <password> --sysdba --putFile C:\\path\\to <file.ext> ./testing.txt
 ```
 
 <!-- Example {{{-->
@@ -214,6 +220,8 @@ Oracle File Upload Test
 
 <!-- }}} -->
 
+___
+
 <!-- }}} -->
 
 <!-- SQL Plus {{{-->
@@ -237,7 +245,7 @@ CLI, commonly used by users, administrators and programmers
 Log in as regular user
 
 ```sh
-sqlplus <username>/<password>@<target_ip>/XE
+sqlplus <username>/<password>@<target>/XE
 ```
 
 <!-- Example {{{-->
@@ -267,7 +275,7 @@ sqlplus <username>/<password>@<target_ip>/XE
 Log in the regular user as `sysdba` (System Database Admin)
 
 ```sh
-sqlplus <user>/<password>@<target_ip>/XE as sysdba
+sqlplus <user>/<password>@<target>/XE as sysdba
 ```
 
 <!-- Example {{{-->
@@ -433,6 +441,8 @@ select name, password from sys.user$;
 
 <!-- }}} -->
 
+___
+
 <!-- }}} -->
 
 <!-- Finger {{{-->
@@ -459,7 +469,7 @@ This is valuable reconnaissance material:
 
 
 ```sh
-finger oracle@<target_ip>
+finger oracle@<target>
 ```
 
 <!-- Exmaple {{{-->
@@ -488,5 +498,7 @@ finger oracle@<target_ip>
 > # then type: oracle<Enter>
 > ```
 <!-- }}} -->
+
+___
 
 <!-- }}} -->

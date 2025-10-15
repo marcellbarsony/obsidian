@@ -36,6 +36,7 @@ have unique addresses known on both sides.
 <!-- General {{{-->
 ## General
 
+<!-- MIB {{{-->
 ### MIB
 
 **MIB** ([Management Information Base](https://en.wikipedia.org/wiki/Management_information_base))
@@ -53,6 +54,9 @@ access rights, and description of the respective object.
 what it looks like, which returns values for the specific `OID`, or which data
 type is used.
 
+<!-- }}} -->
+
+<!-- OID {{{-->
 ### OID
 
 **OID** ([Object Identifier](https://en.wikipedia.org/wiki/Object_identifier))
@@ -93,6 +97,9 @@ position in the tree to be determined.
 > ![[SNMP_OID_MIB_Tree.png]]
 <!-- }}} -->
 
+<!-- }}} -->
+
+<!-- Community Strings {{{-->
 ### Community Strings
 
 **Community strings** can be seen as passwords that are used to determine
@@ -115,6 +122,8 @@ used:
 >
 > - `v1` & `v2c`: Community strings must be known
 > - `v3`: Credentials must be known
+<!-- }}} -->
+
 <!-- }}} -->
 
 <!-- SNMP Versions {{{-->

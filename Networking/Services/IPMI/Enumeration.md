@@ -16,19 +16,22 @@ tags:
     - [ ] [[Enumeration#Version Scan|Version Scan]]
     - [ ] [[Enumeration#Dump Hashes|Dump Hashes]]
 
+___
+
 <!-- Nmap {{{-->
 ## Nmap
 
+<!-- Network Scan {{{-->
 ### Network Scan
 
 Scan the network for port TCP/UDP `623`
 
 ```sh
-nmap -n -p 623 10.0.0./24
+nmap -n -p 623 <target>/<cidr> -oA ipmi-basic
 ```
 
 ```sh
-nmap -n -sU -p 623 10.0.0./24
+nmap -n -sU -p 623 <target>/<cidr> -oA ipmi-basic-udp
 ```
 
 <!-- Info {{{-->
@@ -39,13 +42,16 @@ nmap -n -sU -p 623 10.0.0./24
 > - `-sU`: Scan UDP port
 <!-- }}} -->
 
+<!-- }}} -->
+
+<!-- Service Enumeration {{{-->
 ### Service Enumeration
 
 Footprint the service with the `ipmi-version`
 [[Nmap Scripting Engine|NSE]] script
 
 ```sh
-sudo nmap -sU --script ipmi-version -p 623 <target_domain>
+sudo nmap -sU -p 623 --script ipmi-version <target_domain> -oA ipmi-version
 ```
 
 <!-- Example {{{-->
@@ -75,6 +81,10 @@ sudo nmap -sU --script ipmi-version -p 623 <target_domain>
 > - [[General|IPMI]] version 2.0 is listening on port `623`/UDP
 >
 <!-- }}} -->
+
+<!-- }}} -->
+
+___
 
 <!-- }}} -->
 
@@ -202,5 +212,7 @@ msf6 > use auxiliary/scanner/ipmi/ipmi_dumphashes
 <!-- }}} -->
 
 <!-- }}} -->
+
+___
 
 <!-- }}} -->

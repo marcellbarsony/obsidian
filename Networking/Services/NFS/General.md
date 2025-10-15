@@ -25,6 +25,8 @@ including the ability to provide scalable parallel acces to files distributed
 across multiple servers (pNFS extension). NFS version 4.1 includes a session
 trunking mechanism (aka. NFS multipathing).
 
+___
+
 <!-- Configuration {{{-->
 ## Configuration
 
@@ -74,5 +76,7 @@ The `insecure` option allows users to ues ports above 1024: The first 1024 ports
 can only be used by `root`. This prevents the fact that no users can use sockets
 above port 1024 for the NFS service and interact with it.
 <!-- }}} -->
+
+___
 
 <!-- }}} -->

@@ -3,16 +3,27 @@ id: Enumeration
 aliases: []
 tags:
   - Networking/Services/SNMP/Enumeration
-links: "[[SNMP]]"
+links: "[[Services]]"
 ---
 
+<!-- Enumeration {{{-->
 # Enumeration
 
+The objective of the enumeration is to reveal
+[[#Community Strings]] and [[#OID|Object Identifiers)]]
+
 Examination of process parameters might reveal
+
 - credentials
 - routing information
 - services bound to additional interfaces when passed on the command line
 
+
+___
+
+<!-- }}} -->
+
+<!-- Checklist {{{-->
 ## Checklist
 
 - [ ] [[#Nmap]]
@@ -27,13 +38,17 @@ Examination of process parameters might reveal
     - [ ] [[#Braa]]
     - [ ] [[#OID#SNMPwalk|SNMPwalk]]
 
+___
+
+<!-- }}} -->
+
 <!-- Nmap {{{-->
 ## Nmap
 
-Scan for UDP/`161`
+Service detection
 
 ```sh
-nmap -sU -p 161 --open <target_ip> -oA snmp-identify
+nmap -sU -p 161 --open <target> -oA snmp-identify
 ```
 
 ### Banner Grabbing
@@ -41,8 +56,10 @@ nmap -sU -p 161 --open <target_ip> -oA snmp-identify
 Grab service banner
 
 ```sh
-nmap -sU -p 161 --script snmp-info <target_ip> -oA snmp-banner-grabbing
+nmap -sU -p 161 --script snmp-info <target> -oA snmp-banner-grabbing
 ```
+
+___
 
 <!-- }}} -->
 
@@ -51,18 +68,58 @@ nmap -sU -p 161 --script snmp-info <target_ip> -oA snmp-banner-grabbing
 
 Connect to SNMP services to gather version and system information
 
+<!-- snmpget {{{-->
 ### snmpget
 
 Retrieve system description (`sysDescr`) with
 [snmpget](https://linux.die.net/man/1/snmpget)
 
 ```sh
-snmpget -v1 -c public <target_ip> .1.3.6.1.2.1.1.1.0
+snmpget -v1 -c public <target> .1.3.6.1.2.1.1.1.0
 ```
 
 ```sh
-snmpget -v2c -c public <target_ip> sysDescr.0
+snmpget -v2c -c public <target> sysDescr.0
 ```
+
+<!-- }}} -->
+
+<!-- snmpwalk {{{-->
+### snmpwalk
+
+Network topology (routing tables, ARP caches)
+
+```sh
+snmpwalk -c public -v2c <target> .1.3.6.1.2.1.4.22.1.3
+```
+
+Device configurations
+
+```sh
+snmpwalk -c public -v2c <target> .1.3.6.1.2.1.1.1.0
+```
+
+Usernames (especially on Windows systems)
+
+```sh
+snmpwalk -c public -v2c <target> .1.3.6.1.4.1.77.1.2.25
+```
+
+Running services and processes
+
+```sh
+snmpwalk -c public -v2c <target> .1.3.6.1.2.1.25.4.2.1.2
+```
+
+Software versions
+
+```sh
+snmpwalk -c public -v2c <target> .1.3.6.1.2.1.25.6.3.1.2
+```
+
+<!-- }}} -->
+
+___
 
 <!-- }}} -->
 
@@ -72,30 +129,26 @@ snmpget -v2c -c public <target_ip> sysDescr.0
 [[General#Community Strings|Community Strings]]
 should be discovered via dictionary attack
 
-<!-- Example {{{-->
-> [!example]-
+<!-- Tip {{{ -->
+> [!tip]
 >
-> ```sh
-> msf> use auxiliary/scanner/snmp/snmp_login
-> ```
-> ```sh
-> nmap -sU --script snmp-brute <target> [--script-args snmp-brute.communitiesdb=<wordlist> ]
-> ```
-> ```sh
-> onesixtyone -c /usr/share/metasploit-framework/data/wordlists/snmp_default_pass.txt <IP>
-> ```
-> ```sh
-> hydra -P /usr/share/seclists/Discovery/SNMP/common-snmp-community-strings.txt target.com snmp
-> ```
+> **SNMP Community Strings** dictionaries
+>
+> - [OneSixtyOne - dict.txt](https://github.com/trailofbits/onesixtyone/blob/master/dict.txt)`
+> - [SecLists - SNMP Community Strings](https://github.com/danielmiessler/SecLists/tree/master/Discovery/SNMP)
+> - Metasploit wordlist - `/usr/share/metasploit-framework/data/wordlists/snmp_default_pass.txt`
 <!-- }}} -->
 
+<!-- OneSixtyOne {{{-->
 ### OneSixtyOne
 
 [onesixtyone](https://github.com/trailofbits/onesixtyone)
-is used to **identify community strings** with
-[SecLists - SNMP Community Strings](https://github.com/danielmiessler/SecLists/tree/master/Discovery/SNMP)
-or via the default
-[dict.txt](https://github.com/trailofbits/onesixtyone/blob/master/dict.txt)`
+is used to identify **community strings**
+
+
+```sh
+onesixtyone -c <wordlist.txt> <target>
+```
 
 <!-- Example {{{-->
 > [!example]-
@@ -109,6 +162,9 @@ or via the default
 > ```
 <!-- }}} -->
 
+<!-- }}} -->
+
+<!-- Metasploit {{{-->
 ### Metasploit
 
 Identify [[General#Community Strings|community strings]] with [[Metasploit]]
@@ -128,7 +184,9 @@ Identify [[General#Community Strings|community strings]] with [[Metasploit]]
 > msf > use auxiliary/scanner/snmp/snmp_login
 > ```
 >
-> 3. [[Metasploit#Set Options|Set Options]]
+> 3. [[Metasploit#Show Options|Show Options]]
+>
+> 4. [[Metasploit#Set Options|Set Options]]
 >
 > ```sh
 > msf auxiliary(scanner/snmp/snmp_login) > set RHOSTS <target_ip>
@@ -137,7 +195,7 @@ Identify [[General#Community Strings|community strings]] with [[Metasploit]]
 > msf auxiliary(scanner/snmp/snmp_login) > set PASS_FILE </path/to/community_wordlist.txt>
 > ```
 >
-> 4. [[Metasploit#Run Exploit|Run Exploit]]
+> 5. [[Metasploit#Run Exploit|Run Exploit]]
 >
 > ```sh
 > msf auxiliary(scanner/snmp/snmp_login) > run
@@ -146,60 +204,88 @@ Identify [[General#Community Strings|community strings]] with [[Metasploit]]
 
 <!-- }}} -->
 
+<!-- Nmap {{{-->
+### Nmap
+
+Brute force with [[Nmap]]'s [snmp-brute](https://nmap.org/nsedoc/scripts/snmp-brute.html)
+script
+
+```sh
+nmap -sU -p 161 --script snmp-brute [--script-args snmp-brute.communitiesdb=<wordlist.txt> ] <target>
+```
+
+<!-- }}} -->
+
+<!-- Hydra {{{-->
+### Hydra
+
+Brute force with [[Hydra]]
+
+```sh
+hydra -P <wordlist.txt> <target> snmp
+```
+
+<!-- }}} -->
+
+<!-- SNMPwalk {{{-->
 ### SNMPwalk
 
-Test default common community strings
+SNMP installation often retain default or weak community strings
 
 <!-- Example {{{-->
 > [!example]-
 >
 > ```sh
-> snmpwalk -c public -v1 <target_ip>
+> snmpwalk -c public -v1 <target>
 > ```
 >
 > ```sh
-> snmpwalk -c private -v1 <target_ip>
+> snmpwalk -c private -v1 <target>
 > ```
 >
 > ```sh
-> snmpwalk -c public -v2c <target_ip>
+> snmpwalk -c public -v2c <target>
 > ```
 >
 > ```sh
-> snmpwalk -c private -v2c <target_ip>
+> snmpwalk -c private -v2c <target>
+> ```
+>
+> ```sh
+> snmpwalk -c admin -v2c <target>
+> ```
+>
+> ```sh
+> snmpwalk -c manager -v2c <target>
+> ```
+>
+> ```sh
+> snmpwalk -c community -v2c <target>
 > ```
 <!-- }}} -->
 
-Additional common strings
+<!-- }}} -->
 
-<!-- Example {{{ -->
-> [!example]-
->
-> ```sh
-> snmpwalk -c admin -v2c <target_ip>
-> ```
->
-> ```sh
-> snmpwalk -c manager -v2c <target_ip>
-> ```
->
-> ```sh
-> snmpwalk -c community -v2c <target_ip>
-> ```
+___
+
 <!-- }}} -->
 
 <!-- OID {{{-->
 ## OID
 
+Enumerate [[General#OID|Object Identifier]]s
+
 <!-- SNMPwalk {{{-->
 ### SNMPwalk
 
 [snmpwalk](https://linux.die.net/man/1/snmpwalk)
-is used to **query [[General#OID|OID]]s** with their information
+can be used to **query [[General#OID|OID]]s** with their information
 
+<!-- Important {{{-->
 > [!important]
 >
 > A valid community string must be known (e.g., `public`, `private`, etc.)
+<!-- }}} -->
 
 <!-- Example {{{-->
 > [!example]-
@@ -344,19 +430,23 @@ is used to **query [[General#OID|OID]]s** with their information
 <!-- Braa {{{-->
 ### Braa
 
-[braa](https://github.com/mteg/braa) is used for **[[General#OID|OID]]
-brute-forcing** and information enumeration
+[braa](https://github.com/mteg/braa) is used for **brute forincg
+[[General#OID|OID]]s** and information enumeration
 
 > [!important]
 >
 > A valid community string must be known (e.g., `public`, `private`, etc.)
 
+<!-- Installation {{{-->
 #### Installation
 
 ```sh
 sudo apt install braa
 ```
 
+<!-- }}} -->
+
+<!-- Syntax {{{-->
 #### Syntax
 
 ```sh
@@ -403,5 +493,9 @@ braa <community string>@<IP>:.1.3.6.*
 <!-- }}} -->
 
 <!-- }}} -->
+
+<!-- }}} -->
+
+___
 
 <!-- }}} -->

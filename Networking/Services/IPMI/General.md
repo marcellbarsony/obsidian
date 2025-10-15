@@ -19,6 +19,8 @@ system's CPU, firmware (BIOS or UEFI) and operating system.
 even if they are powered off or in an unresponsive state, via direct connection
 to the system's hardware.
 
+___
+
 <!-- BMC {{{-->
 ## BMC
 
@@ -36,6 +38,9 @@ The most common [BMC](https://www.supermicro.com/en/glossary/baseboard-managemen
 - [HP iLO](https://en.wikipedia.org/wiki/HPE_Integrated_Lights-Out)
 - [Dell DRAC](https://en.wikipedia.org/wiki/Dell_DRAC)
 - [Supermicro IPMI](https://www.supermicro.com/en/solutions/management-software/bmc-resources)
+
+___
+
 <!-- }}} -->
 
 <!-- Usage {{{-->
@@ -53,6 +58,9 @@ The most common [BMC](https://www.supermicro.com/en/glossary/baseboard-managemen
   *power supplies*)
 - Query inventory information
 - Review hardware logs
+
+___
+
 <!-- }}} -->
 
 <!-- Configuration {{{-->
@@ -60,6 +68,7 @@ The most common [BMC](https://www.supermicro.com/en/glossary/baseboard-managemen
 
 ### Dangerous Settings
 
+<!-- Danger {{{-->
 > [!danger]
 >
 > Default passwords
@@ -69,5 +78,8 @@ The most common [BMC](https://www.supermicro.com/en/glossary/baseboard-managemen
 > | Dell iDRAC      | `root`          | `calvin`         |
 > | HP iLO          | `Administrator` | randomized 8-character string consisting of numbers and uppercase letters |
 > | Supermicro IPMI | `ADMIN`         | `ADMIN`          |
+<!-- }}} -->
+
+___
 
 <!-- }}} -->

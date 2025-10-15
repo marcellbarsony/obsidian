@@ -21,6 +21,8 @@ The **MySQL** database is controlled using the
 [SQL database language](https://www.w3schools.com/sql/sql_intro.asp),
 and is often stored in a single file with the file extension `.sql`.
 
+___
+
 <!-- MySQL Clients {{{-->
 ## MySQL Clients
 
@@ -30,6 +32,9 @@ the database engine.
 **MySQL** is suitable for managing many different databases to which
 [[General#MySQL Clients|MySQL Clients]] can send multiple queries
 simultaneously.
+
+___
+
 <!-- }}} -->
 
 <!-- MySQL Database {{{-->
@@ -43,6 +48,9 @@ syntax and high response speed are essential.
 - [LAMP](https://en.wikipedia.org/wiki/LAMP_(software_bundle)): Linux OS,
   Apache, MySQL, PHP
 - [LEMP](https://lemp.io/): Linux OS, Nginx, MySQL, PHP
+
+___
+
 <!-- }}} -->
 
 <!-- MySQL Commands {{{-->
@@ -83,6 +91,8 @@ confirmation of a change, or an error message — to the web application.
 > | `select * from <table>;`                             | Show everything in the desired table |
 > | `select * from <table> where <column> = "<string>";` | Search for needed string in the desired table |
 <!-- }}} -->
+
+___
 
 <!-- }}} -->
 
@@ -163,4 +173,6 @@ by others.
 > If an attacker can read files or gain shell access, they may retrieve the file
 > containing the MySQL username and password.
 <!-- }}} -->
+___
+
 <!-- }}} -->

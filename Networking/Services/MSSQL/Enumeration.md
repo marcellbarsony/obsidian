@@ -7,6 +7,7 @@ tags:
 
 # Enumeration
 
+<!-- Checklist {{{-->
 ## Checklist
 
 - [ ] [[Enumeration#Nmap|Nmap]]
@@ -15,6 +16,10 @@ tags:
     - [ ] [[Enumeration#With Credentials|With Credentials]]
 - [ ] [[Enumeration#Mssqlclient.py|mssqlclient.py]]
 
+___
+
+<!-- }}} -->
+
 <!-- Nmap {{{-->
 ## Nmap
 
@@ -22,10 +27,12 @@ tags:
 the default tcp port `1433` that MSSQL listens on.
 
 ```sh
-sudo nmap -sV -p 1433 \
+sudo nmap \
+  -sV -p 1433 \
   --script "ms-sql-*" \
   --script-args 'mssql.instance-port=1433,mssql.username=sa,mssql.password="",mssql.instance-name=MSSQLSERVER' \
-  <target_ip>
+  <target> \
+  -oA mssql-default-scripts
 ```
 
 <!-- Info {{{-->
@@ -84,6 +91,8 @@ sudo nmap -sV -p 1433 \
 > ```
 <!-- }}} -->
 
+___
+
 <!-- }}} -->
 
 <!-- Metasploit {{{-->
@@ -99,99 +108,101 @@ will scan the MSSQL service
 talks TDS/SQL Server Browser and can return basic server/instance info without
 logging in
 
-1. [[Metasploit#Launch Metasploit|Launch Metasploit]]
-
-2. [[Metasploit#Search Exploit|Search]] for auxiliary scanners
-
-<!-- Example {{{-->
 > [!example]-
 >
-> ```sh
-> search type:auxiliary scanner
-> ```
+> 1. [[Metasploit#Launch Metasploit|Launch Metasploit]]
 >
-> > [!warning]
+> 2. [[Metasploit#Search Exploit|Search]] for auxiliary scanners
+>
+> <!-- Example {{{-->
+> > [!example]-
 > >
-> > This may produce a long list
+> > ```sh
+> > search type:auxiliary scanner
+> > ```
 > >
+> > > [!warning]
+> > >
+> > > This may produce a long list
+> > >
+> >
+> > Filter auxiliary scanners by service:
+> > show all MSSQL-related modules:
+> >
+> > - `auxiliary/scanner/mssql/mssql_ping`
+> > - `auxiliary/admin/mssql/mssql_login`
+> > - `auxiliary/admin/mssql/mssql_exec`
+> > - `auxiliary/admin/mssql/mssql_enum`
+> > - `auxiliary/admin/mssql/mssql_sql`
+> > - `auxiliary/admin/mssql/mssql_ntlm_stealer`
+> >
+> > ```sh
+> > search type:auxiliary name:mssql
+> > ```
+> >
+> > Narrow the findigs further
+> >
+> > ```sh
+> > search type:auxiliary scanner mssql
+> > ```
+> <!-- }}} -->
 >
-> Filter auxiliary scanners by service:
-> show all MSSQL-related modules:
+> 3. [[Metasploit#Select Exploit|Select]] the auxiliary scanner
 >
-> - `auxiliary/scanner/mssql/mssql_ping`
-> - `auxiliary/admin/mssql/mssql_login`
-> - `auxiliary/admin/mssql/mssql_exec`
-> - `auxiliary/admin/mssql/mssql_enum`
-> - `auxiliary/admin/mssql/mssql_sql`
-> - `auxiliary/admin/mssql/mssql_ntlm_stealer`
+> <!-- Example {{{-->
+> > [!example]-
+> >
+> > ```sh
+> > msf6 > use auxiliary/scanner/mssql/mssql_ping
+> > ```
+> <!-- }}} -->
 >
-> ```sh
-> search type:auxiliary name:mssql
-> ```
+> 4. [[Metasploit#Show Options|Show options]]
 >
-> Narrow the findigs further
+> 5. [[Metasploit#Set Options|Set options]]
 >
-> ```sh
-> search type:auxiliary scanner mssql
-> ```
-<!-- }}} -->
-
-3. [[Metasploit#Select Exploit|Select]] the auxiliary scanner
-
-<!-- Example {{{-->
-> [!example]-
+> <!-- Example {{{-->
+> > [!example]-
+> >
+> > ```sh
+> > msf6 auxiliary(scanner/mssql/mssql_ping) > set RHOSTS 10.129.201.248
+> > ```
+> >
+> > **Optional**: If non-standard
+> >
+> > ```sh
+> > msf6 auxiliary(scanner/mssql/mssql_ping) > set RPORT 1433
+> > ```
+> >
+> > **Optional**: Speed-up scan
+> >
+> > ```sh
+> > msf6 auxiliary(scanner/mssql/mssql_ping) > set THREADS 10
+> > ```
+> <!-- }}} -->
 >
-> ```sh
-> msf6 > use auxiliary/scanner/mssql/mssql_ping
-> ```
-<!-- }}} -->
-
-4. [[Metasploit#Show Options|Show options]]
-
-5. [[Metasploit#Set Options|Set options]]
-
-<!-- Example {{{-->
-> [!example]-
+> 6. [[Metasploit#Check Exploit|Check Module]]
 >
-> ```sh
-> msf6 auxiliary(scanner/mssql/mssql_ping) > set RHOSTS 10.129.201.248
-> ```
+> 7. [[Metasploit#Run Exploit|Run Module]]
 >
-> **Optional**: If non-standard
->
-> ```sh
-> msf6 auxiliary(scanner/mssql/mssql_ping) > set RPORT 1433
-> ```
->
-> **Optional**: Speed-up scan
->
-> ```sh
-> msf6 auxiliary(scanner/mssql/mssql_ping) > set THREADS 10
-> ```
-<!-- }}} -->
-
-6. [[Metasploit#Check Exploit|Check Module]]
-
-7. [[Metasploit#Run Exploit|Run Module]]
-
-<!-- Example {{{-->
-> [!example]-
->
->```sh
->msf6 auxiliary(scanner/mssql/mssql_ping) > run
->```
->```sh
->[*] 10.129.201.248:       - SQL Server information for 10.129.201.248:
->[+] 10.129.201.248:       -    ServerName      = SQL-01
->[+] 10.129.201.248:       -    InstanceName    = MSSQLSERVER
->[+] 10.129.201.248:       -    IsClustered     = No
->[+] 10.129.201.248:       -    Version         = 15.0.2000.5
->[+] 10.129.201.248:       -    tcp             = 1433
->[+] 10.129.201.248:       -    np              = \\SQL-01\pipe\sql\query
->[*] 10.129.201.248:       - Scanned 1 of 1 hosts (100% complete)
->[*] Auxiliary module execution completed
->```
-<!-- }}} -->
+> <!-- Example {{{-->
+> > [!example]-
+> >
+> >```sh
+> >msf6 auxiliary(scanner/mssql/mssql_ping) > run
+> >```
+> >```sh
+> >[*] 10.129.201.248:       - SQL Server information for 10.129.201.248:
+> >[+] 10.129.201.248:       -    ServerName      = SQL-01
+> >[+] 10.129.201.248:       -    InstanceName    = MSSQLSERVER
+> >[+] 10.129.201.248:       -    IsClustered     = No
+> >[+] 10.129.201.248:       -    Version         = 15.0.2000.5
+> >[+] 10.129.201.248:       -    tcp             = 1433
+> >[+] 10.129.201.248:       -    np              = \\SQL-01\pipe\sql\query
+> >[*] 10.129.201.248:       - Scanned 1 of 1 hosts (100% complete)
+> >[*] Auxiliary module execution completed
+> >```
+> <!-- }}} -->
 
 <!-- }}} -->
 
@@ -244,6 +255,8 @@ logging in
 <!-- }}} -->
 
 <!-- }}} -->
+
+___
 
 <!-- }}} -->
 
@@ -299,5 +312,7 @@ allows to remotely connect and to the MSSQL server using Transact-SQL
 >
 > Valid credentials required
 <!-- }}} -->
+
+___
 
 <!-- }}} -->

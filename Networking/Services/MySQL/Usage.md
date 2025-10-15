@@ -10,8 +10,9 @@ tags:
 <!-- Connect {{{-->
 ## Connect
 
-Connect to a database (remote or local)
+Connect to a database (*remote or local*)
 
+<!-- Local {{{-->
 ### Local
 
 Connect to `root` without password
@@ -26,6 +27,9 @@ Connect to `root` with password
 mysql -u root -p
 ```
 
+<!-- }}} -->
+
+<!-- Remote {{{-->
 ### Remote
 
 Connect to a remote MySQL server without password
@@ -112,6 +116,11 @@ mysql -h <hostname> -pP4SSw0rd -u root@localhost
 > 37 rows in set (0.002 sec)
 > ```
 <!-- }}} -->
+
+<!-- }}} -->
+
+___
+
 <!-- }}} -->
 
 <!-- Server {{{-->
@@ -122,6 +131,9 @@ Show server version
 ```sql
 SELECT VERSION();
 ```
+
+___
+
 <!-- }}} -->
 
 <!-- User {{{-->
@@ -132,6 +144,9 @@ Show current user
 ```sql
 SELECT USER();
 ```
+
+___
+
 <!-- }}} -->
 
 <!-- Databases {{{-->
@@ -139,6 +154,7 @@ SELECT USER();
 
 Database operations
 
+<!-- Discover {{{-->
 ### Discover
 
 Show all databases
@@ -164,6 +180,9 @@ SHOW DATABASES;
 >```
 <!-- }}} -->
 
+<!-- }}} -->
+
+<!-- Select {{{-->
 ### Select
 
 Select a database
@@ -172,6 +191,9 @@ Select a database
 USE my_database;
 ```
 
+<!-- }}} -->
+
+<!-- Show {{{-->
 ### Show
 
 Show current database
@@ -180,6 +202,9 @@ Show current database
 SELECT DATABASE();
 ```
 
+<!-- }}} -->
+
+<!-- Create {{{-->
 ### Create
 
 Create a database
@@ -188,6 +213,9 @@ Create a database
 CREATE DATABASE my_database;
 ```
 
+<!-- }}} -->
+
+<!-- Delete {{{-->
 ### Delete
 
 Delete a database
@@ -198,11 +226,16 @@ DROP DATABASE my_database;
 
 <!-- }}} -->
 
+___
+
+<!-- }}} -->
+
 <!-- Table {{{-->
 ## Table
 
 Table operations
 
+<!-- Discover {{{-->
 ### Discover
 
 Show tables in current database
@@ -211,6 +244,9 @@ Show tables in current database
 SHOW TABLES;
 ```
 
+<!-- }}} -->
+
+<!-- Structure {{{-->
 ### Structure
 
 Show table structure
@@ -223,6 +259,9 @@ DESCRIBE table_name;
 SHOW COLUMNS FROM table_name;
 ```
 
+<!-- }}} -->
+
+<!-- Data {{{-->
 ### Data
 
 View table data
@@ -237,10 +276,14 @@ Limit table data to `10` rows
 SELECT * FROM table_name LIMIT 10;
 ```
 
+<!-- }}} -->
+
+<!-- Modify {{{-->
 ### Modify
 
 Modify tables
 
+<!-- Create {{{-->
 #### Create
 
 Create a table with header
@@ -253,6 +296,9 @@ CREATE TABLE users (
 );
 ```
 
+<!-- }}} -->
+
+<!-- Delete {{{-->
 #### Delete
 
 Delete a table
@@ -260,13 +306,21 @@ Delete a table
 ```sql
 DROP TABLE users;
 ```
+
+<!-- }}} -->
+
+<!-- }}} -->
+
+___
+
 <!-- }}} -->
 
 <!-- Record {{{-->
 ## Record
 
-Modify **SQL** records
+Modify **SQL records**
 
+<!-- Insert {{{-->
 ### Insert
 
 Insert a record
@@ -275,6 +329,9 @@ Insert a record
 INSERT INTO users (name, email) VALUES ('Alice', 'alice@email.com');
 ```
 
+<!-- }}} -->
+
+<!-- Update {{{-->
 ### Update
 
 Update a record
@@ -283,6 +340,9 @@ Update a record
 UPDATE users SET email = 'new@email.com' WHERE id = 1;
 ```
 
+<!-- }}} -->
+
+<!-- Delete {{{-->
 ### Delete
 
 Delete a record
@@ -290,4 +350,9 @@ Delete a record
 ```sql
 DELETE FROM users WHERE id = 1;
 ```
+
+<!-- }}} -->
+
+___
+
 <!-- }}} -->

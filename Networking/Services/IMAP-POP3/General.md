@@ -22,6 +22,8 @@ text-based commands in `ASCII` format. Several commands can be sent in
 succession without confirmation from the server. Later confirmations can be
 assigned to the individual commands using identifiers.
 
+___
+
 <!-- IMAP {{{-->
 ## IMAP
 
@@ -37,6 +39,9 @@ Many e-mail servers require establishing an encrypted **IMAP** session:
 **IMAP** was designed to normally leave all messages on the server to permit
 management with multiple client applications, and to support both *online* and
 *offline* modes of operation.
+
+___
+
 <!-- }}} -->
 
 <!-- POP3 {{{-->
@@ -53,6 +58,9 @@ Many e-mail servers require establishing an encrypted **POP3** session:
 
 **POP3** clients have the option to leave e-mails on the server after retrieval
 and only download new messages (identified by the UIDL command).
+
+___
+
 <!-- }}} -->
 
 <!-- Configuration {{{-->
@@ -84,5 +92,7 @@ Improper configuration could allow an attacker to obtain additional information
 <!-- }}} -->
 
 <!-- }}} -->
+
+___
 
 <!-- }}} -->

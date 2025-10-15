@@ -22,6 +22,8 @@ The [[Networking/Services/NetBIOS/General|NetBIOS]] is a software protocol
 designed to enable applications, PCs, and Desktops within a LAN to interact with
 network hardware and facilitate the transmission of data across the network.
 
+___
+
 <!-- }}} -->
 
 <!-- SMB (Port 445) {{{-->
@@ -33,6 +35,8 @@ files, printers, and serial ports between nodes on a network.
 **SMB** over TCP port `445` allows direct TCP/IP transport without relying on
 the NetBIOS layer (over TCP port `139`), enabling more efficient and modern file
 sharing and remote administration within LANs and across domain environments.
+
+___
 
 <!-- }}} -->
 
@@ -61,6 +65,8 @@ sudo systemctl restart smbd
 
 <!-- }}} -->
 
+___
+
 <!-- }}} -->
 
 <!-- RPC {{{-->
@@ -73,6 +79,8 @@ as if it were local.
 1. The client sends a request (with arguments) to the server
 2. The server executes the function
 3. The server sends back the results
+
+___
 
 <!-- }}} -->
 
@@ -132,5 +140,7 @@ Some of the settings enable sensitive options
 >| `magic script = script.sh`  | Which script should be executed when the script gets closed        |
 >| `magic output = script.out` | Where the output of the magic script needs to be stored            |
 <!-- }}} -->
+
+___
 
 <!-- }}} -->

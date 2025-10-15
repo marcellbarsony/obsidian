@@ -8,6 +8,7 @@ links: "[[SMB]]"
 
 # Enumeration
 
+<!-- Checklist {{{-->
 ## Checklist
 
 - [ ] [[Enumeration#Reconnaissance|Reconnaissance]]
@@ -28,6 +29,10 @@ links: "[[SMB]]"
 - [ ] [[Enumeration#Enum4linux-ng|Enum4linux-ng]]
 - [ ] [[Enumeration#Additional Scripts|Additional Scripts]]
 
+___
+
+<!-- }}} -->
+
 <!-- Reconnaissance {{{-->
 ## Reconnaissance
 
@@ -38,7 +43,7 @@ Scan a network searching for SMB hosts via
 [nbtscan](https://www.kali.org/tools/nbtscan/)
 
 ```sh
-nbtscan -r <target_network>/24
+nbtscan -r <target_network>/<cidr>
 ```
 <!-- }}} -->
 
@@ -51,7 +56,7 @@ Banner grabbing with default scripts
 > [!example]-
 >
 > ```sh
-> sudo nmap -sV -sC -p 139,445 <target_ip> -oA smb-default-scripts
+> sudo nmap -sV -sC -p 139,445 <target> -oA smb-default-scripts
 > ```
 >
 > ```sh
@@ -78,23 +83,25 @@ Run [smb-protocols](https://nmap.org/nsedoc/scripts/smb-protocols.html)
 to discover SMB versions and supported protocol features
 
 ```sh
-nmap --script smb-protocols -p 445 <target_ip> -oA smb-protocols
+nmap --script smb-protocols -p 445 <target> -oA smb-protocols
 ```
 
 Run all `safe` and `smp-enum-*` scripts for non-destructive SMB enumeration
 
 ```sh
-nmap --script "safe or smb-enum-*" -p 445 <target_ip> -oA smb-enumeration
+nmap --script "safe or smb-enum-*" -p 445 <target> -oA smb-enumeration
 ```
 
 Run [smb-os-discovery.nse](https://nmap.org/nsedoc/scripts/smb-os-discovery.html)
 to extract OS/Host/Domain information
 
 ```sh
-nmap --script smb-os-discovery.nse -p 445 <target_ip> -oA smb-os-discovery
+nmap --script smb-os-discovery.nse -p 445 <target> -oA smb-os-discovery
 ```
 
 <!-- }}} -->
+
+___
 
 <!-- }}} -->
 
@@ -116,7 +123,7 @@ Remote Procedure Call ([[General#RPC|RPC]]) Enumeration
 Connect to server and list shares (*[Anonymous Null Session](https://hackviser.com/tactics/pentesting/services/smb#smb-null-session)*)
 
 ```sh
-smbclient -N -L //<target_ip>
+smbclient -N -L //<target>
 ```
 
 > [!info]-
@@ -133,7 +140,7 @@ Connect to server and list shares (*[Anonymous Null Session](https://hackviser.c
 Windows UNC path*)
 
 ```sh
-smbclient -N -L \\\\<target_ip>\\
+smbclient -N -L \\\\<target>\\
 ```
 
 <!-- Info {{{-->
@@ -155,11 +162,11 @@ Enumerate SMB shares on the host
 (*[Anonymous Null Session](https://hackviser.com/tactics/pentesting/services/smb#smb-null-session)*)
 
 ```sh
-smbmap -H <target_ip>
+smbmap -H <target>
 ```
 
 ```sh
-smbmap -H <target_ip> -u "" -p ""
+smbmap -H <target> -u "" -p ""
 ```
 
 <!-- Info {{{-->
@@ -208,7 +215,7 @@ Connect without credentials
 ([SMB Null Session](https://hackviser.com/tactics/pentesting/services/smb#smb-null-session))
 
 ```sh
-rpcclient -U "" <target_ip>
+rpcclient -U "" <target>
 ```
 
 <!-- Example {{{-->
@@ -229,7 +236,7 @@ rpcclient -U "" <target_ip>
 Connect with credentials
 
 ```sh
-rpcclient -U "username%password" <target_ip>
+rpcclient -U "username%password" <target>
 ```
 
 <!-- }}} -->
@@ -452,7 +459,7 @@ Brute force User `RID`s using `rpcclient`
 
 ```sh
 for i in $(seq 500 1100); do \
-    rpcclient -N -U "" <target_ip> \
+    rpcclient -N -U "" <target> \
     -c "queryuser 0x$(printf '%x\n' $i)" | \
     grep "User Name\|user_rid\|group_rid" && \
     echo ""; \
@@ -463,7 +470,7 @@ Brute force User RIDs using [samrdump.py](https://github.com/fortra/impacket/blo
 (from [Impacket](https://github.com/fortra/impacket))
 
 ```sh
-samrdump.py <target_ip>
+samrdump.py <target>
 ```
 
 <!-- Example {{{-->
@@ -547,7 +554,7 @@ rpcclient $> querygroup 0x201
 > DEPRECATED
 
 ```sh
-crackmapexec smb <target_ip> --shares -u '' -p ''
+crackmapexec smb <target> --shares -u '' -p ''
 ```
 
 <!-- Example {{{-->
@@ -572,6 +579,8 @@ crackmapexec smb <target_ip> --shares -u '' -p ''
 
 <!-- }}} -->
 
+___
+
 <!-- }}} -->
 
 <!-- Enum4Linux-ng {{{-->
@@ -595,8 +604,10 @@ Install [enum4linux-ng](https://github.com/cddmp/enum4linux-ng)
 Enumerate SMB host
 
 ```sh
-./enum4linux-ng.py <target_ip> -A
+./enum4linux-ng.py <target> -A
 ```
+
+___
 
 <!-- Example {{{-->
 > [!example]-
@@ -798,11 +809,11 @@ Enumerate SMB host
 > **DEPRECATED**: Dump interesting information
 >
 >```sh
->enum4linux -a [-u "<username>" -p "<password>"] <target_ip>
+>enum4linux -a [-u "<username>" -p "<password>"] <target>
 >```
 >
 >```sh
->enum4linux-ng -A [-u "<username>" -p "<password>"] <target_ip>
+>enum4linux-ng -A [-u "<username>" -p "<password>"] <target>
 >```
 <!-- }}} -->
 
@@ -850,5 +861,7 @@ Grab SMB server version
 > >
 > > May need to run a second time for success.
 <!-- }}} -->
+
+___
 
 <!-- }}} -->

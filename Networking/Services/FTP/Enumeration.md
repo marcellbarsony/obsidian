@@ -21,6 +21,8 @@ links: "[[FTP]]"
 - [ ] [[#Certificate|TLS Certificate]]
 - [ ] [[#Default and Common Directories|Default & Common Directories]]
 
+___
+
 <!-- }}} -->
 
 <!-- Nmap {{{-->
@@ -31,7 +33,7 @@ links: "[[FTP]]"
 Identify an FTP server
 
 ```sh
-nmap -p 21 <target_ip> -oA ftp-identify
+nmap -p 21 <target> -oA ftp-identify
 ```
 
 ### FTP Server Features
@@ -39,7 +41,7 @@ nmap -p 21 <target_ip> -oA ftp-identify
 Identify FTP server features (*default FTP unauthantecated script scan*)
 
 ```sh
-sudo nmap -sC -sV -p21 -A <target_ip> --script-trace -oA ftp-default-script
+sudo nmap -sC -sV -p21 -A <target> --script-trace -oA ftp-default-script
 ```
 
 <!-- Info {{{-->
@@ -60,8 +62,10 @@ via the
 script
 
 ```sh
-nmap -p 21 --script ftp-bounce <target_ip> -oA ftp-bounce
+nmap -p 21 --script ftp-bounce <target> -oA ftp-bounce
 ```
+
+___
 
 <!-- }}} -->
 
@@ -73,7 +77,7 @@ nmap -p 21 --script ftp-bounce <target_ip> -oA ftp-bounce
 Grab the FTP banner with [[netcat]]
 
 ```sh
-nc -nv <target_ip> 21
+nc -nv <target> 21
 ```
 
 ### Telnet
@@ -81,8 +85,11 @@ nc -nv <target_ip> 21
 Grab the FTP banner with [[Networking/Services/Telnet/General|Telnet]]
 
 ```sh
-telnet <target_ip> 21
+telnet <target> 21
 ```
+
+___
+
 <!-- }}} -->
 
 <!-- Certificate {{{-->
@@ -93,14 +100,19 @@ Update the connection to TLS, display the server's:
 - TLS certificate (e.g., *hostname*, *e-mail*)
 - connection details
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sh
-> openssl s_client -connect <target_ip>:21 -starttls ftp
+> openssl s_client -connect <target>:21 -starttls ftp
 > ```
 > ```sh
 > openssl s_client -connect crossfit.htb:21 -starttls ftp
 > ```
+<!-- }}} -->
+
+___
+
 <!-- }}} -->
 
 <!-- Default and Common Directories {{{-->
@@ -112,5 +124,7 @@ that may contain sensitive information — [[Gobuster]]
 ```sh
 gobuster dir -u ftp://<ip> -w <dirlist.txt>
 ```
+
+___
 
 <!-- }}} -->

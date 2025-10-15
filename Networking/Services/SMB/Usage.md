@@ -13,12 +13,11 @@ links: "[[SMB]]"
 ## Smbclient
 
 [Smbclient](https://www.samba.org/samba/docs/current/man-html/smbclient.1.html)
-is a FTP-like client used to access SMB/CIFS resources on servers, share files,
+is a FTP-like client used to access
+[SMB](https://en.wikipedia.org/wiki/Server_Message_Block)/
+[CIFS](https://learn.microsoft.com/en-us/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)
+resources on servers, share files,
 printers, serial ports, and communicate between nodes on a network.
-
-- [WikiPedia - Server Message Block](https://en.wikipedia.org/wiki/Server_Message_Block)
-- [Microsoft SMB Protocol and CIFS protocol overview](https://learn.microsoft.com/en-us/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)
-- [Smbclient - Man](https://www.samba.org/samba/docs/current/man-html/smbclient.1.html)
 
 <!-- Connect {{{-->
 ### Connect
@@ -152,5 +151,7 @@ smbclient -U bob \\\\<target_ip>\\users
 > smb: \> exit
 > ```
 <!-- }}} -->
+
+___
 
 <!-- }}} -->

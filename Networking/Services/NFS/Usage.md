@@ -23,6 +23,9 @@ List Contents with UIDs & GUIDs
 ```sh
 ls -n mnt/nfs/
 ```
+
+___
+
 <!-- }}} -->
 
 <!-- ExportFS {{{-->
@@ -37,4 +40,7 @@ sudo exportfs
 ```
 
 All hosts on this subnet well be able to mount to this NFS share.
+
+___
+
 <!-- }}} -->

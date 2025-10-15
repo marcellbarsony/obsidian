@@ -9,31 +9,134 @@ links: "[[Services]]"
 
 # Enumeration
 
+<!-- Checklist {{{-->
 ## Checklist
 
 - [ ] [[#Banner Grabbing]]
+- [ ] [[#DNS Server Discovery]]
+
+___
+
+<!-- }}} -->
 
 <!-- Banner Grabbing {{{-->
 ## Banner Grabbing
 
-Determine DNS server versions with `dig`
+Grab the banner and server version with
+[dig](https://man.archlinux.org/man/dig.1)
 
 ```sh
-dig version.bind CHAOS TXT @<target_ip>
+dig @<dns_ip> version.bind CHAOS TXT
 ```
 
-Grab banner with [dns-nsid](https://nmap.org/nsedoc/scripts/dns-nsid.html)
+Grab banner with the [dns-nsid](https://nmap.org/nsedoc/scripts/dns-nsid.html)
 [[Nmap Scripting Engine|Nmap script]]
 
 ```sh
-nmap --script dns-nsid <DNS_IP>
+nmap --script dns-nsid <dns_ip>
 ```
 
 Grab banner with [[netcat]]
 
 ```sh
-nc -nv -u <DNS_IP> 53
+nc -nv -u <dns_ip> 53
 ```
+
+___
+
+<!-- }}} -->
+
+<!-- DNS Server Discovery {{{-->
+## DNS Server Discovery
+
+<!-- Tip {{{-->
+> [!tip]
+>
+> Identifying the DNS servers associated with the target domain
+> is a critical first step
+<!-- }}} -->
+
+Query the [[General#Authoritative Name Server|Name Server]] with
+[dig](https://linux.die.net/man/1/dig)
+
+```sh
+dig <target_domain> NS
+```
+
+Query the [[General#Authoritative Name Server|Name Server]] with
+[nslookup](https://en.wikipedia.org/wiki/Nslookup)
+
+```sh
+nslookup -type=NS <target_domain>
+```
+
+___
+
+<!-- }}} -->
+
+<!-- Subdomain Brute Forcing {{{-->
+## Subdomain Brute Forcing
+
+[DNSenum](https://github.com/fwaeytens/dnsenum) —
+Full DNS enumeration against a domain
+
+```sh
+dnsenum --dnsserver <target_dns> --enum -p 5 -s 5 -o subdomains.txt -f <wordlist.txt> <target_domain>
+```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `--dnsserver <dns_ip>`: Target DNS server to query
+> - `--enum`: Run all enumeration steps (`A`, `NS`, `MX`, and subdomain
+>   brute-forcing, and some zone-transfer attempts)
+> - `-p 5`: Number of threads for reverse lookup (`0` to disable)
+> - `-s 5`: Number of threads for subdomain brute-forcing (`0` to disable)
+> - `-o subdomains.txt`: Output file for results
+> - `-f <wordlist.txt>`: Wordlist file for subdomain brute-forcing
+<!-- }}} -->
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> dnsenum \
+>     --dnsserver 10.129.14.128 \
+>     --enum -p 0 -s 0 \
+>     -o subdomains.txt \
+>     -f /opt/useful/seclists/Discovery/DNS/subdomains-top1million-110000.txt \
+>     inlanefreight.htb
+> ```
+<!-- }}} -->
+
+<!-- Tip {{{-->
+> [!tip]-
+>
+> Wordlists
+>
+> - [SecLists - DNS Discovery](https://github.com/danielmiessler/SecLists/tree/master/Discovery/DNS)
+> - [SecLists - subdomains-top1million-5000.txt](https://github.com/danielmiessler/SecLists/blob/master/Discovery/DNS/subdomains-top1million-5000.txt)
+> - [SecLists - subdomains-top1million-20000.txt](https://github.com/danielmiessler/SecLists/blob/master/Discovery/DNS/subdomains-top1million-20000.txt)
+> - [SecLists - subdomains-top1million-110000.txt](https://github.com/danielmiessler/SecLists/blob/master/Discovery/DNS/subdomains-top1million-110000.txt)
+<!-- }}} -->
+
+Bash script for DNS subdomains brute-forcing
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> for sub in $(cat /opt/useful/seclists/Discovery/DNS/subdomains-top1million-110000.txt); do \
+>     dig $sub.inlanefreight.htb @10.129.14.128 | \
+>     grep -v ';\|SOA' | \
+>     sed -r '/^\s*$/d' | \
+>     grep $sub | \
+>     tee -a subdomains.txt; \
+> done
+> ```
+<!-- }}} -->
+
+___
 
 <!-- }}} -->
 
@@ -42,53 +145,62 @@ nc -nv -u <DNS_IP> 53
 
 DNS servers can be footprinted via queries
 
-<!-- DIG - Version Query {{{-->
-### DIG - Version Query
+<!-- Version Query {{{-->
+### Version Query
 
 Query the version of the DNS server using the `CHAOS` query and type `TXT`
 
 ```sh
-dig CH TXT version.bind @10.129.120.85
+dig @<dns_ip> version.bind TXT CH
 ```
 
+<!-- Info {{{-->
 > [!info]-
 >
-> - `CH`: CHAOS class
-> - `TXT`: Record type
 > - `version.bind`: Special built-in name that DNS servers may respond to with
 >     their version info
+> - `CH`: CHAOS class
+> - `TXT`: Record type
+<!-- }}} -->
 
 <!-- }}} -->
 
-<!-- DIG - NS Query {{{-->
-### DIG - NS Query
+<!-- NS Query {{{-->
+### NS Query
 
-Query DNS server for NS records
+Query the DNS server for NS records of a domain
 
 ```sh
-dig ns <domain> @<dns_server_ip>
+dig [@<dns_ip>] <target_domain> ns
 ```
 
-<!-- Example {{{ -->
-> [!example]
+```sh
+nslookup -type=NS <target_domain> [dns_ip]
+```
+
+<!-- Example {{{-->
+> [!example]-
 >
 > Ask the DNS server `10.129.14.128` for the NS records for the
 > domain `inlanefreight.htb`
 >
 > ```sh
-> dig ns inlanefreight.htb @10.129.14.128
+> dig @10.129.14.128 inlanefreight.htb ns
+> ```
+> ```sh
+> nslookup -type=NS inlanefreight.htb 10.129.14.128
 > ```
 <!-- }}} -->
 
 <!-- }}} -->
 
-<!-- DIG - ANY Query {{{-->
-### DIG - ANY Query
+<!-- ANY Query {{{-->
+### ANY Query
 
-Query all available records
+Query the DNS server for all available records of a domain
 
 ```sh
-dig any <domain> @<dns_server_ip>
+dig @<dns_ip> <target_domain> any
 ```
 
 <!-- Example {{{-->
@@ -98,7 +210,7 @@ dig any <domain> @<dns_server_ip>
 > the domain `inlanefreight.htb`
 >
 > ```sh
-> dig any inlanefreight.htb @10.129.61.117
+> dig @10.129.61.117 inlanefreight.htb any
 > ```
 > ```sh
 > ; <<>> DiG 9.20.9-1-Debian <<>> any inlanefreight.htb @10.129.61.117
@@ -141,8 +253,8 @@ dig any <domain> @<dns_server_ip>
 
 <!-- }}} -->
 
-<!-- DIG - AXFR Zone Transfer {{{-->
-### DIG - AXFR Zone Transfer
+<!-- AXFR Zone Transfer {{{-->
+### AXFR Zone Transfer
 
 [**DNS Zone Transfer**](https://en.wikipedia.org/wiki/DNS_zone_transfer)
 or **Asynchronous Full Transfer Zone** (**AXFR**) refers to the transfer of
@@ -174,7 +286,7 @@ zones to another server in DNS (e.g., *in case of DNS failure*).
 **AXFR query** is a DNS protocol request used to retrieve all records of a domain from a DNS server:
 
 ```sh
-dig axfr inlanefreight.htb @10.129.14.128
+dig @<dns_ip> <target_domain> axfr
 ```
 
 <!-- AXFR Zone Transfer - Internal {{{-->
@@ -184,48 +296,26 @@ dig axfr inlanefreight.htb @10.129.14.128
 
 <!-- }}} -->
 
-<!-- }}} -->
+<!-- Fierce {{{-->
+#### Fierce
+
+[fierce](https://github.com/mschwager/fierce) automates zone transfers and
+performs dictionary attacks
+
+```sh
+fierce --domain <target_domain> --dns-servers <dns_ip>
+```
 
 <!-- }}} -->
 
-<!-- Subdomain Brute Forcing {{{-->
-## Subdomain Brute Forcing
-
-<!-- Example {{{ -->
-> [!example]-
->
-> ```sh
-> for sub in $(cat /opt/useful/seclists/Discovery/DNS/subdomains-top1million-110000.txt); do \
->     dig $sub.inlanefreight.htb @10.129.14.128 | \
->     grep -v ';\|SOA' | \
->     sed -r '/^\s*$/d' | \
->     grep $sub | \
->     tee -a subdomains.txt; \
-> done
-> ```
 <!-- }}} -->
 
-[DNSenum](https://github.com/fwaeytens/dnsenum)
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> dnsenum \
->     --dnsserver 10.129.14.128 \
->     --enum -p 0 -s 0 \
->     -o subdomains.txt \
->     -f /opt/useful/seclists/Discovery/DNS/subdomains-top1million-110000.txt \
->     inlanefreight.htb
-> ```
-<!-- }}} -->
+___
 
 <!-- }}} -->
 
 <!-- DNS Lookup {{{-->
 ## DNS Lookup
-
-- [DNSDumpster](https://dnsdumpster.com/)
 
 ### DNS Lookup
 
@@ -240,6 +330,13 @@ nslookup <target_domain>
 Resolve an **IP address** to the corresponding **domain name**.
 
 ```sh
-nslookup -type=PTR <target_ip>
+nslookup -type=PTR <target>
 ```
+
+### Online Tools
+
+- [DNSDumpster](https://dnsdumpster.com/)
+
+___
+
 <!-- }}} -->

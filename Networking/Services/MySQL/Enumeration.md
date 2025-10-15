@@ -18,25 +18,32 @@ Often, the rights for the [[General#Configuration|configuration file]] of the
 > If an attacker can read files or gain shell access, they may retrieve the file
 > containing the MySQL username and password
 
+___
+
 <!-- }}} -->
 
 <!-- Scanning MySQL Server {{{-->
 ## Scanning MySQL Server
 
-[[General#MySQL Database|MySQL Databases]] can be enumerated using [[Nmap Scripting Engine|Nmap NSE]]
-scripts
+[[General#MySQL Database|MySQL Databases]] can be enumerated using
+[[Nmap Scripting Engine|Nmap NSE]] scripts
+
+```sh
+sudo nmap -sC -sV -p3306 --script mysql* <target> -oA mysql-default-scripts
+```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `--script mysql*`: Run every NSE script related to MySQL
+<!-- }}} -->
 
 <!-- Example {{{-->
 > [!example]-
 >
 > ```sh
-> sudo nmap 10.129.14.128 -sV -sC -p3306 --script mysql*
+> sudo nmap -sC -sV -p3306 --script mysql* 10.129.14.128 -oA mysql-default-scripts
 > ```
->
-> > [!info]-
-> >
-> > - `--script mysql*`: Run every NSE script related to MySQL
->
 > ```sh
 > Starting Nmap 7.80 ( https://nmap.org ) at 2021-09-21 00:53 CEST
 > Nmap scan report for 10.129.14.128
@@ -89,10 +96,14 @@ scripts
 > > empty password for the `root` user
 <!-- }}} -->
 
+<!-- Warning {{{-->
 > [!warning]
 >
 > The **scan results should be confirmed manually**
 > as some of the information might turn out to be **false-positive**
+<!-- }}} -->
+
+___
 
 <!-- }}} -->
 
@@ -194,6 +205,8 @@ containing
 <!-- }}} -->
 
 <!-- }}} -->
+
+___
 
 <!-- }}} -->
 
@@ -317,7 +330,7 @@ Find users with `FILE` and `SUPER` privileges
 Find user-defined functions (UDFs) — potentially leading to code execution
 backdoors if loaded maliciously
 
-<!-- Example {{{ -->
+<!-- Example {{{-->
 > [!example]-
 >
 > List all user-defined functions across databases/schemas
@@ -347,4 +360,8 @@ backdoors if loaded maliciously
 > >
 > > Check `DEFINER` + `SECURITY_TYPE`: a function defined by `root` with
 > > `DEFINER` semantics is especially dangerous
+<!-- }}} -->
+
+___
+
 <!-- }}} -->

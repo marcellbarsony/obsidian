@@ -24,7 +24,7 @@ servers.
 queuing messages on the recipient's end.
 
 <!-- Ports {{{-->
-### Ports
+## Ports
 
 **SMTP** servers accept connection requests on
 - **TCP port** `25`: Typically unencrypted connection (or may use `STARTTLS` to
@@ -34,10 +34,13 @@ queuing messages on the recipient's end.
 - **TCP port** `587`: `STARTTLS` command is sent to switch the existing
   plaintext connection to encrypted. The client should confirm its identity by
   providing a username and password.
+
+___
+
 <!-- }}} -->
 
 <!-- Operation {{{-->
-### Operation
+## Operation
 
 Modern **SMTP** servers support the protocol extension [ESMTP](https://www.geeksforgeeks.org/computer-networks/what-is-esmtp-extended-simple-mail-transfer-protocol/)
 with [SMTP-Auth](https://en.wikipedia.org/wiki/SMTP_Authentication) to prevent
@@ -70,10 +73,13 @@ E-mail Client ([MUA](https://en.wikipedia.org/wiki/Email_client))
 ➞ Open Relay ([MTA](https://en.wikipedia.org/wiki/Open_mail_relay))
 ➞ Mail Delivery Agent ([MDA](https://en.wikipedia.org/wiki/Message_delivery_agent))
 ➞ Mailbox (POP3/IMAP)
+
+___
+
 <!-- }}} -->
 
 <!-- Disadvantages {{{-->
-### Disadvantages
+## Disadvantages
 
 **SMTP** has two disadvantages inherent to the network protocol:
 
@@ -87,6 +93,8 @@ E-mail Client ([MUA](https://en.wikipedia.org/wiki/Email_client))
    addresses (mail spoofing). To authenticate senders, DomainKeys
    ([DKIM](https://dkim.org/)) and the Sender Policy Framework
    ([SPF](https://dmarcian.com/what-is-spf/)) can be used.
+
+___
 <!-- }}} -->
 
 <!-- Configuration {{{-->
@@ -96,35 +104,35 @@ E-mail Client ([MUA](https://en.wikipedia.org/wiki/Email_client))
 
 The default configuration is usually located at `/etc/postfix/main.cf`
 
-> [!info]-
+<!-- Example {{{-->
+> [!example]-
 >
-> **Default Configuration**
+> ```sh
+> cat /etc/postfix/main.cf | grep -v "#" | sed -r "/^\s*$/d"
+> ```
 >
->```sh
->cat /etc/postfix/main.cf | grep -v "#" | sed -r "/^\s*$/d"
->```
->
->```sh
->smtpd_banner = ESMTP Server 
->biff = no
->append_dot_mydomain = no
->readme_directory = no
->compatibility_level = 2
->smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
->myhostname = mail1.inlanefreight.htb
->alias_maps = hash:/etc/aliases
->alias_database = hash:/etc/aliases
->smtp_generic_maps = hash:/etc/postfix/generic
->mydestination = $myhostname, localhost 
->masquerade_domains = $myhostname
->mynetworks = 127.0.0.0/8 10.129.0.0/16
->mailbox_size_limit = 0
->recipient_delimiter = +
->smtp_bind_address = 0.0.0.0
->inet_protocols = ipv4
->smtpd_helo_restrictions = reject_invalid_hostname
->home_mailbox = /home/postfix
->```
+> ```sh
+> smtpd_banner = ESMTP Server 
+> biff = no
+> append_dot_mydomain = no
+> readme_directory = no
+> compatibility_level = 2
+> smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
+> myhostname = mail1.inlanefreight.htb
+> alias_maps = hash:/etc/aliases
+> alias_database = hash:/etc/aliases
+> smtp_generic_maps = hash:/etc/postfix/generic
+> mydestination = $myhostname, localhost 
+> masquerade_domains = $myhostname
+> mynetworks = 127.0.0.0/8 10.129.0.0/16
+> mailbox_size_limit = 0
+> recipient_delimiter = +
+> smtp_bind_address = 0.0.0.0
+> inet_protocols = ipv4
+> smtpd_helo_restrictions = reject_invalid_hostname
+> home_mailbox = /home/postfix
+> ```
+<!-- }}} -->
 
 <!-- Dangerous Settings {{{-->
 ### Dangerous Settings
@@ -142,4 +150,7 @@ between multiple parties
 mynetworks = 0.0.0.0/0
 ```
 <!-- }}} -->
+
+___
+
 <!-- }}} -->

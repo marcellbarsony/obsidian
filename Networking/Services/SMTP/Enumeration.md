@@ -21,13 +21,13 @@ links: "[[Networking/Services/SMTP/General|SMTP]]"
 Get banner with [[netcat]]
 
 ```sh
-nc -vn <target_ip> 25
+nc -vn <target> 25
 ```
 
 Get banner with [[netcat]] `EHLO`
 
 ```sh
-echo "EHLO test" | nc <target_ip> 25
+echo "EHLO test" | nc <target> 25
 ```
 
 #### Telnet
@@ -35,7 +35,7 @@ echo "EHLO test" | nc <target_ip> 25
 Get banner with [[Telnet/General|Telnet]]
 
 ```sh
-telnet <target_ip> 25
+telnet <target> 25
 ```
 
 <!-- }}} -->
@@ -57,6 +57,8 @@ openssl s_client -crlf -connect smtp.mailgun.org:465
 
 <!-- }}} -->
 
+___
+
 <!-- }}} -->
 
 <!-- Nmap {{{-->
@@ -65,7 +67,7 @@ openssl s_client -crlf -connect smtp.mailgun.org:465
 Detect SMTP service
 
 ```sh
-nmap -p 25,465,587 <target_ip> -oA smtp-identify
+nmap -p 25,465,587 <target> -oA smtp-identify
 ```
 
 <!-- Example {{{-->
@@ -88,7 +90,7 @@ nmap -p 25,465,587 <target_ip> -oA smtp-identify
 Discover SMTP services & server capabilities
 
 ```sh
-sudo nmap -sC -sV -p 25 <target_ip> -oA smtp-default-scripts
+sudo nmap -sC -sV -p 25 <target> -oA smtp-default-scripts
 ```
 
 <!-- Example {{{-->
@@ -113,26 +115,28 @@ sudo nmap -sC -sV -p 25 <target_ip> -oA smtp-default-scripts
 Discover SMTP commands
 
 ```sh
-nmap -p 25 --script smtp-commands <target_ip> -oA smtp-commands
+nmap -p 25 --script smtp-commands <target> -oA smtp-commands
 ```
 
 Discover SMTP users
 
 ```sh
-nmap -p 25 --script smtp-enum-users <target_ip> -oA smtp-enum-users
+nmap -p 25 --script smtp-enum-users <target> -oA smtp-enum-users
 ```
 
 Discover NTLM authentication details
 
 ```sh
-nmap -p 25 --script smtp-ntlm-info <target_ip> -oA smtp-ntlm-info
+nmap -p 25 --script smtp-ntlm-info <target> -oA smtp-ntlm-info
 ```
 
 Run all SMTP-related scripts
 
 ```sh
-nmap -p 25,465,587 --script smtp-* <target_ip> -oA smtp-all-scripts
+nmap -p 25,465,587 --script smtp-* <target> -oA smtp-all-scripts
 ```
+
+___
 
 <!-- Example {{{-->
 > [!example]-
@@ -155,7 +159,7 @@ using the [smtp-open-relay](https://nmap.org/nsedoc/scripts/smtp-open-relay.html
 NSE script
 
 ```sh
-nmap -p25 --script smtp-open-relay <target_ip> -v -oA smtp-open-relay
+nmap -p25 --script smtp-open-relay <target> -v -oA smtp-open-relay
 ```
 
 <!-- }}} -->
@@ -171,7 +175,7 @@ nmap -p25 --script smtp-open-relay <target_ip> -v -oA smtp-open-relay
 Verify specific user
 
 ```sh
-smtp-user-enum -M VRFY -u <user> -t <target_ip> -w 20
+smtp-user-enum -M VRFY -u <user> -t <target> -w 20
 ```
 
 <!-- Example {{{-->
@@ -198,7 +202,7 @@ smtp-user-enum -M VRFY -u <user> -t <target_ip> -w 20
 Verify user list
 
 ```sh
-smtp-user-enum -M VRFY -U <users.txt> -t <target_ip> -w 20
+smtp-user-enum -M VRFY -U <users.txt> -t <target> -w 20
 ```
 
 <!-- Example {{{-->
@@ -247,7 +251,7 @@ msf6 > auxiliary/scanner/smtp/smtp_enum
 5. [[Metasploit#Set Options|Set Options]]
 
 ```sh
-set RHOSTS <target_ip>
+set RHOSTS <target>
 ```
 
 6. [[Metasploit#Check Exploit|Check]]
@@ -255,5 +259,7 @@ set RHOSTS <target_ip>
 7. [[Metasploit#Run Exploit|Run]]
 
 <!-- }}} -->
+
+___
 
 <!-- }}} -->

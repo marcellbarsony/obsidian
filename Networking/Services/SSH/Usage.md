@@ -9,12 +9,13 @@ links: "[[SSH]]"
 
 # Usage
 
+<!-- Connect {{{-->
 ## Connect
 
 Connect to a host
 
 ```sh
-ssh {username}@{target_ip}
+ssh <username>@<target>
 ```
 
 <!-- Example {{{-->
@@ -26,4 +27,8 @@ ssh {username}@{target_ip}
 >
 > - `-i id_rsa`: Specify private key (*optional*)
 > - `-p 1234`: Specify target port (*optional*)
+<!-- }}} -->
+
+___
+
 <!-- }}} -->

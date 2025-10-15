@@ -27,6 +27,9 @@ links: "[[Services]]"
 >| 1 FETCH <ID> all              | Retrieves data associated with a message in the mailbox |
 >| 1 CLOSE                       | Removes all messages with the Deleted flag set |
 >| 1 LOGOUT                      | Closes the connection with the IMAP server |
+
+___
+
 <!-- }}} -->
 
 <!-- POP3 Commands {{{-->
@@ -47,4 +50,7 @@ links: "[[Services]]"
 >| `CAPA`          | Requests the server to display the server capabilities |
 >| `RSET`          | Requests the server to reset the transmitted information |
 >| `QUIT`          | Closes the connection with the POP3 server |
+
+___
+
 <!-- }}} -->

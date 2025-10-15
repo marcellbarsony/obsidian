@@ -70,6 +70,8 @@ channel:
 
 <!-- }}} -->
 
+___
+
 <!-- }}} -->
 
 <!-- vsFTPd {{{-->
@@ -255,6 +257,8 @@ ls -R
 
 <!-- }}} -->
 
+___
+
 <!-- }}} -->
 
 <!-- TFTP {{{-->
@@ -276,5 +280,7 @@ and server processes.
 | `status`   | Shows FTFP status (e.g., transfer mode (ascii or binary)   |
 | `verbose`  | Toggles verbose mode                                       |
 <!-- }}} -->
+
+___
 
 <!-- }}} -->

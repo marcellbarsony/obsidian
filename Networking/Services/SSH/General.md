@@ -9,6 +9,7 @@ port:
 links: "[[Services]]"
 ---
 
+<!-- SSH {{{-->
 # SSH
 
 **SSH** ([Secure Shell](https://en.wikipedia.org/wiki/Secure_Shell))
@@ -18,3 +19,16 @@ computers remotely via password authentication or passwordless
 using an SSH public/private key pair.
 
 > [!todo]
+
+___
+
+<!-- }}} -->
+
+<!-- Configuration {{{-->
+## Configuration
+
+### Default Configuration
+
+### Dangerous Settings
+
+<!-- }}} -->

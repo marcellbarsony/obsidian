@@ -18,11 +18,14 @@ over [TCP](https://developer.mozilla.org/en-US/docs/Glossary/TCP), or over a
 [TLS](https://developer.mozilla.org/en-US/docs/Glossary/TLS)-encrypted TCP
 connection.
 
+___
+
 <!-- Componets of HTTP-based systems {{{-->
 ## HTTP Componets
 
 [Componets of HTTP-based systems](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview#components_of_http-based_systems)
 
+<!-- Client {{{-->
 ### Client
 
 #### User-Agent
@@ -30,11 +33,17 @@ connection.
 The [User-Agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview#client_the_user-agent) is any tool that acts on behalf of the user - this role is
 primarily performed by the Web browser.
 
+<!-- }}} -->
+
+<!-- Web Server {{{-->
 ### Web Server
 
 The [Web Server](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview#the_web_server)
 serves the document as requested by the client
 
+<!-- }}} -->
+
+<!-- Proxies {{{-->
 ### Proxies
 
 [Proxies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview#proxies)
@@ -52,6 +61,11 @@ Proxies may perform numerous functions:
 - **Load balancing** - to allow multiple servers to serve different requests
 - **Authentication** - to control access to different resources
 - **Logging** - allowing the storage of historical information
+
+<!-- }}} -->
+
+___
+
 <!--}}}-->
 
 <!-- HTTP Flow {{{-->
@@ -65,38 +79,48 @@ Proxies may perform numerous functions:
 
 2. **Send a HTTP message**
 
+<!-- Example {{{-->
 > [!example]-
 >
->```sh
->GET / HTTP/1.1
->Host: developer.mozilla.org
->Accept-Language: fr
->```
+> ```sh
+> GET / HTTP/1.1
+> Host: developer.mozilla.org
+> Accept-Language: fr
+> ```
+<!-- }}} -->
 
 3. **Read the response sent by the server**
 
+<!-- Example {{{ -->
 > [!example]-
 >
->```sh
->HTTP/1.1 200 OK
->Date: Sat, 09 Oct 2010 14:28:02 GMT
->Server: Apache
->Last-Modified: Tue, 01 Dec 2009 20:18:22 GMT
->ETag: "51142bc1-7449-479b075b2891b"
->Accept-Ranges: bytes
->Content-Length: 29769
->Content-Type: text/html
+> ```sh
+> HTTP/1.1 200 OK
+> Date: Sat, 09 Oct 2010 14:28:02 GMT
+> Server: Apache
+> Last-Modified: Tue, 01 Dec 2009 20:18:22 GMT
+> ETag: "51142bc1-7449-479b075b2891b"
+> Accept-Ranges: bytes
+> Content-Length: 29769
+> Content-Type: text/html
 >
-><!doctype html>… (here come the 29769 bytes of the requested web page)
->```
+> <!doctype html>… (here come the 29769 bytes of the requested web page)
+> ```
+<!-- }}} -->
 
 4. **Close or reuse the connection** for further requests
 
+<!-- HTTP pipelining {{{-->
 ### HTTP pipelining
 
 If HTTP pipelining is activated, several requests can be sent without waiting
 for the first response to be fully received. HTTP pipelining has been
 superseded in HTTP/2 with more robust multiplexing requests within a frame.
+
+<!-- }}} -->
+
+___
+
 <!--}}}-->
 
 <!-- What can be controlled by HTTP {{{-->
@@ -183,8 +207,11 @@ should contain
 
 <!--}}}-->
 
+___
+
 <!--}}}-->
 
+<!-- HTTP/1.1 vs. HTTP/2 {{{-->
 ## HTTP/1.1 vs. HTTP/2
 
 > [!todo]
@@ -198,9 +225,19 @@ allowing optimizations like compression of headers and multiplexing.
 
 Even if only part of the original HTTP message is sent in this version of HTTP,
 the semantics of each message is unchanged and the client reconstitutes
-(virtually) the original HTTP/1.1 request.
-It is therefore useful to comprehend HTTP/2 messages in the HTTP/1.1 format.
+(virtually) the original **HTTP/1.1** request.
+It is therefore useful to comprehend **HTTP/2** messages in the **HTTP/1.1**
+format.
 
+___
+
+<!-- }}} -->
+
+<!-- HTTP Redirections {{{-->
 ## HTTP Redirections
 
 > [!todo]
+
+___
+
+<!-- }}} -->

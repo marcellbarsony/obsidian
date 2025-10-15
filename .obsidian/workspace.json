@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Networking/Services/FTP/Exploitation.md",
+                "file": "Networking/Services/DNS/Enumeration.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,31 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Exploitation"
+              "title": "Enumeration"
+            }
+          },
+          {
+            "id": "c108a61f36ca447c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Networking/Services/DNS/General.md",
+                "mode": "preview",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "General"
             }
           }
         ]
@@ -120,13 +144,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/Services/FTP/Exploitation.md",
+                "file": "Networking/Services/DNS/Enumeration.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Exploitation"
+              "title": "Outline of Enumeration"
             }
           },
           {
@@ -175,7 +199,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/Services/FTP/Exploitation.md",
+                "file": "Networking/Services/DNS/Enumeration.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +227,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Exploitation"
+              "title": "Graph of Enumeration"
             }
           }
         ]
@@ -225,36 +249,36 @@
   },
   "active": "63404f4803b22ee7",
   "lastOpenFiles": [
-    "Networking/Services/SMB/Enumeration.md",
-    "Networking/Services/FTP/Enumeration.md",
-    "Networking/Services/SNMP/Enumeration.md",
-    "Networking/Services/SNMP/General.md",
-    "Networking/Services/SMB/Exploitation.md",
-    "Networking/Services/FTP/Exploitation.md",
-    "Networking/Services/SMTP/Enumeration.md",
-    "Networking/Enumeration/_Checklist.md",
-    "Networking/Services/SMTP/Exploitation.md",
-    "Pentest/Tools/Metasploit/SearchSploit.md",
-    "Pentest/Tools/Metasploit/Metasploit.md",
-    "Pentest/Tools/Metasploit",
-    "Pentest/Tools/Cracking/Hashcat.md",
-    "Pentest/Tools/Cracking",
-    "Pentest/Tools/Brute Force/Hydra.md",
-    "Pentest/Tools/Brute Force",
-    "Pentest/Tools/Metasploit.md",
-    "Pentest/Tools/Hashcat.md",
-    "Pentest/Tools/SearchSploit.md",
-    "Pentest/Brute Force/Hydra.md",
-    "Pentest/General/General.md",
-    "Networking/Services/SMTP/Usage.md",
-    "Networking/Services/SMTP/General.md",
-    "Pentest/Brute Force",
-    "Networking/Services/DNS/Enumeration.md",
     "Networking/Services/DNS/Exploitation.md",
-    "Networking/Services/NFS/Enumeration.md",
-    "Networking/Services/NFS/Exploitation.md",
-    "Networking/Services/SMB/General.md",
+    "Networking/Services/DNS/Enumeration.md",
+    "Networking/Services/DNS/General.md",
+    "Networking/Services/MySQL/Enumeration.md",
+    "Networking/Services/SNMP/Enumeration.md",
+    "Networking/Services/SNMP/Exploitation.md",
+    "Networking/Services/SMTP/Exploitation.md",
+    "Networking/Services/SMTP/General.md",
+    "Networking/Services/SMTP/Usage.md",
     "Networking/Services/SMB/Usage.md",
+    "Networking/Services/SMB/Exploitation.md",
+    "Networking/Services/SMB/Enumeration.md",
+    "Networking/Services/Oracle TNS/Enumeration.md",
+    "Networking/Services/NFS/Exploitation.md",
+    "Networking/Services/NFS/Enumeration.md",
+    "Networking/Services/MySQL/Usage.md",
+    "Networking/Services/MySQL/General.md",
+    "Networking/Services/MSSQL/Enumeration.md",
+    "Networking/Services/MSSQL/Exploitation.md",
+    "Networking/Services/IPMI/Enumeration.md",
+    "Networking/Services/IMAP-POP3/Usage.md",
+    "Networking/Services/IMAP-POP3/General.md",
+    "Networking/Services/IMAP-POP3/Enumeration.md",
+    "Networking/Services/HTTP/General.md",
+    "Networking/Services/FTP/Usage.md",
+    "Networking/Services/FTP/General.md",
+    "Pentest/Tools/Metasploit",
+    "Pentest/Tools/Cracking",
+    "Pentest/Tools/Brute Force",
+    "Pentest/Brute Force",
     "Networking/Services/WMI",
     "Networking/Services/WinRM",
     "Networking/Services/RDP",
