@@ -60,6 +60,10 @@ ___
 The [[Nmap]] scan wil return [TLS certificate](https://en.wikipedia.org/wiki/Transport_Layer_Security#Digital_certificates)
 (*if the communication is encrypted*)
 
+```sh
+sudo nmap -sC -sV -p 110,143,993,995 <target> -oA imap-pop3-basic-script
+```
+
 <!-- Example {{{-->
 > [!example]-
 >
@@ -111,8 +115,31 @@ ___
 <!-- IMAP {{{-->
 ## IMAP
 
+<!-- Nmap {{{-->
+### Nmap
+
+Service detection
+
+```sh
+nmap -sV <target> -p 143,993 -oA imap-service-detection
+```
+
+Server capabilities
+
+```sh
+nmap -p 143 --script imap-capabilities <target> -oA imap-server-capabilities
+```
+
+All IMAP scripts
+
+```sh
+nmap -p 143,993 --script imap-* <target> -oA imap-all-scripts
+```
+
+<!-- }}} -->
+
 <!-- Banner Grabbing {{{-->
-### Banner Grabbing (IMAP)
+### Banner Grabbing
 
 Grab the banner with [[netcat]]
 
@@ -133,6 +160,77 @@ nmap -p 143,993 <target> -oA imap-banner
 ```
 <!-- }}} -->
 
+<!-- Connect {{{-->
+### Connect
+
+Connect and interact with an **IMAP** server using **openssl**
+(*TLS Encrypted Interaction*)
+
+```sh
+openssl s_client -connect <target>:imaps
+```
+
+<!-- Exmaple {{{-->
+> [!example]-
+>
+> ```sh
+> openssl s_client -connect 10.129.14.128:imaps
+> ```
+> ```sh
+> CONNECTED(00000003)
+> Can't use SSL_get_servername
+> depth=0 C = US, ST = California, L = Sacramento, O = Inlanefreight, OU = Customer Support, CN = mail1.inlanefreight.htb, emailAddress = cry0l1t3@inlanefreight.htb
+> verify error:num=18:self signed certificate
+> verify return:1
+> depth=0 C = US, ST = California, L = Sacramento, O = Inlanefreight, OU = Customer Support, CN = mail1.inlanefreight.htb, emailAddress = cry0l1t3@inlanefreight.htb
+> verify return:1
+> ---
+> Certificate chain
+>  0 s:C = US, ST = California, L = Sacramento, O = Inlanefreight, OU = Customer Support, CN = mail1.inlanefreight.htb, emailAddress = cry0l1t3@inlanefreight.htb
+>
+> ...SNIP...
+>
+> ---
+> read R BLOCK
+> ---
+> Post-Handshake New Session Ticket arrived:
+> SSL-Session:
+>     Protocol  : TLSv1.3
+>     Cipher    : TLS_AES_256_GCM_SHA384
+>     Session-ID: 2B7148CD1B7B92BA123E06E22831FCD3B365A5EA06B2CDEF1A5F397177130699
+>     Session-ID-ctx:
+>     Resumption PSK: 4D9F082C6660646C39135F9996DDA2C199C4F7E75D65FA5303F4A0B274D78CC5BD3416C8AF50B31A34EC022B619CC633
+>     PSK identity: None
+>     PSK identity hint: None
+>     SRP username: None
+>     TLS session ticket lifetime hint: 7200 (seconds)
+>     TLS session ticket:
+>     0000 - 68 3b b6 68 ff 85 95 7c-8a 8a 16 b2 97 1c 72 24   h;.h...|......r$
+>     0010 - 62 a7 84 ff c3 24 ab 99-de 45 60 26 e7 04 4a 7d   b....$...E`&..J}
+>     0020 - bc 6e 06 a0 ff f7 d7 41-b5 1b 49 9c 9f 36 40 8d   .n.....A..I..6@.
+>     0030 - 93 35 ed d9 eb 1f 14 d7-a5 f6 3f c8 52 fb 9f 29   .5........?.R..)
+>     0040 - 89 8d de e6 46 95 b3 32-48 80 19 bc 46 36 cb eb   ....F..2H...F6..
+>     0050 - 35 79 54 4c 57 f8 ee 55-06 e3 59 7f 5e 64 85 b0   5yTLW..U..Y.^d..
+>     0060 - f3 a4 8c a6 b6 47 e4 59-ee c9 ab 54 a4 ab 8c 01   .....G.Y...T....
+>     0070 - 56 bb b9 bb 3b f6 96 74-16 c9 66 e2 6c 28 c6 12   V...;..t..f.l(..
+>     0080 - 34 c7 63 6b ff 71 16 7f-91 69 dc 38 7a 47 46 ec   4.ck.q...i.8zGF.
+>     0090 - 67 b7 a2 90 8b 31 58 a0-4f 57 30 6a b6 2e 3a 21   g....1X.OW0j..:!
+>     00a0 - 54 c7 ba f0 a9 74 13 11-d5 d1 ec cc ea f9 54 7d   T....t........T}
+>     00b0 - 46 a6 33 ed 5d 24 ed b0-20 63 43 d8 8f 14 4d 62   F.3.]$.. cC...Mb
+> 
+>     Start Time: 1632081604
+>     Timeout   : 7200 (sec)
+>     Verify return code: 18 (self signed certificate)
+>     Extended master secret: no
+>     Max Early Data: 0
+> ---
+> read R BLOCK
+> * OK [CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE LITERAL+ AUTH=PLAIN] HTB-Academy IMAP4 v.0.21.4
+> ```
+<!-- }}} -->
+
+<!-- }}} -->
+
 <!-- NTLM Auth {{{-->
 ### NTLM Auth
 
@@ -140,7 +238,7 @@ If the server supports [NTLM auth](https://learn.microsoft.com/en-us/troubleshoo
 (Windows) obtain sensitive info (versions) can be obtained:
 
 ```sh
-telnet <target_domain> 143
+telnet <target> 143
 ```
 
 <!-- Example {{{-->
@@ -276,7 +374,7 @@ ___
 ## POP3
 
 <!-- Nmap {{{-->
-### Nmap (POP3)
+### Nmap
 
 Query supported POP3 capabilities
 (e.g, *AUTH types*, *STLS*, *TOP*, *UIDL*)
@@ -295,7 +393,7 @@ nmap -p 110 --script pop3-ntlm-info <target> -oA pop3-ntlm-info
 <!-- }}} -->
 
 <!-- Banner Grabbing {{{-->
-### Banner Grabbing (POP3)
+### Banner Grabbing
 
 Banner grabbing with [[netcat]]
 
@@ -310,40 +408,16 @@ openssl s_client -connect <target>:995 -crlf -quiet
 ```
 <!-- }}} -->
 
-<!-- Password Logging {{{-->
-### Password Logging (POP3)
+<!-- Connect {{{-->
+### Connect
 
-If `auth_debug`/`auth_verbose_passwords` options are enabled, plain text
-passwiords appear directly in the logs.
+Connect and interact with an **POP3** server using **openssl**
+(*TLS Encrypted Interaction*)
 
-> [!example]-
->
-> - `/var/log/auth.log` (Debian/Ubuntu)
-> - `/var/log/mail.log` (Debian/Ubuntu)
-> - `/var/log/maillog` (RHEL/CentOS)
-> - `/var/log/dovecot.log` or `/var/log/dovecot-info.log`
->
-> Find the passwords quickly
->
-> ```sh
-> grep -Ei 'password=|pass=|plain=' /var/log/*mail* /var/log/auth.log
-> ```
-<!-- }}} -->
 
-___
-
-<!-- }}} -->
-
-<!-- Interaction {{{-->
-## Interaction
-
-To interact with the **IMAP** or **POP3** server over SSL,
-`openssl` and [[netcat]] can be used.
-
-<!-- TLS Encrypted Interaction - POP3 {{{-->
-### TLS Encrypted Interaction - POP3
-
-Interact with an **POP3** server using **openssl**
+```sh
+openssl s_client -connect <target>:pop3s
+```
 
 <!-- Example {{{-->
 > [!example]-
@@ -406,70 +480,24 @@ Interact with an **POP3** server using **openssl**
 
 <!-- }}} -->
 
-<!-- TLS Encrypted Interaction - IMAP {{{-->
-### TLS Encrypted Interaction - IMAP
+<!-- Password Logging {{{-->
+### Password Logging (POP3)
 
-Interact with an **IMAP** server using **openssl**
+If `auth_debug`/`auth_verbose_passwords` options are enabled, plain text
+passwiords appear directly in the logs.
 
-<!-- Exmaple {{{-->
 > [!example]-
 >
-> ```sh
-> openssl s_client -connect 10.129.14.128:imaps
-> ```
-> ```sh
-> CONNECTED(00000003)
-> Can't use SSL_get_servername
-> depth=0 C = US, ST = California, L = Sacramento, O = Inlanefreight, OU = Customer Support, CN = mail1.inlanefreight.htb, emailAddress = cry0l1t3@inlanefreight.htb
-> verify error:num=18:self signed certificate
-> verify return:1
-> depth=0 C = US, ST = California, L = Sacramento, O = Inlanefreight, OU = Customer Support, CN = mail1.inlanefreight.htb, emailAddress = cry0l1t3@inlanefreight.htb
-> verify return:1
-> ---
-> Certificate chain
->  0 s:C = US, ST = California, L = Sacramento, O = Inlanefreight, OU = Customer Support, CN = mail1.inlanefreight.htb, emailAddress = cry0l1t3@inlanefreight.htb
+> - `/var/log/auth.log` (Debian/Ubuntu)
+> - `/var/log/mail.log` (Debian/Ubuntu)
+> - `/var/log/maillog` (RHEL/CentOS)
+> - `/var/log/dovecot.log` or `/var/log/dovecot-info.log`
 >
-> ...SNIP...
+> Find the passwords quickly
 >
-> ---
-> read R BLOCK
-> ---
-> Post-Handshake New Session Ticket arrived:
-> SSL-Session:
->     Protocol  : TLSv1.3
->     Cipher    : TLS_AES_256_GCM_SHA384
->     Session-ID: 2B7148CD1B7B92BA123E06E22831FCD3B365A5EA06B2CDEF1A5F397177130699
->     Session-ID-ctx:
->     Resumption PSK: 4D9F082C6660646C39135F9996DDA2C199C4F7E75D65FA5303F4A0B274D78CC5BD3416C8AF50B31A34EC022B619CC633
->     PSK identity: None
->     PSK identity hint: None
->     SRP username: None
->     TLS session ticket lifetime hint: 7200 (seconds)
->     TLS session ticket:
->     0000 - 68 3b b6 68 ff 85 95 7c-8a 8a 16 b2 97 1c 72 24   h;.h...|......r$
->     0010 - 62 a7 84 ff c3 24 ab 99-de 45 60 26 e7 04 4a 7d   b....$...E`&..J}
->     0020 - bc 6e 06 a0 ff f7 d7 41-b5 1b 49 9c 9f 36 40 8d   .n.....A..I..6@.
->     0030 - 93 35 ed d9 eb 1f 14 d7-a5 f6 3f c8 52 fb 9f 29   .5........?.R..)
->     0040 - 89 8d de e6 46 95 b3 32-48 80 19 bc 46 36 cb eb   ....F..2H...F6..
->     0050 - 35 79 54 4c 57 f8 ee 55-06 e3 59 7f 5e 64 85 b0   5yTLW..U..Y.^d..
->     0060 - f3 a4 8c a6 b6 47 e4 59-ee c9 ab 54 a4 ab 8c 01   .....G.Y...T....
->     0070 - 56 bb b9 bb 3b f6 96 74-16 c9 66 e2 6c 28 c6 12   V...;..t..f.l(..
->     0080 - 34 c7 63 6b ff 71 16 7f-91 69 dc 38 7a 47 46 ec   4.ck.q...i.8zGF.
->     0090 - 67 b7 a2 90 8b 31 58 a0-4f 57 30 6a b6 2e 3a 21   g....1X.OW0j..:!
->     00a0 - 54 c7 ba f0 a9 74 13 11-d5 d1 ec cc ea f9 54 7d   T....t........T}
->     00b0 - 46 a6 33 ed 5d 24 ed b0-20 63 43 d8 8f 14 4d 62   F.3.]$.. cC...Mb
-> 
->     Start Time: 1632081604
->     Timeout   : 7200 (sec)
->     Verify return code: 18 (self signed certificate)
->     Extended master secret: no
->     Max Early Data: 0
-> ---
-> read R BLOCK
-> * OK [CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE LITERAL+ AUTH=PLAIN] HTB-Academy IMAP4 v.0.21.4
+> ```sh
+> grep -Ei 'password=|pass=|plain=' /var/log/*mail* /var/log/auth.log
 > ```
-<!-- }}} -->
-
 <!-- }}} -->
 
 ___

@@ -49,12 +49,8 @@ ___
 <!-- DNS Server Discovery {{{-->
 ## DNS Server Discovery
 
-<!-- Tip {{{-->
-> [!tip]
->
-> Identifying the DNS servers associated with the target domain
-> is a critical first step
-<!-- }}} -->
+Identifying the DNS servers associated with the target domain
+is a critical first step
 
 Query the [[General#Authoritative Name Server|Name Server]] with
 [dig](https://linux.die.net/man/1/dig)
@@ -78,7 +74,7 @@ ___
 ## Subdomain Brute Forcing
 
 [DNSenum](https://github.com/fwaeytens/dnsenum) —
-Full DNS enumeration against a domain
+Full DNS enumeration against a domain using [[Wordlists#DNS|wordlists]]
 
 ```sh
 dnsenum --dnsserver <target_dns> --enum -p 5 -s 5 -o subdomains.txt -f <wordlist.txt> <target_domain>
@@ -107,17 +103,6 @@ dnsenum --dnsserver <target_dns> --enum -p 5 -s 5 -o subdomains.txt -f <wordlist
 >     -f /opt/useful/seclists/Discovery/DNS/subdomains-top1million-110000.txt \
 >     inlanefreight.htb
 > ```
-<!-- }}} -->
-
-<!-- Tip {{{-->
-> [!tip]-
->
-> Wordlists
->
-> - [SecLists - DNS Discovery](https://github.com/danielmiessler/SecLists/tree/master/Discovery/DNS)
-> - [SecLists - subdomains-top1million-5000.txt](https://github.com/danielmiessler/SecLists/blob/master/Discovery/DNS/subdomains-top1million-5000.txt)
-> - [SecLists - subdomains-top1million-20000.txt](https://github.com/danielmiessler/SecLists/blob/master/Discovery/DNS/subdomains-top1million-20000.txt)
-> - [SecLists - subdomains-top1million-110000.txt](https://github.com/danielmiessler/SecLists/blob/master/Discovery/DNS/subdomains-top1million-110000.txt)
 <!-- }}} -->
 
 Bash script for DNS subdomains brute-forcing
@@ -259,6 +244,12 @@ dig @<dns_ip> <target_domain> any
 [**DNS Zone Transfer**](https://en.wikipedia.org/wiki/DNS_zone_transfer)
 or **Asynchronous Full Transfer Zone** (**AXFR**) refers to the transfer of
 zones to another server in DNS (e.g., *in case of DNS failure*).
+
+> [!todo]
+>
+> **REMOVE**
+>
+> [zonetransfer.me](https://digi.ninja/projects/zonetransferme.php)
 
 <!-- Info {{{-->
 > [!info]-
