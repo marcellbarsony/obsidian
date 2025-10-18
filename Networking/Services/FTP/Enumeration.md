@@ -41,7 +41,7 @@ nmap -p 21 <target> -oA ftp-identify
 Identify FTP server features (*default FTP unauthantecated script scan*)
 
 ```sh
-sudo nmap -sC -sV -p21 -A <target> --script-trace -oA ftp-default-script
+sudo nmap -sC -sV -p 21 -A <target> --script-trace -oA ftp-default-script
 ```
 
 <!-- Info {{{-->
@@ -52,6 +52,12 @@ sudo nmap -sC -sV -p21 -A <target> --script-trace -oA ftp-default-script
 > - `-A`: Aggressive scan
 > - `--script-trace`: Trace the progress of the NSE script (*optional*)
 <!-- }}} -->
+
+Run all FTP scripts
+
+```sh
+nmap --script ftp-* -p 21 <target_ip> -oA ftp-all-scripts
+```
 
 ### FTP Bounce Attack
 
@@ -97,21 +103,94 @@ ___
 
 Update the connection to TLS, display the server's:
 
-- TLS certificate (e.g., *hostname*, *e-mail*)
+- TLS certificate (e.g., *hostname*, *e-mail*, *etc*.)
 - connection details
+
+```sh
+openssl s_client -connect <target>:21 -starttls ftp
+```
 
 <!-- Example {{{-->
 > [!example]-
 >
-> ```sh
-> openssl s_client -connect <target>:21 -starttls ftp
-> ```
 > ```sh
 > openssl s_client -connect crossfit.htb:21 -starttls ftp
 > ```
 <!-- }}} -->
 
 ___
+
+<!-- }}} -->
+
+<!-- Metasploit {{{-->
+## Metasploit
+
+Consoleless MFS enumeration
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> msfconsole
+> use auxiliary/scanner/ftp/anonymous
+> set RHOSTS <target>
+> set RPORT 21
+> run
+> exit
+> ```
+<!-- }}} -->
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> msfconsole
+> use auxiliary/scanner/ftp/ftp_version
+> set RHOSTS <target>
+> set RPORT 21
+> run
+> exit
+> ```
+<!-- }}} -->
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> msfconsole
+> use auxiliary/scanner/ftp/bison_ftp_traversal
+> set RHOSTS <target>
+> set RPORT 21
+> run
+> exit
+> ```
+<!-- }}} -->
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> msfconsole
+> use auxiliary/scanner/ftp/colorado_ftp_traversal
+> set RHOSTS <target>
+> set RPORT 21
+> run
+> exit
+> ```
+<!-- }}} -->
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> msfconsole
+> use auxiliary/scanner/ftp/titanftp_xcrc_traversal
+> set RHOSTS <target>
+> set RPORT 21
+> run
+> exit
+> ```
+<!-- }}} -->
 
 <!-- }}} -->
 

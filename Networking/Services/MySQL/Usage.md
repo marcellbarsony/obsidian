@@ -123,18 +123,66 @@ ___
 
 <!-- }}} -->
 
-<!-- Server {{{-->
-## Server
+<!-- Version Info {{{-->
+## Version Info
+
+Show MySQL version
+
+```sh
+SELECT @@version;
+```
+
+```sh
+SELECT VERSION();
+```
 
 Show server version
 
 ```sql
-SELECT VERSION();
+SELECT @@version_compile_os;
+```
+
+```sh
+SELECT @@version_compile_machine;
+```
+
+```sh
+SHOW VARIABLES LIKE "%version%";
 ```
 
 ___
 
 <!-- }}} -->
+
+## Configuration
+
+Show important variables
+
+```sh
+SHOW VARIABLES;
+```
+
+> [!example]-
+>
+>
+> ```sh
+> SHOW VARIABLES LIKE 'secure_file_priv';  # File operations directory
+> SHOW VARIABLES LIKE 'plugin_dir';        # Plugin directory
+> SHOW VARIABLES LIKE 'datadir';           # Data directory
+> SHOW VARIABLES LIKE 'basedir';           # Base directory
+> ```
+
+Check if `local_infile` enabled
+
+```sh
+SHOW VARIABLES LIKE 'local_infile';
+```
+
+Process list
+
+```sh
+SHOW PROCESSLIST;
+```
 
 <!-- User {{{-->
 ## User
@@ -144,6 +192,43 @@ Show current user
 ```sql
 SELECT USER();
 ```
+
+```sql
+SELECT CURRENT_USER();
+```
+
+List MySQL users
+
+```sql
+SELECT user, host FROM mysql.user;
+```
+
+<!-- Privileges {{{-->
+### Privileges
+
+Show user privileges
+
+```sql
+SHOW GRANTS;
+```
+
+```sql
+SHOW GRANTS FOR '<username>'@'<host>';
+```
+
+List users with `FILE` privilege
+
+```sql
+SELECT user, host FROM mysql.user WHERE File_priv = 'Y';
+```
+
+List users with `SUPER` privilege
+
+```sql
+SELECT user, host FROM mysql.user WHERE Super_priv = 'Y';
+```
+
+<!-- }}} -->
 
 ___
 
@@ -244,12 +329,17 @@ Show tables in current database
 SHOW TABLES;
 ```
 
+```sql
+SELECT table_name FROM information_schema.TABLES WHERE table_schema=DATABASE();
+```
+
 <!-- }}} -->
 
 <!-- Structure {{{-->
 ### Structure
 
 Show table structure
+(e.g., *column names, data types, keys, default values, etc.*)
 
 ```sql
 DESCRIBE table_name;
@@ -257,6 +347,10 @@ DESCRIBE table_name;
 
 ```sql
 SHOW COLUMNS FROM table_name;
+```
+
+```sql
+SELECT column_name, data_type FROM information_schema.COLUMNS WHERE table_name='<users>';
 ```
 
 <!-- }}} -->

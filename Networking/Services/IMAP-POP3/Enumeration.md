@@ -163,6 +163,9 @@ nmap -p 143,993 <target> -oA imap-banner
 <!-- Connect {{{-->
 ### Connect
 
+<!-- OpenSSL (IMAPS) {{{-->
+#### OpenSSL (IMAPS)
+
 Connect and interact with an **IMAP** server using **openssl**
 (*TLS Encrypted Interaction*)
 
@@ -231,8 +234,8 @@ openssl s_client -connect <target>:imaps
 
 <!-- }}} -->
 
-<!-- NTLM Auth {{{-->
-### NTLM Auth
+<!-- Telnet (NTLM Auth) {{{-->
+#### Telnet (NTLM Auth)
 
 If the server supports [NTLM auth](https://learn.microsoft.com/en-us/troubleshoot/windows-server/windows-security/ntlm-user-authentication)
 (Windows) obtain sensitive info (versions) can be obtained:
@@ -265,7 +268,7 @@ nmap -p 143 --script imap-ntlm-info <target_domain> -oA imap-ntlm-info
 <!-- }}} -->
 
 <!-- cURL {{{-->
-### cURL
+#### cURL
 
 With the access credentials, an attacker could log in to the mail server
 and read (or even send) the individual messages
@@ -362,6 +365,8 @@ and read (or even send) the individual messages
 > [!warning]
 >
 > Valid credentials required
+<!-- }}} -->
+
 <!-- }}} -->
 
 <!-- }}} -->
@@ -481,7 +486,7 @@ openssl s_client -connect <target>:pop3s
 <!-- }}} -->
 
 <!-- Password Logging {{{-->
-### Password Logging (POP3)
+### Password Logging
 
 If `auth_debug`/`auth_verbose_passwords` options are enabled, plain text
 passwiords appear directly in the logs.

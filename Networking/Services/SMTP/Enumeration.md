@@ -110,6 +110,7 @@ sudo nmap -sC -sV -p 25 <target> -oA smtp-default-scripts
 > ```
 <!-- }}} -->
 
+<!-- Scripts {{{-->
 ### Scripts
 
 Discover SMTP commands
@@ -136,8 +137,6 @@ Run all SMTP-related scripts
 nmap -p 25,465,587 --script smtp-* <target> -oA smtp-all-scripts
 ```
 
-___
-
 <!-- Example {{{-->
 > [!example]-
 >
@@ -149,6 +148,8 @@ ___
 > 25/tcp open  smtp
 > |_smtp-commands: mail1, PIPELINING, SIZE 10240000, VRFY, ETRN, STARTTLS, ENHANCEDSTATUSCODES, 8BITMIME, DSN, SMTPUTF8, CHUNKING
 > ```
+<!-- }}} -->
+
 <!-- }}} -->
 
 <!-- Open Relay {{{-->
@@ -163,6 +164,8 @@ nmap -p25 --script smtp-open-relay <target> -v -oA smtp-open-relay
 ```
 
 <!-- }}} -->
+
+___
 
 <!-- }}} -->
 
@@ -214,13 +217,13 @@ smtp-user-enum -M VRFY -U <users.txt> -t <target> -w 20
 <!-- }}} -->
 
 <!-- Warning {{{-->
-> [!warning]-
+> [!warning]
 >
 > Some servers may have higher timeout
 >
-> > [!example]-
+> > [!tip]-
 > >
-> > Set timeout to `20` seconds (*default `10` seconds*)
+> > Set timeout to `20` seconds (*defaults to* `10` *seconds*)
 > >
 > > ```sh
 > > smtp-user-enum -M VRFY -U users.txt -t 10.129.33.217 -w 20
@@ -232,31 +235,43 @@ smtp-user-enum -M VRFY -U <users.txt> -t <target> -w 20
 <!-- Metasploit {{{-->
 ### Metasploit
 
-1. [[Metasploit#Launch Metasploit|Launch]]
-
-2. [[Metasploit#Search Exploit|Search Scanner]]
-
-```sh
-msf6 > search smtp
-```
-
-3. [[Metasploit#Select Exploit|Select Scanner]]
+The [smtp_enum](https://www.rapid7.com/db/modules/auxiliary/scanner/smtp/smtp_enum/)
+scanner can reveal a list of valid users
 
 ```sh
-msf6 > auxiliary/scanner/smtp/smtp_enum
+use auxiliary/scanner/smtp/smtp_enum
 ```
 
-4. [[Metasploit#Show Options|Show Options]]
-
-5. [[Metasploit#Set Options|Set Options]]
-
-```sh
-set RHOSTS <target>
-```
-
-6. [[Metasploit#Check Exploit|Check]]
-
-7. [[Metasploit#Run Exploit|Run]]
+<!-- Example {{{-->
+> [!example]-
+>
+>
+> 1. [[Metasploit#Launch Metasploit|Launch Metasploit]]
+>
+> 2. [[Metasploit#Search Exploit|Search Scanner]]
+>
+> ```sh
+> search smtp
+> ```
+>
+> 3. [[Metasploit#Select Exploit|Select Scanner]]
+>
+> ```sh
+> use auxiliary/scanner/smtp/smtp_enum
+> ```
+>
+> 4. [[Metasploit#Show Actions|Show Actions]]
+>
+> 5. [[Metasploit#Set Actions|Set Actions]]
+>
+> 6. [[Metasploit#Show Options|Show Options]]
+>
+> 7. [[Metasploit#Set Options|Set Options]]
+>
+> 8. [[Metasploit#Check Exploit|Check Scanner]]
+>
+> 9. [[Metasploit#Run Exploit|Run]]
+<!-- }}} -->
 
 <!-- }}} -->
 

@@ -8,12 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "c108a61f36ca447c",
+            "id": "83632d55fe09f01b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Networking/Services/IMAP-POP3/Usage.md",
+                "file": "Networking/Services/SMTP/Enumeration.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Usage"
+              "title": "Enumeration"
             }
           }
         ]
@@ -78,8 +78,8 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "brute force",
-                "matchingCase": false,
+                "query": "",
+                "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/Services/IMAP-POP3/Usage.md",
+                "file": "Networking/Services/SMTP/Enumeration.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Usage"
+              "title": "Outline of Enumeration"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/Services/IMAP-POP3/Usage.md",
+                "file": "Networking/Services/SMTP/Enumeration.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Usage"
+              "title": "Graph of Enumeration"
             }
           }
         ]
@@ -223,35 +223,37 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "c108a61f36ca447c",
+  "active": "83632d55fe09f01b",
   "lastOpenFiles": [
-    "Networking/Services/IMAP-POP3/General.md",
-    "Networking/Services/IMAP-POP3/Usage.md",
-    "Networking/Services/IMAP-POP3/Enumeration.md",
-    "Networking/Services/IMAP-POP3/Exploitation.md",
-    "Networking/Services/DNS/Enumeration.md",
-    "Networking/Services/Oracle TNS/Enumeration.md",
-    "Networking/Services/IPMI/Exploitation.md",
-    "Networking/Services/IPMI/Enumeration.md",
-    "Pentest/Tools/Brute Force/Wordlists.md",
-    "Networking/Services/SNMP/Enumeration.md",
-    "Networking/Services/Oracle TNS/Exploitation.md",
-    "test.txt",
-    "Networking/Services/FTP/Exploitation.md",
-    "Networking/Services/FTP/General.md",
-    "Networking/Services/FTP/Enumeration.md",
-    "Networking/Services/DNS/General.md",
-    "Pentest/Tools/Brute Force/Hydra.md",
-    "Networking/Services/DNS/Exploitation.md",
-    "Networking/Services/MySQL/Enumeration.md",
-    "Networking/Services/SNMP/Exploitation.md",
     "Networking/Services/SMTP/Exploitation.md",
-    "Networking/Services/SMTP/General.md",
-    "Networking/Services/SMTP/Usage.md",
+    "Networking/Services/NFS/General.md",
+    "Networking/Services/NFS/Exploitation.md",
+    "Pentest/Tools/Metasploit/Metasploit.md",
+    "Networking/Services/NFS/Enumeration.md",
+    "Networking/Services/SMTP/Enumeration.md",
+    "Networking/Tools/Netcat/Netcat.md",
+    "Microsoft/Windows/Exploitation/EternalBlue.md",
+    "Microsoft/Windows/General/General.md",
+    "Microsoft/Windows/Exploitation/Mimikatz.md",
+    "Microsoft/Windows/Exploitation",
+    "Microsoft/Exploitation",
+    "Microsoft/Windows/Windows.md",
+    "Networking/Services/FTP/Enumeration.md",
+    "Networking/Services/FTP/Usage.md",
+    "Networking/Services/FTP/Exploitation.md",
+    "Networking/Services/SMB/Enumeration.md",
+    "Networking/Services/FTP/General.md",
+    "Networking/Networking.md",
+    "Networking/Services/SMB/General.md",
     "Networking/Services/SMB/Usage.md",
     "Networking/Services/SMB/Exploitation.md",
-    "Networking/Services/SMB/Enumeration.md",
-    "Networking/Services/NFS/Exploitation.md",
+    "Networking/Services/IMAP-POP3/Exploitation.md",
+    "Networking/Services/SNMP/Enumeration.md",
+    "Networking/Services/SNMP/Exploitation.md",
+    "Networking/Services/MySQL/Usage.md",
+    "Networking/Services/MySQL/Enumeration.md",
+    "Networking/Services/MySQL/General.md",
+    "test.txt",
     "Pentest/Tools/Metasploit",
     "Pentest/Tools/Cracking",
     "Pentest/Tools/Brute Force",
@@ -259,8 +261,6 @@
     "Networking/Services/WMI",
     "Networking/Services/WinRM",
     "Networking/Services/RDP",
-    "Networking/Services/Rsync/General/md",
-    "Networking/Services/Rsync/General",
     "Networking/Services/MSSQL/src/ssms-connect.png",
     "Networking/Services/MSSQL/src/20251007-213129.png",
     "Networking/Services/MSSQL/src/ssms.webp",

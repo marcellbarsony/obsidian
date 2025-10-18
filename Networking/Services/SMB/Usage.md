@@ -103,13 +103,29 @@ smbclient -N \\\\<target_ip>\\<share>
 Connect to a share as specified user
 
 ```sh
-smbclient -U bob \\\\<target_ip>\\users
+smbclient \\\\<target_ip>\\users -U "<username>"
 ```
 
 <!-- Info {{{-->
 > [!info]-
 >
 > - `-U`: Connect as user with known credentials
+<!-- }}} -->
+
+```sh
+smbclient "\\\\<target_ip>\\" -U <username> -W <domain_name>
+```
+
+```sh
+smbclient "\\\\<target_ip>\\" -U <username> -W <domain_name> --pw-nt-hash `hash`
+```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `-W <domain_name>`: NetBIOS/workgroup or Active Directory domain to use for the login
+> - `--pw-nt-hash hash`: Use the supplied NT hash as the password
+>   (*pass-the-hash style auth*)
 <!-- }}} -->
 
 <!-- }}} -->

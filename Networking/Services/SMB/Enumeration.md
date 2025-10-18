@@ -45,6 +45,10 @@ Scan a network searching for SMB hosts via
 ```sh
 nbtscan -r <target_network>/<cidr>
 ```
+
+> [!info]-
+>
+> - `-r`: Use local port 137 for scans
 <!-- }}} -->
 
 <!-- Nmap {{{-->
@@ -52,12 +56,12 @@ nbtscan -r <target_network>/<cidr>
 
 Banner grabbing with default scripts
 
+```sh
+sudo nmap -sV -sC -p 139,445 <target> -oA smb-default-scripts
+```
+
 <!-- Example {{{-->
 > [!example]-
->
-> ```sh
-> sudo nmap -sV -sC -p 139,445 <target> -oA smb-default-scripts
-> ```
 >
 > ```sh
 > PORT    STATE SERVICE     VERSION
@@ -86,8 +90,8 @@ to discover SMB versions and supported protocol features
 nmap --script smb-protocols -p 445 <target> -oA smb-protocols
 ```
 
-Run all `safe` and `smp-enum-*` scripts for non-destructive SMB enumeration
 
+Run all `safe` and `smp-enum-*` scripts for non-destructive SMB enumeration
 ```sh
 nmap --script "safe or smb-enum-*" -p 445 <target> -oA smb-enumeration
 ```
@@ -98,6 +102,155 @@ to extract OS/Host/Domain information
 ```sh
 nmap --script smb-os-discovery.nse -p 445 <target> -oA smb-os-discovery
 ```
+
+<!-- CVE Exploits {{{-->
+#### CVE Exploits
+
+<!-- Netapi {{{-->
+##### Netapi
+
+Detect [[Exploitation#Netapi|Netapi (MS08-067)]] via
+[smb-vuln-ms08-067](https://nmap.org/nsedoc/scripts/smb-vuln-ms08-067.html)
+
+```sh
+nmap --script smb-vuln-ms08-067.nse -p445 <target> -oA smb-netapi-tcp
+```
+
+```sh
+nmap -sU --script smb-vuln-ms08-067.nse -p U:137 <target> -oA smb-netapi-udp
+```
+
+> [!warning]
+>
+> This check is dangerous and it may crash systems
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> | smb-vuln-ms08-067:
+> |   VULNERABLE:
+> |   Microsoft Windows system vulnerable to remote code execution (MS08-067)
+> |     State: VULNERABLE
+> |     IDs:  CVE:CVE-2008-4250
+> |           The Server service in Microsoft Windows 2000 SP4, XP SP2 and SP3, Server 2003 SP1 and SP2,
+> |           Vista Gold and SP1, Server 2008, and 7 Pre-Beta allows remote attackers to execute arbitrary
+> |           code via a crafted RPC request that triggers the overflow during path canonicalization.
+> |
+> |     Disclosure date: 2008-10-23
+> |     References:
+> |       https://technet.microsoft.com/en-us/library/security/ms08-067.aspx
+> |_      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4250
+> ```
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- EternalBlue {{{-->
+##### EternalBlue
+
+Detect [[Exploitation#EternalBlue|EternalBlue (MS17-010)]] via
+[smb-vuln-ms17-010](https://nmap.org/nsedoc/scripts/smb-vuln-ms17-010.html)
+
+```sh
+nmap -Pn -p 445 --open --max-hostgroup 3 --script smb-vuln-ms17-010 <ip_netblock> -oA smb-eternalblue
+```
+
+> [!info]-
+>
+> - `Pn`: Skip ping check, treat hosts as online
+> - `--max-hostgroup 3`: Limit the number of parallel hosts scanned
+> - `<ip_netblock>`: Target IP range/subnet (e.g. `192.168.1.0/24`)
+
+
+```sh
+nmap -A -p 445 <target>
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> Host script results:
+> | smb-vuln-ms17-010:
+> |   VULNERABLE:
+> |   Remote Code Execution vulnerability in Microsoft SMBv1 servers (ms17-010)
+> |     State: VULNERABLE
+> |     IDs:  CVE:CVE-2017-0143
+> |     Risk factor: HIGH
+> |       A critical remote code execution vulnerability exists in Microsoft SMBv1
+> |        servers (ms17-010).
+> |
+> |     Disclosure date: 2017-03-14
+> |     References:
+> |       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-0143
+> |       https://technet.microsoft.com/en-us/library/security/ms17-010.aspx
+> |_      https://blogs.technet.microsoft.com/msrc/2017/05/12/customer-guidance-for-wannacrypt-attacks/
+> ```
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- Metasploit {{{-->
+### Metasploit
+
+Scan [[SMB/General|SMB]] with [[Metasploit]]
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> msfconsole
+> use auxiliary/scanner/smb/smb_version
+> set RHOSTS <target_ip>
+> set RPORT 139
+> run
+> exit
+> ```
+<!-- }}} -->
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> msfconsole
+> use auxiliary/scanner/smb/smb2
+> set RHOSTS <target_ip>
+> set RPORT 139
+> run
+> exit
+> ```
+<!-- }}} -->
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> msfconsole
+> use auxiliary/scanner/smb/smb_version
+> set RHOSTS <target_ip>
+> set RPORT 445
+> run
+> exit
+> ```
+<!-- }}} -->
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> msfconsole
+> use auxiliary/scanner/smb/smb2
+> set RHOSTS <target_ip>
+> set RPORT 445
+> run
+> exit
+> ```
+<!-- }}} -->
 
 <!-- }}} -->
 
@@ -126,10 +279,26 @@ Connect to server and list shares (*[Anonymous Null Session](https://hackviser.c
 smbclient -N -L //<target>
 ```
 
+<!-- Info {{{-->
 > [!info]-
 >
 > - `-N`: Null session / Anonymous access
 > - `-L`: List shares
+<!-- }}} -->
+
+Downgrade SMB dialect
+
+```sh
+smbclient -N //<target>/ --option="client min protocol"=LANMAN1
+```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `-N`: Null session / Anonymous access
+> - `--option="client min protocol"=LANMAN1`: Set minimum SMB dialect to LANMAN1
+>   (Legacy)
+<!-- }}} -->
 
 <!-- }}} -->
 
@@ -150,6 +319,21 @@ smbclient -N -L \\\\<target>\\
 > - `-L`: List shares
 <!-- }}} -->
 
+Downgrade SMB dialect
+
+```sh
+smbclient -N \\\\<target>\\ --option="client min protocol"=LANMAN1
+```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `-N`: Null session / Anonymous access
+> - `--option="client min protocol"=LANMAN1`: Set minimum SMB dialect to LANMAN1
+>   (Legacy)
+<!-- }}} -->
+
+
 <!-- }}} -->
 
 <!-- }}} -->
@@ -167,6 +351,14 @@ smbmap -H <target>
 
 ```sh
 smbmap -H <target> -u "" -p ""
+```
+
+```sh
+smbmap -H <target> -u null -p null
+```
+
+```sh
+smbmap -H <target> -u guest
 ```
 
 <!-- Info {{{-->
@@ -215,6 +407,10 @@ Connect without credentials
 ([SMB Null Session](https://hackviser.com/tactics/pentesting/services/smb#smb-null-session))
 
 ```sh
+rpcclient <target>
+```
+
+```sh
 rpcclient -U "" <target>
 ```
 
@@ -222,7 +418,7 @@ rpcclient -U "" <target>
 > [!example]-
 >
 > ```sh
-> rpcclient -U "" .10.129.244.136
+> rpcclient -U "" 10.129.244.136
 > ```
 >
 > Press `Enter` to bypass the password prompt
@@ -551,18 +747,23 @@ rpcclient $> querygroup 0x201
 
 > [!warning]
 >
-> DEPRECATED
-
-```sh
-crackmapexec smb <target> --shares -u '' -p ''
-```
+> **DEPRECATED** to [NetExe](https://github.com/Pennyw0rth/NetExec)
 
 <!-- Example {{{-->
 > [!example]-
 >
 > ```sh
-> crackmapexec smb 10.129.14.128 --shares -u '' -p ''
+> crackmapexec smb <target>
 > ```
+>
+> ```sh
+> crackmapexec smb <target> --pass-pol -u "" -p ""
+> ```
+>
+> ```sh
+> crackmapexec smb <target> --pass-pol -u "guest" -p ""
+> ```
+>
 > ```sh
 > SMB         10.129.14.128   445    DEVSMB           [*] Windows 6.1 Build 0 (name:DEVSMB) (domain:) (signing:False) (SMBv1:False)
 > SMB         10.129.14.128   445    DEVSMB           [+] \: 

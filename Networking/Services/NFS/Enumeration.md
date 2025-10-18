@@ -34,27 +34,55 @@ nmap -p 2049,111 <target> -oA nfs-default
 Enumerate TCP ports `111` and `2049`
 
 ```sh
-sudo nmap -sC -sV <target> -p111,2049 -oA nfs-default-scripts
+sudo nmap -sC -sV <target> -p 111,2049 -oA nfs-default-scripts
 ```
 
-The `rpcinfo` NSE script retrieves a list of running RPC services.
-This checks whether the target share is connected to the network on all required
-ports.
+<!-- Info {{{-->
+> [!info]-
+>
+> `-sC`: Run the [rpcinfo](https://nmap.org/nsedoc/scripts/rpcinfo.html
+> script to retrieve a list of running RPC services.
+> This checks whether the target share is connected to the network on all required
+> ports.
+<!-- }}} -->
+
+Run all nfs scripts (
+[nfs-ls](https://nmap.org/nsedoc/scripts/nfs-ls.html),
+[nfs-showmount](https://nmap.org/nsedoc/scripts/nfs-showmount.html),
+[nfs-statfs](https://nmap.org/nsedoc/scripts/nfs-statfs.html)
+)
 
 ```sh
 sudo nmap --script nfs* <target> -sV -p111,2049 -oA nfs-rpc-detection
 ```
 
-<!-- Tip {{{-->
-> [!tip]
->
-> Useful Nmap scripts
->
-> ```sh
-> nfs-ls        # List NFS exports and check permissions
-> nfs-showmount # Like showmount -e
-> nfs-statfs    # Disk statistics and NFS share info
-> ```
+<!-- CVE Scripts {{{-->
+### CVE Scripts
+
+[[Exploitation#CVE-2010-4344|CVE-2010-4344]] (
+[smtp-vuln-cve2010-4344](https://nmap.org/nsedoc/scripts/smtp-vuln-cve2010-4344.html)
+)
+
+```sh
+sudo nmap -sV --script=smtp-vuln-cve2010-4344 -p 25,465,587 <target> -oA smtp-vuln-cve2010-4344
+```
+
+[[Exploitation#CVE-2011-1720|CVE-2011-1720]] (
+[smtp-vuln-cve2011-1720](https://nmap.org/nsedoc/scripts/smtp-vuln-cve2011-1720.html)
+)
+
+```sh
+sudo nmap -sV --script=smtp-vuln-cve2011-1720 -p 25,465,587 <target> -oA smtp-vuln-cve2011-1720
+```
+
+[[Exploitation#CVE-2011-1764|CVE-2011-1764]] (
+[smtp-vuln-cve2010-1764](https://nmap.org/nsedoc/scripts/smtp-vuln-cve2011-1764.html)
+)
+
+```sh
+sudo nmap -sV --script=smtp-vuln-cve2011-1764 -p 25,465,587 <target> -oA smtp-vuln-cve2011-1764
+```
+
 <!-- }}} -->
 
 ___
@@ -162,6 +190,10 @@ ___
 ## Metasploit
 
 Scan NFS mounts and list permissions with [[Metasploit]]
+
+```sh
+use scanner/nfs/nfsmount
+```
 
 <!-- Example {{{-->
 > [!example]-

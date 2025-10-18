@@ -22,8 +22,14 @@ ___
 
 <!-- }}} -->
 
-<!-- Scanning MySQL Server {{{-->
-## Scanning MySQL Server
+<!-- Nmap {{{-->
+## Nmap
+
+Detect MySQL service
+
+```sh
+nmap -p 3306 <target> -oA mysql-service
+```
 
 [[General#MySQL Database|MySQL Databases]] can be enumerated using
 [[Nmap Scripting Engine|Nmap NSE]] scripts
@@ -104,6 +110,29 @@ sudo nmap -sC -sV -p3306 --script mysql* <target> -oA mysql-default-scripts
 <!-- }}} -->
 
 ___
+
+<!-- }}} -->
+
+<!-- Banner Grabbing {{{-->
+## Banner Grabbing
+
+Banner grabbing with [[Nmap]]
+
+```sh
+nmap -sV -p 3306 <target> -oA mysql-banner
+```
+
+Banner grabbing with [[netcat]]
+
+```sh
+nc -vn <target> 3306
+```
+
+Banner grabbing with [[Telnet/General|Telnet]]
+
+```sh
+telnet <target> 3306
+```
 
 <!-- }}} -->
 
