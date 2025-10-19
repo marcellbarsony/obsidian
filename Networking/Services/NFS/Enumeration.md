@@ -56,35 +56,6 @@ Run all nfs scripts (
 sudo nmap --script nfs* <target> -sV -p111,2049 -oA nfs-rpc-detection
 ```
 
-<!-- CVE Scripts {{{-->
-### CVE Scripts
-
-[[Exploitation#CVE-2010-4344|CVE-2010-4344]] (
-[smtp-vuln-cve2010-4344](https://nmap.org/nsedoc/scripts/smtp-vuln-cve2010-4344.html)
-)
-
-```sh
-sudo nmap -sV --script=smtp-vuln-cve2010-4344 -p 25,465,587 <target> -oA smtp-vuln-cve2010-4344
-```
-
-[[Exploitation#CVE-2011-1720|CVE-2011-1720]] (
-[smtp-vuln-cve2011-1720](https://nmap.org/nsedoc/scripts/smtp-vuln-cve2011-1720.html)
-)
-
-```sh
-sudo nmap -sV --script=smtp-vuln-cve2011-1720 -p 25,465,587 <target> -oA smtp-vuln-cve2011-1720
-```
-
-[[Exploitation#CVE-2011-1764|CVE-2011-1764]] (
-[smtp-vuln-cve2010-1764](https://nmap.org/nsedoc/scripts/smtp-vuln-cve2011-1764.html)
-)
-
-```sh
-sudo nmap -sV --script=smtp-vuln-cve2011-1764 -p 25,465,587 <target> -oA smtp-vuln-cve2011-1764
-```
-
-<!-- }}} -->
-
 ___
 
 <!-- }}} -->

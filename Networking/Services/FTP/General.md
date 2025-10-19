@@ -83,17 +83,24 @@ secure FTP server for UNIX-like systems.
 <!-- Installation {{{-->
 ## Installation
 
-Install `vsftpd` on Debian-based systems
+Install the [vsftpd](https://pkg.kali.org/pkg/vsftpd) package
 
-```sh
-sudo apt install vsftpd
-```
+<!-- Example {{{-->
+> [!example]-
+>
+> Install `vsftpd` on Debian-based systems
+>
+> ```sh
+> sudo apt install vsftpd
+> ```
+>
+> Install `vsftpd` on Arch
+>
+> ```sh
+> sudo pacman -Syu vsftpd
+> ```
+<!-- }}} -->
 
-Install `vsftpd` on Arch
-
-```sh
-sudo pacman -Syu vsftpd
-```
 <!-- }}} -->
 
 <!-- Configuration {{{-->
@@ -101,8 +108,8 @@ sudo pacman -Syu vsftpd
 
 The default configuration can be found in `/etc/vsftpd.conf`
 
-The file `/etc/ftpusers` can be used to deny certain users access to the FTP
-service
+The file `/etc/ftpusers` can be used to deny certain users
+access to the FTP service
 
 <!-- Example {{{-->
 > [!example]-
@@ -126,7 +133,7 @@ service
 #### Anonymous Login
 
 Optional vsFTPd [settings](http://vsftpd.beasts.org/vsftpd_conf.html) can be set
-to allow the [[Exploitation#Anonymous Login|Anonymous Login]].
+to allow the [[Exploitation#Anonymous Login|Anonymous Login]]
 
 <!-- Danger {{{-->
 > [!danger]-
@@ -169,7 +176,7 @@ It is now possible to log in with the `anonymous` username
 <!-- }}} -->
 
 After the successful anonymous login, the `status`, `debug` and `trace` commands
-provide additional information.
+provide additional information
 
 <!-- Example {{{-->
 > [!example]-
@@ -264,9 +271,10 @@ ___
 <!-- TFTP {{{-->
 # TFTP
 
-**Trivial File Transfer Protocol** ([TFTP](https://en.wikipedia.org/wiki/Trivial_File_Transfer_Protocol))
-is an unauthenticated, UDP protocol that performs file transfers between client
-and server processes.
+**Trivial File Transfer Protocol**
+([TFTP](https://en.wikipedia.org/wiki/Trivial_File_Transfer_Protocol))
+is an unauthenticated, UDP protocol that performs file transfers
+between client and server processes.
 
 <!-- Usage {{{-->
 ## Usage
@@ -279,6 +287,7 @@ and server processes.
 | `quit`     | Exits TFTP                                                 |
 | `status`   | Shows FTFP status (e.g., transfer mode (ascii or binary)   |
 | `verbose`  | Toggles verbose mode                                       |
+
 <!-- }}} -->
 
 ___

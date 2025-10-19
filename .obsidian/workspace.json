@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Networking/Services/SMTP/Enumeration.md",
+                "file": "Networking/Services/MySQL/Exploitation.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Enumeration"
+              "title": "Exploitation"
             }
           }
         ]
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/Services/SMTP/Enumeration.md",
+                "file": "Networking/Services/MySQL/Exploitation.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Enumeration"
+              "title": "Outline of Exploitation"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/Services/SMTP/Enumeration.md",
+                "file": "Networking/Services/MySQL/Exploitation.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Enumeration"
+              "title": "Graph of Exploitation"
             }
           }
         ]
@@ -225,12 +225,25 @@
   },
   "active": "83632d55fe09f01b",
   "lastOpenFiles": [
+    "Networking/Services/MySQL/Usage.md",
+    "Networking/Services/MySQL/Exploitation.md",
+    "Networking/Services/MySQL/Enumeration_1.md",
+    "Networking/Services/MySQL/General.md",
+    "Networking/Services/MySQL/Enumeration.md",
+    "Networking/Services/Oracle TNS/Exploitation.md",
+    "Networking/Services/Oracle TNS/Enumeration.md",
+    "Networking/Services/FTP/Enumeration.md",
+    "Networking/Services/FTP/Exploitation.md",
+    "Networking/Services/FTP/Usage.md",
+    "Networking/Services/FTP/General.md",
     "Networking/Services/SMTP/Exploitation.md",
+    "Networking/Services/SMTP/General.md",
+    "Networking/Services/SMTP/Enumeration.md",
+    "Networking/Services/NFS/Enumeration.md",
+    "Networking/Services/SMB/Enumeration.md",
     "Networking/Services/NFS/General.md",
     "Networking/Services/NFS/Exploitation.md",
     "Pentest/Tools/Metasploit/Metasploit.md",
-    "Networking/Services/NFS/Enumeration.md",
-    "Networking/Services/SMTP/Enumeration.md",
     "Networking/Tools/Netcat/Netcat.md",
     "Microsoft/Windows/Exploitation/EternalBlue.md",
     "Microsoft/Windows/General/General.md",
@@ -238,21 +251,8 @@
     "Microsoft/Windows/Exploitation",
     "Microsoft/Exploitation",
     "Microsoft/Windows/Windows.md",
-    "Networking/Services/FTP/Enumeration.md",
-    "Networking/Services/FTP/Usage.md",
-    "Networking/Services/FTP/Exploitation.md",
-    "Networking/Services/SMB/Enumeration.md",
-    "Networking/Services/FTP/General.md",
     "Networking/Networking.md",
     "Networking/Services/SMB/General.md",
-    "Networking/Services/SMB/Usage.md",
-    "Networking/Services/SMB/Exploitation.md",
-    "Networking/Services/IMAP-POP3/Exploitation.md",
-    "Networking/Services/SNMP/Enumeration.md",
-    "Networking/Services/SNMP/Exploitation.md",
-    "Networking/Services/MySQL/Usage.md",
-    "Networking/Services/MySQL/Enumeration.md",
-    "Networking/Services/MySQL/General.md",
     "test.txt",
     "Pentest/Tools/Metasploit",
     "Pentest/Tools/Cracking",

@@ -28,15 +28,11 @@ ___
 <!-- Nmap {{{-->
 ## Nmap
 
-### FTP Server
-
 Identify an FTP server
 
 ```sh
 nmap -p 21 <target> -oA ftp-identify
 ```
-
-### FTP Server Features
 
 Identify FTP server features (*default FTP unauthantecated script scan*)
 
@@ -56,20 +52,150 @@ sudo nmap -sC -sV -p 21 -A <target> --script-trace -oA ftp-default-script
 Run all FTP scripts
 
 ```sh
-nmap --script ftp-* -p 21 <target_ip> -oA ftp-all-scripts
+nmap --script ftp-* -p 21 <target_ip> -oA ftp-script-all
 ```
 
+<!-- FTP Bounce Attack {{{-->
 ### FTP Bounce Attack
 
-Check if the FTP server allows
+Detect
 [[Exploitation#FTP Bounce Attack|FTP Bounce Attack]]
-via the
-[ftp-bounce](https://nmap.org/nsedoc/scripts/ftp-bounce.html)
-script
+([ftp-bounce](https://nmap.org/nsedoc/scripts/ftp-bounce.html))
 
 ```sh
-nmap -p 21 --script ftp-bounce <target> -oA ftp-bounce
+nmap -p 21 --script ftp-bounce <target> -oA ftp-script-bounce
 ```
+
+Perform
+[TCP FTP Bounce Scan](https://nmap.org/book/scan-methods-ftp-bounce-scan.html)
+
+```sh
+nmap -b <ftp_server_ip>:<port> <target_network>
+```
+
+___
+
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- Metasploit {{{-->
+## Metasploit
+
+[[Exploitation#FTP Bounce Attack|FTP Bounce]] Port Scanner
+([ftpbounce](https://www.rapid7.com/db/modules/auxiliary/scanner/portscan/ftpbounce/))
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> use auxiliary/scanner/ftp/ftp_bounce
+> ```
+> ```sh
+> set RHOSTS <FTP_server>
+> ```
+> ```sh
+> set RPORT <FTP_port>
+> ```
+> ```sh
+> run
+> ```
+<!-- }}} -->
+
+[[Exploitation#Anonymous Login|Anonymous FTP Access]] Detection
+([anonymous](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/anonymous/))
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> msfconsole
+> use auxiliary/scanner/ftp/anonymous
+> set RHOSTS <target>
+> set RPORT 21
+> run
+> exit
+> ```
+<!-- }}} -->
+
+FTP Version Scanner
+([ftp_version](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/ftp_version/))
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> msfconsole
+> use auxiliary/scanner/ftp/ftp_version
+> set RHOSTS <target>
+> set RPORT 21
+> run
+> exit
+> ```
+<!-- }}} -->
+
+BisonWare BisonFTP Server 3.5 Directory Traversal Information Disclosure
+([bison_ftp_traversal](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/bison_ftp_traversal/))
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> msfconsole
+> use auxiliary/scanner/ftp/bison_ftp_traversal
+> set RHOSTS <target>
+> set RPORT 21
+> run
+> exit
+> ```
+<!-- }}} -->
+
+ColoradoFTP Server 1.3 Build 8 Directory Traversal Information Disclosure
+([colorado_ftp_traversal](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/colorado_ftp_traversal/))
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> msfconsole
+> use auxiliary/scanner/ftp/colorado_ftp_traversal
+> set RHOSTS <target>
+> set RPORT 21
+> run
+> exit
+> ```
+<!-- }}} -->
+
+Titan FTP XCRC Directory Traversal Information Disclosure
+([titanftp_xcrc_traversal](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/titanftp_xcrc_traversal/))
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> msfconsole
+> use auxiliary/scanner/ftp/titanftp_xcrc_traversal
+> set RHOSTS <target>
+> set RPORT 21
+> run
+> exit
+> ```
+<!-- }}} -->
+
+FTP Authentication Scanner
+([ftp_login](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/ftp_login/))
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> msf > use auxiliary/scanner/ftp/ftp_login
+> msf auxiliary(ftp_login) > show actions
+> msf auxiliary(ftp_login) > set ACTION <action_name>
+> msf auxiliary(ftp_login) > show options
+> msf auxiliary(ftp_login) > run
+> ```
+<!-- }}} -->
 
 ___
 
@@ -122,83 +248,13 @@ ___
 
 <!-- }}} -->
 
-<!-- Metasploit {{{-->
-## Metasploit
-
-Consoleless MFS enumeration
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> msfconsole
-> use auxiliary/scanner/ftp/anonymous
-> set RHOSTS <target>
-> set RPORT 21
-> run
-> exit
-> ```
-<!-- }}} -->
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> msfconsole
-> use auxiliary/scanner/ftp/ftp_version
-> set RHOSTS <target>
-> set RPORT 21
-> run
-> exit
-> ```
-<!-- }}} -->
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> msfconsole
-> use auxiliary/scanner/ftp/bison_ftp_traversal
-> set RHOSTS <target>
-> set RPORT 21
-> run
-> exit
-> ```
-<!-- }}} -->
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> msfconsole
-> use auxiliary/scanner/ftp/colorado_ftp_traversal
-> set RHOSTS <target>
-> set RPORT 21
-> run
-> exit
-> ```
-<!-- }}} -->
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> msfconsole
-> use auxiliary/scanner/ftp/titanftp_xcrc_traversal
-> set RHOSTS <target>
-> set RPORT 21
-> run
-> exit
-> ```
-<!-- }}} -->
-
-<!-- }}} -->
-
-<!-- Default and Common Directories {{{-->
-## Default and Common Directories
+<!-- Directories {{{-->
+## Directories
 
 FTP servers can have default or common directories
-that may contain sensitive information — [[Gobuster]]
+that may contain sensitive information
+
+Discover directories with [[Gobuster]]
 
 ```sh
 gobuster dir -u ftp://<ip> -w <dirlist.txt>

@@ -154,6 +154,7 @@ ___
 
 <!-- }}} -->
 
+<!-- Configuration {{{-->
 ## Configuration
 
 Show important variables
@@ -162,6 +163,7 @@ Show important variables
 SHOW VARIABLES;
 ```
 
+<!-- Example {{{-->
 > [!example]-
 >
 >
@@ -171,6 +173,7 @@ SHOW VARIABLES;
 > SHOW VARIABLES LIKE 'datadir';           # Data directory
 > SHOW VARIABLES LIKE 'basedir';           # Base directory
 > ```
+<!-- }}} -->
 
 Check if `local_infile` enabled
 
@@ -183,6 +186,10 @@ Process list
 ```sh
 SHOW PROCESSLIST;
 ```
+
+___
+
+<!-- }}} -->
 
 <!-- User {{{-->
 ## User

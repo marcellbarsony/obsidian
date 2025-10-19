@@ -143,12 +143,17 @@ himself to the relay server before using it.
 
 #### Open Relay Configuration
 
-The **SMTP Server** can send fake e-mails and thus initialize communication
-between multiple parties
+The **SMTP Server** can send fake e-mails
+([[Exploitation#Open Relay Attack|Open Relay Attack]])
+and thus initialize communication between multiple parties
 
-```sh
-mynetworks = 0.0.0.0/0
-```
+> [!danger]-
+>
+> Allow connections from any IP address
+>
+> ```sh
+> mynetworks = 0.0.0.0/0
+> ```
 <!-- }}} -->
 
 ___

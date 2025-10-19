@@ -174,7 +174,7 @@ It may be possible to upload a web shell to the target if
 1. Create a payload
 
 ```sh
-echo "Oracle File Upload Test" > testing.txt
+echo "Oracle File Upload Test Payload" > payload.txt
 ```
 
 2. Upload the file to the database
@@ -212,10 +212,10 @@ echo "Oracle File Upload Test" > testing.txt
 3. Test if the uppload worked with [cURL](https://curl.se/)
 
 ```sh
-curl -X GET http://10.129.204.235/testing.txt
+curl -X GET http://<target>/<payload>
 ```
-```sh
-Oracle File Upload Test
+```
+Oracle File Upload Test Payload
 ```
 
 <!-- }}} -->

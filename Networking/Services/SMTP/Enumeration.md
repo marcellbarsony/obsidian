@@ -114,27 +114,30 @@ sudo nmap -sC -sV -p 25 <target> -oA smtp-default-scripts
 ### Scripts
 
 Discover SMTP commands
+([smtp-commands](https://nmap.org/nsedoc/scripts/smtp-commands.html))
 
 ```sh
-nmap -p 25 --script smtp-commands <target> -oA smtp-commands
+nmap -p 25 --script smtp-commands <target> -oA smtp-script-commands
 ```
 
 Discover SMTP users
+([smtp-enum-users](https://nmap.org/nsedoc/scripts/smtp-enum-users.html))
 
 ```sh
-nmap -p 25 --script smtp-enum-users <target> -oA smtp-enum-users
+nmap -p 25 --script smtp-enum-users <target> -oA smtp-script-enum-users
 ```
 
 Discover NTLM authentication details
+([smtp-ntlm-info](https://nmap.org/nsedoc/scripts/smtp-ntlm-info.html))
 
 ```sh
-nmap -p 25 --script smtp-ntlm-info <target> -oA smtp-ntlm-info
+nmap -p 25 --script smtp-ntlm-info <target> -oA smtp-script-ntlm-info
 ```
 
 Run all SMTP-related scripts
 
 ```sh
-nmap -p 25,465,587 --script smtp-* <target> -oA smtp-all-scripts
+nmap -p 25,465,587 --script smtp-* <target> -oA smtp--script-all
 ```
 
 <!-- Example {{{-->
@@ -150,17 +153,40 @@ nmap -p 25,465,587 --script smtp-* <target> -oA smtp-all-scripts
 > ```
 <!-- }}} -->
 
-<!-- }}} -->
-
-<!-- Open Relay {{{-->
-### Open Relay
-
-Identify the target **SMTP Server** as an open relay, using 16 different tests,
-using the [smtp-open-relay](https://nmap.org/nsedoc/scripts/smtp-open-relay.html)
-NSE script
+Check for [[Exploitation#Open Relay Attack|Open Realy Attack]]
+([smtp-open-relay](https://nmap.org/nsedoc/scripts/smtp-open-relay.html))
 
 ```sh
-nmap -p25 --script smtp-open-relay <target> -v -oA smtp-open-relay
+nmap -p25 --script smtp-open-relay <target> -v -oA smtp-script-open-relay
+```
+
+<!-- }}} -->
+
+<!-- CVE Scripts {{{-->
+### CVE Scripts
+
+[[Exploitation#CVE-2010-4344|CVE-2010-4344]] (
+[smtp-vuln-cve2010-4344](https://nmap.org/nsedoc/scripts/smtp-vuln-cve2010-4344.html)
+)
+
+```sh
+sudo nmap -sV --script=smtp-vuln-cve2010-4344 -p 25,465,587 <target> -oA smtp-vuln-cve2010-4344
+```
+
+[[Exploitation#CVE-2011-1720|CVE-2011-1720]] (
+[smtp-vuln-cve2011-1720](https://nmap.org/nsedoc/scripts/smtp-vuln-cve2011-1720.html)
+)
+
+```sh
+sudo nmap -sV --script=smtp-vuln-cve2011-1720 -p 25,465,587 <target> -oA smtp-vuln-cve2011-1720
+```
+
+[[Exploitation#CVE-2011-1764|CVE-2011-1764]] (
+[smtp-vuln-cve2010-1764](https://nmap.org/nsedoc/scripts/smtp-vuln-cve2011-1764.html)
+)
+
+```sh
+sudo nmap -sV --script=smtp-vuln-cve2011-1764 -p 25,465,587 <target> -oA smtp-vuln-cve2011-1764
 ```
 
 <!-- }}} -->
