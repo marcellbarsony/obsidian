@@ -7,6 +7,8 @@ tags:
 
 # Enumeration
 
+___
+
 <!-- Configuration File {{{-->
 ## Configuration File
 
@@ -22,8 +24,11 @@ ___
 
 <!-- }}} -->
 
+<!-- Reconnaissance {{{-->
+## Reconnaissance
+
 <!-- Nmap {{{-->
-## Nmap
+### Nmap
 
 Detect MySQL service
 
@@ -109,12 +114,10 @@ sudo nmap -sC -sV -p3306 --script mysql* <target> -oA mysql-default-scripts
 > as some of the information might turn out to be **false-positive**
 <!-- }}} -->
 
-___
-
 <!-- }}} -->
 
 <!-- Metasploit {{{-->
-## Metasploit
+### Metasploit
 
 MySQL Server Version Enumeration
 ([mysql_version](https://www.rapid7.com/db/modules/auxiliary/scanner/mysql/mysql_version/))
@@ -226,6 +229,7 @@ msf> use auxiliary/scanner/mysql/mysql_hashdump
 
 MySQL Enumeration Module
 ([mysql_enum](https://www.rapid7.com/db/modules/auxiliary/admin/mysql/mysql_enum/))
+(*needs credentials*)
 
 ```sh
 msf> use auxiliary/admin/mysql/mysql_enum
@@ -308,12 +312,10 @@ msf> use exploit/windows/mysql/mysql_start_up
 > ```
 <!-- }}} -->
 
-___
-
 <!-- }}} -->
 
 <!-- Banner Grabbing {{{-->
-## Banner Grabbing
+### Banner Grabbing
 
 Banner grabbing with [[Nmap]]
 
@@ -335,6 +337,10 @@ telnet <target> 3306
 
 <!-- }}} -->
 
+___
+
+<!-- }}} -->
+
 <!-- Database Enumeration {{{-->
 ## Database Enumeration
 
@@ -347,10 +353,18 @@ The most important databases on a MySQL server are
 > [!example]-
 >
 >
+> 1. Select `sys` database
+>
 > ```sh
 > mysql> use sys;
-> mysql> show tables;
+> ```
 >
+> 2. Show database tables
+>
+> ```sh
+> mysql> show tables;
+> ```
+> ```sh
 > +-----------------------------------------------+
 > | Tables_in_sys                                 |
 > +-----------------------------------------------+
@@ -367,9 +381,14 @@ The most important databases on a MySQL server are
 > ...SNIP...
 > | x$waits_global_by_latency                     |
 > +-----------------------------------------------+
+> ```
 >
+> 3. Display row values from a table
+>
+> ```sh
 > mysql> select host, unique_users from host_summary;
->
+> ```
+> ```sh
 > +-------------+--------------+
 > | host        | unique_users |
 > +-------------+--------------+
@@ -397,9 +416,7 @@ the `system_schema` database, such as
 > List all tables in a specific database
 >
 > ```sql
-> SELECT TABLE_NAME
-> FROM information_schema.TABLES
-> WHERE TABLE_SCHEMA = 'my_database';
+> SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'my_database';
 > ```
 <!-- }}} -->
 
@@ -463,38 +480,47 @@ displays the privileges and roles assigned to a MySQL user account or role
 >
 > Display the privileges of the current user
 >
-> **Purpose**: Quick self-audit on privileges
->
 > ```sql
 > SHOW GRANTS;
 > ```
 >
-> Display the privileges of a specified user
+> > [!info]-
+> >
+> > Quick self-audit on privileges
 >
-> **Purpose**: Privilege escalation check
-> (e.g., `ALL PRIVILEGES`, `SUPER`, `FILE`, etc.)
+> Display the privileges of a specified user
 >
 > ```sql
 > SHOW GRANTS [FOR user_or_role];
 > ```
 >
-> Display the privileges of a specified user on a specified host
+> > [!info]-
+> >
+> > Privilege escalation check
+> > (e.g., `ALL PRIVILEGES`, `SUPER`, `FILE`, etc.)
 >
-> **Purpose**: Confirm `root`'s power level, detect if `root` is misconfigured
-> (e.g., *limited privileges*, *wrong host-binding*)
+> Display the privileges of a specified user on a specified host
 >
 > ```sql
 > SHOW GRANTS FOR 'root'@'localhost';
 > ```
 >
+> > [!info]-
+> >
+> > Confirm `root`'s power level, detect if `root` is misconfigured
+> > (e.g., *limited privileges*, *wrong host-binding*)
+>
 > Display the privileges of an account executing the query
 >
-> **Purpose**: Reveal effective privileges, accounting for authentication
-> mappings or proxying
 >
 > ```sql
 > SHOW GRANTS FOR CURRENT_USER();
 > ```
+>
+> > [!info]-
+> >
+> > Reveal effective privileges, accounting for
+> > authentication mappings or proxying
 <!-- }}} -->
 
 ### Account Enumeration
@@ -537,28 +563,34 @@ Find users with `FILE` and `SUPER` privileges
 >
 > List all users with `FILE` privileges
 >
-> **Purpose**: `FILE` allows reading and writing files on the server host —
-> potentially leading to privilege escalation via local file access
->
 > ```sql
 > SELECT user,file_priv FROM mysql.user WHERE file_priv='Y';
 > ```
 >
-> List all users with `SUPER` privileges
+> > [!info]-
+> >
+> > `FILE` allows reading and writing files on the server host —
+> > potentially leading to privilege escalation via local file access
 >
-> **Purpose**: `SUPER` allows global operations
-> (e.g., *killing threads*, *changing replication*,
-> *modifying global variables*)
+>
+> List all users with `SUPER` privileges
 >
 > ```sql
 > SELECT user,Super_priv FROM mysql.user WHERE Super_priv='Y';
 > ```
+>
+> > [!info]-
+> >
+> > **: `SUPER` allows global operations
+> > (e.g., *killing threads*, *changing replication*,
+> > *modifying global variables*)
 <!-- }}} -->
 
 ### Exploitation Checks
 
-Find user-defined functions (UDFs) — potentially leading to code execution
-backdoors if loaded maliciously
+Find user-defined functions ([UDFs](https://en.wikipedia.org/wiki/User-defined_function))
+— potentially leading to code execution backdoors
+if loaded maliciously
 
 <!-- Example {{{-->
 > [!example]-

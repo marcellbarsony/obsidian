@@ -9,8 +9,8 @@ links: "[[SQL]]"
 # xp_cmdshell
 
 [xp_cdmshell (Transact-SQL)](https://learn.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql?view=sql-server-ver17)
-allows the execution of Windows command shell commands directly from the SQL
-Server environment.
+allows the execution of Windows command shell commands
+directly from the SQL Server environment
 
 <!-- Activation {{{-->
 ## Activation

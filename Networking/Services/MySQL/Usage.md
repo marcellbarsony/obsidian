@@ -7,6 +7,8 @@ tags:
 
 # Usage
 
+___
+
 <!-- Connect {{{-->
 ## Connect
 
@@ -116,124 +118,6 @@ mysql -h <hostname> -pP4SSw0rd -u root@localhost
 > 37 rows in set (0.002 sec)
 > ```
 <!-- }}} -->
-
-<!-- }}} -->
-
-___
-
-<!-- }}} -->
-
-<!-- Version Info {{{-->
-## Version Info
-
-Show MySQL version
-
-```sh
-SELECT @@version;
-```
-
-```sh
-SELECT VERSION();
-```
-
-Show server version
-
-```sql
-SELECT @@version_compile_os;
-```
-
-```sh
-SELECT @@version_compile_machine;
-```
-
-```sh
-SHOW VARIABLES LIKE "%version%";
-```
-
-___
-
-<!-- }}} -->
-
-<!-- Configuration {{{-->
-## Configuration
-
-Show important variables
-
-```sh
-SHOW VARIABLES;
-```
-
-<!-- Example {{{-->
-> [!example]-
->
->
-> ```sh
-> SHOW VARIABLES LIKE 'secure_file_priv';  # File operations directory
-> SHOW VARIABLES LIKE 'plugin_dir';        # Plugin directory
-> SHOW VARIABLES LIKE 'datadir';           # Data directory
-> SHOW VARIABLES LIKE 'basedir';           # Base directory
-> ```
-<!-- }}} -->
-
-Check if `local_infile` enabled
-
-```sh
-SHOW VARIABLES LIKE 'local_infile';
-```
-
-Process list
-
-```sh
-SHOW PROCESSLIST;
-```
-
-___
-
-<!-- }}} -->
-
-<!-- User {{{-->
-## User
-
-Show current user
-
-```sql
-SELECT USER();
-```
-
-```sql
-SELECT CURRENT_USER();
-```
-
-List MySQL users
-
-```sql
-SELECT user, host FROM mysql.user;
-```
-
-<!-- Privileges {{{-->
-### Privileges
-
-Show user privileges
-
-```sql
-SHOW GRANTS;
-```
-
-```sql
-SHOW GRANTS FOR '<username>'@'<host>';
-```
-
-List users with `FILE` privilege
-
-```sql
-SELECT user, host FROM mysql.user WHERE File_priv = 'Y';
-```
-
-List users with `SUPER` privilege
-
-```sql
-SELECT user, host FROM mysql.user WHERE Super_priv = 'Y';
-```
 
 <!-- }}} -->
 

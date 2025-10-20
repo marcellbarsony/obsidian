@@ -183,7 +183,7 @@ msf6 > use auxiliary/scanner/ipmi/ipmi_dumphashes
 >
 > ```sh
 > Module options (auxiliary/scanner/ipmi/ipmi_dumphashes):
-> 
+>
 >    Name                 Current Setting                                                    Required  Description
 >    ----                 ---------------                                                    --------  -----------
 >    CRACK_COMMON         true                                                               yes       Automatically crack common passwords as they are obtained

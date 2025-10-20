@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Networking/Services/MySQL/Exploitation.md",
+                "file": "Networking/Services/SQL/xp_cmdshell.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Exploitation"
+              "title": "xp_cmdshell"
             }
           }
         ]
@@ -99,7 +99,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -112,7 +113,7 @@
       {
         "id": "b37a0bb9d6a15ce6",
         "type": "tabs",
-        "dimension": 64.9325626204239,
+        "dimension": 78.90173410404624,
         "children": [
           {
             "id": "de7400c63f642849",
@@ -120,13 +121,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/Services/MySQL/Exploitation.md",
+                "file": "Networking/Services/SQL/xp_cmdshell.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Exploitation"
+              "title": "Outline of xp_cmdshell"
             }
           },
           {
@@ -165,9 +166,9 @@
         ]
       },
       {
-        "id": "5459046f6e7e8111",
+        "id": "27cedefd3c359886",
         "type": "tabs",
-        "dimension": 35.067437379576106,
+        "dimension": 21.09826589595376,
         "children": [
           {
             "id": "d5c9af9ed92f45fd",
@@ -175,7 +176,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/Services/MySQL/Exploitation.md",
+                "file": "Networking/Services/SQL/xp_cmdshell.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +204,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Exploitation"
+              "title": "Graph of xp_cmdshell"
             }
           }
         ]
@@ -223,36 +224,36 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "83632d55fe09f01b",
+  "active": "e502862e023356e6",
   "lastOpenFiles": [
+    "Pentest/Wordlists.md",
+    "Linux/Privesc/Credential Hunting.md",
+    "Microsoft/AD/AD.md",
     "Networking/Services/MySQL/Usage.md",
     "Networking/Services/MySQL/Exploitation.md",
-    "Networking/Services/MySQL/Enumeration_1.md",
-    "Networking/Services/MySQL/General.md",
+    "Networking/Services/MSSQL/Exploitation.md",
     "Networking/Services/MySQL/Enumeration.md",
+    "Pentest/Tools/Cracking/Hashcat.md",
+    "Networking/Services/MySQL/General.md",
+    "Networking/Services/MSSQL/Enumeration.md",
+    "Networking/Services/FTP/Enumeration.md",
+    "Networking/Services/SNMP/Enumeration.md",
+    "Networking/Services/SMTP/Enumeration.md",
+    "Pentest/Tools/Brute Force/John The Ripper.md",
+    "Networking/Services/MySQL/Enumeration_1.md",
     "Networking/Services/Oracle TNS/Exploitation.md",
     "Networking/Services/Oracle TNS/Enumeration.md",
-    "Networking/Services/FTP/Enumeration.md",
     "Networking/Services/FTP/Exploitation.md",
     "Networking/Services/FTP/Usage.md",
     "Networking/Services/FTP/General.md",
     "Networking/Services/SMTP/Exploitation.md",
     "Networking/Services/SMTP/General.md",
-    "Networking/Services/SMTP/Enumeration.md",
     "Networking/Services/NFS/Enumeration.md",
     "Networking/Services/SMB/Enumeration.md",
     "Networking/Services/NFS/General.md",
     "Networking/Services/NFS/Exploitation.md",
-    "Pentest/Tools/Metasploit/Metasploit.md",
-    "Networking/Tools/Netcat/Netcat.md",
-    "Microsoft/Windows/Exploitation/EternalBlue.md",
-    "Microsoft/Windows/General/General.md",
-    "Microsoft/Windows/Exploitation/Mimikatz.md",
     "Microsoft/Windows/Exploitation",
     "Microsoft/Exploitation",
-    "Microsoft/Windows/Windows.md",
-    "Networking/Networking.md",
-    "Networking/Services/SMB/General.md",
     "test.txt",
     "Pentest/Tools/Metasploit",
     "Pentest/Tools/Cracking",

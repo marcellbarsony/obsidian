@@ -15,7 +15,7 @@ links: "[[SSH]]"
 Connect to a host
 
 ```sh
-ssh <username>@<target>
+ssh <user>@<target>
 ```
 
 <!-- Example {{{-->
@@ -28,6 +28,12 @@ ssh <username>@<target>
 > - `-i id_rsa`: Specify private key (*optional*)
 > - `-p 1234`: Specify target port (*optional*)
 <!-- }}} -->
+
+Enforce password-based authentication
+
+```sh
+ssh <user>@<target> -o PreferredAuthentications=password
+```
 
 ___
 

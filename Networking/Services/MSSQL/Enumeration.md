@@ -23,8 +23,13 @@ ___
 <!-- Nmap {{{-->
 ## Nmap
 
-[[Nmap]] has default [[General|MSSQL]] scripts that can be used to target
-the default tcp port `1433` that MSSQL listens on.
+Service detection
+
+```sh
+nmap -p 1433 <target> -oA mssql-service-detection
+```
+
+[[General|MSSQL]] script scan
 
 ```sh
 sudo nmap \
@@ -32,17 +37,17 @@ sudo nmap \
   --script "ms-sql-*" \
   --script-args 'mssql.instance-port=1433,mssql.username=sa,mssql.password="",mssql.instance-name=MSSQLSERVER' \
   <target> \
-  -oA mssql-default-scripts
+  -oA mssql-scripts-all
 ```
 
 <!-- Info {{{-->
 > [!info]-
 >
 > - `"ms-sql-*"`: Should be quoted so the shell won’t try to expand the `*`
-> - `mssql.password=""`: Explicitly sets an empty password
->    (some shells need the quotes)
-> - `ms-sql-*`: Run every ms-sql script
->    (including intrusive/disruptive checks)
+>    (*some shells need the quotes*)
+> - `mssql.password=""`: Set an empty password explicitly
+> - `ms-sql-*`: Run every `ms-sql` script
+>    (*including intrusive/disruptive checks*)
 <!-- }}} -->
 
 <!-- Example {{{-->
@@ -98,21 +103,24 @@ ___
 <!-- Metasploit {{{-->
 ## Metasploit
 
-[[Metasploit]] can be used to run an auxiliary scanner called `mssql_ping` that
-will scan the MSSQL service
+Scan MSSQL service with [[Metasploit]]
 
 <!-- Without Credentials {{{-->
 ### Without Credentials
 
-`mssql_ping` **doesn't require valid credentials** — it's a discovery probe that
-talks TDS/SQL Server Browser and can return basic server/instance info without
-logging in
+MSSQL Ping Utility
+([mssql_ping](https://www.rapid7.com/db/modules/auxiliary/scanner/mssql/mssql_ping/))
 
+```sh
+msf > use auxiliary/scanner/mssql/mssql_ping
+```
+
+<!-- Example {{{-->
 > [!example]-
 >
 > 1. [[Metasploit#Launch Metasploit|Launch Metasploit]]
 >
-> 2. [[Metasploit#Search Exploit|Search]] for auxiliary scanners
+> 2. [[Metasploit#Search Exploit|Search scanner]]
 >
 > <!-- Example {{{-->
 > > [!example]-
@@ -147,7 +155,7 @@ logging in
 > > ```
 > <!-- }}} -->
 >
-> 3. [[Metasploit#Select Exploit|Select]] the auxiliary scanner
+> 3. [[Metasploit#Select Exploit|Select scanner]]
 >
 > <!-- Example {{{-->
 > > [!example]-
@@ -203,56 +211,118 @@ logging in
 > >[*] Auxiliary module execution completed
 > >```
 > <!-- }}} -->
+<!-- }}} -->
+
+MSSQL Login Utility
+([mssql_login](https://www.rapid7.com/db/modules/auxiliary/scanner/mssql/mssql_login/))
+
+```sh
+msf > use auxiliary/scanner/mssql/mssql_login
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> Query the MSSQL instance for a specific user/pass
+> (*default is sa with blank*)
+>
+> ```sh
+> msf > use auxiliary/scanner/mssql/mssql_login
+> msf auxiliary(mssql_login) > show actions
+>     ...actions...
+> msf auxiliary(mssql_login) > set ACTION < action-name >
+> msf auxiliary(mssql_login) > show options
+>     ...show and set options...
+> msf auxiliary(mssql_login) > run
+> ```
+<!-- }}} -->
+
 
 <!-- }}} -->
 
 <!-- With Credentials {{{-->
 ### With Credentials
 
-[Metasploit (needs credentials)](https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-mssql-microsoft-sql-server/index.html#metasploit-need-creds)
+> [!tip]
+>
+> Set `USERNAME`, `RHOSTS` and `PASSWORD`
+>
+> Set `DOMAIN` and `USE_WINDOWS_AUTHENT` if domain is used
 
-<!-- Example {{{-->
-> [!example]-
->
->
-> ```sh
-> #Set USERNAME, RHOSTS and PASSWORD
-> #Set DOMAIN and USE_WINDOWS_AUTHENT if domain is used
->
-> #Steal NTLM
-> msf> use auxiliary/admin/mssql/mssql_ntlm_stealer #Steal NTLM hash, before executing run Responder
->
-> #Info gathering
-> msf> use admin/mssql/mssql_enum #Security checks
-> msf> use admin/mssql/mssql_enum_domain_accounts
-> msf> use admin/mssql/mssql_enum_sql_logins
-> msf> use auxiliary/admin/mssql/mssql_findandsampledata
-> msf> use auxiliary/scanner/mssql/mssql_hashdump
-> msf> use auxiliary/scanner/mssql/mssql_schemadump
->
-> #Search for insteresting data
-> msf> use auxiliary/admin/mssql/mssql_findandsampledata
-> msf> use auxiliary/admin/mssql/mssql_idf
->
-> #Privesc
-> msf> use exploit/windows/mssql/mssql_linkcrawler
-> msf> use admin/mssql/mssql_escalate_execute_as #If the user has IMPERSONATION privilege, this will try to escalate
-> msf> use admin/mssql/mssql_escalate_dbowner #Escalate from db_owner to sysadmin
->
-> #Code execution
-> msf> use admin/mssql/mssql_exec #Execute commands
-> msf> use exploit/windows/mssql/mssql_payload #Uploads and execute a payload
->
-> #Add new admin user from meterpreter session
-> msf> use windows/manage/mssql_local_auth_bypass
-> ```
-<!-- }}} -->
 
-<!-- Warning {{{-->
+Microsoft SQL Server NTLM Stealer
+([mssql_ntlm_stealer](https://www.rapid7.com/db/modules/auxiliary/admin/mssql/mssql_ntlm_stealer/))
+
+```sh
+msf> use auxiliary/admin/mssql/mssql_ntlm_stealer
+```
+
 > [!warning]
 >
-> Valid credentials required
-<!-- }}} -->
+> Run Responder before executing
+
+Enumeration
+
+- `auxiliary/admin/mssql/mssql_exec`
+- `auxiliary/admin/mssql/mssql_enum`
+- `auxiliary/admin/mssql/mssql_sql`
+
+Info gathering
+
+```sh
+msf> use admin/mssql/mssql_enum #Security checks
+```
+```sh
+msf> use admin/mssql/mssql_enum_domain_accounts
+```
+```sh
+msf> use admin/mssql/mssql_enum_sql_logins
+```
+```sh
+msf> use auxiliary/admin/mssql/mssql_findandsampledata
+```
+```sh
+msf> use auxiliary/scanner/mssql/mssql_hashdump
+```
+```sh
+msf> use auxiliary/scanner/mssql/mssql_schemadump
+```
+
+Search for insteresting data
+
+```sh
+msf> use auxiliary/admin/mssql/mssql_findandsampledata
+```
+```sh
+msf> use auxiliary/admin/mssql/mssql_idf
+```
+
+Privesc
+
+```sh
+msf> use exploit/windows/mssql/mssql_linkcrawler
+```
+```sh
+msf> use admin/mssql/mssql_escalate_execute_as #If the user has IMPERSONATION privilege, this will try to escalate
+```
+```sh
+msf> use admin/mssql/mssql_escalate_dbowner #Escalate from db_owner to sysadmin
+```
+
+Code execution
+
+```sh
+msf> use admin/mssql/mssql_exec #Execute commands
+```
+```sh
+msf> use exploit/windows/mssql/mssql_payload #Uploads and execute a payload
+```
+
+Add new admin user from meterpreter session
+
+```sh
+msf> use windows/manage/mssql_local_auth_bypass
+```
 
 <!-- }}} -->
 
@@ -265,7 +335,11 @@ ___
 
 [Impacket's mssqlclient.py](https://github.com/fortra/impacket/blob/master/examples/mssqlclient.py)
 allows to remotely connect and to the MSSQL server using Transact-SQL
-([T-SQL](https://learn.microsoft.com/en-us/sql/t-sql/language-reference?view=sql-server-ver17)).
+([T-SQL](https://learn.microsoft.com/en-us/sql/t-sql/language-reference?view=sql-server-ver17))
+
+```sh
+python3 mssqlclient.py <user>@<target> -windows-auth
+```
 
 <!-- Example {{{-->
 > [!example]-
