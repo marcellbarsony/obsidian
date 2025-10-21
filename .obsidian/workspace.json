@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Networking/Services/SQL/xp_cmdshell.md",
+                "file": "Networking/Services/Oracle TNS/Enumeration.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "xp_cmdshell"
+              "title": "Enumeration"
             }
           }
         ]
@@ -99,8 +99,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
@@ -121,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/Services/SQL/xp_cmdshell.md",
+                "file": "Networking/Services/Oracle TNS/Enumeration.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of xp_cmdshell"
+              "title": "Outline of Enumeration"
             }
           },
           {
@@ -176,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/Services/SQL/xp_cmdshell.md",
+                "file": "Networking/Services/Oracle TNS/Enumeration.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -204,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of xp_cmdshell"
+              "title": "Graph of Enumeration"
             }
           }
         ]
@@ -224,34 +223,38 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "e502862e023356e6",
+  "active": "83632d55fe09f01b",
   "lastOpenFiles": [
+    "Networking/Services/Oracle TNS/Exploitation.md",
+    "Networking/Services/Oracle TNS/Enumeration.md",
+    "Networking/Services/Oracle TNS/General.md",
+    "Networking/Services/SQL/Exploitation.md",
+    "Networking/Services/SNMP/Enumeration.md",
+    "Networking/Services/IPMI/Exploitation.md",
+    "Networking/Services/IPMI/Enumeration.md",
+    "Networking/Services/IMAP-POP3/Usage.md",
+    "Networking/Services/IMAP-POP3/General.md",
+    "Networking/Services/IMAP-POP3/Exploitation.md",
+    "Networking/Services/FTP/Exploitation.md",
+    "Networking/Services/MSSQL/Enumeration.md",
+    "Networking/Services/MSSQL/Exploitation.md",
+    "Networking/Services/MSSQL/General.md",
+    "Networking/Services/MySQL/Exploitation.md",
+    "Networking/Services/MySQL/Enumeration.md",
+    "Pentest/Tools/Metasploit/Msfvenom.md",
+    "Networking/Services/MySQL/General.md",
+    "Pentest/Tools/Brute Force/Medusa.md",
+    "Networking/Services/MSSQL/src/password-list.md",
+    "Networking/Services/MSSQL/src/password-list.txt",
+    "Networking/Services/MSSQL/src/mssql-betterdefaultpasslist.txt",
+    "Networking/Services/MSSQL/src/mssql-betterdefaultpasslist.md",
+    "Networking/Services/MSSQL/src/ssms.webp",
+    "Networking/Services/MSSQL/src/ssms-connect.png",
+    "Networking/Services/SQL/xp_cmdshell.md",
     "Pentest/Wordlists.md",
     "Linux/Privesc/Credential Hunting.md",
     "Microsoft/AD/AD.md",
     "Networking/Services/MySQL/Usage.md",
-    "Networking/Services/MySQL/Exploitation.md",
-    "Networking/Services/MSSQL/Exploitation.md",
-    "Networking/Services/MySQL/Enumeration.md",
-    "Pentest/Tools/Cracking/Hashcat.md",
-    "Networking/Services/MySQL/General.md",
-    "Networking/Services/MSSQL/Enumeration.md",
-    "Networking/Services/FTP/Enumeration.md",
-    "Networking/Services/SNMP/Enumeration.md",
-    "Networking/Services/SMTP/Enumeration.md",
-    "Pentest/Tools/Brute Force/John The Ripper.md",
-    "Networking/Services/MySQL/Enumeration_1.md",
-    "Networking/Services/Oracle TNS/Exploitation.md",
-    "Networking/Services/Oracle TNS/Enumeration.md",
-    "Networking/Services/FTP/Exploitation.md",
-    "Networking/Services/FTP/Usage.md",
-    "Networking/Services/FTP/General.md",
-    "Networking/Services/SMTP/Exploitation.md",
-    "Networking/Services/SMTP/General.md",
-    "Networking/Services/NFS/Enumeration.md",
-    "Networking/Services/SMB/Enumeration.md",
-    "Networking/Services/NFS/General.md",
-    "Networking/Services/NFS/Exploitation.md",
     "Microsoft/Windows/Exploitation",
     "Microsoft/Exploitation",
     "test.txt",
@@ -260,11 +263,7 @@
     "Pentest/Tools/Brute Force",
     "Pentest/Brute Force",
     "Networking/Services/WMI",
-    "Networking/Services/WinRM",
-    "Networking/Services/RDP",
-    "Networking/Services/MSSQL/src/ssms-connect.png",
     "Networking/Services/MSSQL/src/20251007-213129.png",
-    "Networking/Services/MSSQL/src/ssms.webp",
     "Networking/Services/SNMP/src/SNMP_OID_MIB_Tree.png",
     "Networking/Services/DNS/src/dns-structure.png",
     "Networking/Enumeration/Infrastructure/src/infra-enum.png",

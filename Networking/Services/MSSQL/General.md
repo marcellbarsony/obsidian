@@ -14,8 +14,8 @@ port:
 is Microsoft's SQL-based relational database management system, with native
 support for [.NET](https://en.wikipedia.org/wiki/.NET_Framework).
 
-<!-- MSSQL Clients {{{-->
-## MSSQL Clients
+<!-- Clients {{{-->
+## Clients
 
 ### SSMS
 
@@ -63,21 +63,21 @@ ___
 
 <!-- }}} -->
 
-<!-- MSSQL Database {{{-->
-## MSSQL Database
+<!-- Database {{{-->
+## Database
 
 **MSSQL** has default system databases
 
 <!-- Example {{{-->
 > [!example]
 >
-> | Default System Database | Description |
-> | ----------------------- | ----------- |
-> | master                  | Tracks all system information for an SQL server instance |
-> | model                   | Template database that acts as a structure of settings for every new database created |
-> | msdb                    | The SQL Server Agent uses this database to schedule jobs & alerts |
-> | tempdb                  | Stores temporary objects |
-> | resource                | Read-only database containing system objects included with SQL server |
+> | Default System Database | Description | Important Tables |
+> | ----------------------- | ----------- | ---------------- |
+> | master                  | System configuration | `sys.databases`, `sys.server_principals` |
+> | model                   | Template for new databases | N/A |
+> | msdb                    | SQL Server Agent data | `sysjobs`, `sysschedules` |
+> | tempdb                  | Temporary objects | N/A |
+> | resource                | System objects included (*Read-only*) | N/A |
 <!-- }}} -->
 
 ___

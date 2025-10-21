@@ -35,20 +35,83 @@ sudo nmap -p1521 -sV <target> --open -oA oracle-tns-default
 > ```
 <!-- }}} -->
 
-### SID Bruteforcing
+___
 
-[[General#System Identifier|System Identifier]]s can be enumerated via various
-tools (e.g., `nmap`, `hydra`, `odat`)
+<!-- }}} -->
+
+<!-- Banner Grabbing {{{-->
+## Banner Grabbing
+
+Connect to the TNS Listener to gather version and service information
+
+Banner grabbing with [[netcat]]
+
+> [!example]-
+>
+> Grab banner
+>
+> ```sh
+> nc -vn <target> 1521
+> ```
+>
+> Get TNS version
+>
+> ```sh
+> echo "(CONNECT_DATA=(COMMAND=version))" | nc <target> 1521
+> ```
+
+Banner grabbing with [[Nmap]]
+
+> [!example]-
+>
+> ```sh
+> nmap -p 1521 -sV <target>
+> ```
+
+Banner grabbing with [tnslsnr](https://www.kali.org/tools/tnscmd10g/)
+
+> [!example]-
+>
+> TNS ping
+>
+> ```sh
+> tnslsnr target.com 1521
+> ```
+
+___
+
+<!-- }}} -->
+
+<!-- SID Enumeration {{{-->
+## SID Enumeration
+
+The SID ([[General#System Identifier|System Identifier]])
+is required to connect to Oracle databases and can be brute-forced
+
+> [!tip]-
+>
+> Common default SIDs
+>
+> - `ORCL`
+> - `XE`
+> - `EXDB`
+> - `PROD`
+> - `DEV`
+> - `TEST`
+> - `DB11G`
+> - `DB12C`
+
+SID enumeration with [[Nmap]]
 
 ```sh
-sudo nmap -p1521 -sV <target> --open --script oracle-sid-brute -oA oracle-sid-brute
+sudo nmap -p 1521 -sV <target> --open --script oracle-sid-brute -oA oracle-sid-brute
 ```
 
 <!-- Example {{{-->
 > [!example]-
 >
 > ```sh
-> sudo nmap -p1521 -sV 10.129.204.235 --open --script oracle-sid-brute
+> sudo nmap -p 1521 -sV 10.129.204.235 --open --script oracle-sid-brute
 > ```
 > ```sh
 > Starting Nmap 7.93 ( https://nmap.org ) at 2023-03-06 11:01 EST
@@ -65,6 +128,39 @@ sudo nmap -p1521 -sV <target> --open --script oracle-sid-brute -oA oracle-sid-br
 > ```
 <!-- }}} -->
 
+SID enumeration with [[Metasploit]]
+
+```sh
+use auxiliary/scanner/oracle/sid_enum
+```
+
+> [!example]-
+>
+> Oracle TNS Listener SID Enumeration
+> ([sid_enum](https://www.rapid7.com/db/modules/auxiliary/scanner/oracle/sid_enum/))
+>
+> ```sh
+> msf > use auxiliary/scanner/oracle/sid_enum
+> msf auxiliary(sid_enum) > show actions
+>     ...actions...
+> msf auxiliary(sid_enum) > set ACTION < action-name >
+> msf auxiliary(sid_enum) > show options
+>     ...show and set options...
+> msf auxiliary(sid_enum) > run
+> ```
+
+SID enumeration with [[#ODAT]]
+
+```sh
+odat sidguesser -s <target> -p 1521
+```
+
+SID enumeration with [sidguesser](https://www.kali.org/tools/sidguesser/)
+
+```sh
+sidguess -i <target> -d /usr/share/wordlists/metasploit/unix_users.txt
+```
+
 ___
 
 <!-- }}} -->
@@ -74,55 +170,58 @@ ___
 
 [ODAT (Oracle Database Attacking Tool)](https://github.com/quentinhardy/odat)
 is designed to enumerate and exploit security flaws
-(e.g., *SQL injection*, *remote code execution*, *privilege escalation*)
+(*e.g., SQL injection, remote code execution, privilege escalation*)
 in Oracle databases
 
 <!-- Install {{{-->
 ### Install
 
-Install [odat](https://www.kali.org/tools/odat/) with
-[apt](https://en.wikipedia.org/wiki/APT_(software))
+Install [odat](https://www.kali.org/tools/odat/)
 
-```sh
-sudo apt install odat
-```
-
-Install [[Enumeration#ODAT|ODAT]] manually
-
-<!-- Example {{{-->
 > [!example]-
 >
+> Install with [apt](https://en.wikipedia.org/wiki/APT_(software))
+>
 > ```sh
-> wget https://download.oracle.com/otn_software/linux/instantclient/214000/instantclient-basic-linux.x64-21.4.0.0.0dbru.zip
-> wget https://download.oracle.com/otn_software/linux/instantclient/214000/instantclient-sqlplus-linux.x64-21.4.0.0.0dbru.zip
-> sudo mkdir -p /opt/oracle
-> sudo unzip -d /opt/oracle instantclient-basic-linux.x64-21.4.0.0.0dbru.zip
-> sudo unzip -d /opt/oracle instantclient-sqlplus-linux.x64-21.4.0.0.0dbru.zip
-> export LD_LIBRARY_PATH=/opt/oracle/instantclient_21_4:$LD_LIBRARY_PATH
-> export PATH=$LD_LIBRARY_PATH:$PATH
-> source ~/.bashrc
-> cd ~
-> git clone https://github.com/quentinhardy/odat.git
-> cd odat/
-> pip install python-libnmap
-> git submodule init
-> git submodule update
-> pip3 install cx_Oracle
-> sudo apt-get install python3-scapy -y
-> sudo pip3 install colorlog termcolor passlib python-libnmap
-> sudo apt-get install build-essential libgmp-dev -y
-> pip3 install pycryptodome
->
-> --2025-06-24 00:24:53--  https://download.oracle.com/otn_software/linux/instantclient/214000/instantclient-basic-linux.x64-21.4.0.0.0dbru.zip
-> Resolving download.oracle.com (download.oracle.com)... 23.58.104.121
-> Connecting to download.oracle.com (download.oracle.com)|23.58.104.121|:443... connected.
-> HTTP request sent, awaiting response... 200 OK
-> Length: 79386308 (76M) [application/zip]
-> Saving to: ‘instantclient-basic-linux.x64-21.4.0.0.0dbru.zip’
->
-> <SNIP>
+> sudo apt install odat
 > ```
-<!-- }}} -->
+>
+> Install [[Enumeration#ODAT|ODAT]] manually
+>
+> <!-- Example {{{-->
+> > [!example]-
+> >
+> > ```sh
+> > wget https://download.oracle.com/otn_software/linux/instantclient/214000/instantclient-basic-linux.x64-21.4.0.0.0dbru.zip
+> > wget https://download.oracle.com/otn_software/linux/instantclient/214000/instantclient-sqlplus-linux.x64-21.4.0.0.0dbru.zip
+> > sudo mkdir -p /opt/oracle
+> > sudo unzip -d /opt/oracle instantclient-basic-linux.x64-21.4.0.0.0dbru.zip
+> > sudo unzip -d /opt/oracle instantclient-sqlplus-linux.x64-21.4.0.0.0dbru.zip
+> > export LD_LIBRARY_PATH=/opt/oracle/instantclient_21_4:$LD_LIBRARY_PATH
+> > export PATH=$LD_LIBRARY_PATH:$PATH
+> > source ~/.bashrc
+> > cd ~
+> > git clone https://github.com/quentinhardy/odat.git
+> > cd odat/
+> > pip install python-libnmap
+> > git submodule init
+> > git submodule update
+> > pip3 install cx_Oracle
+> > sudo apt-get install python3-scapy -y
+> > sudo pip3 install colorlog termcolor passlib python-libnmap
+> > sudo apt-get install build-essential libgmp-dev -y
+> > pip3 install pycryptodome
+> >
+> > --2025-06-24 00:24:53--  https://download.oracle.com/otn_software/linux/instantclient/214000/instantclient-basic-linux.x64-21.4.0.0.0dbru.zip
+> > Resolving download.oracle.com (download.oracle.com)... 23.58.104.121
+> > Connecting to download.oracle.com (download.oracle.com)|23.58.104.121|:443... connected.
+> > HTTP request sent, awaiting response... 200 OK
+> > Length: 79386308 (76M) [application/zip]
+> > Saving to: ‘instantclient-basic-linux.x64-21.4.0.0.0dbru.zip’
+> >
+> > <SNIP>
+> > ```
+> <!-- }}} -->
 
 <!-- }}} -->
 
@@ -159,64 +258,6 @@ vulnerabilities, misconfigurations
 > ...SNIP...
 > ```
 <!-- }}} -->
-
-<!-- }}} -->
-
-<!-- File Upload {{{-->
-### File Upload
-
-It may be possible to upload a web shell to the target if
-
-- the server is running a web server
-- the server's [[Webapp/General/Web Server Root#Default|root directory location]]
-  is known
-
-1. Create a payload
-
-```sh
-echo "Oracle File Upload Test Payload" > payload.txt
-```
-
-2. Upload the file to the database
-
-```sh
-./odat.py utlfile -s <target> -d XE -U <use> -P <password> --sysdba --putFile C:\\path\\to <file.ext> ./testing.txt
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> ./odat.py utlfile -s 10.129.204.235 -d XE -U scott -P tiger --sysdba --putFile C:\\inetpub\\wwwroot testing.txt ./testing.txt
-> ```
->
-> > [!info]-
-> >
-> > - `utlfile`: [Oracle UTL_FILE](https://docs.oracle.com/database/121/ARPLS/u_file.htm)
-> >   functionality to upload a file
-> > - `-s 10.129.204.235`: target IP of the Oracle instance.
-> > - `-d XE`: database/SID (Oracle XE).
-> > - `-U scott`: username
-> > - `-P tiger`: password in cleartext
-> > - `--sysdba`: run with SYSDBA privileges
-> > - `--putFile C:\\inetpub\\wwwroot testing.txt ./testing.txt`:
-> >   upload a file to the DB server's filesystem
-> >
->
-> ```sh
-> [1] (10.129.204.235:1521): Put the ./testing.txt local file in the C:\inetpub\wwwroot folder like testing.txt on the 10.129.204.235 server
-> [+] The ./testing.txt file was created on the C:\inetpub\wwwroot directory on the 10.129.204.235 server like the testing.txt file
-> ```
-<!-- }}} -->
-
-3. Test if the uppload worked with [cURL](https://curl.se/)
-
-```sh
-curl -X GET http://<target>/<payload>
-```
-```
-Oracle File Upload Test Payload
-```
 
 <!-- }}} -->
 
@@ -326,7 +367,7 @@ sqlplus <user>/<password>@<target>/XE as sysdba
 > [!tip]
 >
 > In case of this error, execute the following
-> (*taken from [here](https://stackoverflow.com/questions/27717312/sqlplus-error-while-loading-shared-libraries-libsqlplus-so-cannot-open-shared)*)
+> (*[source](https://stackoverflow.com/questions/27717312/sqlplus-error-while-loading-shared-libraries-libsqlplus-so-cannot-open-shared)*)
 >
 > ```
 > sqlplus: error while loading shared libraries: libsqlplus.so: cannot open shared object file: No such file or directory
@@ -457,15 +498,17 @@ the **finger** output can leak:
 - The shell and sometimes system info
 - Possibly hints about the Oracle software path or environment variables
 
-This is valuable reconnaissance material:
-
-- The home directory path often matches Oracle installation paths
-- Knowing where Oracle is installed helps craft local privilege escalation,
-  file system attacks, or configuration abuse
-- Combined with other leaks (e.g.,
-  [[General#Default Password|default listener password]] or unprotected
-  `listener.ora`), an attacker could manipulate the TNS listener
-  [[General#TNS Listener|TNS listener]] or connect directly to the database
+> [!info]-
+>
+> This is valuable reconnaissance material:
+>
+> - The home directory path often matches Oracle installation paths
+> - Knowing where Oracle is installed helps craft local privilege escalation,
+>   file system attacks, or configuration abuse
+> - Combined with other leaks (e.g.,
+>   [[General#Default Password|default listener password]] or unprotected
+>   `listener.ora`), an attacker could manipulate the TNS listener
+>   [[General#TNS Listener|TNS listener]] or connect directly to the database
 
 
 ```sh
