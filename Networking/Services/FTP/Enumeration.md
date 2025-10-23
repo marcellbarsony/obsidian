@@ -204,15 +204,11 @@ ___
 <!-- Banner Grabbing {{{-->
 ## Banner Grabbing
 
-### Netcat
-
 Grab the FTP banner with [[netcat]]
 
 ```sh
 nc -nv <target> 21
 ```
-
-### Telnet
 
 Grab the FTP banner with [[Networking/Services/Telnet/General|Telnet]]
 

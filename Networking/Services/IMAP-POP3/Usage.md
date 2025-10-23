@@ -168,6 +168,8 @@ login <user@domain.com> <password>
 
 <!-- }}} -->
 
+___
+
 <!-- }}} -->
 
 <!-- Authenticated {{{-->
@@ -676,9 +678,9 @@ Append a message to the specified mailbox
 
 <!-- }}} -->
 
-<!-- }}} -->
-
 ___
+
+<!-- }}} -->
 
 <!-- }}} -->
 

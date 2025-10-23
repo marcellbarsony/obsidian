@@ -133,7 +133,7 @@ nmap -p 143 --script imap-capabilities <target> -oA imap-server-capabilities
 All IMAP scripts
 
 ```sh
-nmap -p 143,993 --script imap-* <target> -oA imap-all-scripts
+nmap -p 143,993 --script imap-* <target> -oA imap-scripts-all
 ```
 
 <!-- }}} -->

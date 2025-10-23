@@ -19,6 +19,8 @@ system's CPU, firmware (BIOS or UEFI) and operating system.
 even if they are powered off or in an unresponsive state, via direct connection
 to the system's hardware.
 
+- [A Penetration Tester's Guide to IPMI and BMCs](https://www.rapid7.com/blog/post/2013/07/02/a-penetration-testers-guide-to-ipmi/)
+
 ___
 
 <!-- BMC {{{-->
@@ -75,8 +77,11 @@ ___
 >
 > | Product         | Username        | Password         |
 > | --------------- | --------------- | ---------------- |
+> | ASUS IKVM BMC   | `admin`         | `admin`          |
 > | Dell iDRAC      | `root`          | `calvin`         |
+> | Fujitsu IRMC    | `admin`         | `admin`          |
 > | HP iLO          | `Administrator` | randomized 8-character string consisting of numbers and uppercase letters |
+> | Oracle/Sun ILOM | `root`          | `changeme`       |
 > | Supermicro IPMI | `ADMIN`         | `ADMIN`          |
 <!-- }}} -->
 

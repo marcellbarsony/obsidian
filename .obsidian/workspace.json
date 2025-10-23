@@ -8,12 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "83632d55fe09f01b",
+            "id": "924c9ef152f93ccf",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Networking/Services/Oracle TNS/Enumeration.md",
+                "file": "Networking/Services/Rsync/Exploitation.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Enumeration"
+              "title": "Exploitation"
             }
           }
         ]
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/Services/Oracle TNS/Enumeration.md",
+                "file": "Networking/Services/Rsync/Exploitation.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Enumeration"
+              "title": "Outline of Exploitation"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/Services/Oracle TNS/Enumeration.md",
+                "file": "Networking/Services/Rsync/Exploitation.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Enumeration"
+              "title": "Graph of Exploitation"
             }
           }
         ]
@@ -223,52 +223,53 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "83632d55fe09f01b",
+  "active": "924c9ef152f93ccf",
   "lastOpenFiles": [
-    "Networking/Services/Oracle TNS/Exploitation.md",
-    "Networking/Services/Oracle TNS/Enumeration.md",
-    "Networking/Services/Oracle TNS/General.md",
-    "Networking/Services/SQL/Exploitation.md",
-    "Networking/Services/SNMP/Enumeration.md",
-    "Networking/Services/IPMI/Exploitation.md",
-    "Networking/Services/IPMI/Enumeration.md",
-    "Networking/Services/IMAP-POP3/Usage.md",
-    "Networking/Services/IMAP-POP3/General.md",
-    "Networking/Services/IMAP-POP3/Exploitation.md",
-    "Networking/Services/FTP/Exploitation.md",
-    "Networking/Services/MSSQL/Enumeration.md",
-    "Networking/Services/MSSQL/Exploitation.md",
-    "Networking/Services/MSSQL/General.md",
-    "Networking/Services/MySQL/Exploitation.md",
-    "Networking/Services/MySQL/Enumeration.md",
-    "Pentest/Tools/Metasploit/Msfvenom.md",
-    "Networking/Services/MySQL/General.md",
-    "Pentest/Tools/Brute Force/Medusa.md",
-    "Networking/Services/MSSQL/src/password-list.md",
+    "Networking/Services/Rsync/Enumeration.md",
+    "Networking/Services/Rsync/Usage.md",
+    "Networking/Services/Rsync/General.md",
+    "Networking/Services/RDP/Exploitation.md",
+    "Linux/Linux.md",
+    "Linux/General/Tools/Find.md",
+    "Linux/General/Tools/Filter.md",
+    "Linux/General/Tools/cURL.md",
+    "Networking/Services/Rsync/Exploitation.md",
+    "Networking/Services/RDP/Enumeration.md",
+    "Networking/Services/WinRM/Usage.md",
+    "Networking/Services/WinRM/Exploitation.md",
+    "Networking/Services/WinRM/Enumeration.md",
+    "Networking/Services/WinRM/General.md",
+    "Networking/Services/RDP/Usage.md",
+    "Networking/Services/RDP/General.md",
+    "Networking/Services/SSH/Exploitation.md",
+    "Networking/Services/SSH/Enumeration.md",
+    "Networking/Services/SSH/General.md",
+    "Networking/Services/SSH/Usage.md",
+    "Pentest/Tools/Brute Force/Ncrack.md",
+    "Pentest/Tools/Brute Force/Crowbar.md",
+    "Networking/Services/VNC/Enumeration.md",
+    "Networking/Services/VNC/General.md",
+    "Networking/Services/Telnet/General.md",
+    "Networking/Services/Rsync/Enumeration_1.md",
+    "Networking/Services/SSH/src/ssh-remote-port-forwarding.png",
+    "Networking/Services/SSH/src/ssh-remote-port-forwarding-home-network.png",
+    "Networking/Services/SSH/src/ssh-local-port-forwarding-bastion.png",
+    "Networking/Services/SSH/src/ssh-local-port-forwarding.png",
+    "Networking/Services/SSH/src/local-port-forwarding-bastion-2000-opt.png",
+    "Networking/Services/SSH/src/local-port-forwarding-2000-opt.png",
+    "Networking/Services/SSH/src/remote-port-forwarding-home-network-2000-opt.png",
+    "Networking/Services/SSH/src/remote-port-forwarding-2000-opt.png",
+    "Networking/Services/SSH/src/ssh-port-forwarding.png",
+    "Networking/Services/SSH/src",
     "Networking/Services/MSSQL/src/password-list.txt",
     "Networking/Services/MSSQL/src/mssql-betterdefaultpasslist.txt",
-    "Networking/Services/MSSQL/src/mssql-betterdefaultpasslist.md",
     "Networking/Services/MSSQL/src/ssms.webp",
-    "Networking/Services/MSSQL/src/ssms-connect.png",
-    "Networking/Services/SQL/xp_cmdshell.md",
-    "Pentest/Wordlists.md",
-    "Linux/Privesc/Credential Hunting.md",
-    "Microsoft/AD/AD.md",
-    "Networking/Services/MySQL/Usage.md",
     "Microsoft/Windows/Exploitation",
     "Microsoft/Exploitation",
     "test.txt",
     "Pentest/Tools/Metasploit",
     "Pentest/Tools/Cracking",
     "Pentest/Tools/Brute Force",
-    "Pentest/Brute Force",
-    "Networking/Services/WMI",
-    "Networking/Services/MSSQL/src/20251007-213129.png",
-    "Networking/Services/SNMP/src/SNMP_OID_MIB_Tree.png",
-    "Networking/Services/DNS/src/dns-structure.png",
-    "Networking/Enumeration/Infrastructure/src/infra-enum.png",
-    "Networking/Services/DNS/src/tooldev-dns.png",
-    "Networking/General/_uncategorized/proxy-01.png",
-    "Networking/pics/proxy-01.png"
+    "Pentest/Brute Force"
   ]
 }
