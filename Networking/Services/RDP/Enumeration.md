@@ -9,6 +9,8 @@ links:
 
 # Enumeration
 
+___
+
 <!-- Service Detection {{{-->
 ## Service Detection
 
@@ -33,10 +35,14 @@ Check Windows version through RDP
 nmap -p 3389 --script rdp-ntlm-info <target> -oA rdp-script-ntlm-info
 ```
 
+> [!tip]-
+>
+> - Check if [[General#Network Level Authentication|NLA]] is enabled
+
 Check security layer
 
 ```sh
-nmap -p 3389 --script rdp-enum-encryption <target> -oA rdb-script-enum-encryption
+nmap -p 3389 --script rdp-enum-encryption <target> -oA rdp-script-enum-encryption
 ```
 
 > [!info]-
@@ -47,6 +53,15 @@ nmap -p 3389 --script rdp-enum-encryption <target> -oA rdb-script-enum-encryptio
 > - Security layer (RDP/TLS/CredSSP)
 > - Encryption level
 
+Run all scripts (*including [rdp-vuln-ms12-020](https://nmap.org/nsedoc/scripts/rdp-vuln-ms12-020.html)*)
+
+```sh
+nmap -sC -sV <target> -p 3389 --script rdp* -oA rdp-script-all
+```
+
+```sh
+nmap -sC -sV <target> -p 3389 --packet-trace --disable-ap-ping -n -oA rdp-script-trace
+```
 ___
 
 <!-- }}} -->
@@ -79,6 +94,28 @@ Check RDP certificate with [openssl](https://en.wikipedia.org/wiki/OpenSSL)
 
 ```sh
 openssl s_client -connect <target>:3389 < /dev/null 2>&1 | openssl x509 -noout -text
+```
+
+___
+
+<!-- }}} -->
+
+<!-- RDP Security Check {{{-->
+## RDP Security Check
+
+Perl script developed by [Cisco CX Security Labs](https://github.com/CiscoCXSecurity)
+to enumerate security settings of an RDP Service
+
+Clone the [repository](https://github.com/CiscoCXSecurity/rdp-sec-check)
+
+```sh
+git clone https://github.com/CiscoCXSecurity/rdp-sec-check.git
+```
+
+Launch the script against the target
+
+```sh
+./rdp-sec-check.pl <target>
 ```
 
 ___

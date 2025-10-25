@@ -37,7 +37,7 @@ nmap -p 873 <target> -oA rsync-identify
 > Nmap done: 1 IP address (1 host up) scanned in 1.13 seconds
 > ```
 
-Identify R-Services
+Identify [[General#R-Services|R-Services]]
 
 ```sh
 sudo nmap -sV -p 512,513,514 <target> -oA rsync-services
@@ -157,18 +157,13 @@ use auxiliary/scanner/rsync/modules_list
 > ```
 <!-- }}} -->
 
-___
-
-<!-- }}} -->
-
-<!-- Shared Folders {{{-->
-## Shared Folders
-
-Rsync modules represent directory shares and may be protected with a password
+List modules with [[Usage|Rsync]]
 
 ```sh
 rsync <target>::
 ```
+
+List files in a module with [[Usage|Rsync]]
 
 ```sh
 rsync -av --list-only rsync://<target>/<module_name>
@@ -198,3 +193,6 @@ rsync -av --list-only rsync://<target>/<module_name>
 ___
 
 <!-- }}} -->
+
+<!-- }}} -->
+

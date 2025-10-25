@@ -17,8 +17,6 @@ is a client-server model network protocol that allows a secure way to acces a
 computers remotely via password authentication or passwordless
 [[#Public Key Authentication]].
 
-> [!todo]
-
 ___
 
 <!-- }}} -->
@@ -26,15 +24,53 @@ ___
 <!-- Public Key Authentication {{{-->
 ## Public Key Authentication
 
-> [!todo]
+[SSH Public Key Authentication](https://www.ssh.com/academy/ssh/public-key-authentication)
+uses [asymmetric cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography)
+with a [[#Private Key]] and a corresponding [[#Public Key]].
 
-[public-key authentication](https://serverpilot.io/docs/guides/ssh/public-key-auth/)
+Prior to the authentication process:
 
-using an SSH public/private key pair.
+1. The user generates a key pair
+
+2. The [[#Public Key]] is copied to the server's `~/.ssh/authorized_keys`
+
+During the authentication process:
+
+1. Client initiate SSH connection to the server
+
+2. Server sends a cryptographic challenge based on the stored [[#Public Key]]
+
+3. Client signs the challenge with its [[#Private Key]]
+
+4. Server verifies the signature using the [[#Public Key]]
 
 
-- The server sends its public host key to the client,
-  which the client uses to verify the server's identity
+> [!example]-
+>
+> ![[ssh-pka-light.png]]
+
+<!-- Key Pairs {{{-->
+### Key Pairs
+
+#### Private Key
+
+The **private key** is generated and stored locally,
+and often secured with a passphrase.
+
+Possession of the private key allows a user to authenticate themselves
+to a server that recognizes the matching public key.
+
+#### Public Key
+
+The **public key** is copied to the SSH server(s).
+Anyone with a copy of the public key can encrypt data which can be
+be decrypted by the server(s).
+
+If a server receives a public key from a trustworthy user,
+it marks the key as authorized in its [authorized_keys file](https://www.ssh.com/academy/ssh/authorized-keys-file)
+as an [authorized key](https://www.ssh.com/academy/ssh/authorized-key).
+
+<!-- }}} -->
 
 ___
 

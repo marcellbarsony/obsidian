@@ -18,17 +18,19 @@ port:
 *plain-text* server-client protocol for file transfer across a computer network.
 
 <!-- Example {{{-->
-> [!example]
+> [!example]-
 >
 > Nmap FTP scan
 >
->```sh
->PORT   STATE SERVICE
->21/tcp open  ftp
->```
+> ```sh
+> PORT   STATE SERVICE
+> 21/tcp open  ftp
+> ```
 <!-- }}} -->
 
 - [Wikipedia - List of FTP server return codes](https://en.wikipedia.org/wiki/List_of_FTP_server_return_codes)
+
+___
 
 <!-- Active vs Passive FTP{{{-->
 ## Active vs Passive FTP

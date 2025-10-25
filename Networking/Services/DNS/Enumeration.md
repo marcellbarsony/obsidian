@@ -9,15 +9,7 @@ links: "[[Services]]"
 
 # Enumeration
 
-<!-- Checklist {{{-->
-## Checklist
-
-- [ ] [[#Banner Grabbing]]
-- [ ] [[#DNS Server Discovery]]
-
 ___
-
-<!-- }}} -->
 
 <!-- Banner Grabbing {{{-->
 ## Banner Grabbing

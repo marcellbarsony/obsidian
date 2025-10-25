@@ -31,7 +31,7 @@ Using hash (*Pass-the-Hash*)
 evil-winrm -i <target> -u administrator -H 'NTHASH'
 ```
 
-Using SSL (*port 5986*)
+Using SSL (*port `5986`*)
 
 ```sh
 evil-winrm -i <target> -u administrator -p '<password>' -S
