@@ -6,6 +6,8 @@ tags: []
 
 # Detection Evasion
 
+___
+
 <!-- Firewall {{{-->
 
 ## Firewalls
@@ -13,14 +15,17 @@ tags: []
 ### ACK Scan
 
 Firewalls and IPS/IDS systems detect **TCP ACK** scans (`-sA`) harder than
-**SYN** (`-sS`) or **TCP Connect** scans (`-sT`):<br>
-- **TCP ACK** sends a TCP packet with with only the `ACK` flag set
-- The **firewall cannot determine** whether the packet is a part of an ongoing
-  conversation (*established from an external or internal network*)
-- The **receiving host must respond** with a `RST` flag whether the port is
-  closed or open
+**SYN** (`-sS`) or **TCP Connect** scans (`-sT`)
 
-SYN Scan (Full Connect Scan)
+> [!info]-
+>
+> - **TCP ACK** sends a TCP packet with with only the `ACK` flag set
+> - The **firewall cannot determine** whether the packet is a part of an ongoing
+>   conversation (*established from an external or internal network*)
+> - The **receiving host must respond** with a `RST` flag whether the port is
+>   closed or open
+
+SYN Scan (*Full Connect Scan*)
 
 ```sh
 sudo nmap 10.129.2.28 -p 21,22,25 -sS -Pn -n --disable-arp-ping
@@ -49,18 +54,21 @@ sudo nmap 10.129.2.28 -p 21,22,25 -sA -Pn -n --disable-arp-ping
 >22/tcp unfiltered ssh
 >25/tcp filtered   smtp
 >```
+>
+> Port `21` and `25` are [[Nmap#Port States|filtered]]
+> (returning **ICMP Port Unreachable** or **no response**,
+> meaning the packets are dropped (most likely by a firewall)).
 
-Port `21` and `25` are [[Nmap#Port States|filtered]] (returning **ICMP Port
-Unreachable** or **no response**, meaning the packets are dropped (most likely
-by a firewall).
+___
+
 <!-- }}} -->
 
 <!-- IPS/IDS {{{-->
 ## IPS/IDS
 
 Several Virtual Private Servers (`VPS`) with different IPs are recommended to
-determine whether an IPS/IDS is in place: scanning a single port aggressively
-may trigger IDS/IPS and block the IP of the VPS.
+determine whether an **IPS/IDS** is in place: scanning a single port
+aggressively may trigger **IDS/IPS** and block the IP of the VPS.
 
 ### Decoys
 
@@ -98,10 +106,15 @@ sudo nmap 10.129.2.28 -n -Pn -p 445 -O -S 10.129.2.200 -e tun0
 >
 > - `-O`: Enable OS detection
 > - `-S`: Define different source IP
+
+___
 <!-- }}} -->
 
+<!-- DNS Proxying {{{-->
 ## DNS Proxying
 
 > [!todo]
 >
 > DNS Proxying
+
+<!-- }}} -->

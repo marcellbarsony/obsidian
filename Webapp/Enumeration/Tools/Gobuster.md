@@ -8,98 +8,153 @@ links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
 
 # Gobuster
 
-GoBuster is a directory/file, DNS and virtual host brute-forcing tool
+[Gobuster](https://github.com/OJ/gobuster)
+is a directory/file, DNS and virtual host brute-forcing tool
 
-- [Gobuster - GitHub](https://github.com/OJ/gobuster)
 - [Gobuster - Man (Debian)](https://manpages.debian.org/testing/gobuster/gobuster.1.en.html)
 - [Gobuster - Man (Ubuntu)](https://manpages.ubuntu.com/manpages/focal/man1/gobuster.1.html)
+
+___
 
 ## Usage
 
 <!-- Examples {{{-->
-### Examples
+### Help
 
-#### Directory Enumeration
-
-Basic directory enumeration
+Help
 
 ```sh
-gobuster dir -u 10.10.10.10:1000 -w /usr/share/seclists/Discovery/Web-Content/common.txt
-```
-
-#### Recursive Directory Enumeration
-
-```sh
-gobuster dir -u http://<host>/content/private/ -w wordlist.txt
-gobuster dir -u http://<host>/content/private/plugins/ -w wordlist.txt
-```
-
-#### DNS subdomain enumeration
-
-```sh
-gobuster dns -d inlanefreight.com -w /usr/share/SecLists/Discovery/DNS/namelist.txt
-```
-<!-- }}} -->
-
-<!-- Modes {{{-->
-### Modes
-
-```sh
-# Help
 gobuster help
+```
 
-# Help <mode>
+Help `<mode>`
+
+```sh
 gobuster help <mode>
+```
 
-# Directory enumeration
-gobuster dir <flags>
+### Directory Enumeration
 
-# DNS subdomain enumeration
-gobuster dns <flags>
+Directory enumeration
 
-# Amazon Web Services (AWS) S3 bucket enumeration
-gobuster s3 <flags>
+```sh
+gobuster dir <flags> -u <target>
+```
 
-# Google Cloud Storage (GCS) bucket enumeration
-gobuster gcs <flags>
+> [!example]-
+>
+> ```sh
+> gobuster dir -u 10.10.10.10:1000 -w /usr/share/seclists/Discovery/Web-Content/common.txt
+> ```
 
-# Virtual Host brute-forcing
+### Recursive Directory Enumeration
+
+```sh
+gobuster dir -u http://<host>/content/private/plugins/ -w <wordlist.txt>
+```
+
+### DNS Subdomain Enumeration
+
+Brute Force DNS subdomain enumeration
+
+```sh
+gobuster dns <flags> -d <target> -w <wordlist.txt>
+```
+
+> [!example]-
+>
+> ```sh
+> gobuster dns -d inlanefreight.com -w /usr/share/SecLists/Discovery/DNS/namelist.txt
+> ```
+
+### Brute Forcing
+
+Virtual Host brute-forcing
+
+```sh
 gobuster vhost <flags>
+```
 
-# General purpose fuzzing
+General purpose fuzzing
+
+```sh
 gobuster fuzz <flags>
+```
 
-# TFTP file path brute-forcing
+TFTP file path brute-forcing
+
+```sh
 gobuster tftp <flags>
 ```
+
+### Cloud
+
+Amazon Web Services (AWS) S3 bucket enumeration
+
+```sh
+gobuster s3 <flags>
+```
+
+Google Cloud Storage (GCS) bucket enumeration
+
+```sh
+gobuster gcs <flags>
+```
+___
 <!-- }}} -->
 
 <!-- Options {{{-->
 ### Options
 
-```sh
-# Ignore redirect (301) responses
--b
+> [!example]-
+>
+> Ignore redirect (301) responses
+>
+> ```sh
+> -b
+> ```
+>
+> Don't display progress
+>
+> ```sh
+> -z, --no-progress
+> ```
+>
+> Output file to write results to (defaults to stdout)
+>
+> ```sh
+> -o, --output string
+> ```
+>
+> File containing replacement patterns
+>
+> ```sh
+> -p, --pattern string
+> ```
+>
+> Don't print the banner and other noise
+>
+> ```sh
+> -q, --quiet
+> ```
+>
+> Number of concurrent threads (default 10)
+>
+> ```sh
+> -t, --threads int
+> ```
+>
+> Verbose output (errors)
+>
+> ```sh
+> -v, --verbose
+> ```
+>
+> Path to the wordlist
+>
+> ```sh
+> -w, --wordlist string
+> ```
 
-# Don't display progress
--z, --no-progress
-
-# Output file to write results to (defaults to stdout)
--o, --output string
-
-# File containing replacement patterns
--p, --pattern string
-
-# Don't print the banner and other noise
--q, --quiet
-
-# Number of concurrent threads (default 10)
--t, --threads int
-
-# Verbose output (errors)
--v, --verbose
-
-# Path to the wordlist
--w, --wordlist string
-```
+___
 <!-- }}} -->

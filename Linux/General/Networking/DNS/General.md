@@ -10,9 +10,15 @@ tags:
 - [Arch Wiki - DNS Resolution](https://wiki.archlinux.org/title/Domain_name_resolution)
 - [Arch Wiki - Openresolv](https://wiki.archlinux.org/title/Openresolv)
 
+___
+
+<!-- DNS Resolution {{{-->
 ## DNS Resolution
 
-The glibc resolver reads `/etc/resolv.conf`.
+The glibc resolver reads `/etc/resolv.conf`
+
+___
+<!-- }}} -->
 
 <!-- Tools {{{-->
 ## DNS Tools
@@ -21,17 +27,17 @@ The glibc resolver reads `/etc/resolv.conf`.
 
 Stop NetworkManager from modifying `/etc/resolv.conf`
 
-> [!example]
+> [!example]-
 >
 > [Unmanaged /etc/resolv.conf](https://wiki.archlinux.org/title/NetworkManager#Unmanaged_/etc/resolv.conf)
->```sh
->/etc/NetworkManager/conf.d/dns.conf
->```
+> ```sh
+> /etc/NetworkManager/conf.d/dns.conf
+> ```
 >
->```sh
->[main]
->dns=none
->```
+> ```sh
+> [main]
+> dns=none
+> ```
 
 ### Bind9
 
@@ -41,6 +47,8 @@ Stop NetworkManager from modifying `/etc/resolv.conf`
 ### ldns
 
 - [GitHub - ldns](https://github.com/NLnetLabs/ldns)
+
+___
 <!-- }}} -->
 
 <!-- Service {{{-->
@@ -69,6 +77,8 @@ Config
 ```sh
 systemd_resolved_service = "sudo systemctl start systemd-resolved.service"
 ```
+
+___
 <!-- }}} -->
 
 <!-- Cache {{{-->
@@ -83,21 +93,21 @@ sudo systemd-resolve --flush-caches
 
 Flush browser DNS cache
 
-> [!info]
+> [!info]-
 >
 > Firefox
 >
->```md
->about:networking#dns
->```
-
-> [!info]
+> ```md
+> about:networking#dns
+> ```
 >
 > Chromium
 >
->```
->chrome://net-internals/#dns
->```
+> ```
+> chrome://net-internals/#dns
+> ```
+
+___
 <!-- }}} -->
 
 <!-- Security {{{-->
@@ -107,6 +117,7 @@ Flush browser DNS cache
 
 > [!todo]
 
+___
 <!-- }}} -->
 
 <!-- DNS Leaks {{{-->
@@ -138,11 +149,16 @@ to ensure the device cannot make connections over IPv6.
 
 #### Firefox
 
-To disable WebRTC in Firefox
+Disable WebRTC in Firefox
 (`/* 7020: disable WebRTC (Web Real-Time Communication`)
-set `media.peerconnection.enabled` to `false`.
+
+```json
+media.peerconnection.enabled=false;
+```
 
 #### Chrome
 
 - [Chrome Store - WebRTC Network Limiter](https://chrome.google.com/webstore/detail/webrtc-network-limiter/npeicpdbkakmehahjeeohfdhnlpdklia)
+
+___
 <!-- }}}-->

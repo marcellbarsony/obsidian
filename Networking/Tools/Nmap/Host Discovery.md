@@ -8,6 +8,8 @@ tags: []
 
 Host discovery on the network
 
+___
+
 ## ICMP Echo Request Scan
 
 ### Scan Network Range
@@ -81,3 +83,5 @@ sudo nmap -sn -oA network_icmp_scan -iL hosts.txt
 > - `-sn`: Disable port scanning (send ARP ping)
 > - `-oA`: Save scan results
 > - `-iL`: Define a list of IPs
+
+___

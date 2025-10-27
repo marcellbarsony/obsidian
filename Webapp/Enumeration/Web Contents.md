@@ -8,6 +8,9 @@ links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
 
 # Web contents
 
+___
+
+<!-- Autocompletion {{{-->
 ## Autocompletion
 
 Check if `autocomplete` is disabled
@@ -16,14 +19,20 @@ Check if `autocomplete` is disabled
 autocomplete="off"
 ```
 
-Setting `autocomplete="off"` on input fields has two effects:
+> [!info]-
+>
+> Setting `autocomplete="off"` on input fields has two effects:
+>
+> 1. It tells the browser not to save data inputted by the user for later
+>    autocompletion
+> 2. It stops the browser from caching form data in the session history
+>
+> [MDN - How to turn off autocompletion](https://developer.mozilla.org/en-US/docs/Web/Security/Practical_implementation_guides/Turning_off_form_autocompletion)
 
-- It tells the browser not to save data inputted by the user for later
-  autocompletion
-- It stops the browser from caching form data in the session history
+___
+<!-- }}} -->
 
-- [MDN - How to turn off autocompletion](https://developer.mozilla.org/en-US/docs/Web/Security/Practical_implementation_guides/Turning_off_form_autocompletion)
-
+<!-- Page Source Code {{{-->
 ## Page Source Code
 
 Inspect the page soruce code (`Ctrl + U`) for sensitive information:
@@ -34,6 +43,10 @@ Inspect the page soruce code (`Ctrl + U`) for sensitive information:
 - Passwords
 - Other useful information
 
+___
+<!-- }}} -->
+
+<!-- JavaScript Code {{{-->
 ### JavaScript Code
 
 Inspect JavaScript code for
@@ -42,3 +55,6 @@ Inspect JavaScript code for
 - credentials
 - tokens
 - keys
+
+___
+<!-- }}} -->

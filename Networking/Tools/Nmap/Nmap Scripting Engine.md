@@ -15,6 +15,8 @@ Update the Nmap Scripting Engine database
 sudo nmap --script-updatedb
 ```
 
+___
+
 ## Default Scripts
 
 Run nmap default scripts
@@ -22,6 +24,8 @@ Run nmap default scripts
 ```sh
 sudo nmap <target_ip> -sC
 ```
+
+___
 
 ## Specific Scripts Category
 
@@ -31,9 +35,13 @@ Run a specific script category
 sudo nmap <target_ip> --script <category>
 ```
 
-```sh
-sudo nmap 10.129.2.28 -p 25 --script banner,smtp-commands
-```
+> [!example]-
+>
+> ```sh
+> sudo nmap 10.129.2.28 -p 25 --script banner,smtp-commands
+> ```
+
+___
 
 ## Defined Scripts
 
@@ -42,6 +50,8 @@ Run a defined script
 ```sh
 sudo nmap <target_ip> --script <script-name>,<script-name>,...
 ```
+
+___
 
 ## Agressive Scan
 
@@ -55,6 +65,8 @@ sudo nmap <target_ip> -p 80 -A
 >
 > - `-A`: Service detection, OS detection, traceroute and uses defaults scripts
 
+___
+
 ## Vulnerability Assesment
 
 Run a vulnerability assesment script
@@ -66,3 +78,5 @@ sudo nmap <target_ip> -p 80 -sV --script vuln
 > [!info]-
 >
 > - `--script vuln`: Uses all related scripts from specified category
+
+___

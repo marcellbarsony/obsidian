@@ -9,13 +9,18 @@ tags:
 
 Enumerate a host with known IP address
 
-The information needed includes
+> [!info]-
+>
+> The information needed includes
+>
+> - Open ports & services
+> - Service versions
+> - Information that the services provided
+> - Operating system
 
-- Open ports & services
-- Service versions
-- Information that the services provided
-- Operating system
+___
 
+<!-- TCP Scan {{{-->
 ## TCP Scan
 
 ### Top 10 TCP Port Scan
@@ -54,7 +59,7 @@ Disable on closed ports:
 Discover open ports on the target machine
 
 ```sh
-nmap -sV --open -oA target_initial_scan <target_ip>
+nmap -sV --open <target_ip> -oA tcp-initial-scan
 ```
 
 > [!info]-
@@ -68,7 +73,7 @@ nmap -sV --open -oA target_initial_scan <target_ip>
 Run a full port scan for services running on non-standard ports
 
 ```sh
-nmap -p- --open -oA target_full_tcp_scan <target_ip>
+nmap -p- --open -oA <target_ip> -oA tcp_full
 ```
 
 > [!info]-
@@ -79,10 +84,10 @@ nmap -p- --open -oA target_full_tcp_scan <target_ip>
 
 ### Script Scan
 
-Run a script scan on discovered ports (e.g., 22, 80)
+Run a script scan on discovered ports (*e.g., 22, 80*)
 
 ```sh
-nmap -sC -p 22,80 -oA target_script_scan <target>
+nmap -sC -p 22,80 <target> -oA script_scan
 ```
 
 > [!info]-
@@ -97,12 +102,15 @@ nmap -sC -p 22,80 -oA target_script_scan <target>
 is open
 
 ```sh
-sudo nmap <target_ip> -p 443
+sudo nmap <target_ip> -p 443 -oA tcp-connect
 ```
 
 ```sh
-sudo nmap <target_ip> -p 443 --packet-trace --disable-arp-ping -Pn -n --reason -sT
+sudo nmap <target_ip> -p 443 --packet-trace --disable-arp-ping -Pn -n --reason -sT -oA tcp-connect-trace
 ```
+
+___
+<!-- }}} -->
 
 <!-- UDP Scan {{{-->
 ## UDP Scan
@@ -112,7 +120,7 @@ sudo nmap <target_ip> -p 443 --packet-trace --disable-arp-ping -Pn -n --reason -
 Scan top 100 UDP ports
 
 ```sh
-sudo nmap <target_ip> -sU -F
+sudo nmap <target_ip> -sU -F -oA udp-top-100
 ```
 
 > [!info]-
@@ -125,7 +133,7 @@ sudo nmap <target_ip> -sU -F
 Scan all UDP ports
 
 ```sh
-sudo nmap -sU -p- <target_ip>
+sudo nmap -sU -p- <target_ip> -oA udp-all
 ```
 
 > [!info]-
@@ -138,7 +146,7 @@ sudo nmap -sU -p- <target_ip>
 Scan specific UDP port
 
 ```sh
-sudo nmap <target_ip> -sU -Pn -n --disable-arp-ping --packet-trace -p 137 --reason
+sudo nmap <target_ip> -sU -Pn -n --disable-arp-ping --packet-trace -p 137 --reason -oA udp-specific-port
 ```
 
 > [!info]-
@@ -150,4 +158,6 @@ sudo nmap <target_ip> -sU -Pn -n --disable-arp-ping --packet-trace -p 137 --reas
 > - `--packet-trace`: Show all packets sent and received
 > - `-p 137`: Scan specified port
 > - `--reason`: Display reason
+
+___
 <!-- }}} -->

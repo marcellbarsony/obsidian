@@ -10,8 +10,10 @@ links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
 
 [dirsearch](https://github.com/maurosoria/dirsearch) web path scanner
 
+___
+
 ## Usage
 
 ```sh
-dirsearch.py [-u|--url] {target} [-e|--extensions] {extensions} [options]
+dirsearch.py [-u|--url] <target> [-e|--extensions] <extensions> [options]
 ```

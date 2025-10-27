@@ -7,39 +7,83 @@ tags:
 
 # Web Application Enumeration Checklist
 
+___
+
+<!-- Passive Enumeration {{{-->
+## Passive Enumeration
+
+- [ ] [[DNS]]
+
+___
+<!-- }}} -->
+
+<!-- Domain {{{-->
+## Domain
+
+- [ ] [[Domain]]
+    - [ ] [[Domain#WHOIS|WHOIS]]
+    - [ ] [[Domain#DNS|DNS]]
+        - [ ] [[Domain#Subdomains|Subdomains]]
+            - [ ] [[Domain#Brute Force|Brute Force]]
+            - [ ] [[Domain#DNS Zone Transfer|DNS Zone Transfer]]
+    - [ ] [[Domain#SSL Certificate|SSL Certificate]]
+        - [ ] [[Domain#Certificate Transparency|Certificate Transparency]]
+
+___
+<!-- }}} -->
+
+<!-- Fingerprinting {{{-->
 ## Fingerprinting
 
 - [ ] [[Fingerprinting]]
     - [ ] [[Fingerprinting#Nmap Scan|Nmap Scan]]
         - [ ] [[Fingerprinting#Script Scan|Script Scan]]
-    - [ ] [[Fingerprinting#Banner grabbing|Banner grabbing]]
-        - [ ] [[Fingerprinting#cURL|cURL]]
-        - [ ] [[Fingerprinting#WhatWeb|WhatWeb]]
-        - [ ] [[Fingerprinting#Netcat|Netcat]]
     - [ ] [[Fingerprinting#Error Page|Error Page]]
     - [ ] [[Fingerprinting#Version Details & CVEs|Version Details & CVEs]]
         - [ ] [[Fingerprinting#Version Number|Version Number]]
         - [ ] [[Fingerprinting#Public Exploits|Public Exploits]]
+    - [ ] [[Banner Grabbing#Banner Grabbing|Banner Grabbing]]
+        - [ ] [[Banner Grabbing#cURL|cURL]]
+        - [ ] [[Banner Grabbing#WhatWeb|WhatWeb]]
+        - [ ] [[Banner Grabbing#Netcat|Netcat]]
+    - [ ] [[Wafw00f|WAF]]
+        - [ ] [[Wafw00f|Wafw00f]]
+    - [ ] [[Nikto]]
 
+___
+<!-- }}} -->
+
+<!-- Execution paths {{{-->
 ## Execution paths
 
 - [ ] [[Execution Paths]]
-    - [ ] [[Execution Paths#Directory Enumeration|Directory Enumeration]]
-        - [ ] [[Burp Suite]]
-        - [ ] [[Dirsearch]]
-        - [ ] [[Gobuster]]
-        - [ ] [[Fuff]]
     - [ ] [[Execution Paths#Directory Structure|Directory Structure]]
+        - [ ] [[Execution Paths#Directory Enumeration|Directory Enumeration]]
+            - [ ] [[Burp Suite#Enumeration|Burp Suites]]
+            - [ ] [[Dirsearch]]
+            - [ ] [[Gobuster]]
+            - [ ] [[Fuff]]
 - [ ] [[Execution Paths#Investigate Findings|Investigate Findings]]
 
-## Metafiles
+___
+<!-- }}} -->
 
-- [ ] [[Metafiles]]
-    - [ ] [[Metafiles#humans.txt|humans.txt]]
-    - [ ] [[Metafiles#robots.txt|robots.txt]]
-    - [ ] [[Metafiles#security.txt|security.txt]]
-    - [ ] [[Metafiles#sitemap.xml|sitemap.xml]]
+<!-- Well-Known {{{-->
+## Well-Known
 
+- [ ] [[Well-Known#Metafiles|Metafiles]]
+    - [ ] [[Well-Known#humans.txt|humans.txt]]
+    - [ ] [[Well-Known#robots.txt|robots.txt]]
+    - [ ] [[Well-Known#sitemap.xml|sitemap.xml]]
+- [ ] [[Well-Known]]
+    - [ ] [[Well-Known#security.txt|security.txt]]
+    - [ ] [[Well-Known#Change Password|change-password]]
+    - [ ] [[Well-Known#OpenID Configuration|openid-configuration]]
+
+___
+<!-- }}} -->
+
+<!-- Web contents {{{-->
 ## Web contents
 
 - [ ] [[Web Contents]]
@@ -47,22 +91,31 @@ tags:
     - [ ] [[Web Contents#Autocompletion|Autocompletion]]
     - [ ] [[Web Contents#JavaScript Code|JavaScript Code]]
 
+___
+<!-- }}} -->
+
+<!-- Application Functionality {{{-->
 ## Application Functionality
 
 - [ ] [[Login Functionality|Login Functionality]]
     - [ ] [[Login Functionality#Discover Login Page|Discover Login Page]]
 
-## DNS subdomain enumeration
+___
+<!-- }}} -->
 
-- [ ] [[Gobuster]]
-- [ ] [[Certificates|SSL Certificates]]
-    - [ ] [[Certificates#Subdomains|Subdomains]]
-
+<!-- Applications {{{-->
 ## Applications
 
 - [ ] [[DNS Lookup]]
 
+___
+<!-- }}} -->
+
+<!-- Certificates {{{-->
 ## Certificates
 
 - [ ] [[Certificates]]
     - [ ] [[Certificates|Inspect SSL Certificates]]
+
+___
+<!-- }}} -->

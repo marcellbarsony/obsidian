@@ -15,6 +15,23 @@ links: "[[Tools]]"
 - [Reddit - nmap -p- scans](https://www.reddit.com/r/hackthebox/comments/1aguh1o/nmap_p_scans/)
 - [Reddit - Nmap Cheat Sheet (figured yall could use this) ](https://www.reddit.com/r/hackthebox/comments/egcxkc/nmap_cheat_sheet_figured_yall_could_use_this/)
 
+___
+
+<!-- Port States {{{-->
+## Port States
+
+| State               | Description                                                           |
+| ------------------- | --------------------------------------------------------------------- |
+| **open**            | Connection (TCP, UDP, SCTP) established                               |
+| **closed**          | Response with `RST` flag is returned                                  |
+| **filtered**        | **Error** or **no response** is returned                              |
+| **unfiltered**      | TCP-ACK scan only: Port is accessible, state is unknown (open/closed) |
+| **open/filtered**   | No response; Firewall may protect the port                            |
+| **closed/filtered** | IP ID idle scan only: Port **closed or filtered by firewall**         |
+
+___
+<!-- }}} -->
+
 ## Usage
 
 Synopsis
@@ -26,19 +43,38 @@ nmap [Scan Type(s)] [Options] {target specification}
 <!-- Basic scan {{{-->
 ### Basic scan
 
+
+IP address scan (*TCP*)
+
 ```sh
-# IP address scan (TCP)
 nmap <target_ip>
+```
+
+```sh
 nmap <target_ip> --reason
+```
+
+```sh
 nmap --open <target_ip>
+```
+
+```sh
 nmap --packet-trace <target_ip>
+```
 
-# Script & Service scan
+Script & Service scan
+
+```sh
 nmap -sC -sV <target_ip>
+```
 
-# TCP scan
+TCP scan
+
+```sh
 nmap -sT <target_ip>
 ```
+
+___
 <!-- }}} -->
 
 <!-- Banner grabbing {{{-->
@@ -47,8 +83,10 @@ nmap -sT <target_ip>
 Grab the banner of a service
 
 ```sh
-map -sV --script=banner <target>
+nmap -sV --script=banner <target_ip> -oA script-banner
 ```
+
+___
 <!-- }}} -->
 
 <!-- Network scan {{{-->
@@ -56,15 +94,25 @@ map -sV --script=banner <target>
 
 ```sh
 nmap <target_ip>/<CIDR>
+```
 
-# Exclude address(es)
+Exclude address(es)
+
+```sh
 nmap <target_ip>/<CIDR> --exclude <target_ip>
+```
+
+```sh2
 nmap <target_ip>/<CIDR> --exclude <ip_list.txt>
 ```
 
 Scan from list
+
 ```sh
 nmap -iL <ip_list.txt>
+```
+
+```sh
 <ip_list.txt> nmap
 ```
 <!-- }}} -->
@@ -80,48 +128,81 @@ nmap <target_ip> -O
 <!-- Ping scan {{{-->
 ### Ping scan
 
+ICMP ping scan
+
 ```sh
-# ICMP ping scan
-nmap -sP <target_ip>
-nmap -sP <target_ip>/{CIDR}
+nmap -sP <target_ip> -oA icmp-ping-scan
+```
 
-# TCP ping scan
-nmap -PS <target_ip>
+```sh
+nmap -sP <target_ip>/<cidr> -oA icmp-ping-scan
+```
 
-# TCP ACK ping scan
-nmap -PA <target_ip>
+TCP ping scan
 
-# UDP ping scan
-nmap -PU [port] <target_ip>
+```sh
+nmap -PS <target_ip> -oA tcp_ping_scan
+```
+
+TCP ACK ping scan
+
+```sh
+nmap -PA <target_ip> -oA tcp_ack_scan
+```
+
+UDP ping scan
+
+```sh
+nmap -PU [port] <target_ip> -oA udp-ping-scan
 ```
 <!-- }}} -->
 
 <!-- Port scan {{{-->
 ### Port scan
 
+All ports
+
 ```sh
-# All ports
 nmap -p- <target_ip>
+```
 
-# Specific ports
+Specific ports
+
+```sh
 nmap -p <port1>,<port2> <target_ip>
+```
 
-# Specific TCP/UDP ports
+Specific TCP/UDP ports
+
+```sh
 nmap -p T:<port1>,U:<port2> <target_ip>
+```
 
-# Range of ports
+Range of ports
+
+```sh
 nmap -p <port1>-<port2> <target_ip>
+```
 
-# All named ports
+All named ports
+
+```sh
 nmap -p "*" <target_ip>
+```
 
-# 100 most common ports
+100 most common ports
+
+```sh
 nmap -F <target_ip>
+```
 
-# x most common ports
+x most common ports
+
+```sh
 nmap --top-ports <x> <target_ip>
 ```
-</details>
+
+___
 <!-- }}} -->
 
 <!-- Scripts {{{-->
@@ -129,72 +210,64 @@ nmap --top-ports <x> <target_ip>
 
 Specifying `-sC` will run the defined scripts against a target
 
-```sh
-# Synopsis
-nmap --script <script name> -p<port> <host>
+Synopsis
 
-# Example
-nmap --script voldemort-info -p- 10.10.10.10
+```sh
+nmap --script <script name> -p<port> <host>
 ```
+
+> [!example]-
+>
+> ```
+> nmap --script voldemort-info -p- 10.10.10.10
+> ```
 
 Nmap scripts are located at `/usr/share/nmap/scripts/`
 
 > [!example]-
 >
->```sh
->locate scripts/citrix
->
->/usr/share/nmap/scripts/citrix-brute-xml.nse
->/usr/share/nmap/scripts/citrix-enum-apps-xml.nse
->/usr/share/nmap/scripts/citrix-enum-apps.nse
->/usr/share/nmap/scripts/citrix-enum-servers-xml.nse
->/usr/share/nmap/scripts/citrix-enum-servers.nse
->```
+> ```sh
+> locate scripts/citrix
+> ```
+> ```sh
+> /usr/share/nmap/scripts/citrix-brute-xml.nse
+> /usr/share/nmap/scripts/citrix-enum-apps-xml.nse
+> /usr/share/nmap/scripts/citrix-enum-apps.nse
+> /usr/share/nmap/scripts/citrix-enum-servers-xml.nse
+> /usr/share/nmap/scripts/citrix-enum-servers.nse
+> ```
+
+___
 <!--}}}-->
 
 <!-- Options {{{-->
 ## Options
 
-### Save Output
-
-Output in all formats (normal, XML, and grepable)
+Save output in all formats (normal, XML, and grepable)
 
 ```sh
 nmap -sV --open -oA nibbles_initial_scan <target_ip>
 ```
 
-- Normal: `nibbles_initial_scan.nmap`
-- XML: `nibbles_initial_scan.xml`
-- Grepable: `nibbles_initial_scan.gnmap`
+> [!info]-
+>
+> - Normal: `nibbles_initial_scan.nmap`
+> - XML: `nibbles_initial_scan.xml`
+> - Grepable: `nibbles_initial_scan.gnmap`
 
-### Display Stats
-
-Automatically display statistics every 5 seconds
+Display statistics every 5 seconds
 
 ```sh
 --stats-every=5s
 ```
-
-### Check Scan Type Options
 
 Check which ports are scanned for a given scan type
 
 ```sh
 nmap -v -oG -
 ```
-<!-- }}} -->
 
-<!-- Port States {{{-->
-## Port States
-
-| State               | Description                                                           |
-| ------------------- | --------------------------------------------------------------------- |
-| **open**            | Connection (TCP, UDP, SCTP) established                               |
-| **closed**          | Response with `RST` flag is returned                                  |
-| **filtered**        | **Error** or **no response** is returned                              |
-| **unfiltered**      | TCP-ACK scan only: Port is accessible, state is unknown (open/closed) |
-| **open/filtered**   | No response; Firewall may protect the port                            |
-| **closed/filtered** | IP ID idle scan only: Port **closed or filtered by firewall**         |
+___
 <!-- }}} -->
 
 <!-- Output Formats {{{-->
@@ -215,4 +288,6 @@ Convert `.xml` to HTML reports with [xsltproc](https://linux.die.net/man/1/xsltp
 ```sh
 xsltproc target.xml -o target.html
 ```
+
+___
 <!-- }}} -->

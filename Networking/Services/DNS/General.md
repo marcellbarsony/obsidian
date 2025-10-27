@@ -1,5 +1,5 @@
 ---
-id: DNS-General
+id: DNS
 aliases:
   - Domain Name System
 tags:
@@ -24,10 +24,55 @@ ___
 
 <!-- }}} -->
 
+<!-- DNS Resolution {{{-->
+## DNS Resolution
+
+> [!info]-
+>
+> ![[dns-flowchart.svg]]
+
+### Hosts File
+
+The [hosts](https://en.wikipedia.org/wiki/Hosts_(file))
+file maps hostnames to IP addresses manually
+
+
+- `C:\Windows\System32\drivers\etc\hosts`
+- `/etc/hosts`
+
+```sh
+<IP Address>    <Hostname> [<Alias> ...]
+```
+
+> [!example]-
+>
+> Redirect a domain to a local server
+>
+> ```sh
+> 127.0.0.1       myapp.local
+> ```
+>
+> Test connectvity to a specific IP address
+>
+> ```sh
+> 192.168.1.20    testserver.local
+> ```
+>
+> Block unwanted websites
+>
+> ```sh
+> 0.0.0.0       unwanted-site.com
+> ```
+
+___
+<!-- }}} -->
+
 <!-- DNS Structure {{{-->
 ## DNS Structure
 
-![[dns-structure.png]]
+> [!info]-
+>
+> ![[dns-structure.png]]
 
 <!-- DNS Root Server {{{-->
 ### DNS Root Server
@@ -91,31 +136,26 @@ ___
 <!-- DNS Records {{{-->
 ## DNS Records
 
-Different **DNS Records** serve different purposes:
-
-- **A**: Return an IPv4 address of the requested domain
-
-- **AAAA**: Return an IPv6 address of the requested domain
-
-- **MX**: Return the responsible mail servers
-
-- **NS**: Return the DNS servers (nameservers) of the domain
-
-- **TXT**: Can contain various information (e.g., validate Google Search
-    Console, validate SSL certificates, SPF and DMARC entries (validate mail
-    traffic and protect from spam)
-
 - **CNAME**: Serves as an alias for another domain name
     (e.g., An `A` record for `hackthebox.eu` and a `CNAME` record for
     `www.hackthebox.eu` would make `www.hackthebox.eu` point to the same IP as
     `hackthebox.eu`)
 
-- **PTR**: Converts IP addresses into valid domain names (Reverse Lookup)
-
-- **SOA**: DNS zone information and email address of the administrative contact
+> [!example]-
+>
+> | Record Type | Full Name | Description | Zone File Example |
+> | --- | --- | --- | --- |
+> | **A** | Address Record | Maps a hostname to its IPv4 address. | www.example.com. IN A `192.0.2.1` |
+> | **AAAA** | IPv6 Address Record | Maps a hostname to its IPv6 address. | www.example.com. IN AAAA `2001:db8:85a3::8a2e:370:7334` |
+> | **CNAME** | Canonical Name Record | Creates an alias for a hostname, pointing it to another hostname. | `blog.example.com.` IN CNAME `webserver.example.net.` |
+> | **MX** | Mail Exchange Record | Specifies the mail server(s) responsible for handling email for the domain. | `example.com.` IN MX 10 `mail.example.com.` |
+> | **NS** | Name Server Record | Delegates a DNS zone to a specific authoritative name server. | `example.com.` IN NS `ns1.example.com.` |
+> | **TXT** | Text Record | Stores arbitrary text information, often used for domain verification or security policies. | `example.com.` IN TXT `"v=spf1 mx -all"` (SPF record) |
+> | **SOA** | Start of Authority Record | Specifies administrative information about a DNS zone, including the primary name server, responsible person's email, and other parameters. | `example.com.` IN SOA `ns1.example.com. admin.example.com. 2024060301 10800 3600 604800 86400` |
+> | **SRV** | Service Record | Defines the hostname and port number for specific services. | `_sip._udp.example.com.` IN SRV 10 5 5060 `sipserver.example.com.` |
+> | **PTR** | Pointer Record | Used for reverse DNS lookups, mapping an IP address to a hostname. | `1.2.0.192.in-addr.arpa.` IN PTR `www.example.com.` |
 
 ___
-
 <!-- }}} -->
 
 <!-- Configuration {{{-->
