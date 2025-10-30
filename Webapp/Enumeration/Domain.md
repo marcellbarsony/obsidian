@@ -12,14 +12,16 @@ ___
 <!-- WHOIS {{{-->
 ## WHOIS
 
-[WHOIS](https://en.wikipedia.org/wiki/WHOIS) is a query and response protocol
-used for querying databases that store information about retistered internet
-resources
+[WHOIS](https://en.wikipedia.org/wiki/WHOIS)
+returns domain registration information —
+it is a query and response protocol used for querying databases that store
+information about registered internet resources
 
 ```sh
 whois <target>
 ```
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sh
@@ -35,7 +37,9 @@ whois <target>
 > Creation Date: 2019-08-05T22:43:09Z
 > [...]
 > ```
+<!-- }}} -->
 
+<!-- Info {{{-->
 > [!info]-
 >
 > Each WHOIS record typically contains the following information
@@ -47,6 +51,7 @@ whois <target>
 > - **Technical Contact**: The person handling technical issues related to the domain
 > - **Creation and Expiration Dates**: Domain registration and expiration date
 > - **[[DNS/General#DNS Structure|Name Server]]**: Servers that translate the domain name into an IP address
+<!-- }}} -->
 
 ___
 <!-- }}} -->
@@ -54,33 +59,23 @@ ___
 <!-- DNS {{{-->
 ## DNS
 
-> [!todo]
+Analyze DNS records to identify subdomains, mail servers,
+and other infrastructure
 
-Analyse DNS records to identify subdomains, mail servers, and other infrastructure.
-
-Using dig to enumerate subdomains of a target domain.
-
-dig, nslookup, host, dnsenum, fierce, dnsrecon
-
-### Subdomains
-
-#### Brute Force
-
-Brute Force with [[Gobuster#DNS Subdomain Enumeration|Gobuster]]
-
-```sh
-gobuster dns <flags> -d <target> -w <wordlist.txt>
-```
-
-Brute Force with [[DNSEnum]]
-
-```sh
-dnsenum --enum <target> -f <wordlist.txt> -r
-```
-
-#### DNS Zone Transfer
-
-> [!todo]
+<!-- Tip {{{-->
+> [!tip]-
+>
+> CMD tools
+>
+> - [[DNS/Usage#DIG|dig]]
+> - [[DNS/Usage#nslookup|nslookup]]
+> - [[DNS/Usage#Host|Host]]
+>
+> Other tools
+>
+> - [[Fierce]]
+> - [[dnsrecon]]
+<!-- }}} -->
 
 ___
 <!-- }}} -->
@@ -94,13 +89,16 @@ ___
 [Certificate Transparency](https://en.wikipedia.org/wiki/Certificate_Transparency)
 ([RFC-6962](https://datatracker.ietf.org/doc/html/rfc6962))
 is a process intended to enable the verification of issued digital certificates
-for encrypted Internet connections. This is intended to enable
-the detection of false or maliciously issued certificates for a domain
+for encrypted Internet connections
 
 > [!tip]
 >
-> [Inspect](https://crt.sh) the SSL certificates, as
-> **Certificate Transparency** logs may expose subdomains
+> **Certificate Transparency logs**
+> may expose subdomains, which might host outdated software
+> or configurations
+>
+> - [crt.sh](https://crt.sh)
+> - [Censys](https://search.censys.io/)
 
 List SSL certificates
 
@@ -113,6 +111,43 @@ curl -s https://crt.sh/\?q\=<example.com>\&output\=json | jq .
 > - `-s`: Silent mode, suppress progress bars and error messages
 
 Filter SSL certificate by unique subdomains
+
+<!-- Example {{{-->
+> [!example]-
+>
+> Find all `dev` subdomains of `facebook.com`
+>
+> ```sh
+> curl -s "https://crt.sh/?q=facebook.com&output=json" | \
+>   jq -r '.[] | \
+>  select(.name_value | \
+>  contains("dev")) | \
+>  .name_value' | \
+>  sort -u
+> ```
+> ```sh
+> *.dev.facebook.com
+> *.newdev.facebook.com
+> *.secure.dev.facebook.com
+> dev.facebook.com
+> devvm1958.ftw3.facebook.com
+> facebook-amex-dev.facebook.com
+> facebook-amex-sign-enc-dev.facebook.com
+> newdev.facebook.com
+> secure.dev.facebook.com
+> ```
+>
+> > [!info]-
+> >
+> > - `curl -s "https://crt.sh/?q=facebook.com&output=json"`:
+> >   Fetch the JSON output from `crt.sh` for certificates
+> >   matching the domain `facebook.com`
+> > - `jq -r '.[] | select(.name_value | contains("dev")) | .name_value'`:
+> >   Filter the JSON results, select entries where the `name_value` field
+> >   (*which contains the domain or subdomain*) includes the string
+> >   `dev`.
+> > - `sort -u`: Sort the results alphabetically and remove duplicates
+<!-- }}} -->
 
 <!-- Example {{{-->
 > [!example]-
@@ -134,7 +169,9 @@ Filter SSL certificate by unique subdomains
 >   awk '{gsub(/\\n/,"\n");}1;' | \
 >   sort -u
 > ```
-}}}
+<!-- }}} -->
 
 ___
+<!-- }}} -->
+
 <!-- }}} -->

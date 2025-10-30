@@ -13,6 +13,8 @@ ___
 <!-- Search Operators {{{-->
 ## Search Operators
 
+Search engine operators (*e.g., `site:`, `filetype:`, `" "`, etc.*)
+
 > [!example]-
 >
 > | Operator | Operator Description | Example | Example Description

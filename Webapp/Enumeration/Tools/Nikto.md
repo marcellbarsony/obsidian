@@ -15,6 +15,8 @@ ___
 <!-- Install {{{-->
 ## Install
 
+Install [Perl](https://www.perl.org/) and clone **Nikto**
+
 > [!example]-
 >
 > ```sh
@@ -44,6 +46,11 @@ Fingerprint a website
 ```sh
 nikto -h <target> -Tuning b
 ```
+
+> [!info]-
+>
+> - `-h`: Specify target host
+> - `-Tuning b`: Run the Software Identification modules only
 
 <!-- Example {{{-->
 > [!example]-

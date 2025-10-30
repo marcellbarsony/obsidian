@@ -26,12 +26,13 @@ curl -I http://<target>
 <!-- Example {{{-->
 > [!example]-
 >
+> Grab the banner of `inlanefreight.com`
+>
 > ```sh
 > curl -I https://inlanefreight.com
 > ```
 > ```sh
 > HTTP/1.1 301 Moved Permanently
-> ```html
 > Date: Fri, 31 May 2024 12:12:12 GMT
 > Server: Apache/2.4.41 (Ubuntu)
 > X-Redirect-By: WordPress
@@ -55,7 +56,7 @@ curl -I http://<target>
 > Content-Type: text/html; charset=UTF-8
 > ```
 >
-> - `/wp-json` is an interesting WordPress path
+> - `/wp-json` is a WordPress path worth further investigation
 <!-- }}} -->
 
 Banner grabbing & Web server headers

@@ -20,7 +20,7 @@ to retrieve various types of [[General#DNS Records|DNS records]].
 <!-- Commands {{{-->
 ### Commands
 
-Perform default (`A` [[General#DNS Records|record]]) lookup for the domain
+Default (`A` [[General#DNS Records|record]]) lookup for the domain
 
 ```sh
 dig domain.com
@@ -108,63 +108,71 @@ dig domain.com
 > <!-- }}} -->
 <!-- }}} -->
 
-Retrieves the IPv4 address (`A` [[General#DNS Records|record]])
+IPv4 address ([[General#A|A record]])
 associated with the domain
 
 ```sh
 dig domain.com A
 ```
 
-Retrieve the IPv6 address (`AAAA` [[General#DNS Records|record]])
+IPv6 address ([[General#AAAA|AAAA record]])
 associated with the domain
 
 ```sh
 dig domain.com AAAA
 ```
 
-Find the mail servers (`MX` [[General#DNS Records|record]])
-responsible for the domain
-
-```sh
-dig domain.com MX
-```
-
-Retriever text (`TXT` [[General#DNS Records|record]])
-associated with the domain
-
-```sh
-dig domain.com TXT
-```
-
-Identify the
-[[General#Authoritative Name Server|Authoritative Name Servers]]
+All available DNS records
+([[General#ANY|ANY record]])
 for the domain
 
 ```sh
-dig domain.com NS
+dig domain.com ANY
 ```
 
-Retrieves the canonical name (`CNAME` [[General#DNS Records|record]])
+Canonical Name ([[General#CNAME|CNAME record]])
 for the domain
 
 ```sh
 dig domain.com CNAME
 ```
 
-Retrieves the start of authority (`SOA` [[General#DNS Records|record]])
+Mail servers ([[General#MX|MX record]])
+responsible for the domain
+
+```sh
+dig domain.com MX
+```
+
+[[General#Authoritative Name Server|Authoritative Name Servers]]
+([[General#NS|NS record]])
+for the domain
+
+```sh
+dig domain.com NS
+```
+
+Start Of Authority ([[General#SOA|SOA record]])
 for the domain
 
 ```sh
 dig domain.com SOA
 ```
 
-Specifies a specific name server to query
+Text records ([[General#TXT|TXT record]])
+associated with the domain
+
+```sh
+dig domain.com TXT
+```
+
+Specify a specific name server to query
 
 ```sh
 dig @1.1.1.1 domain.com
 ```
 
-Show the full path of DNS resolution
+Show the full path of the DNS resolution
 
 ```sh
 dig +trace domain.com
@@ -187,17 +195,63 @@ Displays only the answer section of the query output
 ```sh
 dig +noall +answer domain.com
 ```
+<!-- }}} -->
 
-Retrieves all available DNS records (`ANY`) for the domain
+___
+<!-- }}} -->
+
+<!-- nslookup {{{-->
+## nslookup
 
 > [!warning]
 >
-> Many DNS servers ignore `ANY` queries to reduce load
-> and prevent abuse ([RFC 8482](https://datatracker.ietf.org/doc/html/rfc8482))
+> Deprecated
+
+> [!todo]
+
+___
+<!-- }}} -->
+
+<!-- Host {{{-->
+## Host
+
+Resolve a host name into an IP address or an IP address into a host name
 
 ```sh
-dig domain.com ANY
+host [-a] [-c Class ] [-d ] [-r ] [-t Type] [-v ] [-w ] <hostname> | <address> [Server]
 ```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> Display the IP address of a host named `mephisto`
+>
+> ```sh
+> host mephisto
+> ```
+> ```sh
+> mephisto is 192.100.13.5, Aliases: engr, sarah
+> ```
+>
+> Display the host whose IP address is `192.100.13.1`
+>
+> ```sh
+> host 192.100.13.1
+> ```
+> ```sh
+> mercutio is 192.100.13.1
+> ```
+>
+> Display the [[General#NS]] record
+> ```sh
+> host -t ns inlanefreight.com
+> ```
+> ```sh
+> ;; communications error to ::1#53: connection refused
+> ;; communications error to ::1#53: connection refused
+> inlanefreight.com name server ns1.inlanefreight.com.
+> inlanefreight.com name server ns2.inlanefreight.com. 
+> ```
 <!-- }}} -->
 
 ___

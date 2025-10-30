@@ -7,6 +7,7 @@ tags:
 
 # Enumeration Checklist
 
+<!-- Infrastructure Enumeration {{{-->
 ## Infrastructure Enumeration
 
 - [ ] [[Domain Information]]
@@ -25,6 +26,10 @@ tags:
     - [ ] [[Staff#LinkedIn|LinkedIn]]
     - [ ] [[Staff#GitHub|GitHub]]
 
+___
+<!-- }}} -->
+
+<!-- Host Discovery {{{-->
 ## Host Discovery
 
 - [ ] [[Host Discovery]]
@@ -34,6 +39,10 @@ tags:
         - [ ] [[Host Discovery#Scan IP Range|Scan IP Range]]
         - [ ] [[Host Discovery#Scan IP List|Scan IP List]]
 
+___
+<!-- }}} -->
+
+<!-- Host Enumeration {{{-->
 ## Host Enumeration
 
 - [ ] [[Host Enumeration|Host Enumeration]]
@@ -47,8 +56,15 @@ tags:
         - [ ] [[Host Enumeration#All UDP Ports|All UDP Ports]]
         - [ ] [[Host Enumeration#Specific UDP Port|Specific UDP Port]]
 
+___
+<!-- }}} -->
+
+<!-- Service Enumeration {{{-->
 ## Service Enumeration
 
 - [ ] [[Service Enumeration|Service Enumeration]]
     - [ ] [[Service Enumeration#Service Version Enumeration|Service Version Enumeration]]
     - [ ] TODO
+
+___
+<!-- }}} -->

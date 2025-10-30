@@ -9,23 +9,17 @@ tags:
 
 ___
 
-<!-- Passive Enumeration {{{-->
-## Passive Enumeration
-
-- [ ] [[DNS]]
-
-___
-<!-- }}} -->
-
 <!-- Domain {{{-->
 ## Domain
 
 - [ ] [[Domain]]
     - [ ] [[Domain#WHOIS|WHOIS]]
     - [ ] [[Domain#DNS|DNS]]
-        - [ ] [[Domain#Subdomains|Subdomains]]
-            - [ ] [[Domain#Brute Force|Brute Force]]
-            - [ ] [[Domain#DNS Zone Transfer|DNS Zone Transfer]]
+        - [ ] [[DNS/Enumeration#Subdomain Brute Forcing|Subdomain Brute Forcing]]
+        - [ ] [[DNS/Enumeration#AXFR Zone Transfer|AXFR Zone Transfer]]
+    - [ ] [[Virtual Hosts]]
+        - [ ] [[Virtual Hosts#Discovery|Discovery]]
+        - [ ] [[Virtual Hosts#Banner Grabbing|Banner Grabbing]]
     - [ ] [[Domain#SSL Certificate|SSL Certificate]]
         - [ ] [[Domain#Certificate Transparency|Certificate Transparency]]
 
@@ -46,6 +40,8 @@ ___
         - [ ] [[Banner Grabbing#cURL|cURL]]
         - [ ] [[Banner Grabbing#WhatWeb|WhatWeb]]
         - [ ] [[Banner Grabbing#Netcat|Netcat]]
+    - [ ] [[Crawling]]
+        - [ ] [[Crawling|#ReconSpider|ReconSpider]]
     - [ ] [[Wafw00f|WAF]]
         - [ ] [[Wafw00f|Wafw00f]]
     - [ ] [[Nikto]]
@@ -68,13 +64,13 @@ ___
 ___
 <!-- }}} -->
 
-<!-- Well-Known {{{-->
-## Well-Known
+<!-- Metafiles {{{-->
+## Metafiles
 
-- [ ] [[Well-Known#Metafiles|Metafiles]]
-    - [ ] [[Well-Known#humans.txt|humans.txt]]
-    - [ ] [[Well-Known#robots.txt|robots.txt]]
-    - [ ] [[Well-Known#sitemap.xml|sitemap.xml]]
+- [ ] [[Metafiles]]
+    - [ ] [[Metafiles#humans.txt|humans.txt]]
+    - [ ] [[Metafiles#robots.txt|robots.txt]]
+    - [ ] [[Metafiles#sitemap.xml|sitemap.xml]]
 - [ ] [[Well-Known]]
     - [ ] [[Well-Known#security.txt|security.txt]]
     - [ ] [[Well-Known#Change Password|change-password]]
@@ -99,23 +95,6 @@ ___
 
 - [ ] [[Login Functionality|Login Functionality]]
     - [ ] [[Login Functionality#Discover Login Page|Discover Login Page]]
-
-___
-<!-- }}} -->
-
-<!-- Applications {{{-->
-## Applications
-
-- [ ] [[DNS Lookup]]
-
-___
-<!-- }}} -->
-
-<!-- Certificates {{{-->
-## Certificates
-
-- [ ] [[Certificates]]
-    - [ ] [[Certificates|Inspect SSL Certificates]]
 
 ___
 <!-- }}} -->

@@ -6,7 +6,7 @@ tags:
   - Networking/Services/DNS/General
 links: "[[Services]]"
 port:
-  - 53
+  - UDP/53
 ---
 
 <!-- DNS {{{-->
@@ -27,6 +27,9 @@ ___
 <!-- DNS Resolution {{{-->
 ## DNS Resolution
 
+The **DNS Resolution** process is a translation service
+between the domain name hierarchy and the IP address namespaces
+
 > [!info]-
 >
 > ![[dns-flowchart.svg]]
@@ -36,7 +39,6 @@ ___
 The [hosts](https://en.wikipedia.org/wiki/Hosts_(file))
 file maps hostnames to IP addresses manually
 
-
 - `C:\Windows\System32\drivers\etc\hosts`
 - `/etc/hosts`
 
@@ -44,6 +46,7 @@ file maps hostnames to IP addresses manually
 <IP Address>    <Hostname> [<Alias> ...]
 ```
 
+<!-- Example {{{-->
 > [!example]-
 >
 > Redirect a domain to a local server
@@ -63,6 +66,7 @@ file maps hostnames to IP addresses manually
 > ```sh
 > 0.0.0.0       unwanted-site.com
 > ```
+<!-- }}} -->
 
 ___
 <!-- }}} -->
@@ -74,35 +78,46 @@ ___
 >
 > ![[dns-structure.png]]
 
-<!-- DNS Root Server {{{-->
-### DNS Root Server
+<!-- Root Name Server {{{-->
+### Root Name Server
 
-The **Root Servers** responsible for the top-level domains
-([TLD](https://en.wikipedia.org/wiki/Top-level_domain)).
-As the last instance, they are only requested if the name server
-does not respond. The 13 root servers are coordinated by the
-The Internet Corporation for Assigned Names and Numbers
-([ICANN](https://www.icann.org/)).
+The [Root Server](https://en.wikipedia.org/wiki/Root_name_server)
+responsible for the
+[Top-Level Domain (TLD)](https://en.wikipedia.org/wiki/Top-level_domain).
+As the last instance, they are only requested if the [[#Name Server]]
+does not respond. The [13 root servers](https://www.iana.org/domains/root/servers)
+are coordinated by [ICANN](https://www.icann.org/).
 
 <!-- }}} -->
 
-<!-- Authoritative Name Server {{{-->
-### Authoritative Name Server
+<!-- Name Server {{{-->
+### Name Server
 
-**Authoritative Name Servers** hold authority for a particular zone.
+[Name Server](https://en.wikipedia.org/wiki/Name_server)
+provides responses to queries against a
+[directory service](https://en.wikipedia.org/wiki/Directory_service).
+
+<!-- Authoritative Name Server {{{-->
+#### Authoritative Name Server
+
+[Authoritative Name Servers](https://en.wikipedia.org/wiki/Name_server#Authoritative_name_server)
+hold authority for a particular zone.
 If an **Authoritative Name Server** cannot answer a client's query,
-the request is forwarded to the root name server.
-**Authoritative Name Server** provide answers to recursive DNS nameservers,
+the request is forwarded to the [[#Root Name Server]].
+**Authoritative Name Server** provide answers to [[#Recursive Name Serve]],
 assisting in finding the specific web server(s).
 
 <!-- }}} -->
 
-<!-- Non-authoritative Nameserver {{{-->
-### Non-authoritative Nameserver
+<!-- Recursive Name Server {{{-->
+#### Recursive Name Server
 
-**Non-Authoritative Name Servers** collect information on specific DNS zones
+[Recursive Name Server](https://en.wikipedia.org/wiki/Name_server#Recursive_Resolver)
+(*or Recursive Resolver*) collect information on specific DNS zones
 via recursive or iterative DNS querying — they are not responsible
 for a particular DNS zone.
+
+<!-- }}} -->
 
 <!-- }}} -->
 
@@ -110,7 +125,7 @@ for a particular DNS zone.
 ### Caching DNS Server
 
 **Caching DNS servers** cache information from other name servers
-for a specified period (specified by the authoritative name server).
+for a specified period (*specified by the [[#Authoritative Name Server]]*).
 
 <!-- }}} -->
 
@@ -136,11 +151,7 @@ ___
 <!-- DNS Records {{{-->
 ## DNS Records
 
-- **CNAME**: Serves as an alias for another domain name
-    (e.g., An `A` record for `hackthebox.eu` and a `CNAME` record for
-    `www.hackthebox.eu` would make `www.hackthebox.eu` point to the same IP as
-    `hackthebox.eu`)
-
+<!-- Example {{{-->
 > [!example]-
 >
 > | Record Type | Full Name | Description | Zone File Example |
@@ -154,8 +165,83 @@ ___
 > | **SOA** | Start of Authority Record | Specifies administrative information about a DNS zone, including the primary name server, responsible person's email, and other parameters. | `example.com.` IN SOA `ns1.example.com. admin.example.com. 2024060301 10800 3600 604800 86400` |
 > | **SRV** | Service Record | Defines the hostname and port number for specific services. | `_sip._udp.example.com.` IN SRV 10 5 5060 `sipserver.example.com.` |
 > | **PTR** | Pointer Record | Used for reverse DNS lookups, mapping an IP address to a hostname. | `1.2.0.192.in-addr.arpa.` IN PTR `www.example.com.` |
+<!-- }}} -->
+
+### A
+
+### AAAA
+
+### ANY
+
+> [!warning]
+>
+> Many DNS servers ignore `ANY` queries to reduce load
+> and prevent abuse ([RFC 8482](https://datatracker.ietf.org/doc/html/rfc8482))
+
+<!-- CNAME {{{-->
+### CNAME
+
+**Canonical Name record**
+([CNAME record](https://en.wikipedia.org/wiki/CNAME_record))
+serves as an alias for another domain name
+(*e.g., An `A` record for `hackthebox.eu` and a `CNAME` record for
+`www.hackthebox.eu` would make `www.hackthebox.eu`
+point to the same IP as `hackthebox.eu`*)
+
+<!-- }}} -->
+
+### MX
+
+### NS
+
+<!-- SOA {{{-->
+### SOA
+
+**Start of Authoirty**
+([SOA record](https://en.wikipedia.org/wiki/SOA_record))
+([RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035))
+is a DNS resource record containing administrative information
+about the zone and [[#DNS Zone Transfer|DNS Zone Transfers]].
+
+<!-- }}} -->
+
+### TXT
 
 ___
+<!-- }}} -->
+
+<!-- DNS Zone Transfer {{{-->
+## DNS Zone Transfer
+
+[DNS Zone Transfer](https://en.wikipedia.org/wiki/DNS_zone_transfer)
+is a DNS transaction (**AXFR**) to replicate DNS databases within a zone
+(a domain and its subdomains) from one name server to another
+
+> [!info]-
+>
+> ![[dns-zone-transfer.png]]
+
+1. **Zone Transfer Request**:
+   The secondary DNS server sends a zone transfer request (*AXFR*)
+   to the primary server
+
+2. **SOA Record Transfer**:
+   The primary server responds by sending its [[#SOA|SOA record]]
+   (*after potentially authenticating the secondary server*)
+
+3. **DNS Record Transmission**:
+   The primary server transfers all the DNS records in the zone
+   to the secondary server
+
+4. **Zone Transfer Complete**:
+   The primary server signals the end of the zone transfer
+
+5. **Acknowledgement**:
+   The secondary server sends an acknowledgement (*ACK*) message
+   to the primary server
+
+___
+
 <!-- }}} -->
 
 <!-- Configuration {{{-->
@@ -179,8 +265,8 @@ are
 
 The configuration is roughly divided into two sections:
 
-- general settings
-- zone entries
+1. General settings
+2. Zone entries
 
 <!-- Local DNS Configuration {{{-->
 #### Local DNS Configuration
@@ -192,24 +278,32 @@ The configuration is roughly divided into two sections:
 <!-- Zone Files {{{-->
 #### Zone Files
 
-A **Zone File** (e.g., `/etc/bind/db.domain.com`) is a text file desrcibing a
-DNS zone with the BIND file format. There must be precisely one `SOA` record and
-at least one `NS` record. The forward records allow the DNS server to identify
-which domain, hostname, and role the IP addresses belong to.
+A [Zone File](https://en.wikipedia.org/wiki/Zone_file)
+(*e.g., `/etc/bind/db.domain.com`*) is a text file desrcibing
+a DNS zone with the
+[BIND file format](https://en.wikipedia.org/wiki/Zone_file#File_format).
+
+There must be precisely one `SOA`
+[SOA record](https://en.wikipedia.org/wiki/SOA_record)
+and at least one [[#DNS Records|NS record]].
+
+The forward records allow the DNS server to identify which domain,
+hostname, and role the IP addresses belong to.
 
 <!-- }}} -->
 
 <!-- Reverse Name Resolution Zone Files {{{-->
 #### Reverse Name Resolution Zone Files
 
-For the Fully Qualified Domain Name (FQDN) to be resolved from the IP address,
+For the Fully Qualified Domain Name (*FQDN*) to be resolved from the IP address,
 the DNS server must have a reverse lookup file (e.g., `/etc/bind/db.10.129.14`).
 
-In this file, the computer name (FQDN) is assigned to the last octet of an IP
-address, which corresponds to the respective host, using a `PTR` record.
+In this file, the computer name (*FQDN*) is assigned to the last octet
+of an IP address, which corresponds to the respective host,
+using a `PTR` record.
 
-The`PTR` records are responsible for the reverse translation of IP addresses
-into names.
+The`PTR` records are responsible for the reverse translation
+of IP addresses into names.
 
 <!-- }}} -->
 

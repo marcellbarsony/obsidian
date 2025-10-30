@@ -65,8 +65,39 @@ ___
 <!-- Subdomain Brute Forcing {{{-->
 ## Subdomain Brute Forcing
 
-[DNSenum](https://github.com/fwaeytens/dnsenum) —
-Full DNS enumeration against a domain using [[Wordlists#DNS|wordlists]]
+Brute Force DNS Subdomains
+
+<!-- Wordlists {{{-->
+> [!tip]- Wordlists
+>
+>
+> [SecLists/Discovery/DNS](https://github.com/danielmiessler/SecLists/tree/master/Discovery/DNS)
+>
+> ```sh
+> /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt
+> ```
+> ```sh
+> /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt
+> ```
+> ```sh
+> /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt
+> ```
+<!-- }}} -->
+
+[[Gobuster#DNS Subdomain Enumeration|Gobuster]]
+
+```sh
+gobuster dns [flags] -d <target> -w <wordlist.txt>
+```
+```sh
+gobuster dns [flags] -d <target> -w <wordlist.txt> -s <target_dns>
+```
+
+[[DNSEnum]]
+
+```sh
+dnsenum --enum <target> -f <wordlist.txt> -r
+```
 
 ```sh
 dnsenum --dnsserver <target_dns> --enum -p 5 -s 5 -o subdomains.txt -f <wordlist.txt> <target_domain>
@@ -82,19 +113,6 @@ dnsenum --dnsserver <target_dns> --enum -p 5 -s 5 -o subdomains.txt -f <wordlist
 > - `-s 5`: Number of threads for subdomain brute-forcing (`0` to disable)
 > - `-o subdomains.txt`: Output file for results
 > - `-f <wordlist.txt>`: Wordlist file for subdomain brute-forcing
-<!-- }}} -->
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> dnsenum \
->     --dnsserver 10.129.14.128 \
->     --enum -p 0 -s 0 \
->     -o subdomains.txt \
->     -f /opt/useful/seclists/Discovery/DNS/subdomains-top1million-110000.txt \
->     inlanefreight.htb
-> ```
 <!-- }}} -->
 
 Bash script for DNS subdomains brute-forcing
@@ -235,13 +253,7 @@ dig @<dns_ip> <target_domain> any
 
 [**DNS Zone Transfer**](https://en.wikipedia.org/wiki/DNS_zone_transfer)
 or **Asynchronous Full Transfer Zone** (**AXFR**) refers to the transfer of
-zones to another server in DNS (e.g., *in case of DNS failure*).
-
-> [!todo]
->
-> **REMOVE**
->
-> [zonetransfer.me](https://digi.ninja/projects/zonetransferme.php)
+zones to another server in DNS (e.g., *in case of DNS failure*)
 
 <!-- Info {{{-->
 > [!info]-
@@ -266,24 +278,53 @@ zones to another server in DNS (e.g., *in case of DNS failure*).
 > - **Slave DNS server**: The DNS server that obtains zone data from a master
 <!-- }}} -->
 
-**AXFR query** is a DNS protocol request used to retrieve all records of a domain from a DNS server:
+Request a zone transfer with [[Usage#DIG|DIG]]
 
 ```sh
-dig @<dns_ip> <target_domain> axfr
+dig @<target_dns> <target_domain> -t axfr
 ```
 
-<!-- AXFR Zone Transfer - Internal {{{-->
-#### AXFR Zone Transfer - Internal
-
-> [!todo]
-
+<!-- Example {{{-->
+> [!example]-
+>
+> Request a full zone transfer responsible for
+> [zonetransfer.me](https://digi.ninja/projects/zonetransferme.php)
+>
+> ```sh
+> dig axfr @nsztm1.digi.ninja zonetransfer.me
+> ```
+> ```sh
+> ; <<>> DiG 9.18.12-1~bpo11+1-Debian <<>> axfr @nsztm1.digi.ninja zonetransfer.me
+> ; (1 server found)
+> ;; global options: +cmd
+> zonetransfer.me.	7200	IN	SOA	nsztm1.digi.ninja. robin.digi.ninja. 2019100801 172800 900 1209600 3600
+> zonetransfer.me.	300	IN	HINFO	"Casio fx-700G" "Windows XP"
+> zonetransfer.me.	301	IN	TXT	"google-site-verification=tyP28J7JAUHA9fw2sHXMgcCC0I6XBmmoVi04VlMewxA"
+> zonetransfer.me.	7200	IN	MX	0 ASPMX.L.GOOGLE.COM.
+> ...
+> zonetransfer.me.	7200	IN	A	5.196.105.14
+> zonetransfer.me.	7200	IN	NS	nsztm1.digi.ninja.
+> zonetransfer.me.	7200	IN	NS	nsztm2.digi.ninja.
+> _acme-challenge.zonetransfer.me. 301 IN	TXT	"6Oa05hbUJ9xSsvYy7pApQvwCUSSGgxvrbdizjePEsZI"
+> _sip._tcp.zonetransfer.me. 14000 IN	SRV	0 0 5060 www.zonetransfer.me.
+> 14.105.196.5.IN-ADDR.ARPA.zonetransfer.me. 7200	IN PTR www.zonetransfer.me.
+> asfdbauthdns.zonetransfer.me. 7900 IN	AFSDB	1 asfdbbox.zonetransfer.me.
+> asfdbbox.zonetransfer.me. 7200	IN	A	127.0.0.1
+> asfdbvolume.zonetransfer.me. 7800 IN	AFSDB	1 asfdbbox.zonetransfer.me.
+> canberra-office.zonetransfer.me. 7200 IN A	202.14.81.230
+> ...
+> ;; Query time: 10 msec
+> ;; SERVER: 81.4.108.41#53(nsztm1.digi.ninja) (TCP)
+> ;; WHEN: Mon May 27 18:31:35 BST 2024
+> ;; XFR size: 50 records (messages 1, bytes 2085)
+> ```
 <!-- }}} -->
 
 <!-- Fierce {{{-->
 #### Fierce
 
-[fierce](https://github.com/mschwager/fierce) automates zone transfers and
-performs dictionary attacks
+[fierce](https://github.com/mschwager/fierce)
+automates zone transfers and performs dictionary attacks
 
 ```sh
 fierce --domain <target_domain> --dns-servers <dns_ip>
