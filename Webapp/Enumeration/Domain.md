@@ -59,8 +59,9 @@ ___
 <!-- DNS {{{-->
 ## DNS
 
-Analyze DNS records to identify subdomains, mail servers,
-and other infrastructure
+Analyze [[DNS/General#DNS Records|DNS records]] to identify
+[[DNS/General#Subdomain|Subdomains]],
+mail servers, and other infrastructure
 
 <!-- Tip {{{-->
 > [!tip]-
@@ -78,100 +79,4 @@ and other infrastructure
 <!-- }}} -->
 
 ___
-<!-- }}} -->
-
-<!-- SSL Certificate {{{-->
-## SSL Certificate
-
-<!-- Certificate Transparency {{{-->
-### Certificate Transparency
-
-[Certificate Transparency](https://en.wikipedia.org/wiki/Certificate_Transparency)
-([RFC-6962](https://datatracker.ietf.org/doc/html/rfc6962))
-is a process intended to enable the verification of issued digital certificates
-for encrypted Internet connections
-
-> [!tip]
->
-> **Certificate Transparency logs**
-> may expose subdomains, which might host outdated software
-> or configurations
->
-> - [crt.sh](https://crt.sh)
-> - [Censys](https://search.censys.io/)
-
-List SSL certificates
-
-```sh
-curl -s https://crt.sh/\?q\=<example.com>\&output\=json | jq .
-```
-
-> [!info]-
->
-> - `-s`: Silent mode, suppress progress bars and error messages
-
-Filter SSL certificate by unique subdomains
-
-<!-- Example {{{-->
-> [!example]-
->
-> Find all `dev` subdomains of `facebook.com`
->
-> ```sh
-> curl -s "https://crt.sh/?q=facebook.com&output=json" | \
->   jq -r '.[] | \
->  select(.name_value | \
->  contains("dev")) | \
->  .name_value' | \
->  sort -u
-> ```
-> ```sh
-> *.dev.facebook.com
-> *.newdev.facebook.com
-> *.secure.dev.facebook.com
-> dev.facebook.com
-> devvm1958.ftw3.facebook.com
-> facebook-amex-dev.facebook.com
-> facebook-amex-sign-enc-dev.facebook.com
-> newdev.facebook.com
-> secure.dev.facebook.com
-> ```
->
-> > [!info]-
-> >
-> > - `curl -s "https://crt.sh/?q=facebook.com&output=json"`:
-> >   Fetch the JSON output from `crt.sh` for certificates
-> >   matching the domain `facebook.com`
-> > - `jq -r '.[] | select(.name_value | contains("dev")) | .name_value'`:
-> >   Filter the JSON results, select entries where the `name_value` field
-> >   (*which contains the domain or subdomain*) includes the string
-> >   `dev`.
-> > - `sort -u`: Sort the results alphabetically and remove duplicates
-<!-- }}} -->
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> curl -s https://crt.sh/\?q\=<example.com>\&output\=json | \
->   jq . | \
->   grep name | \
->   cut -d":" -f2 | \
->   grep -v "CN=" | \
->   cut -d'"' -f2 | \
->   awk '{gsub(/\\n/,"\n");}1;' | \
->   sort -ucurl -s https://crt.sh/\?q\=<example.com>\&output\=json | \
->   jq . | \
->   grep name | \
->   cut -d":" -f2 | \
->   grep -v "CN=" | \
->   cut -d'"' -f2 | \
->   awk '{gsub(/\\n/,"\n");}1;' | \
->   sort -u
-> ```
-<!-- }}} -->
-
-___
-<!-- }}} -->
-
 <!-- }}} -->

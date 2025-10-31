@@ -14,7 +14,9 @@ ___
 <!-- Banner Grabbing {{{-->
 ## Banner Grabbing
 
-Grab the banner and server version with
+Grab banner and
+[BIND](https://en.wikipedia.org/wiki/BIND)
+server version with
 [dig](https://man.archlinux.org/man/dig.1)
 
 ```sh
@@ -42,7 +44,6 @@ ___
 ## DNS Server Discovery
 
 Identifying the DNS servers associated with the target domain
-is a critical first step
 
 Query the [[General#Authoritative Name Server|Name Server]] with
 [dig](https://linux.die.net/man/1/dig)
@@ -62,8 +63,133 @@ ___
 
 <!-- }}} -->
 
-<!-- Subdomain Brute Forcing {{{-->
-## Subdomain Brute Forcing
+<!-- DNS Subdomain {{{-->
+## DNS Subdomain
+
+<!-- Search Engine Discovery {{{-->
+### Search Engine Discovery
+
+Find [[General#Subdomain|Subdomains]] via [[Search Engine Discovery]]
+(*[[Search Engine Discovery#Google Dorking|Google Dorking]]*)
+
+> [!tip] Operators
+>
+> - `site:`: Find subdomains
+> - `-`: Exclude already known subdomains
+>
+> > [!example]-
+> >
+> > ```sh
+> > site:wikipedia.org -en.wikipedia.org
+> > ```
+
+<!-- }}} -->
+
+<!-- Certificate Transparency {{{-->
+### Certificate Transparency
+
+[Certificate Transparency](https://en.wikipedia.org/wiki/Certificate_Transparency)
+([RFC-6962](https://datatracker.ietf.org/doc/html/rfc6962))
+is a process intended to enable the verification of issued digital certificates
+for encrypted Internet connections
+
+> [!tip] Certificate Transparency Logs
+>
+> **Certificate Transparency Logs**
+> may expose subdomains, which might host outdated software
+> or configurations
+>
+> - [crt.sh](https://crt.sh)
+> - [Censys](https://search.censys.io/)
+> - [Facebook's CT Monitor](https://developers.facebook.com/tools/ct/)
+> - [Google's CT Monitor](https://transparencyreport.google.com/https/certificates)
+
+<!-- cURL {{{-->
+> [!example]- [[cURL]]
+>
+> List SSL certificates
+>
+> ```sh
+> curl -s https://crt.sh/\?q\=<example.com>\&output\=json | jq .
+> ```
+>
+> > [!info]-
+> >
+> > - `-s`: Silent mode, suppress progress bars and error messages
+>
+> Filter SSL certificate by unique subdomains
+>
+> <!-- Example {{{-->
+> > [!example]-
+> >
+> > Find all `dev` subdomains of `facebook.com`
+> >
+> > ```sh
+> > curl -s "https://crt.sh/?q=facebook.com&output=json" | \
+> >   jq -r '.[] | \
+> >  select(.name_value | \
+> >  contains("dev")) | \
+> >  .name_value' | \
+> >  sort -u
+> > ```
+> > ```sh
+> > *.dev.facebook.com
+> > *.newdev.facebook.com
+> > *.secure.dev.facebook.com
+> > dev.facebook.com
+> > devvm1958.ftw3.facebook.com
+> > facebook-amex-dev.facebook.com
+> > facebook-amex-sign-enc-dev.facebook.com
+> > newdev.facebook.com
+> > secure.dev.facebook.com
+> > ```
+> >
+> > > [!info]-
+> > >
+> > > - `curl -s "https://crt.sh/?q=facebook.com&output=json"`:
+> > >   Fetch the JSON output from `crt.sh` for certificates
+> > >   matching the domain `facebook.com`
+> > > - `jq -r '.[] | select(.name_value | contains("dev")) | .name_value'`:
+> > >   Filter the JSON results, select entries where the `name_value` field
+> > >   (*which contains the domain or subdomain*) includes the string
+> > >   `dev`.
+> > > - `sort -u`: Sort the results alphabetically and remove duplicates
+> <!-- }}} -->
+>
+> <!-- Example {{{-->
+> > [!example]-
+> >
+> > ```sh
+> > curl -s https://crt.sh/\?q\=<example.com>\&output\=json | \
+> >   jq . | \
+> >   grep name | \
+> >   cut -d":" -f2 | \
+> >   grep -v "CN=" | \
+> >   cut -d'"' -f2 | \
+> >   awk '{gsub(/\\n/,"\n");}1;' | \
+> >   sort -ucurl -s https://crt.sh/\?q\=<example.com>\&output\=json | \
+> >   jq . | \
+> >   grep name | \
+> >   cut -d":" -f2 | \
+> >   grep -v "CN=" | \
+> >   cut -d'"' -f2 | \
+> >   awk '{gsub(/\\n/,"\n");}1;' | \
+> >   sort -u
+> > ```
+> <!-- }}} -->
+<!-- }}} -->
+
+> [!example]- Subfinder
+>
+> ```sh
+> subfinder -d "target.domain"
+> ```
+
+___
+<!-- }}} -->
+
+<!-- Brute Forcing {{{-->
+### Brute Forcing
 
 Brute Force DNS Subdomains
 
@@ -82,43 +208,49 @@ Brute Force DNS Subdomains
 > ```sh
 > /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt
 > ```
+> ```sh
+> /usr/share/SecLists/Discovery/DNS/namelist.txt
+> ```
 <!-- }}} -->
 
-[[Gobuster#DNS Subdomain Enumeration|Gobuster]]
-
-```sh
-gobuster dns [flags] -d <target> -w <wordlist.txt>
-```
-```sh
-gobuster dns [flags] -d <target> -w <wordlist.txt> -s <target_dns>
-```
-
-[[DNSEnum]]
-
-```sh
-dnsenum --enum <target> -f <wordlist.txt> -r
-```
-
-```sh
-dnsenum --dnsserver <target_dns> --enum -p 5 -s 5 -o subdomains.txt -f <wordlist.txt> <target_domain>
-```
-
-<!-- Info {{{-->
-> [!info]-
+<!-- Gobuster {{{-->
+> [!example]- [[Gobuster#DNS Subdomain Enumeration|Gobuster]]
 >
-> - `--dnsserver <dns_ip>`: Target DNS server to query
-> - `--enum`: Run all enumeration steps (`A`, `NS`, `MX`, and subdomain
->   brute-forcing, and some zone-transfer attempts)
-> - `-p 5`: Number of threads for reverse lookup (`0` to disable)
-> - `-s 5`: Number of threads for subdomain brute-forcing (`0` to disable)
-> - `-o subdomains.txt`: Output file for results
-> - `-f <wordlist.txt>`: Wordlist file for subdomain brute-forcing
+> ```sh
+> gobuster dns [flags] -d <target> -w <wordlist.txt>
+> ```
+> ```sh
+> gobuster dns [flags] -d <target> -w <wordlist.txt> -s <target_dns>
+> ```
 <!-- }}} -->
 
-Bash script for DNS subdomains brute-forcing
+<!-- DNSEnum {{{-->
+> [!example]- [[DNSEnum]]
+>
+> ```sh
+> dnsenum --enum <target> -f <wordlist.txt> -r
+> ```
+> ```sh
+> dnsenum --dnsserver <target_dns> --enum -p 5 -s 5 -o subdomains.txt -f <wordlist.txt> <target_domain>
+> ```
+>
+> <!-- Info {{{-->
+> > [!info]
+> >
+> > - `--dnsserver <dns_ip>`: Target DNS server to query
+> > - `--enum`: Run all enumeration steps (`A`, `NS`, `MX`, and subdomain
+> >   brute-forcing, and some zone-transfer attempts)
+> > - `-p 5`: Number of threads for reverse lookup (`0` to disable)
+> > - `-s 5`: Number of threads for subdomain brute-forcing (`0` to disable)
+> > - `-o subdomains.txt`: Output file for results
+> > - `-f <wordlist.txt>`: Wordlist file for subdomain brute-forcing
+> <!-- }}} -->
+<!-- }}} -->
 
-<!-- Example {{{-->
-> [!example]-
+<!-- Bash {{{-->
+> [!example]- Bash
+>
+> Bash script for DNS subdomains brute-forcing
 >
 > ```sh
 > for sub in $(cat /opt/useful/seclists/Discovery/DNS/subdomains-top1million-110000.txt); do \
@@ -129,6 +261,8 @@ Bash script for DNS subdomains brute-forcing
 >     tee -a subdomains.txt; \
 > done
 > ```
+<!-- }}} -->
+
 <!-- }}} -->
 
 ___
@@ -278,7 +412,7 @@ zones to another server in DNS (e.g., *in case of DNS failure*)
 > - **Slave DNS server**: The DNS server that obtains zone data from a master
 <!-- }}} -->
 
-Request a zone transfer with [[Usage#DIG|DIG]]
+Request a [[DIG#AXFR|zone transfer with DIG]]
 
 ```sh
 dig @<target_dns> <target_domain> -t axfr
@@ -320,17 +454,11 @@ dig @<target_dns> <target_domain> -t axfr
 > ```
 <!-- }}} -->
 
-<!-- Fierce {{{-->
-#### Fierce
-
-[fierce](https://github.com/mschwager/fierce)
-automates zone transfers and performs dictionary attacks
+[[fierce]] automates zone transfers and performs dictionary attacks
 
 ```sh
 fierce --domain <target_domain> --dns-servers <dns_ip>
 ```
-
-<!-- }}} -->
 
 <!-- }}} -->
 

@@ -15,13 +15,15 @@ ___
 - [ ] [[Domain]]
     - [ ] [[Domain#WHOIS|WHOIS]]
     - [ ] [[Domain#DNS|DNS]]
-        - [ ] [[DNS/Enumeration#Subdomain Brute Forcing|Subdomain Brute Forcing]]
-        - [ ] [[DNS/Enumeration#AXFR Zone Transfer|AXFR Zone Transfer]]
+        - [ ] [[DNS/General#Subdomain|Subdomain]]
+            - [ ] [[DNS/Enumeration#Google Dorks|Google Dorks]]
+            - [ ] [[DNS/Enumeration#Certificate Transparency|Certificate Transparency]]
+            - [ ] [[DNS/Enumeration#Brute Forcing|Brute Forcing]]
+        - [ ] [[DNS/General#DNS Zone|DNS Zone]]
+            - [ ] [[DNS/Enumeration#AXFR Zone Transfer|AXFR Zone Transfer]]
     - [ ] [[Virtual Hosts]]
         - [ ] [[Virtual Hosts#Discovery|Discovery]]
         - [ ] [[Virtual Hosts#Banner Grabbing|Banner Grabbing]]
-    - [ ] [[Domain#SSL Certificate|SSL Certificate]]
-        - [ ] [[Domain#Certificate Transparency|Certificate Transparency]]
 
 ___
 <!-- }}} -->
@@ -41,7 +43,7 @@ ___
         - [ ] [[Banner Grabbing#WhatWeb|WhatWeb]]
         - [ ] [[Banner Grabbing#Netcat|Netcat]]
     - [ ] [[Crawling]]
-        - [ ] [[Crawling|#ReconSpider|ReconSpider]]
+        - [ ] [[ReconSpider]]
     - [ ] [[Wafw00f|WAF]]
         - [ ] [[Wafw00f|Wafw00f]]
     - [ ] [[Nikto]]

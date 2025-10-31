@@ -1,29 +1,33 @@
 ---
-id: DNS
+id: dig
 tags:
-  - Networking/Services/DNS/Usage
+  - Networking/Services/DNS/Tools/dig
 links: "[[Services]]"
 ---
 
-# Usage
-
-___
-
-<!-- DIG {{{-->
-## DIG
+# DIG
 
 **DIG** ([Domain Information Groper](https://en.wikipedia.org/wiki/Dig_(command)))
 is a network administration command-line tool for querying
 [[General#DNS Structure|DNS servers]]
 to retrieve various types of [[General#DNS Records|DNS records]].
 
-<!-- Commands {{{-->
-### Commands
+___
 
-Default (`A` [[General#DNS Records|record]]) lookup for the domain
+<!-- Records {{{-->
+## Records
+
+### A
+
+IPv4 address ([[General#A|A record]])
+associated with the domain
 
 ```sh
-dig domain.com
+dig <domain.com>
+```
+
+```sh
+dig <domain.com> A
 ```
 
 <!-- Example {{{-->
@@ -108,151 +112,168 @@ dig domain.com
 > <!-- }}} -->
 <!-- }}} -->
 
-IPv4 address ([[General#A|A record]])
-associated with the domain
-
-```sh
-dig domain.com A
-```
+### AAAA
 
 IPv6 address ([[General#AAAA|AAAA record]])
 associated with the domain
 
 ```sh
-dig domain.com AAAA
+dig <domain.com> AAAA
 ```
+
+### ANY
 
 All available DNS records
 ([[General#ANY|ANY record]])
 for the domain
 
 ```sh
-dig domain.com ANY
+dig <domain.com> ANY
 ```
+
+### AXFR
+
+Request a zone transfer
+
+```sh
+dig <domain.com> AXFR
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> Request a full zone transfer responsible for
+> [zonetransfer.me](https://digi.ninja/projects/zonetransferme.php)
+>
+> ```sh
+> dig axfr @nsztm1.digi.ninja zonetransfer.me
+> ```
+> ```sh
+> ; <<>> DiG 9.18.12-1~bpo11+1-Debian <<>> axfr @nsztm1.digi.ninja zonetransfer.me
+> ; (1 server found)
+> ;; global options: +cmd
+> zonetransfer.me.	7200	IN	SOA	nsztm1.digi.ninja. robin.digi.ninja. 2019100801 172800 900 1209600 3600
+> zonetransfer.me.	300	IN	HINFO	"Casio fx-700G" "Windows XP"
+> zonetransfer.me.	301	IN	TXT	"google-site-verification=tyP28J7JAUHA9fw2sHXMgcCC0I6XBmmoVi04VlMewxA"
+> zonetransfer.me.	7200	IN	MX	0 ASPMX.L.GOOGLE.COM.
+> ...
+> zonetransfer.me.	7200	IN	A	5.196.105.14
+> zonetransfer.me.	7200	IN	NS	nsztm1.digi.ninja.
+> zonetransfer.me.	7200	IN	NS	nsztm2.digi.ninja.
+> _acme-challenge.zonetransfer.me. 301 IN	TXT	"6Oa05hbUJ9xSsvYy7pApQvwCUSSGgxvrbdizjePEsZI"
+> _sip._tcp.zonetransfer.me. 14000 IN	SRV	0 0 5060 www.zonetransfer.me.
+> 14.105.196.5.IN-ADDR.ARPA.zonetransfer.me. 7200	IN PTR www.zonetransfer.me.
+> asfdbauthdns.zonetransfer.me. 7900 IN	AFSDB	1 asfdbbox.zonetransfer.me.
+> asfdbbox.zonetransfer.me. 7200	IN	A	127.0.0.1
+> asfdbvolume.zonetransfer.me. 7800 IN	AFSDB	1 asfdbbox.zonetransfer.me.
+> canberra-office.zonetransfer.me. 7200 IN A	202.14.81.230
+> ...
+> ;; Query time: 10 msec
+> ;; SERVER: 81.4.108.41#53(nsztm1.digi.ninja) (TCP)
+> ;; WHEN: Mon May 27 18:31:35 BST 2024
+> ;; XFR size: 50 records (messages 1, bytes 2085)
+> ```
+<!-- }}} -->
+
+### CNAME
 
 Canonical Name ([[General#CNAME|CNAME record]])
 for the domain
 
 ```sh
-dig domain.com CNAME
+dig <domain.com> CNAME
 ```
+
+### MX
 
 Mail servers ([[General#MX|MX record]])
 responsible for the domain
 
 ```sh
-dig domain.com MX
+dig <domain.com> MX
 ```
+
+### NS
 
 [[General#Authoritative Name Server|Authoritative Name Servers]]
 ([[General#NS|NS record]])
 for the domain
 
 ```sh
-dig domain.com NS
+dig <domain.com> NS
 ```
+
+### SOA
 
 Start Of Authority ([[General#SOA|SOA record]])
 for the domain
 
 ```sh
-dig domain.com SOA
+dig <domain.com> SOA
 ```
+
+### TXT
 
 Text records ([[General#TXT|TXT record]])
 associated with the domain
 
 ```sh
-dig domain.com TXT
+dig <domain.com> TXT
 ```
+<!-- }}} -->
 
-Specify a specific name server to query
+<!-- Options {{{-->
+## Options
 
-```sh
-dig @1.1.1.1 domain.com
-```
+### Trace
 
 Show the full path of the DNS resolution
 
 ```sh
-dig +trace domain.com
+dig +trace <domain.com>
 ```
+
+### Short
+
+Provides a short, concise answer to the query
+
+```sh
+dig +short <domain.com>
+```
+
+### Answer Only
+
+Displays only the answer section of the query output
+
+```sh
+dig +noall +answer <domain.com>
+```
+<!-- }}} -->
+
+## BIND Version Info
+
+Grab banner and [BIND](https://en.wikipedia.org/wiki/BIND)
+server version
+
+```sh
+dig @<dns_ip> version.bind CHAOS TXT
+```
+
+## Specify Nameserver
+
+Specify a specific name server to query
+
+```sh
+dig @1.1.1.1 <domain.com>
+```
+
+## Reverse Lookup
 
 Perform a reverse lookup to find the associated host name
 
 ```sh
 dig -x 192.168.1.1
 ```
-
-Provides a short, concise answer to the query
-
-```sh
-dig +short domain.com
-```
-
-Displays only the answer section of the query output
-
-```sh
-dig +noall +answer domain.com
-```
-<!-- }}} -->
-
-___
-<!-- }}} -->
-
-<!-- nslookup {{{-->
-## nslookup
-
-> [!warning]
->
-> Deprecated
-
-> [!todo]
-
-___
-<!-- }}} -->
-
-<!-- Host {{{-->
-## Host
-
-Resolve a host name into an IP address or an IP address into a host name
-
-```sh
-host [-a] [-c Class ] [-d ] [-r ] [-t Type] [-v ] [-w ] <hostname> | <address> [Server]
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> Display the IP address of a host named `mephisto`
->
-> ```sh
-> host mephisto
-> ```
-> ```sh
-> mephisto is 192.100.13.5, Aliases: engr, sarah
-> ```
->
-> Display the host whose IP address is `192.100.13.1`
->
-> ```sh
-> host 192.100.13.1
-> ```
-> ```sh
-> mercutio is 192.100.13.1
-> ```
->
-> Display the [[General#NS]] record
-> ```sh
-> host -t ns inlanefreight.com
-> ```
-> ```sh
-> ;; communications error to ::1#53: connection refused
-> ;; communications error to ::1#53: connection refused
-> inlanefreight.com name server ns1.inlanefreight.com.
-> inlanefreight.com name server ns2.inlanefreight.com. 
-> ```
-<!-- }}} -->
 
 ___
 <!-- }}} -->

@@ -9,13 +9,55 @@ links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
 # Virtual Hosts
 
 [Virtual Hosting](https://en.wikipedia.org/wiki/Virtual_hosting)
-is a method for hosting multiple domain names on a single server
-(*same IP address*).
+is the ability of web servers to distinguish between multiple websites
+or applications sharing the same IP address by leveraging
+the `HTTP Host` header.
+
+**Virtual Hosts** are configurations within a web server
+that allow multiple websites or applications
+to be hosted on a single server.
+
+**Virtual Hosts** can be associated with top-level domains
+(*e.g., example.com*) or subdomains (*e.g., dev.exmaple.com*).
 
 > [!tip]-
 >
 > If a **Virtual Host** doesn't have a DNS record, it can be accessed
-> by modifying the [[DNS/General#Hosts File|hosts file]].
+> by modifying the [[DNS/General#Hosts File|hosts file]]
+
+___
+
+<!-- Configuration {{{-->
+## Configuration
+
+Virtual hosts can also be configured to use different domains,
+not just subdomains
+
+<!-- Example {{{-->
+> [!example]-
+>
+> Example of name-based virtual host configuration in Apache
+>
+> ```html
+> <VirtualHost *:80>
+>     ServerName www.example1.com
+>     DocumentRoot /var/www/example1
+> </VirtualHost>
+>
+> <VirtualHost *:80>
+>     ServerName www.example2.org
+>     DocumentRoot /var/www/example2
+> </VirtualHost>
+>
+> <VirtualHost *:80>
+>     ServerName www.another-example.net
+>     DocumentRoot /var/www/another-example
+> </VirtualHost>
+> ```
+<!-- }}} -->
+
+___
+<!-- }}} -->
 
 <!-- Discovery {{{-->
 ## Discovery
@@ -81,5 +123,18 @@ Raw TCP
 printf 'GET / HTTP/1.1\r\nHost: app.inlanefreight.local\r\nConnection: close\r\n\r\n' | nc 10.129.222.107 80
 ```
 
+> [!tip]
+>
+> Feed `localhost` header
+>
+> ```sh
+> curl -v -H "Host: localhost" http://<target_ip>/
+> ```
+>
+> Feed random host header
+>
+> ```sh
+> curl -v -H "Host: random" http://<target_ip>/
+> ```
 ___
 <!-- }}} -->

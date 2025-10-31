@@ -8,6 +8,10 @@ links: "[[Webapp/Enumeration/Passive|Enumeration]]"
 
 # Search Engine Discovery
 
+**Search Engine Discovery** ([Google dorking](https://en.wikipedia.org/wiki/Google_hacking))
+is a technique that uses Google Search (*and other search engines*)
+to find vulnerabilities
+
 ___
 
 <!-- Search Operators {{{-->
@@ -93,5 +97,12 @@ Locate database backups
 > site:example.com filetype:sql
 > ```
 
+Find [[DNS/General#Subdomain|Subdomains]]
+
+> [!example]-
+>
+> ```sh
+> site:wikipedia.org -en.wikipedia.org
+> ```
 ___
 <!-- }}} -->

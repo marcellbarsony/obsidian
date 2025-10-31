@@ -2,7 +2,7 @@
 id: dnsrecon
 aliases: []
 tags:
-  - Webapp/Enumeration/Tools/dnsrecon
+  - Networking/Services/DNS/Tools/dnsrecon
 links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
 ---
 

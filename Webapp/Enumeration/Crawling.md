@@ -35,59 +35,10 @@ before backtracking nd exploring other paths.
 ___
 <!-- }}} -->
 
-<!-- ReconSpider {{{-->
-## ReconSpider
+## Web Crawlers
 
-OSINT Framework for web crawling
-
-1. Install [Scrapy](https://www.scrapy.org/)
-
-<!-- Example {{{-->
-> [!example]-
->
-> Install with [apt](https://en.wikipedia.org/wiki/APT_(software))
-> (*system-wide*)
->
-> ```sh
-> sudo apt install python3-scrapy
-> ```
->
-> Install with [pip](https://pypi.org/project/pip/)
-> (*virtual environment*)
->
-> ```sh
-> pip3 install scrapy
-> ```
-<!-- }}} -->
-
-2. Install [ReconSpider](https://github.com/bhavsec/reconspider)
-
-<!-- Example {{{-->
-> [!example]-
->
-> > [!info]
-> >
-> > Install with preconfigured API keys
->
-> ```sh
-> wget -O ReconSpider.zip https://academy.hackthebox.com/storage/modules/144/ReconSpider.v1.2.zip
-> ```
-> ```sh
-> unzip ReconSpider.zip 
-> ```
-<!-- }}} -->
-
-3. Run ReconSpider
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> python3 ReconSpider.py http://<target>
-> ```
-<!-- }}} -->
-
-The output is stored in `results.json`
-
-___
-<!-- }}} -->
+- [[Burp Suite]]'s Spider
+- [[ReconSpider]]
+- [OWASP ZAP](https://www.zaproxy.org/) (*Zed Attack Proxy*)
+- [Scrapy](https://www.scrapy.org/) (*Python framework*)
+- [Apache Nutch](https://nutch.apache.org/) (*Scalable Crawler*)

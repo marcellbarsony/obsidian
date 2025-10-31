@@ -24,6 +24,27 @@ ___
 
 <!-- }}} -->
 
+<!-- DNS Domain {{{-->
+## DNS Domain
+
+A [Domain Name](https://en.wikipedia.org/wiki/Domain_name)
+is a string that identifies a realm of administrative autonomy,
+authority, or control
+
+### Subdomain
+
+A [Subdomain](https://en.wikipedia.org/wiki/Subdomain)
+is a domain that is a part of another (*main*) domain
+
+> [!example]-
+>
+> `en` is the subdomain, while `wikipedia` is the main domain
+>
+> ![[dns-subdomain.png]]
+
+___
+<!-- }}} -->
+
 <!-- DNS Resolution {{{-->
 ## DNS Resolution
 
@@ -34,13 +55,16 @@ between the domain name hierarchy and the IP address namespaces
 >
 > ![[dns-flowchart.svg]]
 
+<!-- Hosts File {{{-->
 ### Hosts File
 
 The [hosts](https://en.wikipedia.org/wiki/Hosts_(file))
-file maps hostnames to IP addresses manually
+file maps domain names (*hostnames*) to IP addresses manually
 
-- `C:\Windows\System32\drivers\etc\hosts`
-- `/etc/hosts`
+The `hosts` file is located at
+
+- Linux: `/etc/hosts`
+- Windows: `C:\Windows\System32\drivers\etc\hosts`
 
 ```sh
 <IP Address>    <Hostname> [<Alias> ...]
@@ -55,7 +79,7 @@ file maps hostnames to IP addresses manually
 > 127.0.0.1       myapp.local
 > ```
 >
-> Test connectvity to a specific IP address
+> Test connectivity to a specific IP address
 >
 > ```sh
 > 192.168.1.20    testserver.local
@@ -66,6 +90,8 @@ file maps hostnames to IP addresses manually
 > ```sh
 > 0.0.0.0       unwanted-site.com
 > ```
+<!-- }}} -->
+
 <!-- }}} -->
 
 ___
@@ -104,7 +130,7 @@ provides responses to queries against a
 hold authority for a particular zone.
 If an **Authoritative Name Server** cannot answer a client's query,
 the request is forwarded to the [[#Root Name Server]].
-**Authoritative Name Server** provide answers to [[#Recursive Name Serve]],
+**Authoritative Name Server** provide answers to [[#Recursive Name Server]],
 assisting in finding the specific web server(s).
 
 <!-- }}} -->
@@ -197,7 +223,7 @@ point to the same IP as `hackthebox.eu`*)
 <!-- SOA {{{-->
 ### SOA
 
-**Start of Authoirty**
+**Start of Authority**
 ([SOA record](https://en.wikipedia.org/wiki/SOA_record))
 ([RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035))
 is a DNS resource record containing administrative information
@@ -211,7 +237,21 @@ ___
 <!-- }}} -->
 
 <!-- DNS Zone Transfer {{{-->
-## DNS Zone Transfer
+## DNS Zone
+
+[DNS Zone](https://en.wikipedia.org/wiki/DNS_zone)
+is an specific administrative space of the DNS namespace
+in the Domain Name System
+([DNS](https://en.wikipedia.org/wiki/Domain_Name_System)),
+which a specific organization or administrator manages
+
+> [!info]-
+>
+> Illustration of DNS zone for `en.wiki.org`
+>
+> ![[dns-zone.png]]
+
+### DNS Zone Transfer
 
 [DNS Zone Transfer](https://en.wikipedia.org/wiki/DNS_zone_transfer)
 is a DNS transaction (**AXFR**) to replicate DNS databases within a zone
@@ -279,7 +319,7 @@ The configuration is roughly divided into two sections:
 #### Zone Files
 
 A [Zone File](https://en.wikipedia.org/wiki/Zone_file)
-(*e.g., `/etc/bind/db.domain.com`*) is a text file desrcibing
+(*e.g., `/etc/bind/db.domain.com`*) is a text file describing
 a DNS zone with the
 [BIND file format](https://en.wikipedia.org/wiki/Zone_file#File_format).
 

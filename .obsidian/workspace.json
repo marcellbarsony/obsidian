@@ -8,7 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "8fad7dd39d751737",
+            "id": "27d9ce0b2f298211",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -32,12 +32,12 @@
             }
           },
           {
-            "id": "4eb4e3fbcf17495a",
+            "id": "43662e69f40bc686",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Webapp/Enumeration/Crawling.md",
+                "file": "Networking/Services/DNS/Enumeration.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -52,10 +52,35 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Crawling"
+              "title": "Enumeration"
+            }
+          },
+          {
+            "id": "8fad7dd39d751737",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Webapp/Enumeration/Search Engine Discovery.md",
+                "mode": "preview",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Search Engine Discovery"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -144,13 +169,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Webapp/Enumeration/_Checklist.md",
+                "file": "Networking/Services/DNS/Enumeration.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of _Checklist"
+              "title": "Outline of Enumeration"
             }
           },
           {
@@ -199,7 +224,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Webapp/Enumeration/_Checklist.md",
+                "file": "Networking/Services/DNS/Enumeration.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -227,7 +252,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of _Checklist"
+              "title": "Graph of Enumeration"
             }
           }
         ]
@@ -247,34 +272,38 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "8fad7dd39d751737",
+  "active": "43662e69f40bc686",
   "lastOpenFiles": [
-    "Webapp/Enumeration/Crawling.md",
-    "Webapp/Enumeration/Well-Known.md",
-    "Webapp/Enumeration/Web Contents.md",
-    "Webapp/Enumeration/_Checklist.md",
-    "Webapp/Enumeration/Virtual Hosts.md",
     "Webapp/Enumeration/Search Engine Discovery.md",
-    "Webapp/Enumeration/Tools/Wafw00f.md",
-    "Webapp/Enumeration/Tools/puredns.md",
-    "Networking/Services/DNS/General.md",
-    "Webapp/Enumeration/Domain.md",
-    "Networking/Services/Services.md",
-    "Webapp/Enumeration/Metafiles.md",
-    "Webapp/Enumeration/Well-Known_1.md",
-    "Webapp/Enumeration/Fingerprinting.md",
-    "Webapp/Enumeration/Execution Paths.md",
-    "Webapp/Exploitation/Brute-force/CeWL.md",
-    "Webapp/Exploitation/Brute-force/hydra.md",
-    "Webapp/Exploitation/Upload Functionality.md",
-    "Webapp/Exploitation/Plugins.md",
-    "Webapp/Exploitation/Login Functionality.md",
-    "Webapp/Exploitation/Admin Panel.md",
-    "Webapp/Exploitation/_Checklist.md",
-    "Webapp/Enumeration/VHosts.md",
     "Networking/Services/DNS/Enumeration.md",
+    "Networking/Services/DNS/General.md",
+    "Webapp/Enumeration/_Checklist.md",
+    "Webapp/Enumeration/Enumeration.md",
+    "Networking/Services/DNS/Tools/host.md",
+    "Networking/Services/DNS/Tools/dig.md",
+    "Networking/Services/DNS/Tools/nslookup.md",
+    "Networking/Services/DNS/Tools/DNSEnum.md",
+    "Networking/Services/DNS/Tools/puredns.md",
+    "Networking/Services/DNS/Tools/Fierce.md",
+    "Networking/Services/DNS/Tools/dnsrecon.md",
     "Webapp/Enumeration/Tools/Gobuster.md",
     "Webapp/Enumeration/Tools/Nikto.md",
+    "Webapp/Enumeration/Tools/ReconSpider.md",
+    "Webapp/Enumeration/Tools/amass.md",
+    "Networking/Services/DNS/Tools",
+    "Networking/Services/DNS/Usage.md",
+    "Webapp/Enumeration/Domain.md",
+    "Networking/Services/DNS/src/dns-subdomain.png",
+    "Webapp/Enumeration/Virtual Hosts.md",
+    "Webapp/Enumeration/Execution Paths.md",
+    "Networking/Services/FTP/Usage.md",
+    "Networking/Services/FTP/Enumeration.md",
+    "Networking/Services/DNS/Exploitation.md",
+    "Networking/Services/DNS/src/dns-zone.png",
+    "Webapp/Enumeration/Tools/theHarvester.md",
+    "Webapp/Enumeration/Tools/ReconSpider_1.md",
+    "Webapp/Enumeration/Tools/FinalRecon.md",
+    "Webapp/Tools/Burp Suite",
     "Networking/Services/DNS/src/dns-zone-transfer.png",
     "Networking/Services/DNS/src/dns_zone_transfer.png",
     "Webapp/Tools",
@@ -286,14 +315,10 @@
     "Networking/Services/SSH/src/ssh-pka.png",
     "Networking/Services/SSH/src/pka.png",
     "Networking/Services/SSH/src/ssh-remote-port-forwarding.png",
-    "Networking/Services/SSH/src/ssh-remote-port-forwarding-home-network.png",
-    "Networking/Services/SSH/src/ssh-local-port-forwarding-bastion.png",
     "Networking/Services/SSH/src",
     "Networking/Services/MSSQL/src/password-list.txt",
     "Networking/Services/MSSQL/src/mssql-betterdefaultpasslist.txt",
     "Microsoft/Windows/Exploitation",
-    "Microsoft/Exploitation",
-    "test.txt",
-    "Pentest/Tools/Metasploit"
+    "Microsoft/Exploitation"
   ]
 }

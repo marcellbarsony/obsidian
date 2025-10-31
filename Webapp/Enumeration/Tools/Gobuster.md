@@ -9,10 +9,13 @@ links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
 # Gobuster
 
 [Gobuster](https://github.com/OJ/gobuster)
-is a directory/file, DNS and virtual host brute-forcing tool
+is a directory/file, [[DNS/General|DNS]] and [[Virtual Hosts|Virtual Host]]
+brute-forcing tool
 
-- [Gobuster - Man (Debian)](https://manpages.debian.org/testing/gobuster/gobuster.1.en.html)
-- [Gobuster - Man (Ubuntu)](https://manpages.ubuntu.com/manpages/focal/man1/gobuster.1.html)
+> [!info]- Man
+>
+> - [Gobuster - Man (Debian)](https://manpages.debian.org/testing/gobuster/gobuster.1.en.html)
+> - [Gobuster - Man (Ubuntu)](https://manpages.ubuntu.com/manpages/focal/man1/gobuster.1.html)
 
 ___
 
@@ -55,7 +58,7 @@ gobuster dir -u http://<host>/content/private/plugins/ -w <wordlist.txt>
 
 ### DNS Subdomain Enumeration
 
-Brute Force DNS subdomain enumeration
+[[DNS/Enumeration#Subdomain Brute Forcing|DNS Subdomain Brute Forcing]]
 
 ```sh
 gobuster dns <flags> -d <target> -w <wordlist.txt>
@@ -69,7 +72,7 @@ gobuster dns <flags> -d <target> -w <wordlist.txt>
 
 ### Brute Forcing
 
-Virtual Host brute-forcing
+[[Virtual Hosts|Virtual Host]] brute-forcing
 
 ```sh
 gobuster vhost <flags>

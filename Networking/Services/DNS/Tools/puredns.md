@@ -2,7 +2,7 @@
 id: puredns
 aliases: []
 tags:
-  - Webapp/Enumeration/Tools/puredns
+  - Networking/Services/DNS/Tools/puredns
 links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
 ---
 

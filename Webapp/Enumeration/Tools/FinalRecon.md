@@ -32,7 +32,7 @@ Install FinalRecon manually with [pip](https://pypi.org/project/pip/)
 > ```
 <!-- }}} -->
 
-Run FinalRecon with the help flag
+Validate FinalRecon installation with the `--help` flag
 
 <!-- Example {{{-->
 > [!example]-
