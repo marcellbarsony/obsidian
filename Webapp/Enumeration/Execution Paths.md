@@ -15,7 +15,7 @@ ___
 
 - Navigate directory structure in the browser
 
-- Conduct [[gobuster#Recursive Directory Enumeration|Recursive Directory Enumeration]]
+- Conduct [[Gobuster#Recursive Directory Enumeration|Recursive Directory Enumeration]]
 
 - Check Framework/CMS KBs for directory structure
 

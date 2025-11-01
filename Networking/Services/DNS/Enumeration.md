@@ -11,49 +11,20 @@ links: "[[Services]]"
 
 ___
 
-<!-- Banner Grabbing {{{-->
-## Banner Grabbing
-
-Grab banner and
-[BIND](https://en.wikipedia.org/wiki/BIND)
-server version with
-[dig](https://man.archlinux.org/man/dig.1)
-
-```sh
-dig @<dns_ip> version.bind CHAOS TXT
-```
-
-Grab banner with the [dns-nsid](https://nmap.org/nsedoc/scripts/dns-nsid.html)
-[[Nmap Scripting Engine|Nmap script]]
-
-```sh
-nmap --script dns-nsid <dns_ip>
-```
-
-Grab banner with [[netcat]]
-
-```sh
-nc -nv -u <dns_ip> 53
-```
-
-___
-
-<!-- }}} -->
-
 <!-- DNS Server Discovery {{{-->
 ## DNS Server Discovery
 
-Identifying the DNS servers associated with the target domain
+Identify the DNS servers associated with the target domain
 
-Query the [[General#Authoritative Name Server|Name Server]] with
-[dig](https://linux.die.net/man/1/dig)
+[dig](https://linux.die.net/man/1/dig) —
+Query the [[General#Authoritative Name Server|Name Server]]
 
 ```sh
 dig <target_domain> NS
 ```
 
+[nslookup](https://en.wikipedia.org/wiki/Nslookup) —
 Query the [[General#Authoritative Name Server|Name Server]] with
-[nslookup](https://en.wikipedia.org/wiki/Nslookup)
 
 ```sh
 nslookup -type=NS <target_domain>
@@ -63,16 +34,60 @@ ___
 
 <!-- }}} -->
 
+<!-- Banner Grabbing {{{-->
+## Banner Grabbing
+
+[dig](https://linux.die.net/man/1/dig) —
+Grab banner and
+[BIND](https://en.wikipedia.org/wiki/BIND)
+server version
+
+```sh
+dig @<dns_ip> version.bind CHAOS TXT
+```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `version.bind`: Special built-in name that DNS servers may respond to with
+>     their version info
+> - `CH`: CHAOS class
+> - `TXT`: Record type
+<!-- }}} -->
+
+[[Nmap Scripting Engine|Nmap script]]
+([dns-nsid](https://nmap.org/nsedoc/scripts/dns-nsid.html)) —
+Grab banner
+
+```sh
+nmap --script dns-nsid <dns_ip>
+```
+
+[[netcat]] —
+Grab banner
+
+```sh
+nc -nv -u <dns_ip> 53
+```
+
+___
+
+<!-- }}} -->
+
 <!-- DNS Subdomain {{{-->
 ## DNS Subdomain
+
+Identify subdomains of the `*.domain.com` scope
+to widen the attack surface
 
 <!-- Search Engine Discovery {{{-->
 ### Search Engine Discovery
 
-Find [[General#Subdomain|Subdomains]] via [[Search Engine Discovery]]
-(*[[Search Engine Discovery#Google Dorking|Google Dorking]]*)
+[[Search Engine Discovery]]
+(*[[Search Engine Discovery#Google Dorking|Google Dorking]]*) —
+Find [[General#Subdomain|Subdomains]]
 
-> [!tip] Operators
+> [!tip]- Operators
 >
 > - `site:`: Find subdomains
 > - `-`: Exclude already known subdomains
@@ -93,7 +108,7 @@ Find [[General#Subdomain|Subdomains]] via [[Search Engine Discovery]]
 is a process intended to enable the verification of issued digital certificates
 for encrypted Internet connections
 
-> [!tip] Certificate Transparency Logs
+> [!tip]- Certificate Transparency Logs
 >
 > **Certificate Transparency Logs**
 > may expose subdomains, which might host outdated software
@@ -104,86 +119,101 @@ for encrypted Internet connections
 > - [Facebook's CT Monitor](https://developers.facebook.com/tools/ct/)
 > - [Google's CT Monitor](https://transparencyreport.google.com/https/certificates)
 
-<!-- cURL {{{-->
-> [!example]- [[cURL]]
+[[cURL]] — List SSL certificates
+
+```sh
+curl -s https://crt.sh/\?q\=<example.com>\&output\=json | jq .
+```
+
+> [!info]-
 >
-> List SSL certificates
+> - `-s`: Silent mode, suppress progress bars and error messages
+
+[[cURL]] — List and filter
+([jq](https://en.wikipedia.org/wiki/Jq_(programming_language)))
+SSL certificate by unique subdomains
+
+<!-- Example {{{-->
+> [!example]-
+>
+> Find all `dev` subdomains of `facebook.com`
 >
 > ```sh
-> curl -s https://crt.sh/\?q\=<example.com>\&output\=json | jq .
+> curl -s "https://crt.sh/?q=facebook.com&output=json" | \
+>   jq -r '.[] | \
+>  select(.name_value | \
+>  contains("dev")) | \
+>  .name_value' | \
+>  sort -u
+> ```
+> ```sh
+> *.dev.facebook.com
+> *.newdev.facebook.com
+> *.secure.dev.facebook.com
+> dev.facebook.com
+> devvm1958.ftw3.facebook.com
+> facebook-amex-dev.facebook.com
+> facebook-amex-sign-enc-dev.facebook.com
+> newdev.facebook.com
+> secure.dev.facebook.com
 > ```
 >
 > > [!info]-
 > >
-> > - `-s`: Silent mode, suppress progress bars and error messages
->
-> Filter SSL certificate by unique subdomains
->
-> <!-- Example {{{-->
-> > [!example]-
-> >
-> > Find all `dev` subdomains of `facebook.com`
-> >
-> > ```sh
-> > curl -s "https://crt.sh/?q=facebook.com&output=json" | \
-> >   jq -r '.[] | \
-> >  select(.name_value | \
-> >  contains("dev")) | \
-> >  .name_value' | \
-> >  sort -u
-> > ```
-> > ```sh
-> > *.dev.facebook.com
-> > *.newdev.facebook.com
-> > *.secure.dev.facebook.com
-> > dev.facebook.com
-> > devvm1958.ftw3.facebook.com
-> > facebook-amex-dev.facebook.com
-> > facebook-amex-sign-enc-dev.facebook.com
-> > newdev.facebook.com
-> > secure.dev.facebook.com
-> > ```
-> >
-> > > [!info]-
-> > >
-> > > - `curl -s "https://crt.sh/?q=facebook.com&output=json"`:
-> > >   Fetch the JSON output from `crt.sh` for certificates
-> > >   matching the domain `facebook.com`
-> > > - `jq -r '.[] | select(.name_value | contains("dev")) | .name_value'`:
-> > >   Filter the JSON results, select entries where the `name_value` field
-> > >   (*which contains the domain or subdomain*) includes the string
-> > >   `dev`.
-> > > - `sort -u`: Sort the results alphabetically and remove duplicates
-> <!-- }}} -->
->
-> <!-- Example {{{-->
-> > [!example]-
-> >
-> > ```sh
-> > curl -s https://crt.sh/\?q\=<example.com>\&output\=json | \
-> >   jq . | \
-> >   grep name | \
-> >   cut -d":" -f2 | \
-> >   grep -v "CN=" | \
-> >   cut -d'"' -f2 | \
-> >   awk '{gsub(/\\n/,"\n");}1;' | \
-> >   sort -ucurl -s https://crt.sh/\?q\=<example.com>\&output\=json | \
-> >   jq . | \
-> >   grep name | \
-> >   cut -d":" -f2 | \
-> >   grep -v "CN=" | \
-> >   cut -d'"' -f2 | \
-> >   awk '{gsub(/\\n/,"\n");}1;' | \
-> >   sort -u
-> > ```
-> <!-- }}} -->
+> > - `curl -s "https://crt.sh/?q=facebook.com&output=json"`:
+> >   Fetch the JSON output from `crt.sh` for certificates
+> >   matching the domain `facebook.com`
+> > - `jq -r '.[] | select(.name_value | contains("dev")) | .name_value'`:
+> >   Filter the JSON results, select entries where the `name_value` field
+> >   (*which contains the domain or subdomain*) includes the string
+> >   `dev`.
+> > - `sort -u`: Sort the results alphabetically and remove duplicates
 <!-- }}} -->
 
-> [!example]- Subfinder
+<!-- Example {{{-->
+> [!example]-
 >
 > ```sh
-> subfinder -d "target.domain"
+> curl -s https://crt.sh/\?q\=<example.com>\&output\=json | \
+>   jq . | \
+>   grep name | \
+>   cut -d":" -f2 | \
+>   grep -v "CN=" | \
+>   cut -d'"' -f2 | \
+>   awk '{gsub(/\\n/,"\n");}1;' | \
+>   sort -ucurl -s https://crt.sh/\?q\=<example.com>\&output\=json | \
+>   jq . | \
+>   grep name | \
+>   cut -d":" -f2 | \
+>   grep -v "CN=" | \
+>   cut -d'"' -f2 | \
+>   awk '{gsub(/\\n/,"\n");}1;' | \
+>   sort -u
 > ```
+<!-- }}} -->
+<!-- }}} -->
+
+<!-- Passive Enumeration {{{-->
+### Passive Enumeration
+
+DNS Subdomain enumeration using passive online resources
+
+[[subfinder]] — DNS Subdomain enumeration
+
+```sh
+subfinder -d "<target_domain>"
+```
+
+[[Findomain]] — DNS Subdomain enumeration
+
+```sh
+findomain -t "<target_domain>" -a
+```
+
+
+[DNSDumpster](https://dnsdumpster.com/) — 
+
+<!-- }}} -->
 
 ___
 <!-- }}} -->
@@ -214,43 +244,52 @@ Brute Force DNS Subdomains
 <!-- }}} -->
 
 <!-- Gobuster {{{-->
-> [!example]- [[Gobuster#DNS Subdomain Enumeration|Gobuster]]
+[[Gobuster#DNS Subdomain Enumeration|Gobuster]] —
+DNS Subdomain Brute Forcing
+
+```sh
+gobuster dns [flags] -d <target> -w <wordlist.txt> [-s <target_dns>]
+```
+
+<!-- Example {{{-->
+> [!example]-
 >
 > ```sh
-> gobuster dns [flags] -d <target> -w <wordlist.txt>
+> gobuster dns -d inlanefreight.com -w /usr/share/SecLists/Discovery/DNS/namelist.txt
 > ```
-> ```sh
-> gobuster dns [flags] -d <target> -w <wordlist.txt> -s <target_dns>
-> ```
+<!-- }}} -->
+
 <!-- }}} -->
 
 <!-- DNSEnum {{{-->
-> [!example]- [[DNSEnum]]
+[[DNSEnum]] —
+DNS Subdomain Brute Forcing
+
+```sh
+dnsenum --enum <target> -f <wordlist.txt> -r
+```
+```sh
+dnsenum --dnsserver <target_dns> --enum -p 5 -s 5 -o subdomains.txt -f <wordlist.txt> <target_domain>
+```
+
+<!-- Info {{{-->
+> [!info]-
 >
-> ```sh
-> dnsenum --enum <target> -f <wordlist.txt> -r
-> ```
-> ```sh
-> dnsenum --dnsserver <target_dns> --enum -p 5 -s 5 -o subdomains.txt -f <wordlist.txt> <target_domain>
-> ```
->
-> <!-- Info {{{-->
-> > [!info]
-> >
-> > - `--dnsserver <dns_ip>`: Target DNS server to query
-> > - `--enum`: Run all enumeration steps (`A`, `NS`, `MX`, and subdomain
-> >   brute-forcing, and some zone-transfer attempts)
-> > - `-p 5`: Number of threads for reverse lookup (`0` to disable)
-> > - `-s 5`: Number of threads for subdomain brute-forcing (`0` to disable)
-> > - `-o subdomains.txt`: Output file for results
-> > - `-f <wordlist.txt>`: Wordlist file for subdomain brute-forcing
-> <!-- }}} -->
+> - `--dnsserver <dns_ip>`: Target DNS server to query
+> - `--enum`: Run all enumeration steps (`A`, `NS`, `MX`, and subdomain
+>   brute-forcing, and some zone-transfer attempts)
+> - `-p 5`: Number of threads for reverse lookup (`0` to disable)
+> - `-s 5`: Number of threads for subdomain brute-forcing (`0` to disable)
+> - `-o subdomains.txt`: Output file for results
+> - `-f <wordlist.txt>`: Wordlist file for subdomain brute-forcing
+<!-- }}} -->
+
 <!-- }}} -->
 
 <!-- Bash {{{-->
-> [!example]- Bash
->
-> Bash script for DNS subdomains brute-forcing
+[Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) —
+DNS Subdomain Brute Forcing
+> [!example]-
 >
 > ```sh
 > for sub in $(cat /opt/useful/seclists/Discovery/DNS/subdomains-top1million-110000.txt); do \
@@ -263,36 +302,13 @@ Brute Force DNS Subdomains
 > ```
 <!-- }}} -->
 
-<!-- }}} -->
-
 ___
-
 <!-- }}} -->
 
 <!-- DNS Queries {{{-->
 ## DNS Queries
 
 DNS servers can be footprinted via queries
-
-<!-- Version Query {{{-->
-### Version Query
-
-Query the version of the DNS server using the `CHAOS` query and type `TXT`
-
-```sh
-dig @<dns_ip> version.bind TXT CH
-```
-
-<!-- Info {{{-->
-> [!info]-
->
-> - `version.bind`: Special built-in name that DNS servers may respond to with
->     their version info
-> - `CH`: CHAOS class
-> - `TXT`: Record type
-<!-- }}} -->
-
-<!-- }}} -->
 
 <!-- NS Query {{{-->
 ### NS Query
@@ -303,10 +319,6 @@ Query the DNS server for NS records of a domain
 dig [@<dns_ip>] <target_domain> ns
 ```
 
-```sh
-nslookup -type=NS <target_domain> [dns_ip]
-```
-
 <!-- Example {{{-->
 > [!example]-
 >
@@ -315,9 +327,6 @@ nslookup -type=NS <target_domain> [dns_ip]
 >
 > ```sh
 > dig @10.129.14.128 inlanefreight.htb ns
-> ```
-> ```sh
-> nslookup -type=NS inlanefreight.htb 10.129.14.128
 > ```
 <!-- }}} -->
 
@@ -385,9 +394,9 @@ dig @<dns_ip> <target_domain> any
 <!-- AXFR Zone Transfer {{{-->
 ### AXFR Zone Transfer
 
-[**DNS Zone Transfer**](https://en.wikipedia.org/wiki/DNS_zone_transfer)
-or **Asynchronous Full Transfer Zone** (**AXFR**) refers to the transfer of
-zones to another server in DNS (e.g., *in case of DNS failure*)
+[[General#DNS Zone Transfer|DNS Zone Transfer]]
+or **Asynchronous Full Transfer Zone** (**AXFR**) yields a full DNS zone dump
+(*e.g. all hostnames, IPs, subdomains, etc.*)
 
 <!-- Info {{{-->
 > [!info]-
@@ -412,10 +421,10 @@ zones to another server in DNS (e.g., *in case of DNS failure*)
 > - **Slave DNS server**: The DNS server that obtains zone data from a master
 <!-- }}} -->
 
-Request a [[DIG#AXFR|zone transfer with DIG]]
+[[DIG#AXFR|DIG]] — Request AXFR Zone Transfer
 
 ```sh
-dig @<target_dns> <target_domain> -t axfr
+dig @<dns_ip> <target_domain> -t axfr
 ```
 
 <!-- Example {{{-->
@@ -454,7 +463,7 @@ dig @<target_dns> <target_domain> -t axfr
 > ```
 <!-- }}} -->
 
-[[fierce]] automates zone transfers and performs dictionary attacks
+[[fierce]] — Automate zone transfers and perform dictionary attacks
 
 ```sh
 fierce --domain <target_domain> --dns-servers <dns_ip>
@@ -466,29 +475,4 @@ ___
 
 <!-- }}} -->
 
-<!-- DNS Lookup {{{-->
-## DNS Lookup
-
-### DNS Lookup
-
-Resolve a **domain name** to the corresponding **IP address**.
-
-```sh
-nslookup <target_domain>
-```
-
-### Reverse DNS Lookup
-
-Resolve an **IP address** to the corresponding **domain name**.
-
-```sh
-nslookup -type=PTR <target>
-```
-
-### Online Tools
-
-- [DNSDumpster](https://dnsdumpster.com/)
-
-___
-
-<!-- }}} -->
+## Automated Tools

@@ -255,7 +255,8 @@ which a specific organization or administrator manages
 
 [DNS Zone Transfer](https://en.wikipedia.org/wiki/DNS_zone_transfer)
 is a DNS transaction (**AXFR**) to replicate DNS databases within a zone
-(a domain and its subdomains) from one name server to another
+(*a domain and its subdomains*) from one name server to another
+(e.g., *in case of DNS failure*)
 
 > [!info]-
 >

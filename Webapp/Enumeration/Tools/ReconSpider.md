@@ -65,13 +65,9 @@ ___
 
 Run ReconSpider
 
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> python3 ReconSpider.py http://<target>
-> ```
-<!-- }}} -->
+```sh
+python3 ReconSpider.py http://<target>
+```
 
 > [!info]
 >

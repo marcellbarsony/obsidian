@@ -62,11 +62,9 @@ ___
 <!-- Discovery {{{-->
 ## Discovery
 
-Virtual Host discovery with [[Gobuster#Brute Forcing|Gobuster]]
-
-```sh
-gobuster vhost -u http://<target> -w <wordlist.txt> --append-domain
-```
+Virtual host fuzzing is recommended
+to possibly find alternate domain names of subdomains
+that point to a virtual host
 
 > [!tip]- Wordlists
 >
@@ -84,6 +82,29 @@ gobuster vhost -u http://<target> -w <wordlist.txt> --append-domain
 > Virtual Host Discovery can generate significant traffic
 > and might be detected by intrusion detection systems (*IDS*)
 > or web application firewalls (*WAF*)
+> and it could lead to an unintended denial of service
+
+### Brute Force
+
+[[Gobuster]] — [[Gobuster#Vhost|Vhost Brute Force]]
+
+
+```sh
+gobuster vhost -u http://<target> -w <wordlist.txt> --append-domain
+```
+```sh
+gobuster vhost --useragent "PENTEST" --wordlist "<wordlist.txt>" --url <target>
+```
+
+[[Fuff]] — [[Fuff#Vhost Brute Force|Vhost Brute Force]]
+
+```sh
+ffuf -H "Host: FUZZ.<domain>" -H "User-Agent: PENTEST" -c -w "<wordlist.txt>" -u <target>
+```
+
+```sh
+ffuf -c -r -w "<wordlist.txt>" -u "http://FUZZ.<target>/"
+```
 
 ___
 <!-- }}} -->
@@ -136,5 +157,6 @@ printf 'GET / HTTP/1.1\r\nHost: app.inlanefreight.local\r\nConnection: close\r\n
 > ```sh
 > curl -v -H "Host: random" http://<target_ip>/
 > ```
+
 ___
 <!-- }}} -->

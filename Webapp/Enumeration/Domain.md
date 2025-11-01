@@ -68,14 +68,14 @@ mail servers, and other infrastructure
 >
 > CMD tools
 >
-> - [[DNS/Usage#DIG|dig]]
-> - [[DNS/Usage#nslookup|nslookup]]
-> - [[DNS/Usage#Host|Host]]
+> - [[DNS/Tools/Host|Host]]
+> - [[DNS/Tools/dig|DIG]]
+> - [[DNS/Tools/nslookup|nslookup]]
 >
 > Other tools
 >
 > - [[Fierce]]
-> - [[dnsrecon]]
+> - [[DNSRecon]]
 <!-- }}} -->
 
 ___

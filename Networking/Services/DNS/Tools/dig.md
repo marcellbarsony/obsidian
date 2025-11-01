@@ -175,6 +175,12 @@ dig <domain.com> AXFR
 > ```
 <!-- }}} -->
 
+<!-- Warning {{{-->
+> [!warning]
+>
+> Not all entries from the zones will be shown
+<!-- }}} -->
+
 ### CNAME
 
 Canonical Name ([[General#CNAME|CNAME record]])

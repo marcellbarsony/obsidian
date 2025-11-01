@@ -16,6 +16,15 @@ ___
 <!-- Type & Web Server Version {{{-->
 ## Type & Web Server Version
 
+
+___
+<!-- }}} -->
+
+<!-- Version Details & CVEs {{{-->
+## Version Details & CVEs
+
+Search for additional version information
+
 <!-- Nmap {{{-->
 ### Nmap Scan
 
@@ -45,34 +54,19 @@ nmap -sV --script=http-enum -oA target_http_enum_scan <target_ip>
 > - `-oA`: Save output in all fomats
 <!-- }}} -->
 
-<!-- Error Page {{{-->
-### Error Page
-
-Retrieve the error page
-
-```sh
-curl -X GET http://example.com/404page
-```
-<!-- }}} -->
-
-___
-<!-- }}} -->
-
-<!-- Version Details & CVEs {{{-->
-## Version Details & CVEs
-
-Search for additional version information
-
-### Version Number
-
-Identify the version number of the underlying web technologies
-
+<!-- Public Exploits {{{-->
 ### Public Exploits
 
 Search for well-known vulnerabilities and exploits
 
 - Web
-- Searchsploit
+  (*e.g., [Exploit DB](https://www.exploit-db.com/),
+  [CVE Details](https://www.cvedetails.com/),
+  [NVD NIST](https://nvd.nist.gov/vuln/search#/nvd/home?resultType=records),
+  [MITRE](https://www.cve.org/)*)
+- [[SearchSploit]]
+
+<!-- }}} -->
 
 ___
 <!-- }}} -->

@@ -32,36 +32,12 @@
             }
           },
           {
-            "id": "43662e69f40bc686",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Networking/Services/DNS/Enumeration.md",
-                "mode": "preview",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Enumeration"
-            }
-          },
-          {
             "id": "8fad7dd39d751737",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Webapp/Enumeration/Search Engine Discovery.md",
+                "file": "Webapp/Enumeration/Fingerprinting.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -76,11 +52,10 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Search Engine Discovery"
+              "title": "Fingerprinting"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -169,13 +144,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/Services/DNS/Enumeration.md",
+                "file": "Webapp/Enumeration/_Checklist.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Enumeration"
+              "title": "Outline of _Checklist"
             }
           },
           {
@@ -224,7 +199,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/Services/DNS/Enumeration.md",
+                "file": "Webapp/Enumeration/_Checklist.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -252,7 +227,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Enumeration"
+              "title": "Graph of _Checklist"
             }
           }
         ]
@@ -272,37 +247,37 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "43662e69f40bc686",
+  "active": "27d9ce0b2f298211",
   "lastOpenFiles": [
-    "Webapp/Enumeration/Search Engine Discovery.md",
-    "Networking/Services/DNS/Enumeration.md",
-    "Networking/Services/DNS/General.md",
+    "Webapp/Enumeration/Fingerprinting.md",
+    "Webapp/Enumeration/WAF.md",
     "Webapp/Enumeration/_Checklist.md",
-    "Webapp/Enumeration/Enumeration.md",
-    "Networking/Services/DNS/Tools/host.md",
-    "Networking/Services/DNS/Tools/dig.md",
-    "Networking/Services/DNS/Tools/nslookup.md",
-    "Networking/Services/DNS/Tools/DNSEnum.md",
-    "Networking/Services/DNS/Tools/puredns.md",
-    "Networking/Services/DNS/Tools/Fierce.md",
-    "Networking/Services/DNS/Tools/dnsrecon.md",
-    "Webapp/Enumeration/Tools/Gobuster.md",
-    "Webapp/Enumeration/Tools/Nikto.md",
-    "Webapp/Enumeration/Tools/ReconSpider.md",
-    "Webapp/Enumeration/Tools/amass.md",
-    "Networking/Services/DNS/Tools",
-    "Networking/Services/DNS/Usage.md",
-    "Webapp/Enumeration/Domain.md",
-    "Networking/Services/DNS/src/dns-subdomain.png",
-    "Webapp/Enumeration/Virtual Hosts.md",
-    "Webapp/Enumeration/Execution Paths.md",
-    "Networking/Services/FTP/Usage.md",
-    "Networking/Services/FTP/Enumeration.md",
+    "Webapp/Enumeration/Banner Grabbing.md",
+    "Webapp/Enumeration/Tools/WhatWeb.md",
+    "Webapp/Enumeration/Scanning.md",
+    "Webapp/Enumeration/Banner Grabbing_1.md",
+    "Pentest/Tools/Metasploit/SearchSploit.md",
+    "Webapp/Enumeration/CMS.md",
+    "Webapp/Enumeration/Search Engine Discovery.md",
+    "Webapp/Enumeration/Error Page.md",
+    "Webapp/Enumeration/HTTP Headers.md",
+    "Networking/Services/DNS/Enumeration.md",
     "Networking/Services/DNS/Exploitation.md",
+    "Networking/Services/DNS/Tools/dig.md",
+    "Networking/Services/DNS/General.md",
+    "Webapp/Enumeration/Virtual Hosts.md",
+    "Webapp/Enumeration/Web Contents.md",
+    "Webapp/Enumeration/Tools/Fuff.md",
+    "Pentest/Tools/Brute Force/Gobuster.md",
+    "Networking/Services/DNS/Tools/DNSRecon.md",
+    "Webapp/Enumeration/Domain.md",
+    "Networking/Services/DNS/Tools/puredns.md",
+    "Networking/Services/DNS/Tools/subfinder.md",
+    "Networking/Services/DNS/Tools/findomain.md",
+    "Networking/Services/DNS/Tools/dnsrecon_1.md",
+    "Networking/Services/DNS/Tools",
+    "Networking/Services/DNS/src/dns-subdomain.png",
     "Networking/Services/DNS/src/dns-zone.png",
-    "Webapp/Enumeration/Tools/theHarvester.md",
-    "Webapp/Enumeration/Tools/ReconSpider_1.md",
-    "Webapp/Enumeration/Tools/FinalRecon.md",
     "Webapp/Tools/Burp Suite",
     "Networking/Services/DNS/src/dns-zone-transfer.png",
     "Networking/Services/DNS/src/dns_zone_transfer.png",
