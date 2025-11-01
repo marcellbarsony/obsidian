@@ -8,14 +8,21 @@ links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
 
 # CMS
 
+<!-- Enumeration {{{-->
 ## Enumeration
 
 Identify technologies on websites
+
+<!-- Online Tools {{{-->
+### Online Tools
 
 - [Wappalyzer](https://www.wappalyzer.com/)
 
 - [Whatcms](https://whatcms.org/)
 
+<!-- }}} -->
+
+<!-- WordPress {{{-->
 ### WordPress
 
 Simple scan (*no exploitation*)
@@ -47,3 +54,8 @@ Enumerate and bruteforce users
 ```sh
 wpscan --url <target> --enumerate u --passwords "/path/to/wordlist.txt"
 ```
+
+<!-- }}} -->
+
+___
+<!-- }}} -->

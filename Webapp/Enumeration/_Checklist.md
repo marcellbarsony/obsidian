@@ -26,6 +26,7 @@ ___
             - [ ] [[DNS/Tools/DNSRecon|DNSRecon]]
     - [ ] [[Virtual Hosts]]
         - [ ] [[Virtual Hosts#Discovery|Discovery]]
+            - [ ] [[Virtual Hosts#Brute Force|Brute Force]]
         - [ ] [[Virtual Hosts#Banner Grabbing|Banner Grabbing]]
 
 ___
@@ -40,14 +41,16 @@ ___
         - [ ] [[WAF#Nmap|Nmap]]
         - [ ] [[WAF#WhatWaf|WhatWaf]]
     - [ ] [[Fingerprinting#Version Details & CVEs|Version Details & CVEs]]
+        - [ ] [[HTTP Headers]]
+            - [ ] [[HTTP Headers#HTTP Request|HTTP Request]]
+        - [ ] [[Error Page]]
         - [ ] [[Fingerprinting#Nmap Scan|Nmap Scan]]
             - [ ] [[Fingerprinting#Script Scan|Script Scan]]
+        - [ ] [[Banner Grabbing#Banner Grabbing|Banner Grabbing]]
+            - [ ] [[Banner Grabbing#cURL|cURL]]
+            - [ ] [[Banner Grabbing#Netcat|Netcat]]
         - [ ] [[Fingerprinting#Public Exploits|Public Exploits]]
             - [ ] [[SearchSploit]]
-    - [ ] [[Banner Grabbing#Banner Grabbing|Banner Grabbing]]
-        - [ ] [[Banner Grabbing#cURL|cURL]]
-        - [ ] [[Banner Grabbing#Netcat|Netcat]]
-    - [ ] [[Error Page]]
     - [ ] [[Crawling]]
         - [ ] [[ReconSpider]]
     - [ ] [[Scanning]]
@@ -55,6 +58,7 @@ ___
         - [ ] [[WhatWeb]]
     - [ ] [[CMS]]
         - [ ] [[CMS#Enumeration|Enumeration]]
+            - [ ] [[CMS#Online Tools|Online Tools]]
             - [ ] [[CMS#WordPress|WordPress]]
 
 ___
@@ -69,7 +73,7 @@ ___
             - [ ] [[Burp Suite#Enumeration|Burp Suites]]
             - [ ] [[Dirsearch]]
             - [ ] [[Gobuster]]
-            - [ ] [[Fuff]]
+            - [ ] [[Ffuf#Directory|Fuff]]
 - [ ] [[Execution Paths#Investigate Findings|Investigate Findings]]
 
 ___

@@ -8,7 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "27d9ce0b2f298211",
+            "id": "8fad7dd39d751737",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -32,12 +32,12 @@
             }
           },
           {
-            "id": "8fad7dd39d751737",
+            "id": "27d9ce0b2f298211",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Webapp/Enumeration/Fingerprinting.md",
+                "file": "Webapp/Enumeration/WAF.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Fingerprinting"
+              "title": "WAF"
             }
           }
         ]
@@ -247,11 +247,15 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "27d9ce0b2f298211",
+  "active": "8fad7dd39d751737",
   "lastOpenFiles": [
-    "Webapp/Enumeration/Fingerprinting.md",
+    "Webapp/Enumeration/Virtual Hosts.md",
     "Webapp/Enumeration/WAF.md",
     "Webapp/Enumeration/_Checklist.md",
+    "Webapp/Enumeration/HTTP Headers.md",
+    "Webapp/Enumeration/Tools/Ffuf.md",
+    "Webapp/Exploitation/_Checklist.md",
+    "Webapp/Enumeration/Fingerprinting.md",
     "Webapp/Enumeration/Banner Grabbing.md",
     "Webapp/Enumeration/Tools/WhatWeb.md",
     "Webapp/Enumeration/Scanning.md",
@@ -260,21 +264,17 @@
     "Webapp/Enumeration/CMS.md",
     "Webapp/Enumeration/Search Engine Discovery.md",
     "Webapp/Enumeration/Error Page.md",
-    "Webapp/Enumeration/HTTP Headers.md",
     "Networking/Services/DNS/Enumeration.md",
     "Networking/Services/DNS/Exploitation.md",
     "Networking/Services/DNS/Tools/dig.md",
     "Networking/Services/DNS/General.md",
-    "Webapp/Enumeration/Virtual Hosts.md",
     "Webapp/Enumeration/Web Contents.md",
-    "Webapp/Enumeration/Tools/Fuff.md",
     "Pentest/Tools/Brute Force/Gobuster.md",
     "Networking/Services/DNS/Tools/DNSRecon.md",
     "Webapp/Enumeration/Domain.md",
     "Networking/Services/DNS/Tools/puredns.md",
     "Networking/Services/DNS/Tools/subfinder.md",
     "Networking/Services/DNS/Tools/findomain.md",
-    "Networking/Services/DNS/Tools/dnsrecon_1.md",
     "Networking/Services/DNS/Tools",
     "Networking/Services/DNS/src/dns-subdomain.png",
     "Networking/Services/DNS/src/dns-zone.png",

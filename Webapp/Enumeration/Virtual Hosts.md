@@ -86,24 +86,42 @@ that point to a virtual host
 
 ### Brute Force
 
-[[Gobuster]] — [[Gobuster#Vhost|Vhost Brute Force]]
-
+[[Gobuster]] — Virtual Host Brute Force
 
 ```sh
 gobuster vhost -u http://<target> -w <wordlist.txt> --append-domain
 ```
 ```sh
+gobuster vhost -u http://<target> -w <wordlist.txt> -p pattern --exclude-length 301 -t 10
+```
+```sh
 gobuster vhost --useragent "PENTEST" --wordlist "<wordlist.txt>" --url <target>
 ```
 
-[[Fuff]] — [[Fuff#Vhost Brute Force|Vhost Brute Force]]
+> [!info]-
+>
+> The `pattern` file contains the domain name
+>
+> ```sh
+> cat pattern
+> ```
+> ```sh
+> {GOBUSTER}.inlanefreight.htb
+> ```
+
+[[Ffuf]] — Virtual Host Brute Force
 
 ```sh
 ffuf -H "Host: FUZZ.<domain>" -H "User-Agent: PENTEST" -c -w "<wordlist.txt>" -u <target>
 ```
-
 ```sh
 ffuf -c -r -w "<wordlist.txt>" -u "http://FUZZ.<target>/"
+```
+
+Filter results by response sizes (*e.g., `-fs 109, 208`*)
+
+```sh
+ffuf -w namelist.txt -u http://10.129.184.109 -H "HOST: FUZZ.inlanefreight.htb" -fs 10918
 ```
 
 ___

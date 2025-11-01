@@ -28,14 +28,14 @@ Conduct directory enumeration with
 - [[Burp Suite]]
 - [[Dirsearch|dirsearch.py]]
 - [[Gobuster]]
-- [[Fuff]]
+- [[Ffuf]]
 
 Conduct recursive directory enumeration with
 
 - [[Burp Suite]]
 - [[Dirsearch|dirsearch.py]]
 - [[Gobuster#Recursive Directory Enumeration|Recursive Directory Enumeration]]
-- [[Fuff]]
+- [[Ffuf]]
 
 ___
 <!-- }}} -->
