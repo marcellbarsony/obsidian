@@ -59,7 +59,7 @@ nmap --script ftp-* -p 21 <target_ip> -oA ftp-script-all
 ### FTP Bounce Attack
 
 Detect
-[[Exploitation#FTP Bounce Attack|FTP Bounce Attack]]
+[[Networking/Services/FTP/Exploitation#FTP Bounce Attack|FTP Bounce Attack]]
 ([ftp-bounce](https://nmap.org/nsedoc/scripts/ftp-bounce.html))
 
 ```sh
@@ -82,7 +82,7 @@ ___
 <!-- Metasploit {{{-->
 ## Metasploit
 
-[[Exploitation#FTP Bounce Attack|FTP Bounce]] Port Scanner
+[[Networking/Services/FTP/Exploitation#FTP Bounce Attack|FTP Bounce]] Port Scanner
 (*[ftpbounce](https://www.rapid7.com/db/modules/auxiliary/scanner/portscan/ftpbounce/)*)
 
 <!-- Example {{{-->
@@ -102,7 +102,7 @@ ___
 > ```
 <!-- }}} -->
 
-[[Exploitation#Anonymous Login|Anonymous FTP Access]] Detection
+[[Networking/Services/FTP/Exploitation#Anonymous Login|Anonymous FTP Access]] Detection
 (*[anonymous](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/anonymous/)*)
 
 <!-- Example {{{-->

@@ -16,8 +16,8 @@ links: "[[SMB]]"
 is a FTP-like client used to access
 [SMB](https://en.wikipedia.org/wiki/Server_Message_Block)/
 [CIFS](https://learn.microsoft.com/en-us/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)
-resources on servers, share files,
-printers, serial ports, and communicate between nodes on a network.
+resources on servers, share files, printers, serial ports,
+and communicate between nodes on a network
 
 <!-- Connect {{{-->
 ### Connect
@@ -135,37 +135,35 @@ smbclient "\\\\<target_ip>\\" -U <username> -W <domain_name> --pw-nt-hash `hash`
 <!-- SMB Actions {{{-->
 ### SMB Actions
 
-> [!example]-
->
-> Change directory
->
-> ```sh
-> smb: \> cd
-> ```
->
-> List files
->
-> ```sh
-> smb: \> dir
-> ```
->
-> Get file
->
-> ```sh
-> smb: \> get <remote_file_name> [local_file_name]
-> ```
->
-> Execute local system command (`!`)
->
-> ```sh
-> smb: \> !ls
-> ```
->
-> Exit
->
-> ```
-> smb: \> exit
-> ```
+Change directory
+
+```sh
+smb: \> cd
+```
+
+List files
+
+```sh
+smb: \> dir
+```
+
+Get file
+
+```sh
+smb: \> get <remote_file_name> [local_file_name]
+```
+
+Execute local system command
+
+```sh
+smb: \> !ls
+```
+
+Exit
+
+```
+smb: \> exit
+```
 <!-- }}} -->
 
 ___

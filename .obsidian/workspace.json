@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Networking/Services/SMB/Enumeration.md",
+                "file": "Networking/Services/SMB/SMB.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Enumeration"
+              "title": "SMB"
             }
           }
         ]
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/Services/SMB/Enumeration.md",
+                "file": "Networking/Services/SMB/SMB.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Enumeration"
+              "title": "Outline of SMB"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/Services/SMB/Enumeration.md",
+                "file": "Networking/Services/SMB/SMB.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Enumeration"
+              "title": "Graph of SMB"
             }
           }
         ]
@@ -225,9 +225,13 @@
   },
   "active": "bbca554df127341c",
   "lastOpenFiles": [
-    "Networking/Services/SMB/Usage.md",
-    "Networking/Services/SMB/Enumeration.md",
     "Networking/Services/SMB/Exploitation.md",
+    "Networking/Services/SMB/test.md",
+    "Networking/Services/SMB/Untitled.canvas",
+    "Networking/Services/SMB/General.md",
+    "Networking/Services/SMB/SMB.md",
+    "Networking/Services/SMB/Enumeration.md",
+    "Networking/Services/SMB/Usage.md",
     "Networking/Services/Telnet/Enumeration.md",
     "Networking/Services/Telnet/Exploitation.md",
     "Networking/Services/Telnet/Enumeration_1.md",
@@ -248,9 +252,6 @@
     "Networking/Networking.md",
     "Webapp/Enumeration/CMS.md",
     "Webapp/Enumeration/Banner Grabbing.md",
-    "Webapp/Enumeration/_Checklist.md",
-    "Webapp/Enumeration/Crawling.md",
-    "Webapp/Enumeration/Web Contents.md",
     "Webapp/Enumeration/src/virtualhost_lookup.png",
     "Webapp/Enumeration/src",
     "Networking/Services/DNS/Tools",

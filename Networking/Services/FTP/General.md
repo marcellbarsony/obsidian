@@ -135,7 +135,7 @@ access to the FTP service
 #### Anonymous Login
 
 Optional vsFTPd [settings](http://vsftpd.beasts.org/vsftpd_conf.html) can be set
-to allow the [[Exploitation#Anonymous Login|Anonymous Login]]
+to allow the [[Networking/Services/FTP/Exploitation#Anonymous Login|Anonymous Login]]
 
 <!-- Danger {{{-->
 > [!danger]-

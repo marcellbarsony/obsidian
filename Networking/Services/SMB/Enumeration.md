@@ -8,30 +8,7 @@ links: "[[SMB]]"
 
 # Enumeration
 
-<!-- Checklist {{{-->
-## Checklist
-
-- [ ] [[Enumeration#Reconnaissance|Reconnaissance]]
-    - [ ] [[Enumeration#nbtscan|nbtscan]]
-    - [ ] [[Enumeration#Nmap|Nmap]]
-- [ ] [[Enumeration#RPC|RPC Enumeration]]
-    - [ ] [[Enumeration#Smbclient|Smbclient]]
-        - [ ] [[Enumeration#Linux|Linux]]
-        - [ ] [[Enumeration#Windows|Windows]]
-    - [ ] [[Enumeration#SMBmap|SMBmap]]
-        - [ ] [[Enumeration#SMBmap|Discover Shares]]
-    - [ ] [[Enumeration#RPCclient|RPCclient]]
-        - [ ] [[Enumeration#Connect|Connect]]
-        - [ ] [[Enumeration#Enumerate|Enumerate]]
-            - [ ] [[Enumeration#General|General]]
-            - [ ] [[Enumeration#User|User]]
-            - [ ] [[Enumeration#Group|Group]]
-- [ ] [[Enumeration#Enum4linux-ng|Enum4linux-ng]]
-- [ ] [[Enumeration#Additional Scripts|Additional Scripts]]
-
 ___
-
-<!-- }}} -->
 
 <!-- Reconnaissance {{{-->
 ## Reconnaissance
@@ -53,6 +30,8 @@ nbtscan -r <target_network>/<cidr>
 
 <!-- Nmap {{{-->
 ### Nmap
+
+Scan [[SMB/General|SMB]] service with [[Nmap]]
 
 Banner grabbing with default scripts
 
@@ -102,98 +81,6 @@ Run all `safe` and `smb-enum-*` scripts for non-destructive SMB enumeration
 ```sh
 nmap --script "safe or smb-enum-*" -p 445 <target> -oA smb-enumeration
 ```
-
-<!-- CVE Exploits {{{-->
-#### CVE Exploits
-
-<!-- Netapi {{{-->
-##### Netapi
-
-Detect [[Exploitation#Netapi|Netapi (MS08-067)]]
-(*[smb-vuln-ms08-067](https://nmap.org/nsedoc/scripts/smb-vuln-ms08-067.html)*)
-
-> [!warning]
->
-> This check is dangerous and it may crash systems
-
-
-```sh
-nmap --script smb-vuln-ms08-067.nse -p445 <target> -oA smb-netapi-tcp
-```
-
-```sh
-nmap -sU --script smb-vuln-ms08-067.nse -p U:137 <target> -oA smb-netapi-udp
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> | smb-vuln-ms08-067:
-> |   VULNERABLE:
-> |   Microsoft Windows system vulnerable to remote code execution (MS08-067)
-> |     State: VULNERABLE
-> |     IDs:  CVE:CVE-2008-4250
-> |           The Server service in Microsoft Windows 2000 SP4, XP SP2 and SP3, Server 2003 SP1 and SP2,
-> |           Vista Gold and SP1, Server 2008, and 7 Pre-Beta allows remote attackers to execute arbitrary
-> |           code via a crafted RPC request that triggers the overflow during path canonicalization.
-> |
-> |     Disclosure date: 2008-10-23
-> |     References:
-> |       https://technet.microsoft.com/en-us/library/security/ms08-067.aspx
-> |_      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4250
-> ```
-<!-- }}} -->
-
-<!-- }}} -->
-
-<!-- EternalBlue {{{-->
-##### EternalBlue
-
-Detect [[Exploitation#EternalBlue|EternalBlue (MS17-010)]]
-(*[smb-vuln-ms17-010](https://nmap.org/nsedoc/scripts/smb-vuln-ms17-010.html)*)
-
-```sh
-nmap -Pn -p 445 --open --max-hostgroup 3 --script smb-vuln-ms17-010 <ip_netblock> -oA smb-eternalblue
-```
-
-> [!info]-
->
-> - `-Pn`: Skip ping check, treat hosts as online
-> - `--max-hostgroup 3`: Limit the number of parallel hosts scanned
-> - `<ip_netblock>`: Target IP range/subnet (e.g. `192.168.1.0/24`)
-
-
-```sh
-nmap -A -p 445 <target>
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> Host script results:
-> | smb-vuln-ms17-010:
-> |   VULNERABLE:
-> |   Remote Code Execution vulnerability in Microsoft SMBv1 servers (ms17-010)
-> |     State: VULNERABLE
-> |     IDs:  CVE:CVE-2017-0143
-> |     Risk factor: HIGH
-> |       A critical remote code execution vulnerability exists in Microsoft SMBv1
-> |        servers (ms17-010).
-> |
-> |     Disclosure date: 2017-03-14
-> |     References:
-> |       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-0143
-> |       https://technet.microsoft.com/en-us/library/security/ms17-010.aspx
-> |_      https://blogs.technet.microsoft.com/msrc/2017/05/12/customer-guidance-for-wannacrypt-attacks/
-> ```
-<!-- }}} -->
-
-<!-- }}} -->
-
-<!-- }}} -->
-
 <!-- }}} -->
 
 <!-- Metasploit {{{-->
@@ -260,10 +147,10 @@ use auxiliary/scanner/smb/smb2
 > ```sh
 > run
 > ```
-> ```sh
-> exit
-> ```
 <!-- }}} -->
+
+[smb_enumshares](https://www.rapid7.com/db/modules/auxiliary/scanner/smb/smb_enumshares/)
+— SMB Share Enumeration
 
 
 ```sh
@@ -272,6 +159,10 @@ use auxiliary/scanner/smb/smb_enumshares
 
 <!-- Example {{{-->
 > [!example]-
+>
+> Determine what shares are provided by the SMB service,
+> which ones are readable/writable and collect additional information
+> (*e.g., share types, directories, files, time stamps, etc.*)
 >
 > ```sh
 > msfconsole
@@ -288,509 +179,124 @@ use auxiliary/scanner/smb/smb_enumshares
 > ```sh
 > run
 > ```
-> ```sh
-> exit
-> ```
 <!-- }}} -->
 
+[smb_enumusers](https://www.rapid7.com/db/modules/auxiliary/scanner/smb/smb_enumusers/)
+— SMB User Enumeration (*SAM EnumUsers*)
+
 ```sh
-use auxiliary/scanner/smb/smb2
+use auxiliary/scanner/smb/smb_enumusers
 ```
 
 <!-- Example {{{-->
 > [!example]-
+>
+> Determine what users exist via the SAM RPC service
 >
 > ```sh
 > msfconsole
-> use auxiliary/scanner/smb/smb2
+> ```
+> ```sh
+> use auxiliary/scanner/smb/smb_enumusers
+> ```
+> ```sh
 > set RHOSTS <target_ip>
+> ```
+> ```sh
 > set RPORT 445
+> ```
+> ```sh
 > run
-> exit
 > ```
 <!-- }}} -->
 
 <!-- }}} -->
 
-___
+<!-- CVE Exploits {{{-->
+### CVE Exploits
 
-<!-- }}} -->
+<!-- Netapi {{{-->
+#### Netapi
 
-<!-- RPC {{{-->
-## RPC
+Detect [[SMB#Netapi|Netapi (MS08-067)]]
+(*[smb-vuln-ms08-067](https://nmap.org/nsedoc/scripts/smb-vuln-ms08-067.html)*)
 
-Remote Procedure Call ([[General#RPC|RPC]]) Enumeration
-
-<!-- Smbclient {{{-->
-### Smbclient
-
-> [!tip]
->
-> Check [[Usage]]
-
-<!-- Linux {{{-->
-#### Linux
-
-Connect to server and list shares (*[Anonymous Null Session](https://hackviser.com/tactics/pentesting/services/smb#smb-null-session)*)
-
-```sh
-smbclient -N -L //<target>
-```
-
-<!-- Info {{{-->
-> [!info]-
->
-> - `-N`: Null session / Anonymous access
-> - `-L`: List shares
-<!-- }}} -->
-
-Downgrade SMB dialect
-
-```sh
-smbclient -N //<target>/ --option="client min protocol"=LANMAN1
-```
-
-<!-- Info {{{-->
-> [!info]-
->
-> - `-N`: Null session / Anonymous access
-> - `--option="client min protocol"=LANMAN1`: Set minimum SMB dialect to LANMAN1
->   (Legacy)
-<!-- }}} -->
-
-<!-- }}} -->
-
-<!-- Windows {{{-->
-#### Windows
-
-Connect to server and list shares (*[Anonymous Null Session](https://hackviser.com/tactics/pentesting/services/smb#smb-null-session),
-Windows UNC path*)
-
-```sh
-smbclient -N -L \\\\<target>\\
-```
-
-<!-- Info {{{-->
-> [!info]-
->
-> - `-N`: Null session / Anonymous access
-> - `-L`: List shares
-<!-- }}} -->
-
-Downgrade SMB dialect
-
-```sh
-smbclient -N \\\\<target>\\ --option="client min protocol"=LANMAN1
-```
-
-<!-- Info {{{-->
-> [!info]-
->
-> - `-N`: Null session / Anonymous access
-> - `--option="client min protocol"=LANMAN1`: Set minimum SMB dialect to LANMAN1
->   (Legacy)
-<!-- }}} -->
-
-
-<!-- }}} -->
-
-<!-- }}} -->
-
-<!-- SMBmap {{{-->
-### SMBmap
-
-[SMBmap](https://github.com/ShawnDEvans/smbmap) —
-Enumerate SMB shares on the host
-(*[Anonymous Null Session](https://hackviser.com/tactics/pentesting/services/smb#smb-null-session)*)
-
-```sh
-smbmap -H <target>
-```
-
-```sh
-smbmap -H <target> -u "" -p ""
-```
-
-```sh
-smbmap -H <target> -u null -p null
-```
-
-```sh
-smbmap -H <target> -u guest
-```
-
-<!-- Info {{{-->
-> [!info]-
->
-> - `-H`: Specify the host IP
-> - `-u ""`: Supply an empty username
-> - `-p ""`: Supply an empty password
-<!-- }}} -->
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> smbmap -H 10.129.14.128
-> ```
-> ```sh
-> [+] Finding open SMB ports....
-> [+] User SMB session established on 10.129.14.128...
-> [+] IP: 10.129.14.128:445       Name: 10.129.14.128
->         Disk                                                    Permissions     Comment
->         ----                                                    -----------     -------
->         print$                                                  NO ACCESS       Printer Drivers
->         home                                                    NO ACCESS       INFREIGHT Samba
->         dev                                                     NO ACCESS       DEVenv
->         notes                                                   NO ACCESS       CheckIT
->         IPC$                                                    NO ACCESS       IPC Service (DEVSM)
-> ```
-<!-- }}} -->
-
-<!-- Warning {{{-->
 > [!warning]
 >
-> Smbmap is a more detailed and more aggressive automated script
-<!-- }}} -->
+> This check is dangerous and it may crash systems
 
-<!-- }}} -->
-
-<!-- RPCclient {{{-->
-### RPCclient
-
-<!-- Connect {{{-->
-#### Connect
-
-Connect without credentials
-([SMB Null Session](https://hackviser.com/tactics/pentesting/services/smb#smb-null-session))
 
 ```sh
-rpcclient <target>
+nmap --script smb-vuln-ms08-067.nse -p445 <target> -oA smb-netapi-tcp
 ```
 
 ```sh
-rpcclient -U "" <target>
+nmap -sU --script smb-vuln-ms08-067.nse -p U:137 <target> -oA smb-netapi-udp
 ```
 
 <!-- Example {{{-->
 > [!example]-
 >
 > ```sh
-> rpcclient -U "" 10.129.244.136
-> ```
->
-> Press `Enter` to bypass the password prompt
->
-> ```sh
-> Enter WORKGROUP\'s password:
-> rpcclient $>
+> | smb-vuln-ms08-067:
+> |   VULNERABLE:
+> |   Microsoft Windows system vulnerable to remote code execution (MS08-067)
+> |     State: VULNERABLE
+> |     IDs:  CVE:CVE-2008-4250
+> |           The Server service in Microsoft Windows 2000 SP4, XP SP2 and SP3, Server 2003 SP1 and SP2,
+> |           Vista Gold and SP1, Server 2008, and 7 Pre-Beta allows remote attackers to execute arbitrary
+> |           code via a crafted RPC request that triggers the overflow during path canonicalization.
+> |
+> |     Disclosure date: 2008-10-23
+> |     References:
+> |       https://technet.microsoft.com/en-us/library/security/ms08-067.aspx
+> |_      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4250
 > ```
 <!-- }}} -->
 
-Connect with credentials
+<!-- }}} -->
+
+<!-- EternalBlue {{{-->
+#### EternalBlue
+
+Detect [[SMB#EternalBlue|EternalBlue (MS17-010)]]
+(*[smb-vuln-ms17-010](https://nmap.org/nsedoc/scripts/smb-vuln-ms17-010.html)*)
 
 ```sh
-rpcclient -U "username%password" <target>
+nmap -Pn -p 445 --open --max-hostgroup 3 --script smb-vuln-ms17-010 <ip_netblock> -oA smb-eternalblue
 ```
 
-<!-- }}} -->
-
-<!-- Enumerate {{{-->
-#### Enumerate
-
-<!-- General {{{-->
-##### General
-
-Query server information
-
-```sh
-rpcclient $> srvinfo
-```
-
-<!-- Example {{{-->
-> [!example]-
+> [!info]-
 >
-> ```sh
-> rpcclient $> srvinfo
-> ```
-> ```sh
-> DEVSMB         Wk Sv PrQ Unx NT SNT DEVSM
-> platform_id     :       500
-> os version      :       6.1
-> server type     :       0x809a03
-> ```
-<!-- }}} -->
+> - `-Pn`: Skip ping check, treat hosts as online
+> - `--max-hostgroup 3`: Limit the number of parallel hosts scanned
+> - `<ip_netblock>`: Target IP range/subnet (e.g. `192.168.1.0/24`)
 
-Enumerate all deployed domains
 
 ```sh
-rpcclient $> enumdomains
+nmap -A -p 445 <target>
 ```
 
 <!-- Example {{{-->
 > [!example]-
 >
 > ```sh
-> rpcclient $> enumdomains
+> Host script results:
+> | smb-vuln-ms17-010:
+> |   VULNERABLE:
+> |   Remote Code Execution vulnerability in Microsoft SMBv1 servers (ms17-010)
+> |     State: VULNERABLE
+> |     IDs:  CVE:CVE-2017-0143
+> |     Risk factor: HIGH
+> |       A critical remote code execution vulnerability exists in Microsoft SMBv1
+> |        servers (ms17-010).
+> |
+> |     Disclosure date: 2017-03-14
+> |     References:
+> |       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-0143
+> |       https://technet.microsoft.com/en-us/library/security/ms17-010.aspx
+> |_      https://blogs.technet.microsoft.com/msrc/2017/05/12/customer-guidance-for-wannacrypt-attacks/
 > ```
-> ```sh
-> name:[DEVSMB] idx:[0x0]
-> name:[Builtin] idx:[0x1]
-> ```
-<!-- }}} -->
-
-Get domain, server and user information
-
-```sh
-rpcclient $> querydominfo
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> rpcclient $> querydominfo
-> ```
-> ```sh
-> Domain:         DEVOPS
-> Server:         DEVSMB
-> Comment:        DEVSM
-> Total Users:    2
-> Total Groups:   0
-> Total Aliases:  0
-> Sequence No:    1632361158
-> Force Logoff:   -1
-> Domain Server State:    0x1
-> Server Role:    ROLE_DOMAIN_PDC
-> Unknown 3:      0x1
-> ```
-<!-- }}} -->
-
-Enumerate all available shares
-
-```sh
-rpcclient $> netshareenumall
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> rpcclient $> netshareenumall
-> ```
-> ```sh
-> netname: print$
->         remark: Printer Drivers
->         path:   C:\var\lib\samba\printers
->         password:
-> netname: home
->         remark: INFREIGHT Samba
->         path:   C:\home\
->         password:
-> netname: dev
->         remark: DEVenv
->         path:   C:\home\sambauser\dev\
->         password:
-> netname: notes
->         remark: CheckIT
->         path:   C:\mnt\notes\
->         password:
-> netname: IPC$
->         remark: IPC Service (DEVSM)
->         path:   C:\tmp
->         password:
-> ```
-<!-- }}} -->
-
-Get info about specific share
-
-```sh
-rpcclient $> netsharegetinfo <share>
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> Get info about the share `notes`
->
-> ```sh
-> rpcclient $> netsharegetinfo notes
-> ```
-> ```sh
-> netname: notes
->         remark: CheckIT
->         path:   C:\mnt\notes\
->         password:
->         type:   0x0
->         perms:  0
->         max_uses:       -1
->         num_uses:       1
-> revision: 1
-> type: 0x8004: SEC_DESC_DACL_PRESENT SEC_DESC_SELF_RELATIVE 
-> DACL
->         ACL     Num ACEs:       1       revision:       2
->         ---
->         ACE
->                 type: ACCESS ALLOWED (0) flags: 0x00 
->                 Specific bits: 0x1ff
->                 Permissions: 0x101f01ff: Generic all access SYNCHRONIZE_ACCESS WRITE_OWNER_ACCESS WRITE_DAC_ACCESS READ_CONTROL_ACCESS DELETE_ACCESS 
->                 SID: S-1-1-0
-> ```
-<!-- }}} -->
-
-<!-- }}} -->
-
-<!-- User {{{-->
-##### User
-
-Enumerate all domain users & get their `RID`
-
-```sh
-rpcclient $> enumdomusers
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> rpcclient $> enumdomusers
-> ```
-> ```sh
-> user:[mrb3n] rid:[0x3e8]
-> user:[cry0l1t3] rid:[0x3e9]
-> ```
-<!-- }}} -->
-
-Enumerate user information by `RID`
-
-```sh
-rpcclient $> queryuser 0x3e9
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> rpcclient $> queryuser 0x3e9
-> ```
-> ```sh
->         User Name   :   cry0l1t3
->         Full Name   :   cry0l1t3
->         Home Drive  :   \\devsmb\cry0l1t3
->         Dir Drive   :
->         Profile Path:   \\devsmb\cry0l1t3\profile
->         Logon Script:
->         Description :
->         Workstations:
->         Comment     :
->         Remote Dial :
->         Logon Time               :      Do, 01 Jan 1970 01:00:00 CET
->         Logoff Time              :      Mi, 06 Feb 2036 16:06:39 CET
->         Kickoff Time             :      Mi, 06 Feb 2036 16:06:39 CET
->         Password last set Time   :      Mi, 22 Sep 2021 17:50:56 CEST
->         Password can change Time :      Mi, 22 Sep 2021 17:50:56 CEST
->         Password must change Time:      Do, 14 Sep 30828 04:48:05 CEST
->         unknown_2[0..31]...
->         user_rid :      0x3e9
->         group_rid:      0x201
->         acb_info :      0x00000014
->         fields_present: 0x00ffffff
->         logon_divs:     168
->         bad_password_count:     0x00000000
->         logon_count:    0x00000000
->         padding1[0..7]...
->         logon_hrs[0..21]...
-> ```
-<!-- }}} -->
-
-> [!tip]
->
-> The results can be used to identify the
-> [[Enumeration#Group Enumeration|group]]'s `RID`
-> to retrieve information from the entire group
-
-Brute force User `RID`s using `rpcclient`
-
-```sh
-for i in $(seq 500 1100); do \
-    rpcclient -N -U "" <target> \
-    -c "queryuser 0x$(printf '%x\n' $i)" | \
-    grep "User Name\|user_rid\|group_rid" && \
-    echo ""; \
-done
-```
-
-Brute force User RIDs using [samrdump.py](https://github.com/fortra/impacket/blob/master/examples/samrdump.py)
-(from [Impacket](https://github.com/fortra/impacket))
-
-```sh
-samrdump.py <target>
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> samrdump.py 10.129.14.128
-> ```
-> ```sh
-> Impacket v0.9.22 - Copyright 2020 SecureAuth Corporation
->
-> [*] Retrieving endpoint list from 10.129.14.128
-> Found domain(s):
->  . DEVSMB
->  . Builtin
-> [*] Looking up users in domain DEVSMB
-> Found user: mrb3n, uid = 1000
-> Found user: cry0l1t3, uid = 1001
-> mrb3n (1000)/FullName: 
-> mrb3n (1000)/UserComment: 
-> mrb3n (1000)/PrimaryGroupId: 513
-> mrb3n (1000)/BadPasswordCount: 0
-> mrb3n (1000)/LogonCount: 0
-> mrb3n (1000)/PasswordLastSet: 2021-09-22 17:47:59
-> mrb3n (1000)/PasswordDoesNotExpire: False
-> mrb3n (1000)/AccountIsDisabled: False
-> mrb3n (1000)/ScriptPath: 
-> cry0l1t3 (1001)/FullName: cry0l1t3
-> cry0l1t3 (1001)/UserComment: 
-> cry0l1t3 (1001)/PrimaryGroupId: 513
-> cry0l1t3 (1001)/BadPasswordCount: 0
-> cry0l1t3 (1001)/LogonCount: 0
-> cry0l1t3 (1001)/PasswordLastSet: 2021-09-22 17:50:56
-> cry0l1t3 (1001)/PasswordDoesNotExpire: False
-> cry0l1t3 (1001)/AccountIsDisabled: False
-> cry0l1t3 (1001)/ScriptPath: 
-> [*] Received 2 entries.
-> ```
-<!-- }}} -->
-
-<!-- }}} -->
-
-<!-- Group {{{-->
-##### Group
-
-Enumerate group information by `RID` (*acquired from
-[[Enumeration#User Enumeration|user information]]*)
-
-```sh
-rpcclient $> querygroup 0x201
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> rpcclient $> querygroup 0x201
-> ```
-> ```sh
->         Group Name:     None
->         Description:    Ordinary Users
->         Group Attribute:7
->         Num Members:2
-> ```
-<!-- }}} -->
-
 <!-- }}} -->
 
 <!-- }}} -->
@@ -849,7 +355,8 @@ ___
 ### Enum4Linux-ng
 
 [enum4linux-ng](https://github.com/cddmp/enum4linux-ng)
-a wrapper around the Samba tools `nmblookup`, `net`, `rpcclient` and `smbclient`
+a wrapper around the Samba tools `nmblookup`, `net`, `rpcclient`
+and `smbclient` that interacts with the exposed services via named pipes
 
 1. Install [enum4linux-ng](https://github.com/cddmp/enum4linux-ng)
 
