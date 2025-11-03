@@ -8,12 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "8fad7dd39d751737",
+            "id": "bbca554df127341c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Webapp/Enumeration/_Checklist.md",
+                "file": "Networking/Services/SMB/Enumeration.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,31 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "_Checklist"
-            }
-          },
-          {
-            "id": "27d9ce0b2f298211",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Webapp/Enumeration/WAF.md",
-                "mode": "preview",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "WAF"
+              "title": "Enumeration"
             }
           }
         ]
@@ -144,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Webapp/Enumeration/_Checklist.md",
+                "file": "Networking/Services/SMB/Enumeration.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of _Checklist"
+              "title": "Outline of Enumeration"
             }
           },
           {
@@ -199,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Webapp/Enumeration/_Checklist.md",
+                "file": "Networking/Services/SMB/Enumeration.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -227,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of _Checklist"
+              "title": "Graph of Enumeration"
             }
           }
         ]
@@ -247,34 +223,36 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "8fad7dd39d751737",
+  "active": "bbca554df127341c",
   "lastOpenFiles": [
-    "Webapp/Enumeration/Virtual Hosts.md",
-    "Webapp/Enumeration/WAF.md",
-    "Webapp/Enumeration/_Checklist.md",
-    "Webapp/Enumeration/HTTP Headers.md",
-    "Webapp/Enumeration/Tools/Ffuf.md",
-    "Webapp/Exploitation/_Checklist.md",
-    "Webapp/Enumeration/Fingerprinting.md",
-    "Webapp/Enumeration/Banner Grabbing.md",
-    "Webapp/Enumeration/Tools/WhatWeb.md",
-    "Webapp/Enumeration/Scanning.md",
-    "Webapp/Enumeration/Banner Grabbing_1.md",
-    "Pentest/Tools/Metasploit/SearchSploit.md",
+    "Networking/Services/SMB/Usage.md",
+    "Networking/Services/SMB/Enumeration.md",
+    "Networking/Services/SMB/Exploitation.md",
+    "Networking/Services/Telnet/Enumeration.md",
+    "Networking/Services/Telnet/Exploitation.md",
+    "Networking/Services/Telnet/Enumeration_1.md",
+    "Networking/Services/Telnet/General.md",
+    "Networking/Services/SSH/Enumeration.md",
+    "Networking/Services/SSH/Exploitation.md",
+    "Networking/Services/FTP/Usage.md",
+    "Networking/Services/FTP/Exploitation.md",
+    "Networking/Services/FTP/Enumeration.md",
+    "Networking/Services/FTP/General.md",
+    "Networking/Enumeration/_Checklist.md",
+    "Networking/Tools/Nmap/Host Enumeration.md",
+    "Networking/Tools/Tools.md",
+    "Networking/Tools/Nmap/Host Discovery.md",
+    "Networking/Enumeration/Host Discovery.md",
+    "Networking/Enumeration/Tools.md",
+    "Networking/Tools/Nmap/Detection Evasion.md",
+    "Networking/Networking.md",
     "Webapp/Enumeration/CMS.md",
-    "Webapp/Enumeration/Search Engine Discovery.md",
-    "Webapp/Enumeration/Error Page.md",
-    "Networking/Services/DNS/Enumeration.md",
-    "Networking/Services/DNS/Exploitation.md",
-    "Networking/Services/DNS/Tools/dig.md",
-    "Networking/Services/DNS/General.md",
+    "Webapp/Enumeration/Banner Grabbing.md",
+    "Webapp/Enumeration/_Checklist.md",
+    "Webapp/Enumeration/Crawling.md",
     "Webapp/Enumeration/Web Contents.md",
-    "Pentest/Tools/Brute Force/Gobuster.md",
-    "Networking/Services/DNS/Tools/DNSRecon.md",
-    "Webapp/Enumeration/Domain.md",
-    "Networking/Services/DNS/Tools/puredns.md",
-    "Networking/Services/DNS/Tools/subfinder.md",
-    "Networking/Services/DNS/Tools/findomain.md",
+    "Webapp/Enumeration/src/virtualhost_lookup.png",
+    "Webapp/Enumeration/src",
     "Networking/Services/DNS/Tools",
     "Networking/Services/DNS/src/dns-subdomain.png",
     "Networking/Services/DNS/src/dns-zone.png",
@@ -289,11 +267,9 @@
     "Networking/Services/SSH/src/20251026-011251.png",
     "Networking/Services/SSH/src/ssh-pka.png",
     "Networking/Services/SSH/src/pka.png",
-    "Networking/Services/SSH/src/ssh-remote-port-forwarding.png",
     "Networking/Services/SSH/src",
     "Networking/Services/MSSQL/src/password-list.txt",
     "Networking/Services/MSSQL/src/mssql-betterdefaultpasslist.txt",
-    "Microsoft/Windows/Exploitation",
-    "Microsoft/Exploitation"
+    "Microsoft/Windows/Exploitation"
   ]
 }

@@ -83,7 +83,7 @@ ___
 ## Metasploit
 
 [[Exploitation#FTP Bounce Attack|FTP Bounce]] Port Scanner
-([ftpbounce](https://www.rapid7.com/db/modules/auxiliary/scanner/portscan/ftpbounce/))
+(*[ftpbounce](https://www.rapid7.com/db/modules/auxiliary/scanner/portscan/ftpbounce/)*)
 
 <!-- Example {{{-->
 > [!example]-
@@ -103,7 +103,7 @@ ___
 <!-- }}} -->
 
 [[Exploitation#Anonymous Login|Anonymous FTP Access]] Detection
-([anonymous](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/anonymous/))
+(*[anonymous](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/anonymous/)*)
 
 <!-- Example {{{-->
 > [!example]-
@@ -119,7 +119,7 @@ ___
 <!-- }}} -->
 
 FTP Version Scanner
-([ftp_version](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/ftp_version/))
+(*[ftp_version](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/ftp_version/)*)
 
 <!-- Example {{{-->
 > [!example]-
@@ -135,7 +135,7 @@ FTP Version Scanner
 <!-- }}} -->
 
 BisonWare BisonFTP Server 3.5 Directory Traversal Information Disclosure
-([bison_ftp_traversal](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/bison_ftp_traversal/))
+(*[bison_ftp_traversal](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/bison_ftp_traversal/)*)
 
 <!-- Example {{{-->
 > [!example]-
@@ -151,7 +151,7 @@ BisonWare BisonFTP Server 3.5 Directory Traversal Information Disclosure
 <!-- }}} -->
 
 ColoradoFTP Server 1.3 Build 8 Directory Traversal Information Disclosure
-([colorado_ftp_traversal](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/colorado_ftp_traversal/))
+(*[colorado_ftp_traversal](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/colorado_ftp_traversal/)*)
 
 <!-- Example {{{-->
 > [!example]-
@@ -167,7 +167,7 @@ ColoradoFTP Server 1.3 Build 8 Directory Traversal Information Disclosure
 <!-- }}} -->
 
 Titan FTP XCRC Directory Traversal Information Disclosure
-([titanftp_xcrc_traversal](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/titanftp_xcrc_traversal/))
+(*[titanftp_xcrc_traversal](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/titanftp_xcrc_traversal/)*)
 
 <!-- Example {{{-->
 > [!example]-
@@ -183,7 +183,7 @@ Titan FTP XCRC Directory Traversal Information Disclosure
 <!-- }}} -->
 
 FTP Authentication Scanner
-([ftp_login](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/ftp_login/))
+(*[ftp_login](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/ftp_login/)*)
 
 <!-- Example {{{-->
 > [!example]-
@@ -204,13 +204,14 @@ ___
 <!-- Banner Grabbing {{{-->
 ## Banner Grabbing
 
-Grab the FTP banner with [[netcat]]
+[[netcat]] — Grab the FTP banner
 
 ```sh
 nc -nv <target> 21
 ```
 
-Grab the FTP banner with [[Networking/Services/Telnet/General|Telnet]]
+[[Networking/Services/Telnet/General|Telnet]] —
+Grab the FTP banner
 
 ```sh
 telnet <target> 21
@@ -250,7 +251,7 @@ ___
 FTP servers can have default or common directories
 that may contain sensitive information
 
-Discover directories with [[Gobuster]]
+[[Gobuster]] — Discover directories
 
 ```sh
 gobuster dir -u ftp://<ip> -w <dirlist.txt>

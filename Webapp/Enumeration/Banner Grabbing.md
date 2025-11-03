@@ -90,6 +90,5 @@ Then type
 HEAD / HTTP/1.0
 Host: <target_url>
 ```
-
 ___
 <!-- }}} -->

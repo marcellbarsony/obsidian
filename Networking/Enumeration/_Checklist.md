@@ -33,11 +33,18 @@ ___
 ## Host Discovery
 
 - [ ] [[Host Discovery]]
-    - [ ] [[Host Discovery#ICMP Echo Request Scan|ICMP Echo Request Scan]]
-        - [ ] [[Host Discovery#Scan Network Range|Scan Network Range]]
-        - [ ] [[Host Discovery#Scan Multiple IPs|Scan Multiple IPs]]
-        - [ ] [[Host Discovery#Scan IP Range|Scan IP Range]]
-        - [ ] [[Host Discovery#Scan IP List|Scan IP List]]
+    - [ ] [[Host Discovery#ARP Discovery|ARP Discovery]]
+        - [ ] [[Host Discovery#netdiscover|netdiscover]]
+        - [ ] [[Host Discovery#p0f|p0f]]
+        - [ ] [[Host Discovery#bettercap|bettercap]]
+    - [ ] [[Host Discovery#NBT Discovery|NBT Discovery]]
+        - [ ] [[Host Discovery#nbtscan|nbtscan]]
+    - [ ] [[Host Discovery#ICMP Echo Discovery|ICMP Echo Discovery]]
+        - [ ] [[Nmap]]
+            - [ ] [[Nmap/Host Discovery#Scan Network Range|Scan Network Range]]
+            - [ ] [[Nmap/Host Discovery#Scan Multiple IPs|Scan Multiple IPs]]
+            - [ ] [[Nmap/Host Discovery#Scan IP Range|Scan IP Range]]
+            - [ ] [[Nmap/Host Discovery#Scan IP List|Scan IP List]]
 
 ___
 <!-- }}} -->

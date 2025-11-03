@@ -10,11 +10,24 @@ Host discovery on the network
 
 ___
 
+<!-- ICMP Echo Request Scan {{{-->
 ## ICMP Echo Request Scan
 
+<!-- Scan Network Range {{{-->
 ### Scan Network Range
 
-**NOTE**: This scanning method works only if the firewalls of the hosts allow it
+Network ICMP discovery
+
+```sh
+nmap -PE -PP -PM -sn <network_range> -oA network_icmp_discovery
+```
+
+> [!info]-
+>
+> - `-sn`: Ping scan only (*no port scan*)
+> - `-PE`: Send ICMP Echo Request
+> - `-PP`: Send ICMP Timestamp Request
+> - `-PM`: Send ICMP Netmask Request
 
 List IPs with details
 
@@ -54,6 +67,9 @@ List IPs only
 sudo nmap 10.129.2.0/24 -sn -oA network_icmp_scan | grep for | cut -d" " -f5
 ```
 
+<!-- }}} -->
+
+<!-- Scan Multiple IPs {{{-->
 ### Scan Multiple IPs
 
 Scan multiple IP addresses
@@ -62,6 +78,9 @@ Scan multiple IP addresses
 sudo nmap -sn -oA network_icmp_scan 10.129.2.18 10.129.2.19 10.129.2.20
 ```
 
+<!-- }}} -->
+
+<!-- Scan IP Range {{{-->
 ### Scan IP Range
 
 Scan a range of IP addresses (`18-20`)
@@ -70,6 +89,9 @@ Scan a range of IP addresses (`18-20`)
 sudo nmap -sn -oA network_icmp_scan 10.129.2.18-20
 ```
 
+<!-- }}} -->
+
+<!-- Scan IP List {{{-->
 ### Scan IP List
 
 Scan list of IPs
@@ -84,4 +106,7 @@ sudo nmap -sn -oA network_icmp_scan -iL hosts.txt
 > - `-oA`: Save scan results
 > - `-iL`: Define a list of IPs
 
+<!-- }}} -->
+
 ___
+<!-- }}} -->

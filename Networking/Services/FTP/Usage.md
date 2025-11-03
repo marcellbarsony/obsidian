@@ -69,6 +69,21 @@ ___
 <!-- File Operations {{{-->
 ## File Operations
 
+### List Files
+
+List all files (*including hidden files*)
+
+```sh
+ftp> ls -a
+```
+
+List files recursively
+(*if [[General#Recursive Listing|Recursive Listing]] is enabled*)
+
+```sh
+ftp> ls -R
+```
+
 <!-- Download Files {{{-->
 ### Download Files
 

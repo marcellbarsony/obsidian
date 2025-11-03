@@ -28,6 +28,7 @@ ___
         - [ ] [[Virtual Hosts#Discovery|Discovery]]
             - [ ] [[Virtual Hosts#Brute Force|Brute Force]]
         - [ ] [[Virtual Hosts#Banner Grabbing|Banner Grabbing]]
+            - [ ] [[Virtual Hosts#Invalid Header|Invalid Header]]
 
 ___
 <!-- }}} -->
@@ -59,7 +60,11 @@ ___
     - [ ] [[CMS]]
         - [ ] [[CMS#Enumeration|Enumeration]]
             - [ ] [[CMS#Online Tools|Online Tools]]
-            - [ ] [[CMS#WordPress|WordPress]]
+            - [ ] [[CMS#Paths|Paths]]
+            - [ ] [[CMS#Website|Website]]
+            - [ ] [[CMS#Scan|Scan]]
+                - [ ] [[CMS#WPScan|WPScan]]
+                - [ ] [[CMS#Droopescan|Droopescan]]
 
 ___
 <!-- }}} -->

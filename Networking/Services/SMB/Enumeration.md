@@ -39,8 +39,8 @@ ___
 <!-- nbtscan {{{-->
 ### nbtscan
 
-Scan a network searching for SMB hosts via
-[nbtscan](https://www.kali.org/tools/nbtscan/)
+[nbtscan](https://www.kali.org/tools/nbtscan/) —
+Scan a network searching for SMB hosts
 
 ```sh
 nbtscan -r <target_network>/<cidr>
@@ -83,24 +83,24 @@ sudo nmap -sV -sC -p 139,445 <target> -oA smb-default-scripts
 > > May take a long time
 <!-- }}} -->
 
-Run [smb-protocols](https://nmap.org/nsedoc/scripts/smb-protocols.html)
-to discover SMB versions and supported protocol features
+[smb-protocols](https://nmap.org/nsedoc/scripts/smb-protocols.html)
+— Discover SMB versions and supported protocol features
 
 ```sh
 nmap --script smb-protocols -p 445 <target> -oA smb-protocols
 ```
 
-
-Run all `safe` and `smp-enum-*` scripts for non-destructive SMB enumeration
-```sh
-nmap --script "safe or smb-enum-*" -p 445 <target> -oA smb-enumeration
-```
-
-Run [smb-os-discovery.nse](https://nmap.org/nsedoc/scripts/smb-os-discovery.html)
-to extract OS/Host/Domain information
+[smb-os-discovery.nse](https://nmap.org/nsedoc/scripts/smb-os-discovery.html)
+— Extract OS/Host/Domain information
 
 ```sh
 nmap --script smb-os-discovery.nse -p 445 <target> -oA smb-os-discovery
+```
+
+Run all `safe` and `smb-enum-*` scripts for non-destructive SMB enumeration
+
+```sh
+nmap --script "safe or smb-enum-*" -p 445 <target> -oA smb-enumeration
 ```
 
 <!-- CVE Exploits {{{-->
@@ -109,8 +109,13 @@ nmap --script smb-os-discovery.nse -p 445 <target> -oA smb-os-discovery
 <!-- Netapi {{{-->
 ##### Netapi
 
-Detect [[Exploitation#Netapi|Netapi (MS08-067)]] via
-[smb-vuln-ms08-067](https://nmap.org/nsedoc/scripts/smb-vuln-ms08-067.html)
+Detect [[Exploitation#Netapi|Netapi (MS08-067)]]
+(*[smb-vuln-ms08-067](https://nmap.org/nsedoc/scripts/smb-vuln-ms08-067.html)*)
+
+> [!warning]
+>
+> This check is dangerous and it may crash systems
+
 
 ```sh
 nmap --script smb-vuln-ms08-067.nse -p445 <target> -oA smb-netapi-tcp
@@ -119,10 +124,6 @@ nmap --script smb-vuln-ms08-067.nse -p445 <target> -oA smb-netapi-tcp
 ```sh
 nmap -sU --script smb-vuln-ms08-067.nse -p U:137 <target> -oA smb-netapi-udp
 ```
-
-> [!warning]
->
-> This check is dangerous and it may crash systems
 
 <!-- Example {{{-->
 > [!example]-
@@ -149,8 +150,8 @@ nmap -sU --script smb-vuln-ms08-067.nse -p U:137 <target> -oA smb-netapi-udp
 <!-- EternalBlue {{{-->
 ##### EternalBlue
 
-Detect [[Exploitation#EternalBlue|EternalBlue (MS17-010)]] via
-[smb-vuln-ms17-010](https://nmap.org/nsedoc/scripts/smb-vuln-ms17-010.html)
+Detect [[Exploitation#EternalBlue|EternalBlue (MS17-010)]]
+(*[smb-vuln-ms17-010](https://nmap.org/nsedoc/scripts/smb-vuln-ms17-010.html)*)
 
 ```sh
 nmap -Pn -p 445 --open --max-hostgroup 3 --script smb-vuln-ms17-010 <ip_netblock> -oA smb-eternalblue
@@ -158,7 +159,7 @@ nmap -Pn -p 445 --open --max-hostgroup 3 --script smb-vuln-ms17-010 <ip_netblock
 
 > [!info]-
 >
-> - `Pn`: Skip ping check, treat hosts as online
+> - `-Pn`: Skip ping check, treat hosts as online
 > - `--max-hostgroup 3`: Limit the number of parallel hosts scanned
 > - `<ip_netblock>`: Target IP range/subnet (e.g. `192.168.1.0/24`)
 
@@ -198,46 +199,103 @@ nmap -A -p 445 <target>
 <!-- Metasploit {{{-->
 ### Metasploit
 
-Scan [[SMB/General|SMB]] with [[Metasploit]]
+Scan [[SMB/General|SMB]] service with [[Metasploit]]
+
+[smb_version](https://www.rapid7.com/db/modules/auxiliary/scanner/smb/smb_version/)
+— SMB Version Detection
+
+```sh
+use auxiliary/scanner/smb/smb_version
+```
 
 <!-- Example {{{-->
 > [!example]-
 >
+> Fingerprint and display version information about SMB servers
+>
 > ```sh
 > msfconsole
+> ```
+> ```sh
 > use auxiliary/scanner/smb/smb_version
+> ```
+> ```sh
 > set RHOSTS <target_ip>
+> ```
+> ```sh
 > set RPORT 139
+> ```
+> ```sh
 > run
+> ```
+> ```sh
 > exit
 > ```
 <!-- }}} -->
 
+[smb2](https://www.rapid7.com/db/modules/auxiliary/scanner/smb/smb2/)
+— SMB 2.0 Protocol Detection
+
+```sh
+use auxiliary/scanner/smb/smb2
+```
+
 <!-- Example {{{-->
 > [!example]-
 >
+> Detect systems that support the SMB 2.0 protocol
+>
 > ```sh
 > msfconsole
+> ```
+> ```sh
 > use auxiliary/scanner/smb/smb2
+> ```
+> ```sh
 > set RHOSTS <target_ip>
+> ```
+> ```sh
 > set RPORT 139
+> ```
+> ```sh
 > run
+> ```
+> ```sh
 > exit
 > ```
 <!-- }}} -->
+
+
+```sh
+use auxiliary/scanner/smb/smb_enumshares
+```
 
 <!-- Example {{{-->
 > [!example]-
 >
 > ```sh
 > msfconsole
+> ```
+> ```sh
 > use auxiliary/scanner/smb/smb_version
+> ```
+> ```sh
 > set RHOSTS <target_ip>
+> ```
+> ```sh
 > set RPORT 445
+> ```
+> ```sh
 > run
+> ```
+> ```sh
 > exit
 > ```
 <!-- }}} -->
+
+```sh
+use auxiliary/scanner/smb/smb2
+```
 
 <!-- Example {{{-->
 > [!example]-
@@ -784,31 +842,36 @@ ___
 
 <!-- }}} -->
 
+<!-- Automated Scripts {{{-->
+## Automated Scripts
+
 <!-- Enum4Linux-ng {{{-->
-## Enum4Linux-ng
+### Enum4Linux-ng
 
 [enum4linux-ng](https://github.com/cddmp/enum4linux-ng)
 a wrapper around the Samba tools `nmblookup`, `net`, `rpcclient` and `smbclient`
 
-Install [enum4linux-ng](https://github.com/cddmp/enum4linux-ng)
+1. Install [enum4linux-ng](https://github.com/cddmp/enum4linux-ng)
 
 <!-- Example {{{-->
 > [!example]-
 >
 > ```sh
 > git clone https://github.com/cddmp/enum4linux-ng.git
+> ```
+> ```sh
 > cd enum4linux-ng
+> ```
+> ```sh
 > pip3 install -r requirements.txt
 > ```
 <!-- }}} -->
 
-Enumerate SMB host
+2. Enumerate SMB host
 
 ```sh
 ./enum4linux-ng.py <target> -A
 ```
-
-___
 
 <!-- Example {{{-->
 > [!example]-
@@ -1021,16 +1084,20 @@ ___
 <!-- }}} -->
 
 <!-- Additional Scripts {{{-->
-## Additional Scripts
+### Additional Scripts
 
 Grab SMB server version
 
+<!-- Info {{{-->
 > [!info]
 >
-> Requires root permissions to use `tcpdump`
+> [tcpdump](https://www.tcpdump.org/)
+> requires root permissions
 >
-> Will listen for the first 7 packets of a null login
+> [tcpdump](https://www.tcpdump.org/)
+> will listen for the first 7 packets of a null login
 > and grab the SMB Version
+<!-- }}} -->
 
 <!-- Example {{{-->
 > [!example]-
@@ -1058,11 +1125,12 @@ Grab SMB server version
 >
 > > [!warning]
 > >
-> > Will sometimes not capture or will print multiple lines.
+> > Will sometimes not capture or will print multiple lines
 > >
-> > May need to run a second time for success.
+> > May need to run a second time for success
+<!-- }}} -->
+
 <!-- }}} -->
 
 ___
-
 <!-- }}} -->

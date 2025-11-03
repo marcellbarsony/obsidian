@@ -18,7 +18,7 @@ that allow multiple websites or applications
 to be hosted on a single server.
 
 **Virtual Hosts** can be associated with top-level domains
-(*e.g., example.com*) or subdomains (*e.g., dev.exmaple.com*).
+(*e.g., example.com*) or subdomains (*e.g., dev.example.com*).
 
 > [!tip]-
 >
@@ -55,6 +55,37 @@ not just subdomains
 > </VirtualHost>
 > ```
 <!-- }}} -->
+
+___
+<!-- }}} -->
+
+<!-- Server VHost Lookup {{{-->
+## Server VHost Lookup
+
+A web server determines the correct content to serve
+based on the `Host` header
+
+> [!info]-
+>
+> ![[virtualhost_lookup.png]]
+
+1. **Browser requests a website**:
+   The browser initiates an HTTP request to the web server
+   associated with the domain's IP address
+
+2. **Host header reveals the domain**:
+   The browser includes the domain name in the request's `Host` header,
+   which acts as a label to inform the web server which website
+   is being requested
+
+3. **Web server determines the virtual host**:
+   The web server receives the request, examines the `Host` header,
+   and checks its virtual host configuration to find a matching entry
+   for the requested domain name
+
+4. **Serving the right content**:
+   The web server retrieves the resources associated with the website
+   and sends them back as the HTTP response
 
 ___
 <!-- }}} -->
@@ -162,19 +193,19 @@ Raw TCP
 printf 'GET / HTTP/1.1\r\nHost: app.inlanefreight.local\r\nConnection: close\r\n\r\n' | nc 10.129.222.107 80
 ```
 
-> [!tip]
->
-> Feed `localhost` header
->
-> ```sh
-> curl -v -H "Host: localhost" http://<target_ip>/
-> ```
->
-> Feed random host header
->
-> ```sh
-> curl -v -H "Host: random" http://<target_ip>/
-> ```
+#### Invalid Header
+
+Feed `localhost` header
+
+```sh
+curl -v -H "Host: localhost" http://<target_ip>/
+```
+
+Feed random host header
+
+```sh
+curl -v -H "Host: random" http://<target_ip>/
+```
 
 ___
 <!-- }}} -->

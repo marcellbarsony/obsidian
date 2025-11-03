@@ -8,16 +8,18 @@ links: "[[SSH]]"
 
 # Enumeration
 
+___
+
 <!-- Identify Server {{{-->
 ## Identify Server
 
-Identify SSH server on a host with [[Nmap]]
+[[Nmap]] — Identify SSH server on a host
 
 ```sh
 nmap -p 22 <target> -oA ssh-identify
 ```
 
-Identify supported authentication methods with [[Nmap]]
+[[Nmap]] — Identify supported authentication methods
 
 ```sh
 nmap --script ssh-auth-methods --script-args="ssh.user=<username>" -p 22 <target> -oA ssh-script-ssh-auth-methods
@@ -30,11 +32,16 @@ ___
 <!-- Banner Grabbing {{{-->
 ## Banner Grabbing
 
-SSH banner grabbing with [[Netcat|netcat]]
+[[Netcat|netcat]] — SSH banner grabbing
 
 ```sh
-netcat <target> 22
+ncat -vn <target> 22
 ```
+
+> [!info]-
+>
+> - `-v`: Set verbosity level
+> - `-n`: Do not resolve hostnames via DNS
 
 > [!tip]-
 >
@@ -56,6 +63,64 @@ netcat <target> 22
 
 ___
 
+<!-- }}} -->
+
+<!-- Public Key {{{-->
+## Public Key
+
+[ssh-keyscan](https://man.openbsd.org/ssh-keyscan.1) —
+Fetch the server's RSA public SSH host key
+
+```sh
+ssh-keyscan -t rsa  -p <target>
+```
+___
+<!-- }}} -->
+
+<!-- Cipher Algorithms {{{-->
+## Cipher Algorithms
+
+Enumerate the algorithms the target server offers
+
+[[Nmap]] ([ssh2-enum-algos](https://nmap.org/nsedoc/scripts/ssh2-enum-algos.html))
+
+```sh
+nmap -p 22 -n -sV --script ssh2-enum-algos -oA ssh-scripts-algos
+```
+
+[sslscan](https://github.com/rbsec/sslscan) —
+Test SSL/TLS enabled services to discover supported cipher suites
+
+```sh
+sslscan :22
+```
+
+___
+<!-- }}} -->
+
+<!-- Fuzzing {{{-->
+## Fuzzing
+
+Fuzzing the SSH service could help to find vulnerabilities
+
+[[Metasploit]] —
+SSH 2.0 Version Fuzzer (*[ssh_version_2](https://www.rapid7.com/db/modules/auxiliary/fuzzers/ssh/ssh_version_2/)*)
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> msfconsole
+> ```
+> ```sh
+> use auxiliary/fuzzers/ssh/ssh_version_2
+> ```
+> ```sh
+> set RHOSTS
+> ```
+> ```sh
+> run
+> ```
 <!-- }}} -->
 
 <!-- Configuration {{{-->
@@ -93,7 +158,7 @@ Run [SSH Audit](https://github.com/jtesta/ssh-audit)
 > (gen) software: OpenSSH 8.2p1
 > (gen) compatibility: OpenSSH 7.4+, Dropbear SSH 2018.76+
 > (gen) compression: enabled (zlib@openssh.com)                                   
-> 
+>
 > # key exchange algorithms
 > (kex) curve25519-sha256                     -- [info] available since OpenSSH 7.4, Dropbear SSH 2018.76                            
 > (kex) curve25519-sha256@libssh.org          -- [info] available since OpenSSH 6.5, Dropbear SSH 2013.62
@@ -107,7 +172,7 @@ Run [SSH Audit](https://github.com/jtesta/ssh-audit)
 > (kex) diffie-hellman-group16-sha512         -- [info] available since OpenSSH 7.3, Dropbear SSH 2016.73
 > (kex) diffie-hellman-group18-sha512         -- [info] available since OpenSSH 7.3
 > (kex) diffie-hellman-group14-sha256         -- [info] available since OpenSSH 7.3, Dropbear SSH 2016.73
-> 
+>
 > # host-key algorithms
 > (key) rsa-sha2-512 (3072-bit)               -- [info] available since OpenSSH 7.2
 > (key) rsa-sha2-256 (3072-bit)               -- [info] available since OpenSSH 7.2
@@ -130,13 +195,15 @@ ___
 <!-- Usernames {{{-->
 ## Usernames
 
-SSH Username Enumeration with [[Metasploit]]
+[[Metasploit]] —
+SSH Username Enumeration
 ([ssh_enumusers](https://www.rapid7.com/db/modules/auxiliary/scanner/ssh/ssh_enumusers/))
 
 ```sh
 use auxiliary/scanner/ssh/ssh_enumusers
 ```
 
+<!-- Info {{{-->
 > [!info]-
 >
 > The default action sends a malformed (*corrupted*)
@@ -148,7 +215,9 @@ use auxiliary/scanner/ssh/ssh_enumusers
 > OpenSSH will return a `permission denied` error
 > for an invalid user faster than for a valid user,
 > creating an opportunity for a timing attack to enumerate users
+<!-- }}} -->
 
+<!-- Example {{{-->
 > [!example]-
 >
 > Use a malformed packet or timing attack to enumerate users
@@ -162,6 +231,7 @@ use auxiliary/scanner/ssh/ssh_enumusers
 >     ...show and set options...
 > msf auxiliary(ssh_enumusers) > run
 > ```
+<!-- }}} -->
 
 ___
 

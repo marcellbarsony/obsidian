@@ -63,8 +63,8 @@ file maps domain names (*hostnames*) to IP addresses manually
 
 The `hosts` file is located at
 
-- Linux: `/etc/hosts`
-- Windows: `C:\Windows\System32\drivers\etc\hosts`
+- **Linux**: `/etc/hosts`
+- **Windows**: `C:\Windows\System32\drivers\etc\hosts`
 
 ```sh
 <IP Address>    <Hostname> [<Alias> ...]
