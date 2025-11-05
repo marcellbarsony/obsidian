@@ -17,7 +17,7 @@ ___
 <!-- cURL {{{-->
 ## cURL
 
-Banner grabbing with [cURL](https://curl.se/)
+[[cURL]] — Grab banner
 
 ```sh
 curl -I http://<target>
@@ -70,8 +70,6 @@ Spoof user agent and follow redirects
 ```sh
 curl -A "Custom user-agent" -L http://<target>
 ```
-
-
 ___
 <!-- }}} -->
 
@@ -81,7 +79,7 @@ ___
 [[Netcat]] — Grab banner
 
 ```sh
-nc <target_url> 80
+ncat <target_url> 80
 ```
 
 Then type

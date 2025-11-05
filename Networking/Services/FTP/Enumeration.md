@@ -8,37 +8,59 @@ links: "[[FTP]]"
 
 # Enumeration
 
-<!-- Checklist {{{-->
-## Checklist
-
-- [ ] [[#Nmap|Nmap scan]]
-    - [ ] [[#Nmap#FTP Server|FTP Server]]
-    - [ ] [[#Nmap#FTP Server Features|FTP Server Features]]
-        - [ ] [[#FTP Bounce Attack|FTP Bounce Attack]]
-- [ ] [[#Banner Grabbing|Banner Grabbing]]
-    - [ ] [[#Banner Grabbing#Netcat|Netcat]]
-    - [ ] [[#Banner Grabbing#Telnet|Telnet]]
-- [ ] [[#Certificate|TLS Certificate]]
-- [ ] [[#Default and Common Directories|Default & Common Directories]]
-
 ___
 
-<!-- }}} -->
+<!-- Service {{{-->
+## Service
 
-<!-- Nmap {{{-->
-## Nmap
-
-Identify an FTP server
+[[Nmap]] — Identify an FTP server
 
 ```sh
 nmap -p 21 <target> -oA ftp-identify
 ```
 
-Identify FTP server features (*default FTP unauthantecated script scan*)
+[[Nmap]] — Identify FTP server features
+(*default FTP unauthantecated script scan*)
 
 ```sh
 sudo nmap -sC -sV -p 21 -A <target> --script-trace -oA ftp-default-script
 ```
+
+[[Nmap]] — Run all FTP scripts
+
+```sh
+nmap --script ftp-* -p 21 <target_ip> -oA ftp-script-all
+```
+
+[[Metasploit]] — FTP Version Scanner
+(*[ftp_version](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/ftp_version/)*)
+
+```sh
+use auxiliary/scanner/ftp/ftp_version
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> msfconsole
+> ```
+> ```sh
+> use auxiliary/scanner/ftp/ftp_version
+> ```
+> ```sh
+> set RHOSTS <target>
+> ```
+> ```sh
+> set RPORT 21
+> ```
+> ```sh
+> run
+> ```
+> ```sh
+> exit
+> ```
+<!-- }}} -->
 
 <!-- Info {{{-->
 > [!info]-
@@ -49,16 +71,10 @@ sudo nmap -sC -sV -p 21 -A <target> --script-trace -oA ftp-default-script
 > - `--script-trace`: Trace the progress of the NSE script (*optional*)
 <!-- }}} -->
 
-Run all FTP scripts
-
-```sh
-nmap --script ftp-* -p 21 <target_ip> -oA ftp-script-all
-```
-
 <!-- FTP Bounce Attack {{{-->
 ### FTP Bounce Attack
 
-Detect
+[[Nmap]] — Detect
 [[Networking/Services/FTP/Exploitation#FTP Bounce Attack|FTP Bounce Attack]]
 ([ftp-bounce](https://nmap.org/nsedoc/scripts/ftp-bounce.html))
 
@@ -66,24 +82,21 @@ Detect
 nmap -p 21 --script ftp-bounce <target> -oA ftp-script-bounce
 ```
 
-Perform
+[[Nmap]] — Perform
 [TCP FTP Bounce Scan](https://nmap.org/book/scan-methods-ftp-bounce-scan.html)
 
 ```sh
 nmap -b <ftp_server_ip>:<port> <target_network>
 ```
 
-___
-
-<!-- }}} -->
-
-<!-- }}} -->
-
-<!-- Metasploit {{{-->
-## Metasploit
-
-[[Networking/Services/FTP/Exploitation#FTP Bounce Attack|FTP Bounce]] Port Scanner
+[[Metasploit]] —
+[[Networking/Services/FTP/Exploitation#FTP Bounce Attack|FTP Bounce]]
+Port Scanner
 (*[ftpbounce](https://www.rapid7.com/db/modules/auxiliary/scanner/portscan/ftpbounce/)*)
+
+```sh
+use auxiliary/scanner/ftp/ftp_bounce
+```
 
 <!-- Example {{{-->
 > [!example]-
@@ -102,50 +115,76 @@ ___
 > ```
 <!-- }}} -->
 
+<!-- }}} -->
+
+<!-- Anonymous Access {{{-->
+### Anonymous Access
+
+[[Metasploit]] —
 [[Networking/Services/FTP/Exploitation#Anonymous Login|Anonymous FTP Access]] Detection
 (*[anonymous](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/anonymous/)*)
 
+```sh
+use auxiliary/scanner/ftp/anonymous
+```
+
 <!-- Example {{{-->
 > [!example]-
 >
 > ```sh
 > msfconsole
+> ```
+> ```sh
 > use auxiliary/scanner/ftp/anonymous
-> set RHOSTS <target>
-> set RPORT 21
-> run
-> exit
 > ```
-<!-- }}} -->
-
-FTP Version Scanner
-(*[ftp_version](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/ftp_version/)*)
-
-<!-- Example {{{-->
-> [!example]-
->
 > ```sh
-> msfconsole
-> use auxiliary/scanner/ftp/ftp_version
 > set RHOSTS <target>
+> ```
+> ```sh
 > set RPORT 21
+> ```
+> ```sh
 > run
+> ```
+> ```sh
 > exit
 > ```
 <!-- }}} -->
+
+<!-- }}} -->
+
+___
+<!-- }}} -->
+
+<!-- CVE Vulnerabilities {{{-->
+## CVE Vulnerabilities
 
 BisonWare BisonFTP Server 3.5 Directory Traversal Information Disclosure
 (*[bison_ftp_traversal](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/bison_ftp_traversal/)*)
 
+```sh
+use auxiliary/scanner/ftp/bison_ftp_traversal
+```
+
 <!-- Example {{{-->
 > [!example]-
 >
 > ```sh
 > msfconsole
+> ```
+> ```sh
 > use auxiliary/scanner/ftp/bison_ftp_traversal
+> ```
+> ```sh
 > set RHOSTS <target>
+> ```
+> ```sh
 > set RPORT 21
+> ```
+> ```sh
 > run
+> ```
+> ```sh
 > exit
 > ```
 <!-- }}} -->
@@ -153,15 +192,29 @@ BisonWare BisonFTP Server 3.5 Directory Traversal Information Disclosure
 ColoradoFTP Server 1.3 Build 8 Directory Traversal Information Disclosure
 (*[colorado_ftp_traversal](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/colorado_ftp_traversal/)*)
 
+```sh
+use auxiliary/scanner/ftp/colorado_ftp_traversal
+```
+
 <!-- Example {{{-->
 > [!example]-
 >
 > ```sh
 > msfconsole
+> ```
+> ```sh
 > use auxiliary/scanner/ftp/colorado_ftp_traversal
+> ```
+> ```sh
 > set RHOSTS <target>
+> ```
+> ```sh
 > set RPORT 21
+> ```
+> ```sh
 > run
+> ```
+> ```sh
 > exit
 > ```
 <!-- }}} -->
@@ -179,21 +232,6 @@ Titan FTP XCRC Directory Traversal Information Disclosure
 > set RPORT 21
 > run
 > exit
-> ```
-<!-- }}} -->
-
-FTP Authentication Scanner
-(*[ftp_login](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/ftp_login/)*)
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> msf > use auxiliary/scanner/ftp/ftp_login
-> msf auxiliary(ftp_login) > show actions
-> msf auxiliary(ftp_login) > set ACTION <action_name>
-> msf auxiliary(ftp_login) > show options
-> msf auxiliary(ftp_login) > run
 > ```
 <!-- }}} -->
 
@@ -224,7 +262,7 @@ ___
 <!-- Certificate {{{-->
 ## Certificate
 
-Update the connection to TLS, display the server's:
+Update the connection to TLS, display the server's
 
 - TLS certificate (e.g., *hostname*, *e-mail*, *etc*.)
 - connection details
@@ -256,7 +294,5 @@ that may contain sensitive information
 ```sh
 gobuster dir -u ftp://<ip> -w <dirlist.txt>
 ```
-
 ___
-
 <!-- }}} -->

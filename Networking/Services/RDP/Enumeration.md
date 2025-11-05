@@ -71,13 +71,13 @@ ___
 
 Connect to RDP services to gather version and security information
 
-Using [[Nmap]]
+[[Nmap]]
 
 ```sh
-nmap -p 3389 -sV <target>
+nmap -p 3389 -sV <target> -oA rdp-default-scan
 ```
 
-Using [rdp-sec-check](https://github.com/CiscoCXSecurity/rdp-sec-check)
+[rdp-sec-check](https://github.com/CiscoCXSecurity/rdp-sec-check)
 
 ```sh
 python rdp-sec-check.py <target>
@@ -90,14 +90,13 @@ ___
 <!-- Certificate {{{-->
 ## Certificate
 
-Check RDP certificate with [openssl](https://en.wikipedia.org/wiki/OpenSSL)
+[openssl](https://en.wikipedia.org/wiki/OpenSSL) —
+Check RDP certificate
 
 ```sh
 openssl s_client -connect <target>:3389 < /dev/null 2>&1 | openssl x509 -noout -text
 ```
-
 ___
-
 <!-- }}} -->
 
 <!-- RDP Security Check {{{-->
@@ -106,20 +105,19 @@ ___
 Perl script developed by [Cisco CX Security Labs](https://github.com/CiscoCXSecurity)
 to enumerate security settings of an RDP Service
 
-Clone the [repository](https://github.com/CiscoCXSecurity/rdp-sec-check)
+1. Clone the [repository](https://github.com/CiscoCXSecurity/rdp-sec-check)
 
 ```sh
 git clone https://github.com/CiscoCXSecurity/rdp-sec-check.git
 ```
 
-Launch the script against the target
+2. Launch the script against the target
 
 ```sh
 ./rdp-sec-check.pl <target>
 ```
 
 ___
-
 <!-- }}} -->
 
 <!-- User Enumeration {{{-->
@@ -145,13 +143,13 @@ Using rdp_check (*C# tool*)
 rdp_check.exe <target> <usernames.txt>
 ```
 
-Using [rdp_check.py](https://github.com/fortra/impacket/blob/master/examples/rdp_check.py)
+[rdp_check.py](https://github.com/fortra/impacket/blob/master/examples/rdp_check.py)
 
 ```sh
 rdp_check.py [-hashes LMHASH:NTHASH] <target>
 ```
 
-Using [crowbar](https://github.com/galkan/crowbar)
+[crowbar](https://github.com/galkan/crowbar)
 
 ```sh
 crowbar -b rdp -s <target>/<cidr> -u <usernames.txt> -C <passwords.txt>

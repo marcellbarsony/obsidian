@@ -20,7 +20,7 @@ to be hosted on a single server.
 **Virtual Hosts** can be associated with top-level domains
 (*e.g., example.com*) or subdomains (*e.g., dev.example.com*).
 
-> [!tip]-
+> [!tip]
 >
 > If a **Virtual Host** doesn't have a DNS record, it can be accessed
 > by modifying the [[DNS/General#Hosts File|hosts file]]
@@ -90,8 +90,8 @@ based on the `Host` header
 ___
 <!-- }}} -->
 
-<!-- Discovery {{{-->
-## Discovery
+<!-- Brute Force {{{-->
+### Brute Force
 
 Virtual host fuzzing is recommended
 to possibly find alternate domain names of subdomains
@@ -115,15 +115,13 @@ that point to a virtual host
 > or web application firewalls (*WAF*)
 > and it could lead to an unintended denial of service
 
-### Brute Force
-
-[[Gobuster]] — Virtual Host Brute Force
+[[Gobuster]]
 
 ```sh
-gobuster vhost -u http://<target> -w <wordlist.txt> --append-domain
+gobuster vhost -u http://<target> -w <wordlist.txt> -t 60 --append-domain
 ```
 ```sh
-gobuster vhost -u http://<target> -w <wordlist.txt> -p pattern --exclude-length 301 -t 10
+gobuster vhost -u http://<target> -w <wordlist.txt> -p pattern --exclude-length 301 -t 60
 ```
 ```sh
 gobuster vhost --useragent "PENTEST" --wordlist "<wordlist.txt>" --url <target>
@@ -131,7 +129,10 @@ gobuster vhost --useragent "PENTEST" --wordlist "<wordlist.txt>" --url <target>
 
 > [!info]-
 >
-> The `pattern` file contains the domain name
+> - `-t 60`: Number of threads
+> - `-p pattern`: The `pattern` file contains the domain name
+> - `--exclude-length 301`: Ignore results whose response body length
+>    equals 301 bytes
 >
 > ```sh
 > cat pattern
@@ -140,7 +141,7 @@ gobuster vhost --useragent "PENTEST" --wordlist "<wordlist.txt>" --url <target>
 > {GOBUSTER}.inlanefreight.htb
 > ```
 
-[[Ffuf]] — Virtual Host Brute Force
+[[Ffuf]]
 
 ```sh
 ffuf -H "Host: FUZZ.<domain>" -H "User-Agent: PENTEST" -c -w "<wordlist.txt>" -u <target>
@@ -158,12 +159,31 @@ ffuf -w namelist.txt -u http://10.129.184.109 -H "HOST: FUZZ.inlanefreight.htb" 
 ___
 <!-- }}} -->
 
+<!-- Hosts {{{-->
+## Hosts
+
+Add the virtual hosts to `/etc/hosts`
+
+```sh
+sudoedit /etc/hosts
+```
+
+```sh
+sudo sh -c "echo '10.129.122.20 app.inlanefreight.local dev.inlanefreight.local' >> /etc/hosts" 
+```
+___
+<!-- }}} -->
+
 <!-- Enumeration {{{-->
 ## Enumeration
 
 ### Banner Grabbing
 
 Show response headers
+
+```sh
+curl -I http://<target>
+```
 
 ```sh
 curl -s -D - -o /dev/null -H "Host: <target_vhost>" http://<target_ip>/

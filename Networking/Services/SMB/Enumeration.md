@@ -10,11 +10,8 @@ links: "[[SMB]]"
 
 ___
 
-<!-- Reconnaissance {{{-->
-## Reconnaissance
-
 <!-- nbtscan {{{-->
-### nbtscan
+## nbtscan
 
 [nbtscan](https://www.kali.org/tools/nbtscan/) —
 Scan a network searching for SMB hosts
@@ -26,10 +23,12 @@ nbtscan -r <target_network>/<cidr>
 > [!info]-
 >
 > - `-r`: Use local port 137 for scans
+
+___
 <!-- }}} -->
 
 <!-- Nmap {{{-->
-### Nmap
+## Nmap
 
 Scan [[SMB/General|SMB]] service with [[Nmap]]
 
@@ -81,10 +80,12 @@ Run all `safe` and `smb-enum-*` scripts for non-destructive SMB enumeration
 ```sh
 nmap --script "safe or smb-enum-*" -p 445 <target> -oA smb-enumeration
 ```
+
+___
 <!-- }}} -->
 
 <!-- Metasploit {{{-->
-### Metasploit
+## Metasploit
 
 Scan [[SMB/General|SMB]] service with [[Metasploit]]
 
@@ -152,7 +153,6 @@ use auxiliary/scanner/smb/smb2
 [smb_enumshares](https://www.rapid7.com/db/modules/auxiliary/scanner/smb/smb_enumshares/)
 — SMB Share Enumeration
 
-
 ```sh
 use auxiliary/scanner/smb/smb_enumshares
 ```
@@ -210,15 +210,47 @@ use auxiliary/scanner/smb/smb_enumusers
 > ```
 <!-- }}} -->
 
+[smb_lookupsid](https://www.rapid7.com/db/modules/auxiliary/scanner/smb/smb_lookupsid/)
+— SMB SID User Enumeration (*LookupSid*)
+
+```sh
+use auxiliary/scanner/smb/smb_lookupsid
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> Determine what users exist via brute force SID lookups.
+> Enumerate both local and domain accounts by setting `ACTION`
+> to either `LOCAL` or `DOMAIN`
+>
+> ```sh
+> msfconsole
+> ```
+> ```sh
+> use auxiliary/scanner/smb/smb_lookupsid
+> ```
+> ```sh
+> set RHOSTS <target_ip>
+> ```
+> ```sh
+> set RPORT 445
+> ```
+> ```sh
+> run
+> ```
+<!-- }}} -->
+
+___
 <!-- }}} -->
 
 <!-- CVE Exploits {{{-->
-### CVE Exploits
+## CVE Exploits
 
 <!-- Netapi {{{-->
-#### Netapi
+### Netapi
 
-Detect [[SMB#Netapi|Netapi (MS08-067)]]
+Detect [[Enumeration#Netapi|Netapi (MS08-067)]]
 (*[smb-vuln-ms08-067](https://nmap.org/nsedoc/scripts/smb-vuln-ms08-067.html)*)
 
 > [!warning]
@@ -257,9 +289,9 @@ nmap -sU --script smb-vuln-ms08-067.nse -p U:137 <target> -oA smb-netapi-udp
 <!-- }}} -->
 
 <!-- EternalBlue {{{-->
-#### EternalBlue
+### EternalBlue
 
-Detect [[SMB#EternalBlue|EternalBlue (MS17-010)]]
+Detect [[Enumeration#EternalBlue|EternalBlue (MS17-010)]]
 (*[smb-vuln-ms17-010](https://nmap.org/nsedoc/scripts/smb-vuln-ms17-010.html)*)
 
 ```sh
@@ -301,51 +333,7 @@ nmap -A -p 445 <target>
 
 <!-- }}} -->
 
-<!-- }}} -->
-
-<!-- CrackMapExec {{{-->
-### CrackMapExec
-
-[CrackMapExec](https://github.com/byt3bl33d3r/CrackMapExec)
-— Enumerate SMB services
-
-> [!warning]
->
-> **DEPRECATED** to [NetExe](https://github.com/Pennyw0rth/NetExec)
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> crackmapexec smb <target>
-> ```
->
-> ```sh
-> crackmapexec smb <target> --pass-pol -u "" -p ""
-> ```
->
-> ```sh
-> crackmapexec smb <target> --pass-pol -u "guest" -p ""
-> ```
->
-> ```sh
-> SMB         10.129.14.128   445    DEVSMB           [*] Windows 6.1 Build 0 (name:DEVSMB) (domain:) (signing:False) (SMBv1:False)
-> SMB         10.129.14.128   445    DEVSMB           [+] \: 
-> SMB         10.129.14.128   445    DEVSMB           [+] Enumerated shares
-> SMB         10.129.14.128   445    DEVSMB           Share           Permissions     Remark
-> SMB         10.129.14.128   445    DEVSMB           -----           -----------     ------
-> SMB         10.129.14.128   445    DEVSMB           print$                          Printer Drivers
-> SMB         10.129.14.128   445    DEVSMB           home                            INFREIGHT Samba
-> SMB         10.129.14.128   445    DEVSMB           dev                             DEVenv
-> SMB         10.129.14.128   445    DEVSMB           notes           READ,WRITE      CheckIT
-> SMB         10.129.14.128   445    DEVSMB           IPC$                            IPC Service (DEVSM)
-> ```
-<!-- }}} -->
-
-<!-- }}} -->
-
 ___
-
 <!-- }}} -->
 
 <!-- Automated Scripts {{{-->
@@ -637,6 +625,48 @@ Grab SMB server version
 > > May need to run a second time for success
 <!-- }}} -->
 
+<!-- }}} -->
+
+___
+<!-- }}} -->
+
+<!-- CrackMapExec {{{-->
+## CrackMapExec
+
+[CrackMapExec](https://github.com/byt3bl33d3r/CrackMapExec)
+— Enumerate SMB services
+
+> [!warning]
+>
+> **DEPRECATED** to [NetExe](https://github.com/Pennyw0rth/NetExec)
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> crackmapexec smb <target>
+> ```
+>
+> ```sh
+> crackmapexec smb <target> --pass-pol -u "" -p ""
+> ```
+>
+> ```sh
+> crackmapexec smb <target> --pass-pol -u "guest" -p ""
+> ```
+>
+> ```sh
+> SMB         10.129.14.128   445    DEVSMB           [*] Windows 6.1 Build 0 (name:DEVSMB) (domain:) (signing:False) (SMBv1:False)
+> SMB         10.129.14.128   445    DEVSMB           [+] \: 
+> SMB         10.129.14.128   445    DEVSMB           [+] Enumerated shares
+> SMB         10.129.14.128   445    DEVSMB           Share           Permissions     Remark
+> SMB         10.129.14.128   445    DEVSMB           -----           -----------     ------
+> SMB         10.129.14.128   445    DEVSMB           print$                          Printer Drivers
+> SMB         10.129.14.128   445    DEVSMB           home                            INFREIGHT Samba
+> SMB         10.129.14.128   445    DEVSMB           dev                             DEVenv
+> SMB         10.129.14.128   445    DEVSMB           notes           READ,WRITE      CheckIT
+> SMB         10.129.14.128   445    DEVSMB           IPC$                            IPC Service (DEVSM)
+> ```
 <!-- }}} -->
 
 ___

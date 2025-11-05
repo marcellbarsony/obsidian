@@ -8,7 +8,8 @@ links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
 
 # WhatWeb
 
-[WhatWeb](https://whatweb.net/) ([GitHub](https://github.com/urbanadventurer/WhatWeb))
+[WhatWeb](https://whatweb.net/)
+(*[GitHub](https://github.com/urbanadventurer/WhatWeb)*)
 extracts the version of the web server,
 supporting frameworks, applications, and CMS
 
@@ -24,7 +25,7 @@ whatweb <target_ip>
 Dismiss errors
 
 ```sh
-whatweb --no-errors 10.10.10.0/24
+whatweb --no-errors <target>
 ```
 
 Set aggression level to 3 (*Scale: `1`-`4`, Default: `1`*)

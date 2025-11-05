@@ -7,21 +7,10 @@ tags:
 
 # Enumeration
 
-## Checklist
-
-- [ ] [[Enumeration#Nmap|Nmap]]
-    - [ ] [[Enumeration#Network Scan|Network Scan]]
-    - [ ] [[Enumeration#Service Enumeration|Service Enumeration]]
-- [ ] [[Enumeration#Metasploit|Metasploit]]
-    - [ ] [[Enumeration#Version Scan|Version Scan]]
-
 ___
 
-<!-- Nmap {{{-->
-## Nmap
-
 <!-- Network Scan {{{-->
-### Network Scan
+## Network Scan
 
 Scan the network for port TCP/UDP `623`
 
@@ -41,13 +30,14 @@ nmap -n -sU -p 623 <target>/<cidr> -oA ipmi-basic-udp
 > - `-sU`: Scan UDP port
 <!-- }}} -->
 
+___
 <!-- }}} -->
 
 <!-- Service Enumeration {{{-->
 ### Service Enumeration
 
-Footprint the service with the `ipmi-version`
-[[Nmap Scripting Engine|NSE]] script
+[[Nmap]] — Footprint the service
+(*[ipmi-version](https://nmap.org/nsedoc/scripts/ipmi-version.html)*)
 
 ```sh
 sudo nmap -sU -p 623 --script ipmi-version <target_domain> -oA ipmi-version
@@ -81,17 +71,9 @@ sudo nmap -sU -p 623 --script ipmi-version <target_domain> -oA ipmi-version
 >
 <!-- }}} -->
 
-<!-- }}} -->
-
-___
-
-<!-- }}} -->
-
-<!-- Metasploit {{{-->
-## Metasploit
-
+[[Metasploit]] —
 Discover host information through IPMI Channel Auth probes
-([ipmi_version](https://www.rapid7.com/db/modules/auxiliary/scanner/ipmi/ipmi_version/))
+(*[ipmi_version](https://www.rapid7.com/db/modules/auxiliary/scanner/ipmi/ipmi_version/)*)
 
 ```sh
 msf6 > use auxiliary/scanner/ipmi/ipmi_version
@@ -143,8 +125,41 @@ msf6 > use auxiliary/scanner/ipmi/ipmi_version
 > ```
 <!-- }}} -->
 
+___
 <!-- }}} -->
 
-___
+<!-- Cipher Zero {{{-->
+### Cipher Zero
+
+[[Nmap]] — IPMI 2.0 Cipher Zero Authentication Bypass
+(*[ipmi-cipher-zero](https://nmap.org/nsedoc/scripts/ipmi-cipher-zero.html)*)
+
+```sh
+nmap -sU --script ipmi-cipher-zero -p 623 <target> -oA ipmi-script-cipher-zero
+```
+
+[[Metasploit]] — IPMI 2.0 Cipher Zero Authentication Bypass Scanner
+(*[ipmi_cipher_zero](https://www.rapid7.com/db/modules/auxiliary/scanner/ipmi/ipmi_cipher_zero/)*)
+
+```sh
+use auxiliary/scanner/ipmi/ipmi_cipher_zero
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> Identifies IPMI 2.0-compatible systems that are vulnerable
+> to an authentication bypass vulnerability through the use of cipher zero
+>
+> ```sh
+> msf > use auxiliary/scanner/ipmi/ipmi_cipher_zero
+> msf auxiliary(ipmi_cipher_zero) > show actions
+>     ...actions...
+> msf auxiliary(ipmi_cipher_zero) > set ACTION < action-name >
+> msf auxiliary(ipmi_cipher_zero) > show options
+>     ...show and set options...
+> msf auxiliary(ipmi_cipher_zero) > run
+> ```
+<!-- }}} -->
 
 <!-- }}} -->

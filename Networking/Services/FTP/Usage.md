@@ -8,6 +8,8 @@ links: "[[FTP]]"
 
 # Usage
 
+___
+
 <!-- Connection {{{-->
 ## Connection
 
@@ -63,7 +65,6 @@ ftp://<username>:<password>@<ip>
 <!-- }}} -->
 
 ___
-
 <!-- }}} -->
 
 <!-- File Operations {{{-->
@@ -93,7 +94,8 @@ Download a file
 ftp> get Important\ Notes.txt
 ```
 
-Download all files ([[Networking/Services/FTP/Exploitation#Anonymous Login|Anonymous Login]])
+Download all files
+(*[[Networking/Services/FTP/Exploitation#Anonymous Login|Anonymous Login]]*)
 
 ```sh
 wget -m ftp://anonymous:anonymous@10.10.10.98
@@ -116,7 +118,7 @@ wget -r --user="USERNAME" --password="PASSWORD" ftp://server.com/
 
 Uploading files may allow for [LFI vulnerabilities](https://en.wikipedia.org/wiki/File_inclusion_vulnerability)
 leading to [Remote Command Execution](https://en.wikipedia.org/wiki/Arbitrary_code_execution)
-(RCE)
+(*RCE*)
 
 ```sh
 ftp> put testupload.txt
@@ -125,5 +127,4 @@ ftp> put testupload.txt
 <!-- }}} -->
 
 ___
-
 <!-- }}} -->

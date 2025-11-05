@@ -12,3 +12,11 @@ ___
 
 
 Scan the website with automated web scanners
+
+## Nikto
+
+Fingerprint a website with [[Nikto]]
+
+## WhatWeb
+
+Fingerprint a website with [[WhatWeb]]

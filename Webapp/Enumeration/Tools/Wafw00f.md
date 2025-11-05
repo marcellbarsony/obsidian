@@ -38,6 +38,7 @@ Run **Wafw00f** against a target website
 wafw00f <target>
 ```
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sh
@@ -67,4 +68,7 @@ wafw00f <target>
 > ```
 > - The website is protected by the Wordfence Web Application Firewall (WAF),
 > developed by Defiant
+<!-- }}} -->
+
+___
 <!-- }}} -->

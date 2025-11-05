@@ -33,6 +33,8 @@ or [DTLS](https://en.wikipedia.org/wiki/Datagram_Transport_Layer_Security):
 For the **SNMP** client and server to exchange values, the **SNMP** objects must
 have unique addresses known on both sides.
 
+___
+
 <!-- General {{{-->
 ## General
 
@@ -124,6 +126,7 @@ used:
 > - `v3`: Credentials must be known
 <!-- }}} -->
 
+___
 <!-- }}} -->
 
 <!-- SNMP Versions {{{-->
@@ -158,6 +161,7 @@ complexity of the protocol has also increased
 >
 > `SNMPv3` supports authentication and encryption
 
+___
 <!-- }}} -->
 
 <!-- Configuration {{{-->
@@ -173,21 +177,21 @@ defined in the [snmpd manpage](https://www.net-snmp.org/docs/man/snmpd.conf.html
 
 > [!example]-
 >
->```sh
->cat /etc/snmp/snmpd.conf | grep -v "#" | sed -r '/^\s*$/d'
->```
->```sh
->sysLocation    Sitting on the Dock of the Bay
->sysContact     Me <me@example.org>
->sysServices    72
->master  agentx
->agentaddress  127.0.0.1,[::1]
->view   systemonly  included   .1.3.6.1.2.1.1
->view   systemonly  included   .1.3.6.1.2.1.25.1
->rocommunity  public default -V systemonly
->rocommunity6 public default -V systemonly
->rouser authPrivUser authpriv -V systemonly
->```
+> ```sh
+> cat /etc/snmp/snmpd.conf | grep -v "#" | sed -r '/^\s*$/d'
+> ```
+> ```sh
+> sysLocation    Sitting on the Dock of the Bay
+> sysContact     Me <me@example.org>
+> sysServices    72
+> master  agentx
+> agentaddress  127.0.0.1,[::1]
+> view   systemonly  included   .1.3.6.1.2.1.1
+> view   systemonly  included   .1.3.6.1.2.1.25.1
+> rocommunity  public default -V systemonly
+> rocommunity6 public default -V systemonly
+> rouser authPrivUser authpriv -V systemonly
+> ```
 
 ### Dangerous Settings
 
@@ -201,4 +205,5 @@ Dangerous configurations that may be set
 > | `rwcommunity <community string> <IPv4 address>`  | Provides access to the full OID tree regardless of where the requests were sent from |
 > | `rwcommunity6 <community string> <IPv6 address>` | Same access as with `rwcommunity` with the difference of using IPv6                    |
 
+___
 <!-- }}} -->

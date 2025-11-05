@@ -6,7 +6,6 @@ tags:
 links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
 ---
 
-<!-- Metafiles {{{-->
 # Metafiles
 
 ___
@@ -84,6 +83,4 @@ Prettify the output of `.xml` files by piping them into it
 sitemap.xml | xmllint  --format -
 ```
 ___
-<!-- }}} -->
-
 <!-- }}} -->

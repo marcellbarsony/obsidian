@@ -9,29 +9,18 @@ links: "[[Services]]"
 
 # Enumeration
 
-<!-- Checklist {{{-->
-## Checklist
-
-- [ ] [[#Nmap|Nmap]]
-- [ ] [[#Discover & Mount|Discover & Mount]]
-    - [ ] [[#Show NFS Shares|Show NFS Shares]]
-    - [ ] [[#Mount NFS Shares|Mount NFS Shares]]
-- [ ] [[#Metasploit| Metasploit Scan]]
-
 ___
 
-<!-- }}} -->
+<!-- Service Scan {{{-->
+## Service Scan
 
-<!-- Nmap {{{-->
-## Nmap
-
-Detect NFS services and identify server capabilities
+[[Nmap]] — Detect NFS services and identify server capabilities
 
 ```sh
 nmap -p 2049,111 <target> -oA nfs-default
 ```
 
-Enumerate TCP ports `111` and `2049`
+[[Nmap]] — Enumerate TCP ports `111` and `2049`
 
 ```sh
 sudo nmap -sC -sV <target> -p 111,2049 -oA nfs-default-scripts
@@ -46,15 +35,49 @@ sudo nmap -sC -sV <target> -p 111,2049 -oA nfs-default-scripts
 > ports.
 <!-- }}} -->
 
-Run all nfs scripts (
-[nfs-ls](https://nmap.org/nsedoc/scripts/nfs-ls.html),
+[[Nmap]] — Run all nfs scripts
+(*[nfs-ls](https://nmap.org/nsedoc/scripts/nfs-ls.html),
 [nfs-showmount](https://nmap.org/nsedoc/scripts/nfs-showmount.html),
-[nfs-statfs](https://nmap.org/nsedoc/scripts/nfs-statfs.html)
-)
+[nfs-statfs](https://nmap.org/nsedoc/scripts/nfs-statfs.html)*)
 
 ```sh
 sudo nmap --script nfs* <target> -sV -p111,2049 -oA nfs-rpc-detection
 ```
+
+[[Metasploit]] — NFS Mount Scanner
+(*[nfsmount](https://www.rapid7.com/db/modules/auxiliary/scanner/nfs/nfsmount/)*)
+
+```sh
+use scanner/nfs/nfsmount
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> Scan NFS mounts and list permissions
+>
+> 1. [[Metasploit#Launch Metasploit|Launch Metasploit]]
+>
+> 2. [[Metasploit#Search Exploit|Search ]] for some useful modules
+>
+> ```sh
+> search nfs
+> ```
+>
+> 3. [[Metasploit#Select Exploit|Select]] the the scanner
+>
+> ```sh
+> use scanner/nfs/nfsmount
+> ```
+>
+> 4. [[Metasploit#Show Options|Show options]]
+>
+> 5. [[Metasploit#Set Options|Set options]]
+>
+> 6. [[Metasploit#Check Exploit|Check Module]]
+>
+> 7. [[Metasploit#Run Exploit|Run Module]]
+<!-- }}} -->
 
 ___
 
@@ -69,13 +92,9 @@ ___
 Ask the **NFS server** (*the RPC mount daemon*) what directories it is exporting
 and to which clients
 
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> showmount -e <target>
-> ```
-<!-- }}} -->
+```sh
+showmount -e <target>
+```
 
 <!-- }}} -->
 
@@ -86,13 +105,9 @@ Mount remote **NFS shares** to the local machine
 
 1. Create a mount directory
 
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> mkdir target-NFS
-> ```
-<!-- }}} -->
+```sh
+mkdir target-NFS
+```
 
 2. Mount the NFS share(s)
 
@@ -131,19 +146,16 @@ sudo mount -t nfs [-o vers=2] <target>:<remote_folder> <local_folder> -o nolock
 
 3. Change to the mount directory and show content
 
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> cd target-NFS
-> tree .
-> ```
-<!-- }}} -->
-
+```sh
+cd target-NFS
+```
+```sh
+tree .
+```
 <!-- }}} -->
 
 <!-- Unmount NFS Shares {{{-->
-## Unmount NFS Shares
+### Unmount NFS Shares
 
 Unmount the remote **NFS** share from the local machine
 
@@ -151,45 +163,6 @@ Unmount the remote **NFS** share from the local machine
 sudo umount ./target-NFS
 ```
 
-<!-- }}} -->
-
-___
-
-<!-- }}} -->
-
-<!-- Metasploit {{{-->
-## Metasploit
-
-Scan NFS mounts and list permissions with [[Metasploit]]
-
-```sh
-use scanner/nfs/nfsmount
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> 1. [[Metasploit#Launch Metasploit|Launch Metasploit]]
->
-> 2. [[Metasploit#Search Exploit|Search ]] for some useful modules
->
-> ```sh
-> search nfs
-> ```
->
-> 3. [[Metasploit#Select Exploit|Select]] the the scanner
->
-> ```sh
-> use scanner/nfs/nfsmount
-> ```
->
-> 4. [[Metasploit#Show Options|Show options]]
->
-> 5. [[Metasploit#Set Options|Set options]]
->
-> 6. [[Metasploit#Check Exploit|Check Module]]
->
-> 7. [[Metasploit#Run Exploit|Run Module]]
 <!-- }}} -->
 
 ___

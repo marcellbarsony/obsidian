@@ -8,6 +8,9 @@ links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
 
 # WAF
 
+___
+
+<!-- Identify {{{-->
 ## Identify
 
 Identify if a Web Application Firewall
@@ -16,7 +19,7 @@ is being used
 
 ### wafw00f
 
-[[wafw00f]] — Identify WAF
+Identify WAF with [[wafw00f]]
 
 ```sh
 wafw00f <target>
@@ -25,9 +28,8 @@ wafw00f <target>
 ### Nmap
 
 [[Nmap]]
-([http-waf-detect](https://nmap.org/nsedoc/scripts/http-waf-detect.html))
-([http-waf-fingerprint](https://nmap.org/nsedoc/scripts/http-waf-fingerprint.html))
-— Identify WAF
+(*[http-waf-detect](https://nmap.org/nsedoc/scripts/http-waf-detect.html) &
+[http-waf-fingerprint](https://nmap.org/nsedoc/scripts/http-waf-fingerprint.html)*)
 
 ```sh
 nmap -p <target_port> --script=http-waf-fingerprint,http-waf-detect <target>
@@ -35,9 +37,10 @@ nmap -p <target_port> --script=http-waf-fingerprint,http-waf-detect <target>
 
 ### WhatWaf
 
-[WhatWaf](https://github.com/Ekultek/WhatWaf)
-— Identify WAF
+Identify WAF with [[WhatWaf]]
 
 ```sh
 whatwaf -u <target>
 ```
+___
+<!-- }}} -->

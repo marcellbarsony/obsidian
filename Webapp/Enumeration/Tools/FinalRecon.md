@@ -34,6 +34,10 @@ Install FinalRecon manually with [pip](https://pypi.org/project/pip/)
 
 Validate FinalRecon installation with the `--help` flag
 
+```sh
+./finalrecon.py --help
+```
+
 <!-- Example {{{-->
 > [!example]-
 >

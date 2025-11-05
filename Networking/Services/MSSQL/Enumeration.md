@@ -7,21 +7,10 @@ tags:
 
 # Enumeration
 
-<!-- Checklist {{{-->
-## Checklist
-
-- [ ] [[Enumeration#Nmap|Nmap]]
-- [ ] [[Enumeration#Metasploit|Metasploit]]
-    - [ ] [[Enumeration#Without Credentials|Without Credentials]]
-    - [ ] [[Enumeration#With Credentials|With Credentials]]
-- [ ] [[Enumeration#Mssqlclient.py|mssqlclient.py]]
-
 ___
 
-<!-- }}} -->
-
-<!-- Nmap {{{-->
-## Nmap
+<!-- Service {{{-->
+## Service
 
 Service detection
 
@@ -112,7 +101,7 @@ MSSQL Ping Utility
 ([mssql_ping](https://www.rapid7.com/db/modules/auxiliary/scanner/mssql/mssql_ping/))
 
 ```sh
-msf > use auxiliary/scanner/mssql/mssql_ping
+use auxiliary/scanner/mssql/mssql_ping
 ```
 
 <!-- Example {{{-->
@@ -196,20 +185,20 @@ msf > use auxiliary/scanner/mssql/mssql_ping
 > <!-- Example {{{-->
 > > [!example]-
 > >
-> >```sh
-> >msf6 auxiliary(scanner/mssql/mssql_ping) > run
-> >```
-> >```sh
-> >[*] 10.129.201.248:       - SQL Server information for 10.129.201.248:
-> >[+] 10.129.201.248:       -    ServerName      = SQL-01
-> >[+] 10.129.201.248:       -    InstanceName    = MSSQLSERVER
-> >[+] 10.129.201.248:       -    IsClustered     = No
-> >[+] 10.129.201.248:       -    Version         = 15.0.2000.5
-> >[+] 10.129.201.248:       -    tcp             = 1433
-> >[+] 10.129.201.248:       -    np              = \\SQL-01\pipe\sql\query
-> >[*] 10.129.201.248:       - Scanned 1 of 1 hosts (100% complete)
-> >[*] Auxiliary module execution completed
-> >```
+> > ```sh
+> > msf6 auxiliary(scanner/mssql/mssql_ping) > run
+> > ```
+> > ```sh
+> > [*] 10.129.201.248:       - SQL Server information for 10.129.201.248:
+> > [+] 10.129.201.248:       -    ServerName      = SQL-01
+> > [+] 10.129.201.248:       -    InstanceName    = MSSQLSERVER
+> > [+] 10.129.201.248:       -    IsClustered     = No
+> > [+] 10.129.201.248:       -    Version         = 15.0.2000.5
+> > [+] 10.129.201.248:       -    tcp             = 1433
+> > [+] 10.129.201.248:       -    np              = \\SQL-01\pipe\sql\query
+> > [*] 10.129.201.248:       - Scanned 1 of 1 hosts (100% complete)
+> > [*] Auxiliary module execution completed
+> > ```
 > <!-- }}} -->
 <!-- }}} -->
 
@@ -217,7 +206,7 @@ MSSQL Login Utility
 ([mssql_login](https://www.rapid7.com/db/modules/auxiliary/scanner/mssql/mssql_login/))
 
 ```sh
-msf > use auxiliary/scanner/mssql/mssql_login
+use auxiliary/scanner/mssql/mssql_login
 ```
 
 <!-- Example {{{-->

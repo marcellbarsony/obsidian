@@ -85,7 +85,7 @@ Enumerate the algorithms the target server offers
 [[Nmap]] ([ssh2-enum-algos](https://nmap.org/nsedoc/scripts/ssh2-enum-algos.html))
 
 ```sh
-nmap -p 22 -n -sV --script ssh2-enum-algos -oA ssh-scripts-algos
+nmap -p 22 -n -sV --script ssh2-enum-algos -oA ssh-script-algos
 ```
 
 [sslscan](https://github.com/rbsec/sslscan) —
@@ -128,7 +128,7 @@ SSH 2.0 Version Fuzzer (*[ssh_version_2](https://www.rapid7.com/db/modules/auxil
 
 Checks the client and server-side configuration
 
-Install [SSH Audit](https://github.com/jtesta/ssh-audit)
+1. Install [SSH Audit](https://github.com/jtesta/ssh-audit)
 
 > [!example]-
 >
@@ -139,7 +139,7 @@ Install [SSH Audit](https://github.com/jtesta/ssh-audit)
 > cd ssh-audit
 > ```
 
-Run [SSH Audit](https://github.com/jtesta/ssh-audit)
+2. Run [SSH Audit](https://github.com/jtesta/ssh-audit)
 
 ```sh
 ./ssh-audit.py <target>

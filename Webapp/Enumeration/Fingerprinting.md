@@ -22,7 +22,7 @@ Search for additional version information
 ### Nmap Scan
 
 ```sh
-nmap -sV [--version-all] <target_url>
+nmap -sV [--version-all] <target_url> -oA version-scan
 ```
 
 > [!example]-
@@ -37,7 +37,7 @@ Run the [http-enum script](https://nmap.org/nsedoc/scripts/http-enum.html)
 to enumerate common web application directories
 
 ```sh
-nmap -sV --script=http-enum -oA target_http_enum_scan <target_ip>
+nmap -sV --script=http-enum -oA target_http_enum_scan <target_ip> -oA script-scan
 ```
 
 > [!info]-

@@ -18,44 +18,8 @@ the communication between the client and server.
 
 ___
 
-<!-- Checklist {{{-->
-## Checklist
-
-### IMAP
-
-- [ ] [[Enumeration#Nmap|Nmap]]
-    - [ ] [[Enumeration#Nmap|Get TLS certificate]]
-- [ ] [[Enumeration#Banner Grabbing (IMAP)|Banner Grabbing]]
-    - [ ] [[netcat]]
-    - [ ] [openssl](https://github.com/openssl/openssl)
-    - [ ] [[Telnet/General]]
-- [ ] [[Enumeration#NTLM Auth|NTLM Auth]] (*Windows*)
-    - [ ] [[Enumeration#NTLM Auth|NTLM Auth]] [[Telnet/General|with Telnet]]
-    - [ ] [[Enumeration#NTLM Auth|NTLM Auth]] [[Nmap|with Nmap]]
-- [ ] [[Enumeration#cURL|cURL login]] (*credentials required*)
-- [ ] [[Enumeration#Interaction|Interaction]]
-    - [ ] [[Enumeration#TLS Encrypted Interaction - IMAP|TLS Encrypted Interaction - IMAP]]
-
-### POP3
-
-- [ ] [[Enumeration#Nmap (POP3)|Nmap]]
-    - [ ] [[Enumeration#Nmap|Get TLS certificate]]
-    - [ ] [[Enumeration#Nmap (POP3)|Query capabilities]]
-    - [ ] [[Enumeration#Nmap (POP3)|Extract NTLM Cheallenge]]
-- [ ] [[Enumeration#Banner Grabbing (POP3)|Banner Grabbing]]
-    - [ ] [[netcat]]
-    - [ ] [openssl](https://github.com/openssl/openssl)
-- [ ] [[Enumeration#Password Logging (POP3)|Password Logging]]
-    - [ ] [[Enumeration#Password Logging (POP3)|Check for logged passwords]]
-- [ ] [[Enumeration#Interaction|Interaction]]
-    - [ ] [[Enumeration#TLS Encrypted Interaction - POP3|TLS Encrypted Interaction - POP3]]
-
-___
-
-<!-- }}} -->
-
-<!-- Nmap {{{-->
-## Nmap
+<!-- Service {{{-->
+## Service
 
 The [[Nmap]] scan wil return [TLS certificate](https://en.wikipedia.org/wiki/Transport_Layer_Security#Digital_certificates)
 (*if the communication is encrypted*)
@@ -115,8 +79,8 @@ ___
 <!-- IMAP {{{-->
 ## IMAP
 
-<!-- Nmap {{{-->
-### Nmap
+<!-- Service {{{-->
+### Service
 
 Service detection
 
@@ -141,19 +105,21 @@ nmap -p 143,993 --script imap-* <target> -oA imap-scripts-all
 <!-- Banner Grabbing {{{-->
 ### Banner Grabbing
 
-Grab the banner with [[netcat]]
+Grab the IMAP service banner
+
+[[netcat]]
 
 ```sh
-nc -nv <target> 143
+ncat -nv <target> 143
 ```
 
-Grab the banner with [openssl](https://github.com/openssl/openssl)
+[openssl](https://github.com/openssl/openssl)
 
 ```sh
 openssl s_client -connect <target>:993 -quiet
 ```
 
-Grab the banner with [[Telnet/General|Telnet]]
+[[Telnet/General|Telnet]]
 
 ```sh
 nmap -p 143,993 <target> -oA imap-banner
@@ -378,18 +344,18 @@ ___
 <!-- POP3 {{{-->
 ## POP3
 
-<!-- Nmap {{{-->
-### Nmap
+<!-- Service {{{-->
+### Service
 
 Query supported POP3 capabilities
-(e.g, *AUTH types*, *STLS*, *TOP*, *UIDL*)
+(*e.g, AUTH types, STLS, TOP, UIDL*)
 
 ```sh
 nmap -p 110 --script pop3-capabilities <target> -oA pop3-capabilities
 ```
 
 Extract NTLM challenge info
-(e.g., *Windows domain name*, *Server hostname*, *NetBIOS*, *DNS info*)
+(*e.g., Windows domain name, Server hostname, NetBIOS, DNS info*)
 
 ```sh
 nmap -p 110 --script pop3-ntlm-info <target> -oA pop3-ntlm-info
@@ -400,13 +366,15 @@ nmap -p 110 --script pop3-ntlm-info <target> -oA pop3-ntlm-info
 <!-- Banner Grabbing {{{-->
 ### Banner Grabbing
 
-Banner grabbing with [[netcat]]
+Grab the POP3 service banner
+
+[[netcat]]
 
 ```sh
 nc -nv <target> 110
 ```
 
-Banner grabbing with `openssl`
+[openssl](https://github.com/openssl/openssl)
 
 ```sh
 openssl s_client -connect <target>:995 -crlf -quiet
@@ -416,9 +384,8 @@ openssl s_client -connect <target>:995 -crlf -quiet
 <!-- Connect {{{-->
 ### Connect
 
-Connect and interact with an **POP3** server using **openssl**
+Connect and interact with an **POP3** server
 (*TLS Encrypted Interaction*)
-
 
 ```sh
 openssl s_client -connect <target>:pop3s
@@ -489,22 +456,20 @@ openssl s_client -connect <target>:pop3s
 ### Password Logging
 
 If `auth_debug`/`auth_verbose_passwords` options are enabled, plain text
-passwiords appear directly in the logs.
+passwiords appear directly in the logs
 
-> [!example]-
+<!-- Log Files {{{-->
+> [!info]- Log Files
 >
 > - `/var/log/auth.log` (Debian/Ubuntu)
 > - `/var/log/mail.log` (Debian/Ubuntu)
 > - `/var/log/maillog` (RHEL/CentOS)
 > - `/var/log/dovecot.log` or `/var/log/dovecot-info.log`
->
-> Find the passwords quickly
->
-> ```sh
-> grep -Ei 'password=|pass=|plain=' /var/log/*mail* /var/log/auth.log
-> ```
 <!-- }}} -->
 
-___
+```sh
+grep -Ei 'password=|pass=|plain=' /var/log/*mail* /var/log/auth.log
+```
 
+___
 <!-- }}} -->

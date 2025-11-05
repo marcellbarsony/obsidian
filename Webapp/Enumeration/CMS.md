@@ -12,7 +12,7 @@ A **Content Management System** ([CMS](https://en.wikipedia.org/wiki/Content_man
 is a software used to manage the creation and modification of digital contents
 (*e.g., websites*).
 
-> [!tip]-
+> [!tip]- Common CMS
 >
 > Most common CMS
 >
@@ -30,12 +30,14 @@ ___
 
 Identify technologies on websites
 
-<!-- Online Tools {{{-->
-### Online Tools
+<!-- Website {{{-->
+### Website
 
-- [Wappalyzer](https://www.wappalyzer.com/) (*Browser extension*)
+Check the website for
 
-- [Whatcms](https://whatcms.org/)
+- Credits at the bottom or corner of pages
+- Comments and metadata
+- Stack traces and verbose error messages
 
 <!-- }}} -->
 
@@ -46,25 +48,53 @@ Identify telltale file paths or directory names
 
 > [!tip]-
 >
-> - **WordPress**: `/wp-content/`, `/wp-includes/`, `class-wp.php`
-> - **Joomla**: `/libraries/joomla/`, `/components/com_content/`
-> - **Drupal**: `/core/lib/Drupal/`, `/modules/`, `Drupal\Core\`
+> - **WordPress**: `/wp-admin`, `/wp-content/`, `/wp-includes/`, `class-wp.php`
+> - **Joomla**: `/joomla`, `/libraries/joomla/`, `/components/com_content/`
+> - **Drupal**: `/drupal`, `/core/lib/Drupal/`, `/modules/`, `Drupal\Core\`
 > - **Magento**: `/app/code/Magento/`, `Mage::`
-> - **TYPO3**: `/typo3/sysext/`, `TYPO3\CMS\`
-> - **Laravel-based CMS** (*like OctoberCMS*): `/vendor/laravel/`, `October\Rain\`
+> - **TYPO3**: `/typo3`, `/typo3/sysext/`, `TYPO3\CMS\`
+> - **Laravel-based CMS** (*like OctoberCMS*): `/vendor`, `/vendor/laravel/`, `October\Rain\`
 > - **DotNetNuke / DNN**: `DotNetNuke.` namespaces
 > - **Sitecore**: `Sitecore.` namespaces or `/App_Config/Sitecore.config`
+> - **Node.js**: `/node_modules`
+
 
 <!-- }}} -->
 
-<!-- Website {{{-->
-### Website
+<!-- Online Tools {{{-->
+### Online Tools
 
-Check the website for
 
-- Credits at the bottom or corner of pages
-- Comments and metadata
-- Stack traces and verbose error messages
+- [Whatcms](https://whatcms.org/)
+
+<!-- }}} -->
+
+<!-- Browser Extension {{{-->
+### Browser Extension
+
+Wappalyzer constantly tries to fingerprint technologies
+on every new visited URL
+
+- [Wappalyzer](https://www.wappalyzer.com/)
+- [Wappalyzer](https://addons.mozilla.org/en-US/firefox/addon/wappalyzer/)
+  (*Firefox Add-on*)
+
+> [!warning]
+>
+> Wappalyzer may not detect a CMS initially.
+>
+> The site may need to be refreshed or another page should be visited.
+
+<!-- }}} -->
+
+<!-- Tag {{{-->
+### Tag
+
+Get the tag (*HTML metadata element*) used by default in popular CMS
+
+```sh
+curl -s http://<target>/index.php | grep '<meta name="generator"'
+```
 
 <!-- }}} -->
 
@@ -100,21 +130,20 @@ wpscan --url <target> --enumerate u1-100
 Bruteforce a user
 
 ```sh
-wpscan --url <target> --username $username --passwords "/path/to/wordlist.txt"
+wpscan --url <target> --username <username> --passwords "<wordlist.txt>"
 ```
 
 Enumerate and bruteforce users
 
 ```sh
-wpscan --url <target> --enumerate u --passwords "/path/to/wordlist.txt"
+wpscan --url <target> --enumerate u --passwords "<wordlist.txt>"
 ```
 <!-- }}} -->
 
 <!-- Droopescan {{{-->
 #### Droopescan
 
-[Droopescan](https://github.com/SamJoan/droopescan)
-supports Drupal, SilverStripe and WordPress
+[[Droopescan]] supports Drupal, SilverStripe and WordPress
 (*and partially supports Joomla and Moodle*)
 
 CMS identification
@@ -126,7 +155,7 @@ droopescan scan -u <target_url>
 Basic scan (known CMS)
 
 ```sh
-droopescan scan $cms_name -u <target_url>
+droopescan scan <cms_name> -u <target_url>
 ```
 <!-- }}} -->
 

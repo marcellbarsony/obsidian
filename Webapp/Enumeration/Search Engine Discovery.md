@@ -17,8 +17,10 @@ ___
 <!-- Search Operators {{{-->
 ## Search Operators
 
-Search engine operators (*e.g., `site:`, `filetype:`, `" "`, etc.*)
+Search engine operators
+(*e.g., `site:`, `filetype:`, `" "`, etc.*)
 
+<!-- Example {{{-->
 > [!example]-
 >
 > | Operator | Operator Description | Example | Example Description
@@ -44,6 +46,7 @@ Search engine operators (*e.g., `site:`, `filetype:`, `" "`, etc.*)
 > | `..` (*range search*) | Finds results within a specified numerical range. | `site:ecommerce.com "price" 100..500` | Look for products priced between 100 and 500 on an e-commerce website. |
 > | `" "` (*quotation marks*) | Searches for exact phrases. | `"information security policy"` | Find documents mentioning the exact phrase "information security policy". |
 > | `-` (*minus sign*) | Excludes terms from the search results. | `site:news.com -inurl:sports` | Search for news articles on news.com excluding sports-related content. |
+<!-- }}} -->
 
 ___
 <!-- }}} -->

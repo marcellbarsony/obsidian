@@ -9,6 +9,8 @@ links: "[[Services]]"
 
 # Usage
 
+___
+
 <!-- List Contents {{{-->
 ## List Contents
 
@@ -35,7 +37,13 @@ Share the directory `/mnt/nfs` to the subnet `101.129.14.0/24`.
 
 ```sh
 sudo echo '/mnt/nfs  10.129.14.0/24(sync,no_subtree_check)' >> /etc/exports
+```
+
+```sh
 sudo systemctl restart nfs-kernel-server 
+```
+
+```sh
 sudo exportfs
 ```
 

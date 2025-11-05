@@ -27,8 +27,8 @@ ___
 <!-- Reconnaissance {{{-->
 ## Reconnaissance
 
-<!-- Nmap {{{-->
-### Nmap
+<!-- Service {{{-->
+### Service
 
 Detect MySQL service
 
@@ -36,8 +36,8 @@ Detect MySQL service
 nmap -p 3306 <target> -oA mysql-service
 ```
 
-Enumerate [[General#MySQL Database|MySQL Databases]] via
-[[Nmap Scripting Engine|Nmap NSE]] scripts
+Enumerate [[General#MySQL Database|MySQL Databases]]
+(*[[Nmap Scripting Engine|Nmap NSE]] scripts*)
 
 ```sh
 sudo nmap -sC -sV -p3306 --script mysql* <target> -oA mysql-default-scripts
@@ -120,7 +120,7 @@ sudo nmap -sC -sV -p3306 --script mysql* <target> -oA mysql-default-scripts
 ### Metasploit
 
 MySQL Server Version Enumeration
-([mysql_version](https://www.rapid7.com/db/modules/auxiliary/scanner/mysql/mysql_version/))
+(*[mysql_version](https://www.rapid7.com/db/modules/auxiliary/scanner/mysql/mysql_version/)*)
 
 ```sh
 use auxiliary/scanner/mysql/mysql_version
@@ -147,10 +147,10 @@ use auxiliary/scanner/mysql/mysql_version
 <!-- }}} -->
 
 MySQL Authentication Bypass Password Dump
-([mysql_authbypass_hashdump](https://www.rapid7.com/db/modules/auxiliary/scanner/mysql/mysql_authbypass_hashdump/))
+(*[mysql_authbypass_hashdump](https://www.rapid7.com/db/modules/auxiliary/scanner/mysql/mysql_authbypass_hashdump/)*)
 
 ```sh
-msf> use auxiliary/scanner/mysql/mysql_authbypass_hashdump
+use auxiliary/scanner/mysql/mysql_authbypass_hashdump
 ```
 
 <!-- Info {{{-->
@@ -187,10 +187,10 @@ msf> use auxiliary/scanner/mysql/mysql_authbypass_hashdump
 <!-- }}} -->
 
 MYSQL Password Hashdump
-([mysql_hashdump](https://www.rapid7.com/db/modules/auxiliary/scanner/mysql/mysql_hashdump/))
+(*[mysql_hashdump](https://www.rapid7.com/db/modules/auxiliary/scanner/mysql/mysql_hashdump/)*)
 
 ```sh
-msf> use auxiliary/scanner/mysql/mysql_hashdump
+use auxiliary/scanner/mysql/mysql_hashdump
 ```
 
 <!-- Info {{{-->
@@ -228,11 +228,14 @@ msf> use auxiliary/scanner/mysql/mysql_hashdump
 <!-- }}} -->
 
 MySQL Enumeration Module
-([mysql_enum](https://www.rapid7.com/db/modules/auxiliary/admin/mysql/mysql_enum/))
-(*needs credentials*)
+(*[mysql_enum](https://www.rapid7.com/db/modules/auxiliary/admin/mysql/mysql_enum/)*)
+
+> [!warning]
+>
+> Valid credentials required
 
 ```sh
-msf> use auxiliary/admin/mysql/mysql_enum
+use auxiliary/admin/mysql/mysql_enum
 ```
 
 <!-- Info {{{-->
@@ -257,10 +260,10 @@ msf> use auxiliary/admin/mysql/mysql_enum
 <!-- }}} -->
 
 MYSQL Schema Dump
-([mysql_schemadump](https://www.rapid7.com/db/modules/auxiliary/scanner/mysql/mysql_schemadump/))
+(*[mysql_schemadump](https://www.rapid7.com/db/modules/auxiliary/scanner/mysql/mysql_schemadump/)*)
 
 ```sh
-msf> use auxiliary/scanner/mysql/mysql_schemadump
+use auxiliary/scanner/mysql/mysql_schemadump
 ```
 
 <!-- Info {{{-->
@@ -284,10 +287,10 @@ msf> use auxiliary/scanner/mysql/mysql_schemadump
 <!-- }}} -->
 
 Oracle MySQL for Microsoft Windows FILE Privilege Abuse
-([mysql_start_up](https://www.rapid7.com/db/modules/exploit/windows/mysql/mysql_start_up/))
+(*[mysql_start_up](https://www.rapid7.com/db/modules/exploit/windows/mysql/mysql_start_up/)*)
 
 ```sh
-msf> use exploit/windows/mysql/mysql_start_up
+use exploit/windows/mysql/mysql_start_up
 ```
 
 <!-- Info {{{-->
@@ -317,19 +320,21 @@ msf> use exploit/windows/mysql/mysql_start_up
 <!-- Banner Grabbing {{{-->
 ### Banner Grabbing
 
-Banner grabbing with [[Nmap]]
+Grab the MySQL service banner
+
+[[Nmap]]
 
 ```sh
 nmap -sV -p 3306 <target> -oA mysql-banner
 ```
 
-Banner grabbing with [[netcat]]
+[[netcat]]
 
 ```sh
 nc -vn <target> 3306
 ```
 
-Banner grabbing with [[Telnet/General|Telnet]]
+[[Telnet/General|Telnet]]
 
 ```sh
 telnet <target> 3306
@@ -403,21 +408,20 @@ The most important databases on a MySQL server are
 ### Information Schema
 
 Information schema (`information_schema`) stores metadata mainly retrieved from
-the `system_schema` database, such as
+the `system_schema` database
 
-- Databases and tables (`SCHEMATA`, `TABLES`, `COLUMNS`)
-- Constraints and indexes (`KEY_COLUMN_USAGE`, `STATISTICS`)
-- Privileges (`USER_PRIVILEGES`, `TABLE_PRIVILEGES`)
-- Views, triggers, routines, and more
+> [!info]-
+>
+> - Databases and tables (`SCHEMATA`, `TABLES`, `COLUMNS`)
+> - Constraints and indexes (`KEY_COLUMN_USAGE`, `STATISTICS`)
+> - Privileges (`USER_PRIVILEGES`, `TABLE_PRIVILEGES`)
+> - Views, triggers, routines, and more
 
-<!-- Example {{{-->
-> [!example]-
->
-> List all tables in a specific database
->
-> ```sql
-> SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'my_database';
-> ```
+List all tables in a specific database
+
+```sql
+SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'my_database';
+```
 <!-- }}} -->
 
 <!-- }}} -->
@@ -427,28 +431,26 @@ the `system_schema` database, such as
 
 [System Schema](https://dev.mysql.com/doc/refman/8.0/en/system-schema.html)
 (`sys`) is MySQL’s admin helper layer, and is a curated set of views, functions,
-and procedures built on top of `performance_schema` and `information_schema`,
-containing
+and procedures built on top of `performance_schema` and `information_schema`
 
-- Summaries of expensive queries
-- I/O statistics per table or schema
-- Wait events and latency breakdowns
-- User-level activity and resource usage
+> [!info]-
+>
+> - Summaries of expensive queries
+> - I/O statistics per table or schema
+> - Wait events and latency breakdowns
+> - User-level activity and resource usage
 
-<!-- Example {{{-->
-> [!example]-
->
-> See top 10 most expensive SQL statements
->
-> ```sql
-> SELECT * FROM sys.statement_analysis ORDER BY total_latency DESC LIMIT 10;
-> ```
->
-> See which tables are being hit the most
->
-> ```sql
-> SELECT * FROM sys.schema_table_statistics ORDER BY rows_fetched DESC LIMIT 10;
-> ```
+See top 10 most expensive SQL statements
+
+```sql
+SELECT * FROM sys.statement_analysis ORDER BY total_latency DESC LIMIT 10;
+```
+
+See which tables are being hit the most
+
+```sql
+SELECT * FROM sys.schema_table_statistics ORDER BY rows_fetched DESC LIMIT 10;
+```
 <!-- }}} -->
 
 <!-- }}} -->

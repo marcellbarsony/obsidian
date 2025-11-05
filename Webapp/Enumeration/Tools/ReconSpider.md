@@ -39,7 +39,7 @@ with preconfigured API keys
 > (*virtual environment*)
 >
 > ```sh
-> pip3 install scrapy
+> pip3 install scrapy [--break-system-packages]
 > ```
 <!-- }}} -->
 
@@ -50,7 +50,7 @@ with preconfigured API keys
 >
 >
 > ```sh
-> wget -O ReconSpider.zip https://academy.hackthebox.com/storage/modules/144/ReconSpider.v1.2.zip
+> wget https://academy.hackthebox.com/storage/modules/144/ReconSpider.v1.2.zip -O ReconSpider.zip
 > ```
 > ```sh
 > unzip ReconSpider.zip 

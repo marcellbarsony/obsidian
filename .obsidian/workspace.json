@@ -8,12 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "bbca554df127341c",
+            "id": "2e9b47e82989b4dd",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Networking/Services/SMB/SMB.md",
+                "file": "Webapp/Enumeration/Fingerprinting.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "SMB"
+              "title": "Fingerprinting"
             }
           }
         ]
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/Services/SMB/SMB.md",
+                "file": "Webapp/Enumeration/Fingerprinting.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of SMB"
+              "title": "Outline of Fingerprinting"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/Services/SMB/SMB.md",
+                "file": "Webapp/Enumeration/Fingerprinting.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of SMB"
+              "title": "Graph of Fingerprinting"
             }
           }
         ]
@@ -223,51 +223,51 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "bbca554df127341c",
+  "active": "2e9b47e82989b4dd",
   "lastOpenFiles": [
-    "Networking/Services/SMB/Exploitation.md",
-    "Networking/Services/SMB/test.md",
-    "Networking/Services/SMB/Untitled.canvas",
-    "Networking/Services/SMB/General.md",
-    "Networking/Services/SMB/SMB.md",
-    "Networking/Services/SMB/Enumeration.md",
-    "Networking/Services/SMB/Usage.md",
-    "Networking/Services/Telnet/Enumeration.md",
-    "Networking/Services/Telnet/Exploitation.md",
-    "Networking/Services/Telnet/Enumeration_1.md",
-    "Networking/Services/Telnet/General.md",
-    "Networking/Services/SSH/Enumeration.md",
-    "Networking/Services/SSH/Exploitation.md",
-    "Networking/Services/FTP/Usage.md",
-    "Networking/Services/FTP/Exploitation.md",
-    "Networking/Services/FTP/Enumeration.md",
-    "Networking/Services/FTP/General.md",
-    "Networking/Enumeration/_Checklist.md",
-    "Networking/Tools/Nmap/Host Enumeration.md",
-    "Networking/Tools/Tools.md",
-    "Networking/Tools/Nmap/Host Discovery.md",
-    "Networking/Enumeration/Host Discovery.md",
-    "Networking/Enumeration/Tools.md",
-    "Networking/Tools/Nmap/Detection Evasion.md",
-    "Networking/Networking.md",
+    "Webapp/Enumeration/Execution Paths.md",
     "Webapp/Enumeration/CMS.md",
+    "Webapp/Enumeration/Error Page.md",
+    "Webapp/Enumeration/Domain.md",
+    "Webapp/Enumeration/Crawling.md",
     "Webapp/Enumeration/Banner Grabbing.md",
-    "Webapp/Enumeration/src/virtualhost_lookup.png",
+    "Webapp/Enumeration/_Checklist.md",
+    "Webapp/Enumeration/Tools/ReconSpider.md",
+    "Webapp/Enumeration/Scanning.md",
+    "Webapp/Enumeration/WAF.md",
+    "Webapp/Enumeration/Tools/WhatWaf.md",
+    "Webapp/Enumeration/Tools/whatwaf.md",
+    "Webapp/Enumeration/Tools/WhatWeb_1.md",
+    "Webapp/Enumeration/Tools/Nikto.md",
+    "Webapp/Enumeration/Tools/FinalRecon.md",
+    "Webapp/Enumeration/Tools/Droopescan.md",
+    "Webapp/Enumeration/Well-Known.md",
+    "Webapp/Enumeration/Search Engine Discovery.md",
+    "Webapp/Enumeration/Virtual Hosts.md",
+    "Webapp/Enumeration/Enumeration.md",
+    "Webapp/Enumeration/Tools/Ffuf.md",
+    "Webapp/Enumeration/Tools/Dirsearch.md",
+    "Webapp/Enumeration/Tools/amass.md",
+    "Webapp/Enumeration/Web Contents.md",
+    "Webapp/Enumeration/Tools/Wafw00f.md",
+    "Webapp/Enumeration/Metafiles.md",
+    "Networking/Services/DNS/src/dns-zone-transfer.png",
+    "Networking/Services/DNS/src/dns-zone.png",
+    "Networking/Services/DNS/src/dns-subdomain.png",
+    "Networking/Services/DNS/src/dns-structure.png",
+    "Networking/Services/DNS/src/dns-flowchart.svg",
+    "Networking/Services/SSH/src/ssh-remote-port-forwarding.png",
+    "Networking/Services/SSH/src/ssh-pka-light.png",
+    "Networking/Services/SSH/src/ssh-local-port-forwarding-bastion.png",
+    "Networking/Services/SSH/src/ssh-local-port-forwarding.png",
+    "Networking/Services/SNMP/src/SNMP_OID_MIB_Tree.png",
+    "Networking/Services/SMB/Untitled.canvas",
     "Webapp/Enumeration/src",
     "Networking/Services/DNS/Tools",
-    "Networking/Services/DNS/src/dns-subdomain.png",
-    "Networking/Services/DNS/src/dns-zone.png",
     "Webapp/Tools/Burp Suite",
-    "Networking/Services/DNS/src/dns-zone-transfer.png",
-    "Networking/Services/DNS/src/dns_zone_transfer.png",
     "Webapp/Tools",
-    "Networking/Services/DNS/src/dns-flowchart.svg",
     "Webapp/Enumeration/Fingerprinting",
     "Webapp/Enumeration/Passive",
-    "Networking/Services/SSH/src/ssh-pka-light.png",
-    "Networking/Services/SSH/src/20251026-011251.png",
-    "Networking/Services/SSH/src/ssh-pka.png",
-    "Networking/Services/SSH/src/pka.png",
     "Networking/Services/SSH/src",
     "Networking/Services/MSSQL/src/password-list.txt",
     "Networking/Services/MSSQL/src/mssql-betterdefaultpasslist.txt",

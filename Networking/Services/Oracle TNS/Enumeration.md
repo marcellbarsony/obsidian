@@ -7,6 +7,8 @@ tags:
 
 # Enumeration
 
+___
+
 <!-- Nmap {{{-->
 ## Nmap
 
@@ -44,39 +46,28 @@ ___
 
 Connect to the TNS Listener to gather version and service information
 
-Banner grabbing with [[netcat]]
+[[Netcat]] — Grab banner and TNS version
 
-> [!example]-
->
-> Grab banner
->
-> ```sh
-> nc -vn <target> 1521
-> ```
->
-> Get TNS version
->
-> ```sh
-> echo "(CONNECT_DATA=(COMMAND=version))" | nc <target> 1521
-> ```
+```sh
+nc -vn <target> 1521
+```
 
-Banner grabbing with [[Nmap]]
+```sh
+echo "(CONNECT_DATA=(COMMAND=version))" | nc <target> 1521
+```
 
-> [!example]-
->
-> ```sh
-> nmap -p 1521 -sV <target>
-> ```
+[[Nmap]] — Banner grabbing
 
-Banner grabbing with [tnslsnr](https://www.kali.org/tools/tnscmd10g/)
+```sh
+nmap -p 1521 -sV <target> -oA oracle-tns-banner
+```
 
-> [!example]-
->
-> TNS ping
->
-> ```sh
-> tnslsnr target.com 1521
-> ```
+[tnslsnr](https://www.kali.org/tools/tnscmd10g/) —
+Banner grabbing (*TNS ping*)
+
+```sh
+tnslsnr <target> 1521
+```
 
 ___
 
@@ -101,7 +92,7 @@ is required to connect to Oracle databases and can be brute-forced
 > - `DB11G`
 > - `DB12C`
 
-SID enumeration with [[Nmap]]
+[[Nmap]] — SID enumeration
 
 ```sh
 sudo nmap -p 1521 -sV <target> --open --script oracle-sid-brute -oA oracle-sid-brute
@@ -128,7 +119,8 @@ sudo nmap -p 1521 -sV <target> --open --script oracle-sid-brute -oA oracle-sid-b
 > ```
 <!-- }}} -->
 
-SID enumeration with [[Metasploit]]
+[[Metasploit]] — Oracle TNS Listener SID Enumeration
+(*[sid_enum](https://www.rapid7.com/db/modules/auxiliary/scanner/oracle/sid_enum/)*)
 
 ```sh
 use auxiliary/scanner/oracle/sid_enum
@@ -136,8 +128,6 @@ use auxiliary/scanner/oracle/sid_enum
 
 > [!example]-
 >
-> Oracle TNS Listener SID Enumeration
-> ([sid_enum](https://www.rapid7.com/db/modules/auxiliary/scanner/oracle/sid_enum/))
 >
 > ```sh
 > msf > use auxiliary/scanner/oracle/sid_enum
@@ -149,13 +139,14 @@ use auxiliary/scanner/oracle/sid_enum
 > msf auxiliary(sid_enum) > run
 > ```
 
-SID enumeration with [[#ODAT]]
+[[#ODAT]] — SID enumeration
 
 ```sh
 odat sidguesser -s <target> -p 1521
 ```
 
-SID enumeration with [sidguesser](https://www.kali.org/tools/sidguesser/)
+[sidguesser](https://www.kali.org/tools/sidguesser/) —
+SID enumeration
 
 ```sh
 sidguess -i <target> -d /usr/share/wordlists/metasploit/unix_users.txt
@@ -177,51 +168,48 @@ in Oracle databases
 ### Install
 
 Install [odat](https://www.kali.org/tools/odat/)
+with [apt](https://en.wikipedia.org/wiki/APT_(software))
 
+```sh
+sudo apt install odat
+```
+
+Install [[Enumeration#ODAT|ODAT]] manually
+
+<!-- Example {{{-->
 > [!example]-
 >
-> Install with [apt](https://en.wikipedia.org/wiki/APT_(software))
->
 > ```sh
-> sudo apt install odat
+> wget https://download.oracle.com/otn_software/linux/instantclient/214000/instantclient-basic-linux.x64-21.4.0.0.0dbru.zip
+> wget https://download.oracle.com/otn_software/linux/instantclient/214000/instantclient-sqlplus-linux.x64-21.4.0.0.0dbru.zip
+> sudo mkdir -p /opt/oracle
+> sudo unzip -d /opt/oracle instantclient-basic-linux.x64-21.4.0.0.0dbru.zip
+> sudo unzip -d /opt/oracle instantclient-sqlplus-linux.x64-21.4.0.0.0dbru.zip
+> export LD_LIBRARY_PATH=/opt/oracle/instantclient_21_4:$LD_LIBRARY_PATH
+> export PATH=$LD_LIBRARY_PATH:$PATH
+> source ~/.bashrc
+> cd ~
+> git clone https://github.com/quentinhardy/odat.git
+> cd odat/
+> pip install python-libnmap
+> git submodule init
+> git submodule update
+> pip3 install cx_Oracle
+> sudo apt-get install python3-scapy -y
+> sudo pip3 install colorlog termcolor passlib python-libnmap
+> sudo apt-get install build-essential libgmp-dev -y
+> pip3 install pycryptodome
+>
+> --2025-06-24 00:24:53--  https://download.oracle.com/otn_software/linux/instantclient/214000/instantclient-basic-linux.x64-21.4.0.0.0dbru.zip
+> Resolving download.oracle.com (download.oracle.com)... 23.58.104.121
+> Connecting to download.oracle.com (download.oracle.com)|23.58.104.121|:443... connected.
+> HTTP request sent, awaiting response... 200 OK
+> Length: 79386308 (76M) [application/zip]
+> Saving to: ‘instantclient-basic-linux.x64-21.4.0.0.0dbru.zip’
+>
+> <SNIP>
 > ```
->
-> Install [[Enumeration#ODAT|ODAT]] manually
->
-> <!-- Example {{{-->
-> > [!example]-
-> >
-> > ```sh
-> > wget https://download.oracle.com/otn_software/linux/instantclient/214000/instantclient-basic-linux.x64-21.4.0.0.0dbru.zip
-> > wget https://download.oracle.com/otn_software/linux/instantclient/214000/instantclient-sqlplus-linux.x64-21.4.0.0.0dbru.zip
-> > sudo mkdir -p /opt/oracle
-> > sudo unzip -d /opt/oracle instantclient-basic-linux.x64-21.4.0.0.0dbru.zip
-> > sudo unzip -d /opt/oracle instantclient-sqlplus-linux.x64-21.4.0.0.0dbru.zip
-> > export LD_LIBRARY_PATH=/opt/oracle/instantclient_21_4:$LD_LIBRARY_PATH
-> > export PATH=$LD_LIBRARY_PATH:$PATH
-> > source ~/.bashrc
-> > cd ~
-> > git clone https://github.com/quentinhardy/odat.git
-> > cd odat/
-> > pip install python-libnmap
-> > git submodule init
-> > git submodule update
-> > pip3 install cx_Oracle
-> > sudo apt-get install python3-scapy -y
-> > sudo pip3 install colorlog termcolor passlib python-libnmap
-> > sudo apt-get install build-essential libgmp-dev -y
-> > pip3 install pycryptodome
-> >
-> > --2025-06-24 00:24:53--  https://download.oracle.com/otn_software/linux/instantclient/214000/instantclient-basic-linux.x64-21.4.0.0.0dbru.zip
-> > Resolving download.oracle.com (download.oracle.com)... 23.58.104.121
-> > Connecting to download.oracle.com (download.oracle.com)|23.58.104.121|:443... connected.
-> > HTTP request sent, awaiting response... 200 OK
-> > Length: 79386308 (76M) [application/zip]
-> > Saving to: ‘instantclient-basic-linux.x64-21.4.0.0.0dbru.zip’
-> >
-> > <SNIP>
-> > ```
-> <!-- }}} -->
+<!-- }}} -->
 
 <!-- }}} -->
 

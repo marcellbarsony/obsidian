@@ -13,6 +13,8 @@ links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
 used to systematically browse the web and extract important data
 (*e.g., links, metadata, sensitive files, comments, etc.*)
 
+___
+
 <!-- Methodology {{{-->
 ## Methodology
 
@@ -35,6 +37,7 @@ before backtracking nd exploring other paths.
 ___
 <!-- }}} -->
 
+<!-- Web Crawlers {{{-->
 ## Web Crawlers
 
 - [[Burp Suite]]'s Spider
@@ -42,3 +45,6 @@ ___
 - [OWASP ZAP](https://www.zaproxy.org/) (*Zed Attack Proxy*)
 - [Scrapy](https://www.scrapy.org/) (*Python framework*)
 - [Apache Nutch](https://nutch.apache.org/) (*Scalable Crawler*)
+
+___
+<!-- }}} -->

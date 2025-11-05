@@ -23,14 +23,14 @@ ___
 
 ### Directory Enumeration
 
-Conduct directory enumeration with
+Conduct directory enumeration
 
 - [[Burp Suite]]
 - [[Dirsearch|dirsearch.py]]
 - [[Gobuster]]
 - [[Ffuf]]
 
-Conduct recursive directory enumeration with
+Conduct recursive directory enumeration
 
 - [[Burp Suite]]
 - [[Dirsearch|dirsearch.py]]
@@ -45,10 +45,12 @@ ___
 
 Investigate discovered files and directories for secrets and clues
 
+<!-- File Upload Directories {{{-->
 ### File Upload Directories
 
 Note down the directories that may store uploaded files
 
+<!-- Example {{{-->
 > [!example]-
 >
 > - `/assets`
@@ -63,11 +65,16 @@ Note down the directories that may store uploaded files
 > - `/storage`
 > - `/tmp`
 > - `/uploads`
+<!-- }}} -->
 
+<!-- }}} -->
+
+<!-- Admin & Management Interfaces {{{-->
 ### Admin & Management Interfaces
 
 Often protected or restricted, may expose controls or sensitive data
 
+<!-- Example {{{-->
 > [!example]-
 >
 > - `/admin`
@@ -77,11 +84,16 @@ Often protected or restricted, may expose controls or sensitive data
 > - `/cms`
 > - `/controlpanel`
 > - `/panel`
+<!-- }}} -->
 
+<!-- }}} -->
+
+<!-- Authentication & User Management {{{-->
 ### Authentication & User Management
 
 Could help with login brute force, password resets, etc.
 
+<!-- Example {{{-->
 > [!example]-
 >
 > - `/login`
@@ -93,11 +105,16 @@ Could help with login brute force, password resets, etc.
 > - `/profile`
 > - `/auth`
 > - `/session`
+<!-- }}} -->
 
+<!-- }}} -->
+
+<!-- Configuration / Debug / Dev Tools {{{-->
 ### Configuration / Debug / Dev Tools
 
 May reveal sensitive info or debug output
 
+<!-- Example {{{-->
 > [!example]-
 >
 > - `/config`
@@ -109,64 +126,53 @@ May reveal sensitive info or debug output
 > - `/logs`
 > - `/error`
 > - `/status`
+<!-- }}} -->
 
+<!-- }}} -->
+
+<!-- API Endpoints {{{-->
 ### API Endpoints
 
 Useful for interacting with backend services:
 
+<!-- Example {{{-->
 > [!example]-
 >
 > - `/api`
 > - `/api/v1`
 > - `/graphql`
 > - `/rest`
+<!-- }}} -->
 
+<!-- }}} -->
+
+<!-- Common CMS / Framework Paths {{{-->
 ### Common CMS / Framework Paths
 
-Identify common CMS and Framework Paths
+Identify common Framework and [[CMS#Paths|CMS Paths]]
 
-WordPress
-
+<!-- Example {{{-->
 > [!example]-
 >
-> - `/wp-admin`
-> - `/wp-content`
-> - `/wp-includes`
+> - **WordPress**: `/wp-admin`, `/wp-content/`, `/wp-includes/`, `class-wp.php`
+> - **Joomla**: `/joomla`, `/libraries/joomla/`, `/components/com_content/`
+> - **Drupal**: `/drupal`, `/core/lib/Drupal/`, `/modules/`, `Drupal\Core\`
+> - **Magento**: `/app/code/Magento/`, `Mage::`
+> - **TYPO3**: `/typo3`, `/typo3/sysext/`, `TYPO3\CMS\`
+> - **Laravel-based CMS** (*like OctoberCMS*): `/vendor`, `/vendor/laravel/`, `October\Rain\`
+> - **DotNetNuke / DNN**: `DotNetNuke.` namespaces
+> - **Sitecore**: `Sitecore.` namespaces or `/App_Config/Sitecore.config`
+> - **Node.js**: `/node_modules`
+<!-- }}} -->
 
-Joomla
+<!-- }}} -->
 
-> [!example]-
->
-> - `/joomla`
-
-Drupal
-
-> [!example]-
->
-> - `/drupal`
-
-TYPO3
-
-> [!example]-
->
-> - `/typo3`
-
-Laravel / Composer
-
-> [!example]-
->
-> - `/vendor`
-
-Node.js
-
-> [!example]-
->
-> - `/node_modules`
-
+<!-- Backup or Misconfigured Paths {{{-->
 ### Backup or Misconfigured Paths
 
 Can leak source code or database dumps
 
+<!-- Example {{{-->
 > [!example]-
 >
 > - `/backup`
@@ -179,12 +185,22 @@ Can leak source code or database dumps
 > - `/.hg/`
 > - `/db`
 > - `/database`
+<!-- }}} -->
 
+<!-- }}} -->
+
+<!-- Other Useful Targets {{{-->
 ### Other Useful Targets
 
+<!-- Example {{{-->
 > [!example]-
 >
 > - `/private`
 > - `/secret`
 > - `/hidden`
+<!-- }}} -->
+
+<!-- }}} -->
+
+___
 <!-- }}} -->

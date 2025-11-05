@@ -9,19 +9,36 @@ tags:
 
 ___
 
+<!-- Service {{{-->
+## Service
+
+[[Nmap]] — Identify Telnet server
+
+```sh
+nmap -p 23 <target> -oA telnet-identify
+```
+
+[[Nmap]] — Assess encryption on Telnet server
+
+```sh
+nmap -p 23 --script telnet-encrpytion <target> -oA telnet-script-encryption
+```
+___
+<!-- }}} -->
+
 <!-- Banner Grabbing {{{-->
 ## Banner Grabbing
 
 [[Netcat]]
 
 ```sh
-ncat -nv <target_ip> <target_port>
+ncat -nv <target_ip> 23
 ```
 
 [[Telnet/General|Telnet]]
 
 ```sh
-telnet <target_ip> <target_port>
+telnet <target_ip> 23
 ```
 
 [Shodan-cli](https://help.shodan.io/)
@@ -33,14 +50,14 @@ shodan stream --ports 23,1023,2323 --datadir telnet-data/ --limit 10000
 [[Nmap]]
 
 ```sh
-nmap -sCV -p <target_port> --script "*telnet* and safe" <target_ip> -oA telnet-banner-grabbing
+nmap -sCV -p 23 --script "*telnet* and safe" <target_ip> -oA telnet-banner-grabbing
 ```
 
 [[Metasploit]] — Telnet Login Check Scanner
 (*[telnet_version](https://www.rapid7.com/db/modules/auxiliary/scanner/telnet/telnet_login/)*)
 
 ```sh
-msf > use auxiliary/scanner/telnet/telnet_version
+use auxiliary/scanner/telnet/telnet_version
 ```
 
 <!-- Example {{{-->
@@ -71,5 +88,3 @@ msf > use auxiliary/scanner/telnet/telnet_version
 
 ___
 <!-- }}} -->
-
-

@@ -2,42 +2,21 @@
 id: Enumeration
 aliases: []
 tags:
-  - Networking/Services/ICMP/General
+  - Networking/Services/VNC/Enumeration
 ---
 
 # Enumeration
 
-<!-- Nmap {{{-->
-## Nmap
+<!-- Service {{{-->
+## Service
 
 ```sh
-nmap -sV --script vnc-info,realvnc-auth-bypass,vnc-title -p <target_port> <target_ip>
+nmap -p 5900-5906 <target> -oA vnc-detect
 ```
-
-<!-- }}} -->
-
-<!-- Metasploit {{{-->
-## Metasploit
 
 ```sh
-msf> use auxiliary/scanner/vnc/vnc_none_auth
+nmap -sV --script vnc-info,realvnc-auth-bypass,vnc-title -p <target_port> <target_ip> -oA vnc-script-all
 ```
 
-<!-- }}} -->
-
-<!-- Decrypting VNC Password {{{-->
-## Decrypting VNC Password
-
-The default password is stored in `~/.vnc/passwd`
-
-If the password looks encrypted, it is probably ciphered with
-[3des](https://en.wikipedia.org/wiki/Triple_DES)
-
-The password may be decrypted with
-[vncpwd](https://github.com/jeroennijhof/vncpwd)
-
-```sh
-vncpwd <vnc_password_file>
-```
-
+___
 <!-- }}} -->

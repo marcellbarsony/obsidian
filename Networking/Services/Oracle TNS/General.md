@@ -22,6 +22,8 @@ software suite, **TNS** supports various networking protocols between Oracle
 databases and client applications, such as
 [IPX/SPX](https://en.wikipedia.org/wiki/IPX/SPX) and TCP/IP protocol stacks.
 
+___
+
 <!-- TNS Listener {{{-->
 ## TNS Listener
 
@@ -37,6 +39,8 @@ including `TCP`/`IP`, `UDP`, `IPX`/`SPX`, and `AppleTalk`.
 The **TNS Listener** will only accept connections from authorized hosts and
 perform basic authentication using a combination of hostnames, IP addresses,
 usernames and passwords.
+
+___
 <!-- }}} -->
 
 <!-- Oracle RDBMS {{{-->
@@ -69,6 +73,7 @@ to identify which Oracle database it wants to connect to.
 > If a client specifies an **incorrect SID**,
 > the **connection attempt will fail**
 
+___
 <!-- }}} -->
 
 <!-- Configuration {{{-->
@@ -234,4 +239,5 @@ used by organizations together with oracle,
 
 <!-- }}} -->
 
+___
 <!-- }}} -->
