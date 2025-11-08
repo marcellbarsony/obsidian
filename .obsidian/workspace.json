@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Webapp/Enumeration/Fingerprinting.md",
+                "file": "Pentest/Tools/Nessus/Nessus.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Fingerprinting"
+              "title": "Nessus"
             }
           }
         ]
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Webapp/Enumeration/Fingerprinting.md",
+                "file": "Pentest/Tools/Nessus/Nessus.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Fingerprinting"
+              "title": "Outline of Nessus"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Webapp/Enumeration/Fingerprinting.md",
+                "file": "Pentest/Tools/Nessus/Nessus.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Fingerprinting"
+              "title": "Graph of Nessus"
             }
           }
         ]
@@ -225,6 +225,22 @@
   },
   "active": "2e9b47e82989b4dd",
   "lastOpenFiles": [
+    "Pentest/Tools/Nessus/src/policy.png",
+    "Pentest/Tools/Nessus/src/nessus_policies.png",
+    "Pentest/Tools/Nessus/src/nessus_settings.png",
+    "Webapp/Enumeration/Fingerprinting.md",
+    "Pentest/Tools/Nessus/src/advanced.png",
+    "Pentest/Tools/Nessus/src/ridbf.png",
+    "Pentest/Tools/Nessus/src/userenum.png",
+    "Pentest/Tools/Nessus/src/hydra.png",
+    "Pentest/Tools/Nessus/src/webapp.png",
+    "Pentest/Tools/Nessus/src/discovery.png",
+    "Pentest/Tools/Nessus/src/options.png",
+    "Pentest/Tools/Nessus/src/general.png",
+    "Pentest/Tools/Nessus/src",
+    "Pentest/Tools/Nessus.md",
+    "Pentest/Tools/Nessus/Nessus.md",
+    "Pentest/Tools/Nessus",
     "Webapp/Enumeration/Execution Paths.md",
     "Webapp/Enumeration/CMS.md",
     "Webapp/Enumeration/Error Page.md",
@@ -247,20 +263,6 @@
     "Webapp/Enumeration/Enumeration.md",
     "Webapp/Enumeration/Tools/Ffuf.md",
     "Webapp/Enumeration/Tools/Dirsearch.md",
-    "Webapp/Enumeration/Tools/amass.md",
-    "Webapp/Enumeration/Web Contents.md",
-    "Webapp/Enumeration/Tools/Wafw00f.md",
-    "Webapp/Enumeration/Metafiles.md",
-    "Networking/Services/DNS/src/dns-zone-transfer.png",
-    "Networking/Services/DNS/src/dns-zone.png",
-    "Networking/Services/DNS/src/dns-subdomain.png",
-    "Networking/Services/DNS/src/dns-structure.png",
-    "Networking/Services/DNS/src/dns-flowchart.svg",
-    "Networking/Services/SSH/src/ssh-remote-port-forwarding.png",
-    "Networking/Services/SSH/src/ssh-pka-light.png",
-    "Networking/Services/SSH/src/ssh-local-port-forwarding-bastion.png",
-    "Networking/Services/SSH/src/ssh-local-port-forwarding.png",
-    "Networking/Services/SNMP/src/SNMP_OID_MIB_Tree.png",
     "Networking/Services/SMB/Untitled.canvas",
     "Webapp/Enumeration/src",
     "Networking/Services/DNS/Tools",
@@ -269,8 +271,6 @@
     "Webapp/Enumeration/Fingerprinting",
     "Webapp/Enumeration/Passive",
     "Networking/Services/SSH/src",
-    "Networking/Services/MSSQL/src/password-list.txt",
-    "Networking/Services/MSSQL/src/mssql-betterdefaultpasslist.txt",
-    "Microsoft/Windows/Exploitation"
+    "Networking/Services/MSSQL/src/password-list.txt"
   ]
 }
