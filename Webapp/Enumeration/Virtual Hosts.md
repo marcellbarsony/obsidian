@@ -25,6 +25,10 @@ to be hosted on a single server.
 > If a **Virtual Host** doesn't have a DNS record, it can be accessed
 > by modifying the [[DNS/General#Hosts File|hosts file]]
 
+https://forum.hackthebox.com/t/virtual-hosts-task-1st-question/323275
+https://forum.hackthebox.com/t/stuck-on-information-gathering-vhosts/316453/13
+https://forum.hackthebox.com/t/how-do-i-know-if-its-neccessary-to-change-etc-hosts-for-a-machine/243490/3
+
 ___
 
 <!-- Configuration {{{-->

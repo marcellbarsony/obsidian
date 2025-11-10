@@ -7,22 +7,71 @@ tags:
 
 # Performance
 
+Scanning performance plays a significant role
+when an extensive network need to be scanned
+or dealing with low network bandwidth.
+
 ___
 
 <!-- Timeouts {{{-->
 ## Timeouts
 
-Default scan
+[Round-Trip Time](https://en.wikipedia.org/wiki/Round-trip_delay)
+or
+[Round-Trip Delay](https://en.wikipedia.org/wiki/Round-trip_delay)
+(*default: `--min-RTT-timeout 100`*)
+is the amount of time it takes for a signal to be sent
+plus the amount of time it takes for acknowledgement of that signal
+having been received.
+
+
+Default scan (*Top 100 ports*)
 
 ```sh
-sudo nmap 10.129.2.0/24 -F
+sudo nmap <target> -F
 ```
 
-Optimized RTT (Round-Trip-Time)
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> sudo nmap 10.129.2.0/24 -F
+> ```
+>
+> ```sh
+> <SNIP>
+> Nmap done: 256 IP addresses (10 hosts up) scanned in 39.44 seconds
+> ```
+<!-- }}} -->
+
+Optimized RTT (*Round-Trip Time*)
+
+
+> [!warning]
+>
+> Setting initial RTT timeout (*`--initial-rtt-timeout`*) too low
+> may result in overlooking hosts
 
 ```sh
-sudo nmap 10.129.2.0/24 -F --initial-rtt-timeout 50ms --max-rtt-timeout 100ms
+sudo nmap <target> -F --initial-rtt-timeout 50ms --max-rtt-timeout 100ms
 ```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> sudo nmap 10.129.2.0/24 -F --initial-rtt-timeout 50ms --max-rtt-timeout 100ms
+> ```
+> ```sh
+> <SNIP>
+> Nmap done: 256 IP addresses (8 hosts up) scanned in 12.29 seconds
+> ```
+>
+> > [!warning]
+> >
+> > The scan has found two hosts less with the optimized scan.
+> > The initial RTT timeout (*`--initial-rtt-timeout`*) is too short.
+<!-- }}} -->
 
 > [!info]-
 >
@@ -85,10 +134,11 @@ ___
 <!-- Timing {{{-->
 ## Timing
 
-Nmap offers 6 different timing templates to determine the aggressiveness of the
-scan - security systems may block the produced network traffic
+Nmap offers 6 different timing templates to determine
+the aggressiveness of the scan as security systems may block
+the produced network traffic
 
-> [!example]-
+> [!info]- Timing Types
 >
 > - `-T 0` / `-T paranoid`
 > - `-T 1` / `-T sneaky`

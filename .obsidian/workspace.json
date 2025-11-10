@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Pentest/Tools/Nessus/Nessus.md",
+                "file": "Networking/Enumeration/_Checklist.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Nessus"
+              "title": "_Checklist"
             }
           }
         ]
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Pentest/Tools/Nessus/Nessus.md",
+                "file": "Networking/Enumeration/_Checklist.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Nessus"
+              "title": "Outline of _Checklist"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Pentest/Tools/Nessus/Nessus.md",
+                "file": "Networking/Enumeration/_Checklist.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Nessus"
+              "title": "Graph of _Checklist"
             }
           }
         ]
@@ -225,6 +225,14 @@
   },
   "active": "2e9b47e82989b4dd",
   "lastOpenFiles": [
+    "Networking/Enumeration/Host Discovery.md",
+    "Networking/Enumeration/_Checklist.md",
+    "Networking/Tools/Nmap/Detection Evasion.md",
+    "Networking/Tools/Nmap/Performance.md",
+    "Networking/Tools/Nmap/Nmap Scripting Engine.md",
+    "Linux/General/Networking/iptables.md",
+    "Linux/General/Networking/VPN/WireGuard.md",
+    "Pentest/Tools/Nessus/Nessus.md",
     "Pentest/Tools/Nessus/src/policy.png",
     "Pentest/Tools/Nessus/src/nessus_policies.png",
     "Pentest/Tools/Nessus/src/nessus_settings.png",
@@ -236,10 +244,8 @@
     "Pentest/Tools/Nessus/src/webapp.png",
     "Pentest/Tools/Nessus/src/discovery.png",
     "Pentest/Tools/Nessus/src/options.png",
-    "Pentest/Tools/Nessus/src/general.png",
     "Pentest/Tools/Nessus/src",
     "Pentest/Tools/Nessus.md",
-    "Pentest/Tools/Nessus/Nessus.md",
     "Pentest/Tools/Nessus",
     "Webapp/Enumeration/Execution Paths.md",
     "Webapp/Enumeration/CMS.md",
@@ -257,12 +263,6 @@
     "Webapp/Enumeration/Tools/Nikto.md",
     "Webapp/Enumeration/Tools/FinalRecon.md",
     "Webapp/Enumeration/Tools/Droopescan.md",
-    "Webapp/Enumeration/Well-Known.md",
-    "Webapp/Enumeration/Search Engine Discovery.md",
-    "Webapp/Enumeration/Virtual Hosts.md",
-    "Webapp/Enumeration/Enumeration.md",
-    "Webapp/Enumeration/Tools/Ffuf.md",
-    "Webapp/Enumeration/Tools/Dirsearch.md",
     "Networking/Services/SMB/Untitled.canvas",
     "Webapp/Enumeration/src",
     "Networking/Services/DNS/Tools",

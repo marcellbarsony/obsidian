@@ -1,7 +1,8 @@
 ---
 id: Host Discovery
 aliases: []
-tags: []
+tags:
+  - Networking/Tools/Nmap/Host-Discovery
 ---
 
 # Host Discovery

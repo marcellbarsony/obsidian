@@ -7,6 +7,8 @@ tags:
 
 # Enumeration Checklist
 
+___
+
 <!-- Infrastructure Enumeration {{{-->
 ## Infrastructure Enumeration
 
@@ -25,6 +27,23 @@ tags:
 - [ ] [[Staff]]
     - [ ] [[Staff#LinkedIn|LinkedIn]]
     - [ ] [[Staff#GitHub|GitHub]]
+
+___
+<!-- }}} -->
+
+<!-- Network Enumeration {{{-->
+## Network Enumeration
+
+> [!todo]
+
+- [ ] [TODO] Check Firewall Presence & Evasion
+- [ ] [[Detection Evasion#Firewall|Firewall]]
+    - [ ] [[Detection Evasion#Firewall#Detection|Detection]]
+    - [ ] [[Detection Evasion#Firewall#Evasion|Evasion]]
+- [ ] [TODO] Check IPS/IDS Presence & Evasion
+- [ ] [[Detection Evasion#IPS/IDS|IPS/IDS]]
+    - [ ] [[Detection Evasion#IPS/IDS#Detection|Detection]]
+    - [ ] [[Detection Evasion#IPS/IDS#Evasion|Evasion]]
 
 ___
 <!-- }}} -->
