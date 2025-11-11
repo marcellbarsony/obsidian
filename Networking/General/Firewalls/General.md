@@ -9,7 +9,8 @@ tags:
 
 # Firewall
 
-A **Firewall** is a network security device (either hardware, software, or a
+A [firewall](https://en.wikipedia.org/wiki/Firewall_(computing))
+is a network security device (either hardware, software, or a
 combination of both) that monitors incoming (*ingress*) and outgoing (*egress*)
 network traffic.
 

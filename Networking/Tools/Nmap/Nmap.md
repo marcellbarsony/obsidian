@@ -20,14 +20,14 @@ ___
 <!-- Port States {{{-->
 ## Port States
 
-| State               | Description                                                           |
-| ------------------- | --------------------------------------------------------------------- |
-| **open**            | Connection (TCP, UDP, SCTP) established                               |
-| **closed**          | Response with `RST` flag is returned                                  |
-| **filtered**        | **Error** or **no response** is returned                              |
-| **unfiltered**      | TCP-ACK scan only: Port is accessible, state is unknown (open/closed) |
-| **open/filtered**   | No response; Firewall may protect the port                            |
-| **closed/filtered** | IP ID idle scan only: Port **closed or filtered by firewall**         |
+| State               | Description                                                             |
+| ------------------- | ----------------------------------------------------------------------- |
+| **open**            | Connection (*TCP, UDP, SCTP*) established                               |
+| **closed**          | Response with `RST` flag is returned                                    |
+| **filtered**        | **Error** or **no response** is returned (*firewall/packet filter*)     |
+| **unfiltered**      | TCP-ACK scan only: Port is accessible, state is unknown (*open/closed*) |
+| **open/filtered**   | No response; Firewall may protect the port                              |
+| **closed/filtered** | IP ID idle scan only: Port **closed or filtered by firewall**           |
 
 ___
 <!-- }}} -->

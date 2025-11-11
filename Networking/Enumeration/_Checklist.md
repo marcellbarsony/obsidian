@@ -34,16 +34,20 @@ ___
 <!-- Network Enumeration {{{-->
 ## Network Enumeration
 
-> [!todo]
-
-- [ ] [TODO] Check Firewall Presence & Evasion
 - [ ] [[Detection Evasion#Firewall|Firewall]]
     - [ ] [[Detection Evasion#Firewall#Detection|Detection]]
+        - [ ] [[Detection Evasion#Firewall#SYN Scan|SYN Scan]]
+    - [ ] [[Detection Evasion#Fingerprint|Fingerprint]]
     - [ ] [[Detection Evasion#Firewall#Evasion|Evasion]]
-- [ ] [TODO] Check IPS/IDS Presence & Evasion
+        - [ ] [[Detection Evasion#Firewall#ACK Scan|ACK Scan]]
+        - [ ] [[Detection Evasion#Firewall#UDP Scan|UDP Scan]]
 - [ ] [[Detection Evasion#IPS/IDS|IPS/IDS]]
     - [ ] [[Detection Evasion#IPS/IDS#Detection|Detection]]
     - [ ] [[Detection Evasion#IPS/IDS#Evasion|Evasion]]
+        - [ ] [[Detection Evasion#Decoys|Decoys]]
+        - [ ] [[Detection Evasion#Different Source IP|Different Source IP]]
+- [ ] [[Detection Evasion#DNS Proxying|DNS Proxying]]
+    - [ ] [[Detection Evasion#Scan From DNS Port|Scan From DNS Port]]
 
 ___
 <!-- }}} -->
@@ -72,6 +76,7 @@ ___
 ## Host Enumeration
 
 - [ ] [[Host Enumeration|Host Enumeration]]
+    - [ ] [[Host Enumeration#OS Detection|OS Detection]]
     - [ ] [[Host Enumeration#TCP Scan|TCP Scan]]
         - [ ] [[Host Enumeration#Top 10 TCP Port Scan|Top 10 TCP Port Scan]]
         - [ ] [[Host Enumeration#Open Port Discovery|Open Port Discovery]]

@@ -20,6 +20,29 @@ Enumerate a host with known IP address
 
 ___
 
+<!-- OS Detection {{{-->
+## OS Detection
+
+OS Detection
+
+```sh
+sudo nmap -O <target>
+```
+
+OS Detection & SYN Scan
+
+```sh
+nmap -sS -O <target>
+```
+
+Aggressive Service Detection
+
+```sh
+nmap -sV -A <target>
+```
+___
+<!-- }}} -->
+
 <!-- TCP Scan {{{-->
 ## TCP Scan
 
