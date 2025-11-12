@@ -12,25 +12,31 @@ files.
 
 Search for patterns like `username`, `password`, `key`, `secret`.
 
+___
+
 <!-- PowerShell {{{-->
 ## PowerShell
 
-### PowerShell Profile
+<!-- Profile {{{-->
+### Profile
 
-A custom PowerShell profile may be used to store configuration settings
+A custom **PowerShell Profile** may be used to store configuration settings
 
 ```cmd
 C:\Users\<User>\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
 ```
+<!-- }}} -->
 
-### PowerShell Logs
+<!-- Logs {{{-->
+### Logs
 
-PowerShell logs may store details about executed commands
+**PowerShell Logs** may store details about executed commands
 
 ```cmd
 C:\Windows\System32\winevt\Logs\Microsoft-Windows-PowerShell%4Operational.evtx
 ```
 
+<!-- PSReadLine {{{-->
 ### PSReadLine
 
 **PSReadLine** is a module in PowerShell that manages the command-line editing
@@ -55,11 +61,14 @@ Select-String -Pattern "user|password|key|secret" "C:\Users\<Username>\AppData\R
 ```
 <!-- }}} -->
 
+___
+<!-- }}} -->
+
 <!-- Credential Manager {{{-->
 ## Credential Manager
 
-Windows stores credentials in Credential Manager which may store usernames,
-passwords, and other authentication information.
+Windows stores credentials in **Credential Manager**,
+which may store usernames, passwords, and other authentication information
 
 ### CMD
 
@@ -83,25 +92,37 @@ Get-Credential
 
 <!-- }}} -->
 
+___
+<!-- }}} -->
+
 <!-- Application Configuration Files {{{-->
 ## Application Configuration Files
 
 Applications may store credentials in configuration files
 
+<!-- INI Files {{{-->
 ### INI Files
 
 ```cmd
 C:\ProgramData\<AppName>\config.ini
+```
+```sh
 C:\Users\<User>\AppData\Local\<AppName>\appsettings.ini
 ```
+<!-- }}} -->
 
+<!-- CONF Files {{{-->
 ### CONF Files
 
 ```cmd
 C:\ProgramData\<AppName>\config.conf
+```
+```cmd
 C:\Users\<User>\AppData\Local\<AppName>\config.conf
 ```
+<!-- }}} -->
 
+<!-- XML Files {{{-->
 ### XML Files
 
 Web servers or database apps use XML files to store data
@@ -109,7 +130,9 @@ Web servers or database apps use XML files to store data
 ```cmd
 C:\Program Files\<AppName>\config.xml
 ```
+<!-- }}} -->
 
+<!-- JSON Files {{{-->
 ### JSON Files
 
 Web apps and other softwar often use JSON configuration files
@@ -117,7 +140,9 @@ Web apps and other softwar often use JSON configuration files
 ```cmd
 C:\Users\<User>\AppData\Local\<AppName>\settings.json
 ```
+<!-- }}} -->
 
+<!-- YAML/Env Files {{{-->
 ### YAML/Env Files
 
 Some application (e.g. Docker, Kubernetes) store configuragions in YAML or
@@ -125,7 +150,11 @@ environment variable files
 
 ```cmd
 C:\Users\<User>\.docker\config.json
+```
+```
 C:\Users\<User>\AppData\Local\<AppName>\config.yaml
 ```
+<!-- }}} -->
 
+___
 <!-- }}} -->

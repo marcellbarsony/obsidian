@@ -13,6 +13,9 @@ links: "[[Layer-3]]"
 is used to communicate for various purposes, including error reporting and
 status information.
 
+___
+
+<!-- ICMP Messages {{{-->
 ## ICMP Messages
 
 An ICMP message is either an ICMP **request** or a **reply**.
@@ -43,3 +46,6 @@ perform a specific action.
 | time exceeded | Sent when a packet has taken too long to reach its destination. |
 | Parameter problem | Sent when there is a problem with a packet's header. |
 | Source quench | Sent when a device receives packets too quickly and cannot keep up. It is used to slow down the flow of packets. |
+
+___
+<!-- }}} -->

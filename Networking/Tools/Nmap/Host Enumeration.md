@@ -7,39 +7,126 @@ tags:
 
 # Host Enumeration
 
-Enumerate a host with known IP address
+Enumerate a host with known IP address for
 
-> [!info]-
->
-> The information needed includes
->
-> - Open ports & services
-> - Service versions
-> - Information that the services provided
-> - Operating system
+- Operating system version
+- Open ports & services
+- Service versions & additional information
 
 ___
 
 <!-- OS Detection {{{-->
 ## OS Detection
 
-OS Detection
+<!-- Basic Scan {{{-->
+### Basic Scan
+
+Basic OS detection scan
 
 ```sh
-sudo nmap -O <target>
+sudo nmap -O <target> -v [-Pn] -oA os-detection
 ```
+
+> [!info]-
+>
+> - `-O`: OS detection
+> - `-v`: Include device type (*e.g., router, firewall, etc.*),
+>   OS family (*e.g., Linux*) and OS generation (*e.g., `2.6.X`*)
+> - `-Pn`: Disable ping probes (*optional*)
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> nmap -O -v scanme.nmap.org
+> ```
+> ```sh
+> Starting Nmap ( https://nmap.org )
+> Nmap scan report for scanme.nmap.org (74.207.244.221)
+> Not shown: 994 closed ports
+> PORT      STATE    SERVICE
+> 22/tcp    open     ssh
+> 80/tcp    open     http
+> 646/tcp   filtered ldp
+> 1720/tcp  filtered H.323/Q.931
+> 9929/tcp  open     nping-echo
+> 31337/tcp open     Elite
+> Device type: general purpose
+> Running: Linux 2.6.X
+> OS CPE: cpe:/o:linux:linux_kernel:2.6.39
+> OS details: Linux 2.6.39
+> Uptime guess: 1.674 days (since Fri Sep  9 12:03:04 2011)
+> Network Distance: 10 hops
+> TCP Sequence Prediction: Difficulty=205 (Good luck!)
+> IP ID Sequence Generation: All zeros
+>
+> Read data files from: /usr/local/bin/../share/nmap
+> Nmap done: 1 IP address (1 host up) scanned in 5.58 seconds
+>            Raw packets sent: 1063 (47.432KB) | Rcvd: 1031 (41.664KB)
+> ```
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- Version Scan {{{-->
+### Version Scan
+
+```sh
+nmap -sV -O <target> -v -oA os-detection-version
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> nmap -sV -O -v 129.128.X.XX
+> ```
+> ```sh
+> Starting Nmap ( https://nmap.org )
+> Nmap scan report for [hostname] (129.128.X.XX)
+> Not shown: 994 closed ports
+> PORT      STATE    SERVICE      VERSION
+> 21/tcp    open     ftp          HP-UX 10.x ftpd 4.1
+> 22/tcp    open     ssh          OpenSSH 3.7.1p1 (protocol 1.99)
+> 111/tcp   open     rpc
+> 445/tcp   filtered microsoft-ds
+> 1526/tcp  open     oracle-tns   Oracle TNS Listener
+> 32775/tcp open     rpc
+> No exact OS matches for host
+> TCP Sequence Prediction: Class=truly random
+>                          Difficulty=9999999 (Good luck!)
+> IP ID Sequence Generation: Incremental
+> Service Info: OS: HP-UX
+> ```
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- SYN Scan {{{-->
+### SYN Scan
 
 OS Detection & SYN Scan
 
 ```sh
-nmap -sS -O <target>
+nmap -sS -O <target> -oA os-detection-syn
 ```
+
+<!-- }}} -->
+
+<!-- Aggressive Scan {{{-->
+### Aggressive Scan
 
 Aggressive Service Detection
 
 ```sh
-nmap -sV -A <target>
+nmap -sV -A [-T4] <target> -oA os-detection-aggressive
 ```
+
+> [!warning]
+>
+> Might be blocked by firewall
+
+<!-- }}} -->
 ___
 <!-- }}} -->
 

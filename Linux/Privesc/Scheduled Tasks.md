@@ -8,6 +8,9 @@ tags:
 
 # Scheduled Tasks
 
+___
+
+<!-- Discover Cron {{{-->
 ## Discover Cron
 
 Discover Cron directories
@@ -25,7 +28,10 @@ crontab -l
 ```sh
 cat /etc/crontab
 ```
+___
+<!-- }}} -->
 
+<!-- Cron Jobs {{{-->
 ## Cron Jobs
 
 Check if the following directories have write privilege
@@ -52,4 +58,5 @@ test -w /var/spool/cron/crontabs/root && echo "Writable" || echo "Not Writable"
 >
 > To add Cron Jobs, write a bash script executing a reverse shell command
 
-
+___
+<!-- }}} -->

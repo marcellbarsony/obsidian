@@ -7,6 +7,8 @@ tags:
 
 # SSH Keys
 
+___
+
 <!-- Discover SSH Keys {{{-->
 ## Discover SSH Keys
 
@@ -35,16 +37,16 @@ Check the `/root` directory for private SSH keys
 Check if the `root` user's private SSH key is readable
 
 ```sh
-
 [ -r /root/.ssh/id_rsa ] && echo "Readable" || echo "Not readable"
 ```
+___
 <!-- }}} -->
 
 <!-- Exfiltrate SSH private keys {{{-->
 ## Exfiltrate SSH private keys
 
-If an SSH private key is readable on the target machine, it may be possible
-to exfiltrate it
+If an SSH private key is readable on the target machine,
+it may be possible to exfiltrate it
 
 1. Create an RSA key on the attacker machine
 
@@ -54,7 +56,8 @@ nvim id_rsa
 
 2. Change permissions to be more restrictive
 
-The SSH server may prevent the key from working with lax (loose or insecure permissions)
+The SSH server may prevent the key from working with lax
+(*loose or insecure permissions*)
 
 ```sh
 chmod 600 id_rsa
@@ -63,7 +66,7 @@ chmod 600 id_rsa
 3. SSH to the target machine with the `-i` flag
 
 ```sh
-ssh root@{target_ip} -i id_rsa -p {target_port}
+ssh root@<target_ip> -p <target_port> -i id_rsa
 ```
 <!-- }}} -->
 
@@ -87,7 +90,7 @@ test -w /home/<user>/.ssh && echo "Writable" || echo "Not Writable"
 ssh-keygen -f key
 ```
 
-3. **Target**: Place the public key (`key.pub`) to the SSH directory
+3. **Target**: Place the public key (*`key.pub`*) to the SSH directory
 
 ```sh
 /home/<user>/.ssh/authorized_keys
@@ -96,6 +99,6 @@ ssh-keygen -f key
 4. **Attacker**: Connect to the target
 
 ```sh
-ssh {target_user}@{target_ip} -i key
+ssh <target_user>@<target_ip> -i key
 ```
 <!-- }}} -->

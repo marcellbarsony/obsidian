@@ -16,14 +16,15 @@ ___
     - [ ] [[Domain Information#Subdomain Discovery|Subdomain Discovery]]
         - [ ] [[Domain Information#SSL Certificate|SSL Certificate]]
         - [ ] [[Domain Information#Shodan|Shodan]]
+    - [ ] [[Domain Information#3rd Party Sites|3rd Party Sites]]
+        - [ ] [[Domain Information#Domain.Glass|Domain.Glass]]
 - [ ] [[DNS Records]]
     - [ ] TODO
 - [ ] [[Cloud Resources]]
     - [ ] [[Cloud Resources#Google Dorks|Google Dorks]]
     - [ ] [[Cloud Resources#Website Source Code|Website Source Code]]
-    - [ ] [[Cloud Resources#Domain.Glass Results|Domain.Glass Results]]
-    - [ ] [[Cloud Resources#GrayHatWarfare Results|GrayHatWarfare Results]]
-        - [ ] [[Cloud Resources#Leaked SSH Keys|Leaked SSH Keys]]
+    - [ ] [[Cloud Resources#Cloud Storages|Cloud Storages]]
+    - [ ] [[Cloud Resources#Leaked SSH Keys|Leaked SSH Keys]]
 - [ ] [[Staff]]
     - [ ] [[Staff#LinkedIn|LinkedIn]]
     - [ ] [[Staff#GitHub|GitHub]]
@@ -31,8 +32,8 @@ ___
 ___
 <!-- }}} -->
 
-<!-- Network Enumeration {{{-->
-## Network Enumeration
+<!-- Network Infrastructure {{{-->
+## Network Infrastructure
 
 - [ ] [[Detection Evasion#Firewall|Firewall]]
     - [ ] [[Detection Evasion#Firewall#Detection|Detection]]
@@ -77,6 +78,10 @@ ___
 
 - [ ] [[Host Enumeration|Host Enumeration]]
     - [ ] [[Host Enumeration#OS Detection|OS Detection]]
+        - [ ] [[Host Enumeration#Basic Scan|Basic Scan]]
+        - [ ] [[Host Enumeration#Version Scan|Version Scan]]
+        - [ ] [[Host Enumeration#SYN Scan|SYN Scan]]
+        - [ ] [[Host Enumeration#Aggerssive Scan|Aggerssive Scan]]
     - [ ] [[Host Enumeration#TCP Scan|TCP Scan]]
         - [ ] [[Host Enumeration#Top 10 TCP Port Scan|Top 10 TCP Port Scan]]
         - [ ] [[Host Enumeration#Open Port Discovery|Open Port Discovery]]
@@ -94,8 +99,9 @@ ___
 ## Service Enumeration
 
 - [ ] [[Service Enumeration|Service Enumeration]]
-    - [ ] [[Service Enumeration#Service Version Enumeration|Service Version Enumeration]]
-    - [ ] TODO
+    - [ ] [[Service Enumeration#Service Version Detection|Service Version Detection]]
+    - [ ] [[Service Enumeration#Banner Grabbing|Banner Grabbing]]
+        - [ ] [[Service Enumeration#Tcpdump|Tcpdump]]
 
 ___
 <!-- }}} -->

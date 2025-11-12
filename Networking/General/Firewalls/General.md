@@ -17,6 +17,8 @@ network traffic.
 - [Reddit - YSK about firewalls and how they work](https://www.reddit.com/r/networking/comments/ffblzq/ysk_about_firewalls_and_how_they_work/)
 - [pfSense Documentation](https://docs.netgate.com/pfsense/en/latest/)
 
+___
+
 <!-- Firewall Types {{{-->
 ## Firewall Types
 
@@ -63,4 +65,5 @@ intrusion detection/prevention, and application control.
 > A modern firewall that can block known malicious IP addresses, inspect
 > encrypted traffic for threats, and enforce application-specific policies.
 
+___
 <!-- }}} -->

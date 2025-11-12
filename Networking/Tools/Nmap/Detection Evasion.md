@@ -239,6 +239,10 @@ Many UDP applications will simply ignore unexpected packets,
 leaving Nmap unsure whether the port is in
 [[Nmap#Port States|open]] or [[Nmap#Port States|filtered]] state.
 
+> [!warning]
+>
+> VPN connection protocol must be set to UDP
+
 ```sh
 sudo nmap -sU <target> [options] -Pn -n --disable-arp-ping -oA scan-udp
 ```
@@ -294,13 +298,8 @@ ___
 <!-- IPS/IDS {{{-->
 ## IPS/IDS
 
-IDS/IPS systems are passive traffic monitoring systems
+**IDS**/**IPS** systems are passive traffic monitoring systems
 examining all connections between hosts.
-
-Several Virtual Private Servers (`VPS`) with different IPs
-are recommended to determine whether an **IPS/IDS** is in place:
-scanning a single port aggressively may trigger **IDS/IPS**
-and block the IP of the VPS.
 
 <!-- Detection {{{-->
 ### Detection
@@ -312,6 +311,13 @@ An IDS/IPS may be in the path if
 - One source IP gets blocked after a burst but other IPs do not
 - If responses change depending on a probe rate, payload or fragmentation
 
+Several **Virtual Private Servers**
+(*[VPS](https://en.wikipedia.org/wiki/Virtual_private_server)*)
+with different IP addresses are recommended to determine
+whether such systems are on the target network:
+scanning a single port aggressively may trigger **IDS/IPS**
+and block the IP of the **VPS**.
+
 <!-- }}} -->
 
 <!-- Evasion {{{-->
@@ -320,13 +326,18 @@ An IDS/IPS may be in the path if
 <!-- Decoys {{{-->
 #### Decoys
 
-Generates various random IP addresses to disguise the origin of the packet sent.
+Decoy scans generate various random IP addresses
+to disguise the origin of the packet sent.
+
 The decoy addresses must be:
+
 - On the same subnet
 - Alive on the network
 
+Decoys can be used for `SYN`, `ACK`, `ICMP` and OS detection scans.
+
 ```sh
-sudo nmap <target> [-p <port>] -Pn -n --disable-arp-ping -D RND:5
+sudo nmap <target> [-p <port>] -Pn -n --disable-arp-ping -D RND:5 -oA scan-decoy
 ```
 
 <!-- Info {{{-->
@@ -365,8 +376,6 @@ sudo nmap <target> [-p <port>] -Pn -n --disable-arp-ping -D RND:5
 > ```
 <!-- }}} -->
 
-
-
 <!-- }}} -->
 
 <!-- Testing Firewall Rules {{{-->
@@ -383,16 +392,47 @@ sudo nmap 10.129.2.28 -n -Pn -p445 -O
 <!-- Different Source IP {{{-->
 #### Different Source IP
 
-Scan by using a different source IP
+Scan by using a spoofed source IP
 
 ```sh
-sudo nmap 10.129.2.28 -n -Pn -p 445 -O -S 10.129.2.200 -e tun0
+sudo nmap <target> [-p <port>] -n -O -Pn -S <source_ip> [-e <interface>]
 ```
 
+<!-- Info {{{-->
 > [!info]-
 >
+> - `-n`: Disable DNS resolution
 > - `-O`: Enable OS detection
+> - `-Pn`: Disable ICMP Echo requests
 > - `-S`: Define different source IP
+> - `-e`: Send requests through the specifed interface
+>   (*e.g., `tun0`*) (*optional*)
+<!-- }}} -->
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> sudo nmap 10.129.2.28 -n -Pn -p 445 -O -S 10.129.2.200 -e tun0
+> ```
+> ```sh
+> Starting Nmap 7.80 ( https://nmap.org ) at 2020-06-22 01:16 CEST
+> Nmap scan report for 10.129.2.28
+> Host is up (0.010s latency).
+>
+> PORT    STATE SERVICE
+> 445/tcp open  microsoft-ds
+> MAC Address: DE:AD:00:00:BE:EF (Intel Corporate)
+> Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+> Aggressive OS guesses: Linux 2.6.32 (96%), Linux 3.2 - 4.9 (96%), Linux 2.6.32 - 3.10 (96%), Linux 3.4 - 3.10 (95%), Linux 3.1 (95%), Linux 3.2 (95%), AXIS 210A or 211 Network Camera (Linux 2.6.17) (94%), Synology DiskStation Manager 5.2-5644 (94%), Linux 2.6.32 - 2.6.35 (94%), Linux 2.6.32 - 3.5 (94%)
+> No exact OS matches for host (test conditions non-ideal).
+> Network Distance: 1 hop
+>
+> OS detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+> Nmap done: 1 IP address (1 host up) scanned in 4.11 seconds
+> ```
+<!-- }}} -->
+
 <!-- }}} -->
 
 <!-- }}} -->
@@ -407,8 +447,10 @@ By default, a reverse DNS resolution is performed (*over port `UDP/53`*)
 unless otherwise specified to find more information about the target.
 
 Specifying the DNS server (`--dns-server <ns>,<ns>`) could be fundamental
-in a demilitarized zone (DMZ) as a company's DNS servers
-are usually more trusted than those from the internet.
+in a demilitarized zone
+(*[DMZ](https://en.wikipedia.org/wiki/DMZ_(computing))*)
+as a company's DNS servers are usually more trusted
+than those from the Internet.
 
 <!-- Info {{{-->
 > [!info]- DNS Query Port
@@ -469,7 +511,7 @@ Perform a scan (*e.g., `SYN` scan*) against a target port via DNS proxy
 (*port `53`*)
 
 ```sh
-sudo nmap <target> [-p <port>] [-sS] -Pn -n --disable-arp-ping --source-port 53
+sudo nmap <target> [-p <port>] [-sS] -g 53 -Pn -n --disable-arp-ping -oA scan-dns-proxy
 ```
 
 <!-- Info {{{-->
@@ -478,7 +520,7 @@ sudo nmap <target> [-p <port>] [-sS] -Pn -n --disable-arp-ping --source-port 53
 > - `-sS`: Performs SYN scan on specified ports
 > - `-Pn`: Disable ICMP Echo requests
 > - `-n`: Disable DNS resolution
-> - `--source-port 53`: Specify scan source port
+> - `-g`/`--source-port`: Specify scan source port
 <!-- }}} -->
 
 <!-- Example {{{-->
@@ -507,7 +549,7 @@ sudo nmap <target> [-p <port>] [-sS] -Pn -n --disable-arp-ping --source-port 53
 In case of [[Nmap#Port States|open]] port, try to establish connection
 
 ```sh
-ncat -nv <target> <port> --source-port 53
+sudo ncat -nv <target> <port> [-s <attacker_ip>] -p 53
 ```
 
 <!-- Example {{{-->

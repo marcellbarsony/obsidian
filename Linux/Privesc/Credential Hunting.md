@@ -7,10 +7,15 @@ tags:
 
 # Credential Hunting
 
-Look for exposed credentials in configuration files, log files, and user history
-files.
+Search for exposed credentials in configuration files, log files,
+and user history files.
 
-## root directory
+___
+
+<!-- Directory Contents {{{-->
+## Directory Contents
+
+### root directory
 
 Check `/root` directory for secrets
 
@@ -18,13 +23,16 @@ Check `/root` directory for secrets
 grep -iE 'user.*|pass.*|key.*|secret.*|api.*' /root -R
 ```
 
-## Home directory
+### Home directory
 
 Check `home` directory for secrets
 
 ```sh
 grep -iE 'user.*|pass.*|key.*|secret.*|api.*' ~/ -R
 ```
+___
+
+<!-- }}} -->
 
 <!-- Shell {{{-->
 ## Shell
@@ -44,6 +52,7 @@ Zsh history
 ```sh
 cat ~/.zsh_history | grep -iE 'user.*|pass.*|key.*|secret.*|api.*'
 ```
+___
 <!-- }}} -->
 
 <!-- Environment Variables {{{-->
@@ -58,6 +67,7 @@ printenv | grep -iE 'user.*|pass.*|key.*|secret.*|api.*'
 ```sh
 (env || set) 2>/dev/null
 ```
+___
 <!-- }}} -->
 
 <!-- Web App Source Code {{{-->
@@ -72,8 +82,10 @@ grep -iE 'user.*|pass.*|key.*|secret.*|api.*' /var/www/* -R
 ```sh
 find /var/www/ -type f -exec cat {} + | grep -iE 'user.*|pass.*|key.*|secret.*|api.*'
 ```
+___
 <!-- }}} -->
 
+<!-- Found Secrets {{{-->
 # Found Secrets
 
 | Secret             | Action                                 |
@@ -86,3 +98,6 @@ find /var/www/ -type f -exec cat {} + | grep -iE 'user.*|pass.*|key.*|secret.*|a
 | Wi-Fi key          | Try new wireless pivot                 |
 | Sticky Notes/Notes | Decode plaintext secrets               |
 | .kdbx (KeePass)    | Hash dump → crack with hashcat         |
+
+___
+<!-- }}} -->

@@ -7,8 +7,23 @@ tags:
 
 # Domain Information
 
+<!-- 3rd Party Sites {{{-->
+## 3rd Party Sites
+
+<!-- Domain.Glass Results {{{-->
+### Domain.Glass
+
+[domain.glass](https://domain.glass) — Transparent Domain Information
+
+<!-- }}} -->
+
+___
+<!-- }}} -->
+
+<!-- Subdomain Discovery {{{-->
 ## Subdomain Discovery
 
+<!-- SSL Certificate {{{-->
 ### SSL Certificate
 
 Get SSL Certificate
@@ -47,13 +62,15 @@ for i in $(cat subdomainlist); do \
     cut -d" " -f1,4; \
 done
 ```
+<!-- }}} -->
 
+<!-- Shodan {{{-->
 ### Shodan
 
 The hosts then can be investigated further with
 [Shodan](https://www.shodan.io/), that finds devices and systems connected to
-the Internet: it searches for open TCP/IP ports, filters the systems to specific
-criteria, and finds devices and systems (e.g., IoT).
+the Internet: it searches for open TCP/IP ports, filters the systems
+to specific criteria, and finds devices and systems (*e.g., IoT*).
 
 ```sh
 for i in $(cat subdomainlist); do \
@@ -69,3 +86,7 @@ for i in $(cat ip-addresses.txt); do \
     shodan host $i; \
 done
 ```
+<!-- }}} -->
+
+___
+<!-- }}} -->

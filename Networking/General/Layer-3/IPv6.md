@@ -16,6 +16,9 @@ security with built-in IPsec encryption.
 **IPv6** follows the `end-to-end` principle and provides publicly accessible IP
 addresses for every end device without the need for NAT.
 
+___
+
+<!-- IPv6 Features {{{-->
 ## IPv6 Features
 
 **IPv6** features:
@@ -27,6 +30,10 @@ addresses for every end device without the need for NAT.
 - End-to-end encryption (*IPsec*)
 - Data packages up to 4 GByte
 
+___
+<!-- }}} -->
+
+<!-- IPv6 Types {{{-->
 ## IPv6 Types
 
 **IPv6** types:
@@ -37,6 +44,10 @@ addresses for every end device without the need for NAT.
 | Anycast | Addresses for multiple interfaces, where only one of them receives the packet. |
 | Multicast | Addresses for multiple interfaces, where all receive the same packet. |
 
+___
+<!-- }}} -->
+
+<!-- IPv6 Address {{{-->
 ## IPv6 Address
 
 ### Notation
@@ -64,3 +75,6 @@ An IPv6 address consists of two parts:
   address range
 - **Interface Identifier** (*host part*): Formed from the 48-bit MAC address and
   is converted to a 64-bit address.
+
+___
+<!-- }}} -->

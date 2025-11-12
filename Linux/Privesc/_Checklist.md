@@ -7,16 +7,22 @@ tags:
 
 # Linux Privilege Escalation
 
+___
+
+<!-- Enumeration Tools {{{-->
 ## Enumeration Tools
 
 - [ ] [[Linux/Privesc/Enumeration Tools|Enumeration Tools]]
-    - [ ] [[Linux/Privesc/Enumeration Tools#Enumeration Scripts|Enumeration Scripts]]
-        - [ ] [[Linux/Privesc/Enumeration Tools#Linpeas|LinPEAS]]
-        - [ ] [[Linux/Privesc/Enumeration Tools#Linux Exploit Suggester|Linux Exploit Suggester]]
-        - [ ] [[Linux/Privesc/Enumeration Tools#LinEnum|LinEnum]] (*deprecated*)
-        - [ ] [[Linux/Privesc/Enumeration Tools#linuxprivchecker|linuxprivchecker]] (*deprecated*)
-    - [ ] [[Linux/Privesc/Enumeration Tools#Manual Enumeration|Manual Enumeration]]
+    - [ ] [[Linux/Privesc/Enumeration Tools#Linpeas|LinPEAS]]
+    - [ ] [[Linux/Privesc/Enumeration Tools#Linux Exploit Suggester|Linux Exploit Suggester]]
+    - [ ] [[Linux/Privesc/Enumeration Tools#LinEnum|LinEnum]] (*deprecated*)
+    - [ ] [[Linux/Privesc/Enumeration Tools#linuxprivchecker|linuxprivchecker]] (*deprecated*)
+- [ ] [[Linux/Privesc/Enumeration Tools#Manual Enumeration|Manual Enumeration]]
 
+___
+<!-- }}} -->
+
+<!-- System Information {{{-->
 ## System Information
 
 - [ ] [[System Information]]
@@ -27,6 +33,10 @@ tags:
             - [ ] [[System Information#DirtyCow (CVE-2016-5195)|DirtyCow (CVE-2016-5195)]]
             - [ ] [[System Information#DirtyPipe (CVE-2022-0847)|DirtyPipe (CVE-2022-0847)]]
 
+___
+<!-- }}} -->
+
+<!-- System Files {{{-->
 ## System Files
 
 - [ ] [[System Files]]
@@ -36,6 +46,10 @@ tags:
         - [ ] [[System Files#Writeability|Writeability]]
         - [ ] [[System Files#Ownership|Ownership]]
 
+___
+<!-- }}} -->
+
+<!-- User Enumeration {{{-->
 ## User Enumeration
 
 - [ ] [[User Enumeration]]
@@ -51,11 +65,16 @@ tags:
         - [ ] [[User Enumeration#Sudo vulnerabilities|Sudo vulnerabilities]]
         - [ ] [[User Enumeration#Sudo commands|Sudo commands]]
 
+___
+<!-- }}} -->
+
+<!-- Credential Hunting {{{-->
 ## Credential Hunting
 
 - [ ] [[Credential Hunting]]
-    - [ ] [[Credential Hunting#root directory|root directory]]
-    - [ ] [[Credential Hunting#Home directory|Home directory]]
+    - [ ] [[Credential Hunting#Directory Contents|Directory Contents]]
+        - [ ] [[Credential Hunting#root directory|root directory]]
+        - [ ] [[Credential Hunting#Home directory|Home directory]]
     - [ ] [[Credential Hunting#Shell|Shell]]
         - [ ] [[Credential Hunting#Bash|Bash]]
         - [ ] [[Credential Hunting#Zsh|Zsh]]
@@ -63,12 +82,20 @@ tags:
     - [ ] [[Credential Hunting#Web App Source Code|Web App Source Code]]
 - [ ] [[Credential Hunting#Found Secrets|Found Secrets]]
 
+___
+<!-- }}} -->
+
+<!-- Scheduled Tasks {{{-->
 ## Scheduled Tasks
 
 - [ ] [[Scheduled Tasks]]
     - [ ] [[Scheduled Tasks#Discover Cron|Discover Cron]]
     - [ ] [[Scheduled Tasks#Cron Jobs|Cron Jobs]]
 
+___
+<!-- }}} -->
+
+<!-- SSH Keys {{{-->
 ## SSH Keys
 
 - [ ] [[SSH Keys]]
@@ -78,6 +105,22 @@ tags:
     - [ ] [[SSH Keys#Exfiltrate SSH private keys|Exfiltrate SSH private keys]]
     - [ ] [[SSH Keys#Writeable SSH directory|Writeable SSH directory]]
 
+___
+<!-- }}} -->
+
+<!-- Installed Software {{{-->
 ## Installed Software
 
 - [ ] [[Software Vulnerability]]
+    - [ ] [[Software Vulnerability#Linux|Linux]]
+        - [ ] [[Software Vulnerability#Debian / Ubuntu|Debian / Ubuntu]]
+        - [ ] [[Software Vulnerability#Fedora / RHEL / CentOS|Fedora / RHEL / CentOS]]
+        - [ ] [[Software Vulnerability#Arch|Arch]]
+    - [ ] [[Software Vulnerability#BSD]]
+        - [ ] [[Software Vulnerability#FreeBSD|FreeBSD]]
+        - [ ] [[Software Vulnerability#OpenBSD|OpenBSD]]
+        - [ ] [[Software Vulnerability#NetBSD|NetBSD]]
+    - [ ] [[Software Vulnerability#macOS|macOS]]
+
+___
+<!-- }}} -->

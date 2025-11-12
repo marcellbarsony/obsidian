@@ -8,36 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "2e9b47e82989b4dd",
+            "id": "a34a19ddf4062263",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Networking/Tools/Nmap/Detection Evasion.md",
-                "mode": "preview",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Detection Evasion"
-            }
-          },
-          {
-            "id": "1f3ad5c934313d8a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Networking/Enumeration/_Checklist.md",
+                "file": "Linux/Privesc/_Checklist.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -54,8 +30,33 @@
               "icon": "lucide-file",
               "title": "_Checklist"
             }
+          },
+          {
+            "id": "a44e1ca0596a51db",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Linux/General/Audio/PipeWire.md",
+                "mode": "preview",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "PipeWire"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -127,7 +128,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 243.5
   },
   "right": {
     "id": "d9ceb6f94f351234",
@@ -144,13 +145,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/Tools/Nmap/Detection Evasion.md",
+                "file": "Linux/General/Audio/PipeWire.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Detection Evasion"
+              "title": "Outline of PipeWire"
             }
           },
           {
@@ -199,7 +200,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/Tools/Nmap/Detection Evasion.md",
+                "file": "Linux/General/Audio/PipeWire.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -227,7 +228,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Detection Evasion"
+              "title": "Graph of PipeWire"
             }
           }
         ]
@@ -247,26 +248,37 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "2e9b47e82989b4dd",
+  "active": "a44e1ca0596a51db",
   "lastOpenFiles": [
+    "Linux/General/Audio/Bluetooth.md",
+    "Linux/General/Audio/ALSA.md",
+    "Linux/Privesc/System Information.md",
+    "Linux/Privesc/System Files.md",
+    "Linux/Privesc/User Enumeration.md",
+    "Linux/Privesc/SSH Keys.md",
+    "Linux/Privesc/_Checklist.md",
+    "Linux/Privesc/Software Vulnerability.md",
+    "Linux/Privesc/Scheduled Tasks.md",
+    "Linux/Privesc/Enumeration Tools.md",
+    "Linux/Privesc/Credential Hunting.md",
+    "Pentest/Reverse Shell/Reverse Shell.md",
+    "Webapp/General/Web Server/Root.md",
+    "Webapp/Privesc/web-server-root.md",
+    "Networking/Tools/Netcat/Netcat.md",
+    "Networking/Tools/Tools.md",
+    "Webapp/Exploitation/Admin Panel.md",
+    "Webapp/Exploitation/_Checklist.md",
+    "Networking/Services/Oracle TNS/Exploitation.md",
+    "Webapp/General/Web Server Root.md",
+    "Webapp/Enumeration/Fingerprinting.md",
+    "Webapp/Enumeration/_Checklist.md",
     "Networking/Enumeration/_Checklist.md",
+    "Networking/Tools/Nmap/Nmap.md",
     "Networking/Tools/Nmap/Detection Evasion.md",
-    "Networking/Services/DNS/General.md",
-    "Networking/Services/DNS/Enumeration.md",
     "Networking/Tools/Nmap/Service Enumeration.md",
-    "Networking/Tools/Nmap/Host Enumeration.md",
-    "Networking/General/_uncategorized/proxy.md",
-    "Networking/General/Firewalls/General.md",
-    "Networking/Enumeration/Host Discovery.md",
-    "Networking/Tools/Nmap/Performance.md",
-    "Networking/Tools/Nmap/Nmap Scripting Engine.md",
-    "Linux/General/Networking/iptables.md",
-    "Linux/General/Networking/VPN/WireGuard.md",
-    "Pentest/Tools/Nessus/Nessus.md",
     "Pentest/Tools/Nessus/src/policy.png",
     "Pentest/Tools/Nessus/src/nessus_policies.png",
     "Pentest/Tools/Nessus/src/nessus_settings.png",
-    "Webapp/Enumeration/Fingerprinting.md",
     "Pentest/Tools/Nessus/src/advanced.png",
     "Pentest/Tools/Nessus/src/ridbf.png",
     "Pentest/Tools/Nessus/src/userenum.png",
@@ -275,18 +287,7 @@
     "Pentest/Tools/Nessus/src/discovery.png",
     "Pentest/Tools/Nessus/src/options.png",
     "Pentest/Tools/Nessus/src",
-    "Pentest/Tools/Nessus.md",
     "Pentest/Tools/Nessus",
-    "Webapp/Enumeration/Execution Paths.md",
-    "Webapp/Enumeration/CMS.md",
-    "Webapp/Enumeration/Error Page.md",
-    "Webapp/Enumeration/Domain.md",
-    "Webapp/Enumeration/Crawling.md",
-    "Webapp/Enumeration/Banner Grabbing.md",
-    "Webapp/Enumeration/_Checklist.md",
-    "Webapp/Enumeration/Tools/ReconSpider.md",
-    "Webapp/Enumeration/Scanning.md",
-    "Webapp/Enumeration/WAF.md",
     "Networking/Services/SMB/Untitled.canvas",
     "Webapp/Enumeration/src",
     "Networking/Services/DNS/Tools",

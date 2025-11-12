@@ -15,6 +15,7 @@ actions they can perform.
 Each entry maps a subject (e.g. *user*, *group*, *process*) to a specific
 operation (e.g., *read*, *write*, *execute*, *allow*, *deny*).
 
+<!-- Implementations {{{-->
 ## Implementations
 
 ### Filesystem ACLs
@@ -43,3 +44,6 @@ to permit or deny the traffic, and do not distinguish between IP traffic
 
 **Extended ACL** (range: 100-199 and 2000-2699) uses Source IP, Destination IP,
 Source Port and Destination Port.
+
+___
+<!-- }}} -->

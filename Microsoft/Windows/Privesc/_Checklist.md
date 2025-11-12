@@ -12,7 +12,8 @@ links: "[[Windows]]"
 ## Enumeration Tools
 
 - [ ] [[Enumeration Tools]]
-    - [ ] [[Enumeration Tools#WinPEAS-ng|WinPEAS-ng]]
+    - [ ] [[Enumeration Tools#Enumeration Scripts|Enumeration Scripts]]
+        - [ ] [[Enumeration Tools#WinPEAS-ng|WinPEAS-ng]]
 
 ## Kernel Exploits
 

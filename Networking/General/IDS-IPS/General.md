@@ -29,7 +29,9 @@ rejecting malicious traffic in real time.
 - **In the DMZ**, where they monitor traffic moving in and out of publicly
   accessible servers
 
+___
 
+<!-- IPS & IDS Types {{{-->
 ## IPS & IDS Types
 
 ### Network-based
@@ -51,6 +53,10 @@ system logs for suspicious behavior on that specific machine
 >
 > An antivirus or endpoint security agent installed on a server
 
+___
+<!-- }}} -->
+
+<!-- Best Practices {{{-->
 ## Best Practices
 
 | Practice                     | Description |
@@ -60,3 +66,6 @@ system logs for suspicious behavior on that specific machine
 | Monitor and Log Events       | Regularly review firewall logs, IDS/IPS alerts, and system logs to identify suspicious patterns early |
 | Layered Security             | Use defense in depth with multiple layers: Firewalls, IDS/IPS, antivirus, and endpoint protection |
 | Periodic Penetration Testing | Test the effectiveness of the security policies and devices by simulating real attacks |
+
+___
+<!-- }}} -->

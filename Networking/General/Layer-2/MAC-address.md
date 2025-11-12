@@ -31,18 +31,27 @@ the MAC address of the responsible router (default gateway).
 **Address Resolution Protocol** (**ARP**) is used to associate MAC with IPv4
 Addresses.
 
+<!-- MAC Unicast {{{-->
 ## MAC Unicast
 
 Unicast is a **one-to-one communication** where the packet is sent from one
 source MAC address to one specific destination MAC address on the local
 network.
 
+___
+<!-- }}} -->
+
+<!-- MAC Multicast {{{-->
 ## MAC Multicast
 
 Multicast is a **one-to-many communication** where the packet is sent from one
 source MAC address to a group of specific destination MAC addresses that are
 part of a multicast group.
 
+___
+<!-- }}} -->
+
+<!-- MAC Broadcast {{{-->
 ## MAC Broadcast
 
 Broadcast is a **one-to-all communication**  where the packet is sent from one
@@ -51,6 +60,10 @@ address (**FF:FF:FF:FF:FF:FF**).
 
 It is used when the sender does not know the recipient’s MAC address.
 
+___
+<!-- }}} -->
+
+<!-- Attack Vectors {{{-->
 ## Attack Vectors
 
 There are several attack vectors that can potentially be exploited through the
@@ -65,6 +78,10 @@ use of MAC addresses:
 - **MAC address filtering**: Networks may be configured to allow access to a
   resources with specific MAC addresses.
 
+___
+<!-- }}} -->
+
+<!-- Reserved Addresses {{{-->
 ## Reserved Addresses
 
 Local Ranges
@@ -73,3 +90,6 @@ Local Ranges
 - 0**6**:00:00:00:00:00
 - 0**A**:00:00:00:00:00
 - 0**E**:00:00:00:00:00
+
+___
+<!-- }}} -->

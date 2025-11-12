@@ -7,12 +7,14 @@ tags:
 
 # System Files
 
+___
+
 <!-- /etc/passwd {{{-->
 ## /etc/passwd
 
-The `/etc/passwd` file stores essential information required during login
+The [/etc/passwd](https://www.cyberciti.biz/faq/understanding-etcpasswd-file-format/)
+file stores essential information required during login
 
-- [Ciberciti - Understanding /etc/passwd file format](https://www.cyberciti.biz/faq/understanding-etcpasswd-file-format/)
 - [IBM - Using the /etc/passwd file](https://www.ibm.com/docs/fi/ssw_aix_71/security/passwords_etc_passwd_file.html)
 
 ### Enumeration
@@ -33,12 +35,22 @@ Search for multiple usernames
 grep -E -w '^(root|username|www-data)' /etc/passwd
 ```
 
+[Getent](https://en.wikipedia.org/wiki/Getent) —
 Get entries
 
 ```sh
 getent passwd
-getent passwd {user1} {user2}
+```
+
+```sh
+getent passwd <user1> <user2>
+```
+
+```sh
 getent passwd username
+```
+
+```sh
 getent passwd username root
 ```
 
@@ -64,14 +76,16 @@ oracle:x:1021:1020:OracleUser:/data/network/oracle:/bin/bash
 - `User ID info (GECOS)`: Comment field to add extra infromatin about the users
 - `Home directory`: The absolute path to the user's home directory
 - `Command/shell`: The absolute path of a command or a shell of the user
+
+___
 <!-- }}} -->
 
 <!-- /etc/shadow {{{-->
 ## /etc/shadow
 
-The `/etc/shadow` file stores hashed passwords for user accounts
+The [/etc/shadow](https://www.cyberciti.biz/faq/understanding-etcshadow-file/)
+file stores hashed passwords for user accounts
 
-- [Cyberciti - Understanding /etc/shadow file format on Linux](https://www.cyberciti.biz/faq/understanding-etcshadow-file/)
 
 ### Enumeration
 
@@ -110,4 +124,6 @@ stat -c "%U:%G %n" /etc/shadow
 ```
 
 Default value: `root:root /etc/shadow`
+
+___
 <!-- }}} -->
