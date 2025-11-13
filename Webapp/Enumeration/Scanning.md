@@ -8,15 +8,22 @@ links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
 
 # Scanning
 
-___
-
-
 Scan the website with automated web scanners
 
+___
+
+<!-- Nikto {{{-->
 ## Nikto
 
-Fingerprint a website with [[Nikto]]
+[[Nikto]] — Fingerprint the website
 
+___
+<!-- }}} -->
+
+<!-- WhatWeb {{{-->
 ## WhatWeb
 
-Fingerprint a website with [[WhatWeb]]
+[[WhatWeb]] — Fingerprint the website
+
+___
+<!-- }}} -->

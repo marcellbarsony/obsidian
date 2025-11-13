@@ -117,6 +117,7 @@ ___
 
 - [ ] [[Login Functionality|Login Functionality]]
     - [ ] [[Login Functionality#Discover Login Page|Discover Login Page]]
+    - [ ] [[Login Functionality#Capture Request|Capture Request]]
 
 ___
 <!-- }}} -->

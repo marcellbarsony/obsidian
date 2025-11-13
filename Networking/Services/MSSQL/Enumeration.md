@@ -315,17 +315,19 @@ ___
 
 [Impacket's mssqlclient.py](https://github.com/fortra/impacket/blob/master/examples/mssqlclient.py)
 allows to remotely connect and to the MSSQL server using Transact-SQL
-([T-SQL](https://learn.microsoft.com/en-us/sql/t-sql/language-reference?view=sql-server-ver17))
+(*[T-SQL](https://learn.microsoft.com/en-us/sql/t-sql/language-reference?view=sql-server-ver17)*)
+
+Connect to a MSSQL server
 
 ```sh
-python3 mssqlclient.py <user>@<target> -windows-auth
+mssqlclient.py <target_host|target_ip>/<user>@<target_ip> -windows_auth
 ```
 
 <!-- Example {{{-->
 > [!example]-
 >
 > ```sh
-> python3 mssqlclient.py Administrator@10.129.201.248 -windows-auth
+> python3 mssqlclient.py ARCHETYPE/Administrator@10.129.201.248 -windows-auth
 > ```
 > ```sh
 > Impacket v0.9.22 - Copyright 2020 SecureAuth Corporation

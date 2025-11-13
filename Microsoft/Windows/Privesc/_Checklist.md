@@ -9,18 +9,29 @@ links: "[[Windows]]"
 
 # Windows Privilege Escalation Checklist
 
+___
+
+<!-- Enumeration Tools {{{-->
 ## Enumeration Tools
 
 - [ ] [[Enumeration Tools]]
     - [ ] [[Enumeration Tools#Enumeration Scripts|Enumeration Scripts]]
         - [ ] [[Enumeration Tools#WinPEAS-ng|WinPEAS-ng]]
 
+___
+<!-- }}} -->
+
+<!-- Kernel Exploits {{{-->
 ## Kernel Exploits
 
 - [ ] [[Kernel Exploits]]
     - [ ] [[Kernel Exploits#Kernel Version|Kernel Version]]
     - [ ] [[Kernel Exploits#Public Exploits|Public exploits]]
 
+___
+<!-- }}} -->
+
+<!-- Installed Software {{{-->
 ## Installed Software
 
 - [ ] [[Vulnerable Software]]
@@ -29,13 +40,17 @@ links: "[[Windows]]"
     - [ ] [[Vulnerable Software#WMIC|WMIC]]
     - [ ] [[Vulnerable Software#LOLBAS|LOLBAS]]
 
+___
+<!-- }}} -->
+
+<!-- Exposed credentials {{{-->
 ## Exposed credentials
 
 - [ ] [[Exposed Credentials]]
     - [ ] [[Exposed Credentials#PowerShell|PowerShell]]
-        - [ ] [[Exposed Credentials#PowerShell Profile|Profile]]
-        - [ ] [[Exposed Credentials#PowerShell Logs|Logs]]
-        - [ ] [[Exposed Credentials#PSReadLine|PSReadLine]]
+        - [ ] [[Exposed Credentials#History|History]]
+        - [ ] [[Exposed Credentials#Logs|Logs]]
+        - [ ] [[Exposed Credentials#Profile|Profile]]
     - [ ] [[Exposed Credentials#Credential Manager|Credential Manager]]
     - [ ] [[Exposed Credentials#Application Configuration Files|Application Configuration Files]]
         - [ ] [[Exposed Credentials#INI Files|INI Files]]
@@ -45,14 +60,22 @@ links: "[[Windows]]"
         - [ ] [[Exposed Credentials#YAML/Env Files|YAML/Env Files]]
 
 ___
+<!-- }}} -->
 
-[TODO]
-
+<!-- User Privileges {{{-->
 ## User Privileges
+
+> [!todo]
 
 - [ ] Windows Token Privileges
 
+___
+<!-- }}} -->
+
+<!-- Scheduled Tasks {{{-->
 ## Scheduled Tasks
 
 - [ ] [[Scheduled Tasks]]
 
+___
+<!-- }}} -->

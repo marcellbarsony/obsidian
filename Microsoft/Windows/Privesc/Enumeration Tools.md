@@ -24,21 +24,33 @@ ___
 > In some cases, it may be preferable to conduct manual enumeration
 > instead.
 
-
 <!-- WinPEAS-ng {{{-->
 ### WinPEAS-ng
 
-[WinPEAS-ng](https://github.com/peass-ng/PEASS-ng) —
+[WinPEAS-ng](https://github.com/peass-ng/PEASS-ng/tree/master/winPEAS) —
 Privilege Escalation Awesome Scripts SUITE (*with colors*)
 
 #### Usage
 
-Run `WinPEAS-ng` on the target
+1. Download the script
 
-```
-.\winPEASx64.exe
+```sh
+wget https://github.com/peass-ng/PEASS-ng/blob/master/winPEAS/winPEASps1/winPEAS.ps1 -O winpeas.ps1
 ```
 
+```sh
+wget https://github.com/peass-ng/PEASS-ng/blob/master/winPEAS/winPEASbat/winPEAS.bat -O winpeas.bat
+```
+
+2. Run as binary
+
+```sh
+.\winpeas.ps1
+```
+
+```sh
+.\winpeas.bat
+```
 <!-- }}} -->
 
 ___

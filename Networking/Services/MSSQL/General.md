@@ -44,23 +44,22 @@ server for database management.
 #### mssqliclient.py
 
 [Impacket's mssqlclient.py](https://github.com/fortra/impacket/blob/master/examples/mssqlclient.py)
-may be the most useful as the project is available on many pentesting
-distributions to install
+may be the most useful as the project is available
+on many pentesting distributions to install
 
 <!-- Example {{{-->
 > [!example]-
 >
->```sh
->locate mssqlclient
->```
->```sh
->/usr/bin/impacket-mssqlclient
->/usr/share/doc/python3-impacket/examples/mssqlclient.py
->```
+> ```sh
+> locate mssqlclient
+> ```
+> ```sh
+> /usr/bin/impacket-mssqlclient
+> /usr/share/doc/python3-impacket/examples/mssqlclient.py
+> ```
 <!-- }}} -->
 
 ___
-
 <!-- }}} -->
 
 <!-- Database {{{-->
@@ -68,8 +67,8 @@ ___
 
 **MSSQL** has default system databases
 
-<!-- Example {{{-->
-> [!example]
+<!-- Info {{{-->
+> [!info]
 >
 > | Default System Database | Description | Important Tables |
 > | ----------------------- | ----------- | ---------------- |
@@ -81,7 +80,6 @@ ___
 <!-- }}} -->
 
 ___
-
 <!-- }}} -->
 
 <!-- Configuration {{{-->
@@ -128,5 +126,4 @@ The following settings may expose the system to danger
 <!-- }}} -->
 
 ___
-
 <!-- }}} -->

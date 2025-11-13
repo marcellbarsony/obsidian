@@ -27,7 +27,6 @@ ___
 [PEASS-ng](https://github.com/peass-ng/PEASS-ng/tree/master/linPEAS) —
 Privilege Escalation Awesome Scripts SUITE (*with colors*)
 
-
 ### Usage
 
 1. Download the script

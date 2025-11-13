@@ -7,40 +7,18 @@ tags:
 
 # Exposed Credentials
 
-Look for exposed credentials in configuration files, log files, and user history
-files.
+Look for exposed credentials in configuration files, log files,
+and user history files.
 
-Search for patterns like `username`, `password`, `key`, `secret`.
+Search for patterns like `username`, `password`, `key`, `secret`, etc.
 
 ___
 
 <!-- PowerShell {{{-->
 ## PowerShell
 
-<!-- Profile {{{-->
-### Profile
-
-A custom **PowerShell Profile** may be used to store configuration settings
-
-```cmd
-C:\Users\<User>\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
-```
-<!-- }}} -->
-
-<!-- Logs {{{-->
-### Logs
-
-**PowerShell Logs** may store details about executed commands
-
-```cmd
-C:\Windows\System32\winevt\Logs\Microsoft-Windows-PowerShell%4Operational.evtx
-```
-
-<!-- PSReadLine {{{-->
-### PSReadLine
-
-**PSReadLine** is a module in PowerShell that manages the command-line editing
-experience (e.g., command history, input editing) within PowerShell sessions.
+<!-- History {{{-->
+### History
 
 Check `ConsoleHost_history.txt` for exposed credentials
 
@@ -58,6 +36,26 @@ Automate search with PowerShell
 
 ```powershell
 Select-String -Pattern "user|password|key|secret" "C:\Users\<Username>\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt"
+```
+<!-- }}} -->
+
+<!-- Logs {{{-->
+### Logs
+
+**PowerShell Logs** may store details about executed commands
+
+```cmd
+C:\Windows\System32\winevt\Logs\Microsoft-Windows-PowerShell%4Operational.evtx
+```
+<!-- }}} -->
+
+<!-- Profile {{{-->
+### Profile
+
+A custom **PowerShell Profile** may be used to store configuration settings
+
+```cmd
+C:\Users\<User>\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
 ```
 <!-- }}} -->
 
@@ -90,9 +88,6 @@ Get-Credential
 2. `User Accounts`
 3. `Credential Manager`
 
-<!-- }}} -->
-
-___
 <!-- }}} -->
 
 <!-- Application Configuration Files {{{-->
@@ -155,6 +150,5 @@ C:\Users\<User>\.docker\config.json
 C:\Users\<User>\AppData\Local\<AppName>\config.yaml
 ```
 <!-- }}} -->
-
 ___
 <!-- }}} -->

@@ -1,7 +1,9 @@
 ---
 id: Execution Paths
 aliases: []
-tags: []
+tags:
+  - Webapp/Enumeration/Execution_Paths
+links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
 ---
 
 # Execution Paths
@@ -23,11 +25,28 @@ ___
 
 ### Directory Enumeration
 
+> [!tip] Wordlists
+>
+> - `/usr/share/dirbuster/wordlists/directory-list-2.3-small.txt`
+> - `/usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt`
+
 Conduct directory enumeration
 
 - [[Burp Suite]]
 - [[Dirsearch|dirsearch.py]]
 - [[Gobuster]]
+
+```sh
+gobuster dir -u <target> -w <wordlist.txt> -x <file_extensions>
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> gobuster dir -u http://10.10.159.137 -w <wordlist.txt> /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt -x php,php3,html
+<!-- }}} -->
+
 - [[Ffuf]]
 
 Conduct recursive directory enumeration
@@ -35,6 +54,11 @@ Conduct recursive directory enumeration
 - [[Burp Suite]]
 - [[Dirsearch|dirsearch.py]]
 - [[Gobuster#Recursive Directory Enumeration|Recursive Directory Enumeration]]
+
+```sh
+gobuster dir -u http://<host>/content/private/plugins/ -w <wordlist.txt>
+```
+
 - [[Ffuf]]
 
 ___

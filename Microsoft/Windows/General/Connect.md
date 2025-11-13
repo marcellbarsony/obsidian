@@ -1,0 +1,24 @@
+---
+id: Connect
+aliases: []
+tags:
+  - Microsoft/Windows/Connect
+links: "[[Windows]]"
+---
+
+
+# Connect
+
+___
+
+<!-- PSExec.py {{{-->
+## PSExec.py
+
+[PSExec.py](https://github.com/fortra/impacket/blob/master/examples/psexec.py) —
+Connect from a Linux host to a Windows target with credentials
+
+```sh
+psexec.py <user>@<target>
+```
+
+<!-- }}} -->

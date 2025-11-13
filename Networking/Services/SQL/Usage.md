@@ -16,5 +16,5 @@ is a script from the [Impacket collection](https://github.com/fortra/impacket)
 Connect to a MSSQL server
 
 ```sh
-mssqlclient.py {TARGET_HOST/USER|TARGET_IP/USER}@{TARGET_IP} -windows_auth
+mssqlclient.py <TARGET_HOST/USER|TARGET_IP/USER>@<TARGET_IP> -windows_auth
 ```

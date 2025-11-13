@@ -30,33 +30,8 @@
               "icon": "lucide-file",
               "title": "_Checklist"
             }
-          },
-          {
-            "id": "a44e1ca0596a51db",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Linux/General/Audio/PipeWire.md",
-                "mode": "preview",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "PipeWire"
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -103,7 +78,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "python http server",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -145,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Linux/General/Audio/PipeWire.md",
+                "file": "Linux/Privesc/_Checklist.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of PipeWire"
+              "title": "Outline of _Checklist"
             }
           },
           {
@@ -200,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Linux/General/Audio/PipeWire.md",
+                "file": "Linux/Privesc/_Checklist.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -228,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of PipeWire"
+              "title": "Graph of _Checklist"
             }
           }
         ]
@@ -248,34 +223,36 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "a44e1ca0596a51db",
+  "active": "a34a19ddf4062263",
   "lastOpenFiles": [
-    "Linux/General/Audio/Bluetooth.md",
-    "Linux/General/Audio/ALSA.md",
-    "Linux/Privesc/System Information.md",
-    "Linux/Privesc/System Files.md",
-    "Linux/Privesc/User Enumeration.md",
-    "Linux/Privesc/SSH Keys.md",
-    "Linux/Privesc/_Checklist.md",
-    "Linux/Privesc/Software Vulnerability.md",
-    "Linux/Privesc/Scheduled Tasks.md",
-    "Linux/Privesc/Enumeration Tools.md",
-    "Linux/Privesc/Credential Hunting.md",
-    "Pentest/Reverse Shell/Reverse Shell.md",
-    "Webapp/General/Web Server/Root.md",
-    "Webapp/Privesc/web-server-root.md",
-    "Networking/Tools/Netcat/Netcat.md",
-    "Networking/Tools/Tools.md",
-    "Webapp/Exploitation/Admin Panel.md",
     "Webapp/Exploitation/_Checklist.md",
-    "Networking/Services/Oracle TNS/Exploitation.md",
-    "Webapp/General/Web Server Root.md",
-    "Webapp/Enumeration/Fingerprinting.md",
+    "Webapp/Exploitation/URL Parameters.md",
+    "Webapp/Exploitation/Cookies & Parameters.md",
+    "Webapp/Exploitation/Admin Panel.md",
     "Webapp/Enumeration/_Checklist.md",
-    "Networking/Enumeration/_Checklist.md",
-    "Networking/Tools/Nmap/Nmap.md",
-    "Networking/Tools/Nmap/Detection Evasion.md",
-    "Networking/Tools/Nmap/Service Enumeration.md",
+    "Webapp/Enumeration/Login Functionality.md",
+    "Webapp/Enumeration/Scanning.md",
+    "Webapp/Exploitation/Login Functionality.md",
+    "Webapp/Exploitation/Exploitation.md",
+    "Microsoft/Windows/Privesc/_Checklist.md",
+    "Microsoft/Windows/General/Connect.md",
+    "Microsoft/Windows/Privesc/Exposed Credentials.md",
+    "Microsoft/Windows/General/PowerShell/History.md",
+    "Networking/Services/MSSQL/Exploitation.md",
+    "Microsoft/Windows/General/PowerShell",
+    "Networking/Services/MSSQL/General.md",
+    "Pentest/General/Transferring Files.md",
+    "Networking/Services/MSSQL/Enumeration.md",
+    "Networking/Services/SQL/Usage.md",
+    "Networking/Services/SQL/General.md",
+    "Networking/Services/MSSQL/Usage.md",
+    "Linux/Privesc/_Checklist.md",
+    "Networking/Services/MySQL/Exploitation.md",
+    "Pentest/Tools/Brute Force/John The Ripper.md",
+    "Networking/Services/SSH/Exploitation.md",
+    "Webapp/Exploitation/Brute-force/hydra.md",
+    "Pentest/Tools/Brute Force/Wordlists/Wordlists.md",
+    "Pentest/Tools/Brute Force/Wordlists",
     "Pentest/Tools/Nessus/src/policy.png",
     "Pentest/Tools/Nessus/src/nessus_policies.png",
     "Pentest/Tools/Nessus/src/nessus_settings.png",
@@ -294,8 +271,6 @@
     "Webapp/Tools/Burp Suite",
     "Webapp/Tools",
     "Webapp/Enumeration/Fingerprinting",
-    "Webapp/Enumeration/Passive",
-    "Networking/Services/SSH/src",
-    "Networking/Services/MSSQL/src/password-list.txt"
+    "Webapp/Enumeration/Passive"
   ]
 }
