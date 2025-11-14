@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Linux/Privesc/_Checklist.md",
+                "file": "Pentest/Tools/Brute Force/John The Ripper.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "_Checklist"
+              "title": "John The Ripper"
             }
           }
         ]
@@ -78,7 +78,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "python http server",
+                "query": "nginx",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Linux/Privesc/_Checklist.md",
+                "file": "Pentest/Tools/Brute Force/John The Ripper.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of _Checklist"
+              "title": "Outline of John The Ripper"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Linux/Privesc/_Checklist.md",
+                "file": "Pentest/Tools/Brute Force/John The Ripper.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of _Checklist"
+              "title": "Graph of John The Ripper"
             }
           }
         ]
@@ -225,33 +225,33 @@
   },
   "active": "a34a19ddf4062263",
   "lastOpenFiles": [
-    "Webapp/Exploitation/_Checklist.md",
-    "Webapp/Exploitation/URL Parameters.md",
-    "Webapp/Exploitation/Cookies & Parameters.md",
-    "Webapp/Exploitation/Admin Panel.md",
-    "Webapp/Enumeration/_Checklist.md",
-    "Webapp/Enumeration/Login Functionality.md",
-    "Webapp/Enumeration/Scanning.md",
-    "Webapp/Exploitation/Login Functionality.md",
-    "Webapp/Exploitation/Exploitation.md",
-    "Microsoft/Windows/Privesc/_Checklist.md",
-    "Microsoft/Windows/General/Connect.md",
-    "Microsoft/Windows/Privesc/Exposed Credentials.md",
-    "Microsoft/Windows/General/PowerShell/History.md",
-    "Networking/Services/MSSQL/Exploitation.md",
-    "Microsoft/Windows/General/PowerShell",
-    "Networking/Services/MSSQL/General.md",
-    "Pentest/General/Transferring Files.md",
-    "Networking/Services/MSSQL/Enumeration.md",
-    "Networking/Services/SQL/Usage.md",
-    "Networking/Services/SQL/General.md",
-    "Networking/Services/MSSQL/Usage.md",
-    "Linux/Privesc/_Checklist.md",
-    "Networking/Services/MySQL/Exploitation.md",
-    "Pentest/Tools/Brute Force/John The Ripper.md",
-    "Networking/Services/SSH/Exploitation.md",
-    "Webapp/Exploitation/Brute-force/hydra.md",
+    "Pentest/Tools/Cracking/Hashcat.md",
+    "Pentest/Tools/Cracking/Hashid.md",
+    "Pentest/Tools/Metasploit/Msfvenom.md",
+    "Pentest/Tools/Metasploit/SearchSploit.md",
+    "Pentest/Tools/Metasploit/Metasploit.md",
+    "Pentest/Tools/Brute Force/Hydra.md",
     "Pentest/Tools/Brute Force/Wordlists/Wordlists.md",
+    "Pentest/Tools/Brute Force/Wordlists/CeWL.md",
+    "Webapp/Exploitation/Exploitation.md",
+    "Webapp/Enumeration/Enumeration.md",
+    "Webapp/Exploitation/_Checklist.md",
+    "Webapp/Exploitation/Login Functionality.md",
+    "Networking/Services/HTTP/General.md",
+    "Webapp/Tools/sqlmap.md",
+    "Webapp/Exploitation/Cookies & Parameters.md",
+    "Webapp/Exploitation/URL Parameters.md",
+    "Linux/Privesc/_Checklist.md",
+    "Linux/Privesc/Credential Hunting.md",
+    "Linux/Privesc/User.md",
+    "Linux/Privesc/File.md",
+    "Linux/Privesc/User Enumeration.md",
+    "Linux/Privesc/System Files.md",
+    "Linux/Privesc/System Information.md",
+    "Linux/Privesc/Sudo.md",
+    "Linux/Privesc/Sudo.md",
+    "Linux/Privesc/User Enumeration_1.md",
+    "Microsoft/Windows/General/PowerShell",
     "Pentest/Tools/Brute Force/Wordlists",
     "Pentest/Tools/Nessus/src/policy.png",
     "Pentest/Tools/Nessus/src/nessus_policies.png",

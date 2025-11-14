@@ -12,11 +12,12 @@ ___
 <!-- /etc/passwd {{{-->
 ## /etc/passwd
 
-The [/etc/passwd](https://www.cyberciti.biz/faq/understanding-etcpasswd-file-format/)
-file stores essential information required during login
+[/etc/passwd](https://www.cyberciti.biz/faq/understanding-etcpasswd-file-format/)
+stores essential information required during login
 
 - [IBM - Using the /etc/passwd file](https://www.ibm.com/docs/fi/ssw_aix_71/security/passwords_etc_passwd_file.html)
 
+<!-- Enumeration {{{-->
 ### Enumeration
 
 Search for a username
@@ -60,7 +61,10 @@ Details of the file
 stat /etc/passwd
 ```
 
-### File format
+<!-- }}} -->
+
+<!-- File Format {{{-->
+### File Format
 
 ```sh
 oracle:x:1021:1020:OracleUser:/data/network/oracle:/bin/bash
@@ -77,21 +81,28 @@ oracle:x:1021:1020:OracleUser:/data/network/oracle:/bin/bash
 - `Home directory`: The absolute path to the user's home directory
 - `Command/shell`: The absolute path of a command or a shell of the user
 
+<!-- }}} -->
+
 ___
 <!-- }}} -->
 
 <!-- /etc/shadow {{{-->
 ## /etc/shadow
 
-The [/etc/shadow](https://www.cyberciti.biz/faq/understanding-etcshadow-file/)
-file stores hashed passwords for user accounts
+[/etc/shadow](https://www.cyberciti.biz/faq/understanding-etcshadow-file/)
+stores hashed passwords for user accounts
 
-
+<!-- Enumeration {{{-->
 ### Enumeration
 
+<!-- Readability {{{-->
 #### Readability
 
-Check if `/etc/shadow` is world-readable (`644`)
+Check if `/etc/shadow` is world-readable (*`644`*)
+
+> [!info]
+>
+> Default value: `600`
 
 ```sh
 stat -c "%a %n" /etc/shadow
@@ -101,8 +112,13 @@ stat -c "%a %n" /etc/shadow
 [ -r /etc/shadow ] && echo "Readable /etc/shadow: YES" || echo "Readable /etc/shadow: NO"
 ```
 
-Default value: `600`
+> [!tip]
+>
+> Crack the extracted password hashes with [[Hashcat]]
 
+<!-- }}} -->
+
+<!-- Writeability {{{-->
 #### Writeability
 
 Check if `/etc/shadow` is writeable by other users
@@ -111,9 +127,22 @@ Check if `/etc/shadow` is writeable by other users
 [ -w /etc/shadow ] && echo "Writeable /etc/shadow: YES" || echo "Writeable /etc/shadow: NO"
 ```
 
+> [!tip]
+>
+> Set or remove passwords, or inject password hashes
+
+<!-- }}} -->
+
+<!-- Ownership {{{-->
 #### Ownership
 
-Check if `/etc/shadow` has incorrect ownership
+Check if `/etc/shadow` has incorrect ownership —
+Other users or services might gain unexpected write access,
+enabling lateral movement or privilege escalation
+
+> [!info]
+>
+> Default value: `root:root /etc/shadow`
 
 ```sh
 stat -c "%U:%G %n" /etc/shadow
@@ -123,7 +152,14 @@ stat -c "%U:%G %n" /etc/shadow
 [ "$(stat -c %U:%G /etc/shadow)" != "root:root" ] && echo "Ownership /etc/shadow: Incorrect" || echo "Ownership /etc/shadow: Correct"
 ```
 
-Default value: `root:root /etc/shadow`
+> [!tip]
+>
+> Escalate by abusing whatever process/user owns the file
+> — e.g., trick a service running as that user into writing to `/etc/shadow`
+
+<!-- }}} -->
+
+<!-- }}} -->
 
 ___
 <!-- }}} -->

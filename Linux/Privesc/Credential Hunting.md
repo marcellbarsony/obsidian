@@ -15,18 +15,32 @@ ___
 <!-- Directory Contents {{{-->
 ## Directory Contents
 
-### root directory
+### Current Directory
+
+Check current (*any*) directory for secrets
+
+```sh
+cat * | grep -i passw*
+```
+
+### root Directory
 
 Check `/root` directory for secrets
 
 ```sh
+grep -iE 'username|password' /root -R
+```
+```sh
 grep -iE 'user.*|pass.*|key.*|secret.*|api.*' /root -R
 ```
 
-### Home directory
+### Home Directory
 
 Check `home` directory for secrets
 
+```sh
+grep -iE 'username|password' ~/ -R
+```
 ```sh
 grep -iE 'user.*|pass.*|key.*|secret.*|api.*' ~/ -R
 ```
@@ -42,6 +56,9 @@ ___
 Bash history
 
 ```sh
+cat ~/.bash_history | grep -iE 'username|password'
+```
+```sh
 cat ~/.bash_history | grep -iE 'user.*|pass.*|key.*|secret.*|api.*'
 ```
 
@@ -49,6 +66,9 @@ cat ~/.bash_history | grep -iE 'user.*|pass.*|key.*|secret.*|api.*'
 
 Zsh history
 
+```sh
+cat ~/.zsh_history | grep -iE 'username|password'
+```
 ```sh
 cat ~/.zsh_history | grep -iE 'user.*|pass.*|key.*|secret.*|api.*'
 ```
@@ -61,9 +81,11 @@ ___
 Environment Variables
 
 ```sh
+printenv | grep -iE 'username|password'
+```
+```sh
 printenv | grep -iE 'user.*|pass.*|key.*|secret.*|api.*'
 ```
-
 ```sh
 (env || set) 2>/dev/null
 ```
@@ -73,15 +95,30 @@ ___
 <!-- Web App Source Code {{{-->
 ## Web App Source Code
 
-Web Server root (`/var/www/`)
+[[Web Server Root#OS|OS-specific Root]] (*`/var/www/`*)
 
+```sh
+grep -iE 'username|password' /var/www/* -R
+```
 ```sh
 grep -iE 'user.*|pass.*|key.*|secret.*|api.*' /var/www/* -R
 ```
-
 ```sh
 find /var/www/ -type f -exec cat {} + | grep -iE 'user.*|pass.*|key.*|secret.*|api.*'
 ```
+
+[[Web Server Root#Web Server|Web Server Application Roots]]
+
+```sh
+grep -iE 'username|password' <path> -R
+```
+```sh
+grep -iE 'user.*|pass.*|key.*|secret.*|api.*' <path> -R
+```
+```sh
+find <path> -type f -exec cat {} + | grep -iE 'user.*|pass.*|key.*|secret.*|api.*'
+```
+
 ___
 <!-- }}} -->
 
@@ -92,7 +129,7 @@ ___
 | ------------------ | -------------------------------------- |
 | NTLM hash          | Crack it or spray with CME             |
 | Password string    | Try RDP, SMB, WinRM immediately        |
-| SSH Key            | Pivot SSH into other boxes             |
+| SSH Key            | Pivot via SSH to other boxes           |
 | Database creds     | Try MySQL/MSSQL pivot and xp_cmdshell  |
 | Browser creds      | Pivot web apps, internal portals       |
 | Wi-Fi key          | Try new wireless pivot                 |

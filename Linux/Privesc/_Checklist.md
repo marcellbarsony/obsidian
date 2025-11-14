@@ -52,18 +52,24 @@ ___
 <!-- User Enumeration {{{-->
 ## User Enumeration
 
-- [ ] [[User Enumeration]]
-    - [ ] [[User Enumeration#User & Group|User & Group]]
-        - [ ] [[User Enumeration#User|User]]
-            - [ ] [[User Enumeration#whoami|whoami]]
-            - [ ] [[User Enumeration#Home directory|Home directory]]
-        - [ ] [[User Enumeration#Group|Group]]
-            - [ ] [[User Enumeration#id|id]]
-        - [ ] [[User Enumeration#root|root]]
-    - [ ] [[User Enumeration#Sudo|Sudo enumeration]]
-        - [ ] [[User Enumeration#Sudo version|Sudo version]]
-        - [ ] [[User Enumeration#Sudo vulnerabilities|Sudo vulnerabilities]]
-        - [ ] [[User Enumeration#Sudo commands|Sudo commands]]
+- [ ] [[User]]
+    - [ ] [[User#User|User]]
+        - [ ] [[User#Identify|Identify]]
+        - [ ] [[User#Home directory|Home directory]]
+        - [ ] [[User#root directory|root directory]]
+    - [ ] [[User#Group|Group]]
+        - [ ] [[User#id|id]]
+
+___
+<!-- }}} -->
+
+<!-- Sudo Enumeration {{{-->
+## Sudo Enumeration
+
+- [ ] [[Sudo]]
+    - [ ] [[Sudo#Commands|Commands]]
+    - [ ] [[Sudo#Version|Version]]
+    - [ ] [[Sudo#Vulnerabilities|Vulnerabilities]]
 
 ___
 <!-- }}} -->
@@ -73,8 +79,9 @@ ___
 
 - [ ] [[Credential Hunting]]
     - [ ] [[Credential Hunting#Directory Contents|Directory Contents]]
-        - [ ] [[Credential Hunting#root directory|root directory]]
-        - [ ] [[Credential Hunting#Home directory|Home directory]]
+        - [ ] [[Credential Hunting#Current Directory|Current Directory]]
+        - [ ] [[Credential Hunting#root Directory|root Directory]]
+        - [ ] [[Credential Hunting#Home Directory|Home Directory]]
     - [ ] [[Credential Hunting#Shell|Shell]]
         - [ ] [[Credential Hunting#Bash|Bash]]
         - [ ] [[Credential Hunting#Zsh|Zsh]]
