@@ -4,7 +4,7 @@ aliases:
   - WinPEAS
 tags:
   - Microsoft/Windows/Privesc/Tools
-links: PrivescWin
+links: Privesc
 ---
 
 # Enumeration Tools
@@ -51,6 +51,52 @@ wget https://github.com/peass-ng/PEASS-ng/blob/master/winPEAS/winPEASbat/winPEAS
 ```sh
 .\winpeas.bat
 ```
+<!-- }}} -->
+
+<!-- windows-privesc-check {{{-->
+### windows-privesc-check
+
+[windows-privesc-check](https://github.com/pentestmonkey/windows-privesc-check) —
+Standalone Executable to Check for Simple Privilege Escalation Vectors
+on Windows Systems (*by [Pentestmonkey](https://pentestmonkey.net/)*)
+
+<!-- }}} -->
+
+<!-- PowerSploit {{{-->
+### PowerSploit
+
+> [!warning]
+>
+> **DEPRECATED**
+
+[PowerUp.ps1](https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc/PowerUp.ps1) —
+PowerShell script to enumerate privilege escalation vectors
+
+<!-- }}} -->
+
+<!-- JAWS {{{-->
+### JAWS
+
+> [!warning]
+>
+> **DEPRECATED**
+
+[JAWS](https://github.com/411Hall/JAWS) —
+Just Another Windows (*Enum*) Script
+
+<!-- }}} -->
+
+<!-- Sherlock {{{-->
+### Sherlock
+
+> [!warning]
+>
+> **DEPRECATED**
+
+[Sherlock](https://github.com/rasta-mouse/Sherlock) —
+PowerShell script to quickly find missing software patches
+for local privilege escalation vulnerabilities
+
 <!-- }}} -->
 
 ___

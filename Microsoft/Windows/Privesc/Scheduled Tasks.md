@@ -1,7 +1,9 @@
 ---
 id: Scheduled Tasks
 aliases: []
-tags: []
+tags:
+  - Microsoft/Windows/Privesc/Scheduled-Tasks
+links: Privesc
 ---
 
 # Scheduled Tasks

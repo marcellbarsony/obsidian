@@ -3,6 +3,7 @@ id: Exposed Credentials
 aliases: []
 tags:
   - Microsoft/Windows/Privesc/Exposed-Credentials
+links: Privesc
 ---
 
 # Exposed Credentials

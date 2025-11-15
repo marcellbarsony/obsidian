@@ -17,6 +17,10 @@ ___
 - [ ] [[Enumeration Tools]]
     - [ ] [[Enumeration Tools#Enumeration Scripts|Enumeration Scripts]]
         - [ ] [[Enumeration Tools#WinPEAS-ng|WinPEAS-ng]]
+        - [ ] [[Enumeration Tools#windows-privesc-check|windows-privesc-check]]
+        - [ ] [[Enumeration Tools#PowerSploit|PowerSploit]]
+        - [ ] [[Enumeration Tools#JAWS|JAWS]]
+        - [ ] [[Enumeration Tools#Sherlock|Sherlock]]
 
 ___
 <!-- }}} -->
@@ -67,13 +71,18 @@ ___
 
 > [!todo]
 
-- [ ] Windows Token Privileges
+- [ ] [[User Privileges]]
+    - [ ] [[User Privileges#Windows Token Privileges|Windows Token Privileges]]
+        - [ ] [[User Privileges#SeImpersonatePrivilege|SeImpersonatePrivilege]]
+        - [ ] [[User Privileges#SeAssignPrimaryTokenPrivilege|SeAssignPrimaryTokenPrivilege]]
 
 ___
 <!-- }}} -->
 
 <!-- Scheduled Tasks {{{-->
 ## Scheduled Tasks
+
+> [!todo]
 
 - [ ] [[Scheduled Tasks]]
 
