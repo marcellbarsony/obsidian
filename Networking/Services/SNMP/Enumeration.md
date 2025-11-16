@@ -159,11 +159,13 @@ ___
 [[General#Community Strings|Community Strings]]
 should be discovered via dictionary attack
 
-<!-- Tip {{{-->
+<!-- Wordlists {{{-->
 > [!tip]- Wordlists
 >
 > - [OneSixtyOne - dict.txt](https://github.com/trailofbits/onesixtyone/blob/master/dict.txt)`
 > - [SecLists - SNMP Community Strings](https://github.com/danielmiessler/SecLists/tree/master/Discovery/SNMP)
+>   - `/usr/share/seclists/Discovery/SNMP/common-snmp-community-strings-onesixtyone.txt`
+>   - `/usr/share/seclists/Discovery/SNMP/snmp-onesixtyone.txt`
 > - Metasploit wordlist - `/usr/share/metasploit-framework/data/wordlists/snmp_default_pass.txt`
 <!-- }}} -->
 
@@ -178,7 +180,7 @@ onesixtyone -c <wordlist.txt> <target>
 > [!example]-
 >
 > ```sh
-> onesixtyone -c /opt/useful/seclists/Discovery/SNMP/snmp.txt 10.129.14.128
+> onesixtyone -c /usr/share/seclists/Discovery/SNMP/snmp-onesixtyone.txt 10.129.14.128
 > ```
 > ```sh
 > Scanning 1 hosts, 3220 communities
@@ -191,7 +193,7 @@ SNMP Community Login Scanner
 (*[snmp_login](https://www.rapid7.com/db/modules/auxiliary/scanner/snmp/snmp_login/)*)
 
 ```sh
-msf > use auxiliary/scanner/snmp/snmp_login
+use auxiliary/scanner/snmp/snmp_login
 ```
 
 <!-- Example {{{-->
@@ -292,7 +294,7 @@ using specific Object Identifiers
 <!-- Warning {{{-->
 > [!warning]
 >
-> A valid community string must be known
+> A valid [[General#Community Strings|Community String]] must be known
 > (*e.g., `public`, `private`, etc.*)
 <!-- }}} -->
 
@@ -330,6 +332,9 @@ snmpwalk [APPLICATION OPTIONS] [COMMON OPTIONS] [OID]
 <!-- Example {{{-->
 > [!example]-
 >
+> Once the community string is known and the SNMP service (*`v1` or `v2c`*)
+> does not require authentication, internal system information can be queried
+>
 > ```sh
 > snmpwalk -v 2c -c private 10.129.42.253
 > ```
@@ -340,17 +345,7 @@ snmpwalk [APPLICATION OPTIONS] [COMMON OPTIONS] [OID]
 > > - `-c private`: Community string `private` — the default write string on
 > >   some devices
 >
-> The SNMP request went out but no UDP response came back on the target on
-> port 161
->
-> ```
-> Timeout: No Response from 10.129.42.253
-> ```
->
 > In case of a misconfiguration, similar to the following result is shown.
->
-> Once the community string is known and the SNMP service (`v1` or `v2c`) does
-> not require authentication, internal system information can be queried
 >
 > > [!example]-
 > >
@@ -422,21 +417,29 @@ snmpwalk [APPLICATION OPTIONS] [COMMON OPTIONS] [OID]
 > >
 > > ...SNIP...
 > > ```
+>
+> The SNMP request went out but no UDP response came back
+> on the target on (*port `UDP/161`*)
+>
+> ```
+> Timeout: No Response from 10.129.42.253
+> ```
 <!-- }}} -->
 
 Connect and walk the entire [[General#MIB|MIB]] tree (*SNMPv1/v2c*)
 
 ```sh
-snmpwalk -v 1 -c <community_string> <target_ip>
+snmpwalk -v 1 -c <community_string> <target> | tee SNMPWALK.txt
 ```
+
 ```sh
-snmpwalk -v 2c -c <community_string> <target_ip>
+snmpwalk -v 2c -c <community_string> <target> | tee SNMPWALK.txt
 ```
 
 Hostname
 
 ```sh
-snmpwalk -v 2c -c public <target> 1.3.6.1.2.1.1.5.0
+snmpwalk -v <version> -c public <target> 1.3.6.1.2.1.1.5.0
 ```
 
 <!-- Example {{{-->
@@ -469,77 +472,77 @@ snmpwalk -v 2c -c public <target> 1.3.6.1.2.1.1.5.0
 Network information (*Routing tables*)
 
 ```sh
-snmpwalk -v 2c -c public <target> .1.3.6.1.2.1.4.21.1.1
+snmpwalk -v <version> -c public <target> .1.3.6.1.2.1.4.21.1.1
 ```
 
 ```sh
-snmpwalk -v 2c -c public <target> ipAddrTable
+snmpwalk -v <version> -c public <target> ipAddrTable
 ```
 
 Network information (*ARP cache*)
 
 ```sh
-snmpwalk -v 2c -c public <target> .1.3.6.1.2.1.4.22.1.3
+snmpwalk -v <version> -c public <target> .1.3.6.1.2.1.4.22.1.3
 ```
 
 Network interface configurations
 
 ```sh
-snmpwalk -v 2c -c public <target> .1.3.6.1.2.1.1.1.0
+snmpwalk -v <version> -c public <target> .1.3.6.1.2.1.1.1.0
 ```
 
 ```sh
-snmpwalk -v 2c -c public <target> interfaces
+snmpwalk -v <version> -c public <target> interfaces
 ```
 
 Network interface IP addresses
 
 ```sh
-snmpwalk -v 2c -c public <target> .1.3.6.1.2.1.4.20.1.1
+snmpwalk -v <version> -c public <target> .1.3.6.1.2.1.4.20.1.1
 ```
 
 Running services and processes
 
 ```sh
-snmpwalk -v 2c -c public <target> .1.3.6.1.2.1.25.4.2.1.2
+snmpwalk -v <version> -c public <target> .1.3.6.1.2.1.25.4.2.1.2
 ```
 
 ```sh
-snmpwalk -v 2c -c public <target> hrSWRunTAble
+snmpwalk -v <version> -c public <target> hrSWRunTAble
 ```
 
 Software versions
 
 ```sh
-snmpwalk -v 2c -c public <target> .1.3.6.1.2.1.25.6.3.1.2
+snmpwalk -v <version> -c public <target> .1.3.6.1.2.1.25.6.3.1.2
 ```
 
 System CPU load (*Net-SNMP*)
 
 ```sh
-snmpwalk -v 2c -c public <target> .1.3.6.1.4.1.2021.11
+snmpwalk -v <version> -c public <target> .1.3.6.1.4.1.2021.11
 ```
 
 System information
 
 ```sh
-snmpwalk -v 2c -c public <target> system
+snmpwalk -v <version> -c public <target> system
 ```
 
 System Uptime
 
 ```sh
-snmpwalk -v 2c -c public <target> hrSystemUptime
+snmpwalk -v <version> -c public <target> hrSystemUptime
 ```
 
 Usernames and storage descriptions (*especially on Windows systems*)
 
 ```sh
-snmpwalk -v 2c -c public <target> .1.3.6.1.4.1.77.1.2.25
+snmpwalk -v <version> -c public <target> .1.3.6.1.4.1.77.1.2.25
 ```
 
 ```sh
-snmpwalk -v 2c -c public <target> hrStorageTable
+snmpwalk -v <version> -c public <target> hrStorageTable
 ```
 
 <!-- }}} -->

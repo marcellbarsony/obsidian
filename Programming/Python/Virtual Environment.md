@@ -5,41 +5,64 @@ libraries and scripts installed into it are isolated from those installed in
 other virtual environments, and (by default) any libraries installed in a
 "system" Python, i.e., one which is installed as part of the operating system.
 
-## Initialize & Activate
+## Initialize
+
+Initialize venv
 
 ```sh
-# Initialize venv
 python -m venv [project_dir]/[venv_name] --system-site-packages
+```
 
-# Activate venv
+```sh
+python3 -m venv venv
+```
+
+## Activate
+
+Activate venv
+
+```sh
 source [project_dir]/[venv_name]/bin/activate
+```
+
+```sh
+source venv/bin/activate
 ```
 
 ## Environment Info
 
-```sh
-# Check active environment
-which python
+Check active environment
 
-# List local (environment) packages
+```sh
+which python
+```
+
+List local (*environment*) packages
+
+```sh
 pip list --local
 ```
 
 ## Delete & Deactivate
 
+Deactivate Environment
+
 ```sh
-# Deactivate Environment
 deactivate
 ```
 
-To delete the virtual environment, simply delete the environment folder.
+To delete the virtual environment, simply delete the environment folder
 
 ## Requirements
 
-```sh
-# Generate Requirements
-pip freeze > requirements.txt
+Generate Requirements
 
-# Install Requirements
+```sh
+pip freeze > requirements.txt
+```
+
+Install Requirements
+
+```sh
 pip install -r requirements.txt
 ```

@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Pentest/File Transfer/Windows.md",
+                "file": "Networking/Services/SNMP/Enumeration.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,31 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Windows"
-            }
-          },
-          {
-            "id": "8664e232734b8853",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Pentest/File Transfer/Transferring Files.md",
-                "mode": "preview",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Transferring Files"
+              "title": "Enumeration"
             }
           }
         ]
@@ -102,7 +78,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "nginx",
+                "query": "seclist",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -144,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Pentest/File Transfer/Windows.md",
+                "file": "Networking/Services/SNMP/Enumeration.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Windows"
+              "title": "Outline of Enumeration"
             }
           },
           {
@@ -199,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Pentest/File Transfer/Windows.md",
+                "file": "Networking/Services/SNMP/Enumeration.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -227,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Windows"
+              "title": "Graph of Enumeration"
             }
           }
         ]
@@ -249,33 +225,36 @@
   },
   "active": "8fce01441f2a182b",
   "lastOpenFiles": [
+    "Networking/Services/SNMP/General.md",
+    "Networking/Services/SNMP/Enumeration.md",
+    "Networking/Services/SNMP/Exploitation.md",
+    "Networking/Services/FTP/Enumeration.md",
+    "Networking/Services/RDP/Enumeration.md",
+    "Networking/Services/SMB/Enumeration.md",
+    "Networking/Services/SNMP/src/SNMP_OID_MIB_Tree.png",
+    "Pentest/File Transfer/Linux/Upload.md",
+    "Pentest/File Transfer/Linux/Download.md",
+    "Pentest/File Transfer/Windows/Download.md",
     "Pentest/File Transfer/Transferring Files.md",
+    "Pentest/File Transfer/Windows/Upload.md",
+    "Programming/Python/pipx.md",
+    "Pentest/File Transfer/Linux/Download_1.md",
+    "Pentest/File Transfer/Linux",
+    "Linux/General/Tools/wget.md",
+    "Linux/General/Tools/Tools.md",
+    "Linux/General/Tools/cURL.md",
     "Pentest/File Transfer/Windows.md",
+    "Pentest/File Transfer/Windows/Windows.md",
+    "Pentest/File Transfer/Windows",
     "Networking/General/General.md",
     "Networking/Services/SMB/Usage.md",
     "Pentest/File Transfer/Transferring Files_1.md",
-    "Linux/General/Tools/wget.md",
     "Microsoft/Windows/Privesc/_Checklist.md",
     "Pentest/File Transfer",
     "Microsoft/Windows/Privesc/User Privileges.md",
     "Microsoft/Windows/Privesc/SeImpersonatePrivilege.md",
     "Microsoft/Microsoft.md",
     "Networking/Networking.md",
-    "Pentest/Tools/Brute Force/John The Ripper.md",
-    "Pentest/Tools/Cracking/Hashcat.md",
-    "Pentest/Tools/Cracking/Hashid.md",
-    "Pentest/Tools/Metasploit/Msfvenom.md",
-    "Pentest/Tools/Metasploit/SearchSploit.md",
-    "Pentest/Tools/Metasploit/Metasploit.md",
-    "Pentest/Tools/Brute Force/Hydra.md",
-    "Pentest/Tools/Brute Force/Wordlists/Wordlists.md",
-    "Pentest/Tools/Brute Force/Wordlists/CeWL.md",
-    "Webapp/Exploitation/Exploitation.md",
-    "Webapp/Enumeration/Enumeration.md",
-    "Webapp/Exploitation/_Checklist.md",
-    "Webapp/Exploitation/Login Functionality.md",
-    "Networking/Services/HTTP/General.md",
-    "Webapp/Tools/sqlmap.md",
     "Microsoft/Windows/General/PowerShell",
     "Pentest/Tools/Brute Force/Wordlists",
     "Pentest/Tools/Nessus/src/policy.png",
@@ -287,14 +266,11 @@
     "Pentest/Tools/Nessus/src/hydra.png",
     "Pentest/Tools/Nessus/src/webapp.png",
     "Pentest/Tools/Nessus/src/discovery.png",
-    "Pentest/Tools/Nessus/src/options.png",
     "Pentest/Tools/Nessus/src",
     "Pentest/Tools/Nessus",
     "Networking/Services/SMB/Untitled.canvas",
     "Webapp/Enumeration/src",
     "Networking/Services/DNS/Tools",
-    "Webapp/Tools/Burp Suite",
-    "Webapp/Tools",
-    "Webapp/Enumeration/Fingerprinting"
+    "Webapp/Tools/Burp Suite"
   ]
 }
