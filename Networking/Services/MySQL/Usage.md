@@ -54,7 +54,11 @@ mysql -h <hostname> -u root
 Connect to a remote MySQL server with password
 
 ```sh
-mysql -h <hostname> -pP4SSw0rd -u root@localhost
+mysql -u <user> -p<password> -h <target_ip>
+```
+
+```sh
+mysql -h <hostname> -p<password> -u root@localhost
 ```
 
 <!-- Example {{{-->
@@ -119,21 +123,50 @@ mysql -h <hostname> -pP4SSw0rd -u root@localhost
 > ```
 <!-- }}} -->
 
+> [!tip]- SSL/TLS ERROR 2026 (HY000)
+>
+> MySQL client may refuse to trust
+> the SSL self-signed certificate
+>
+> ```
+> ERROR 2026 (HY000): TLS/SSL error: self-signed certificate in certificate chain
+> ```
+>
+> - below MySQL 5.7 / MariaDB 10.2
+>
+> ```sh
+> --ssl=0
+> ```
+> ```sh
+> --skip-ssl
+> ```
+> ```sh
+> --ssl --ssl-verify-server-cert=0 
+> ```
+>
+> - above MySQL 5.7 / MariaDB 10.2
+>
+> ```sh
+> --ssl-mode=DISABLED
+> ```
+> ```sh
+> --ssl-mode=PREFERRED
+> ```
+
 <!-- }}} -->
 
 ___
-
 <!-- }}} -->
 
 <!-- Databases {{{-->
 ## Databases
 
-Database operations
+Databate operations — Enumerate databases to identify high-value targets
 
 <!-- Discover {{{-->
 ### Discover
 
-Show all databases
+List all databases
 
 ```sql
 SHOW DATABASES;
@@ -142,19 +175,25 @@ SHOW DATABASES;
 <!-- Example {{{-->
 > [!example]-
 >
->```sh
->MySQL [(none)]> show databases;
->+--------------------+
->| Database           |
->+--------------------+
->| information_schema |
->| mysql              |
->| performance_schema |
->| sys                |
->+--------------------+
->4 rows in set (0.006 sec)
->```
+> ```sh
+> MySQL [(none)]> show databases;
+> +--------------------+
+> | Database           |
+> +--------------------+
+> | information_schema |
+> | mysql              |
+> | performance_schema |
+> | sys                |
+> +--------------------+
+> 4 rows in set (0.006 sec)
+> ```
 <!-- }}} -->
+
+List all database information
+
+```sql
+SELECT * FROM INFORMATION_SCHEMA.SCHEMATA;
+```
 
 <!-- }}} -->
 
@@ -164,18 +203,30 @@ SHOW DATABASES;
 Select a database
 
 ```sql
-USE my_database;
+USE <database_name>;
 ```
+
+> [!example]-
+>
+> ```sql
+> USE my_database;
+> ```
 
 <!-- }}} -->
 
-<!-- Show {{{-->
-### Show
+<!-- Current {{{-->
+### Current
 
 Show current database
 
 ```sql
 SELECT DATABASE();
+```
+
+Show current database information
+
+```sql
+SELECT SCHEMA_NAME, CREATE_TIME FROM INFORMATION_SCHEMA.SCHEMATA;
 ```
 
 <!-- }}} -->
@@ -186,8 +237,14 @@ SELECT DATABASE();
 Create a database
 
 ```sql
-CREATE DATABASE my_database;
+CREATE DATABASE <name>;
 ```
+
+> [!example]-
+>
+> ```sql
+> CREATE DATABASE my_database;
+> ```
 
 <!-- }}} -->
 
@@ -197,8 +254,14 @@ CREATE DATABASE my_database;
 Delete a database
 
 ```sql
-DROP DATABASE my_database;
+DROP DATABASE <name>;
 ```
+
+> [!example]-
+>
+> ```sql
+> DROP DATABASE my_database;
+> ```
 
 <!-- }}} -->
 
@@ -209,12 +272,12 @@ ___
 <!-- Table {{{-->
 ## Table
 
-Table operations
+Table operations —  Extract table and column information from databases
 
 <!-- Discover {{{-->
 ### Discover
 
-Show tables in current database
+List tables in current database
 
 ```sql
 SHOW TABLES;
@@ -241,25 +304,30 @@ SHOW COLUMNS FROM table_name;
 ```
 
 ```sql
-SELECT column_name, data_type FROM information_schema.COLUMNS WHERE table_name='<users>';
+SELECT column_name, data_type FROM information_schema.COLUMNS WHERE table_name='<table>';
 ```
 
-<!-- }}} -->
+> [!example]-
+>
+> ```sql
+> SELECT column_name, data_type FROM information_schema.COLUMNS WHERE table_name='users';
+> ```
 
-<!-- Data {{{-->
-### Data
-
-View table data
+Search for a specific column in a table
 
 ```sql
-SELECT * FROM table_name;
+SELECT table_name, column_name
+FROM information_schema.columns
+WHERE column_name LIKE '%search_term%'
 ```
 
-Limit table data to `10` rows
-
-```sql
-SELECT * FROM table_name LIMIT 10;
-```
+> [!example]-
+>
+> ```sql
+> SELECT table_name, column_name
+> FROM information_schema.columns
+> WHERE column_name LIKE '%password%'
+> ```
 
 <!-- }}} -->
 
@@ -274,12 +342,24 @@ Modify tables
 Create a table with header
 
 ```sql
-CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100),
-    email VARCHAR(100)
+CREATE TABLE <table_name> (
+    <column_1> INT AUTO_INCREMENT PRIMARY KEY,
+    <column_2> VARCHAR(100),
+    <column_3> DATETIME
 );
 ```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sql
+> CREATE TABLE users (
+>     id INT AUTO_INCREMENT PRIMARY KEY,
+>     name VARCHAR(100),
+>     email DATETIME
+> );
+> ```
+<!-- }}} -->
 
 <!-- }}} -->
 
@@ -289,15 +369,63 @@ CREATE TABLE users (
 Delete a table
 
 ```sql
-DROP TABLE users;
+DROP TABLE <table_name>;
 ```
+
+> [!example]-
+>
+> ```sql
+> DROP TABLE users;
+> ```
 
 <!-- }}} -->
 
 <!-- }}} -->
 
 ___
+<!-- }}} -->
 
+<!-- Data {{{-->
+## Data
+
+Table data operations
+
+<!-- View {{{-->
+### View
+
+View table data
+
+```sql
+SELECT * FROM table_name;
+```
+
+Limit table data to `10` rows
+
+```sql
+SELECT * FROM table_name LIMIT 10;
+```
+<!-- }}} -->
+
+<!-- Filter {{{-->
+### Filter
+
+Filter table data
+
+```sql
+SELECT * FROM myTable WHERE id = 5;
+```
+
+```sql
+SELECT * FROM myTable WHERE name = 'Alice';
+```
+
+Filter table data (*multiple*)
+
+```sql
+SELECT * FROM myTable WHERE age > 30 AND city = 'London';
+```
+<!-- }}} -->
+___
 <!-- }}} -->
 
 <!-- Record {{{-->

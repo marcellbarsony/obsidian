@@ -14,14 +14,17 @@ port:
 is Microsoft's SQL-based relational database management system, with native
 support for [.NET](https://en.wikipedia.org/wiki/.NET_Framework).
 
+___
+
 <!-- Clients {{{-->
 ## Clients
 
+<!-- SSMS {{{-->
 ### SSMS
 
-**SSMS** ([SQL Server Management Studio](https://learn.microsoft.com/en-us/ssms/install/install?view=sql-server-ver15))
-is a client-side application that is commonly installed with the **MSSQL**
-server for database management.
+**SSMS** (*[SQL Server Management Studio](https://learn.microsoft.com/en-us/ssms/install/install?view=sql-server-ver15)*)
+is a client-side application that is commonly installed
+with the **MSSQL** server for database management
 
 <!-- Example {{{-->
 > [!example]-
@@ -31,21 +34,17 @@ server for database management.
 > ![[ssms.webp]]
 <!-- }}} -->
 
-### Other Clients
+<!-- }}} -->
 
-**MSSQL** databases can be accessed with other clients:
+<!-- mssqliclient.py {{{-->
+### mssqliclient.py
 
-- [HeidiSQL](https://www.heidisql.com/)
-- [Impacket's mssqlclient.py](https://github.com/fortra/impacket/blob/master/examples/mssqlclient.py)
-- [mssql-cli](https://learn.microsoft.com/en-us/sql/tools/mssql-cli?view=sql-server-ver15)
-- [SQL Server PowerShell](https://learn.microsoft.com/en-us/powershell/sql-server/sql-server-powershell?view=sqlserver-ps&viewFallbackFrom=sql-server-ver15)
-- [SQLPro](https://www.macsqlclient.com/)
+[[Impacket]]'s [mssqlclient.py](https://github.com/fortra/impacket/blob/master/examples/mssqlclient.py)
+is available on many pentesting distributions to install
 
-#### mssqliclient.py
-
-[Impacket's mssqlclient.py](https://github.com/fortra/impacket/blob/master/examples/mssqlclient.py)
-may be the most useful as the project is available
-on many pentesting distributions to install
+```sh
+impacket-mssqlclient
+```
 
 <!-- Example {{{-->
 > [!example]-
@@ -57,6 +56,20 @@ on many pentesting distributions to install
 > /usr/bin/impacket-mssqlclient
 > /usr/share/doc/python3-impacket/examples/mssqlclient.py
 > ```
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- Other Clients {{{-->
+### Other Clients
+
+**MSSQL** databases can be accessed with other clients:
+
+- [HeidiSQL](https://www.heidisql.com/)
+- [mssql-cli](https://learn.microsoft.com/en-us/sql/tools/mssql-cli?view=sql-server-ver15)
+- [SQL Server PowerShell](https://learn.microsoft.com/en-us/powershell/sql-server/sql-server-powershell?view=sqlserver-ps&viewFallbackFrom=sql-server-ver15)
+- [SQLPro](https://www.macsqlclient.com/)
+
 <!-- }}} -->
 
 ___

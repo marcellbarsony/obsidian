@@ -4,7 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "e5159f7adb3899ac",
+        "id": "5bc139af7bc60371",
         "type": "tabs",
         "children": [
           {
@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Networking/Services/SNMP/Enumeration.md",
+                "file": "Networking/Services/MySQL/Exploitation.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,37 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Enumeration"
+              "title": "Exploitation"
+            }
+          }
+        ]
+      },
+      {
+        "id": "e466b085d4ac6b5e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "930428f08e4e83d8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Networking/Services/MSSQL/Exploitation.md",
+                "mode": "preview",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Exploitation"
             }
           }
         ]
@@ -78,7 +108,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "seclist",
+                "query": "impacket",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -103,7 +133,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 205.5
+    "width": 200
   },
   "right": {
     "id": "d9ceb6f94f351234",
@@ -120,13 +150,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/Services/SNMP/Enumeration.md",
+                "file": "Networking/Services/MySQL/Exploitation.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Enumeration"
+              "title": "Outline of Exploitation"
             }
           },
           {
@@ -175,7 +205,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/Services/SNMP/Enumeration.md",
+                "file": "Networking/Services/MySQL/Exploitation.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +233,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Enumeration"
+              "title": "Graph of Exploitation"
             }
           }
         ]
@@ -225,36 +255,37 @@
   },
   "active": "8fce01441f2a182b",
   "lastOpenFiles": [
-    "Networking/Services/SNMP/General.md",
+    "Networking/Services/MSSQL/Exploitation.md",
+    "Networking/Services/MySQL/Exploitation.md",
+    "Networking/Services/MSSQL/Usage.md",
+    "Networking/Services/MySQL/Usage.md",
+    "Networking/Services/MSSQL/General.md",
+    "Networking/Services/MySQL/General.md",
+    "Networking/Services/MySQL/Enumeration.md",
+    "Networking/Services/MSSQL/Enumeration.md",
+    "Linux/General/Audio/Bluetooth.md",
+    "Linux/Linux.md",
+    "Networking/Services/SQL/Usage.md",
+    "Pentest/General/Preparation.md",
+    "Networking/Tools/Impacket.md",
+    "Networking/Services/RDP/Exploitation.md",
+    "Networking/Services/SMB/Exploitation.md",
+    "Networking/Services/RDP/Enumeration.md",
+    "Networking/Services/WMI/Enumeration.md",
+    "Networking/Services/MSSQL/Enumeration_1.md",
+    "Pentest/File Transfer/Windows/Download.md",
+    "Microsoft/Windows/General/Connect.md",
+    "Networking/Services/SQL/General.md",
+    "Networking/Tools/Impacket.py",
+    "Networking/Services/SQL/Exploitation.md",
     "Networking/Services/SNMP/Enumeration.md",
+    "Networking/Services/SNMP/General.md",
     "Networking/Services/SNMP/Exploitation.md",
     "Networking/Services/FTP/Enumeration.md",
-    "Networking/Services/RDP/Enumeration.md",
-    "Networking/Services/SMB/Enumeration.md",
     "Networking/Services/SNMP/src/SNMP_OID_MIB_Tree.png",
-    "Pentest/File Transfer/Linux/Upload.md",
-    "Pentest/File Transfer/Linux/Download.md",
-    "Pentest/File Transfer/Windows/Download.md",
-    "Pentest/File Transfer/Transferring Files.md",
-    "Pentest/File Transfer/Windows/Upload.md",
-    "Programming/Python/pipx.md",
-    "Pentest/File Transfer/Linux/Download_1.md",
     "Pentest/File Transfer/Linux",
-    "Linux/General/Tools/wget.md",
-    "Linux/General/Tools/Tools.md",
-    "Linux/General/Tools/cURL.md",
-    "Pentest/File Transfer/Windows.md",
-    "Pentest/File Transfer/Windows/Windows.md",
     "Pentest/File Transfer/Windows",
-    "Networking/General/General.md",
-    "Networking/Services/SMB/Usage.md",
-    "Pentest/File Transfer/Transferring Files_1.md",
-    "Microsoft/Windows/Privesc/_Checklist.md",
     "Pentest/File Transfer",
-    "Microsoft/Windows/Privesc/User Privileges.md",
-    "Microsoft/Windows/Privesc/SeImpersonatePrivilege.md",
-    "Microsoft/Microsoft.md",
-    "Networking/Networking.md",
     "Microsoft/Windows/General/PowerShell",
     "Pentest/Tools/Brute Force/Wordlists",
     "Pentest/Tools/Nessus/src/policy.png",
@@ -270,7 +301,6 @@
     "Pentest/Tools/Nessus",
     "Networking/Services/SMB/Untitled.canvas",
     "Webapp/Enumeration/src",
-    "Networking/Services/DNS/Tools",
-    "Webapp/Tools/Burp Suite"
+    "Networking/Services/DNS/Tools"
   ]
 }

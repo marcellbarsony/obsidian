@@ -13,7 +13,7 @@ ___
 ## Configuration File
 
 Often, the rights for the [[General#Configuration|configuration file]] of the
-[[General#MySQL Database|MySQL databases]] are not assigned correctly.
+[[General#MySQL Database|MySQL databases]] are not assigned correctly
 
 > [!tip]
 >
@@ -21,7 +21,6 @@ Often, the rights for the [[General#Configuration|configuration file]] of the
 > containing the MySQL username and password
 
 ___
-
 <!-- }}} -->
 
 <!-- Reconnaissance {{{-->
@@ -33,14 +32,14 @@ ___
 Detect MySQL service
 
 ```sh
-nmap -p 3306 <target> -oA mysql-service
+nmap <target> -p 3306 -oA mysql-service
 ```
 
 Enumerate [[General#MySQL Database|MySQL Databases]]
 (*[[Nmap Scripting Engine|Nmap NSE]] scripts*)
 
 ```sh
-sudo nmap -sC -sV -p3306 --script mysql* <target> -oA mysql-default-scripts
+sudo nmap -sC -sV <target> -p 3306 --script "mysql-*" -oA mysql-default-scripts
 ```
 
 <!-- Info {{{-->
@@ -325,10 +324,10 @@ Grab the MySQL service banner
 [[Nmap]]
 
 ```sh
-nmap -sV -p 3306 <target> -oA mysql-banner
+nmap -sV <target> -p 3306 -oA mysql-banner
 ```
 
-[[netcat]]
+[[Netcat]]
 
 ```sh
 nc -vn <target> 3306
@@ -343,7 +342,6 @@ telnet <target> 3306
 <!-- }}} -->
 
 ___
-
 <!-- }}} -->
 
 <!-- Database Enumeration {{{-->
@@ -424,8 +422,6 @@ SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'my_databa
 ```
 <!-- }}} -->
 
-<!-- }}} -->
-
 <!-- System Schema {{{-->
 ### System Schema
 
@@ -453,10 +449,7 @@ SELECT * FROM sys.schema_table_statistics ORDER BY rows_fetched DESC LIMIT 10;
 ```
 <!-- }}} -->
 
-<!-- }}} -->
-
 ___
-
 <!-- }}} -->
 
 <!-- Permission Enumeration {{{-->
@@ -472,6 +465,7 @@ Enumerate [MySQL Permissions](https://book.hacktricks.wiki/en/network-services-p
 3. **[[Enumeration#Exploitation Checks|Exploitation Checks]]**:
    Inspect functions/plugins
 
+<!-- Privilege Discovery {{{-->
 ### Privilege Discovery
 
 [SHOW GRANTS](https://dev.mysql.com/doc/refman/8.4/en/show-grants.html)
@@ -525,6 +519,9 @@ displays the privileges and roles assigned to a MySQL user account or role
 > > authentication mappings or proxying
 <!-- }}} -->
 
+<!-- }}} -->
+
+<!-- Account Enumeration {{{-->
 ### Account Enumeration
 
 Full dump of user accounts, privileges, and password hashes
@@ -556,6 +553,9 @@ Full dump of user accounts, privileges, and password hashes
 >
 <!-- }}} -->
 
+<!-- }}} -->
+
+<!-- High-risk Privilege Check {{{-->
 ### High-risk Privilege Check
 
 Find users with `FILE` and `SUPER` privileges
@@ -588,6 +588,9 @@ Find users with `FILE` and `SUPER` privileges
 > > *modifying global variables*)
 <!-- }}} -->
 
+<!-- }}} -->
+
+<!-- Exploitation Checks {{{-->
 ### Exploitation Checks
 
 Find user-defined functions ([UDFs](https://en.wikipedia.org/wiki/User-defined_function))
@@ -626,6 +629,7 @@ if loaded maliciously
 > > `DEFINER` semantics is especially dangerous
 <!-- }}} -->
 
-___
+<!-- }}} -->
 
+___
 <!-- }}} -->

@@ -14,8 +14,12 @@ ___
 <!-- PSExec.py {{{-->
 ## PSExec.py
 
-[PSExec.py](https://github.com/fortra/impacket/blob/master/examples/psexec.py) —
-Connect from a Linux host to a Windows target with credentials
+[PSExec.py](https://github.com/fortra/impacket/blob/master/examples/psexec.py)
+([[Impacket]]) — Connect from a Linux host to a Windows target with credentials
+
+```sh
+impacket-psexec <user>@<target>
+```
 
 ```sh
 psexec.py <user>@<target>

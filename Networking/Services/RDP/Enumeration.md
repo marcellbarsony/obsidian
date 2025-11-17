@@ -137,22 +137,22 @@ RDP allows username enumeration
 > Check for common usernames
 > (*e.g., `Administrator`, `admin`, `user`, `guest`, etc.*)
 
-Using rdp_check (*C# tool*)
+[[Impacket]] - [rdp_check.py](https://github.com/fortra/impacket/blob/master/examples/rdp_check.py)
 
 ```sh
-rdp_check.exe <target> <usernames.txt>
-```
-
-[rdp_check.py](https://github.com/fortra/impacket/blob/master/examples/rdp_check.py)
-
-```sh
-rdp_check.py [-hashes LMHASH:NTHASH] <target>
+impacket-rdp_check [-hashes LMHASH:NTHASH] <target>
 ```
 
 [crowbar](https://github.com/galkan/crowbar)
 
 ```sh
 crowbar -b rdp -s <target>/<cidr> -u <usernames.txt> -C <passwords.txt>
+```
+
+Using rdp_check (*C# tool*)
+
+```sh
+rdp_check.exe <target> <usernames.txt>
 ```
 
 ___

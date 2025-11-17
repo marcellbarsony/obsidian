@@ -12,20 +12,21 @@ ___
 <!-- Service {{{-->
 ## Service
 
-Service detection
+[[Nmap]] — Service detection
 
 ```sh
-nmap -p 1433 <target> -oA mssql-service-detection
+nmap <target> -p 1433 -oA mssql-service-detection
 ```
 
-[[General|MSSQL]] script scan
+[[Nmap]] — [[General|MSSQL]] script scan
 
 ```sh
 sudo nmap \
-  -sV -p 1433 \
+  -sV \
+  <target> \
+  -p 1433 \
   --script "ms-sql-*" \
   --script-args 'mssql.instance-port=1433,mssql.username=sa,mssql.password="",mssql.instance-name=MSSQLSERVER' \
-  <target> \
   -oA mssql-scripts-all
 ```
 
@@ -92,7 +93,7 @@ ___
 <!-- Metasploit {{{-->
 ## Metasploit
 
-Scan MSSQL service with [[Metasploit]]
+[[Metasploit]] — Scan MSSQL service
 
 <!-- Without Credentials {{{-->
 ### Without Credentials
@@ -304,69 +305,6 @@ Add new admin user from meterpreter session
 > msf> use windows/manage/mssql_local_auth_bypass
 > ```
 
-<!-- }}} -->
-
-___
-
-<!-- }}} -->
-
-<!-- Mssqlclient.py {{{-->
-## Mssqlclient.py
-
-[Impacket's mssqlclient.py](https://github.com/fortra/impacket/blob/master/examples/mssqlclient.py)
-allows to remotely connect and to the MSSQL server using Transact-SQL
-(*[T-SQL](https://learn.microsoft.com/en-us/sql/t-sql/language-reference?view=sql-server-ver17)*)
-
-Connect to a MSSQL server
-
-```sh
-mssqlclient.py <target_host|target_ip>/<user>@<target_ip> -windows_auth
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> python3 mssqlclient.py ARCHETYPE/Administrator@10.129.201.248 -windows-auth
-> ```
-> ```sh
-> Impacket v0.9.22 - Copyright 2020 SecureAuth Corporation
->
-> Password:
-> [*] Encryption required, switching to TLS
-> [*] ENVCHANGE(DATABASE): Old Value: master, New Value: master
-> [*] ENVCHANGE(LANGUAGE): Old Value: , New Value: us_english
-> [*] ENVCHANGE(PACKETSIZE): Old Value: 4096, New Value: 16192
-> [*] INFO(SQL-01): Line 1: Changed database context to 'master'.
-> [*] INFO(SQL-01): Line 1: Changed language setting to us_english.
-> [*] ACK: Result: 1 - Microsoft SQL Server (150 7208) 
-> [!] Press help for extra shell commands
-> ```
->
-> ```sql
-> SQL> select name from sys.databases
-> ```
-> ```sh
-> name
->
-> --------------------------------------------------------------------------------------
->
-> master
->
-> tempdb
->
-> model
->
-> msdb
->
-> Transactions
-> ```
-<!-- }}} -->
-
-<!-- Warning {{{-->
-> [!warning]
->
-> Valid credentials required
 <!-- }}} -->
 
 ___
