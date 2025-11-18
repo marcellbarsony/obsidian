@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Networking/Services/MySQL/Exploitation.md",
+                "file": "Networking/Services/Telnet/General.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,37 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Exploitation"
-            }
-          }
-        ]
-      },
-      {
-        "id": "e466b085d4ac6b5e",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "930428f08e4e83d8",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Networking/Services/MSSQL/Exploitation.md",
-                "mode": "preview",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Exploitation"
+              "title": "General"
             }
           }
         ]
@@ -150,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/Services/MySQL/Exploitation.md",
+                "file": "Networking/Services/Telnet/General.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Exploitation"
+              "title": "Outline of General"
             }
           },
           {
@@ -205,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/Services/MySQL/Exploitation.md",
+                "file": "Networking/Services/Telnet/General.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -233,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Exploitation"
+              "title": "Graph of General"
             }
           }
         ]
@@ -255,8 +225,18 @@
   },
   "active": "8fce01441f2a182b",
   "lastOpenFiles": [
-    "Networking/Services/MSSQL/Exploitation.md",
+    "Networking/Services/Telnet/Exploitation.md",
+    "Networking/Services/Telnet/Enumeration.md",
+    "Networking/Services/WMI/General.md",
+    "Networking/Services/WMI/Enumeration.md",
+    "Networking/Services/Oracle TNS/Exploitation.md",
+    "Networking/Services/Oracle TNS/Enumeration.md",
+    "Networking/Tools/ODAT.md",
+    "Networking/Tools/Impacket_1.md",
+    "Linux/General/Networking/VPN/WireGuard.md",
+    "Networking/Services/Oracle TNS/General.md",
     "Networking/Services/MySQL/Exploitation.md",
+    "Networking/Services/MSSQL/Exploitation.md",
     "Networking/Services/MSSQL/Usage.md",
     "Networking/Services/MySQL/Usage.md",
     "Networking/Services/MSSQL/General.md",
@@ -271,17 +251,7 @@
     "Networking/Services/RDP/Exploitation.md",
     "Networking/Services/SMB/Exploitation.md",
     "Networking/Services/RDP/Enumeration.md",
-    "Networking/Services/WMI/Enumeration.md",
-    "Networking/Services/MSSQL/Enumeration_1.md",
-    "Pentest/File Transfer/Windows/Download.md",
-    "Microsoft/Windows/General/Connect.md",
-    "Networking/Services/SQL/General.md",
     "Networking/Tools/Impacket.py",
-    "Networking/Services/SQL/Exploitation.md",
-    "Networking/Services/SNMP/Enumeration.md",
-    "Networking/Services/SNMP/General.md",
-    "Networking/Services/SNMP/Exploitation.md",
-    "Networking/Services/FTP/Enumeration.md",
     "Networking/Services/SNMP/src/SNMP_OID_MIB_Tree.png",
     "Pentest/File Transfer/Linux",
     "Pentest/File Transfer/Windows",

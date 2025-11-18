@@ -9,13 +9,13 @@ tags:
 
 ___
 
-<!-- Nmap {{{-->
-## Nmap
+<!-- Service {{{-->
+## Service
 
 Scan the default Oracle [[General#TNS Listener|TNS Listener]] port
 
 ```sh
-sudo nmap -p1521 -sV <target> --open -oA oracle-tns-default
+sudo nmap -sV <target> -p 1521 --open -oA oracle-tns-default
 ```
 
 <!-- Example {{{-->
@@ -59,7 +59,13 @@ echo "(CONNECT_DATA=(COMMAND=version))" | nc <target> 1521
 [[Nmap]] — Banner grabbing
 
 ```sh
-nmap -p 1521 -sV <target> -oA oracle-tns-banner
+nmap -sV <target> -p 1521 -oA oracle-tns-banner
+```
+
+[[Telnet]] — Banner grabbing
+
+```sh
+telnet <target> 1521
 ```
 
 [tnslsnr](https://www.kali.org/tools/tnscmd10g/) —
@@ -79,7 +85,8 @@ ___
 The SID ([[General#System Identifier|System Identifier]])
 is required to connect to Oracle databases and can be brute-forced
 
-> [!tip]-
+<!-- Tip - Default SIDs {{{-->
+> [!tip]- Default SIDs
 >
 > Common default SIDs
 >
@@ -91,11 +98,12 @@ is required to connect to Oracle databases and can be brute-forced
 > - `TEST`
 > - `DB11G`
 > - `DB12C`
+<!-- }}} -->
 
 [[Nmap]] — SID enumeration
 
 ```sh
-sudo nmap -p 1521 -sV <target> --open --script oracle-sid-brute -oA oracle-sid-brute
+sudo nmap -sV <target> -p 1521 --open --script oracle-sid-brute -oA oracle-sid-brute
 ```
 
 <!-- Example {{{-->
@@ -159,64 +167,8 @@ ___
 <!-- ODAT {{{-->
 ## ODAT
 
-[ODAT (Oracle Database Attacking Tool)](https://github.com/quentinhardy/odat)
-is designed to enumerate and exploit security flaws
-(*e.g., SQL injection, remote code execution, privilege escalation*)
-in Oracle databases
-
-<!-- Install {{{-->
-### Install
-
-Install [odat](https://www.kali.org/tools/odat/)
-with [apt](https://en.wikipedia.org/wiki/APT_(software))
-
-```sh
-sudo apt install odat
-```
-
-Install [[Enumeration#ODAT|ODAT]] manually
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> wget https://download.oracle.com/otn_software/linux/instantclient/214000/instantclient-basic-linux.x64-21.4.0.0.0dbru.zip
-> wget https://download.oracle.com/otn_software/linux/instantclient/214000/instantclient-sqlplus-linux.x64-21.4.0.0.0dbru.zip
-> sudo mkdir -p /opt/oracle
-> sudo unzip -d /opt/oracle instantclient-basic-linux.x64-21.4.0.0.0dbru.zip
-> sudo unzip -d /opt/oracle instantclient-sqlplus-linux.x64-21.4.0.0.0dbru.zip
-> export LD_LIBRARY_PATH=/opt/oracle/instantclient_21_4:$LD_LIBRARY_PATH
-> export PATH=$LD_LIBRARY_PATH:$PATH
-> source ~/.bashrc
-> cd ~
-> git clone https://github.com/quentinhardy/odat.git
-> cd odat/
-> pip install python-libnmap
-> git submodule init
-> git submodule update
-> pip3 install cx_Oracle
-> sudo apt-get install python3-scapy -y
-> sudo pip3 install colorlog termcolor passlib python-libnmap
-> sudo apt-get install build-essential libgmp-dev -y
-> pip3 install pycryptodome
->
-> --2025-06-24 00:24:53--  https://download.oracle.com/otn_software/linux/instantclient/214000/instantclient-basic-linux.x64-21.4.0.0.0dbru.zip
-> Resolving download.oracle.com (download.oracle.com)... 23.58.104.121
-> Connecting to download.oracle.com (download.oracle.com)|23.58.104.121|:443... connected.
-> HTTP request sent, awaiting response... 200 OK
-> Length: 79386308 (76M) [application/zip]
-> Saving to: ‘instantclient-basic-linux.x64-21.4.0.0.0dbru.zip’
->
-> <SNIP>
-> ```
-<!-- }}} -->
-
-<!-- }}} -->
-
-<!-- Enumeration {{{-->
-### Enumeration
-
-[[Enumeration#ODAT|ODAT]] can retrieve database names, versions, user accounts,
+[[ODAT]] - [(Oracle Database Attacking Tool)](https://github.com/quentinhardy/odat)
+can retrieve database names, versions, user accounts,
 vulnerabilities, misconfigurations
 
 ```sh
@@ -259,6 +211,17 @@ ___
 [SQL Plus](https://en.wikipedia.org/wiki/SQL_Plus) is an
 [Oracle Database Utility](https://docs.oracle.com/cd/B14117_01/server.101/b12170/qstart.htm)
 CLI, commonly used by users, administrators and programmers
+
+<!-- Install {{{-->
+### Install
+
+Install SQL Plus
+
+```sh
+sudo apt install oracle-instantclient-sqlplus
+```
+
+<!-- }}} -->
 
 <!-- Tip {{{-->
 > [!tip]
