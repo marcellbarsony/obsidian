@@ -14,14 +14,12 @@ ___
 <!-- Service Detection {{{-->
 ## Service Detection
 
-Detect RDP services and identify capabilities with [[Nmap]]
+[[Nmap]] — Detect RDP services and identify capabilities
 
 ```sh
-nmap -p 3389 <target> -oA rdp-identify
+nmap <target> -p 3389 -oA rdp-identify
 ```
-
 ___
-
 <!-- }}} -->
 
 <!-- Version and Configuration Check {{{-->
@@ -29,20 +27,20 @@ ___
 
 Extract RDP version and security configuration information.
 
-Check Windows version through RDP
+[[Nmap]] — Check Windows version through RDP
 
 ```sh
-nmap -p 3389 --script rdp-ntlm-info <target> -oA rdp-script-ntlm-info
+nmap <target> -p 3389 --script rdp-ntlm-info -oA rdp-script-ntlm-info
 ```
 
 > [!tip]-
 >
 > - Check if [[General#Network Level Authentication|NLA]] is enabled
 
-Check security layer
+[[Nmap]] — Check security layer
 
 ```sh
-nmap -p 3389 --script rdp-enum-encryption <target> -oA rdp-script-enum-encryption
+nmap <target> -p 3389 --script rdp-enum-encryption -oA rdp-script-enum-encryption
 ```
 
 > [!info]-
@@ -53,7 +51,8 @@ nmap -p 3389 --script rdp-enum-encryption <target> -oA rdp-script-enum-encryptio
 > - Security layer (RDP/TLS/CredSSP)
 > - Encryption level
 
-Run all scripts (*including [rdp-vuln-ms12-020](https://nmap.org/nsedoc/scripts/rdp-vuln-ms12-020.html)*)
+[[Nmap]] — Run all scripts
+(*including [rdp-vuln-ms12-020](https://nmap.org/nsedoc/scripts/rdp-vuln-ms12-020.html)*)
 
 ```sh
 nmap -sC -sV <target> -p 3389 --script rdp* -oA rdp-script-all
@@ -71,20 +70,31 @@ ___
 
 Connect to RDP services to gather version and security information
 
+[[Netcat]]
+
+```sh
+ncat -nv <target> 3389
+```
+
 [[Nmap]]
 
 ```sh
-nmap -p 3389 -sV <target> -oA rdp-default-scan
+nmap -sV <target> -p 3389 -oA rdp-default-scan
 ```
 
-[rdp-sec-check](https://github.com/CiscoCXSecurity/rdp-sec-check)
+[[#RDP Security Check]]
 
 ```sh
 python rdp-sec-check.py <target>
 ```
 
-___
+[[Telnet/General|Telnet]]
 
+```sh
+telnet <target> 3389
+```
+
+___
 <!-- }}} -->
 
 <!-- Certificate {{{-->

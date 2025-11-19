@@ -8,9 +8,138 @@ links: "[[Networking/Services/SMTP/General|SMTP]]"
 
 # Enumeration
 
-- [Hacktricks - SMTP/s](https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-smtp/index.html)
+___
+
+<!-- Service {{{-->
+## Service
+
+[[Nmap]] — Detect SMTP service
+
+```sh
+nmap <target> -p 25,465,587 -oA smtp-identify
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> nmap -p 25,465,587 10.129.33.217 -oA smtp-identify
+> ```
+> ```sh
+> Nmap scan report for 10.129.33.217
+> Host is up (0.62s latency).
+>
+> PORT    STATE  SERVICE
+> 25/tcp  open   smtp
+> 465/tcp closed smtps
+> 587/tcp closed submission
+> ```
+<!-- }}} -->
+
+[[Nmap]] — Discover SMTP services & server capabilities
+
+```sh
+sudo nmap -sC -sV <target> -p 25 -oA smtp-default-scripts
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> sudo nmap -sC -sV -p25 10.129.33.217 -oA smtp-default-scripts
+> ```
+> ```sh
+> PORT   STATE SERVICE VERSION
+> 25/tcp open  smtp
+> |_smtp-commands: mail1, PIPELINING, SIZE 10240000, VRFY, ETRN, STARTTLS, ENHANCEDSTATUSCODES, 8BITMIME, DSN, SMTPUTF8, CHUNKING
+> | fingerprint-strings: 
+> |   Hello: 
+> |     220 InFreight ESMTP v2.11
+> |_    Syntax: EHLO hostname
+> ```
+<!-- }}} -->
+
+<!-- Scripts {{{-->
+### Scripts
+
+[[Nmap]] — Discover SMTP commands
+([smtp-commands](https://nmap.org/nsedoc/scripts/smtp-commands.html))
+
+```sh
+nmap <target> -p 25 --script smtp-commands -oA smtp-script-commands
+```
+
+[[Nmap]] — Discover SMTP users
+([smtp-enum-users](https://nmap.org/nsedoc/scripts/smtp-enum-users.html))
+
+```sh
+nmap <target> -p 25 --script smtp-enum-users -oA smtp-script-enum-users
+```
+
+[[Nmap]] — Discover NTLM authentication details
+([smtp-ntlm-info](https://nmap.org/nsedoc/scripts/smtp-ntlm-info.html))
+
+```sh
+nmap <target> -p 25 --script smtp-ntlm-info -oA smtp-script-ntlm-info
+```
+
+[[Nmap]] — Run all SMTP-related scripts
+
+```sh
+nmap <target> -p 25,465,587 --script smtp-* -oA smtp--script-all
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> nmap -p25 --script smtp-commands 10.129.33.217 -oA smtp-commands
+> ```
+> ```sh
+> PORT   STATE SERVICE
+> 25/tcp open  smtp
+> |_smtp-commands: mail1, PIPELINING, SIZE 10240000, VRFY, ETRN, STARTTLS, ENHANCEDSTATUSCODES, 8BITMIME, DSN, SMTPUTF8, CHUNKING
+> ```
+<!-- }}} -->
+
+[[Nmap]] — Check for [[Networking/Services/SMTP/Exploitation#Open Relay Attack|Open Realy Attack]]
+(*[smtp-open-relay](https://nmap.org/nsedoc/scripts/smtp-open-relay.html)*)
+
+```sh
+nmap <target> -p25 --script smtp-open-relay -v -oA smtp-script-open-relay
+```
+
+<!-- }}} -->
+
+<!-- CVE Scripts {{{-->
+### CVE Scripts
+
+[[Networking/Services/SMTP/Exploitation#CVE-2010-4344|CVE-2010-4344]]
+(*[smtp-vuln-cve2010-4344](https://nmap.org/nsedoc/scripts/smtp-vuln-cve2010-4344.html)*)
+
+```sh
+sudo nmap -sV <target> -p 25,465,587 -sV --script=smtp-vuln-cve2010-4344 -oA smtp-vuln-cve2010-4344
+```
+
+[[Networking/Services/SMTP/Exploitation#CVE-2011-1720|CVE-2011-1720]]
+(*[smtp-vuln-cve2011-1720](https://nmap.org/nsedoc/scripts/smtp-vuln-cve2011-1720.html)*)
+
+```sh
+sudo nmap -sV <target> -p 25,465,587 --script=smtp-vuln-cve2011-1720 -oA smtp-vuln-cve2011-1720
+```
+
+[[Networking/Services/SMTP/Exploitation#CVE-2011-1764|CVE-2011-1764]]
+(*[smtp-vuln-cve2010-1764](https://nmap.org/nsedoc/scripts/smtp-vuln-cve2011-1764.html)*)
+
+```sh
+sudo nmap -sV <target> -p 25,465,587 --script=smtp-vuln-cve2011-1764 -oA smtp-vuln-cve2011-1764
+```
+
+<!-- }}} -->
 
 ___
+
+<!-- }}} -->
 
 <!-- Banner Grabbing {{{-->
 ## Banner Grabbing
@@ -18,23 +147,19 @@ ___
 <!-- SMTP {{{-->
 ### SMTP
 
-#### Netcat
-
-Get banner with [[netcat]]
+[[Netcat]] — Get banner
 
 ```sh
 nc -vn <target> 25
 ```
 
-Get banner with [[netcat]] `EHLO`
+[[Netcat]] `EHLO` — Get banner
 
 ```sh
 echo "EHLO test" | nc <target> 25
 ```
 
-#### Telnet
-
-Get banner with [[Telnet/General|Telnet]]
+[[Telnet/General|Telnet]] — Get banner
 
 ```sh
 telnet <target> 25
@@ -60,141 +185,6 @@ openssl s_client -crlf -connect smtp.mailgun.org:465
 <!-- }}} -->
 
 ___
-
-<!-- }}} -->
-
-<!-- Nmap {{{-->
-## Nmap
-
-Detect SMTP service
-
-```sh
-nmap -p 25,465,587 <target> -oA smtp-identify
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> nmap -p 25,465,587 10.129.33.217 -oA smtp-identify
-> ```
-> ```sh
-> Nmap scan report for 10.129.33.217
-> Host is up (0.62s latency).
->
-> PORT    STATE  SERVICE
-> 25/tcp  open   smtp
-> 465/tcp closed smtps
-> 587/tcp closed submission
-> ```
-<!-- }}} -->
-
-Discover SMTP services & server capabilities
-
-```sh
-sudo nmap -sC -sV -p 25 <target> -oA smtp-default-scripts
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> sudo nmap -sC -sV -p25 10.129.33.217 -oA smtp-default-scripts
-> ```
-> ```sh
-> PORT   STATE SERVICE VERSION
-> 25/tcp open  smtp
-> |_smtp-commands: mail1, PIPELINING, SIZE 10240000, VRFY, ETRN, STARTTLS, ENHANCEDSTATUSCODES, 8BITMIME, DSN, SMTPUTF8, CHUNKING
-> | fingerprint-strings: 
-> |   Hello: 
-> |     220 InFreight ESMTP v2.11
-> |_    Syntax: EHLO hostname
-> ```
-<!-- }}} -->
-
-<!-- Scripts {{{-->
-### Scripts
-
-Discover SMTP commands
-([smtp-commands](https://nmap.org/nsedoc/scripts/smtp-commands.html))
-
-```sh
-nmap -p 25 --script smtp-commands <target> -oA smtp-script-commands
-```
-
-Discover SMTP users
-([smtp-enum-users](https://nmap.org/nsedoc/scripts/smtp-enum-users.html))
-
-```sh
-nmap -p 25 --script smtp-enum-users <target> -oA smtp-script-enum-users
-```
-
-Discover NTLM authentication details
-([smtp-ntlm-info](https://nmap.org/nsedoc/scripts/smtp-ntlm-info.html))
-
-```sh
-nmap -p 25 --script smtp-ntlm-info <target> -oA smtp-script-ntlm-info
-```
-
-Run all SMTP-related scripts
-
-```sh
-nmap -p 25,465,587 --script smtp-* <target> -oA smtp--script-all
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> nmap -p25 --script smtp-commands 10.129.33.217 -oA smtp-commands
-> ```
-> ```sh
-> PORT   STATE SERVICE
-> 25/tcp open  smtp
-> |_smtp-commands: mail1, PIPELINING, SIZE 10240000, VRFY, ETRN, STARTTLS, ENHANCEDSTATUSCODES, 8BITMIME, DSN, SMTPUTF8, CHUNKING
-> ```
-<!-- }}} -->
-
-Check for [[Networking/Services/SMTP/Exploitation#Open Relay Attack|Open Realy Attack]]
-([smtp-open-relay](https://nmap.org/nsedoc/scripts/smtp-open-relay.html))
-
-```sh
-nmap -p25 --script smtp-open-relay <target> -v -oA smtp-script-open-relay
-```
-
-<!-- }}} -->
-
-<!-- CVE Scripts {{{-->
-### CVE Scripts
-
-[[Networking/Services/SMTP/Exploitation#CVE-2010-4344|CVE-2010-4344]] (
-[smtp-vuln-cve2010-4344](https://nmap.org/nsedoc/scripts/smtp-vuln-cve2010-4344.html)
-)
-
-```sh
-sudo nmap -sV --script=smtp-vuln-cve2010-4344 -p 25,465,587 <target> -oA smtp-vuln-cve2010-4344
-```
-
-[[Networking/Services/SMTP/Exploitation#CVE-2011-1720|CVE-2011-1720]] (
-[smtp-vuln-cve2011-1720](https://nmap.org/nsedoc/scripts/smtp-vuln-cve2011-1720.html)
-)
-
-```sh
-sudo nmap -sV --script=smtp-vuln-cve2011-1720 -p 25,465,587 <target> -oA smtp-vuln-cve2011-1720
-```
-
-[[Networking/Services/SMTP/Exploitation#CVE-2011-1764|CVE-2011-1764]] (
-[smtp-vuln-cve2010-1764](https://nmap.org/nsedoc/scripts/smtp-vuln-cve2011-1764.html)
-)
-
-```sh
-sudo nmap -sV --script=smtp-vuln-cve2011-1764 -p 25,465,587 <target> -oA smtp-vuln-cve2011-1764
-```
-
-<!-- }}} -->
-
-___
-
 <!-- }}} -->
 
 <!-- User {{{-->

@@ -27,15 +27,15 @@ nbtscan -r <target_network>/<cidr>
 ___
 <!-- }}} -->
 
-<!-- Nmap {{{-->
-## Nmap
+<!-- Service {{{-->
+## Service
 
-Scan [[SMB/General|SMB]] service with [[Nmap]]
+[[Nmap]] — Scan [[SMB/General|SMB]] service
 
 Banner grabbing with default scripts
 
 ```sh
-sudo nmap -sV -sC -p 139,445 <target> -oA smb-default-scripts
+sudo nmap -sV -sC <target> -p 139,445 -oA smb-default-scripts
 ```
 
 <!-- Example {{{-->
@@ -61,26 +61,25 @@ sudo nmap -sV -sC -p 139,445 <target> -oA smb-default-scripts
 > > May take a long time
 <!-- }}} -->
 
-[smb-protocols](https://nmap.org/nsedoc/scripts/smb-protocols.html)
-— Discover SMB versions and supported protocol features
+Discover SMB versions and supported protocol features
+(*[smb-protocols](https://nmap.org/nsedoc/scripts/smb-protocols.html)*)
 
 ```sh
-nmap --script smb-protocols -p 445 <target> -oA smb-protocols
+nmap <target> -p 445 --script smb-protocols -oA smb-protocols
 ```
 
-[smb-os-discovery.nse](https://nmap.org/nsedoc/scripts/smb-os-discovery.html)
-— Extract OS/Host/Domain information
+Extract OS/Host/Domain information
+(*[smb-os-discovery.nse](https://nmap.org/nsedoc/scripts/smb-os-discovery.html)*)
 
 ```sh
-nmap --script smb-os-discovery.nse -p 445 <target> -oA smb-os-discovery
+nmap <target> -p 445 --script smb-os-discovery.nse -oA smb-os-discovery
 ```
 
 Run all `safe` and `smb-enum-*` scripts for non-destructive SMB enumeration
 
 ```sh
-nmap --script "safe or smb-enum-*" -p 445 <target> -oA smb-enumeration
+nmap <target> -p 445 --script "safe or smb-enum-*" -oA smb-enumeration
 ```
-
 ___
 <!-- }}} -->
 
@@ -259,11 +258,11 @@ Detect [[Enumeration#Netapi|Netapi (MS08-067)]]
 
 
 ```sh
-nmap --script smb-vuln-ms08-067.nse -p445 <target> -oA smb-netapi-tcp
+nmap <target> -p 445 --script smb-vuln-ms08-067.nse -oA smb-netapi-tcp
 ```
 
 ```sh
-nmap -sU --script smb-vuln-ms08-067.nse -p U:137 <target> -oA smb-netapi-udp
+nmap -sU <target> -p U:137 --script smb-vuln-ms08-067.nse -oA smb-netapi-udp
 ```
 
 <!-- Example {{{-->
@@ -295,7 +294,11 @@ Detect [[Enumeration#EternalBlue|EternalBlue (MS17-010)]]
 (*[smb-vuln-ms17-010](https://nmap.org/nsedoc/scripts/smb-vuln-ms17-010.html)*)
 
 ```sh
-nmap -Pn -p 445 --open --max-hostgroup 3 --script smb-vuln-ms17-010 <ip_netblock> -oA smb-eternalblue
+nmap -Pn <ip_netblock> -p 445 --open --max-hostgroup 3 --script smb-vuln-ms17-010  -oA smb-eternalblue
+```
+
+```sh
+nmap -A <target> -p 445
 ```
 
 > [!info]-
@@ -303,11 +306,7 @@ nmap -Pn -p 445 --open --max-hostgroup 3 --script smb-vuln-ms17-010 <ip_netblock
 > - `-Pn`: Skip ping check, treat hosts as online
 > - `--max-hostgroup 3`: Limit the number of parallel hosts scanned
 > - `<ip_netblock>`: Target IP range/subnet (e.g. `192.168.1.0/24`)
-
-
-```sh
-nmap -A -p 445 <target>
-```
+> - `-A`: Enable OS detection, version detection, script scanning, and traceroute
 
 <!-- Example {{{-->
 > [!example]-

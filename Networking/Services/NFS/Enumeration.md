@@ -12,12 +12,12 @@ links: "[[Services]]"
 ___
 
 <!-- Service Scan {{{-->
-## Service Scan
+## Service
 
 [[Nmap]] — Detect NFS services and identify server capabilities
 
 ```sh
-nmap -p 2049,111 <target> -oA nfs-default
+nmap <target> -p 2049,111 -oA nfs-default
 ```
 
 [[Nmap]] — Enumerate TCP ports `111` and `2049`
@@ -41,7 +41,7 @@ sudo nmap -sC -sV <target> -p 111,2049 -oA nfs-default-scripts
 [nfs-statfs](https://nmap.org/nsedoc/scripts/nfs-statfs.html)*)
 
 ```sh
-sudo nmap --script nfs* <target> -sV -p111,2049 -oA nfs-rpc-detection
+sudo nmap -sV <target> -p 111,2049 --script nfs* -oA nfs-rpc-detection
 ```
 
 [[Metasploit]] — NFS Mount Scanner

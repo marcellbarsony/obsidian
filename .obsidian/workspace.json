@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Networking/Services/IMAP-POP3/Usage.md",
+                "file": "Webapp/Exploitation/Upload Functionality.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Usage"
+              "title": "Upload Functionality"
             }
           }
         ]
@@ -103,7 +103,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 291.5
   },
   "right": {
     "id": "d9ceb6f94f351234",
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/Services/IMAP-POP3/Usage.md",
+                "file": "Webapp/Exploitation/Upload Functionality.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Usage"
+              "title": "Outline of Upload Functionality"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/Services/IMAP-POP3/Usage.md",
+                "file": "Webapp/Exploitation/Upload Functionality.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Usage"
+              "title": "Graph of Upload Functionality"
             }
           }
         ]
@@ -225,34 +225,35 @@
   },
   "active": "8fce01441f2a182b",
   "lastOpenFiles": [
-    "Networking/Services/IMAP-POP3/General.md",
-    "Networking/Services/IMAP-POP3/Exploitation.md",
-    "Networking/Services/IMAP-POP3/Enumeration.md",
-    "Networking/Services/FTP/Usage.md",
-    "Networking/Services/FTP/General.md",
+    "Webapp/Exploitation/Plugins.md",
+    "Webapp/Exploitation/Login Functionality.md",
+    "Webapp/Exploitation/Admin Panel.md",
+    "Networking/Services/SNMP/Enumeration.md",
+    "Networking/Services/SMTP/Exploitation.md",
+    "Networking/Services/SMTP/Enumeration.md",
+    "Networking/Services/SMB/Exploitation.md",
+    "Networking/Services/SMB/Enumeration.md",
+    "Networking/Services/SSH/Exploitation.md",
     "Networking/Services/FTP/Exploitation.md",
-    "Networking/Services/FTP/Enumeration.md",
-    "FTP.md",
-    "Networking/Services/IPMI/Exploitation.md",
-    "Networking/Services/IPMI/Enumeration.md",
-    "Networking/Services/IPMI/Tools/ipmitool.md",
-    "Networking/Services/IPMI/Tools/Ipmitool.md",
-    "Networking/Services/IPMI/Tools",
-    "Networking/Services/Oracle TNS/Enumeration.md",
-    "Networking/Services/Oracle TNS/Tools/SQL Plus.md",
-    "Networking/Services/Oracle TNS/Tools/ODAT.md",
+    "Networking/Services/Rsync/Exploitation.md",
+    "Networking/Services/Rsync/Usage.md",
+    "Networking/Services/Rsync/Tools",
+    "Networking/Services/Rsync/General.md",
+    "Networking/Services/Rsync/Enumeration.md",
+    "Networking/Services/RDP/Exploitation.md",
+    "Networking/Services/RDP/Enumeration.md",
+    "Networking/Services/NFS/Exploitation.md",
+    "Networking/Services/NFS/Enumeration.md",
+    "Networking/Services/NFS/Usage.md",
+    "Networking/Services/MySQL/Exploitation.md",
+    "Networking/Services/MySQL/Enumeration.md",
+    "Networking/Services/MSSQL/Enumeration.md",
+    "Networking/Services/MSSQL/Exploitation.md",
     "Networking/Services/Oracle TNS/Exploitation.md",
-    "Networking/Services/Oracle TNS/General.md",
-    "Networking/Services/Services.md",
-    "Networking/Networking.md",
-    "Programming/Python/Virtual Environment.md",
-    "Networking/Services/Oracle TNS/Tools/sqlplus.md",
-    "Networking/Services/Oracle TNS/Tools/ODAT_1.md",
-    "Networking/Services/Telnet/General.md",
+    "Networking/Services/IPMI/Exploitation.md",
+    "Networking/Services/IMAP-POP3/Exploitation.md",
+    "Networking/Services/IPMI/Tools",
     "Networking/Services/Oracle TNS/Tools",
-    "Networking/Services/Telnet/Exploitation.md",
-    "Networking/Services/Telnet/Enumeration.md",
-    "Networking/Services/WMI/General.md",
     "Networking/Tools/Impacket.py",
     "Networking/Services/SNMP/src/SNMP_OID_MIB_Tree.png",
     "Pentest/File Transfer/Linux",
@@ -270,7 +271,6 @@
     "Pentest/Tools/Nessus/src/webapp.png",
     "Pentest/Tools/Nessus/src/discovery.png",
     "Pentest/Tools/Nessus/src",
-    "Pentest/Tools/Nessus",
     "Networking/Services/SMB/Untitled.canvas"
   ]
 }

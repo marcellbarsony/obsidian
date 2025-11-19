@@ -17,46 +17,45 @@ Examination of process parameters might reveal
 - routing information
 - services bound to additional interfaces when passed on the command line
 
-
 ___
 
 <!-- Service {{{-->
 ## Service
 
-[[Nmap]] — Service detection and enumeration
+Service detection and enumeration
 
-Identify SNMP service
+[[Nmap]] — Identify SNMP service
 
 ```sh
-nmap -sU -p 161 --open <target> -oA snmp-identify
+nmap -sU <target> -p 161 --open -oA snmp-identify
 ```
 
-Extract system information from an SNMP service
+[[Nmap]] — Extract system information from an SNMP service
 (*[snmp-sysdescr](https://nmap.org/nsedoc/scripts/snmp-sysdescr.html)*)
 
 ```sh
-nmap -sU -sV -p 161 --script snmp-sysdescr <target> -oA snmp-script-sysdescr
+nmap -sU -sV <target> -p 161 --script snmp-sysdescr -oA snmp-script-sysdescr
 ```
 
-Enumerate network interfaces
+[[Nmap]] — Enumerate network interfaces
 (*[snmp-interfaces](https://nmap.org/nsedoc/scripts/snmp-interfaces.html)*)
 
 ```sh
-nmap -sU -sV -p 161 --script snmp-interfaces <target> -oA snmp-script-interfaces
+nmap -sU -sV <target> -p 161 --script snmp-interfaces -oA snmp-script-interfaces
 ```
 
-Enumerate listening TCP/UDP ports
+[[Nmap]] — Enumerate listening TCP/UDP ports
 (*[snmp-netstat](https://nmap.org/nsedoc/scripts/snmp-netstat.html)*)
 
 ```sh
-nmap -sU -sV -p 161 --script snmp-netstat <target> -oA snmp-script-netstat
+nmap -sU -sV <target> -p 161 --script snmp-netstat -oA snmp-script-netstat
 ```
 
-Enumerate running processes
+[[Nmap]] — Enumerate running processes
 (*[snmp-processes](https://nmap.org/nsedoc/scripts/snmp-processes.html)*)
 
 ```sh
-nmap -sU -sV -p 161 --script snmp-processes <target> -oA snmp-script-processes
+nmap -sU -sV <target> -p 161 --script snmp-processes -oA snmp-script-processes
 ```
 
 ### Windows
@@ -148,7 +147,7 @@ ___
 [[Nmap]] — Grab service banner (*[snmp-info](https://nmap.org/nsedoc/scripts/snmp-info.html)*)
 
 ```sh
-nmap -sU -p 161 --script snmp-info <target> -oA snmp-script-banner-grabbing
+nmap -sU <target> -p 161 --script snmp-info -oA snmp-script-banner-grabbing
 ```
 ___
 <!-- }}} -->
@@ -163,10 +162,21 @@ should be discovered via dictionary attack
 > [!tip]- Wordlists
 >
 > - [OneSixtyOne - dict.txt](https://github.com/trailofbits/onesixtyone/blob/master/dict.txt)`
+>
 > - [SecLists - SNMP Community Strings](https://github.com/danielmiessler/SecLists/tree/master/Discovery/SNMP)
->   - `/usr/share/seclists/Discovery/SNMP/common-snmp-community-strings-onesixtyone.txt`
->   - `/usr/share/seclists/Discovery/SNMP/snmp-onesixtyone.txt`
-> - Metasploit wordlist - `/usr/share/metasploit-framework/data/wordlists/snmp_default_pass.txt`
+>
+> ```sh
+> /usr/share/seclists/Discovery/SNMP/common-snmp-community-strings-onesixtyone.txt
+> ```
+> ```sh
+> /usr/share/seclists/Discovery/SNMP/snmp-onesixtyone.txt
+> ```
+>
+> - [[Metasploit]]
+>
+> ```sh
+> /usr/share/metasploit-framework/data/wordlists/snmp_default_pass.txt
+> ```
 <!-- }}} -->
 
 [onesixtyone](https://github.com/trailofbits/onesixtyone) —
@@ -188,8 +198,7 @@ onesixtyone -c <wordlist.txt> <target>
 > ```
 <!-- }}} -->
 
-[[Metasploit]] —
-SNMP Community Login Scanner
+[[Metasploit]] — SNMP Community Login Scanner
 (*[snmp_login](https://www.rapid7.com/db/modules/auxiliary/scanner/snmp/snmp_login/)*)
 
 ```sh
@@ -232,12 +241,11 @@ use auxiliary/scanner/snmp/snmp_login
 > ```
 <!-- }}} -->
 
-[[Nmap]] —
-Find an SNMP community string by brute force guessing
+[[Nmap]] — Find an SNMP community string by brute force guessing
 (*[snmp-brute](https://nmap.org/nsedoc/scripts/snmp-brute.html)*)
 
 ```sh
-nmap -sU -p 161 --script snmp-brute [--script-args snmp-brute.communitiesdb=<wordlist.txt> ] <target>
+nmap -sU <target> -p 161 --script snmp-brute [--script-args snmp-brute.communitiesdb=<wordlist.txt>]
 ```
 
 [[Hydra]] — Brute force
