@@ -16,20 +16,20 @@ ___
 [[Nmap]] — Identify an FTP server
 
 ```sh
-nmap -p 21 <target> -oA ftp-identify
+nmap <target> -p 21 -oA ftp-identify
 ```
 
 [[Nmap]] — Identify FTP server features
 (*default FTP unauthantecated script scan*)
 
 ```sh
-sudo nmap -sC -sV -p 21 -A <target> --script-trace -oA ftp-default-script
+sudo nmap -sC -sV <target> -p 21 -A --script-trace -oA ftp-default-script
 ```
 
 [[Nmap]] — Run all FTP scripts
 
 ```sh
-nmap --script ftp-* -p 21 <target_ip> -oA ftp-script-all
+nmap <target> -p 21 --script ftp-* -oA ftp-script-all
 ```
 
 [[Metasploit]] — FTP Version Scanner
@@ -38,6 +38,15 @@ nmap --script ftp-* -p 21 <target_ip> -oA ftp-script-all
 ```sh
 use auxiliary/scanner/ftp/ftp_version
 ```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `-sC`: Default script scan
+> - `-sV`: Version scan
+> - `-A`: Aggressive scan
+> - `--script-trace`: Trace the progress of the NSE script (*optional*)
+<!-- }}} -->
 
 <!-- Example {{{-->
 > [!example]-
@@ -62,15 +71,6 @@ use auxiliary/scanner/ftp/ftp_version
 > ```
 <!-- }}} -->
 
-<!-- Info {{{-->
-> [!info]-
->
-> - `-sC`: Default script scan
-> - `-sV`: Version scan
-> - `-A`: Aggressive scan
-> - `--script-trace`: Trace the progress of the NSE script (*optional*)
-<!-- }}} -->
-
 <!-- FTP Bounce Attack {{{-->
 ### FTP Bounce Attack
 
@@ -79,14 +79,14 @@ use auxiliary/scanner/ftp/ftp_version
 ([ftp-bounce](https://nmap.org/nsedoc/scripts/ftp-bounce.html))
 
 ```sh
-nmap -p 21 --script ftp-bounce <target> -oA ftp-script-bounce
+nmap <target> -p 21 --script ftp-bounce -oA ftp-script-bounce
 ```
 
 [[Nmap]] — Perform
 [TCP FTP Bounce Scan](https://nmap.org/book/scan-methods-ftp-bounce-scan.html)
 
 ```sh
-nmap -b <ftp_server_ip>:<port> <target_network>
+nmap -b <ftp_server_ip>:<port> <target_network> -oA ftp-bounce-scan
 ```
 
 [[Metasploit]] —
@@ -159,6 +159,7 @@ ___
 <!-- CVE Vulnerabilities {{{-->
 ## CVE Vulnerabilities
 
+[[Metasploit]] —
 BisonWare BisonFTP Server 3.5 Directory Traversal Information Disclosure
 (*[bison_ftp_traversal](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/bison_ftp_traversal/)*)
 
@@ -189,6 +190,7 @@ use auxiliary/scanner/ftp/bison_ftp_traversal
 > ```
 <!-- }}} -->
 
+[[Metasploit]] —
 ColoradoFTP Server 1.3 Build 8 Directory Traversal Information Disclosure
 (*[colorado_ftp_traversal](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/colorado_ftp_traversal/)*)
 
@@ -219,6 +221,7 @@ use auxiliary/scanner/ftp/colorado_ftp_traversal
 > ```
 <!-- }}} -->
 
+[[Metasploit]] —
 Titan FTP XCRC Directory Traversal Information Disclosure
 (*[titanftp_xcrc_traversal](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/titanftp_xcrc_traversal/)*)
 
@@ -242,13 +245,13 @@ ___
 <!-- Banner Grabbing {{{-->
 ## Banner Grabbing
 
-[[netcat]] — Grab the FTP banner
+[[Netcat]] — Grab the FTP banner
 
 ```sh
 nc -nv <target> 21
 ```
 
-[[Networking/Services/Telnet/General|Telnet]] —
+[[Telnet/General|Telnet]] —
 Grab the FTP banner
 
 ```sh
@@ -289,10 +292,63 @@ ___
 FTP servers can have default or common directories
 that may contain sensitive information
 
+<!-- Tip - Wordlists {{{-->
+> [!tip]- Wordlists
+>
+> > [!tip]- Dirb
+> >
+> > ```sh
+> > /usr/share/wordlists/dirb/common.txt
+> > ```
+>
+> > [!tip]- Dirbuster
+> >
+> > ```sh
+> > /usr/share/wordlists/dirbuster/directory-list-1.0.txt`
+> > ```
+> > ```sh
+> > /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt`
+> > ```
+> > ```sh
+> > /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt`
+> > ```
+> > ```sh
+> > /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt`
+> > ```
+> > ```sh
+> > /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-small.txt`
+> > ```
+>
+> > [!tip]- SecLists
+> >
+> > ```sh
+> > /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-1.0.txt
+> > ```
+> > ```sh
+> > /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-big.txt
+> > ```
+> > ```sh
+> > /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt
+> > ```
+> > ```sh
+> > /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
+> > ```
+> > ```sh
+> > /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-lowercase-2.3-big.txt
+> > ```
+> > ```sh
+> > /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-lowercase-2.3-medium.txt
+> > ```
+> > ```sh
+> > /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-lowercase-2.3-small.txt
+> > ```
+<!-- }}} -->
+
 [[Gobuster]] — Discover directories
 
 ```sh
-gobuster dir -u ftp://<ip> -w <dirlist.txt>
+gobuster dir -u ftp://<target> -w <dirlist>
 ```
+
 ___
 <!-- }}} -->

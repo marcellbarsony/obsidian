@@ -1,7 +1,6 @@
 ---
 id: IMAP-POP3
-aliases:
-  - ""
+aliases: []
 tags:
   - Networking/Services/IMAP-POP3/Enumeration
 links: ""
@@ -21,11 +20,11 @@ ___
 <!-- Service {{{-->
 ## Service
 
-The [[Nmap]] scan wil return [TLS certificate](https://en.wikipedia.org/wiki/Transport_Layer_Security#Digital_certificates)
+[[Nmap]] — Return [TLS certificate](https://en.wikipedia.org/wiki/Transport_Layer_Security#Digital_certificates)
 (*if the communication is encrypted*)
 
 ```sh
-sudo nmap -sC -sV -p 110,143,993,995 <target> -oA imap-pop3-basic-script
+sudo nmap -sC -sV <target> -p 110,143,993,995 -oA imap-pop3-basic-script
 ```
 
 <!-- Example {{{-->
@@ -73,7 +72,6 @@ sudo nmap -sC -sV -p 110,143,993,995 <target> -oA imap-pop3-basic-script
 <!-- }}} -->
 
 ___
-
 <!-- }}} -->
 
 <!-- IMAP {{{-->
@@ -82,22 +80,22 @@ ___
 <!-- Service {{{-->
 ### Service
 
-Service detection
+[[Nmap]] — Service detection
 
 ```sh
 nmap -sV <target> -p 143,993 -oA imap-service-detection
 ```
 
-Server capabilities
+[[Nmap]] — Server capabilities
 
 ```sh
-nmap -p 143 --script imap-capabilities <target> -oA imap-server-capabilities
+nmap <target> -p 143 --script imap-capabilities -oA imap-server-capabilities
 ```
 
-All IMAP scripts
+[[Nmap]] — All IMAP scripts
 
 ```sh
-nmap -p 143,993 --script imap-* <target> -oA imap-scripts-all
+nmap <target> -p 143,993 --script imap-* -oA imap-scripts-all
 ```
 
 <!-- }}} -->
@@ -107,10 +105,16 @@ nmap -p 143,993 --script imap-* <target> -oA imap-scripts-all
 
 Grab the IMAP service banner
 
-[[netcat]]
+[[Netcat]]
 
 ```sh
 ncat -nv <target> 143
+```
+
+[[Nmap]]
+
+```sh
+nmap <target> -p 143,993 -oA imap-banner
 ```
 
 [openssl](https://github.com/openssl/openssl)
@@ -122,7 +126,7 @@ openssl s_client -connect <target>:993 -quiet
 [[Telnet/General|Telnet]]
 
 ```sh
-nmap -p 143,993 <target> -oA imap-banner
+telnet <target> 143
 ```
 <!-- }}} -->
 
@@ -132,7 +136,8 @@ nmap -p 143,993 <target> -oA imap-banner
 <!-- OpenSSL (IMAPS) {{{-->
 #### OpenSSL (IMAPS)
 
-Connect and interact with an **IMAP** server using **openssl**
+[openssl](https://github.com/openssl/openssl) —
+Connect and interact with an **IMAP** server
 (*TLS Encrypted Interaction*)
 
 ```sh
@@ -203,8 +208,9 @@ openssl s_client -connect <target>:imaps
 <!-- Telnet (NTLM Auth) {{{-->
 #### Telnet (NTLM Auth)
 
-If the server supports [NTLM auth](https://learn.microsoft.com/en-us/troubleshoot/windows-server/windows-security/ntlm-user-authentication)
-(Windows) obtain sensitive info (versions) can be obtained:
+[[Telnet/General|Telnet]] — Obtain sensitive info
+if the server supports [NTLM auth](https://learn.microsoft.com/en-us/troubleshoot/windows-server/windows-security/ntlm-user-authentication)
+(*Windows only*)
 
 ```sh
 telnet <target> 143
@@ -225,7 +231,8 @@ telnet <target> 143
 > ```
 <!-- }}} -->
 
-Automate NTLM Auth with `imap-ntlm-info.nse` nmap plugin
+[[Nmap]] — Enumerate information from remote IMAP services
+(*[imap-ntlm-info](https://nmap.org/nsedoc/scripts/imap-ntlm-info.html)*)
 
 ```sh
 nmap -p 143 --script imap-ntlm-info <target_domain> -oA imap-ntlm-info
@@ -239,10 +246,16 @@ nmap -p 143 --script imap-ntlm-info <target_domain> -oA imap-ntlm-info
 With the access credentials, an attacker could log in to the mail server
 and read (or even send) the individual messages
 
+<!-- Warning {{{-->
+> [!warning]
+>
+> Valid credentials required
+<!-- }}} -->
+
 <!-- Example {{{-->
 > [!example]-
 >
-> 1. List mailboxes (IMAP command `LIST "" "*"`)
+> 1. List mailboxes (*IMAP command `LIST "" "*"`*)
 >
 > ```sh
 > curl -k 'imaps://10.129.14.128' --user user:pass
@@ -253,7 +266,7 @@ and read (or even send) the individual messages
 > * LIST (\HasNoChildren) "." INBOX
 > ```
 >
-> 2. List messages in a mailbox (IMAP: `SELECT INBOX` and the `SEARCH ALL`)
+> 2. List messages in a mailbox (*IMAP: `SELECT INBOX` and the `SEARCH ALL`*)
 >
 > ```sh
 > curl -k 'imaps://1.2.3.4/INBOX?ALL' --user user:pass
@@ -327,18 +340,12 @@ and read (or even send) the individual messages
 
 <!-- }}} -->
 
-<!-- Warning {{{-->
-> [!warning]
->
-> Valid credentials required
-<!-- }}} -->
 
 <!-- }}} -->
 
 <!-- }}} -->
 
 ___
-
 <!-- }}} -->
 
 <!-- POP3 {{{-->
@@ -347,18 +354,18 @@ ___
 <!-- Service {{{-->
 ### Service
 
-Query supported POP3 capabilities
+[[Nmap]] — Query supported POP3 capabilities
 (*e.g, AUTH types, STLS, TOP, UIDL*)
 
 ```sh
-nmap -p 110 --script pop3-capabilities <target> -oA pop3-capabilities
+nmap <target> -p 110 --script pop3-capabilities -oA pop3-capabilities
 ```
 
-Extract NTLM challenge info
+[[Nmap]] — Extract NTLM challenge info
 (*e.g., Windows domain name, Server hostname, NetBIOS, DNS info*)
 
 ```sh
-nmap -p 110 --script pop3-ntlm-info <target> -oA pop3-ntlm-info
+nmap <target> -p 110 --script pop3-ntlm-info -oA pop3-ntlm-info
 ```
 
 <!-- }}} -->
@@ -368,7 +375,7 @@ nmap -p 110 --script pop3-ntlm-info <target> -oA pop3-ntlm-info
 
 Grab the POP3 service banner
 
-[[netcat]]
+[[Netcat]]
 
 ```sh
 nc -nv <target> 110
@@ -384,6 +391,7 @@ openssl s_client -connect <target>:995 -crlf -quiet
 <!-- Connect {{{-->
 ### Connect
 
+[openssl](https://github.com/openssl/openssl) —
 Connect and interact with an **POP3** server
 (*TLS Encrypted Interaction*)
 
@@ -470,6 +478,9 @@ passwiords appear directly in the logs
 ```sh
 grep -Ei 'password=|pass=|plain=' /var/log/*mail* /var/log/auth.log
 ```
+
+___
+<!-- }}} -->
 
 ___
 <!-- }}} -->

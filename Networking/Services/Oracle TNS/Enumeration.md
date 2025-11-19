@@ -49,7 +49,7 @@ Connect to the TNS Listener to gather version and service information
 [[Netcat]] — Grab banner and TNS version
 
 ```sh
-nc -vn <target> 1521
+nc -nv <target> 1521
 ```
 
 ```sh
@@ -62,7 +62,7 @@ echo "(CONNECT_DATA=(COMMAND=version))" | nc <target> 1521
 nmap -sV <target> -p 1521 -oA oracle-tns-banner
 ```
 
-[[Telnet]] — Banner grabbing
+[[Telnet/General|Telnet]] — Banner grabbing
 
 ```sh
 telnet <target> 1521
@@ -182,7 +182,7 @@ vulnerabilities, misconfigurations
 > ./odat.py all -s 10.129.204.235
 > ```
 >
-> The scan has found valid credentials :`scott`/`tiger`
+> The scan has found valid credentials: `scott`:`tiger`
 >
 > ```sh
 > [+] Checking if target 10.129.204.235:1521 is well configured for a connection...
@@ -199,37 +199,13 @@ vulnerabilities, misconfigurations
 > ```
 <!-- }}} -->
 
-<!-- }}} -->
-
 ___
-
 <!-- }}} -->
 
 <!-- SQL Plus {{{-->
 ## SQL Plus
 
-[SQL Plus](https://en.wikipedia.org/wiki/SQL_Plus) is an
-[Oracle Database Utility](https://docs.oracle.com/cd/B14117_01/server.101/b12170/qstart.htm)
-CLI, commonly used by users, administrators and programmers
-
-<!-- Install {{{-->
-### Install
-
-Install SQL Plus
-
-```sh
-sudo apt install oracle-instantclient-sqlplus
-```
-
-<!-- }}} -->
-
-<!-- Tip {{{-->
-> [!tip]
->
-> List of SQL Plus
-> [commands](https://docs.oracle.com/cd/E11882_01/server.112/e41085/sqlqraa001.htm#SQLQR985)
->
-<!-- }}} -->
+[[SQL Plus]]
 
 <!-- Log In {{{-->
 ### Log In
@@ -264,7 +240,7 @@ sqlplus <username>/<password>@<target>/XE
 > ```
 <!-- }}} -->
 
-Log in the regular user as `sysdba` (System Database Admin)
+Log in the regular user as `sysdba` (*System Database Admin*)
 
 ```sh
 sqlplus <user>/<password>@<target>/XE as sysdba
@@ -314,127 +290,9 @@ sqlplus <user>/<password>@<target>/XE as sysdba
 > ```
 <!-- }}} -->
 
-<!-- Tip {{{-->
-> [!tip]
->
-> In case of this error, execute the following
-> (*[source](https://stackoverflow.com/questions/27717312/sqlplus-error-while-loading-shared-libraries-libsqlplus-so-cannot-open-shared)*)
->
-> ```
-> sqlplus: error while loading shared libraries: libsqlplus.so: cannot open shared object file: No such file or directory
-> ```
-> ```sh
-> sudo sh -c "echo /usr/lib/oracle/12.2/client64/lib > /etc/ld.so.conf.d/oracle-instantclient.conf";sudo ldconfig
-> ```
-<!-- }}} -->
-
-<!-- }}} -->
-
-<!-- Interaction {{{-->
-### Interaction
-
-List all available tables in the
-[[General#Oracle RDBMS|Oracle RDBMS]]
-
-```sql
-select table_name from all_tables;
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sql
-> SQL> select table_name from all_tables;
-> ```
-> ```
-> TABLE_NAME
-> ------------------------------
-> DUAL
-> SYSTEM_PRIVILEGE_MAP
-> TABLE_PRIVILEGE_MAP
-> STMT_AUDIT_OPTION_MAP
-> AUDIT_ACTIONS
-> WRR$_REPLAY_CALL_FILTER
-> HS_BULKLOAD_VIEW_OBJ
-> HS$_PARALLEL_METADATA
-> HS_PARTITION_COL_NAME
-> HS_PARTITION_COL_TYPE
-> HELP
->
-> ...SNIP...
->
-> ```
-<!-- }}} -->
-
-Show current user privileges
-
-```sh
-select * from user_role_privs;
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> SQL> select * from user_role_privs;
-> ```
-> ```sh
->
-> USERNAME                       GRANTED_ROLE                   ADM DEF OS_
-> ------------------------------ ------------------------------ --- --- ---
-> SCOTT                          CONNECT                        NO  YES NO
-> SCOTT                          RESOURCE                       NO  YES NO
-> ```
->
-> - `scott` has no administrator privileges
-<!-- }}} -->
-
-<!-- }}} -->
-
-<!-- Extract Password Hashes {{{-->
-### Extract Password Hashes
-
-Retrieve the password hashes of the `sys.user$`
-[SYS.USER$](https://docs.oracle.com/database/121/ADMQS/GUID-CF1CD853-AF15-41EC-BC80-61918C73FDB5.htm#ADMQS12003)
-(the default administrative user account) and try to crack them offline
-
-```sql
-select name, password from sys.user$;
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sql
-> select name, password from sys.user$;
-> ```
-> ```sh
-> NAME                           PASSWORD
-> ------------------------------ ------------------------------
-> SYS                            FBA343E7D6C8BC9D
-> PUBLIC
-> CONNECT
-> RESOURCE
-> DBA
-> SYSTEM                         B5073FE1DE351687
-> SELECT_CATALOG_ROLE
-> EXECUTE_CATALOG_ROLE
-> DELETE_CATALOG_ROLE
-> OUTLN                          4A3BA55E08595C81
-> EXP_FULL_DATABASE
-> 
-> NAME                           PASSWORD
-> ------------------------------ ------------------------------
-> IMP_FULL_DATABASE
-> LOGSTDBY_ADMINISTRATOR
-> ...SNIP...
-> ```
-<!-- }}} -->
-
 <!-- }}} -->
 
 ___
-
 <!-- }}} -->
 
 <!-- Finger {{{-->

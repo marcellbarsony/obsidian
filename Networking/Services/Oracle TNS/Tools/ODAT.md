@@ -13,19 +13,30 @@ is designed to enumerate and exploit security flaws
 (*e.g., SQL injection, remote code execution, privilege escalation*)
 in Oracle databases
 
-
 ___
 
 <!-- Install {{{-->
 ## Install
 
-[Kali - ODAT](https://www.kali.org/tools/odat/)
+<!-- Repository {{{-->
+### Repository
+
+[Kali tools](https://www.kali.org/tools/odat/)
 
 ```sh
 sudo apt install odat
 ```
 
-Install [[Enumeration#ODAT|ODAT]] manually
+<!-- }}} -->
+
+<!-- Manual {{{-->
+### Manual
+
+Manual installation
+
+> [!todo]
+>
+> Validate
 
 1. Clone the repository to get the ODAT source code:
 
@@ -79,6 +90,8 @@ sudo apt-get install build-essential libgmp-dev -y
 pip3 install pycryptodome
 ```
 
+<!-- }}} -->
+
 ___
 <!-- }}} -->
 
@@ -88,8 +101,13 @@ ___
 Run ODAT against a target
 
 ```sh
-./odat.py all -s <target>
+odat all -s <target>
 ```
+
+> [!info]-
+>
+> - `all`: run all modules
+> - `-s`: 
 
 <!-- Example {{{-->
 > [!example]-
@@ -114,5 +132,6 @@ Run ODAT against a target
 > ...SNIP...
 > ```
 <!-- }}} -->
+
 ___
 <!-- }}} -->

@@ -10,8 +10,8 @@ links: "[[FTP]]"
 
 ___
 
-<!-- Connection {{{-->
-## Connection
+<!-- Connect {{{-->
+## Connect
 
 <!-- FTP Connection {{{-->
 ### FTP Connection
@@ -64,6 +64,43 @@ ftp://<username>:<password>@<ip>
 
 <!-- }}} -->
 
+<!-- Exit {{{-->
+### Exit
+
+```sh
+bye
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> >bye
+> ```
+<!-- }}} -->
+
+<!-- }}} -->
+
+___
+<!-- }}} -->
+
+<!-- Settings {{{-->
+## Settings
+
+Set transmission to binary —
+Move raw bytes
+
+```sh
+binary
+```
+
+Set transmission to ASCII —
+Move files as text
+
+```sh
+ascii
+```
+
 ___
 <!-- }}} -->
 
@@ -98,17 +135,17 @@ Download all files
 (*[[Networking/Services/FTP/Exploitation#Anonymous Login|Anonymous Login]]*)
 
 ```sh
-wget -m ftp://anonymous:anonymous@10.10.10.98
+wget -m ftp://anonymous:anonymous@<target>
 ```
 
 ```sh
-wget -m --no-passive ftp://anonymous:anonymous@10.129.14.136
+wget -m --no-passive ftp://anonymous:anonymous@<target>
 ```
 
 Supply credentials with special characters
 
 ```sh
-wget -r --user="USERNAME" --password="PASSWORD" ftp://server.com/
+wget -r --user="<user>" --password="<user>" ftp://<target>
 ```
 
 <!-- }}} -->
@@ -118,10 +155,9 @@ wget -r --user="USERNAME" --password="PASSWORD" ftp://server.com/
 
 Uploading files may allow for [LFI vulnerabilities](https://en.wikipedia.org/wiki/File_inclusion_vulnerability)
 leading to [Remote Command Execution](https://en.wikipedia.org/wiki/Arbitrary_code_execution)
-(*RCE*)
 
 ```sh
-ftp> put testupload.txt
+ftp> put <file.ext>
 ```
 
 <!-- }}} -->

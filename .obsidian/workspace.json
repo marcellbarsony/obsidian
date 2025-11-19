@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Networking/Services/Telnet/General.md",
+                "file": "Networking/Services/IMAP-POP3/Usage.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "General"
+              "title": "Usage"
             }
           }
         ]
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/Services/Telnet/General.md",
+                "file": "Networking/Services/IMAP-POP3/Usage.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of General"
+              "title": "Outline of Usage"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/Services/Telnet/General.md",
+                "file": "Networking/Services/IMAP-POP3/Usage.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of General"
+              "title": "Graph of Usage"
             }
           }
         ]
@@ -225,32 +225,34 @@
   },
   "active": "8fce01441f2a182b",
   "lastOpenFiles": [
+    "Networking/Services/IMAP-POP3/General.md",
+    "Networking/Services/IMAP-POP3/Exploitation.md",
+    "Networking/Services/IMAP-POP3/Enumeration.md",
+    "Networking/Services/FTP/Usage.md",
+    "Networking/Services/FTP/General.md",
+    "Networking/Services/FTP/Exploitation.md",
+    "Networking/Services/FTP/Enumeration.md",
+    "FTP.md",
+    "Networking/Services/IPMI/Exploitation.md",
+    "Networking/Services/IPMI/Enumeration.md",
+    "Networking/Services/IPMI/Tools/ipmitool.md",
+    "Networking/Services/IPMI/Tools/Ipmitool.md",
+    "Networking/Services/IPMI/Tools",
+    "Networking/Services/Oracle TNS/Enumeration.md",
+    "Networking/Services/Oracle TNS/Tools/SQL Plus.md",
+    "Networking/Services/Oracle TNS/Tools/ODAT.md",
+    "Networking/Services/Oracle TNS/Exploitation.md",
+    "Networking/Services/Oracle TNS/General.md",
+    "Networking/Services/Services.md",
+    "Networking/Networking.md",
+    "Programming/Python/Virtual Environment.md",
+    "Networking/Services/Oracle TNS/Tools/sqlplus.md",
+    "Networking/Services/Oracle TNS/Tools/ODAT_1.md",
+    "Networking/Services/Telnet/General.md",
+    "Networking/Services/Oracle TNS/Tools",
     "Networking/Services/Telnet/Exploitation.md",
     "Networking/Services/Telnet/Enumeration.md",
     "Networking/Services/WMI/General.md",
-    "Networking/Services/WMI/Enumeration.md",
-    "Networking/Services/Oracle TNS/Exploitation.md",
-    "Networking/Services/Oracle TNS/Enumeration.md",
-    "Networking/Tools/ODAT.md",
-    "Networking/Tools/Impacket_1.md",
-    "Linux/General/Networking/VPN/WireGuard.md",
-    "Networking/Services/Oracle TNS/General.md",
-    "Networking/Services/MySQL/Exploitation.md",
-    "Networking/Services/MSSQL/Exploitation.md",
-    "Networking/Services/MSSQL/Usage.md",
-    "Networking/Services/MySQL/Usage.md",
-    "Networking/Services/MSSQL/General.md",
-    "Networking/Services/MySQL/General.md",
-    "Networking/Services/MySQL/Enumeration.md",
-    "Networking/Services/MSSQL/Enumeration.md",
-    "Linux/General/Audio/Bluetooth.md",
-    "Linux/Linux.md",
-    "Networking/Services/SQL/Usage.md",
-    "Pentest/General/Preparation.md",
-    "Networking/Tools/Impacket.md",
-    "Networking/Services/RDP/Exploitation.md",
-    "Networking/Services/SMB/Exploitation.md",
-    "Networking/Services/RDP/Enumeration.md",
     "Networking/Tools/Impacket.py",
     "Networking/Services/SNMP/src/SNMP_OID_MIB_Tree.png",
     "Pentest/File Transfer/Linux",
@@ -269,8 +271,6 @@
     "Pentest/Tools/Nessus/src/discovery.png",
     "Pentest/Tools/Nessus/src",
     "Pentest/Tools/Nessus",
-    "Networking/Services/SMB/Untitled.canvas",
-    "Webapp/Enumeration/src",
-    "Networking/Services/DNS/Tools"
+    "Networking/Services/SMB/Untitled.canvas"
   ]
 }
