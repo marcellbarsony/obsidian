@@ -2,7 +2,7 @@
 id: HTTP Headers
 aliases: []
 tags:
-  - Webapp/Enumeration/HTTP-Headers
+  - Webapp/Enumeration/Fingerprinting/HTTP-Headers
 links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
 ---
 

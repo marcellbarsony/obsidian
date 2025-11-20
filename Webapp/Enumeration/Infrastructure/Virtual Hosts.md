@@ -2,7 +2,7 @@
 id: Virtual Hosts
 aliases: []
 tags:
-  - Webapp/Enumeration/Fingerprinting/Virtual_Hosts
+  - Webapp/Enumeration/Infrastructure/Virtual_Hosts
 links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
 ---
 
@@ -25,9 +25,11 @@ to be hosted on a single server.
 > If a **Virtual Host** doesn't have a DNS record, it can be accessed
 > by modifying the [[DNS/General#Hosts File|hosts file]]
 
-https://forum.hackthebox.com/t/virtual-hosts-task-1st-question/323275
-https://forum.hackthebox.com/t/stuck-on-information-gathering-vhosts/316453/13
-https://forum.hackthebox.com/t/how-do-i-know-if-its-neccessary-to-change-etc-hosts-for-a-machine/243490/3
+> [!todo]
+>
+> - [HTB Forums](https://forum.hackthebox.com/t/virtual-hosts-task-1st-question/323275)
+> - [HTB Forums](https://forum.hackthebox.com/t/stuck-on-information-gathering-vhosts/316453/13)
+> - [HTB Forums](https://forum.hackthebox.com/t/how-do-i-know-if-its-neccessary-to-change-etc-hosts-for-a-machine/243490/3)
 
 ___
 
@@ -91,9 +93,6 @@ based on the `Host` header
    The web server retrieves the resources associated with the website
    and sends them back as the HTTP response
 
-___
-<!-- }}} -->
-
 <!-- Brute Force {{{-->
 ### Brute Force
 
@@ -103,7 +102,7 @@ that point to a virtual host
 
 > [!tip]- Wordlists
 >
-> [SecLists/Discovery/DNS](https://github.com/danielmiessler/SecLists/blob/master/Discovery/DNS)
+> [[SecLists]] — [Discovery/DNS](https://github.com/danielmiessler/SecLists/blob/master/Discovery/DNS)
 >
 > ```sh
 > /usr/share/seclists/Discovery/DNS/namelist.txt
@@ -163,6 +162,8 @@ ffuf -w namelist.txt -u http://10.129.184.109 -H "HOST: FUZZ.inlanefreight.htb" 
 ___
 <!-- }}} -->
 
+<!-- }}} -->
+
 <!-- Hosts {{{-->
 ## Hosts
 
@@ -181,6 +182,7 @@ ___
 <!-- Enumeration {{{-->
 ## Enumeration
 
+<!-- Banner Grabbing {{{-->
 ### Banner Grabbing
 
 Show response headers
@@ -217,7 +219,10 @@ Raw TCP
 printf 'GET / HTTP/1.1\r\nHost: app.inlanefreight.local\r\nConnection: close\r\n\r\n' | nc 10.129.222.107 80
 ```
 
-#### Invalid Header
+<!-- }}} -->
+
+<!-- Invalid Header {{{-->
+### Invalid Header
 
 Feed `localhost` header
 
@@ -230,6 +235,8 @@ Feed random host header
 ```sh
 curl -v -H "Host: random" http://<target_ip>/
 ```
+
+<!-- }}} -->
 
 ___
 <!-- }}} -->

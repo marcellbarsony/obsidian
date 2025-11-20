@@ -14,7 +14,7 @@ ___
 
 - [ ] [[Domain]]
     - [ ] [[Domain#WHOIS|WHOIS]]
-    - [ ] [[Domain#DNS|DNS]]
+    - [ ] [[DNS]]
         - [ ] [[DNS/General#Subdomain|Subdomain]]
             - [ ] [[DNS/Enumeration#Search Engine Discovery|Search Engine Discovery]]
             - [ ] [[DNS/Enumeration#Certificate Transparency|Certificate Transparency]]
@@ -37,9 +37,9 @@ ___
 ## Fingerprinting
 
 - [ ] [[Fingerprinting]]
-    - [ ] [[WAF]]
+    - [ ] [[Webapp/Enumeration/Technologies/WAF]]
         - [ ] [[Wafw00f]]
-        - [ ] [[WAF#Nmap|Nmap]]
+        - [ ] [[Webapp/Enumeration/Technologies/WAF#Nmap|Nmap]]
         - [ ] [[WhatWaf]]
     - [ ] [[Fingerprinting#Version Details & CVEs|Version Details & CVEs]]
         - [ ] [[HTTP Headers]]
@@ -115,9 +115,9 @@ ___
 <!-- Application Functionality {{{-->
 ## Application Functionality
 
-- [ ] [[Login Functionality|Login Functionality]]
-    - [ ] [[Login Functionality#Discover Login Page|Discover Login Page]]
-    - [ ] [[Login Functionality#Capture Request|Capture Request]]
+- [ ] [[Webapp/Enumeration/Discovery/Login Functionality|Login Functionality]]
+    - [ ] [[Webapp/Enumeration/Discovery/Login Functionality#Discover Login Page|Discover Login Page]]
+    - [ ] [[Webapp/Enumeration/Discovery/Login Functionality#Capture Request|Capture Request]]
 
 ___
 <!-- }}} -->

@@ -2,7 +2,7 @@
 id: Execution Paths
 aliases: []
 tags:
-  - Webapp/Enumeration/Execution_Paths
+  - Webapp/Enumeration/Discovery/Execution_Paths
 links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
 ---
 
@@ -16,24 +16,36 @@ ___
 ## Directory Structure
 
 - Navigate directory structure in the browser
-
 - Conduct [[Gobuster#Recursive Directory Enumeration|Recursive Directory Enumeration]]
-
 - Check Framework/CMS KBs for directory structure
-
 - Look for clues in page source code & error outputs
 
+<!-- Directory Enumeration {{{-->
 ### Directory Enumeration
 
-> [!tip] Wordlists
+<!-- Wordlist {{{-->
+> [!tip]- Wordlist
 >
-> - `/usr/share/dirbuster/wordlists/directory-list-2.3-small.txt`
-> - `/usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt`
+> - [[Dirbuster]]
+>
+> ```sh
+> /usr/share/dirbuster/wordlists/directory-list-2.3-small.txt
+> ```
+> ```sh
+> /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt
+> ```
+<!-- }}} -->
 
 Conduct directory enumeration
 
 - [[Burp Suite]]
 - [[Dirsearch|dirsearch.py]]
+
+
+```sh
+dirsearch.py [-u|--url] <target> [-e|--extensions] <extensions> [options]
+```
+
 - [[Gobuster]]
 
 ```sh
@@ -60,6 +72,8 @@ gobuster dir -u http://<host>/content/private/plugins/ -w <wordlist.txt>
 ```
 
 - [[Ffuf]]
+
+<!-- }}} -->
 
 ___
 <!-- }}} -->

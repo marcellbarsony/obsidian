@@ -2,7 +2,7 @@
 id: Error Pages
 aliases: []
 tags:
-  - Webapp/Enumeration/Error_Pages
+  - Webapp/Enumeration/Fingerprinting/Error-Pages
 links: "[[Webapp]]"
 ---
 

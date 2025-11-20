@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Webapp/Exploitation/Upload Functionality.md",
+                "file": "Webapp/Enumeration/Discovery/Login Functionality.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Upload Functionality"
+              "title": "Login Functionality"
             }
           }
         ]
@@ -78,7 +78,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "impacket",
+                "query": "",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Webapp/Exploitation/Upload Functionality.md",
+                "file": "Webapp/Enumeration/Discovery/Login Functionality.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Upload Functionality"
+              "title": "Outline of Login Functionality"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Webapp/Exploitation/Upload Functionality.md",
+                "file": "Webapp/Enumeration/Discovery/Login Functionality.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Upload Functionality"
+              "title": "Graph of Login Functionality"
             }
           }
         ]
@@ -225,52 +225,52 @@
   },
   "active": "8fce01441f2a182b",
   "lastOpenFiles": [
-    "Webapp/Exploitation/Plugins.md",
-    "Webapp/Exploitation/Login Functionality.md",
-    "Webapp/Exploitation/Admin Panel.md",
-    "Networking/Services/SNMP/Enumeration.md",
-    "Networking/Services/SMTP/Exploitation.md",
-    "Networking/Services/SMTP/Enumeration.md",
-    "Networking/Services/SMB/Exploitation.md",
-    "Networking/Services/SMB/Enumeration.md",
-    "Networking/Services/SSH/Exploitation.md",
-    "Networking/Services/FTP/Exploitation.md",
-    "Networking/Services/Rsync/Exploitation.md",
-    "Networking/Services/Rsync/Usage.md",
-    "Networking/Services/Rsync/Tools",
-    "Networking/Services/Rsync/General.md",
-    "Networking/Services/Rsync/Enumeration.md",
-    "Networking/Services/RDP/Exploitation.md",
-    "Networking/Services/RDP/Enumeration.md",
-    "Networking/Services/NFS/Exploitation.md",
-    "Networking/Services/NFS/Enumeration.md",
-    "Networking/Services/NFS/Usage.md",
-    "Networking/Services/MySQL/Exploitation.md",
-    "Networking/Services/MySQL/Enumeration.md",
-    "Networking/Services/MSSQL/Enumeration.md",
-    "Networking/Services/MSSQL/Exploitation.md",
-    "Networking/Services/Oracle TNS/Exploitation.md",
-    "Networking/Services/IPMI/Exploitation.md",
-    "Networking/Services/IMAP-POP3/Exploitation.md",
-    "Networking/Services/IPMI/Tools",
-    "Networking/Services/Oracle TNS/Tools",
-    "Networking/Tools/Impacket.py",
-    "Networking/Services/SNMP/src/SNMP_OID_MIB_Tree.png",
-    "Pentest/File Transfer/Linux",
-    "Pentest/File Transfer/Windows",
-    "Pentest/File Transfer",
-    "Microsoft/Windows/General/PowerShell",
-    "Pentest/Tools/Brute Force/Wordlists",
-    "Pentest/Tools/Nessus/src/policy.png",
-    "Pentest/Tools/Nessus/src/nessus_policies.png",
-    "Pentest/Tools/Nessus/src/nessus_settings.png",
-    "Pentest/Tools/Nessus/src/advanced.png",
-    "Pentest/Tools/Nessus/src/ridbf.png",
-    "Pentest/Tools/Nessus/src/userenum.png",
-    "Pentest/Tools/Nessus/src/hydra.png",
-    "Pentest/Tools/Nessus/src/webapp.png",
-    "Pentest/Tools/Nessus/src/discovery.png",
-    "Pentest/Tools/Nessus/src",
+    "Webapp/Enumeration/Discovery/Execution Paths.md",
+    "Webapp/Enumeration/Discovery/Crawling.md",
+    "Webapp/Enumeration/Discovery/Login Functionality.md",
+    "Webapp/Tools/sqlmap.md",
+    "Webapp/Tools/Dirbuster.md",
+    "Webapp/Exploitation/Cookies & Parameters.md",
+    "Webapp/Exploitation/Exploitation.md",
+    "Webapp/Enumeration/_Checklist.md",
+    "Webapp/Enumeration/Enumeration.md",
+    "Webapp/Enumeration/Content/Web Contents.md",
+    "Webapp/Enumeration/Content",
+    "Webapp/Enumeration/Vulnerabilities/Public Exploits.md",
+    "Webapp/Enumeration/Technologies/WAF.md",
+    "Webapp/Enumeration/Technologies/CMS.md",
+    "Webapp/Enumeration/Tools/amass.md",
+    "Webapp/Enumeration/Vulnerabilities/Scanning.md",
+    "Webapp/Enumeration/Tools/theHarvester.md",
+    "Webapp/Enumeration/Tools/Wafw00f.md",
+    "Webapp/Enumeration/Tools/WPScan.md",
+    "Webapp/Enumeration/Passive/Search Engine Discovery.md",
+    "Webapp/Enumeration/Metafiles/Well-Known.md",
+    "Webapp/Enumeration/Metafiles/Metafiles.md",
+    "Webapp/Enumeration/Infrastructure/Virtual Hosts.md",
+    "Webapp/Enumeration/Infrastructure/Domain.md",
+    "Webapp/Enumeration/Infrastructure/DNS.md",
+    "Webapp/Enumeration/Fingerprinting/HTTP Headers.md",
+    "Webapp/Enumeration/Fingerprinting/Fingerprinting.md",
+    "Webapp/Enumeration/Vulnerabilities",
+    "Webapp/Exploitation/Dashboard",
+    "Webapp/Exploitation/Upload",
+    "Webapp/Exploitation/Login",
+    "Webapp/Enumeration/Discovery",
+    "Webapp/Enumeration/Fingerprinting",
+    "Webapp/Enumeration/Technologies",
+    "Webapp/Enumeration/Metafiles",
+    "Webapp/Enumeration/Passive",
+    "Webapp/Exploitation/Path Traversal/src/source-code.png",
+    "Webapp/Exploitation/Path Traversal/src/20251120-010526.png",
+    "Webapp/Exploitation/Path Traversal/src/burp-repeater.png",
+    "Webapp/Exploitation/Path Traversal/src/20251120-005743.png",
+    "Webapp/Exploitation/Path Traversal/src/burp-intercept.png",
+    "Webapp/Exploitation/Path Traversal/src/20251120-004719.png",
+    "Webapp/Tools/Burp Suite/src/ca-certificate-trust.png",
+    "Webapp/Tools/Burp Suite/src/20251120-003425.png",
+    "Webapp/Tools/Burp Suite/src/ca-certificate-view.png",
+    "Webapp/Tools/Burp Suite/src/ca-certificate-manager.png",
     "Networking/Services/SMB/Untitled.canvas"
   ]
 }

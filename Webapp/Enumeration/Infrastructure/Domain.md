@@ -2,10 +2,17 @@
 id: Domain
 aliases: []
 tags:
-  - Webapp/Enumeration/Passive/Domain
+  - Webapp/Enumeration/Infrastructure/Domain
 ---
 
 # Domain
+
+A [Domain name](https://en.wikipedia.org/wiki/Domain_name)
+name is a string that identifies a realm of administrative autonomy,
+authority, or control.
+
+Domain names are often used to identify services
+provided through the Internet such as websites, email services, and more.
 
 ___
 
@@ -51,31 +58,6 @@ whois <target>
 > - **Technical Contact**: The person handling technical issues related to the domain
 > - **Creation and Expiration Dates**: Domain registration and expiration date
 > - **[[DNS/General#DNS Structure|Name Server]]**: Servers that translate the domain name into an IP address
-<!-- }}} -->
-
-___
-<!-- }}} -->
-
-<!-- DNS {{{-->
-## DNS
-
-Analyze [[DNS/General#DNS Records|DNS records]] to identify
-[[DNS/General#Subdomain|Subdomains]],
-mail servers, and other infrastructure
-
-<!-- Tip {{{-->
-> [!tip]-
->
-> CMD tools
->
-> - [[DNS/Tools/Host|Host]]
-> - [[DNS/Tools/dig|DIG]]
-> - [[DNS/Tools/nslookup|nslookup]]
->
-> Other tools
->
-> - [[Fierce]]
-> - [[DNSRecon]]
 <!-- }}} -->
 
 ___

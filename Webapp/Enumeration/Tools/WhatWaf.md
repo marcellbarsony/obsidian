@@ -41,9 +41,10 @@ ___
 <!-- Usage {{{-->
 ## Usage
 
+Identify WAF
+
 ```sh
 whatwaf -u <target>
 ```
-
 ___
 <!-- }}} -->

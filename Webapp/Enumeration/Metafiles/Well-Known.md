@@ -22,6 +22,8 @@ https://target.com/.well-known/
 >
 > `/.well-known` centralizes a website's critical metadata
 
+___
+
 <!-- Security.txt {{{-->
 ## Security.txt
 

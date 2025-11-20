@@ -2,7 +2,7 @@
 id: Login Functionality
 aliases: []
 tags:
-  - Webapp/Enumeration/Login-Functionality
+  - Webapp/Enumeration/Discovery/Login-Functionality
 ---
 
 # Login Functionality
@@ -30,12 +30,3 @@ Discover the login page
 ___
 <!-- }}} -->
 
-<!-- Capture Request {{{-->
-## Capture Request
-
-[[Burp Suite]] — Capture the login web request and inspect for
-
-- Cookie manipulation (*e.g., `user_id`, `role`, etc.*)
-
-___
-<!-- }}} -->

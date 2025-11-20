@@ -2,7 +2,7 @@
 id: Crawling
 aliases: []
 tags:
-  - Webapp/Enumeration/Fingerprinting/Crawling
+  - Webapp/Enumeration/Discovery/Crawling
 links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
 ---
 

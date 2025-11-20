@@ -20,8 +20,8 @@ ___
 Search engine operators
 (*e.g., `site:`, `filetype:`, `" "`, etc.*)
 
-<!-- Example {{{-->
-> [!example]-
+<!-- Search Engine Operators {{{-->
+> [!info]- Seach Engine Operators
 >
 > | Operator | Operator Description | Example | Example Description
 > | --- | --- | --- | --- |
@@ -56,8 +56,9 @@ ___
 
 Find useful exposed information via the [Google Hacking Database](https://www.exploit-db.com/google-hacking-database)
 
-Find login pages
+Login pages
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sh
@@ -66,9 +67,11 @@ Find login pages
 > ```sh
 > site:example.com (inurl:login OR inurl:admin)
 > ```
+<!-- }}} -->
 
-Identify exposed files
+Exposed files
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sh
@@ -77,9 +80,11 @@ Identify exposed files
 > ```sh
 > site:example.com (filetype:xls OR filetype:docx)
 > ```
+<!-- }}} -->
 
-Uncover configuration files
+Configuration files
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sh
@@ -88,9 +93,11 @@ Uncover configuration files
 > ```sh
 > site:example.com (ext:conf OR ext:cnf) (searches for extensions commonly used for configuration files)
 > ```
+<!-- }}} -->
 
-Locate database backups
+Database backups
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sh
@@ -99,13 +106,17 @@ Locate database backups
 > ```sh
 > site:example.com filetype:sql
 > ```
+<!-- }}} -->
 
-Find [[DNS/General#Subdomain|Subdomains]]
+[[DNS/General#Subdomain|Subdomains]]
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sh
 > site:wikipedia.org -en.wikipedia.org
 > ```
+<!-- }}} -->
+
 ___
 <!-- }}} -->

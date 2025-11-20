@@ -8,7 +8,8 @@ links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
 
 # Ffuf
 
-- [ffuf - Github](https://github.com/ffuf/ffuf)
+[ffuf](https://github.com/ffuf/ffuf)
+— Fast web fuzzer written in Go
 
 <!-- Installation {{{-->
 ## Installation

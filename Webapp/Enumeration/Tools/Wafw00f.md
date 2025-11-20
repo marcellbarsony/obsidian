@@ -16,11 +16,22 @@ ___
 <!-- Install {{{-->
 ## Install
 
-Install **Wafw00f** with [pip](https://pypi.org/project/pip/)
+Install **Wafw00f**
+
+[[pipx]]
+
+```sh
+pipx install <tool>
+```
+
+[[Python]]
+
 
 ```sh
 python3 -m pip install wafw00f
 ```
+
+[[pip3]]
 
 ```sh
 pip3 install wafw00f

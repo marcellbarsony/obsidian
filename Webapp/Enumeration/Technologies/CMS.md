@@ -12,6 +12,14 @@ A **Content Management System** ([CMS](https://en.wikipedia.org/wiki/Content_man
 is a software used to manage the creation and modification of digital contents
 (*e.g., websites*).
 
+___
+
+<!-- Enumeration {{{-->
+## Enumeration
+
+Identify technologies on websites
+
+<!-- Common CMS {{{-->
 > [!tip]- Common CMS
 >
 > Most common CMS
@@ -22,13 +30,8 @@ is a software used to manage the creation and modification of digital contents
 > - [Shopify](https://www.shopify.com)
 > - [Magento](https://magento-opensource.com/)
 > - [Typo3](https://typo3.org/)
+<!-- }}} -->
 
-___
-
-<!-- Enumeration {{{-->
-## Enumeration
-
-Identify technologies on websites
 
 <!-- Website {{{-->
 ### Website
@@ -46,7 +49,8 @@ Check the website for
 
 Identify telltale file paths or directory names
 
-> [!tip]-
+<!-- Common Paths {{{-->
+> [!tip]- Common Paths
 >
 > - **WordPress**: `/wp-admin`, `/wp-content/`, `/wp-includes/`, `class-wp.php`
 > - **Joomla**: `/joomla`, `/libraries/joomla/`, `/components/com_content/`
@@ -57,15 +61,14 @@ Identify telltale file paths or directory names
 > - **DotNetNuke / DNN**: `DotNetNuke.` namespaces
 > - **Sitecore**: `Sitecore.` namespaces or `/App_Config/Sitecore.config`
 > - **Node.js**: `/node_modules`
-
+<!-- }}} -->
 
 <!-- }}} -->
 
 <!-- Online Tools {{{-->
 ### Online Tools
 
-
-- [Whatcms](https://whatcms.org/)
+- [Whatcms](https://whatcms.org/) — What CMS Is This Site Using?
 
 <!-- }}} -->
 
@@ -75,7 +78,7 @@ Identify telltale file paths or directory names
 Wappalyzer constantly tries to fingerprint technologies
 on every new visited URL
 
-- [Wappalyzer](https://www.wappalyzer.com/)
+- [Wappalyzer](https://www.wappalyzer.com/) — Identify technologies on websites
 - [Wappalyzer](https://addons.mozilla.org/en-US/firefox/addon/wappalyzer/)
   (*Firefox Add-on*)
 
@@ -87,8 +90,8 @@ on every new visited URL
 
 <!-- }}} -->
 
-<!-- Tag {{{-->
-### Tag
+<!-- HTML Tag {{{-->
+### HTML Tag
 
 Get the tag (*HTML metadata element*) used by default in popular CMS
 
@@ -103,61 +106,10 @@ curl -s http://<target>/index.php | grep '<meta name="generator"'
 
 Enumerate using automated scanner
 
-<!-- WPScan {{{-->
-#### WPScan
-
-[WPScan](https://github.com/wpscanteam/wpscan)
-WordPress security scanner
-
-Simple scan (*no exploitation*)
-
-```sh
-wpscan --url <target>
-```
-
-Enumerate users
-
-```sh
-wpscan --url <target> --enumerate u
-```
-
-Enumerate a range of users
-
-```sh
-wpscan --url <target> --enumerate u1-100
-```
-
-Bruteforce a user
-
-```sh
-wpscan --url <target> --username <username> --passwords "<wordlist.txt>"
-```
-
-Enumerate and bruteforce users
-
-```sh
-wpscan --url <target> --enumerate u --passwords "<wordlist.txt>"
-```
-<!-- }}} -->
-
-<!-- Droopescan {{{-->
-#### Droopescan
-
-[[Droopescan]] supports Drupal, SilverStripe and WordPress
-(*and partially supports Joomla and Moodle*)
-
-CMS identification
-
-```sh
-droopescan scan -u <target_url>
-```
-
-Basic scan (known CMS)
-
-```sh
-droopescan scan <cms_name> -u <target_url>
-```
-<!-- }}} -->
+- [[Nikto]]
+- [[WhatWeb]]
+- [[Droopescan]]
+- [[WPScan]]
 
 <!-- }}} -->
 
