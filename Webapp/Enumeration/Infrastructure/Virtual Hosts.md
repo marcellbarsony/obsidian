@@ -167,14 +167,16 @@ ___
 <!-- Hosts {{{-->
 ## Hosts
 
-Add the virtual hosts to `/etc/hosts`
+> [!tip]
+>
+> Add the discovered virtual hosts to `/etc/hosts`
 
 ```sh
 sudoedit /etc/hosts
 ```
 
 ```sh
-sudo sh -c "echo '10.129.122.20 app.inlanefreight.local dev.inlanefreight.local' >> /etc/hosts" 
+sudo sh -c "echo '10.129.122.20 app.inlanefreight.local dev.inlanefreight.local' >> /etc/hosts"
 ```
 ___
 <!-- }}} -->
@@ -194,6 +196,15 @@ curl -I http://<target>
 ```sh
 curl -s -D - -o /dev/null -H "Host: <target_vhost>" http://<target_ip>/
 ```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `-s`: Silence progress/output
+> - `-D -`: Dump response headers to `STDOUT`
+> - `-o /dev/null`: Discard the body
+> - `-H "Host: …"`: Set the Host header (*for vhost brute-forcing*)
+<!-- }}} -->
 
 > [!example]-
 >

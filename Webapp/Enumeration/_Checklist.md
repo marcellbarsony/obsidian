@@ -9,26 +9,60 @@ tags:
 
 ___
 
-<!-- Domain {{{-->
-## Domain
+<!-- Passive Enumeration {{{-->
+## Passive Enumeration
+
+- [ ] [[Search Engine Discovery]]
+- [ ] [[Public Archives]]
+- [ ] [[Public Repositories]]
+
+___
+<!-- }}} -->
+
+<!-- Infrastructure {{{-->
+## Infrastructure
 
 - [ ] [[Domain]]
     - [ ] [[Domain#WHOIS|WHOIS]]
-    - [ ] [[DNS]]
-        - [ ] [[DNS/General#Subdomain|Subdomain]]
-            - [ ] [[DNS/Enumeration#Search Engine Discovery|Search Engine Discovery]]
-            - [ ] [[DNS/Enumeration#Certificate Transparency|Certificate Transparency]]
-            - [ ] [[DNS/Enumeration#Passive Enumeration|Passive Enumeration]]
-            - [ ] [[DNS/Enumeration#Brute Forcing|Brute Forcing]]
-        - [ ] [[DNS/General#DNS Zone|DNS Zone]]
-            - [ ] [[DNS/Enumeration#AXFR Zone Transfer|AXFR Zone Transfer]]
-        - [ ] [[DNS/Enumeration#Automated Tools|Automated Tools]]
-            - [ ] [[DNS/Tools/DNSRecon|DNSRecon]]
-    - [ ] [[Virtual Hosts]]
-        - [ ] [[Virtual Hosts#Brute Force|Brute Force]]
-        - [ ] [[Virtual Hosts#Hosts|Hosts]]
-        - [ ] [[Virtual Hosts#Banner Grabbing|Banner Grabbing]]
-            - [ ] [[Virtual Hosts#Invalid Header|Invalid Header]]
+    - [ ] [[Domain#Web Lookup|Web Lookup]]
+- [ ] [[DNS]]
+    - [ ] [[DNS/General#Subdomain|Subdomain]]
+        - [ ] [[DNS/Enumeration#Search Engine Discovery|Search Engine Discovery]]
+        - [ ] [[DNS/Enumeration#Certificate Transparency|Certificate Transparency]]
+        - [ ] [[DNS/Enumeration#Passive Enumeration|Passive Enumeration]]
+        - [ ] [[DNS/Enumeration#Brute Forcing|Brute Forcing]]
+    - [ ] [[DNS/General#DNS Zone|DNS Zone]]
+        - [ ] [[DNS/Enumeration#AXFR Zone Transfer|AXFR Zone Transfer]]
+    - [ ] [[DNS/Enumeration#Automated Tools|Automated Tools]]
+        - [ ] [[DNS/Tools/DNSRecon|DNSRecon]]
+- [ ] [[Virtual Hosts]]
+    - [ ] [[Virtual Hosts#Brute Force|Brute Force]]
+    - [ ] [[Virtual Hosts#Hosts|Hosts]]
+    - [ ] [[Virtual Hosts#Banner Grabbing|Banner Grabbing]]
+        - [ ] [[Virtual Hosts#Invalid Header|Invalid Header]]
+
+___
+<!-- }}} -->
+
+<!-- Technologies {{{-->
+## Technologies
+
+- [ ] [[WAF]]
+    - [ ] [[WAF#Identify|Identify]]
+        - [ ] [[WAF#Nmap|Nmap]]
+        - [ ] [[Wafw00f]]
+        - [ ] [[WhatWaf]]
+- [ ] [[CMS]]
+    - [ ] [[CMS#Enumeration|Enumeration]]
+        - [ ] [[CMS#Website|Website]]
+        - [ ] [[CMS#Paths|Paths]]
+        - [ ] [[CMS#Online Tools|Online Tools]]
+        - [ ] [[CMS#Browser Extension|Browser Extension]]
+        - [ ] [[CMS#HTML Tag|HTML Tag]]
+        - [ ] [[CMS#Scan|Scan]]
+            - [ ] [[Nikto]]
+            - [ ] [[WPScan]]
+            - [ ] [[Droopescan]]
 
 ___
 <!-- }}} -->
@@ -37,42 +71,33 @@ ___
 ## Fingerprinting
 
 - [ ] [[Fingerprinting]]
-    - [ ] [[Webapp/Enumeration/Technologies/WAF]]
-        - [ ] [[Wafw00f]]
-        - [ ] [[Webapp/Enumeration/Technologies/WAF#Nmap|Nmap]]
-        - [ ] [[WhatWaf]]
     - [ ] [[Fingerprinting#Version Details & CVEs|Version Details & CVEs]]
-        - [ ] [[HTTP Headers]]
-            - [ ] [[HTTP Headers#HTTP Request|HTTP Request]]
-        - [ ] [[Error Page]]
-        - [ ] [[Fingerprinting#Nmap Scan|Nmap Scan]]
-            - [ ] [[Fingerprinting#Script Scan|Script Scan]]
-        - [ ] [[Banner Grabbing#Banner Grabbing|Banner Grabbing]]
-            - [ ] [[Banner Grabbing#cURL|cURL]]
-            - [ ] [[Banner Grabbing#Netcat|Netcat]]
-        - [ ] [[Fingerprinting#Public Exploits|Public Exploits]]
-            - [ ] [[SearchSploit]]
-    - [ ] [[Crawling]]
-        - [ ] [[ReconSpider]]
-    - [ ] [[Scanning]]
-        - [ ] [[Nikto]]
-        - [ ] [[WhatWeb]]
-    - [ ] [[CMS]]
-        - [ ] [[CMS#Enumeration|Enumeration]]
-            - [ ] [[CMS#Website|Website]]
-            - [ ] [[CMS#Paths|Paths]]
-            - [ ] [[CMS#Online Tools|Online Tools]]
-            - [ ] [[CMS#Browser Extension|Browser Extension]]
-            - [ ] [[CMS#Tag|Tag]]
-            - [ ] [[CMS#Scan|Scan]]
-                - [ ] [[CMS#WPScan|WPScan]]
-                - [ ] [[CMS#Droopescan|Droopescan]]
+- [ ] [[HTTP Headers]]
+    - [ ] [[HTTP Headers#HTTP Request|HTTP Request]]
+    - [ ] [[HTTP Headers#Web Tools|Web Tools]]
+- [ ] [[Error Page]]
+    - [ ] [[Error Page#Get Error Page|Get Error Page]]
+- [ ] [[Banner Grabbing#Banner Grabbing|Banner Grabbing]]
+    - [ ] [[Banner Grabbing#cURL|cURL]]
+    - [ ] [[Banner Grabbing#Netcat|Netcat]]
+___
+<!-- }}} -->
+
+<!-- Vulnerabilities {{{-->
+## Vulnerabilities
+
+- [ ] [[Scanning]]
+    - [ ] [[Nikto]]
+    - [ ] [[WhatWeb]]
+- [ ] [[Public Exploits]]
+    - [ ] [[Public Exploits#Web|Web]]
+    - [ ] [[Public Exploits#SearchSploit|SearchSploit]]
 
 ___
 <!-- }}} -->
 
-<!-- Execution paths {{{-->
-## Execution paths
+<!-- Discovery {{{-->
+## Discovery
 
 - [ ] [[Execution Paths]]
     - [ ] [[Execution Paths#Directory Structure|Directory Structure]]
@@ -80,8 +105,16 @@ ___
             - [ ] [[Burp Suite#Enumeration|Burp Suites]]
             - [ ] [[Dirsearch]]
             - [ ] [[Gobuster]]
-            - [ ] [[Ffuf#Directory|Fuff]]
-- [ ] [[Execution Paths#Investigate Findings|Investigate Findings]]
+            - [ ] [[Ffuf]]
+        - [ ] [[Execution Paths#Recursive Directory Enumeration|Recursive Directory Enumeration]]
+            - [ ] [[Burp Suite#Enumeration|Burp Suites]]
+            - [ ] [[Dirsearch]]
+            - [ ] [[Gobuster]]
+            - [ ] [[Ffuf]]
+    - [ ] [[Execution Paths#Investigate Findings|Investigate Findings]]
+- [ ] [[Crawling]]
+    - [ ] [[ReconSpider]]
+- [ ] [[Login Functionality]]
 
 ___
 <!-- }}} -->
@@ -108,16 +141,6 @@ ___
     - [ ] [[Web Contents#Page Source Code|Page Source Code]]
     - [ ] [[Web Contents#Autocompletion|Autocompletion]]
     - [ ] [[Web Contents#JavaScript Code|JavaScript Code]]
-
-___
-<!-- }}} -->
-
-<!-- Application Functionality {{{-->
-## Application Functionality
-
-- [ ] [[Webapp/Enumeration/Discovery/Login Functionality|Login Functionality]]
-    - [ ] [[Webapp/Enumeration/Discovery/Login Functionality#Discover Login Page|Discover Login Page]]
-    - [ ] [[Webapp/Enumeration/Discovery/Login Functionality#Capture Request|Capture Request]]
 
 ___
 <!-- }}} -->

@@ -8,12 +8,27 @@ links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
 
 # Dirsearch
 
-[dirsearch](https://github.com/maurosoria/dirsearch) web path scanner
+[dirsearch](https://github.com/maurosoria/dirsearch) — Web path scanner
 
 ___
 
+<!-- Install {{{-->
+## Install
+
+[Kali Tools](https://www.kali.org/tools/dirsearch/)
+
+```sh
+sudo apt install dirsearch
+```
+___
+<!-- }}} -->
+
+<!-- Usage {{{-->
 ## Usage
 
 ```sh
-dirsearch.py [-u|--url] <target> [-e|--extensions] <extensions> [options]
+dirsearch [-u|--url] <target> [-e|--extensions] <extensions> [options]
 ```
+
+___
+<!-- }}} -->

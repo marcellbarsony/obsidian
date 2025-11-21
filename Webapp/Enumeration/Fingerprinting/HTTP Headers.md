@@ -28,3 +28,12 @@ curl --location --head <target>
 > **HTTP Response Headers** can reveal [[CMS]] and other technologies used
 
 <!-- }}} -->
+
+<!-- Web Tools {{{-->
+## Web Tools
+
+- [Security Headers](https://securityheaders.com/)
+- [WebSniffer](https://websniffer.com/)
+
+___
+<!-- }}} -->

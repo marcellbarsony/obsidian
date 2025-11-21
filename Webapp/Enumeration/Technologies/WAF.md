@@ -26,14 +26,6 @@ Identify if a Web Application Firewall
 ([WAF](https://en.wikipedia.org/wiki/Web_application_firewall))
 is being used
 
-### wafw00f
-
-[[wafw00f]] — Identify WAF
-
-```sh
-wafw00f <target>
-```
-
 ### Nmap
 
 [[Nmap]] — Identify WAF
@@ -42,6 +34,14 @@ wafw00f <target>
 
 ```sh
 nmap -p <target_port> --script=http-waf-fingerprint,http-waf-detect <target>
+```
+
+### wafw00f
+
+[[wafw00f]] — Identify WAF
+
+```sh
+wafw00f <target>
 ```
 
 ### WhatWaf

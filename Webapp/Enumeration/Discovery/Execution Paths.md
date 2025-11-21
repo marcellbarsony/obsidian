@@ -23,16 +23,30 @@ ___
 <!-- Directory Enumeration {{{-->
 ### Directory Enumeration
 
-<!-- Wordlist {{{-->
-> [!tip]- Wordlist
+<!-- Wordlists {{{-->
+> [!tip]- Wordlists
 >
-> - [[Dirbuster]]
+> [[Dirbuster]]
 >
 > ```sh
 > /usr/share/dirbuster/wordlists/directory-list-2.3-small.txt
 > ```
 > ```sh
 > /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt
+> ```
+>
+> [[SecLists]]
+>
+> ```sh
+> /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
+> ```
+>
+> ```sh
+> /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt
+> ```
+>
+> ```sh
+> /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-big.txt
 > ```
 <!-- }}} -->
 
@@ -44,6 +58,12 @@ Conduct directory enumeration
 
 ```sh
 dirsearch.py [-u|--url] <target> [-e|--extensions] <extensions> [options]
+```
+
+- [[Ffuf]]
+
+```sh
+ffuf -w <wordlist>:FUZZ -u http://<target_ip>:<target_port>/FUZZ
 ```
 
 - [[Gobuster]]
@@ -59,19 +79,48 @@ gobuster dir -u <target> -w <wordlist.txt> -x <file_extensions>
 > gobuster dir -u http://10.10.159.137 -w <wordlist.txt> /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt -x php,php3,html
 <!-- }}} -->
 
-- [[Ffuf]]
+<!-- }}} -->
+
+<!-- Recursive Directory Enumeration {{{-->
+### Recursive Directory Enumeration
 
 Conduct recursive directory enumeration
 
+<!-- Wordlists {{{-->
+> [!tip]- Wordlists
+>
+> [[Dirbuster]]
+>
+> ```sh
+> /usr/share/dirbuster/wordlists/directory-list-2.3-small.txt
+> ```
+> ```sh
+> /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt
+> ```
+>
+> [[SecLists]]
+>
+> ```sh
+> /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
+> ```
+>
+> ```sh
+> /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt
+> ```
+>
+> ```sh
+> /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-big.txt
+> ```
+<!-- }}} -->
+
 - [[Burp Suite]]
 - [[Dirsearch|dirsearch.py]]
+- [[Ffuf]]
 - [[Gobuster#Recursive Directory Enumeration|Recursive Directory Enumeration]]
 
 ```sh
 gobuster dir -u http://<host>/content/private/plugins/ -w <wordlist.txt>
 ```
-
-- [[Ffuf]]
 
 <!-- }}} -->
 

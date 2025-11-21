@@ -62,3 +62,16 @@ whois <target>
 
 ___
 <!-- }}} -->
+
+<!-- Web Lookup {{{-->
+## Web Lookup
+
+Lookup domain registration information
+
+- [DomainTools](https://whois.domaintools.com/)
+- [ICANN Lookup](https://lookup.icann.org/en/lookup)
+- [MxToolbox](https://mxtoolbox.com/whois.aspx)
+- [Who.is](https://who.is/)
+
+___
+<!-- }}} -->

@@ -37,7 +37,7 @@ nmap -sV [--version-all] <target> [--stats-every=10s] -oA http-version
 nmap -sV <target> --script=http-enum [--stats-every=10s] -oA http-script-enum
 ```
 
-<!-- Info {{{ -->
+<!-- Info {{{-->
 > [!info]-
 >
 > - `-sV`: Enable service/version detection
@@ -45,8 +45,7 @@ nmap -sV <target> --script=http-enum [--stats-every=10s] -oA http-script-enum
 > - `-oA`: Save output in all fomats
 <!-- }}} -->
 
-
+___
 <!-- }}} -->
 
-___
 <!-- }}} -->
