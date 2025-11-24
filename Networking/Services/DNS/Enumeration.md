@@ -227,20 +227,8 @@ Brute Force DNS Subdomains
 > [!tip]- Wordlists
 >
 >
-> [SecLists/Discovery/DNS](https://github.com/danielmiessler/SecLists/tree/master/Discovery/DNS)
+> [[SecLists#Subdomains|SecLists - Subdomain]]
 >
-> ```sh
-> /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt
-> ```
-> ```sh
-> /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt
-> ```
-> ```sh
-> /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt
-> ```
-> ```sh
-> /usr/share/SecLists/Discovery/DNS/namelist.txt
-> ```
 <!-- }}} -->
 
 <!-- Gobuster {{{-->

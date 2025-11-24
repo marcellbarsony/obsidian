@@ -163,7 +163,7 @@ should be discovered via dictionary attack
 >
 > - [OneSixtyOne - dict.txt](https://github.com/trailofbits/onesixtyone/blob/master/dict.txt)`
 >
-> - [SecLists - SNMP Community Strings](https://github.com/danielmiessler/SecLists/tree/master/Discovery/SNMP)
+> - [[SecLists]]
 >
 > ```sh
 > /usr/share/seclists/Discovery/SNMP/common-snmp-community-strings-onesixtyone.txt
@@ -444,10 +444,46 @@ snmpwalk -v 1 -c <community_string> <target> | tee SNMPWALK.txt
 snmpwalk -v 2c -c <community_string> <target> | tee SNMPWALK.txt
 ```
 
+#### System
+
 Hostname
 
 ```sh
 snmpwalk -v <version> -c public <target> 1.3.6.1.2.1.1.5.0
+```
+
+System Description
+
+```sh
+snmpget -v <version> -c public <target> .1.3.6.1.2.1.1.1.0
+```
+
+System information
+
+```sh
+snmpwalk -v <version> -c public <target> system
+```
+
+System Uptime
+
+```sh
+snmpwalk -v <version> -c public <target> hrSystemUptime
+```
+
+System CPU load (*Net-SNMP*)
+
+```sh
+snmpwalk -v <version> -c public <target> .1.3.6.1.4.1.2021.11
+```
+
+Usernames and storage descriptions (*especially on Windows systems*)
+
+```sh
+snmpwalk -v <version> -c public <target> .1.3.6.1.4.1.77.1.2.25
+```
+
+```sh
+snmpwalk -v <version> -c public <target> hrStorageTable
 ```
 
 <!-- Example {{{-->
@@ -477,6 +513,8 @@ snmpwalk -v <version> -c public <target> 1.3.6.1.2.1.1.5.0
 > > - Revealed its system name: `gs-svcscan`
 <!-- }}} -->
 
+#### Network
+
 Network information (*Routing tables*)
 
 ```sh
@@ -503,11 +541,25 @@ snmpwalk -v <version> -c public <target> .1.3.6.1.2.1.1.1.0
 snmpwalk -v <version> -c public <target> interfaces
 ```
 
+Network interface descriptions
+
+```sh
+snmpwalk -v <version> -c public <target> .1.3.6.1.2.1.2.2.1.2
+```
+
 Network interface IP addresses
 
 ```sh
 snmpwalk -v <version> -c public <target> .1.3.6.1.2.1.4.20.1.1
 ```
+
+Network Interface Status
+
+```sh
+snmpwalk -v2c -c public target.com .1.3.6.1.2.1.2.2.1.8
+```
+
+#### Services
 
 Running services and processes
 
@@ -523,34 +575,6 @@ Software versions
 
 ```sh
 snmpwalk -v <version> -c public <target> .1.3.6.1.2.1.25.6.3.1.2
-```
-
-System CPU load (*Net-SNMP*)
-
-```sh
-snmpwalk -v <version> -c public <target> .1.3.6.1.4.1.2021.11
-```
-
-System information
-
-```sh
-snmpwalk -v <version> -c public <target> system
-```
-
-System Uptime
-
-```sh
-snmpwalk -v <version> -c public <target> hrSystemUptime
-```
-
-Usernames and storage descriptions (*especially on Windows systems*)
-
-```sh
-snmpwalk -v <version> -c public <target> .1.3.6.1.4.1.77.1.2.25
-```
-
-```sh
-snmpwalk -v <version> -c public <target> hrStorageTable
 ```
 
 <!-- }}} -->

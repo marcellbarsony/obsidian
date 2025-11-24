@@ -249,13 +249,15 @@ ___
 <!-- Netapi {{{-->
 ### Netapi
 
-Detect [[Enumeration#Netapi|Netapi (MS08-067)]]
+Detect Netapi
+(*[MS08-067](https://learn.microsoft.com/en-us/security-updates/securitybulletins/2008/ms08-067))
 (*[smb-vuln-ms08-067](https://nmap.org/nsedoc/scripts/smb-vuln-ms08-067.html)*)
 
+<!-- Warning {{{-->
 > [!warning]
 >
 > This check is dangerous and it may crash systems
-
+<!-- }}} -->
 
 ```sh
 nmap <target> -p 445 --script smb-vuln-ms08-067.nse -oA smb-netapi-tcp
@@ -290,7 +292,8 @@ nmap -sU <target> -p U:137 --script smb-vuln-ms08-067.nse -oA smb-netapi-udp
 <!-- EternalBlue {{{-->
 ### EternalBlue
 
-Detect [[Enumeration#EternalBlue|EternalBlue (MS17-010)]]
+Detect EternalBlue
+(*[SM17-010](https://learn.microsoft.com/en-us/security-updates/securitybulletins/2017/ms17-010)*)
 (*[smb-vuln-ms17-010](https://nmap.org/nsedoc/scripts/smb-vuln-ms17-010.html)*)
 
 ```sh

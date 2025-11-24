@@ -15,6 +15,8 @@ port:
 is a client-server protocol over TCP, designed for sharing files, directories,
 and other resources (*e.g., printers, routers, interfaces*) over a network.
 
+___
+
 <!-- NetBIOS (Port 139) {{{-->
 ## NetBIOS (Port 139)
 
@@ -100,9 +102,7 @@ Default configuration parameters and values
 Global settings are defined under the `[global]` share, and can be overwritten
 in individual shares (e.g., `[printers]`, `[print$]`, etc.).
 
-> [!info]-
->
-> **Default Configuration**
+> [!info]- Default Configuration
 >
 >| Setting                        | Description                                                      |
 >| ------------------------------ | ---------------------------------------------------------------- |
@@ -125,7 +125,7 @@ in individual shares (e.g., `[printers]`, `[print$]`, etc.).
 
 Some of the settings enable sensitive options
 
-> [!danger]-
+> [!danger]- Dangerous Settings
 >
 >| Setting                     | Description                                                        |
 >| --------------------------- | ------------------------------------------------------------------ |

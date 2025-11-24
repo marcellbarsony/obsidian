@@ -8,12 +8,14 @@ links: ""
 
 # Enumeration
 
-**IMAP** is using ports `143` and `993`.<br>
-**POP3** is using ports `110` and `995`.
+Detect and enumerate **IMAP** and **POP3** services
 
-The higher ports (`993` and `995`) use
+- **IMAP** is using ports `143` and `993`
+- **POP3** is using ports `110` and `995`
+
+The higher ports (*`993` and `995`*) use
 [TLS/SSL to encrypt](https://en.wikipedia.org/wiki/Transport_Layer_Security)
-the communication between the client and server.
+the communication between the client and server
 
 ___
 
@@ -236,7 +238,7 @@ telnet <target> 143
 (*[imap-ntlm-info](https://nmap.org/nsedoc/scripts/imap-ntlm-info.html)*)
 
 ```sh
-nmap -p 143 --script imap-ntlm-info <target_domain> -oA imap-ntlm-info
+nmap <target_domain> -p 143 --script imap-ntlm-info -oA imap-ntlm-info
 ```
 
 <!-- }}} -->

@@ -100,23 +100,21 @@ Virtual host fuzzing is recommended
 to possibly find alternate domain names of subdomains
 that point to a virtual host
 
+<!-- Wordlists {{{-->
 > [!tip]- Wordlists
 >
-> [[SecLists]] — [Discovery/DNS](https://github.com/danielmiessler/SecLists/blob/master/Discovery/DNS)
+> - [[SecLists#Vhost|SecLists - Vhost]]
 >
-> ```sh
-> /usr/share/seclists/Discovery/DNS/namelist.txt
-> ```
-> ```sh
-> /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt
-> ```
+<!-- }}} -->
 
+<!-- Warning {{{-->
 > [!warning]
 >
 > Virtual Host Discovery can generate significant traffic
 > and might be detected by intrusion detection systems (*IDS*)
 > or web application firewalls (*WAF*)
 > and it could lead to an unintended denial of service
+<!-- }}} -->
 
 [[Gobuster]]
 
@@ -130,6 +128,7 @@ gobuster vhost -u http://<target> -w <wordlist.txt> -p pattern --exclude-length 
 gobuster vhost --useragent "PENTEST" --wordlist "<wordlist.txt>" --url <target>
 ```
 
+<!-- Info {{{-->
 > [!info]-
 >
 > - `-t 60`: Number of threads
@@ -143,6 +142,7 @@ gobuster vhost --useragent "PENTEST" --wordlist "<wordlist.txt>" --url <target>
 > ```sh
 > {GOBUSTER}.inlanefreight.htb
 > ```
+<!-- }}} -->
 
 [[Ffuf]]
 

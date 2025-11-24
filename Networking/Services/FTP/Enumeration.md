@@ -292,62 +292,23 @@ ___
 FTP servers can have default or common directories
 that may contain sensitive information
 
-<!-- Tip - Wordlists {{{-->
+<!-- Wordlists {{{-->
 > [!tip]- Wordlists
 >
-> > [!tip]- Dirb
-> >
-> > ```sh
-> > /usr/share/wordlists/dirb/common.txt
-> > ```
->
-> > [!tip]- Dirbuster
-> >
-> > ```sh
-> > /usr/share/wordlists/dirbuster/directory-list-1.0.txt`
-> > ```
-> > ```sh
-> > /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt`
-> > ```
-> > ```sh
-> > /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt`
-> > ```
-> > ```sh
-> > /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt`
-> > ```
-> > ```sh
-> > /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-small.txt`
-> > ```
->
-> > [!tip]- SecLists
-> >
-> > ```sh
-> > /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-1.0.txt
-> > ```
-> > ```sh
-> > /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-big.txt
-> > ```
-> > ```sh
-> > /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt
-> > ```
-> > ```sh
-> > /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
-> > ```
-> > ```sh
-> > /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-lowercase-2.3-big.txt
-> > ```
-> > ```sh
-> > /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-lowercase-2.3-medium.txt
-> > ```
-> > ```sh
-> > /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-lowercase-2.3-small.txt
-> > ```
+> - [[Dirbuster#Directories|Dirbuster - Directories]]
+> - [[SecLists#Directories|SecLists - Directories]]
 <!-- }}} -->
 
 [[Gobuster]] — Discover directories
 
 ```sh
 gobuster dir -u ftp://<target> -w <dirlist>
+```
+
+[[Ffuf]] — Discover directories
+
+```sh
+ffuf
 ```
 
 ___

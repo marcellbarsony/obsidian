@@ -33,7 +33,7 @@ ___
 <!-- ExportFS {{{-->
 ## ExportFS
 
-Share the directory `/mnt/nfs` to the subnet `101.129.14.0/24`.
+Share the directory `/mnt/nfs` to the subnet `101.129.14.0/24`
 
 ```sh
 sudo echo '/mnt/nfs  10.129.14.0/24(sync,no_subtree_check)' >> /etc/exports
@@ -47,7 +47,7 @@ sudo systemctl restart nfs-kernel-server
 sudo exportfs
 ```
 
-All hosts on this subnet well be able to mount to this NFS share.
+All hosts on this subnet well be able to mount to this NFS share
 
 ___
 

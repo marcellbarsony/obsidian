@@ -297,8 +297,8 @@ use auxiliary/scanner/ipmi/ipmi_dumphashes
 >   by implementing network segmentation rules
 <!-- }}} -->
 
-<!-- Tip {{{-->
-> [!tip]
+<!-- Tip - Hash Cracking {{{-->
+> [!tip]- Hash Cracking
 >
 > [[Exploitation#Hash Cracking|Crack Hashes]]
 <!-- }}} -->

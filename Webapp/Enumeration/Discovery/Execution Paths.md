@@ -26,28 +26,8 @@ ___
 <!-- Wordlists {{{-->
 > [!tip]- Wordlists
 >
-> [[Dirbuster]]
->
-> ```sh
-> /usr/share/dirbuster/wordlists/directory-list-2.3-small.txt
-> ```
-> ```sh
-> /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt
-> ```
->
-> [[SecLists]]
->
-> ```sh
-> /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
-> ```
->
-> ```sh
-> /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt
-> ```
->
-> ```sh
-> /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-big.txt
-> ```
+> - [[Dirbuster#Directories|Dirbuster - Directories]]
+> - [[SecLists#Directories| SecLists - Directories]]
 <!-- }}} -->
 
 Conduct directory enumeration
@@ -76,7 +56,8 @@ gobuster dir -u <target> -w <wordlist.txt> -x <file_extensions>
 > [!example]-
 >
 > ```sh
-> gobuster dir -u http://10.10.159.137 -w <wordlist.txt> /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt -x php,php3,html
+> gobuster dir -u http://10.10.159.137 -w /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt -x php,php3,html
+> ```
 <!-- }}} -->
 
 <!-- }}} -->
@@ -89,28 +70,8 @@ Conduct recursive directory enumeration
 <!-- Wordlists {{{-->
 > [!tip]- Wordlists
 >
-> [[Dirbuster]]
->
-> ```sh
-> /usr/share/dirbuster/wordlists/directory-list-2.3-small.txt
-> ```
-> ```sh
-> /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt
-> ```
->
-> [[SecLists]]
->
-> ```sh
-> /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-small.txt
-> ```
->
-> ```sh
-> /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt
-> ```
->
-> ```sh
-> /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-big.txt
-> ```
+> - [[Dirbuster#Directories|Dirbuster - Directories]]
+> - [[SecLists#Directories|SecLists - Directories]]
 <!-- }}} -->
 
 - [[Burp Suite]]

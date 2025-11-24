@@ -28,7 +28,12 @@ port:
 > ```
 <!-- }}} -->
 
-- [Wikipedia - List of FTP server return codes](https://en.wikipedia.org/wiki/List_of_FTP_server_return_codes)
+<!-- FTP Server Return Codes {{{-->
+> [!tip]- FTP Server Return Codes
+>
+> [Wikipedia - List of FTP server return codes](https://en.wikipedia.org/wiki/List_of_FTP_server_return_codes)
+>
+<!-- }}} -->
 
 ___
 
@@ -82,25 +87,20 @@ ___
 [vsFTPd](https://security.appspot.com/vsftpd.html) (Very Secure FTP Daemon) is a
 secure FTP server for UNIX-like systems.
 
-<!-- Installation {{{-->
-## Installation
+<!-- Install {{{-->
+## Install
 
-Install the [vsftpd](https://pkg.kali.org/pkg/vsftpd) package
+[Kali Packages](https://pkg.kali.org/pkg/vsftpd)
 
-<!-- Example {{{-->
-> [!example]-
->
-> Install `vsftpd` on Debian-based systems
->
-> ```sh
-> sudo apt install vsftpd
-> ```
->
-> Install `vsftpd` on Arch
->
-> ```sh
-> sudo pacman -Syu vsftpd
-> ```
+```sh
+sudo apt install vsftpd
+```
+
+[Arch Packages](https://archlinux.org/packages/extra/x86_64/vsftpd/)
+
+```sh
+sudo pacman -Syu vsftpd
+```
 <!-- }}} -->
 
 <!-- }}} -->

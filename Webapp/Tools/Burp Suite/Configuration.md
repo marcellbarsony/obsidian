@@ -2,7 +2,7 @@
 id: Burp Suite
 aliases: []
 tags:
-  - Webapp/Tools/Burp-Suite
+  - Webapp/Tools/Burp-Suite/Burp-Suite/Configuration
 links: "[[Webapp/Enumeration/Tools|Tools]]"
 ---
 

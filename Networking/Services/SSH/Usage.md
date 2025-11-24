@@ -35,6 +35,20 @@ Connect with private key
 ssh -i <path/to/private_key> <user>@<target>
 ```
 
+Connect over a jump host
+
+```sh
+ssh -J <first_host> <second_host>
+```
+
+<!-- Info {{{-->
+> [!info]
+>
+> - `-J`: Destination — Connect to the target host
+>   by first making an ssh connection to the jump host
+>   described by destination
+<!-- }}} -->
+
 <!-- Authenticate {{{-->
 ### Authenticate
 
@@ -44,6 +58,7 @@ Check authentication method
 ssh -v <user>@<target>
 ```
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sh
@@ -57,6 +72,7 @@ ssh -v <user>@<target>
 >
 > Enforce password-based authentication
 > ```
+<!-- }}} -->
 
 Set authentication method to `password`
 
@@ -64,6 +80,7 @@ Set authentication method to `password`
 ssh <user>@<target> -o PreferredAuthentications=password
 ```
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sh
@@ -78,6 +95,7 @@ ssh <user>@<target> -o PreferredAuthentications=password
 >
 > cry0l1t3@10.129.14.132's password:
 > ```
+<!-- }}} -->
 
 <!-- }}} -->
 

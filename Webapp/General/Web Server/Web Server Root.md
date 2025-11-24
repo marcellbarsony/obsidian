@@ -1,7 +1,8 @@
 ---
 id: Web Server Root
 aliases: []
-tags: []
+tags:
+  - Webapp/General/Web-Server/Web-Server-Root
 ---
 
 # Web Server Root

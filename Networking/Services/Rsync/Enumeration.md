@@ -8,22 +8,24 @@ links: "[[Services]]"
 
 # Enumeration
 
-Enumerate Rsync server for and accessible [[General#Modules|modules]] (*shares*)
+Enumerate Rsync server for and accessible
+[[General#Modules|modules]] (*shares*)
 public exploits
 
 <!-- Service {{{-->
 ## Service
 
-Identify Rsync server on a target host
+[[Nmap]] — Identify Rsync server on a target host
 
 ```sh
-nmap -p 873 <target> -oA rsync-identify
+nmap <target> -p 873 -oA rsync-identify
 ```
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sh
-> sudo nmap -sV -p 873 127.0.0.1
+> sudo nmap -sV 127.0.0.1 -p 873
 > ```
 > ```sh
 > Starting Nmap 7.92 ( https://nmap.org ) at 2022-09-19 09:31 EDT
@@ -36,13 +38,15 @@ nmap -p 873 <target> -oA rsync-identify
 > Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 > Nmap done: 1 IP address (1 host up) scanned in 1.13 seconds
 > ```
+<!-- }}} -->
 
-Identify [[General#R-Services|R-Services]]
+[[Nmap]] — Identify [[General#R-Services|R-Services]]
 
 ```sh
-sudo nmap -sV -p 512,513,514 <target> -oA rsync-services
+sudo nmap -sV <target> -p 512,513,514 -oA rsync-services
 ```
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sh
@@ -62,12 +66,13 @@ sudo nmap -sV -p 512,513,514 <target> -oA rsync-services
 > Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 > Nmap done: 1 IP address (1 host up) scanned in 145.54 seconds
 > ```
+<!-- }}} -->
 
-Identify outdated Rsync version for public exploits
-([rsync-list-modules](https://nmap.org/nsedoc/scripts/rsync-list-modules.html))
+[[Nmap]] — Identify outdated Rsync version for public exploits
+(*[rsync-list-modules](https://nmap.org/nsedoc/scripts/rsync-list-modules.html)*)
 
 ```sh
-nmap -sV --script=rsync-list-modules <target_host> -oA rsync-script-list-modules
+nmap -sV <target_host> --script=rsync-list-modules -oA rsync-script-list-modules
 ```
 
 ___
@@ -77,12 +82,13 @@ ___
 <!-- Banner Grabbing {{{-->
 ## Banner Grabbing
 
-Grab banner and accessible [[General#Modules|modules]] with [[Netcat]]
+[[Netcat]] — Grab banner and accessible [[General#Modules|modules]]
 
 ```sh
 nc -nv <target> 873
 ```
 
+<!-- Example {{{-->
 > [!example]-
 >
 > Expected output format
@@ -98,6 +104,7 @@ nc -nv <target> 873
 >
 > - The share `raidroot` can be enumerated further
 > - `@RSYNCD: AUTHREQD`: Password needed
+<!-- }}} -->
 
 ___
 
@@ -109,11 +116,11 @@ ___
 Enumerate Rsync [[General#Modules|modules]] to understand their structure
 and find misconfiguration or sensitive information
 
-List modules available for Rsync synchronization with [[Nmap]]
-([rsync-list-modules](https://nmap.org/nsedoc/scripts/rsync-list-modules.html))
+[[Nmap]] — List modules available for Rsync synchronization
+(*[rsync-list-modules](https://nmap.org/nsedoc/scripts/rsync-list-modules.html)*)
 
 ```sh
-nmap -sV --script "rsync-list-modules" -p 873 <target> -oA rsync-script-list-modules
+nmap -sV <target> -p 873 --script "rsync-list-modules" -oA rsync-script-list-modules
 ```
 
 <!-- Example {{{-->
@@ -131,9 +138,8 @@ nmap -sV --script "rsync-list-modules" -p 873 <target> -oA rsync-script-list-mod
 > ```
 <!-- }}} -->
 
-List modules with [[Metasploit]]
-([modules-list](https://www.rapid7.com/db/modules/auxiliary/scanner/rsync/modules_list/))
-
+[[Metasploit]] — List Rsync Modules
+(*[modules-list](https://www.rapid7.com/db/modules/auxiliary/scanner/rsync/modules_list/)*)
 
 ```sh
 use auxiliary/scanner/rsync/modules_list
@@ -157,13 +163,13 @@ use auxiliary/scanner/rsync/modules_list
 > ```
 <!-- }}} -->
 
-List modules with [[Usage|Rsync]]
+[[Usage|Rsync]] — List modules
 
 ```sh
 rsync <target>::
 ```
 
-List files in a module with [[Usage|Rsync]]
+[[Usage|Rsync]] — List files in a module
 
 ```sh
 rsync -av --list-only rsync://<target>/<module_name>

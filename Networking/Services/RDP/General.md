@@ -25,6 +25,9 @@ for encryption.
 
 The Remote Desktop service is installed by default on Windows servers.
 
+___
+
+<!-- Network Level Authentication {{{-->
 ## Network Level Authentication
 
 **Network Level Authentication**
@@ -32,12 +35,18 @@ The Remote Desktop service is installed by default on Windows servers.
 is an RDP feature that requires the connecting user to authenticate
 before the session is established.
 
+___
+<!-- }}} -->
+
+<!-- Configuration {{{-->
 ## Configuration
 
+<!-- Enable {{{-->
 ### Enable
 
 Enable RDP Service on Windows with `Administrator` privileges
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sh
@@ -47,3 +56,9 @@ Enable RDP Service on Windows with `Administrator` privileges
 > ```sh
 > Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" -Name "UserAuthentication" -Value 1
 > ```
+<!-- }}} -->
+
+<!-- }}} -->
+
+___
+<!-- }}} -->
