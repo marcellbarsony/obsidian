@@ -8,6 +8,19 @@ links: "[[Webapp/Enumeration/Tools|Tools]]"
 
 # Burp Suite Configuration
 
+<!-- Proxy Listeners {{{-->
+## Proxy Listeners
+
+> ![todo]
+
+Proxy > Options > Proxy Listeners
+
+Interface: `127.0.0.1:8080`
+
+
+___
+<!-- }}} -->
+
 <!-- HTTPS {{{-->
 ## HTTPS
 

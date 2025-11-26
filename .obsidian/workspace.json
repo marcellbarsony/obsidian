@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "5bc139af7bc60371",
+        "id": "a2756010634063c4",
         "type": "tabs",
         "children": [
           {
-            "id": "8fce01441f2a182b",
+            "id": "cfe535dced8e8380",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Networking/Services/SSH/Exploitation.md",
+                "file": "Webapp/Enumeration/Content/Web Contents.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,55 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Exploitation"
+              "title": "Web Contents"
+            }
+          },
+          {
+            "id": "d7bf0b2643060edb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Pentest/Tools/Brute Force/Wordlists/SecLists.md",
+                "mode": "preview",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "SecLists"
+            }
+          },
+          {
+            "id": "13e07050670fdb56",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Webapp/Enumeration/_Checklist.md",
+                "mode": "preview",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "_Checklist"
             }
           }
         ]
@@ -78,7 +126,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "grep",
+                "query": "ffuf",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -103,7 +151,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 230.5
+    "width": 200
   },
   "right": {
     "id": "d9ceb6f94f351234",
@@ -120,13 +168,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/Services/SSH/Exploitation.md",
+                "file": "Webapp/Enumeration/Content/Web Contents.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Exploitation"
+              "title": "Outline of Web Contents"
             }
           },
           {
@@ -175,7 +223,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/Services/SSH/Exploitation.md",
+                "file": "Webapp/Enumeration/Content/Web Contents.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,14 +251,14 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Exploitation"
+              "title": "Graph of Web Contents"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 217.5
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -223,34 +271,34 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "8fce01441f2a182b",
+  "active": "cfe535dced8e8380",
   "lastOpenFiles": [
-    "Networking/Services/SQL/Exploitation.md",
-    "Networking/Services/SNMP/Exploitation.md",
-    "Networking/Services/SMTP/Exploitation.md",
-    "Networking/Services/SMB/Exploitation.md",
-    "Networking/Services/SMB/Enumeration.md",
-    "Networking/Services/Rsync/Exploitation.md",
-    "Networking/Services/Rsync/Enumeration.md",
-    "Networking/Services/RDP/Exploitation.md",
-    "Networking/Services/Oracle TNS/Exploitation.md",
-    "Networking/Services/SNMP/Enumeration.md",
-    "Networking/Services/SNMP/General.md",
-    "Networking/Services/SMB/General.md",
-    "Networking/Services/IPMI/Exploitation.md",
-    "Networking/Services/MSSQL/Exploitation.md",
-    "Networking/Services/SMTP/Enumeration.md",
-    "Networking/Services/SMB/Usage.md",
-    "Networking/Services/Rsync/General.md",
+    "Webapp/Enumeration/Discovery/Login Functionality.md",
+    "Webapp/Enumeration/Discovery/Crawling.md",
+    "Webapp/Enumeration/Discovery/Execution Paths.md",
+    "Pentest/Tools/Ffuf/Ffuf.md",
+    "Pentest/Tools/Brute Force/Wordlists/SecLists.md",
+    "Webapp/Enumeration/_Checklist.md",
+    "Webapp/Enumeration/Infrastructure/Virtual Hosts.md",
+    "Pentest/Tools/Brute Force/Gobuster.md",
+    "Webapp/Tools/Dirbuster.md",
+    "Networking/Networking.md",
+    "Webapp/Webapp.md",
     "Networking/Services/RDP/Usage.md",
     "Networking/Services/RDP/General.md",
     "Networking/Services/RDP/Enumeration.md",
-    "Networking/Services/Oracle TNS/Enumeration.md",
-    "Networking/Services/NFS/Usage.md",
-    "Networking/Services/NFS/General.md",
-    "Networking/Services/NFS/Exploitation.md",
-    "Networking/Services/NFS/Enumeration.md",
-    "Networking/Services/NetBIOS/General.md",
+    "Networking/Services/DNS/Enumeration.md",
+    "Networking/Services/DNS/Tools/subfinder.md",
+    "Networking/Services/WMI/Enumeration.md",
+    "Networking/Services/WinRM/Exploitation.md",
+    "Networking/Services/WinRM/Enumeration.md",
+    "Networking/Tools/Tools.md",
+    "Networking/Tools/Impacket.md",
+    "Webapp/Enumeration/Tools/theHarvester.md",
+    "Networking/Services/VNC/Enumeration.md",
+    "Networking/Services/Telnet/Exploitation.md",
+    "Networking/Services/Telnet/Enumeration.md",
+    "Networking/Services/SNMP/Enumeration.md",
     "Webapp/General/Technologies",
     "Pentest/Tools/Ffuf",
     "Webapp/Exploitation/Server-Side/Path Traversal/Tools",

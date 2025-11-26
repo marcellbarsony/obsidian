@@ -26,8 +26,8 @@ ___
 <!-- Wordlists {{{-->
 > [!tip]- Wordlists
 >
-> - [[Dirbuster#Directories|Dirbuster - Directories]]
-> - [[SecLists#Directories| SecLists - Directories]]
+> - [[Dirbuster#Directories|Dirbuster]]
+> - [[SecLists#Directories|SecLists]]
 <!-- }}} -->
 
 Conduct directory enumeration
@@ -70,8 +70,8 @@ Conduct recursive directory enumeration
 <!-- Wordlists {{{-->
 > [!tip]- Wordlists
 >
-> - [[Dirbuster#Directories|Dirbuster - Directories]]
-> - [[SecLists#Directories|SecLists - Directories]]
+> - [[Dirbuster#Directories|Dirbuster]]
+> - [[SecLists#Directories|SecLists]]
 <!-- }}} -->
 
 - [[Burp Suite]]

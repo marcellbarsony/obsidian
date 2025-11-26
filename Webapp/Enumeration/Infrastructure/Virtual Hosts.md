@@ -20,16 +20,13 @@ to be hosted on a single server.
 **Virtual Hosts** can be associated with top-level domains
 (*e.g., example.com*) or subdomains (*e.g., dev.example.com*).
 
-> [!tip]
+<!-- Hosts File {{{-->
+> [!tip] Hosts File
 >
-> If a **Virtual Host** doesn't have a DNS record, it can be accessed
-> by modifying the [[DNS/General#Hosts File|hosts file]]
-
-> [!todo]
->
-> - [HTB Forums](https://forum.hackthebox.com/t/virtual-hosts-task-1st-question/323275)
-> - [HTB Forums](https://forum.hackthebox.com/t/stuck-on-information-gathering-vhosts/316453/13)
-> - [HTB Forums](https://forum.hackthebox.com/t/how-do-i-know-if-its-neccessary-to-change-etc-hosts-for-a-machine/243490/3)
+> If a **Virtual Host** doesn't have a DNS record,
+> it can be accessed by modifying the
+> [[DNS/General#Hosts File|Hosts File]]
+<!-- }}} -->
 
 ___
 
@@ -93,8 +90,8 @@ based on the `Host` header
    The web server retrieves the resources associated with the website
    and sends them back as the HTTP response
 
-<!-- Brute Force {{{-->
-### Brute Force
+<!-- Fuzzing {{{-->
+### Fuzzing
 
 Virtual host fuzzing is recommended
 to possibly find alternate domain names of subdomains
@@ -103,7 +100,7 @@ that point to a virtual host
 <!-- Wordlists {{{-->
 > [!tip]- Wordlists
 >
-> - [[SecLists#Vhost|SecLists - Vhost]]
+> - [[SecLists#Subdomains|SecLists]]
 >
 <!-- }}} -->
 
@@ -119,10 +116,13 @@ that point to a virtual host
 [[Gobuster]]
 
 ```sh
-gobuster vhost -u http://<target> -w <wordlist.txt> -t 60 --append-domain
+gobuster vhost -u http://<target> -w <wordlist.txt>
 ```
 ```sh
-gobuster vhost -u http://<target> -w <wordlist.txt> -p pattern --exclude-length 301 -t 60
+gobuster vhost -u http://<target> -w <wordlist.txt> --domain <domain> --append-domain -t 60
+```
+```sh
+gobuster vhost -u http://<target> -w <wordlist.txt> -p <pattern_file> --exclude-length 301
 ```
 ```sh
 gobuster vhost --useragent "PENTEST" --wordlist "<wordlist.txt>" --url <target>
@@ -131,10 +131,7 @@ gobuster vhost --useragent "PENTEST" --wordlist "<wordlist.txt>" --url <target>
 <!-- Info {{{-->
 > [!info]-
 >
-> - `-t 60`: Number of threads
 > - `-p pattern`: The `pattern` file contains the domain name
-> - `--exclude-length 301`: Ignore results whose response body length
->    equals 301 bytes
 >
 > ```sh
 > cat pattern
@@ -142,6 +139,43 @@ gobuster vhost --useragent "PENTEST" --wordlist "<wordlist.txt>" --url <target>
 > ```sh
 > {GOBUSTER}.inlanefreight.htb
 > ```
+>
+> - `-t 60`: Number of threads
+> - `-u`: Set URL to machine IP
+> - `-w`: Wordlist
+> - `--append-domain`: Appends the configured domain to each entry in the wordlist
+> - `--exclude-length 301`: Ignore results whose response body length
+>    equals 301 bytes
+> - `--useragent`: Define custom [[User Agent]]
+<!-- }}} -->
+
+<!-- Domain {{{-->
+> [!tip]- Domain
+>
+> Defining a domain may be necessary
+> when appending a domain (`--append-domain`)
+>
+> - `--domain <target.com>`: Set top- and second-level domains
+>   in the `Hostname:` header
+>
+> - `-p <pattern_file>`: Set custom domain pattern in the pattern file
+>
+> ```sh
+> cat pattern
+> ```
+> ```sh
+> {GOBUSTER}.inlanefreight.htb
+> ```
+>
+> <!-- VHost Header {{{-->
+> > [!example]- VHost Header
+> >
+> > ```sh
+> > HOST: admin.inlanefreight.thm
+> > HOST: test.inlanefreight.thm
+> > HOST: dev.inlanefreight.thm
+> > ```
+> <!-- }}} -->
 <!-- }}} -->
 
 [[Ffuf]]

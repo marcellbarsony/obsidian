@@ -9,57 +9,29 @@ links:
 
 # Usage
 
-<!-- Connect {{{-->
-## Connect
-
-<!-- Windows {{{-->
-### Windows
-
-#### mstsc
-
-[mstsc](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/mstsc) —
-Creates connections to Remote Desktop Session Host servers
-or other remote computers
-
-Basic connection
-
-```sh
-mstsc /v:<target>
-```
-
-With specific port
-
-```sh
-mstsc /v:<target>:3389
-```
-
-Full screen mode
-
-```sh
-mstsc /v:<target> /f
-```
-
-Admin mode
-
-```sh
-mstsc /v:<target> /admin
-```
-
-Save connection settings
-
-```sh
-mstsc /v:<target> /save:connection.rdp
-```
-<!-- }}} -->
+___
 
 <!-- Linux {{{-->
-### Linux
+## Linux
 
 <!-- xfreerdp {{{-->
-#### xfreerdp
+### xfreerdp
 
 [xfreerdp](https://linux.die.net/man/1/xfreerdp) —
 FreeRDP X11 client
+
+<!-- Install {{{-->
+#### Install
+
+Install
+
+```sh
+sudo apt install freerdp3-x11
+```
+<!-- }}} -->
+
+<!-- Connect {{{-->
+#### Connect
 
 Basic connection
 
@@ -99,8 +71,10 @@ xfreerdp /u: /p:<password> /v:<target> /dynamic-resolution
 ```
 <!-- }}} -->
 
+<!-- }}} -->
+
 <!-- rdesktop {{{-->
-#### rdesktop
+### rdesktop
 
 [rdesktop](https://linux.die.net/man/1/rdesktop) —
 Remote Desktop Protocol client 
@@ -130,8 +104,46 @@ rdesktop -g 1920x1080 -u <username> <target>
 ```
 <!-- }}} -->
 
+___
 <!-- }}} -->
 
-___
+<!-- Windows {{{-->
+## Windows
 
+### mstsc
+
+[mstsc](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/mstsc) —
+Creates connections to Remote Desktop Session Host servers
+or other remote computers
+
+Basic connection
+
+```sh
+mstsc /v:<target>
+```
+
+With specific port
+
+```sh
+mstsc /v:<target>:3389
+```
+
+Full screen mode
+
+```sh
+mstsc /v:<target> /f
+```
+
+Admin mode
+
+```sh
+mstsc /v:<target> /admin
+```
+
+Save connection settings
+
+```sh
+mstsc /v:<target> /save:connection.rdp
+```
+___
 <!-- }}} -->

@@ -29,7 +29,7 @@ General Directories Lists
 
 
 ```sh
-/usr/share/wordlists/dirbuster/directory-list-1.0.txt`
+/usr/share/wordlists/dirbuster/directory-list-1.0.txt
 ```
 
 ```sh
@@ -41,11 +41,11 @@ General Directories Lists
 ```
 
 ```sh
-/usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt`
+/usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt
 ```
 
 ```sh
-/usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-small.txt`
+/usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-small.txt
 ```
 
 <!-- }}} -->

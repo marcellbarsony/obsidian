@@ -20,3 +20,19 @@ nmap -sV --script vnc-info,realvnc-auth-bypass,vnc-title -p <target_port> <targe
 
 ___
 <!-- }}} -->
+
+<!-- Banner Grabbing {{{-->
+## Banner Grabbing
+
+[[Netcat]] — Grab Service Banner
+
+```sh
+nc -vn <target> 5900
+```
+
+[[Netcat]] — Get VNC handshake
+
+```sh
+echo "" | nc <target> 5900
+```
+<!-- }}} -->
