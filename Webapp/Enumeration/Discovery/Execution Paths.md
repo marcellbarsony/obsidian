@@ -23,14 +23,14 @@ ___
 <!-- Directory Enumeration {{{-->
 ### Directory Enumeration
 
+Conduct directory enumeration
+
 <!-- Wordlists {{{-->
 > [!tip]- Wordlists
 >
 > - [[Dirbuster#Directories|Dirbuster]]
 > - [[SecLists#Directories|SecLists]]
 <!-- }}} -->
-
-Conduct directory enumeration
 
 - [[Burp Suite]]
 - [[Dirsearch|dirsearch.py]]
@@ -83,6 +83,19 @@ Conduct recursive directory enumeration
 gobuster dir -u http://<host>/content/private/plugins/ -w <wordlist.txt>
 ```
 
+<!-- }}} -->
+
+___
+<!-- }}} -->
+
+<!-- Page Enumeration {{{-->
+## Page Enumeration
+
+<!-- Wordlists {{{-->
+> [!tip]- Wordlists
+>
+> - [[Dirbuster#Directories|Dirbuster]]
+> - [[SecLists#Directories|SecLists]]
 <!-- }}} -->
 
 ___

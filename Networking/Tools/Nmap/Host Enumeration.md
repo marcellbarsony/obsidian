@@ -119,26 +119,30 @@ nmap -sS -O <target> -oA os-detection-syn
 Aggressive Service Detection
 
 ```sh
-nmap -sV -A [-T4] <target> -oA os-detection-aggressive
+nmap -sV <target> -A [-T4] -oA os-detection-aggressive
 ```
 
+<!-- Warning {{{-->
 > [!warning]
 >
 > Might be blocked by firewall
+<!-- }}} -->
 
 <!-- }}} -->
+
 ___
 <!-- }}} -->
 
 <!-- TCP Scan {{{-->
 ## TCP Scan
 
+<!-- Top 10 TCP Port Scan {{{-->
 ### Top 10 TCP Port Scan
 
 Scan the most frequent TCP ports
 
 ```sh
-sudo nmap <target_ip> --top-ports=10
+sudo nmap <target> --top-ports=10 -oA tcp-ports-top-10
 ```
 
 Disable on closed ports:
@@ -147,6 +151,7 @@ Disable on closed ports:
 - DNS resolution (`-n`)
 - ARP ping scan (`--disable-arp-ping`).
 
+<!-- Info {{{-->
 > [!info]-
 >
 > Top 10 TCP Ports, ranked in the `nmap-services` file
@@ -163,61 +168,82 @@ Disable on closed ports:
 >| 443/tcp  | https         |
 >| 445/tcp  | microsoft-ds  |
 >| 3389/tcp | ms-wbt-server |
+<!-- }}} -->
 
+<!-- }}} -->
+
+<!-- Open Port Discovery {{{-->
 ### Open Port Discovery
 
 Discover open ports on the target machine
 
 ```sh
-nmap -sV --open <target_ip> -oA tcp-initial-scan
+nmap -sV <target> --open -oA tcp-open-ports
 ```
 
+<!-- Info {{{-->
 > [!info]-
 >
 > - `-sV`: Enable service/version detection
 > - `--open`: Scan open ports only
 > - `-oA`: Save output in all fomats
+<!-- }}} -->
 
+<!-- }}} -->
+
+<!-- Full Port Scan {{{-->
 ### Full Port Scan
 
 Run a full port scan for services running on non-standard ports
 
 ```sh
-nmap -p- --open -oA <target_ip> -oA tcp_full
+nmap <target> -p- --open -oA tcp-port-full
 ```
 
+<!-- Info {{{-->
 > [!info]-
 >
 > - `-p-`: Scan all ports
 > - `--open`: Scan open ports only
 > - `-oA`: Save output in all fomats
+<!-- }}} -->
 
+<!-- }}} -->
+
+<!-- Script Scan {{{-->
 ### Script Scan
 
-Run a script scan on discovered ports (*e.g., 22, 80*)
+Run a script scan on discovered ports
+(*e.g., `22`, `80`*)
 
 ```sh
-nmap -sC -p 22,80 <target> -oA script_scan
+nmap -sC <target> -p <port> -oA tcp-script-scan
 ```
 
+<!-- Info {{{-->
 > [!info]-
 >
-> - `-sC`: Run default NSE scripts (auth, banner grabbing, vuln detection, etc.)
+> - `-sC`: Run default NSE scripts (*auth, banner grabbing, vuln detection, etc.*)
 > - `-p 20,80`: Scan specified ports only
 > - `-oA`: Save output in all fomats
+<!-- }}} -->
 
+<!-- }}} -->
+
+<!-- TCP Connect Scan {{{-->
 ### TCP Connect Scan
 
-**TCP Connect Scan** (`-sT`) uses the three-way hansdhake to determine if a port
-is open
+**TCP Connect Scan** (`-sT`) uses the three-way hansdhake to determine
+if a port is open
 
 ```sh
-sudo nmap <target_ip> -p 443 -oA tcp-connect
+sudo nmap <target> -p 443 -oA tcp-connect
 ```
 
 ```sh
-sudo nmap <target_ip> -p 443 --packet-trace --disable-arp-ping -Pn -n --reason -sT -oA tcp-connect-trace
+sudo nmap <target> -p 443 --packet-trace --disable-arp-ping -Pn -n --reason -sT -oA tcp-connect-trace
 ```
+<!-- }}} -->
 
 ___
 <!-- }}} -->
@@ -225,40 +251,52 @@ ___
 <!-- UDP Scan {{{-->
 ## UDP Scan
 
+<!-- Top 100 UDP Ports {{{-->
 ### Top 100 UDP Ports
 
 Scan top 100 UDP ports
 
 ```sh
-sudo nmap <target_ip> -sU -F -oA udp-top-100
+sudo nmap <target_ip> -sU -F -oA udp-port-top-100
 ```
 
+<!-- Info {{{-->
 > [!info]-
 >
 > - `-sU`: Perform UDP scan
 > - `-F`: Scan top 100 ports
+<!-- }}} -->
 
+<!-- }}} -->
+
+<!-- All UDP Ports {{{-->
 ### All UDP Ports
 
 Scan all UDP ports
 
 ```sh
-sudo nmap -sU -p- <target_ip> -oA udp-all
+sudo nmap -sU <target> -p- -oA udp-port-all
 ```
 
+<!-- Info {{{-->
 > [!info]-
 >
 > - `-sU`: Perform UDP scan
 > - `-p-`: Scan all ports
+<!-- }}} -->
 
+<!-- }}} -->
+
+<!-- Specific UDP Port {{{-->
 ### Specific UDP Port
 
 Scan specific UDP port
 
 ```sh
-sudo nmap <target_ip> -sU -Pn -n --disable-arp-ping --packet-trace -p 137 --reason -oA udp-specific-port
+sudo nmap -sU <target> -p <port> -Pn -n --disable-arp-ping --packet-trace --reason -oA udp-port-specific
 ```
 
+<!-- Info {{{-->
 > [!info]-
 >
 > - `-sU`: UDP scan
@@ -268,6 +306,9 @@ sudo nmap <target_ip> -sU -Pn -n --disable-arp-ping --packet-trace -p 137 --reas
 > - `--packet-trace`: Show all packets sent and received
 > - `-p 137`: Scan specified port
 > - `--reason`: Display reason
+<!-- }}} -->
+
+<!-- }}} -->
 
 ___
 <!-- }}} -->

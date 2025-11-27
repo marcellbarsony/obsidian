@@ -32,7 +32,8 @@ ___
 <!-- PHP Info Page {{{-->
 #### PHP Info Page
 
-PHP Info Page (*`/phpinfo.php`*) in the [[Web Server Root]]
+[PHP Info Page](https://www.php.net/manual/en/function.phpinfo.php)
+(*`/phpinfo.php`*) in the [[Web Server Root]]
 may reveal PHP version information
 
 <!-- }}} -->

@@ -20,7 +20,7 @@ ___
 Identify technologies on websites
 
 <!-- Common CMS {{{-->
-> [!tip]- Common CMS
+> [!tip] Common CMS
 >
 > Most common CMS
 >
@@ -49,7 +49,7 @@ Check the website for
 Identify telltale file paths or directory names
 
 <!-- Common Paths {{{-->
-> [!tip]- Common Paths
+> [!tip] Common Paths
 >
 > - **WordPress**: `/wp-admin`, `/wp-content/`, `/wp-includes/`, `class-wp.php`
 > - **Joomla**: `/joomla`, `/libraries/joomla/`, `/components/com_content/`

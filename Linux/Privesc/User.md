@@ -26,8 +26,8 @@ whoami
 ```
 <!-- }}} -->
 
-<!-- Home directory {{{-->
-### Home directory
+<!-- Home Directory {{{-->
+### Home Directory
 
 [[Credential Hunting#Home Directory|Credential Hunting]] —
 Investigate the user's home directory
@@ -38,8 +38,8 @@ Investigate the user's home directory
 
 <!-- }}} -->
 
-<!-- root directory {{{-->
-### root directory
+<!-- Root Directory {{{-->
+### Root Directory
 
 [[Credential Hunting#root Directory|Credential Hunting]] —
 Investigate the `/root` directory

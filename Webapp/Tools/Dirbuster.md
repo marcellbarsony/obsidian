@@ -27,25 +27,23 @@ sudo apt install dirbuster
 
 General Directories Lists
 
-
 ```sh
 /usr/share/wordlists/dirbuster/directory-list-1.0.txt
 ```
-
 ```sh
 /usr/share/dirbuster/wordlists/directory-list-2.3-small.txt
 ```
-
 ```sh
 /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt
 ```
 
-```sh
-/usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt
-```
+General Lowercase Lists
 
 ```sh
 /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-small.txt
+```
+```sh
+/usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt
 ```
 
 <!-- }}} -->
@@ -56,11 +54,30 @@ General Directories Lists
 General Webpages Lists
 
 ```sh
-/usr/share/dirbuster/wordlists/directory-list-2.3-small.txt
+/usr/share/dirbuster/wordlists/common.txt
+```
+```sh
+/usr/share/dirbuster/wordlists/small.txt
+```
+```sh
+/usr/share/dirbuster/wordlists/big.txt
 ```
 
+<!-- }}} -->
+
+<!-- Files {{{-->
+### Files
+
+General Files Lists
+
 ```sh
-/usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt
+/usr/share/dirbuster/wordlists/common.txt
+```
+```sh
+/usr/share/dirbuster/wordlists/small.txt
+```
+```sh
+/usr/share/dirbuster/wordlists/big.txt
 ```
 
 <!-- }}} -->

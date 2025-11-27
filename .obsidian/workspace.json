@@ -8,12 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "cfe535dced8e8380",
+            "id": "be4c1912bddb6c3b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Webapp/Enumeration/Content/Web Contents.md",
+                "file": "Networking/Services/MongoDB/General.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,55 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Web Contents"
-            }
-          },
-          {
-            "id": "d7bf0b2643060edb",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Pentest/Tools/Brute Force/Wordlists/SecLists.md",
-                "mode": "preview",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "SecLists"
-            }
-          },
-          {
-            "id": "13e07050670fdb56",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Webapp/Enumeration/_Checklist.md",
-                "mode": "preview",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "_Checklist"
+              "title": "General"
             }
           }
         ]
@@ -126,7 +78,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "ffuf",
+                "query": "",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -168,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Webapp/Enumeration/Content/Web Contents.md",
+                "file": "Networking/Services/MongoDB/General.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Web Contents"
+              "title": "Outline of General"
             }
           },
           {
@@ -223,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Webapp/Enumeration/Content/Web Contents.md",
+                "file": "Networking/Services/MongoDB/General.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -251,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Web Contents"
+              "title": "Graph of General"
             }
           }
         ]
@@ -271,34 +223,38 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "cfe535dced8e8380",
+  "active": "be4c1912bddb6c3b",
   "lastOpenFiles": [
-    "Webapp/Enumeration/Discovery/Login Functionality.md",
-    "Webapp/Enumeration/Discovery/Crawling.md",
-    "Webapp/Enumeration/Discovery/Execution Paths.md",
+    "Networking/Services/MongoDB/Exploitation.md",
+    "Networking/Services/MongoDB/General.md",
+    "Networking/Services/MongoDB/Usage.md",
+    "Networking/Services/MongoDB/Enumeration.md",
+    "Pentest/General/Kali Linux.md",
+    "Pentest/General/General.md",
+    "Linux/General/Networking/DNS/dnscrypt-proxy.md",
+    "Linux/General/Networking/NetworkManager.md",
+    "Linux/General/Networking/VPN/WireGuard.md",
+    "Pentest/General/Reporting_1.md",
+    "Networking/Services/NFS/General.md",
+    "Networking/Services/MSSQL/General.md",
+    "Networking/Tools/Nmap/Host Enumeration.md",
+    "Networking/Services/MongoDB/Usage_1.md",
+    "Networking/Services/MongoDB",
+    "Networking/Enumeration/_Checklist.md",
+    "Webapp/Exploitation/Login/Authentication.md",
+    "Webapp/Exploitation/Server-Side/Authentication/Authentication.md",
+    "Webapp/Exploitation/Server-Side/Authentication/Authentication_1.md",
+    "Webapp/Exploitation/Server-Side/Access Control/Access Control.md",
+    "Webapp/Exploitation/Server-Side/Authentication/Access Control.md",
+    "Webapp/Exploitation/Server-Side/Authentication",
+    "Webapp/Exploitation/Server-Side/File Upload/Upload Functionality.md",
+    "Webapp/Exploitation/Server-Side/Access Control/Path Traversal.md",
+    "Webapp/Exploitation/Server-Side/Access Control",
+    "Webapp/Exploitation/Server-Side/Path Traversal/Path Traversal.md",
+    "Webapp/General/HTTP Headers/HTTP Headers.md",
+    "Webapp/General/HTTP Headers/PHP.md",
+    "Webapp/General/HTTP Headers",
     "Pentest/Tools/Ffuf/Ffuf.md",
-    "Pentest/Tools/Brute Force/Wordlists/SecLists.md",
-    "Webapp/Enumeration/_Checklist.md",
-    "Webapp/Enumeration/Infrastructure/Virtual Hosts.md",
-    "Pentest/Tools/Brute Force/Gobuster.md",
-    "Webapp/Tools/Dirbuster.md",
-    "Networking/Networking.md",
-    "Webapp/Webapp.md",
-    "Networking/Services/RDP/Usage.md",
-    "Networking/Services/RDP/General.md",
-    "Networking/Services/RDP/Enumeration.md",
-    "Networking/Services/DNS/Enumeration.md",
-    "Networking/Services/DNS/Tools/subfinder.md",
-    "Networking/Services/WMI/Enumeration.md",
-    "Networking/Services/WinRM/Exploitation.md",
-    "Networking/Services/WinRM/Enumeration.md",
-    "Networking/Tools/Tools.md",
-    "Networking/Tools/Impacket.md",
-    "Webapp/Enumeration/Tools/theHarvester.md",
-    "Networking/Services/VNC/Enumeration.md",
-    "Networking/Services/Telnet/Exploitation.md",
-    "Networking/Services/Telnet/Enumeration.md",
-    "Networking/Services/SNMP/Enumeration.md",
     "Webapp/General/Technologies",
     "Pentest/Tools/Ffuf",
     "Webapp/Exploitation/Server-Side/Path Traversal/Tools",
@@ -308,10 +264,6 @@
     "Webapp/Exploitation/Server-Side/Path Traversal/src/burp-intercept.png",
     "Webapp/Exploitation/Server-Side/Path Traversal/src",
     "Webapp/Exploitation/Server-Side/Path Traversal",
-    "Webapp/Exploitation/Server-Side",
-    "Webapp/Enumeration/Content",
-    "Webapp/Enumeration/Vulnerabilities",
-    "Webapp/Exploitation/Dashboard",
     "Webapp/Exploitation/Path Traversal/src/source-code.png",
     "Webapp/Exploitation/Path Traversal/src/20251120-010526.png",
     "Webapp/Exploitation/Path Traversal/src/burp-repeater.png",

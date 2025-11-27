@@ -49,6 +49,16 @@ ___
 ___
 <!-- }}} -->
 
+<!-- File System {{{-->
+## File System
+
+- [ ] [[File System]]
+        lsblk
+        config files
+
+___
+<!-- }}} -->
+
 <!-- User Enumeration {{{-->
 ## User Enumeration
 
@@ -80,7 +90,7 @@ ___
 - [ ] [[Credential Hunting]]
     - [ ] [[Credential Hunting#Directory Contents|Directory Contents]]
         - [ ] [[Credential Hunting#Current Directory|Current Directory]]
-        - [ ] [[Credential Hunting#root Directory|root Directory]]
+        - [ ] [[Credential Hunting#Root Directory|Root Directory]]
         - [ ] [[Credential Hunting#Home Directory|Home Directory]]
     - [ ] [[Credential Hunting#Shell|Shell]]
         - [ ] [[Credential Hunting#Bash|Bash]]
@@ -128,6 +138,24 @@ ___
         - [ ] [[Software Vulnerability#OpenBSD|OpenBSD]]
         - [ ] [[Software Vulnerability#NetBSD|NetBSD]]
     - [ ] [[Software Vulnerability#macOS|macOS]]
+
+___
+<!-- }}} -->
+
+<!-- Processes {{{-->
+## Processes
+
+- [ ] [[Processes]]
+    - [ ] [[Processes#Running Processes|Running Processes]]
+
+___
+<!-- }}} -->
+
+<!-- Network {{{-->
+## Network
+
+- [ ] [[Network]]
+    - [ ] [[Network#ARP Table|ARP Table]]
 
 ___
 <!-- }}} -->

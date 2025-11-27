@@ -11,26 +11,33 @@ is a DNS proxy client with support for the encrypted DNS protocols
 [DNS over HTTPS](https://wiki.archlinux.org/title/Domain_name_resolution#Privacy_and_security)
 and [DNSCrypt](https://dnscrypt.info/)
 
+<!-- Installation {{{-->
 ## Installation
 
 Install the
 [dnscrypt-proxy](https://archlinux.org/packages/extra/x86_64/dnscrypt-proxy/)
 package
 
+<!-- Example {{{-->
 > [!example]
 >
 > ```sh
 > sudo pacman -S dnscrypt-proxy
->```
+> ```
+<!-- }}} -->
 
+___
+<!-- }}} -->
+
+<!-- Configuration {{{-->
 ## Configuration
 
-1. Stop [NetworkManager](https://wiki.archlinux.org/title/NetworkManager)
-   from overwriting `/etc/resolv.conf`
+1. Stop [[NetworkManager]] from overwriting `/etc/resolv.conf`
 
+<!-- Example {{{-->
 > [!example]-
 >
-> [NetworkManager - Unmanaged /etc/resolv.conf](https://wiki.archlinux.org/title/NetworkManager#Unmanaged_/etc/resolv.conf)
+> [[NetworkManager]] - [Unmanaged /etc/resolv.conf](https://wiki.archlinux.org/title/NetworkManager#Unmanaged_/etc/resolv.conf)
 >
 > ```sh
 > /etc/NetworkManager/conf.d/dns.conf
@@ -40,9 +47,11 @@ package
 > dns=none
 > systemd-resolved=false
 > ```
+<!-- }}} -->
 
 2. Set `/etc/resolv.conf`
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sh
@@ -54,10 +63,12 @@ package
 >  nameserver 127.0.0.1
 >  options edns0
 > ```
+<!-- }}} -->
 
 3. [Configure](https://wiki.archlinux.org/title/Dnscrypt-proxy#Configuration)
    DNSCrypt-proxy
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sh
@@ -83,7 +94,12 @@ package
 > [static.'NextDNS-<profile_id>']
 > stamp = 'sdns://<dsns_id>'
 > ```
+<!-- }}} -->
 
+___
+<!-- }}} -->
+
+<!-- Whitelist {{{-->
 ## Whitelist
 
 ### Domain
@@ -95,16 +111,22 @@ package
 
 3. Restart `dnscrypt-proxy.service`
 
+<!-- Example {{{-->
 > [!example]
 >
 > ```sh
 > sudo systemctl restart dnscrypt-proxy.service
 > ```
+<!-- }}} -->
 
 4. Restart `NetworkManager.service` (*optional*)
 
+<!-- Example {{{-->
 > [!example]
 >
 > ```sh
 > sudo systemctl restart NetworkManager.service
 > ```
+<!-- }}} -->
+___
+<!-- }}} -->
