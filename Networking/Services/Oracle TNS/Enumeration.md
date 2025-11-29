@@ -12,7 +12,7 @@ ___
 <!-- Service {{{-->
 ## Service
 
-Scan the default Oracle [[General#TNS Listener|TNS Listener]] port
+Scan the default Oracle [[Networking/Services/Oracle TNS/General#TNS Listener|TNS Listener]] port
 
 ```sh
 sudo nmap -sV <target> -p 1521 --open -oA oracle-tns-default
@@ -82,7 +82,7 @@ ___
 <!-- SID Enumeration {{{-->
 ## SID Enumeration
 
-The SID ([[General#System Identifier|System Identifier]])
+The SID ([[Networking/Services/Oracle TNS/General#System Identifier|System Identifier]])
 is required to connect to Oracle databases and can be brute-forced
 
 <!-- Tip - Default SIDs {{{-->
@@ -299,7 +299,7 @@ ___
 ## Finger
 
 If the [finger service](https://en.wikipedia.org/wiki/Finger_(protocol))
-is active on the same host as the [[General#TNS Listener|TNS listener]],
+is active on the same host as the [[Networking/Services/Oracle TNS/General#TNS Listener|TNS listener]],
 and the Oracle OS account (often just `oracle`) is known,
 the **finger** output can leak:
 
@@ -315,9 +315,9 @@ the **finger** output can leak:
 > - Knowing where Oracle is installed helps craft local privilege escalation,
 >   file system attacks, or configuration abuse
 > - Combined with other leaks (e.g.,
->   [[General#Default Password|default listener password]] or unprotected
+>   [[Networking/Services/Oracle TNS/General#Default Password|default listener password]] or unprotected
 >   `listener.ora`), an attacker could manipulate the TNS listener
->   [[General#TNS Listener|TNS listener]] or connect directly to the database
+>   [[Networking/Services/Oracle TNS/General#TNS Listener|TNS listener]] or connect directly to the database
 
 
 ```sh

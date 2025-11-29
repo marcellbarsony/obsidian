@@ -3,7 +3,7 @@ id: ODAT
 aliases: []
 tags:
   - Networking/Tools/ODAT
-links: "[[Tools]]"
+links: "[[Networking/Tools/Tools]]"
 ---
 
 # ODAT

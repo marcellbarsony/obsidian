@@ -18,6 +18,12 @@ Discover Cron directories
 ```sh
 ls -al /etc/cron*
 ```
+```sh
+ls -al /etc/cron.daily/
+```
+```sh
+ls -al /etc/cron.hourly/
+```
 
 List current user's Cron Jobs
 
@@ -39,13 +45,25 @@ Check if the following directories have write privilege
 - `/etc/cron.d`
 
 ```sh
-test -w /etc/crontab && echo "Writable" || echo "Not Writable"
+test -w /etc/cron.d && echo "Writable" || echo "Not Writable"
+```
+
+- `/etc/cron.daily`
+
+```sh
+test -w /etc/cron.daily && echo "Writable" || echo "Not Writable"
+```
+
+- `/etc/cron.hourly/`
+
+```sh
+test -w /etc/cron.daily && echo "Writable" || echo "Not Writable"
 ```
 
 - `/etc/crontab`
 
 ```sh
-test -w /etc/cron.d && echo "Writable" || echo "Not Writable"
+test -w /etc/crontab && echo "Writable" || echo "Not Writable"
 ```
 
 - `/var/spool/cron/crontabs/root`

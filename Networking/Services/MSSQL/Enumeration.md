@@ -18,7 +18,7 @@ ___
 nmap <target> -p 1433 -oA mssql-service-detection
 ```
 
-[[Nmap]] — [[General|MSSQL]] script scan
+[[Nmap]] — [[Networking/Services/MSSQL/General|MSSQL]] script scan
 
 ```sh
 sudo nmap \

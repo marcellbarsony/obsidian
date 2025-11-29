@@ -26,36 +26,13 @@ whoami
 ```
 <!-- }}} -->
 
-<!-- Home Directory {{{-->
-### Home Directory
-
-[[Credential Hunting#Home Directory|Credential Hunting]] —
-Investigate the user's home directory
-
-```sh
-/home/<username>/
-```
-
-<!-- }}} -->
-
-<!-- Root Directory {{{-->
-### Root Directory
-
-[[Credential Hunting#root Directory|Credential Hunting]] —
-Investigate the `/root` directory
-
-```sh
-/root
-```
-
-<!-- }}} -->
-
 ___
 <!-- }}} -->
 
 <!-- Group {{{-->
 ## Group
 
+<!-- id {{{-->
 ### id
 
 Display the system identifications of a specified user.
@@ -84,6 +61,7 @@ Specific user
 id -u <user>
 ```
 
+<!-- Tip {{{-->
 > [!tip]
 >
 > [[Find]] files belonging to a group
@@ -92,7 +70,11 @@ id -u <user>
 > find / -group <group_name> 2>/dev/null
 > ```
 >
-> [[File|Enumerate]] found files
+> [[Directory & File|Enumerate]] found files
+>
+<!-- }}} -->
+
+<!-- }}} -->
 
 ___
 <!-- }}} -->

@@ -35,7 +35,7 @@ nmap <target> -p 3389 --script rdp-ntlm-info -oA rdp-script-ntlm-info
 
 > [!tip]-
 >
-> - Check if [[General#Network Level Authentication|NLA]] is enabled
+> - Check if [[Networking/Services/RDP/General#Network Level Authentication|NLA]] is enabled
 
 [[Nmap]] — Check security layer
 

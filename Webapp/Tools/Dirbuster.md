@@ -3,7 +3,7 @@ id: Dirbuster
 aliases: []
 tags:
   - Webapp/Tools/Dirbuster
-links: "[[Webapp/Enumeration/Tools|Tools]]"
+links: "[[Webapp/Enumeration/Tools/Tools|Tools]]"
 ---
 
 # Dirbuster

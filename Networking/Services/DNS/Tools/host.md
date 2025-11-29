@@ -34,7 +34,7 @@ host [-a] [-c Class ] [-d ] [-r ] [-t Type] [-v ] [-w ] <hostname> | <address> [
 > mercutio is 192.100.13.1
 > ```
 >
-> Display the [[General#NS]] record
+> Display the [[Linux/General/General#NS]] record
 > ```sh
 > host -t ns inlanefreight.com
 > ```

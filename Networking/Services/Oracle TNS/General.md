@@ -52,7 +52,7 @@ related to one another.
 
 ### System Identifier
 
-In [[General#Oracle RDBMS|Oracle RDBMS]], a System Identifier (**SID**)
+In [[Networking/Services/Oracle TNS/General#Oracle RDBMS|Oracle RDBMS]], a System Identifier (**SID**)
 is a unique name that identifies a particular database instance.
 
 Database administrators can use the **SID** to monitor and manage
@@ -66,7 +66,7 @@ to identify which Oracle database it wants to connect to.
 > [!info]
 >
 > If a client doesn't specify a **SID**, the default value defined in the
-> [[General#Tnsnames.ora|tnsnames.ora]] is used.
+> [[Networking/Services/Oracle TNS/General#Tnsnames.ora|tnsnames.ora]] is used.
 
 > [!warning]
 >
@@ -82,8 +82,8 @@ ___
 The configuration files can be found in the `$ORACLE_HOME/network/admin`
 directory:
 
-- [[General#Tnsnames.ora|tnsnames.ora]] (*client-side*)
-- [[General#Listener.ora|listener.ora]] (*server-side*)
+- [[Networking/Services/Oracle TNS/General#Tnsnames.ora|tnsnames.ora]] (*client-side*)
+- [[Networking/Services/Oracle TNS/General#Listener.ora|listener.ora]] (*server-side*)
 
 Oracle **TNS** can be managed remotely in `Oracle 8i`/`9i`, but not in
 `Oracle 10g`/`11g`.

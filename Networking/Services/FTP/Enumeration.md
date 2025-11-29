@@ -16,20 +16,20 @@ ___
 [[Nmap]] — Identify an FTP server
 
 ```sh
-nmap <target> -p 21 -oA ftp-identify
+nmap <target> -p 21,2121 -oA ftp-identify
 ```
 
 [[Nmap]] — Identify FTP server features
 (*default FTP unauthantecated script scan*)
 
 ```sh
-sudo nmap -sC -sV <target> -p 21 -A --script-trace -oA ftp-default-script
+sudo nmap -sC -sV <target> -p 21,2121 -A --script-trace -oA ftp-default-script
 ```
 
 [[Nmap]] — Run all FTP scripts
 
 ```sh
-nmap <target> -p 21 --script ftp-* -oA ftp-script-all
+nmap <target> -p 21,2121 --script ftp-* -oA ftp-script-all
 ```
 
 [[Metasploit]] — FTP Version Scanner
@@ -79,7 +79,7 @@ use auxiliary/scanner/ftp/ftp_version
 ([ftp-bounce](https://nmap.org/nsedoc/scripts/ftp-bounce.html))
 
 ```sh
-nmap <target> -p 21 --script ftp-bounce -oA ftp-script-bounce
+nmap <target> -p 21,2121 --script ftp-bounce -oA ftp-script-bounce
 ```
 
 [[Nmap]] — Perform

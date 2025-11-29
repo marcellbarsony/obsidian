@@ -3,26 +3,27 @@ id: Burp Suite
 aliases: []
 tags:
   - Webapp/Tools/Burp-Suite/Burp-Suite/Configuration
-links: "[[Webapp/Enumeration/Tools|Tools]]"
+links: "[[Webapp/Enumeration/Tools/Tools|Tools]]"
 ---
 
 # Burp Suite Configuration
 
+___
+
 <!-- Proxy Listeners {{{-->
 ## Proxy Listeners
 
-> ![todo]
+Configure a proxy listener
 
+```sh
 Proxy > Options > Proxy Listeners
+```
 
 Interface: `127.0.0.1:8080`
 
 
-___
-<!-- }}} -->
-
-<!-- HTTPS {{{-->
-## HTTPS
+<!-- CA Certificate {{{-->
+### CA Certificate
 
 Install Burp's CA Certificate for HTTPs traffic
 
@@ -31,20 +32,61 @@ Install Burp's CA Certificate for HTTPs traffic
 2. Visit [http://burp](http://burp) and [download](http://burp/cert)
    the CA Certificate
 
-![[ca-certificate-download.png]]
+<!-- Example {{{-->
+> [!example]-
+>
+> ![[ca-certificate-download.png]]
+<!-- }}} -->
 
-### Firefox
+#### Firefox
 
-1. Open Certificate Manager: Settings > Certificates > View Certificates...
+1. Open Certificate Manager
 
-![[ca-certificate-view.png]]
+```sh
+Settings > Certificates > View Certificates...
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ![[ca-certificate-view.png]]
+<!-- }}} -->
 
 2. Import Certificate
 
-![[ca-certificate-manager.png]]
+<!-- Example {{{-->
+> [!example]-
+>
+> ![[ca-certificate-manager.png]]
+<!-- }}} -->
 
 3. Trust Certificate
 
-![[ca-certificate-trust.png]]
+<!-- Example {{{-->
+> [!example]-
+>
+> ![[ca-certificate-trust.png]]
+<!-- }}} -->
 
+<!-- }}} -->
+
+___
+<!-- }}} -->
+
+<!-- Scope {{{-->
+## Scope
+
+Add a target to the scope
+
+```sh
+Target > Scope > Add
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ![[scope.png]]
+<!-- }}} -->
+
+___
 <!-- }}} -->

@@ -112,7 +112,7 @@ whether the requested information can be viewed or not.
 - `public`: Mainly read-only functions
 - `private`: Mainly Read/Write
 
-The writeability of an [[General#OID|OID]] depends on the **community string**
+The writeability of an [[Networking/Services/SNMP/General#OID|OID]] depends on the **community string**
 used:
 
 - Even if `public` is used, some values can be overwritten
@@ -120,7 +120,7 @@ used:
 
 > [!important]
 >
-> In order to access the information saved on the [[General#MIB|MIB]]s
+> In order to access the information saved on the [[Networking/Services/SNMP/General#MIB|MIB]]s
 >
 > - `v1` & `v2c`: Community strings must be known
 > - `v3`: Credentials must be known

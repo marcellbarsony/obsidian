@@ -171,3 +171,142 @@ smb: \> exit
 ___
 
 <!-- }}} -->
+
+<!-- Windows {{{-->
+## Windows
+
+<!-- GUI {{{-->
+### GUI
+
+Run Dialog — Interact with a shared folder
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ![[windows-shared-folder.jpg]]
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- CMD {{{-->
+### CMD
+
+[dir](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/dir) —
+List shared folder contents
+
+```sh
+dir \\<target>\<share>\
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```cmd
+> C:\htb> dir \\192.168.220.129\Finance\
+> ```
+> ```sh
+> Volume in drive \\192.168.220.129\Finance has no label.
+> Volume Serial Number is ABCD-EFAA
+>
+> Directory of \\192.168.220.129\Finance
+>
+> 02/23/2022  11:35 AM    <DIR>          Contracts
+>                0 File(s)          4,096 bytes
+>                1 Dir(s)  15,207,469,056 bytes free
+> ```
+<!-- }}} -->
+
+[net use](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/gg651155(v=ws.11)) —
+Connect to a file share and and map its content to the drive letter `n`
+
+```sh
+net use n: \\<target>\<share>
+```
+
+```sh
+net use n: \\<target>\<share> /user:<user> <password>
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```cmd
+> C:\htb> net use n: \\192.168.220.129\Finance /user:plaintext Password123
+> ```
+> ```sh
+> The command completed successfully.
+> ```
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- PowerShell {{{-->
+### PowerShell
+
+[Get-ChildItem](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-childitem?view=powershell-7.5) —
+List shared folder contents
+
+```powershell
+Get-ChildItem \\<target>\<share>\
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```powershell
+> PS C:\htb> Get-ChildItem \\192.168.220.129\Finance\
+> ```
+> ```sh
+>     Directory: \\192.168.220.129\Finance
+>
+> Mode                 LastWriteTime         Length Name
+> ----                 -------------         ------ ----
+> d-----         2/23/2022   3:27 PM                Contracts
+> ```
+<!-- }}} -->
+
+[New-PSDrive](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/new-psdrive?view=powershell-7.5) —
+Connect to a file share and and map its content to the drive letter `n`
+
+```sh
+New-PSDrive -Name "N" -Root "\\<target>\<share>" -PSProvider "FileSystem"
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> New-PSDrive -Name "N" -Root "\\192.168.220.129\Finance" -PSProvider "FileSystem"
+> ```
+> ```sh
+>
+> Name           Used (GB)     Free (GB) Provider      Root                                               CurrentLocation
+> ----           ---------     --------- --------      ----                                               ---------------
+> N                                      FileSystem    \\192.168.220.129\Finance
+> ```
+<!-- }}} -->
+
+To provide credentials, a
+[PSCredential Object](https://learn.microsoft.com/en-us/dotnet/api/system.management.automation.pscredential?view=powershellsdk-7.4.0)
+needs to be created
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```powershell
+> PS C:\htb> $username = 'plaintext'
+> PS C:\htb> $password = 'Password123'
+> PS C:\htb> $secpassword = ConvertTo-SecureString $password -AsPlainText -Force
+> PS C:\htb> $cred = New-Object System.Management.Automation.PSCredential $username, $secpassword
+> PS C:\htb> New-PSDrive -Name "N" -Root "\\192.168.220.129\Finance" -PSProvider "FileSystem" -Credential $cred
+>
+> Name           Used (GB)     Free (GB) Provider      Root                                                              CurrentLocation
+> ----           ---------     --------- --------      ----                                                              ---------------
+> N                                      FileSystem    \\192.168.220.129\Finance
+> ```
+<!-- }}} -->
+
+<!-- }}} -->
+
+___
+<!-- }}} -->

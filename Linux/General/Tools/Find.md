@@ -4,7 +4,7 @@ aliases:
   - Find Files and Directories
 tags:
   - Linux/General/Tools/Find
-links: "[[Tools]]"
+links: "[[Linux/General/Tools/Tools]]"
 ---
 
 # Find

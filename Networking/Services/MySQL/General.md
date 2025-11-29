@@ -14,8 +14,8 @@ port:
 database management system developed by [Oracle](https://www.mysql.com/).
 
 **MySQL** works according to the client-server principle and consist of a
-[[General#MySQL Database|MySQL Server]] and
-[[General#MySQL Clients|MySQL Client(s)]].
+[[Networking/Services/MySQL/General#MySQL Database|MySQL Server]] and
+[[Networking/Services/MySQL/General#MySQL Clients|MySQL Client(s)]].
 
 The **MySQL** database is controlled using the
 [SQL database language](https://www.w3schools.com/sql/sql_intro.asp),
@@ -30,7 +30,7 @@ The **MySQL Clients** can retrieve and edit the data using structured queries to
 the database engine.
 
 **MySQL** is suitable for managing many different databases to which
-[[General#MySQL Clients|MySQL Clients]] can send multiple queries
+[[Networking/Services/MySQL/General#MySQL Clients|MySQL Clients]] can send multiple queries
 simultaneously.
 
 ___
@@ -56,7 +56,7 @@ ___
 <!-- MySQL Commands {{{-->
 ## MySQL Commands
 
-A [[General#MySQL Database|MySQL Database]] receives structured queries from
+A [[Networking/Services/MySQL/General#MySQL Database|MySQL Database]] receives structured queries from
 the client, parses them, optimizes the execution plan, and performs the
 requested operations on the data.
 

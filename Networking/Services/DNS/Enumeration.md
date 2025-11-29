@@ -17,14 +17,14 @@ ___
 Identify the DNS servers associated with the target domain
 
 [dig](https://linux.die.net/man/1/dig) —
-Query the [[General#Authoritative Name Server|Name Server]]
+Query the [[Networking/Services/DNS/General#Authoritative Name Server|Name Server]]
 
 ```sh
 dig <target_domain> NS
 ```
 
 [nslookup](https://en.wikipedia.org/wiki/Nslookup) —
-Query the [[General#Authoritative Name Server|Name Server]] with
+Query the [[Networking/Services/DNS/General#Authoritative Name Server|Name Server]] with
 
 ```sh
 nslookup -type=NS <target_domain>
@@ -85,7 +85,7 @@ to widen the attack surface
 
 [[Search Engine Discovery]]
 (*[[Search Engine Discovery#Google Dorking|Google Dorking]]*) —
-Find [[General#Subdomain|Subdomains]]
+Find [[Networking/Services/DNS/General#Subdomain|Subdomains]]
 
 > [!tip]- Operators
 >
@@ -382,7 +382,7 @@ dig @<dns_ip> <target_domain> any
 <!-- AXFR Zone Transfer {{{-->
 ### AXFR Zone Transfer
 
-[[General#DNS Zone Transfer|DNS Zone Transfer]]
+[[Networking/Services/DNS/General#DNS Zone Transfer|DNS Zone Transfer]]
 or **Asynchronous Full Transfer Zone** (**AXFR**) yields a full DNS zone dump
 (*e.g. all hostnames, IPs, subdomains, etc.*)
 

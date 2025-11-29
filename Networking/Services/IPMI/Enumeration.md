@@ -70,7 +70,7 @@ sudo nmap -sU <target> -p 623 --script ipmi-version  -oA ipmi-version
 > Nmap done: 1 IP address (1 host up) scanned in 0.46 seconds
 > ```
 >
-> - [[General|IPMI]] version 2.0 is listening on port `623`/UDP
+> - [[Networking/Services/IPMI/General|IPMI]] version 2.0 is listening on port `623`/UDP
 >
 <!-- }}} -->
 
@@ -144,7 +144,7 @@ The vendor(*s*) shipping their devices with the cipher suite '0'
 > using an arbitrary password.
 >
 > The only information required is a valid account,
-> but most vendors ship with a [[General#Dangerous Settings|default account]]
+> but most vendors ship with a [[Networking/Services/IPMI/General#Dangerous Settings|default account]]
 > (*`admin`*).
 >
 > - [CISA - Risks of Using the Intelligent Platform Management Interface (IPMI)](https://www.us-cert.gov/ncas/alerts/TA13-207A)
@@ -289,11 +289,11 @@ use auxiliary/scanner/ipmi/ipmi_dumphashes
 > [!Tip]- Mitigation
 >
 > There is no direct "fix" to this issue because the flaw is a critical component
-> of the [[General|IPMI]] specification
+> of the [[Networking/Services/IPMI/General|IPMI]] specification
 >
 > Clients can opt for
 > - difficult to crack, long passwords
-> - [[General#BMC|BMC]] direct access restriction
+> - [[Networking/Services/IPMI/General#BMC|BMC]] direct access restriction
 >   by implementing network segmentation rules
 <!-- }}} -->
 

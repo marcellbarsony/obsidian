@@ -29,10 +29,14 @@ Privilege Escalation Awesome Scripts SUITE (*with colors*)
 
 ### Usage
 
-1. Download the script
+1. Acquire the script
 
 ```sh
 wget https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas_linux_amd64 -O linpeas.sh
+```
+
+```sh
+/usr/share/peass/linpeas/linpeas.sh
 ```
 
 2. Make the script executable

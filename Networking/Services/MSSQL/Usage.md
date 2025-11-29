@@ -106,7 +106,7 @@ Databate operations — Enumerate databases to identify high-value targets
 
 > [!tip]
 >
-> Common [[General#Database|System Databases]]
+> Common [[Networking/Services/MSSQL/General#Database|System Databases]]
 
 <!-- Discover {{{-->
 ### Discover

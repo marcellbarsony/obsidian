@@ -3,7 +3,7 @@ id: Impacket
 aliases: []
 tags:
   - Networking/Tools/Impacket
-links: "[[Tools]]"
+links: "[[Networking/Tools/Tools]]"
 ---
 
 # Impacket

@@ -21,6 +21,12 @@ Inspect the page soruce code (`Ctrl + U`) for sensitive information:
 - Passwords
 - Other useful information
 
+### HTML Comments
+
+Inspect HTML comments
+
+- [[ZAP#HUD|ZAP HUD]]
+
 ___
 <!-- }}} -->
 
@@ -55,6 +61,16 @@ autocomplete="off"
 > 2. It stops the browser from caching form data in the session history
 >
 > [MDN - How to turn off autocompletion](https://developer.mozilla.org/en-US/docs/Web/Security/Practical_implementation_guides/Turning_off_form_autocompletion)
+
+___
+<!-- }}} -->
+
+<!-- Hidden Fields {{{-->
+## Hidden Fields
+
+Inspect the webapp for hidden fields
+
+- [[ZAP#HUD|ZAP HUD]]
 
 ___
 <!-- }}} -->

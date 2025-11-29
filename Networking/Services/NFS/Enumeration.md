@@ -125,7 +125,7 @@ sudo mount -t nfs [-o vers=2] <target>:<remote_folder> <local_folder> -o nolock
 > > [!info]-
 > >
 > > - `mount`: Mount a filesystem to the Linux directory tree
-> > - `-t nfs`: Specify the filesystem type ([[General|NFS]])
+> > - `-t nfs`: Specify the filesystem type ([[Networking/Services/NFS/General|NFS]])
 > > - `10.129.14.128:/`: NFS server IP and export path (directory)
 > > - `./target-NFS/`: Local mount point
 > > - `-o nolock`: Mount option (disable file locking)
@@ -137,7 +137,7 @@ sudo mount -t nfs [-o vers=2] <target>:<remote_folder> <local_folder> -o nolock
 > > [!info]-
 > >
 > > - `mount`: Mount a filesystem to the Linux directory tree
-> > - `-t nfs`: Specify the filesystem type ([[General|NFS]])
+> > - `-t nfs`: Specify the filesystem type ([[Networking/Services/NFS/General|NFS]])
 > > - `[-o vers=2]`: Force NFSv2 (compatibility instead of v3 or v4)
 > > - `10.12.0.150:/backup`: NFS server IP and export path (directory)
 > > - `./mnt/new_back/`: Local mount point

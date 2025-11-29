@@ -149,8 +149,9 @@ ___
 
 - [ ] [[Web Contents]]
     - [ ] [[Web Contents#Page Source Code|Page Source Code]]
+        - [ ] [[Web Contents#HTML Comments|HTML Comments]]
     - [ ] [[Web Contents#Autocompletion|Autocompletion]]
-    - [ ] [[Web Contents#JavaScript Code|JavaScript Code]]
+    - [ ] [[Web Contents#Hidden Fields|Hidden Fields]]
 
 ___
 <!-- }}} -->

@@ -4,7 +4,7 @@ aliases:
   - CrackMapExec
 tags:
   - Networking/Tools/NetExec
-links: "[[Tools]]"
+links: "[[Networking/Tools/Tools]]"
 ---
 
 # NetExec (Nm)

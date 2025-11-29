@@ -9,8 +9,8 @@ links: "[[Services]]"
 
 **DIG** ([Domain Information Groper](https://en.wikipedia.org/wiki/Dig_(command)))
 is a network administration command-line tool for querying
-[[General#DNS Structure|DNS servers]]
-to retrieve various types of [[General#DNS Records|DNS records]].
+[[Linux/General/General#DNS Structure|DNS servers]]
+to retrieve various types of [[Linux/General/General#DNS Records|DNS records]].
 
 ___
 
@@ -19,7 +19,7 @@ ___
 
 ### A
 
-IPv4 address ([[General#A|A record]])
+IPv4 address ([[Linux/General/General#A|A record]])
 associated with the domain
 
 ```sh
@@ -114,7 +114,7 @@ dig <domain.com> A
 
 ### AAAA
 
-IPv6 address ([[General#AAAA|AAAA record]])
+IPv6 address ([[Linux/General/General#AAAA|AAAA record]])
 associated with the domain
 
 ```sh
@@ -124,7 +124,7 @@ dig <domain.com> AAAA
 ### ANY
 
 All available DNS records
-([[General#ANY|ANY record]])
+([[Linux/General/General#ANY|ANY record]])
 for the domain
 
 ```sh
@@ -183,7 +183,7 @@ dig <domain.com> AXFR
 
 ### CNAME
 
-Canonical Name ([[General#CNAME|CNAME record]])
+Canonical Name ([[Linux/General/General#CNAME|CNAME record]])
 for the domain
 
 ```sh
@@ -192,7 +192,7 @@ dig <domain.com> CNAME
 
 ### MX
 
-Mail servers ([[General#MX|MX record]])
+Mail servers ([[Linux/General/General#MX|MX record]])
 responsible for the domain
 
 ```sh
@@ -201,8 +201,8 @@ dig <domain.com> MX
 
 ### NS
 
-[[General#Authoritative Name Server|Authoritative Name Servers]]
-([[General#NS|NS record]])
+[[Linux/General/General#Authoritative Name Server|Authoritative Name Servers]]
+([[Linux/General/General#NS|NS record]])
 for the domain
 
 ```sh
@@ -211,7 +211,7 @@ dig <domain.com> NS
 
 ### SOA
 
-Start Of Authority ([[General#SOA|SOA record]])
+Start Of Authority ([[Linux/General/General#SOA|SOA record]])
 for the domain
 
 ```sh
@@ -220,7 +220,7 @@ dig <domain.com> SOA
 
 ### TXT
 
-Text records ([[General#TXT|TXT record]])
+Text records ([[Linux/General/General#TXT|TXT record]])
 associated with the domain
 
 ```sh

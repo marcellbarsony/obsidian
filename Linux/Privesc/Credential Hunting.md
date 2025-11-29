@@ -10,6 +10,12 @@ tags:
 Search for exposed credentials in configuration files, log files,
 and user history files.
 
+<!-- Resources {{{-->
+> [!info]- Resources
+>
+> - [Password Hunting – Linux Privilege Escalation](https://juggernaut-sec.com/password-hunting-lpe/)
+<!-- }}} -->
+
 ___
 
 <!-- Directory Contents {{{-->
@@ -17,7 +23,7 @@ ___
 
 ### Current Directory
 
-Check current (*any*) directory for secrets
+Check current (*any*) directory for [[Secrets]]
 
 ```sh
 cat * | grep -i passw*
@@ -25,10 +31,10 @@ cat * | grep -i passw*
 
 ### root Directory
 
-Check `/root` directory for secrets
+Check `/root` directory for [[Secrets]]
 
 ```sh
-grep -iE 'username|password' /root -R
+grep -iE 'user|password' /root -R
 ```
 ```sh
 grep -iE 'user.*|pass.*|key.*|secret.*|api.*' /root -R
@@ -36,10 +42,10 @@ grep -iE 'user.*|pass.*|key.*|secret.*|api.*' /root -R
 
 ### Home Directory
 
-Check `home` directory for secrets
+Check `home` directory for [[Secrets]]
 
 ```sh
-grep -iE 'username|password' ~/ -R
+grep -iE 'user|password' ~/ -R
 ```
 ```sh
 grep -iE 'user.*|pass.*|key.*|secret.*|api.*' ~/ -R
@@ -56,7 +62,7 @@ ___
 Bash history
 
 ```sh
-cat ~/.bash_history | grep -iE 'username|password'
+cat ~/.bash_history | grep -iE 'user|password'
 ```
 ```sh
 cat ~/.bash_history | grep -iE 'user.*|pass.*|key.*|secret.*|api.*'
@@ -67,7 +73,7 @@ cat ~/.bash_history | grep -iE 'user.*|pass.*|key.*|secret.*|api.*'
 Zsh history
 
 ```sh
-cat ~/.zsh_history | grep -iE 'username|password'
+cat ~/.zsh_history | grep -iE 'user|password'
 ```
 ```sh
 cat ~/.zsh_history | grep -iE 'user.*|pass.*|key.*|secret.*|api.*'
@@ -81,7 +87,7 @@ ___
 Environment Variables
 
 ```sh
-printenv | grep -iE 'username|password'
+printenv | grep -iE 'user|password'
 ```
 ```sh
 printenv | grep -iE 'user.*|pass.*|key.*|secret.*|api.*'
@@ -98,7 +104,7 @@ ___
 [[Web Server Root#OS|OS-specific Root]] (*`/var/www/`*)
 
 ```sh
-grep -iE 'username|password' /var/www/* -R
+grep -iE 'user|password' /var/www/* -R
 ```
 ```sh
 grep -iE 'user.*|pass.*|key.*|secret.*|api.*' /var/www/* -R
@@ -110,7 +116,7 @@ find /var/www/ -type f -exec cat {} + | grep -iE 'user.*|pass.*|key.*|secret.*|a
 [[Web Server Root#Web Server|Web Server Application Roots]]
 
 ```sh
-grep -iE 'username|password' <path> -R
+grep -iE 'user|password' <path> -R
 ```
 ```sh
 grep -iE 'user.*|pass.*|key.*|secret.*|api.*' <path> -R

@@ -9,7 +9,7 @@ links: "[[Services]]"
 # Enumeration
 
 Enumerate Rsync server for and accessible
-[[General#Modules|modules]] (*shares*)
+[[Networking/Services/Rsync/General#Modules|modules]] (*shares*)
 public exploits
 
 <!-- Service {{{-->
@@ -40,7 +40,7 @@ nmap <target> -p 873 -oA rsync-identify
 > ```
 <!-- }}} -->
 
-[[Nmap]] — Identify [[General#R-Services|R-Services]]
+[[Nmap]] — Identify [[Networking/Services/Rsync/General#R-Services|R-Services]]
 
 ```sh
 sudo nmap -sV <target> -p 512,513,514 -oA rsync-services
@@ -82,7 +82,7 @@ ___
 <!-- Banner Grabbing {{{-->
 ## Banner Grabbing
 
-[[Netcat]] — Grab banner and accessible [[General#Modules|modules]]
+[[Netcat]] — Grab banner and accessible [[Networking/Services/Rsync/General#Modules|modules]]
 
 ```sh
 nc -nv <target> 873
@@ -113,7 +113,7 @@ ___
 <!-- Modules {{{-->
 ## Modules
 
-Enumerate Rsync [[General#Modules|modules]] to understand their structure
+Enumerate Rsync [[Networking/Services/Rsync/General#Modules|modules]] to understand their structure
 and find misconfiguration or sensitive information
 
 [[Nmap]] — List modules available for Rsync synchronization

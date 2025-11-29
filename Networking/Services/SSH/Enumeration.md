@@ -208,7 +208,7 @@ use auxiliary/scanner/ssh/ssh_enumusers
 >
 > The default action sends a malformed (*corrupted*)
 > `SSH_MSG_USERAUTH_REQUEST` packet using
-> [[General#Public Key Authentication|Public Key Authentication]]
+> [[Networking/Services/SSH/General#Public Key Authentication|Public Key Authentication]]
 > (*must be enabled*) to enumerate users
 >
 > On some versions of OpenSSH under some configurations,

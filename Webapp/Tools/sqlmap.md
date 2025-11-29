@@ -3,7 +3,7 @@ id: sqlmap
 aliases: []
 tags:
   - Webapp/Tools/sqlmap
-links: "[[Webapp/Enumeration/Tools|Tools]]"
+links: "[[Webapp/Enumeration/Tools/Tools|Tools]]"
 ---
 
 # sqlmap

@@ -3,7 +3,7 @@ id: Wget
 aliases: []
 tags:
   - Linux/General/Tools/Wget
-links: "[[Tools]]"
+links: "[[Linux/General/Tools/Tools]]"
 ---
 
 # Wget

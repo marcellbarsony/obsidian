@@ -15,7 +15,11 @@ ___
 [/etc/passwd](https://www.cyberciti.biz/faq/understanding-etcpasswd-file-format/)
 stores essential information required during login
 
-- [IBM - Using the /etc/passwd file](https://www.ibm.com/docs/fi/ssw_aix_71/security/passwords_etc_passwd_file.html)
+<!-- Resources {{{-->
+> [!info]- Resources
+>
+> - [IBM - Using the /etc/passwd file](https://www.ibm.com/docs/fi/ssw_aix_71/security/passwords_etc_passwd_file.html)
+<!-- }}} -->
 
 <!-- Enumeration {{{-->
 ### Enumeration
@@ -70,16 +74,20 @@ stat /etc/passwd
 oracle:x:1021:1020:OracleUser:/data/network/oracle:/bin/bash
 ```
 
-- `Username`: The user's username between 1 and 32 characters
-- `Password`: `x` indicates an encrypted and salted passsword stored in
-  [/etc/shadow](https://www.cyberciti.biz/faq/understanding-etcshadow-file/)
-- `User ID`: The [User Identifier](https://en.wikipedia.org/wiki/User_identifier)
-  (UID) of the user
-- `Group ID`: The primary [Group Identifier](https://en.wikipedia.org/wiki/Group_identifier)
-  (GID) of the user, stored in the [/etc/group](https://www.cyberciti.biz/faq/understanding-etcgroup-file/)
-- `User ID info (GECOS)`: Comment field to add extra infromatin about the users
-- `Home directory`: The absolute path to the user's home directory
-- `Command/shell`: The absolute path of a command or a shell of the user
+<!-- Info {{{-->
+> [!info]-
+>
+> - `Username`: The user's username between 1 and 32 characters
+> - `Password`: `x` indicates an encrypted and salted passsword stored in
+>   [/etc/shadow](https://www.cyberciti.biz/faq/understanding-etcshadow-file/)
+> - `User ID`: The [User Identifier](https://en.wikipedia.org/wiki/User_identifier)
+>   (UID) of the user
+> - `Group ID`: The primary [Group Identifier](https://en.wikipedia.org/wiki/Group_identifier)
+>   (GID) of the user, stored in the [/etc/group](https://www.cyberciti.biz/faq/understanding-etcgroup-file/)
+> - `User ID info (GECOS)`: Comment field to add extra infromatin about the users
+> - `Home directory`: The absolute path to the user's home directory
+> - `Command/shell`: The absolute path of a command or a shell of the user
+<!-- }}} -->
 
 <!-- }}} -->
 

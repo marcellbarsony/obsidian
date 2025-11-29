@@ -1,10 +1,10 @@
 ---
 id: cURL
 aliases:
-  - "cURL"
+  - cURL
 tags:
   - Linux/General/Tools/cURL
-links: "[[Tools]]"
+links: "[[Linux/General/Tools/Tools]]"
 ---
 
 # cURL

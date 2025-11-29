@@ -1,0 +1,131 @@
+---
+id: Directory & File
+aliases: []
+tags:
+  - Linux/Privesc/Directory-File
+links: "[[Linux]]"
+---
+
+<!-- Directory Enumeration {{{-->
+# Directory Enumeration
+
+___
+
+<!-- Writeable Directories {{{-->
+## Writeable Directories
+
+Find Writeable Directories
+
+<!-- Tip {{{-->
+> [!tip]-
+>
+> - Replace files used by services
+> - Add files for later execution
+> - Override application components
+<!-- }}} -->
+
+```sh
+find / -path /proc -prune -o -type d -perm -o+w 2>/dev/null
+```
+
+___
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- File Enumeration {{{-->
+# File Enumeration
+
+___
+
+<!-- File {{{-->
+## File
+
+Enumerate a file
+
+```sh
+file <file>
+```
+
+> [!tip]
+>
+> Search for [Setuid (SUID)](https://en.wikipedia.org/wiki/Setuid) bit set
+
+___
+<!-- }}} -->
+
+<!-- Ownership {{{-->
+## Ownership
+
+Display a file's ownership info
+
+```sh
+ls -al <file>
+```
+___
+<!-- }}} -->
+
+<!-- Credentials {{{-->
+## Credentials
+
+Search a file for [[Secrets]]
+
+```sh
+grep -Ei 'user|passw|key|secret' .config/hypr/hyprland.conf
+```
+
+```sh
+cat <file> | grep user*
+```
+___
+<!-- }}} -->
+
+<!-- Permissions {{{-->
+## Permissions
+
+Search files with [[Permissions#SUID & SGID|SUID & SGID]] bits set
+
+SUID
+
+```sh
+find / -perm -4000 -type f 2>/dev/null
+```
+
+SGID
+
+
+```sh
+find / -perm -4000 -type f 2>/dev/null
+```
+
+SUID & SGID
+
+```sh
+
+find / -perm /6000 -type f 2>/dev/null
+```
+
+
+___
+<!-- }}} -->
+
+<!-- Writeable {{{-->
+## Writeable
+
+Find Writeable Files
+
+<!-- Tip {{{-->
+> [!tip]-
+>
+> - Modify scripts
+> - Modify configuration files
+<!-- }}} -->
+
+```sh
+find / -path /proc -prune -o -type f -perm -o+w 2>/dev/null
+```
+
+___
+<!-- }}} -->
+
+<!-- }}} -->

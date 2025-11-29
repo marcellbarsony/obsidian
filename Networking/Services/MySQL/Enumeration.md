@@ -12,8 +12,8 @@ ___
 <!-- Configuration File {{{-->
 ## Configuration File
 
-Often, the rights for the [[General#Configuration|configuration file]] of the
-[[General#MySQL Database|MySQL databases]] are not assigned correctly
+Often, the rights for the [[Networking/Services/MySQL/General#Configuration|configuration file]] of the
+[[Networking/Services/MySQL/General#MySQL Database|MySQL databases]] are not assigned correctly
 
 > [!tip]
 >
@@ -35,7 +35,7 @@ Detect MySQL service
 nmap <target> -p 3306 -oA mysql-service
 ```
 
-Enumerate [[General#MySQL Database|MySQL Databases]]
+Enumerate [[Networking/Services/MySQL/General#MySQL Database|MySQL Databases]]
 (*[[Nmap Scripting Engine|Nmap NSE]] scripts*)
 
 ```sh

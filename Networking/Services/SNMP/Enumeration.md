@@ -155,7 +155,7 @@ ___
 <!-- Community Strings {{{-->
 ## Community Strings
 
-[[General#Community Strings|Community Strings]]
+[[Networking/Services/SNMP/General#Community Strings|Community Strings]]
 should be discovered via dictionary attack
 
 <!-- Wordlists {{{-->
@@ -180,7 +180,7 @@ should be discovered via dictionary attack
 <!-- }}} -->
 
 [onesixtyone](https://github.com/trailofbits/onesixtyone) —
-Identify [[General#Community Strings|community strings]]
+Identify [[Networking/Services/SNMP/General#Community Strings|community strings]]
 
 ```sh
 onesixtyone -c <wordlist.txt> <target>
@@ -209,7 +209,7 @@ use auxiliary/scanner/snmp/snmp_login
 > [!example]-
 >
 > Log in to SNMP devices using common
-> [[General#Community Strings|community strings]]
+> [[Networking/Services/SNMP/General#Community Strings|community strings]]
 >
 > 1. [[Metasploit#Search Exploit|Search Exploit]]
 >
@@ -297,12 +297,12 @@ ___
 
 Extract comprehensive information from SNMP-enabled devices
 using specific Object Identifiers
-(*[[General#OID|OIDs]]*)
+(*[[Networking/Services/SNMP/General#OID|OIDs]]*)
 
 <!-- Warning {{{-->
 > [!warning]
 >
-> A valid [[General#Community Strings|Community String]] must be known
+> A valid [[Networking/Services/SNMP/General#Community Strings|Community String]] must be known
 > (*e.g., `public`, `private`, etc.*)
 <!-- }}} -->
 
@@ -434,7 +434,7 @@ snmpwalk [APPLICATION OPTIONS] [COMMON OPTIONS] [OID]
 > ```
 <!-- }}} -->
 
-Connect and walk the entire [[General#MIB|MIB]] tree (*SNMPv1/v2c*)
+Connect and walk the entire [[Networking/Services/SNMP/General#MIB|MIB]] tree (*SNMPv1/v2c*)
 
 ```sh
 snmpwalk -v 1 -c <community_string> <target> | tee SNMPWALK.txt
@@ -583,7 +583,7 @@ snmpwalk -v <version> -c public <target> .1.3.6.1.2.1.25.6.3.1.2
 ### Braa
 
 [braa](https://github.com/mteg/braa) —
-Brute force [[General#OID|OIDs]] and information enumeration
+Brute force [[Networking/Services/SNMP/General#OID|OIDs]] and information enumeration
 
 Installation
 

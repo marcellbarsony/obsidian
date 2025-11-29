@@ -87,6 +87,26 @@ ___
 <!-- Settings {{{-->
 ## Settings
 
+Set passive mode
+
+```sh
+passive
+```
+
+Disable interactive mode
+
+```sh
+dir
+```
+
+```sh
+prompt
+```
+
+```sh
+mget *
+```
+
 Set transmission to binary —
 Move raw bytes
 
@@ -116,7 +136,7 @@ ftp> ls -a
 ```
 
 List files recursively
-(*if [[General#Recursive Listing|Recursive Listing]] is enabled*)
+(*if [[Networking/Services/FTP/General#Recursive Listing|Recursive Listing]] is enabled*)
 
 ```sh
 ftp> ls -R

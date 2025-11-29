@@ -9,15 +9,70 @@ tags:
 
 ___
 
+
+<!-- User Enumeration {{{-->
+## User Enumeration
+
+- [ ] [[User]]
+    - [ ] [[User#User|User]]
+        - [ ] [[User#Identify|Identify]]
+    - [ ] [[User#Group|Group]]
+        - [ ] [[User#id|id]]
+
+___
+<!-- }}} -->
+
+<!-- Sudo Enumeration {{{-->
+## Sudo Enumeration
+
+- [ ] [[Sudo]]
+    - [ ] [[Sudo#Commands|Commands]]
+    - [ ] [[Sudo#Version|Version]]
+    - [ ] [[Sudo#Vulnerabilities|Vulnerabilities]]
+
+___
+<!-- }}} -->
+
 <!-- Enumeration Tools {{{-->
 ## Enumeration Tools
 
 - [ ] [[Linux/Privesc/Enumeration Tools|Enumeration Tools]]
     - [ ] [[Linux/Privesc/Enumeration Tools#Linpeas|LinPEAS]]
     - [ ] [[Linux/Privesc/Enumeration Tools#Linux Exploit Suggester|Linux Exploit Suggester]]
-    - [ ] [[Linux/Privesc/Enumeration Tools#LinEnum|LinEnum]] (*deprecated*)
-    - [ ] [[Linux/Privesc/Enumeration Tools#linuxprivchecker|linuxprivchecker]] (*deprecated*)
+    - [ ] [[Linux/Privesc/Enumeration Tools#LinEnum|LinEnum]]
+    - [ ] [[Linux/Privesc/Enumeration Tools#linuxprivchecker|linuxprivchecker]]
 - [ ] [[Linux/Privesc/Enumeration Tools#Manual Enumeration|Manual Enumeration]]
+
+___
+<!-- }}} -->
+
+<!-- Credential Hunting {{{-->
+## Credential Hunting
+
+- [ ] [[Credential Hunting]]
+    - [ ] [[Credential Hunting#Directory Contents|Directory Contents]]
+        - [ ] [[Credential Hunting#Current Directory|Current Directory]]
+        - [ ] [[Credential Hunting#Root Directory|Root Directory]]
+        - [ ] [[Credential Hunting#Home Directory|Home Directory]]
+    - [ ] [[Credential Hunting#Shell|Shell]]
+        - [ ] [[Credential Hunting#Bash|Bash]]
+        - [ ] [[Credential Hunting#Zsh|Zsh]]
+    - [ ] [[Credential Hunting#Environment Variables|Environment Variables]]
+    - [ ] [[Credential Hunting#Web App Source Code|Web App Source Code]]
+- [ ] [[Credential Hunting#Found Secrets|Found Secrets]]
+
+___
+<!-- }}} -->
+
+<!-- SSH Keys {{{-->
+## SSH Keys
+
+- [ ] [[SSH Keys]]
+    - [ ] [[SSH Keys#Discover SSH Keys|Discover SSH Keys]]
+        - [ ] [[SSH Keys#User|User]]
+        - [ ] [[SSH Keys#root|/root]]
+    - [ ] [[SSH Keys#Exfiltrate SSH private keys|Exfiltrate SSH private keys]]
+    - [ ] [[SSH Keys#Writeable SSH directory|Writeable SSH directory]]
 
 ___
 <!-- }}} -->
@@ -53,74 +108,22 @@ ___
 ## File System
 
 - [ ] [[File System]]
-        lsblk
+    - [ ] [[File System#Additional Drives|Additional Drives]]
         config files
 
 ___
 <!-- }}} -->
 
-<!-- User Enumeration {{{-->
-## User Enumeration
+<!-- File {{{-->
+## File
 
-- [ ] [[User]]
-    - [ ] [[User#User|User]]
-        - [ ] [[User#Identify|Identify]]
-        - [ ] [[User#Home directory|Home directory]]
-        - [ ] [[User#root directory|root directory]]
-    - [ ] [[User#Group|Group]]
-        - [ ] [[User#id|id]]
-
-___
-<!-- }}} -->
-
-<!-- Sudo Enumeration {{{-->
-## Sudo Enumeration
-
-- [ ] [[Sudo]]
-    - [ ] [[Sudo#Commands|Commands]]
-    - [ ] [[Sudo#Version|Version]]
-    - [ ] [[Sudo#Vulnerabilities|Vulnerabilities]]
-
-___
-<!-- }}} -->
-
-<!-- Credential Hunting {{{-->
-## Credential Hunting
-
-- [ ] [[Credential Hunting]]
-    - [ ] [[Credential Hunting#Directory Contents|Directory Contents]]
-        - [ ] [[Credential Hunting#Current Directory|Current Directory]]
-        - [ ] [[Credential Hunting#Root Directory|Root Directory]]
-        - [ ] [[Credential Hunting#Home Directory|Home Directory]]
-    - [ ] [[Credential Hunting#Shell|Shell]]
-        - [ ] [[Credential Hunting#Bash|Bash]]
-        - [ ] [[Credential Hunting#Zsh|Zsh]]
-    - [ ] [[Credential Hunting#Environment Variables|Environment Variables]]
-    - [ ] [[Credential Hunting#Web App Source Code|Web App Source Code]]
-- [ ] [[Credential Hunting#Found Secrets|Found Secrets]]
-
-___
-<!-- }}} -->
-
-<!-- Scheduled Tasks {{{-->
-## Scheduled Tasks
-
-- [ ] [[Scheduled Tasks]]
-    - [ ] [[Scheduled Tasks#Discover Cron|Discover Cron]]
-    - [ ] [[Scheduled Tasks#Cron Jobs|Cron Jobs]]
-
-___
-<!-- }}} -->
-
-<!-- SSH Keys {{{-->
-## SSH Keys
-
-- [ ] [[SSH Keys]]
-    - [ ] [[SSH Keys#Discover SSH Keys|Discover SSH Keys]]
-        - [ ] [[SSH Keys#User|User]]
-        - [ ] [[SSH Keys#root|/root]]
-    - [ ] [[SSH Keys#Exfiltrate SSH private keys|Exfiltrate SSH private keys]]
-    - [ ] [[SSH Keys#Writeable SSH directory|Writeable SSH directory]]
+- [ ] [[Directory & File]]
+    - [ ] [[Directory & File#Directory Enumeration|Directory Enumeration]]
+    - [ ] [[Directory & File#File Enumeration|File Enumeration]]
+        - [ ] [[Directory & File#File|File Enumeration]]
+        - [ ] [[Directory & File#Credentials|Credentials]]
+        - [ ] [[Directory & File#Ownership|Ownership]]
+        - [ ] [[Directory & File#Permissions|Permissions]]
 
 ___
 <!-- }}} -->
@@ -147,6 +150,16 @@ ___
 
 - [ ] [[Processes]]
     - [ ] [[Processes#Running Processes|Running Processes]]
+
+___
+<!-- }}} -->
+
+<!-- Scheduled Tasks {{{-->
+## Scheduled Tasks
+
+- [ ] [[Scheduled Tasks]]
+    - [ ] [[Scheduled Tasks#Discover Cron|Discover Cron]]
+    - [ ] [[Scheduled Tasks#Cron Jobs|Cron Jobs]]
 
 ___
 <!-- }}} -->
