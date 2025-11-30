@@ -5,7 +5,7 @@ aliases:
   - Exucutable File Format
 tags:
   - Linux/General/Files
-links: "[[Linux/General/File System/File System]]"
+links: "[[Filesystem]]"
 ---
 
 # ELF - Executable and Linkable Format

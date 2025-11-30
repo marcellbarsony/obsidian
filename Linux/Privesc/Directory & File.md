@@ -16,6 +16,10 @@ ___
 
 Find Writeable Directories
 
+```sh
+find / -path /proc -prune -o -type d -perm -o+w 2>/dev/null
+```
+
 <!-- Tip {{{-->
 > [!tip]-
 >
@@ -23,10 +27,6 @@ Find Writeable Directories
 > - Add files for later execution
 > - Override application components
 <!-- }}} -->
-
-```sh
-find / -path /proc -prune -o -type d -perm -o+w 2>/dev/null
-```
 
 ___
 <!-- }}} -->
@@ -71,7 +71,7 @@ ___
 Search a file for [[Secrets]]
 
 ```sh
-grep -Ei 'user|passw|key|secret' .config/hypr/hyprland.conf
+grep -Ei 'user|passw|key|secret' <file>
 ```
 
 ```sh
@@ -93,7 +93,6 @@ find / -perm -4000 -type f 2>/dev/null
 
 SGID
 
-
 ```sh
 find / -perm -4000 -type f 2>/dev/null
 ```
@@ -101,7 +100,6 @@ find / -perm -4000 -type f 2>/dev/null
 SUID & SGID
 
 ```sh
-
 find / -perm /6000 -type f 2>/dev/null
 ```
 
@@ -114,16 +112,16 @@ ___
 
 Find Writeable Files
 
+```sh
+find / -path /proc -prune -o -type f -perm -o+w 2>/dev/null
+```
+
 <!-- Tip {{{-->
 > [!tip]-
 >
 > - Modify scripts
 > - Modify configuration files
 <!-- }}} -->
-
-```sh
-find / -path /proc -prune -o -type f -perm -o+w 2>/dev/null
-```
 
 ___
 <!-- }}} -->

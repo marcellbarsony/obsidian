@@ -3,7 +3,7 @@ id: Permissions
 aliases: []
 tags:
   - Linux/General/Permissions
-links: "[[Linux/General/File System/File System]]"
+links: "[[Filesystem]]"
 ---
 
 # Premissions

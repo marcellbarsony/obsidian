@@ -4,7 +4,7 @@ aliases:
   - Filesystem Hierarchy Standard
 tags:
   - Linux/General/Filesystem/Directories
-links: "[[Linux/General/File System/File System]]"
+links: "[[Filesystem]]"
 ---
 
 # Filesystem Hierarchy Standard

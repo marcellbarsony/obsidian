@@ -39,6 +39,7 @@ Check if the `root` user's private SSH key is readable
 ```sh
 [ -r /root/.ssh/id_rsa ] && echo "Readable" || echo "Not readable"
 ```
+
 ___
 <!-- }}} -->
 
@@ -68,6 +69,8 @@ chmod 600 id_rsa
 ```sh
 ssh root@<target_ip> -p <target_port> -i id_rsa
 ```
+
+___
 <!-- }}} -->
 
 <!-- Writable SSH directory {{{-->
@@ -101,4 +104,6 @@ ssh-keygen -f key
 ```sh
 ssh <target_user>@<target_ip> -i key
 ```
+
+___
 <!-- }}} -->

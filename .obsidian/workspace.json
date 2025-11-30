@@ -6,10 +6,12 @@
       {
         "id": "a2756010634063c4",
         "type": "tabs",
+        "dimension": 40.588235294117645,
         "children": [
           {
-            "id": "6f4e890d1c374ce7",
+            "id": "a964262d505170cd",
             "type": "leaf",
+            "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
@@ -27,17 +29,25 @@
                   "unlinkedCollapsed": true
                 }
               },
+              "pinned": true,
               "icon": "lucide-file",
               "title": "_Checklist"
             }
-          },
+          }
+        ]
+      },
+      {
+        "id": "d45237cb47d29b20",
+        "type": "tabs",
+        "dimension": 59.411764705882355,
+        "children": [
           {
-            "id": "5db9b48f7bc9a90c",
+            "id": "6f4e890d1c374ce7",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Linux/Privesc/Directory & File.md",
+                "file": "Linux/Privesc/Credential Hunting.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +62,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Directory & File"
+              "title": "Credential Hunting"
             }
           }
         ]
@@ -144,13 +154,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Linux/Privesc/_Checklist.md",
+                "file": "Linux/Privesc/Credential Hunting.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of _Checklist"
+              "title": "Outline of Credential Hunting"
             }
           },
           {
@@ -199,7 +209,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Linux/Privesc/_Checklist.md",
+                "file": "Linux/Privesc/Credential Hunting.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -227,7 +237,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of _Checklist"
+              "title": "Graph of Credential Hunting"
             }
           }
         ]
@@ -250,30 +260,33 @@
   "active": "6f4e890d1c374ce7",
   "lastOpenFiles": [
     "Linux/Privesc/Directory & File.md",
-    "Linux/Privesc/File.md",
+    "Linux/Privesc/Filesystem.md",
     "Linux/Privesc/_Checklist.md",
-    "Linux/Linux.md",
-    "Linux/Privesc/Enumeration Tools.md",
-    "Linux/General/File System/Permissions.md",
-    "Linux/Privesc/Scheduled Tasks.md",
-    "Pentest/General/Secrets.md",
-    "Linux/Privesc/Credential Hunting.md",
     "Linux/Privesc/User.md",
-    "Networking/Services/FTP/Usage.md",
-    "Networking/Services/FTP/General.md",
-    "Networking/Services/FTP/Exploitation.md",
-    "Networking/Services/SSH/Usage.md",
-    "Networking/Services/SSH/Exploitation.md",
-    "Networking/Services/FTP/Enumeration.md",
-    "Networking/Services/SMB/Exploitation.md",
-    "Networking/Services/SMB/Usage.md",
-    "Networking/Services/SMB/Enumeration.md",
-    "Networking/Services/MSSQL/Exploitation.md",
+    "Linux/Privesc/Credential Hunting.md",
+    "Linux/Privesc/File.md",
+    "Linux/Privesc/Enumeration Tools.md",
+    "Linux/Privesc/Group.md",
+    "Linux/Privesc/Network.md",
+    "Linux/Privesc/Privesc.md",
+    "Linux/Privesc/Processes.md",
+    "Linux/Privesc/Scheduled Tasks.md",
+    "Linux/Privesc/Software Vulnerability.md",
+    "Linux/Privesc/SSH Keys.md",
+    "Linux/Privesc/Sudo.md",
+    "Linux/Privesc/System Files.md",
+    "Linux/Privesc/System Information.md",
+    "Linux/Privesc/User_1.md",
+    "Webapp/Webapp.md",
+    "Linux/Linux.md",
+    "Linux/General/Software/Nagios.md",
+    "Linux/General/Software/Security/Fail2ban.md",
+    "Linux/General/Software/Security/Exec Shield.md",
+    "Linux/Privesc/Software/Security/Snort_1.md",
+    "Linux/General/Software/Security",
+    "Linux/General/Software",
     "Networking/Services/SMB/src/windows-shared-folder.jpg",
     "Networking/Services/SMB/src",
-    "Webapp/Tools/Burp Suite/Burp Suite.md",
-    "Webapp/Tools/ZAP/ZAP.md",
-    "Webapp/Tools/Burp Suite/Configuration.md",
     "Webapp/Tools/Burp Suite/src/match-replace-response.png",
     "Webapp/Tools/Burp Suite/src/scope.png",
     "Webapp/Tools/Burp Suite/src/20251128-232932.png",
@@ -281,10 +294,8 @@
     "Webapp/Tools/ZAP/src/20251128-225440.png",
     "Webapp/Tools/ZAP/src/context-scope.png",
     "Webapp/Tools/ZAP/src/20251128-224646.png",
-    "Webapp/Enumeration/_Checklist.md",
     "Webapp/Tools/Burp Suite/src/match-replace-rule.png",
     "Webapp/Tools/Burp Suite/src/20251128-222424.png",
-    "Webapp/Enumeration/Tools/Tools.md",
     "Webapp/Tools/ZAP/src",
     "Networking/Services/MongoDB",
     "Webapp/Exploitation/Server-Side/Authentication",
@@ -292,8 +303,6 @@
     "Webapp/General/HTTP Headers",
     "Webapp/General/Technologies",
     "Pentest/Tools/Ffuf",
-    "Webapp/Exploitation/Server-Side/Path Traversal/Tools",
-    "Webapp/Exploitation/Tools",
     "Networking/Services/SMB/Untitled.canvas"
   ]
 }

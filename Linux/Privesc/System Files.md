@@ -24,14 +24,36 @@ stores essential information required during login
 <!-- Enumeration {{{-->
 ### Enumeration
 
+List all users with login shell
+
+<!-- Tip {{{-->
+> [!tip]
+>
+> Outdated shell versions may be vulnerable
+>
+> - [CVE-2014-6271](https://www.cve.org/CVERecord?id=CVE-2014-6271)
+> (*[Shellshock](https://en.wikipedia.org/wiki/Shellshock_(software_bug))*)
+> through Bash 4.3
+<!-- }}} -->
+
+```sh
+grep "sh$" /etc/passwd
+```
+
+List all usernames
+
+```sh
+cat /etc/passwd | cut -f1 -d:
+```
+
 Search for a username
 
 ```sh
-grep username /etc/passwd
+grep <user> /etc/passwd
 ```
 
 ```sh
-grep -w '^usermame' /etc/passwd
+grep -w '^<user>' /etc/passwd
 ```
 
 Search for multiple usernames
@@ -106,11 +128,7 @@ stores hashed passwords for user accounts
 <!-- Readability {{{-->
 #### Readability
 
-Check if `/etc/shadow` is world-readable (*`644`*)
-
-> [!info]
->
-> Default value: `600`
+Check if `/etc/shadow` is world-readable (*`644`, default `600`*)
 
 ```sh
 stat -c "%a %n" /etc/shadow
@@ -120,9 +138,22 @@ stat -c "%a %n" /etc/shadow
 [ -r /etc/shadow ] && echo "Readable /etc/shadow: YES" || echo "Readable /etc/shadow: NO"
 ```
 
-> [!tip]
+<!-- Hash Cracking {{{-->
+> [!tip]- Hash Cracking
 >
-> Crack the extracted password hashes with [[Hashcat]]
+> Identify hashes from the first hash block
+>
+> | Algorithm  | Hash           |
+> | ---        | ---            |
+> | Salted MD5 | `$1$...`       |
+> | SHA-256    | `$5$...`       |
+> | SHA-512    | `$6$...`       |
+> | BCrypt     | `$2a$...`      |
+> | Scrypt     | `$7$...`       |
+> | Argon2     | `$argon2i$...` |
+>
+> Identify and crack the extracted password hashes with [[Hashcat]]
+<!-- }}} -->
 
 <!-- }}} -->
 
@@ -131,26 +162,38 @@ stat -c "%a %n" /etc/shadow
 
 Check if `/etc/shadow` is writeable by other users
 
+<!-- Tip {{{-->
+> [!tip]
+>
+> - Set or remove passwords
+> - Inject password hashes
+<!-- }}} -->
+
 ```sh
 [ -w /etc/shadow ] && echo "Writeable /etc/shadow: YES" || echo "Writeable /etc/shadow: NO"
 ```
-
-> [!tip]
->
-> Set or remove passwords, or inject password hashes
 
 <!-- }}} -->
 
 <!-- Ownership {{{-->
 #### Ownership
 
-Check if `/etc/shadow` has incorrect ownership —
-Other users or services might gain unexpected write access,
-enabling lateral movement or privilege escalation
+Check if `/etc/shadow` has incorrect ownership
+(*default value: `root:root /etc/shadow`*)
 
+<!-- Info {{{-->
 > [!info]
 >
-> Default value: `root:root /etc/shadow`
+> Other users or services might gain unexpected write access,
+> enabling lateral movement or privilege escalation
+<!-- }}} -->
+
+<!-- Tip {{{-->
+> [!tip]
+>
+> Escalate by abusing whatever process/user owns the file —
+> e.g., trick a service running as that user into writing to `/etc/shadow`
+<!-- }}} -->
 
 ```sh
 stat -c "%U:%G %n" /etc/shadow
@@ -159,11 +202,6 @@ stat -c "%U:%G %n" /etc/shadow
 ```sh
 [ "$(stat -c %U:%G /etc/shadow)" != "root:root" ] && echo "Ownership /etc/shadow: Incorrect" || echo "Ownership /etc/shadow: Correct"
 ```
-
-> [!tip]
->
-> Escalate by abusing whatever process/user owns the file
-> — e.g., trick a service running as that user into writing to `/etc/shadow`
 
 <!-- }}} -->
 

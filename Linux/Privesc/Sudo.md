@@ -15,15 +15,20 @@ ___
 
 Check which commands the current user may run
 
+> [!tip]
+>
+> Exploit the found command(*s*)
+>
+> - [GTFOBins](https://gtfobins.github.io/)
+
+[sudo](https://man7.org/linux/man-pages/man8/sudo.8.html) —
+Execute a command as another user
+
 ```sh
 sudo -l
 ```
 
-> [!tip]
->
-> [GTFOBins](https://gtfobins.github.io/) —
-> Exploit the found command(s)
-
+[sudo](https://man7.org/linux/man-pages/man8/sudo.8.html) —
 Run command as specified user (*e.g., `user`*)
 
 ```sh

@@ -16,6 +16,7 @@ ___
 - [ ] [[User]]
     - [ ] [[User#User|User]]
         - [ ] [[User#Identify|Identify]]
+        - [ ] [[User#Home Directories|Home Directories]]
     - [ ] [[User#Group|Group]]
         - [ ] [[User#id|id]]
 
@@ -29,6 +30,15 @@ ___
     - [ ] [[Sudo#Commands|Commands]]
     - [ ] [[Sudo#Version|Version]]
     - [ ] [[Sudo#Vulnerabilities|Vulnerabilities]]
+
+___
+<!-- }}} -->
+
+<!-- User Enumeration {{{-->
+## Group Enumeration
+
+- [ ] [[Group]]
+    - [ ] [[Group#Enumerate|Enumerate]]
 
 ___
 <!-- }}} -->
@@ -50,15 +60,20 @@ ___
 ## Credential Hunting
 
 - [ ] [[Credential Hunting]]
-    - [ ] [[Credential Hunting#Directory Contents|Directory Contents]]
+    - [ ] [[Credential Hunting#Directories|Directories]]
         - [ ] [[Credential Hunting#Current Directory|Current Directory]]
-        - [ ] [[Credential Hunting#Root Directory|Root Directory]]
         - [ ] [[Credential Hunting#Home Directory|Home Directory]]
-    - [ ] [[Credential Hunting#Shell|Shell]]
-        - [ ] [[Credential Hunting#Bash|Bash]]
-        - [ ] [[Credential Hunting#Zsh|Zsh]]
+        - [ ] [[Credential Hunting#Root Directory|Root Directory]]
+        - [ ] [[Credential Hunting#TMP Directory|TMP Directory]]
+        - [ ] [[Credential Hunting#Web App Root|Web App Root]]
+    - [ ] [[Credential Hunting#Files|Files]]
+        - [ ] [[Credential Hunting#Configuration Files|Configuration Files]]
+        - [ ] [[Credential Hunting#Fstab|Fstab]]
+        - [ ] [[Credential Hunting#Hidden Items|Hidden Items]]
+        - [ ] [[Credential Hunting#Shell|Shell]]
+            - [ ] [[Credential Hunting#Bash|Bash]]
+            - [ ] [[Credential Hunting#Zsh|Zsh]]
     - [ ] [[Credential Hunting#Environment Variables|Environment Variables]]
-    - [ ] [[Credential Hunting#Web App Source Code|Web App Source Code]]
 - [ ] [[Credential Hunting#Found Secrets|Found Secrets]]
 
 ___
@@ -82,11 +97,15 @@ ___
 
 - [ ] [[System Information]]
     - [ ] [[System Information#PATH|PATH]]
+    - [ ] [[System Information#Hostname|Hostname]]
     - [ ] [[System Information#Kernel Exploits|Kernel Exploits]]
         - [ ] [[System Information#Kernel Version|Kernel Version]]
         - [ ] [[System Information#Public Exploits|Public Exploits]]
             - [ ] [[System Information#DirtyCow (CVE-2016-5195)|DirtyCow (CVE-2016-5195)]]
             - [ ] [[System Information#DirtyPipe (CVE-2022-0847)|DirtyPipe (CVE-2022-0847)]]
+    - [ ] [[System Information#Hardware Information|Hardware Information]]
+        - [ ] [[System Information#CPU|CPU]]
+    - [ ] [[System Information#Login Shells|Login Shells]]
 
 ___
 <!-- }}} -->
@@ -104,12 +123,12 @@ ___
 ___
 <!-- }}} -->
 
-<!-- File System {{{-->
-## File System
+<!-- Filesystem {{{-->
+## Filesystem
 
-- [ ] [[File System]]
-    - [ ] [[File System#Additional Drives|Additional Drives]]
-        config files
+- [ ] [[Filesystem]]
+    - [ ] [[Filesystem#Filesystems|Filesystems]]
+    - [ ] [[Filesystem#Block Devices|Block Devices]]
 
 ___
 <!-- }}} -->
@@ -128,19 +147,12 @@ ___
 ___
 <!-- }}} -->
 
-<!-- Installed Software {{{-->
-## Installed Software
+<!-- Software Vulnerability {{{-->
+## Software Vulnerability
 
 - [ ] [[Software Vulnerability]]
-    - [ ] [[Software Vulnerability#Linux|Linux]]
-        - [ ] [[Software Vulnerability#Debian / Ubuntu|Debian / Ubuntu]]
-        - [ ] [[Software Vulnerability#Fedora / RHEL / CentOS|Fedora / RHEL / CentOS]]
-        - [ ] [[Software Vulnerability#Arch|Arch]]
-    - [ ] [[Software Vulnerability#BSD]]
-        - [ ] [[Software Vulnerability#FreeBSD|FreeBSD]]
-        - [ ] [[Software Vulnerability#OpenBSD|OpenBSD]]
-        - [ ] [[Software Vulnerability#NetBSD|NetBSD]]
-    - [ ] [[Software Vulnerability#macOS|macOS]]
+    - [ ] [[Software Vulnerability#Installed Software|Installed Software]]
+    - [ ] [[Software Vulnerability#Security Software|Security Software]]
 
 ___
 <!-- }}} -->
@@ -168,7 +180,9 @@ ___
 ## Network
 
 - [ ] [[Network]]
-    - [ ] [[Network#ARP Table|ARP Table]]
+    - [ ] [[Network#Network Information|Network Information]]
+    - [ ] [[Network#ARP Cache|ARP Cache]]
+    - [ ] [[Network#Routing Table|Routing Table]]
 
 ___
 <!-- }}} -->

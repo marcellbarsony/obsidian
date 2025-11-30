@@ -1,8 +1,8 @@
 ---
-id: Directory & File
+id: File
 aliases: []
 tags:
-  - Linux/Privesc/Directory-File
+  - Linux/Privesc/File
 links: "[[Linux]]"
 ---
 
@@ -47,9 +47,11 @@ Enumerate a file
 file <file>
 ```
 
+<!-- Tip {{{-->
 > [!tip]
 >
 > Search for [Setuid (SUID)](https://en.wikipedia.org/wiki/Setuid) bit set
+<!-- }}} -->
 
 ___
 <!-- }}} -->
@@ -111,16 +113,16 @@ ___
 
 Find Writeable Files
 
+```sh
+find / -path /proc -prune -o -type f -perm -o+w 2>/dev/null
+```
+
 <!-- Tip {{{-->
 > [!tip]-
 >
 > - Modify scripts
 > - Modify configuration files
 <!-- }}} -->
-
-```sh
-find / -path /proc -prune -o -type f -perm -o+w 2>/dev/null
-```
 
 ___
 <!-- }}} -->
