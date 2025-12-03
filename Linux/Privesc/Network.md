@@ -87,6 +87,18 @@ arp -a
 ___
 <!-- }}} -->
 
+<!-- Hosts {{{-->
+## Hosts
+
+Check the [hosts](https://en.wikipedia.org/wiki/Hosts_(file)) file
+
+```sh
+cat /etc/hosts
+```
+
+___
+<!-- }}} -->
+
 <!-- Routing Table {{{-->
 ## Routing Table
 

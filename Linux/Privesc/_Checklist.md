@@ -169,9 +169,9 @@ ___
 <!-- Scheduled Tasks {{{-->
 ## Scheduled Tasks
 
-- [ ] [[Scheduled Tasks]]
-    - [ ] [[Scheduled Tasks#Discover Cron|Discover Cron]]
-    - [ ] [[Scheduled Tasks#Cron Jobs|Cron Jobs]]
+- [ ] [[Cron Jobs]]
+    - [ ] [[Cron Jobs#Discover Cron|Discover Cron]]
+    - [ ] [[Cron Jobs#Cron Jobs|Cron Jobs]]
 
 ___
 <!-- }}} -->

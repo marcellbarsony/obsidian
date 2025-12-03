@@ -2,7 +2,7 @@
 id: Pipx
 aliases: []
 tags:
-  - Programming/Python/Python
+  - Programming/Python/pipx
 ---
 
 # pipx

@@ -4,42 +4,8 @@
     "type": "split",
     "children": [
       {
-        "id": "a2756010634063c4",
-        "type": "tabs",
-        "dimension": 40.588235294117645,
-        "children": [
-          {
-            "id": "a964262d505170cd",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Linux/Privesc/_Checklist.md",
-                "mode": "preview",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "pinned": true,
-              "icon": "lucide-file",
-              "title": "_Checklist"
-            }
-          }
-        ]
-      },
-      {
         "id": "d45237cb47d29b20",
         "type": "tabs",
-        "dimension": 59.411764705882355,
         "children": [
           {
             "id": "6f4e890d1c374ce7",
@@ -47,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Linux/Privesc/Credential Hunting.md",
+                "file": "Linux/General/File System/Permissions.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -62,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Credential Hunting"
+              "title": "Permissions"
             }
           }
         ]
@@ -112,7 +78,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "gid",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -137,7 +103,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 249.5
+    "width": 210.5
   },
   "right": {
     "id": "d9ceb6f94f351234",
@@ -154,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Linux/Privesc/Credential Hunting.md",
+                "file": "Linux/General/File System/Permissions.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Credential Hunting"
+              "title": "Outline of Permissions"
             }
           },
           {
@@ -209,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Linux/Privesc/Credential Hunting.md",
+                "file": "Linux/General/File System/Permissions.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -237,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Credential Hunting"
+              "title": "Graph of Permissions"
             }
           }
         ]
@@ -260,29 +226,32 @@
   "active": "6f4e890d1c374ce7",
   "lastOpenFiles": [
     "Linux/Privesc/Directory & File.md",
-    "Linux/Privesc/Filesystem.md",
-    "Linux/Privesc/_Checklist.md",
-    "Linux/Privesc/User.md",
-    "Linux/Privesc/Credential Hunting.md",
-    "Linux/Privesc/File.md",
+    "Linux/General/Users & Groups.md",
+    "Linux/Privesc/Cron Jobs.md",
+    "Pentest/Reverse Shell/Reverse Shell.md",
+    "Linux/Privesc/Environment.md",
     "Linux/Privesc/Enumeration Tools.md",
-    "Linux/Privesc/Group.md",
+    "Linux/Privesc/Credential Hunting.md",
     "Linux/Privesc/Network.md",
-    "Linux/Privesc/Privesc.md",
-    "Linux/Privesc/Processes.md",
-    "Linux/Privesc/Scheduled Tasks.md",
-    "Linux/Privesc/Software Vulnerability.md",
-    "Linux/Privesc/SSH Keys.md",
-    "Linux/Privesc/Sudo.md",
-    "Linux/Privesc/System Files.md",
-    "Linux/Privesc/System Information.md",
-    "Linux/Privesc/User_1.md",
-    "Webapp/Webapp.md",
-    "Linux/Linux.md",
+    "Linux/Privesc/Group.md",
+    "Linux/Privesc/Filesystem.md",
+    "Linux/General/Software/Screen.md",
     "Linux/General/Software/Nagios.md",
-    "Linux/General/Software/Security/Fail2ban.md",
-    "Linux/General/Software/Security/Exec Shield.md",
-    "Linux/Privesc/Software/Security/Snort_1.md",
+    "Linux/General/Software/Nagios_1.md",
+    "Linux/Privesc/Software Vulnerability.md",
+    "Linux/Privesc/Sudo.md",
+    "Linux/Privesc/File.md",
+    "Linux/Privesc/Restricted Shells.md",
+    "Linux/Linux.md",
+    "Linux/Privesc/System Information.md",
+    "Linux/Privesc/System Files.md",
+    "Linux/Privesc/SSH Keys.md",
+    "Programming/Bash/Dialog/01_man.md",
+    "Linux/Privesc/User.md",
+    "Programming/Python/Python.md",
+    "Programming/PHP",
+    "Linux/Privesc/Processes.md",
+    "Linux/Privesc/Privesc.md",
     "Linux/General/Software/Security",
     "Linux/General/Software",
     "Networking/Services/SMB/src/windows-shared-folder.jpg",
@@ -302,7 +271,6 @@
     "Webapp/Exploitation/Server-Side/Access Control",
     "Webapp/General/HTTP Headers",
     "Webapp/General/Technologies",
-    "Pentest/Tools/Ffuf",
     "Networking/Services/SMB/Untitled.canvas"
   ]
 }

@@ -12,26 +12,30 @@ ___
 <!-- Discover SSH Keys {{{-->
 ## Discover SSH Keys
 
+<!-- User {{{-->
 ### User
 
 Check the user's `.ssh/`directory for private SSH keys
 
 ```sh
-/home/<user>/.ssh/id_rsa
+ls $HOME/.ssh/
 ```
 
 Check if the user's private SSH key is readable
 
 ```sh
-[ -r /home/user/.ssh/id_rsa ] && echo "Readable" || echo "Not readable"
+[ -r $HOME/.ssh/id_rsa ] && echo "Readable" || echo "Not readable"
 ```
 
+<!-- }}} -->
+
+<!-- root {{{-->
 ### root
 
 Check the `/root` directory for private SSH keys
 
 ```sh
-/root/.ssh/id_rsa
+ls -al /root/.ssh
 ```
 
 Check if the `root` user's private SSH key is readable
@@ -39,6 +43,8 @@ Check if the `root` user's private SSH key is readable
 ```sh
 [ -r /root/.ssh/id_rsa ] && echo "Readable" || echo "Not readable"
 ```
+
+<!-- }}} -->
 
 ___
 <!-- }}} -->
@@ -84,7 +90,7 @@ This technique is usually used to gain SSH access after gaining a shell as user
 1. **Target**: Check write access to `/.ssh/` directory
 
 ```sh
-test -w /home/<user>/.ssh && echo "Writable" || echo "Not Writable"
+test -w $HOME/.ssh && echo "Writable" || echo "Not Writable"
 ```
 
 2. **Attacker**: Create a new SSH key pair
@@ -96,7 +102,7 @@ ssh-keygen -f key
 3. **Target**: Place the public key (*`key.pub`*) to the SSH directory
 
 ```sh
-/home/<user>/.ssh/authorized_keys
+$HOME/.ssh/authorized_keys
 ```
 
 4. **Attacker**: Connect to the target

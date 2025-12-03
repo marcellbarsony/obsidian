@@ -8,6 +8,7 @@ links: "[[Privesc]]"
 
 # Enumeration Tools
 
+<!-- Warning {{{-->
 > [!warning]
 >
 > Running **Enumeration Scripts** can generate noise,
@@ -16,8 +17,14 @@ links: "[[Privesc]]"
 > > [!tip]
 > >
 > > In some cases, it may be preferable to conduct manual enumeration
+<!-- }}} -->
 
-- [GitHub - PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings)
+<!-- Resources {{{-->
+> [!info]- Resources
+>
+> - [GitHub - PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings)
+>
+<!-- }}} -->
 
 ___
 

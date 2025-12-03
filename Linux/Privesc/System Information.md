@@ -10,32 +10,6 @@ links: "[[Privesc]]"
 
 ___
 
-<!-- PATH {{{-->
-## PATH
-
-The `$PATH` [environment variable](https://en.wikipedia.org/wiki/Environment_variable)
-where the shell looks for the specified executable program or script
-
-<!-- Tip {{{-->
-> [!tip]
->
-> Any directory inside the `PATH` variable with
-> [[Permissions|write permissions]]
-> may allow to hijack its libraries or binaries
-<!-- }}} -->
-
-```sh
-echo $PATH
-```
-
-Automated script
-
-```sh
-echo $PATH | tr ':' '\n' | while read dir; do [ -d "$dir" ] && [ -w "$dir" ] && echo "$dir has write permissions"; done
-```
-
-___
-<!-- }}} -->
 
 <!-- Hostname {{{-->
 ## Hostname
@@ -169,6 +143,7 @@ ___
 <!-- Hardware Information {{{-->
 ## Hardware Information
 
+<!-- CPU {{{-->
 ### CPU
 
 [lscpu](https://linux.die.net/man/1/lscpu) —
@@ -206,6 +181,8 @@ lscpu
 >
 > <SNIP>
 > ```
+<!-- }}} -->
+
 <!-- }}} -->
 
 ___

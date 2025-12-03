@@ -15,11 +15,13 @@ ___
 
 Check which commands the current user may run
 
+<!-- Tip {{{-->
 > [!tip]
 >
 > Exploit the found command(*s*)
 >
-> - [GTFOBins](https://gtfobins.github.io/)
+> - [GTFOBins](https://gtfobins.github.io/#+sudo)
+<!-- }}} -->
 
 [sudo](https://man7.org/linux/man-pages/man8/sudo.8.html) —
 Execute a command as another user

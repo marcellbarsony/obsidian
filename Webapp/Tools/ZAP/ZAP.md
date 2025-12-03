@@ -158,7 +158,6 @@ Tools > Options > Replacer
 ___
 <!-- }}} -->
 
-
 <!-- Fuzzer {{{-->
 ## Fuzzer
 

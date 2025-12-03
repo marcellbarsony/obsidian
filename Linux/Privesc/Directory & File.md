@@ -36,8 +36,6 @@ ___
 <!-- File Enumeration {{{-->
 # File Enumeration
 
-___
-
 <!-- File {{{-->
 ## File
 
@@ -46,11 +44,6 @@ Enumerate a file
 ```sh
 file <file>
 ```
-
-> [!tip]
->
-> Search for [Setuid (SUID)](https://en.wikipedia.org/wiki/Setuid) bit set
-
 ___
 <!-- }}} -->
 
@@ -71,7 +64,7 @@ ___
 Search a file for [[Secrets]]
 
 ```sh
-grep -Ei 'user|passw|key|secret' <file>
+grep -Ei 'user|username|pass|password|key|secret|HTB' <file>
 ```
 
 ```sh
@@ -91,10 +84,18 @@ SUID
 find / -perm -4000 -type f 2>/dev/null
 ```
 
+```sh
+find / -user root -perm -4000 -exec ls -ldb {} \; 2>/dev/null
+```
+
 SGID
 
 ```sh
-find / -perm -4000 -type f 2>/dev/null
+find / -perm -2000 -type f 2>/dev/null
+```
+
+```sh
+find / -group root -perm -2000 -exec ls -ldb {} \; 2>/dev/null
 ```
 
 SUID & SGID
@@ -103,6 +104,9 @@ SUID & SGID
 find / -perm /6000 -type f 2>/dev/null
 ```
 
+```sh
+find / -user root -perm -6000 -exec ls -ldb {} \; 2>/dev/null
+```
 
 ___
 <!-- }}} -->
