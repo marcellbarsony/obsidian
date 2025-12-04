@@ -86,7 +86,7 @@ ___
 <!-- Metasploit {{{-->
 ## Metasploit
 
-Scan [[SMB/General|SMB]] service with [[Metasploit]]
+[[Metasploit]] — Scan [[SMB/General|SMB]] service
 
 [smb_version](https://www.rapid7.com/db/modules/auxiliary/scanner/smb/smb_version/)
 — SMB Version Detection

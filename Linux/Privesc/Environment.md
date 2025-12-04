@@ -38,10 +38,11 @@ Automated script
 echo $PATH \
   | tr ':' '\n' \
   | while read dir; \
-        do [ -d "$dir" ] && [ -w "$dir" ] && echo "$dir has write permissions"; \
+        do [ -d "$dir" ] && [ -w "$dir" ] && echo "[+] :: Write Permission Set :: $dir"; \
     done
 ```
 
+___
 <!-- }}} -->
 
 <!-- Path Abuse {{{-->
@@ -109,7 +110,6 @@ export PATH
 ___
 <!-- }}} -->
 
-___
 <!-- }}} -->
 
 <!-- Wildcard Abuse {{{-->

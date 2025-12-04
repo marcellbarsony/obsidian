@@ -83,7 +83,7 @@ ___
 Grab the banner of a service
 
 ```sh
-nmap -sV --script=banner <target_ip> -oA script-banner
+nmap -sV --script=banner <target> -oA script-banner
 ```
 
 ___
@@ -93,17 +93,17 @@ ___
 ### Network scan
 
 ```sh
-nmap <target_ip>/<CIDR>
+nmap <target>/<CIDR>
 ```
 
 Exclude address(es)
 
 ```sh
-nmap <target_ip>/<CIDR> --exclude <target_ip>
+nmap <target>/<CIDR> --exclude <target>
 ```
 
 ```sh2
-nmap <target_ip>/<CIDR> --exclude <ip_list.txt>
+nmap <target>/<CIDR> --exclude <ip_list.txt>
 ```
 
 Scan from list
@@ -131,29 +131,29 @@ nmap <target_ip> -O
 ICMP ping scan
 
 ```sh
-nmap -sP <target_ip> -oA icmp-ping-scan
+nmap -sP <traget> -oA icmp-ping-scan
 ```
 
 ```sh
-nmap -sP <target_ip>/<cidr> -oA icmp-ping-scan
+nmap -sP <traget>/<cidr> -oA icmp-ping-scan
 ```
 
 TCP ping scan
 
 ```sh
-nmap -PS <target_ip> -oA tcp_ping_scan
+nmap -PS <traget> -oA tcp-ping-scan
 ```
 
 TCP ACK ping scan
 
 ```sh
-nmap -PA <target_ip> -oA tcp_ack_scan
+nmap -PA <traget> -oA tcp-ack-scan
 ```
 
 UDP ping scan
 
 ```sh
-nmap -PU [port] <target_ip> -oA udp-ping-scan
+nmap -PU <traget> [port] -oA udp-ping-scan
 ```
 <!-- }}} -->
 
@@ -163,43 +163,43 @@ nmap -PU [port] <target_ip> -oA udp-ping-scan
 All ports
 
 ```sh
-nmap -p- <target_ip>
+nmap -p- <traget>
 ```
 
 Specific ports
 
 ```sh
-nmap -p <port1>,<port2> <target_ip>
+nmap -p <port1>,<port2> <traget>
 ```
 
 Specific TCP/UDP ports
 
 ```sh
-nmap -p T:<port1>,U:<port2> <target_ip>
+nmap -p T:<port1>,U:<port2> <traget>
 ```
 
 Range of ports
 
 ```sh
-nmap -p <port1>-<port2> <target_ip>
+nmap -p <port1>-<port2> <traget>
 ```
 
 All named ports
 
 ```sh
-nmap -p "*" <target_ip>
+nmap -p "*" <traget>
 ```
 
 100 most common ports
 
 ```sh
-nmap -F <target_ip>
+nmap -F <traget>
 ```
 
 x most common ports
 
 ```sh
-nmap --top-ports <x> <target_ip>
+nmap --top-ports <x> <traget>
 ```
 
 ___
@@ -216,14 +216,17 @@ Synopsis
 nmap --script <script name> -p<port> <host>
 ```
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```
 > nmap --script voldemort-info -p- 10.10.10.10
 > ```
+<!-- }}} -->
 
 Nmap scripts are located at `/usr/share/nmap/scripts/`
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sh
@@ -236,6 +239,7 @@ Nmap scripts are located at `/usr/share/nmap/scripts/`
 > /usr/share/nmap/scripts/citrix-enum-servers-xml.nse
 > /usr/share/nmap/scripts/citrix-enum-servers.nse
 > ```
+<!-- }}} -->
 
 ___
 <!--}}}-->
@@ -246,14 +250,16 @@ ___
 Save output in all formats (normal, XML, and grepable)
 
 ```sh
-nmap -sV --open -oA nibbles_initial_scan <target_ip>
+nmap -sV --open -oA nibbles_initial_scan <traget>
 ```
 
+<!-- Info {{{-->
 > [!info]-
 >
 > - Normal: `nibbles_initial_scan.nmap`
 > - XML: `nibbles_initial_scan.xml`
 > - Grepable: `nibbles_initial_scan.gnmap`
+<!-- }}} -->
 
 Display statistics every 5 seconds
 

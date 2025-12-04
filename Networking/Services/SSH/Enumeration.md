@@ -65,6 +65,24 @@ ___
 
 <!-- }}} -->
 
+<!-- SSH Audit {{{-->
+## SSH Audit
+
+[ssh-audit](https://github.com/jtesta/ssh-audit)
+analyzing SSH connections, providing details on banners,
+OS/software recognition, compression detection,
+algorithm information and security recommendations
+
+```sh
+sudo apt install ssh-audit
+```
+
+```sh
+ssh-audit <target> 22
+```
+___
+<!-- }}} -->
+
 <!-- Public Key {{{-->
 ## Public Key
 
@@ -72,7 +90,7 @@ ___
 Fetch the server's RSA public SSH host key
 
 ```sh
-ssh-keyscan -t rsa  -p <target>
+ssh-keyscan -t rsa <target> -p <port>
 ```
 ___
 <!-- }}} -->
@@ -104,7 +122,18 @@ ___
 Fuzzing the SSH service could help to find vulnerabilities
 
 [[Metasploit]] —
-SSH 2.0 Version Fuzzer (*[ssh_version_2](https://www.rapid7.com/db/modules/auxiliary/fuzzers/ssh/ssh_version_2/)*)
+SSH 2.0 Version Fuzzer
+
+```sh
+use auxiliary/fuzzers/ssh/ssh_version_2
+```
+
+<!-- ssh_version_2 {{{-->
+> [!info]- ssh_version_2
+>
+> [ssh_version_2](https://www.rapid7.com/db/modules/auxiliary/fuzzers/ssh/ssh_version_2/)
+> sends a series of SSH requests with malicious version strings
+<!-- }}} -->
 
 <!-- Example {{{-->
 > [!example]-
@@ -121,6 +150,8 @@ SSH 2.0 Version Fuzzer (*[ssh_version_2](https://www.rapid7.com/db/modules/auxil
 > ```sh
 > run
 > ```
+<!-- }}} -->
+
 <!-- }}} -->
 
 <!-- Configuration {{{-->
@@ -195,18 +226,17 @@ ___
 <!-- Usernames {{{-->
 ## Usernames
 
-[[Metasploit]] —
-SSH Username Enumeration
-([ssh_enumusers](https://www.rapid7.com/db/modules/auxiliary/scanner/ssh/ssh_enumusers/))
+[[Metasploit]] — SSH Username Enumeration
 
 ```sh
 use auxiliary/scanner/ssh/ssh_enumusers
 ```
 
-<!-- Info {{{-->
-> [!info]-
+<!-- ssh_enumusers {{{-->
+> [!info]- ssh_enumusers
 >
-> The default action sends a malformed (*corrupted*)
+> [ssh_enumusers](https://www.rapid7.com/db/modules/auxiliary/scanner/ssh/ssh_enumusers/)'s
+> default action sends a malformed (*corrupted*)
 > `SSH_MSG_USERAUTH_REQUEST` packet using
 > [[Networking/Services/SSH/General#Public Key Authentication|Public Key Authentication]]
 > (*must be enabled*) to enumerate users
@@ -224,11 +254,17 @@ use auxiliary/scanner/ssh/ssh_enumusers
 >
 > ```sh
 > msf > use auxiliary/scanner/ssh/ssh_enumusers
-> msf auxiliary(ssh_enumusers) > show actions
->     ...actions...
-> msf auxiliary(ssh_enumusers) > set ACTION < action-name >
+> ```
+> ```sh
 > msf auxiliary(ssh_enumusers) > show options
->     ...show and set options...
+> ```
+> ```sh
+> msf auxiliary(ssh_enumusers) > set USER_FILE <wordlist.txt>
+> ```
+> ```sh
+> msf auxiliary(ssh_enumusers) > set RHOST <target>
+> ```
+> ```sh
 > msf auxiliary(ssh_enumusers) > run
 > ```
 <!-- }}} -->

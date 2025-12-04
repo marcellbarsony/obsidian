@@ -251,6 +251,35 @@ ___
 <!-- UDP Scan {{{-->
 ## UDP Scan
 
+<!-- Warning {{{-->
+> [!warning]
+>
+> UDP scans may take a long time
+>
+> ```sh
+> --max-retries 0
+> ```
+<!-- }}} -->
+
+<!-- Quick Scan {{{-->
+### Quick Scan
+
+Perform a quick aggressive scan
+
+```sh
+nmap -sU -sV <target> -T5 -oA udp-quick-scan
+```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> -`sU`: Perform UDP scan
+> -`sV`: Version detection
+> -`T5`: Insane speed/aggressiveness
+<!-- }}} -->
+
+<!-- }}} -->
+
 <!-- Top 100 UDP Ports {{{-->
 ### Top 100 UDP Ports
 

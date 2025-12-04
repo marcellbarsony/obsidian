@@ -156,6 +156,33 @@ use auxiliary/scanner/ftp/anonymous
 ___
 <!-- }}} -->
 
+<!-- Banner Grabbing {{{-->
+## Banner Grabbing
+
+[[Netcat]] — Grab the FTP banner
+
+```sh
+nc -nv <target> 21
+```
+
+```sh
+nc -nv <target> 2121
+```
+
+[[Telnet/General|Telnet]] —
+Grab the FTP banner
+
+```sh
+telnet <target> 21
+```
+
+```sh
+telnet <target> 2121
+```
+___
+
+<!-- }}} -->
+
 <!-- CVE Vulnerabilities {{{-->
 ## CVE Vulnerabilities
 
@@ -237,26 +264,6 @@ Titan FTP XCRC Directory Traversal Information Disclosure
 > exit
 > ```
 <!-- }}} -->
-
-___
-
-<!-- }}} -->
-
-<!-- Banner Grabbing {{{-->
-## Banner Grabbing
-
-[[Netcat]] — Grab the FTP banner
-
-```sh
-nc -nv <target> 21
-```
-
-[[Telnet/General|Telnet]] —
-Grab the FTP banner
-
-```sh
-telnet <target> 21
-```
 
 ___
 

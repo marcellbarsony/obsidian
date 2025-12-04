@@ -81,7 +81,7 @@ ___
         - [ ] [[Host Enumeration#Basic Scan|Basic Scan]]
         - [ ] [[Host Enumeration#Version Scan|Version Scan]]
         - [ ] [[Host Enumeration#SYN Scan|SYN Scan]]
-        - [ ] [[Host Enumeration#Aggerssive Scan|Aggerssive Scan]]
+        - [ ] [[Host Enumeration#Aggressive Scan|Aggerssive Scan]]
     - [ ] [[Host Enumeration#TCP Scan|TCP Scan]]
         - [ ] [[Host Enumeration#Top 10 TCP Port Scan|Top 10 TCP Port Scan]]
         - [ ] [[Host Enumeration#Open Port Discovery|Open Port Discovery]]

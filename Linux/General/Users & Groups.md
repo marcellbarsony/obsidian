@@ -8,13 +8,72 @@ tags:
 
 # Users & Groups
 
+<!-- User Management {{{-->
 ## User Management
 
+<!-- Shadow {{{-->
 ### Shadow
 
-The `/etc/shadow` file stores encrypted password information for all user
-accounts.
+The `/etc/shadow` file stores encrypted password information
+for all user accounts
 
+<!-- }}} -->
+
+___
+<!-- }}} -->
+
+<!-- Group Management {{{-->
+## Group Management
+
+The `/etc/group` file defines the groups on a system
+
+```sh
+cat /etc/group
+```
+
+[gpasswd](https://linux.die.net/man/1/gpasswd) —
+Add user to a group
+
+```sh
+gpasswd -a <user> <group>
+```
+
+[groupadd](https://linux.die.net/man/8/groupadd) —
+Create a new group
+
+```sh
+groupadd <group>
+```
+
+[groups](https://linux.die.net/man/1/groups) —
+print the groups a user is in
+
+```sh
+groups [user]
+```
+
+[id](https://linux.die.net/man/1/id) —
+Print real and effective user and group IDs
+(*`UID` & associated `GID`*)
+
+```sh
+id [user]
+```
+
+[groupmod](https://linux.die.net/man/8/groupmod) —
+Add user to group(s)
+
+```sh
+usermod -aG <group>,<group2> <user>
+```
+
+
+> [!todo]
+
+___
+<!-- }}} -->
+
+<!-- Execution as root {{{-->
 ## Execution as root
 
 | Command  | Description |
@@ -28,4 +87,5 @@ accounts.
 | delgroup | Removes a group from the system. |
 | passwd   | Changes user password.  |
 
-## Group Management
+___
+<!-- }}} -->

@@ -6,6 +6,7 @@ tags:
 links: "[[Privesc]]"
 ---
 
+<!-- Enumeration Tools {{{-->
 # Enumeration Tools
 
 <!-- Warning {{{-->
@@ -34,36 +35,48 @@ ___
 [PEASS-ng](https://github.com/peass-ng/PEASS-ng/tree/master/linPEAS) —
 Privilege Escalation Awesome Scripts SUITE (*with colors*)
 
-### Usage
+<!-- Download {{{-->
+### Download
 
-1. Acquire the script
-
-```sh
-wget https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas_linux_amd64 -O linpeas.sh
-```
+[Latest release](https://github.com/peass-ng/PEASS-ng/releases) —
+Download
 
 ```sh
-/usr/share/peass/linpeas/linpeas.sh
+wget https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh -O linpeas.sh
 ```
 
-2. Make the script executable
-
-```sh
-chmod +x linpeas.sh
-```
-
-3. Run as binary
-
-```sh
-./linpeas.sh
-```
-
-Download & Run directly from repository
+[Latest release](https://github.com/peass-ng/PEASS-ng/releases) —
+Download & Run directly
 
 ```sh
 curl -L https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh | sh
 ```
 
+Kali local script
+
+```sh
+/usr/share/peass/linpeas/linpeas.sh
+```
+
+<!-- }}} -->
+
+<!-- Usage {{{-->
+### Usage
+
+1. Make the script executable
+
+```sh
+chmod +x linpeas.sh
+```
+
+2. Run
+
+```sh
+./linpeas.sh
+```
+<!-- }}} -->
+
+___
 <!-- }}} -->
 
 <!-- Linux Exploit Suggester {{{-->
@@ -72,21 +85,17 @@ curl -L https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh
 [linux-exploit-suggester](https://github.com/The-Z-Labs/linux-exploit-suggester) —
 Linux privilege escalation auditing tool
 
-### Usage
+<!-- Download {{{-->
+### Download
 
-1. Download
+Download the [script](https://github.com/The-Z-Labs/linux-exploit-suggester/blob/master/linux-exploit-suggester.sh)
 
 ```sh
 wget https://raw.githubusercontent.com/mzet-/linux-exploit-suggester/master/linux-exploit-suggester.sh -O les.sh
 ```
 
-2. Run
-
-```sh
-./linux-exploit-suggester.sh
-```
-
-Download & Run directly from repository
+Download the [script](https://github.com/The-Z-Labs/linux-exploit-suggester/blob/master/linux-exploit-suggester.sh)
+& Run directly from repository
 
 ```sh
 curl -L https://raw.githubusercontent.com/mzet-/linux-exploit-suggester/master/linux-exploit-suggester.sh -O les.sh | sh
@@ -94,34 +103,57 @@ curl -L https://raw.githubusercontent.com/mzet-/linux-exploit-suggester/master/l
 
 <!-- }}} -->
 
+<!-- Usage {{{-->
+### Usage
+
+1. Make the script executable
+
+```sh
+chmod +x les.sh
+```
+
+2. Run
+
+```sh
+./les.sh
+```
+
+<!-- }}} -->
+
+___
+<!-- }}} -->
+
 <!-- LinEnum {{{-->
 ## LinEnum
 
-> [!warning]
->
-> [LinEnum](https://github.com/rebootuser/LinEnum)
-> is **DEPRECATED**
+[LinEnum](https://github.com/rebootuser/LinEnum)
 
+> [!warning] DEPRECATED
+
+___
 <!-- }}} -->
 
 <!-- linuxprivchecker {{{-->
 ## linuxprivchecker
 
-> [!warning]
->
-> [linuxprivchecker](https://github.com/sleventyeleven/linuxprivchecker)
-> is **DEPRECATED**
+[linuxprivchecker](https://github.com/sleventyeleven/linuxprivchecker)
+
+> [!warning] DEPRECATED
+
+___
+<!-- }}} -->
 
 <!-- }}} -->
 
-<!-- anual Enumeration {{{-->
+<!-- Manual Enumeration {{{-->
 # Manual Enumeration
 
-Search the following direactories manually
+Search directories manually
 
 - `/opt/`
 - `/home/*`
 - `/tmp`
 - `/var`
 
+___
 <!-- }}} -->

@@ -21,7 +21,11 @@ or directory can be assigned:
 | 4 2 1           | 1 0 1        | 5     | r - x      |
 | 4 2 1           | 1 0 0        | 4     | r - -      |
 
-These permissions can be set for the `owner`, `group` and `others`
+These permissions can be set for the `owner`, `group` and `others`:
+
+- `owner`: What the file’s assigned owner can do
+- `group`: What members of the file’s assigned group can do
+- `others`: What every other user (`world`) on the system can do
 
 <!-- Example {{{-->
 > [!example]-
@@ -90,11 +94,20 @@ ___
 <!-- SUID & SGID {{{-->
 ## SUID & SGID
 
-**Set User ID** (`SUID`) and **Set Group ID** (`SGID`) bits enabling users to
-run programs with the privilege of another user or group.
+**Set User ID** (`SUID`) and **Set Group ID** (`SGID`) bits
+enabling users to run programs with the privilege
+of another user or group.
 
-The presence of these permissions is indicated by an `s` in place of the usual
-`x` in the file's permission set.
+The presence of these permissions is indicated by an `s`
+in place of the usual `x` in the file's permission set.
+
+<!-- Warning {{{-->
+> [!warning]
+>
+> When a program with the `SUID` or `SGID` bit set is executed,
+> it runs with the permissions of the file's owner or group,
+> rather than the user who launched
+<!-- }}} -->
 
 ### SUID
 
@@ -108,13 +121,6 @@ The presence of these permissions is indicated by an `s` in place of the usual
 drwxrws---. 2 marci marci  69 Apr  7  2022 my_articles
 ```
 
-<!-- Warning {{{-->
-> [!warning]
->
-> When a program with the `SUID` or `SGID` bit set is executed,
-> it runs with the permissions of the file's owner or group,
-> rather than the user who launched
-<!-- }}} -->
 
 ___
 <!-- }}} -->
@@ -123,9 +129,10 @@ ___
 ## Sticky Bit
 
 Sticky bits are like locks on files within shared spaces.
+
 When set on a directory, the sticky bit adds an extra layer of security,
 ensuring that only certain individuals can modify or delete files,
-even if others have access to the directory.
+even if others have access to the directory
 
 <!-- Example {{{-->
 > [!example]
