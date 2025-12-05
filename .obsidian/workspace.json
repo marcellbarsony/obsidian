@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Networking/Services/IPSEC IKE/General.md",
+                "file": "Linux/Privesc/Credential Hunting.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "General"
+              "title": "Credential Hunting"
             }
           }
         ]
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/Services/IPSEC IKE/General.md",
+                "file": "Linux/Privesc/Credential Hunting.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of General"
+              "title": "Outline of Credential Hunting"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/Services/IPSEC IKE/General.md",
+                "file": "Linux/Privesc/Credential Hunting.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of General"
+              "title": "Graph of Credential Hunting"
             }
           }
         ]
@@ -225,9 +225,24 @@
   },
   "active": "6f4e890d1c374ce7",
   "lastOpenFiles": [
+    "Linux/Privesc/Processes.md",
+    "Linux/Privesc/Software Vulnerability.md",
+    "Linux/Privesc/System Information.md",
+    "Linux/Privesc/Filesystem.md",
+    "Linux/Privesc/Defenses.md",
+    "Linux/Privesc/Sudo.md",
+    "Linux/Privesc/Filesystem_1.md",
+    "Webapp/Exploitation/Cookies & Parameters.md",
+    "Webapp/Exploitation/Exploitation.md",
+    "Webapp/Exploitation/_Checklist.md",
+    "Webapp/Exploitation/Server-Side/Access Control/IDOR.md",
+    "Webapp/Exploitation/Server-Side/Access Control/Access Control.md",
+    "Networking/Services/ISAKMP/General.md",
+    "Networking/Services/ISAKMP/Enumeration.md",
+    "Networking/Services/IPSEC IKE/General.md",
+    "Networking/Services/ISAKMP",
     "Networking/Services/IPSEC IKE/Enumeration.md",
     "Networking/Tools/Nmap/Host Enumeration.md",
-    "Networking/Services/IPSEC IKE/General.md",
     "Networking/Services/IPSEC IKE",
     "Networking/Enumeration/_Checklist.md",
     "Networking/Enumeration/Host Discovery.md",
@@ -238,20 +253,6 @@
     "Pentest/Tools/Brute Force/Wordlists/SecLists.md",
     "Networking/Services/SSH/Enumeration.md",
     "Networking/Services/SSH/Usage.md",
-    "Networking/Services/SSH/General.md",
-    "Networking/Services/SMB/Exploitation.md",
-    "Linux/Privesc/Enumeration Tools.md",
-    "Networking/Services/SMB/Enumeration.md",
-    "Networking/Services/SMB/Usage.md",
-    "Networking/Services/FTP/Exploitation.md",
-    "Networking/Services/FTP/Enumeration.md",
-    "Networking/Services/SMB/General.md",
-    "Networking/Services/FTP/Usage.md",
-    "Networking/Services/FTP/General.md",
-    "Linux/Privesc/Capabilities.md",
-    "Linux/Privesc/Directory & File.md",
-    "Linux/Privesc/Cron Jobs.md",
-    "Linux/Privesc/Credential Hunting.md",
     "Programming/Python/Vulnerabilibies",
     "Programming/PHP",
     "Linux/General/Software/Security",
@@ -270,7 +271,6 @@
     "Webapp/Tools/ZAP/src",
     "Networking/Services/MongoDB",
     "Webapp/Exploitation/Server-Side/Authentication",
-    "Webapp/Exploitation/Server-Side/Access Control",
     "Networking/Services/SMB/Untitled.canvas"
   ]
 }

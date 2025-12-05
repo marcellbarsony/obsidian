@@ -2,7 +2,7 @@
 id: Enumeration
 aliases: []
 tags:
-  - Networking/Services/IPSEC-IKE/Enumeration
+  - Networking/Services/ISAKMP/Enumeration
 ---
 
 # Enumeration

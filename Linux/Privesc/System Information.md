@@ -54,6 +54,28 @@ ypdomainname
 ___
 <!-- }}} -->
 
+<!-- OS Version {{{-->
+## OS Version
+
+OS Version from environment variables
+
+```sh
+cat /etc/os-release 2>/dev/null
+```
+
+List OS version
+
+```sh
+(cat /proc/version || uname -a ) 2>/dev/null
+```
+
+```sh
+lsb_release -a 2>/dev/null # deprecated
+```
+
+___
+<!-- }}} -->
+
 <!-- Kernel Exploits {{{-->
 ## Kernel Exploits
 
@@ -92,19 +114,18 @@ cat /etc/os-release
 searchsploit "Linux Kernel"
 ```
 
-<!-- Kernel Exploits {{{-->
-> [!tip]- Kernel Exploits
->
-> List of vulnerable kernel exploits
+<!-- Tip - Kernel Exploits Lists {{{-->
+> [!tip]- Kernel Exploits Lists
 >
 > - [GitHub - Kernel exploits](https://github.com/lucyoa/kernel-exploits)
 > - [GitLab - Exloit DB](https://gitlab.com/exploit-database/exploitdb-bin-sploits)
 <!-- }}} -->
 
-<!-- DirtyCow (CVE-2016-5195) {{{-->
-#### DirtyCow (CVE-2016-5195)
+<!-- DirtyCow {{{-->
+#### DirtyCow
 
-Linux Privesc - Linux Kernel <= `3.19.0`-`73.8`
+[CVE-2016-5195](https://nvd.nist.gov/vuln/detail/cve-2016-5195)
+Linux Kernel <= `3.19.0`-`73.8`
 
 <!-- Resources {{{-->
 > [!info]- Resources
@@ -122,8 +143,8 @@ https://github.com/evait-security/ClickNRoot/blob/master/1/exploit.c
 
 <!-- }}} -->
 
-<!-- DirtyPipe (CVE-2022-0847) {{{-->
-#### DirtyPipe (CVE-2022-0847)
+<!-- DirtyPipe {{{-->
+#### DirtyPipe
 
 A flaw (*[CVE-2022-0847](https://nvd.nist.gov/vuln/detail/cve-2022-0847)*)
 was found in the way the "flags" member of the new pipe buffer structure
@@ -133,6 +154,18 @@ stale values.
 An unprivileged local user could use this flaw to write to pages
 in the page cache backed by read only files and as such
 escalate their privileges on the system.
+
+> [!todo]
+
+<!-- }}} -->
+
+<!-- PwnKit {{{-->
+#### PwnKit
+
+[CVE-2021-4034](https://nvd.nist.gov/vuln/detail/cve-2021-4034)
+
+> [!todo]
+
 <!-- }}} -->
 
 <!-- }}} -->
@@ -182,6 +215,18 @@ lscpu
 > <SNIP>
 > ```
 <!-- }}} -->
+
+<!-- }}} -->
+
+<!-- Printer {{{-->
+### Printer
+
+[lpstat](https://man7.org/linux/man-pages/man1/lpstat.1.html) —
+Print cups status information
+
+```sh
+lpstat -a 2>/dev/null
+```
 
 <!-- }}} -->
 

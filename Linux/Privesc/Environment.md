@@ -28,7 +28,6 @@ echo $PATH
 env | grep PATH
 ```
 
-
 <!-- Writeable PATH {{{-->
 ## Writeable PATH
 

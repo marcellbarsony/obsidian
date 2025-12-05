@@ -38,6 +38,12 @@ cat /etc/fstab | grep -v "#" | column -t
 > ```
 <!-- }}} -->
 
+List active mount entries
+
+```sh
+cat /etc/fstab 2>/dev/null | grep -v "^#" | grep -Pv "\W*\#" 2>/dev/null
+```
+
 ___
 <!-- }}} -->
 
@@ -58,12 +64,27 @@ lsblk
 > MarciPwns@htb[/htb]$ lsblk
 >
 > NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
-> sda      8:0    0   30G  0 disk 
+> sda      8:0    0   30G  0 disk
 > ├─sda1   8:1    0   29G  0 part /
-> ├─sda2   8:2    0    1K  0 part 
+> ├─sda2   8:2    0    1K  0 part
 > └─sda5   8:5    0  975M  0 part [SWAP]
-> sr0     11:0    1  848M  0 rom  
+> sr0     11:0    1  848M  0 rom
 > ```
+<!-- }}} -->
+
+List mounted block devices
+
+```sh
+ls /dev 2>/dev/null | grep -i "sd"
+```
+
+<!-- Mount {{{-->
+### Mount
+
+```sh
+sudo mount /dev/sda<id> /mnt
+```
+
 <!-- }}} -->
 
 ___

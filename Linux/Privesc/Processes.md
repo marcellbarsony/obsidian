@@ -27,6 +27,28 @@ Snapshot of current processes (*`root`*)
 ```sh
 ps aux | grep root
 ```
+
+[pspy](https://github.com/DominicBreuker/pspy) —
+Monitor linux processes without root permissions
+
+```sh
+./pspy64
+```
+
+[top](https://linux.die.net/man/1/top) —
+Display Linux tasks
+
+```sh
+top -n 1
+```
+
+<!-- Tip {{{-->
+> [!tip]
+>
+> Check for privileges over the processes binaries
+> to potentially overwrite them
+<!-- }}} -->
+
 ___
 <!-- }}} -->
 
@@ -59,7 +81,7 @@ find /proc -name cmdline -exec cat {} \; 2>/dev/null | tr " " "\n"
 <!-- }}} -->
 
 Search for [[Secrets]] passed as process arguments
-(*suppress "binary file matches" warning*)
+(*suppress `binary file matches` warning*)
 
 ```sh
 find /proc -name cmdline -exec cat {} \; 2>/dev/null \
@@ -91,6 +113,4 @@ find /proc -name cmdline -exec cat {} \; 2>/dev/null \
 <!-- }}} -->
 
 ___
-<!-- }}} -->
-
 <!-- }}} -->

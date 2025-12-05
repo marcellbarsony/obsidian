@@ -433,6 +433,57 @@ printenv | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*'
 ```sh
 (env || set) 2>/dev/null
 ```
+
+<!-- Tip {{{-->
+> [!tip]-
+>
+> ```sh
+> set
+> ```
+>
+> ```sh
+> env
+> ```
+>
+> ```sh
+> printenv
+> ```
+>
+> ```sh
+> cat /proc/$$/environ
+> ```
+>
+> ```sh
+> cat /proc/`python -c "import os; print(os.getppid())"`/environ
+> ```
+<!-- }}} -->
+
+___
+<!-- }}} -->
+
+<!-- Processes {{{-->
+## Processes
+
+Search [[Processes]] for [[Secrets]]
+
+```sh
+ps -ef | grep -Ei 'user|username|pass|password|secret|token|api|key|htb' | grep -v grep
+```
+
+```sh
+ps -eo pid,user,cmd --no-header \
+  | grep -IaiE 'user|username|pass|password|secret|token|api|key|htb'
+```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `a`: Treat binary as text
+> - `E`: Extended regex
+> - `i`: Ignore case
+> - `I`: Ignore binary
+<!-- }}} -->
+
 ___
 <!-- }}} -->
 
