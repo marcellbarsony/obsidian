@@ -26,7 +26,7 @@ ___
 (*if the communication is encrypted*)
 
 ```sh
-sudo nmap -sC -sV <target> -p 110,143,993,995 -oA imap-pop3-basic-script
+sudo nmap -sC -sV $target -p 110,143,993,995 -oA imap-pop3-basic-script
 ```
 
 <!-- Example {{{-->
@@ -85,19 +85,19 @@ ___
 [[Nmap]] — Service detection
 
 ```sh
-nmap -sV <target> -p 143,993 -oA imap-service-detection
+nmap -sV $target -p 143,993 -oA imap-service-detection
 ```
 
 [[Nmap]] — Server capabilities
 
 ```sh
-nmap <target> -p 143 --script imap-capabilities -oA imap-server-capabilities
+nmap $target -p 143 --script imap-capabilities -oA imap-server-capabilities
 ```
 
 [[Nmap]] — All IMAP scripts
 
 ```sh
-nmap <target> -p 143,993 --script imap-* -oA imap-scripts-all
+nmap $target -p 143,993 --script imap-* -oA imap-scripts-all
 ```
 ___
 <!-- }}} -->
@@ -110,25 +110,25 @@ Grab the IMAP service banner
 [[Netcat]]
 
 ```sh
-ncat -nv <target> 143
+ncat -nv $target 143
 ```
 
 [[Nmap]]
 
 ```sh
-nmap <target> -p 143,993 -oA imap-banner
+nmap $target -p 143,993 -oA imap-banner
 ```
 
 [openssl](https://github.com/openssl/openssl)
 
 ```sh
-openssl s_client -connect <target>:993 -quiet
+openssl s_client -connect $target:993 -quiet
 ```
 
 [[Telnet/General|Telnet]]
 
 ```sh
-telnet <target> 143
+telnet $target 143
 ```
 ___
 <!-- }}} -->
@@ -144,7 +144,7 @@ Connect and interact with an **IMAP** server
 (*TLS Encrypted Interaction*)
 
 ```sh
-openssl s_client -connect <target>:imaps
+openssl s_client -connect $target:imaps
 ```
 
 <!-- Exmaple {{{-->
@@ -216,7 +216,7 @@ if the server supports [NTLM auth](https://learn.microsoft.com/en-us/troubleshoo
 (*Windows only*)
 
 ```sh
-telnet <target> 143
+telnet $target 143
 ```
 
 <!-- Example {{{-->
@@ -361,14 +361,14 @@ ___
 (*e.g, AUTH types, STLS, TOP, UIDL*)
 
 ```sh
-nmap <target> -p 110 --script pop3-capabilities -oA pop3-capabilities
+nmap $target -p 110 --script pop3-capabilities -oA pop3-capabilities
 ```
 
 [[Nmap]] — Extract NTLM challenge info
 (*e.g., Windows domain name, Server hostname, NetBIOS, DNS info*)
 
 ```sh
-nmap <target> -p 110 --script pop3-ntlm-info -oA pop3-ntlm-info
+nmap $target -p 110 --script pop3-ntlm-info -oA pop3-ntlm-info
 ```
 
 ___
@@ -382,19 +382,19 @@ Grab the POP3 service banner
 [[Netcat]]
 
 ```sh
-nc -nv <target> 110
+nc -nv $target 110
 ```
 
 [openssl](https://github.com/openssl/openssl)
 
 ```sh
-openssl s_client -connect <target>:995 -crlf -quiet
+openssl s_client -connect $target:995 -crlf -quiet
 ```
 
 [[Telnet/General|Telnet]]
 
 ```sh
-telnet <target> 110
+telnet $target 110
 ```
 
 ___
@@ -408,7 +408,7 @@ Connect and interact with an **POP3** server
 (*TLS Encrypted Interaction*)
 
 ```sh
-openssl s_client -connect <target>:pop3s
+openssl s_client -connect $target:pop3s
 ```
 
 <!-- Example {{{-->

@@ -149,9 +149,11 @@ Check if the following directories have write privilege
 ```sh
 test -w /etc/cron.d && echo "Writable" || echo "Not Writable"
 ```
+
 ```sh
 find /etc/cron.d -type f -perm -0002 -ls
 ```
+
 ```sh
 for g in $(id -Gn); do find /etc/cron.d -type f -perm -0020 -group "$g" -ls; done
 ```

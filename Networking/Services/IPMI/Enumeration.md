@@ -17,13 +17,13 @@ Scan the network for port `623`
 TCP Scan
 
 ```sh
-nmap <target>/<cidr> -p 623 -n -oA ipmi-basic
+nmap $target/<cidr> -p 623 -n -oA ipmi-basic
 ```
 
 UDP Scan
 
 ```sh
-nmap -sU <target>/<cidr> -p 623 -n -oA ipmi-basic-udp
+nmap -sU $target/<cidr> -p 623 -n -oA ipmi-basic-udp
 ```
 
 <!-- Info {{{-->
@@ -43,7 +43,7 @@ ___
 (*[ipmi-version](https://nmap.org/nsedoc/scripts/ipmi-version.html)*)
 
 ```sh
-sudo nmap -sU <target> -p 623 --script ipmi-version  -oA ipmi-version
+sudo nmap -sU $target -p 623 --script ipmi-version  -oA ipmi-version
 ```
 
 <!-- Example {{{-->
@@ -154,7 +154,7 @@ The vendor(*s*) shipping their devices with the cipher suite '0'
 (*[ipmi-cipher-zero](https://nmap.org/nsedoc/scripts/ipmi-cipher-zero.html)*)
 
 ```sh
-nmap -sU <target> -p 623 --script ipmi-cipher-zero -oA ipmi-script-cipher-zero
+nmap -sU $target -p 623 --script ipmi-cipher-zero -oA ipmi-script-cipher-zero
 ```
 
 <!-- Example {{{-->

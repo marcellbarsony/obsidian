@@ -16,17 +16,16 @@ ___
 [[Nmap]] — Identify SSH server on a host
 
 ```sh
-nmap -p 22 <target> -oA ssh-identify
+nmap $target -p 22 -oA ssh-identify
 ```
 
 [[Nmap]] — Identify supported authentication methods
 
 ```sh
-nmap --script ssh-auth-methods --script-args="ssh.user=<username>" -p 22 <target> -oA ssh-script-ssh-auth-methods
+nmap $target -p 22 --script ssh-auth-methods --script-args="ssh.user=<username>" -oA ssh-script-ssh-auth-methods
 ```
 
 ___
-
 <!-- }}} -->
 
 <!-- Banner Grabbing {{{-->
@@ -35,14 +34,17 @@ ___
 [[Netcat|netcat]] — SSH banner grabbing
 
 ```sh
-ncat -vn <target> 22
+ncat -vn $target 22
 ```
 
+<!-- Info {{{-->
 > [!info]-
 >
 > - `-v`: Set verbosity level
 > - `-n`: Do not resolve hostnames via DNS
+<!-- }}} -->
 
+<!-- Tip {{{-->
 > [!tip]-
 >
 > Banners start with the version number by default
@@ -52,6 +54,7 @@ ncat -vn <target> 22
 >
 > - `SSH-2.0-OpenSSH_8.2p1`: Version `8.2p1`
 >   and using SSH-2
+<!-- }}} -->
 
 <!-- Example {{{-->
 > [!example]-
@@ -62,7 +65,6 @@ ncat -vn <target> 22
 <!-- }}} -->
 
 ___
-
 <!-- }}} -->
 
 <!-- SSH Audit {{{-->
@@ -78,7 +80,7 @@ sudo apt install ssh-audit
 ```
 
 ```sh
-ssh-audit <target> 22
+ssh-audit $target 22
 ```
 ___
 <!-- }}} -->
@@ -90,7 +92,7 @@ ___
 Fetch the server's RSA public SSH host key
 
 ```sh
-ssh-keyscan -t rsa <target> -p <port>
+ssh-keyscan -t rsa $target -p <port>
 ```
 ___
 <!-- }}} -->
@@ -173,7 +175,7 @@ Checks the client and server-side configuration
 2. Run [SSH Audit](https://github.com/jtesta/ssh-audit)
 
 ```sh
-./ssh-audit.py <target>
+./ssh-audit.py $target
 ```
 
 <!-- Example {{{-->
@@ -262,7 +264,7 @@ use auxiliary/scanner/ssh/ssh_enumusers
 > msf auxiliary(ssh_enumusers) > set USER_FILE <wordlist.txt>
 > ```
 > ```sh
-> msf auxiliary(ssh_enumusers) > set RHOST <target>
+> msf auxiliary(ssh_enumusers) > set RHOST $target
 > ```
 > ```sh
 > msf auxiliary(ssh_enumusers) > run

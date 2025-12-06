@@ -17,7 +17,7 @@ ___
 [[Nmap]] — Detect RDP services and identify capabilities
 
 ```sh
-nmap <target> -p 3389 -oA rdp-identify
+nmap $target -p 3389 -oA rdp-identify
 ```
 ___
 <!-- }}} -->
@@ -30,7 +30,7 @@ Extract RDP version and security configuration information.
 [[Nmap]] — Check Windows version through RDP
 
 ```sh
-nmap <target> -p 3389 --script rdp-ntlm-info -oA rdp-script-ntlm-info
+nmap $target -p 3389 --script rdp-ntlm-info -oA rdp-script-ntlm-info
 ```
 
 > [!tip]-
@@ -40,7 +40,7 @@ nmap <target> -p 3389 --script rdp-ntlm-info -oA rdp-script-ntlm-info
 [[Nmap]] — Check security layer
 
 ```sh
-nmap <target> -p 3389 --script rdp-enum-encryption -oA rdp-script-enum-encryption
+nmap $target -p 3389 --script rdp-enum-encryption -oA rdp-script-enum-encryption
 ```
 
 > [!info]-
@@ -55,11 +55,11 @@ nmap <target> -p 3389 --script rdp-enum-encryption -oA rdp-script-enum-encryptio
 (*including [rdp-vuln-ms12-020](https://nmap.org/nsedoc/scripts/rdp-vuln-ms12-020.html)*)
 
 ```sh
-nmap -sC -sV <target> -p 3389 --script rdp* -oA rdp-script-all
+nmap -sC -sV $target -p 3389 --script rdp* -oA rdp-script-all
 ```
 
 ```sh
-nmap -sC -sV <target> -p 3389 --packet-trace --disable-ap-ping -n -oA rdp-script-trace
+nmap -sC -sV $target -p 3389 --packet-trace --disable-ap-ping -n -oA rdp-script-trace
 ```
 ___
 
@@ -73,25 +73,25 @@ Connect to RDP services to gather version and security information
 [[Netcat]]
 
 ```sh
-ncat -nv <target> 3389
+ncat -nv $target 3389
 ```
 
 [[Nmap]]
 
 ```sh
-nmap -sV <target> -p 3389 -oA rdp-default-scan
+nmap -sV $target -p 3389 -oA rdp-default-scan
 ```
 
 [[#RDP Security Check]]
 
 ```sh
-python rdp-sec-check.py <target>
+python rdp-sec-check.py $target
 ```
 
 [[Telnet/General|Telnet]]
 
 ```sh
-telnet <target> 3389
+telnet $target 3389
 ```
 
 ___
@@ -104,7 +104,7 @@ ___
 Check RDP certificate
 
 ```sh
-openssl s_client -connect <target>:3389 < /dev/null 2>&1 | openssl x509 -noout -text
+openssl s_client -connect $target:3389 < /dev/null 2>&1 | openssl x509 -noout -text
 ```
 ___
 <!-- }}} -->
@@ -124,7 +124,7 @@ git clone https://github.com/CiscoCXSecurity/rdp-sec-check.git
 2. Launch the script against the target
 
 ```sh
-./rdp-sec-check.pl <target>
+./rdp-sec-check.pl $target
 ```
 
 ___
@@ -150,19 +150,19 @@ RDP allows username enumeration
 [[Impacket]] - [rdp_check.py](https://github.com/fortra/impacket/blob/master/examples/rdp_check.py)
 
 ```sh
-impacket-rdp_check [-hashes LMHASH:NTHASH] <target>
+impacket-rdp_check [-hashes LMHASH:NTHASH] $target
 ```
 
 [crowbar](https://github.com/galkan/crowbar)
 
 ```sh
-crowbar -b rdp -s <target>/<cidr> -u <usernames.txt> -C <passwords.txt>
+crowbar -b rdp -s $target/<cidr> -u <usernames.txt> -C <passwords.txt>
 ```
 
 Using rdp_check (*C# tool*)
 
 ```sh
-rdp_check.exe <target> <usernames.txt>
+rdp_check.exe $target <usernames.txt>
 ```
 
 ___
@@ -182,19 +182,19 @@ to identify logged-in users and their session states
 List active sessions
 
 ```sh
-qwinsta /server:<target>
+qwinsta /server:$target
 ```
 
 Query user sessions
 
 ```sh
-query user /server:<target>
+query user /server:$target
 ```
 
 Session information
 
 ```sh
-quser /server:<target>
+quser /server:$target
 ```
 
 ___

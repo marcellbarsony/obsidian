@@ -127,6 +127,7 @@ ___
 <!-- File Operations {{{-->
 ## File Operations
 
+<!-- List Files {{{-->
 ### List Files
 
 List all files (*including hidden files*)
@@ -136,11 +137,12 @@ ftp> ls -a
 ```
 
 List files recursively
-(*if [[Networking/Services/FTP/General#Recursive Listing|Recursive Listing]] is enabled*)
+(*if [[FTP/General#Recursive Listing|Recursive Listing]] is enabled*)
 
 ```sh
 ftp> ls -R
 ```
+<!-- }}} -->
 
 <!-- Download Files {{{-->
 ### Download Files

@@ -27,7 +27,7 @@ Trace the route packets take to a destination and identify routers along the
 path
 
 ```sh
-traceroute <target>
+traceroute $target
 ```
 
 ___

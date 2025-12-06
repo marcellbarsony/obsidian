@@ -56,6 +56,9 @@ ___
 <!-- Host Discovery {{{-->
 ## Host Discovery
 
+- [ ] [[Preparation#Export Target|Export Target]]
+- [ ] [[Preparation#Hosts File|Hosts File]]
+
 - [ ] [[Host Discovery]]
     - [ ] [[Host Discovery#ARP Discovery|ARP Discovery]]
         - [ ] [[Host Discovery#netdiscover|netdiscover]]
@@ -75,6 +78,9 @@ ___
 
 <!-- Host Enumeration {{{-->
 ## Host Enumeration
+
+- [ ] [[Preparation#Export Target|Export Target]]
+- [ ] [[Preparation#Hosts File|Hosts File]]
 
 - [ ] [[Host Enumeration|Host Enumeration]]
     - [ ] [[Host Enumeration#OS Detection|OS Detection]]

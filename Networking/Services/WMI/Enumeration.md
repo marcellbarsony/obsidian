@@ -16,7 +16,7 @@ ___
 Enumerate the service
 
 ```sh
-impacket-wmiexec.py <user>:"<password>"@<target_ip> "<target_hostname>"
+impacket-wmiexec.py <user>:"<password>"@$target "<target_hostname>"
 ```
 
 <!-- Example {{{-->

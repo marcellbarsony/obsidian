@@ -19,6 +19,29 @@ for all user accounts
 
 <!-- }}} -->
 
+<!-- Add User {{{-->
+## Add User
+
+[useradd](https://linux.die.net/man/8/useradd) -
+Create a new user or update default new user information
+
+```sh
+useradd [-m] <user>
+```
+
+> [!info]-
+>
+> - `-m`: Add HOME directory
+
+[passwd](https://linux.die.net/man/1/passwd) -
+Update user's authentication
+
+```sh
+passwd <user>
+```
+
+<!-- }}} -->
+
 ___
 <!-- }}} -->
 

@@ -15,13 +15,13 @@ ___
 Detect WinRM services and identify server capabilities
 
 ```sh
-nmap -p 5985,5986 <target> -oA winrm-service
+nmap $target -p 5985,5986 -oA winrm-service
 ```
 
 Detect WinRM version
 
 ```sh
-nmap -p 5985,5986 -sV <target> -oA winrm-service-version
+nmap -sV $target -p 5985,5986 -oA winrm-service-version
 ```
 
 <!-- HTTP/S {{{-->
@@ -30,13 +30,13 @@ nmap -p 5985,5986 -sV <target> -oA winrm-service-version
 Enumerate HTTP headers ([http-headers](https://nmap.org/nsedoc/scripts/http-methods.html))
 
 ```sh
-nmap -p 5985 --script http-methods <target> -oA winrm-script-http-methods
+nmap $target -p 5985 --script http-methods -oA winrm-script-http-methods
 ```
 
 Enumerate HTTP methods ([http-methods](https://nmap.org/nsedoc/scripts/http-methods.html))
 
 ```sh
-nmap -p 5985 --script http-headers <target> -oA winrm-script-http-headers
+nmap $target -p 5985 --script http-headers -oA winrm-script-http-headers
 ```
 
 <!-- }}} -->
@@ -47,28 +47,29 @@ nmap -p 5985 --script http-headers <target> -oA winrm-script-http-headers
 Check WinRM configuration
 
 ```sh
-nmap -p 5985,5986 --script http-wsman-info <target> -oA winrm-script-http-wsman-info
+nmap $target -p 5985,5986 --script http-wsman-info -oA winrm-script-http-wsman-info
 ```
 
+[[cURL]] — Check WinRM configuration
 
-Check WinRM configuration with [[cURL]]
-
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sh
 > curl -H "Content-Type: application/soap+xml;charset=UTF-8" \
->   http://<target>:5985/wsman \
+>   http://$target:5985/wsman \
 >   -d '<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:wsmid="http://schemas.dmtf.org/wbem/wsman/identity/1/wsmanidentity.xsd"><s:Header/><s:Body><wsmid:Identify/></s:Body></s:Envelope>'
 > ```
+<!-- }}} -->
 
 <!-- }}} -->
 
 <!-- PowerShell {{{-->
 ### PowerShell
 
+[Test-WSMan](https://learn.microsoft.com/en-us/powershell/module/microsoft.wsman.management/test-wsman?view=powershell-7.5&viewFallbackFrom=powershell-7.2) —
 Test whether the WinRM service is running
-on a local or remote computer with
-[Test-WSMan](https://learn.microsoft.com/en-us/powershell/module/microsoft.wsman.management/test-wsman?view=powershell-7.5&viewFallbackFrom=powershell-7.2)
+on a local or remote computer
 
 ```powershell
 Test-WSMan -ComputerName "server01"
@@ -83,16 +84,16 @@ ___
 
 Gather version and service information
 
-Using [[netcat]]
+[[netcat]]
 
 ```sh
-nc -vn <target> 5985
+nc -vn $target 5985
 ```
 
-Using [[cURL]]
+[[cURL]]
 
 ```sh
-curl http://<target>:5985/wsman
+curl http://$target:5985/wsman
 ```
 
 ___

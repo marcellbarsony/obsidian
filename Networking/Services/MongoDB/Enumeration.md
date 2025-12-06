@@ -15,19 +15,19 @@ ___
 [[Nmap]] — Service detection
 
 ```sh
-nmap <target> -p 27017,27018 -oA mongodb-service-detection
+nmap $target -p 27017,27018 -oA mongodb-service-detection
 ```
 
 [[Nmap]] — Server information
 
 ```sh
-nmap <target> -p 27017 --script mongodb-info -oA mongodb-script-mongodb-info
+nmap $target -p 27017 --script mongodb-info -oA mongodb-script-mongodb-info
 ```
 
 [[Nmap]] — List databases
 
 ```sh
-nmap <target> -p 27017 --script mongodb-databases -oA mongodb-script-mongodb-databases
+nmap $target -p 27017 --script mongodb-databases -oA mongodb-script-mongodb-databases
 ```
 
 ___
@@ -40,7 +40,7 @@ ___
 [[Netcat]] — Banner grabbing
 
 ```sh
-nc -vn <target> 27017
+nc -vn $target 27017
 ```
 ___
 <!-- }}} -->
@@ -75,9 +75,4 @@ use auxiliary/scanner/mongodb/mongodb_enum
 <!-- }}} -->
 
 ___
-<!-- }}} -->
-
-
-___
-
 <!-- }}} -->

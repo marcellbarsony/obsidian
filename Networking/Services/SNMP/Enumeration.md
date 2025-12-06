@@ -27,35 +27,35 @@ Service detection and enumeration
 [[Nmap]] — Identify SNMP service
 
 ```sh
-nmap -sU <target> -p 161 --open -oA snmp-identify
+nmap -sU $target -p 161 --open -oA snmp-identify
 ```
 
 [[Nmap]] — Extract system information from an SNMP service
 (*[snmp-sysdescr](https://nmap.org/nsedoc/scripts/snmp-sysdescr.html)*)
 
 ```sh
-nmap -sU -sV <target> -p 161 --script snmp-sysdescr -oA snmp-script-sysdescr
+nmap -sU -sV $target -p 161 --script snmp-sysdescr -oA snmp-script-sysdescr
 ```
 
 [[Nmap]] — Enumerate network interfaces
 (*[snmp-interfaces](https://nmap.org/nsedoc/scripts/snmp-interfaces.html)*)
 
 ```sh
-nmap -sU -sV <target> -p 161 --script snmp-interfaces -oA snmp-script-interfaces
+nmap -sU -sV $target -p 161 --script snmp-interfaces -oA snmp-script-interfaces
 ```
 
 [[Nmap]] — Enumerate listening TCP/UDP ports
 (*[snmp-netstat](https://nmap.org/nsedoc/scripts/snmp-netstat.html)*)
 
 ```sh
-nmap -sU -sV <target> -p 161 --script snmp-netstat -oA snmp-script-netstat
+nmap -sU -sV $target -p 161 --script snmp-netstat -oA snmp-script-netstat
 ```
 
 [[Nmap]] — Enumerate running processes
 (*[snmp-processes](https://nmap.org/nsedoc/scripts/snmp-processes.html)*)
 
 ```sh
-nmap -sU -sV <target> -p 161 --script snmp-processes -oA snmp-script-processes
+nmap -sU -sV $target -p 161 --script snmp-processes -oA snmp-script-processes
 ```
 
 ### Windows
@@ -110,7 +110,7 @@ use auxiliary/scanner/snmp/snmp_enumusers
 > msf > use auxiliary/scanner/snmp/snmp_enumusers # If enumerating users on Windows via SNMP
 > ```
 > ```sh
-> msf auxiliary(scanner/snmp/snmp_enumusers) > set RHOSTS target.com
+> msf auxiliary(scanner/snmp/snmp_enumusers) > set RHOSTS $target
 > ```
 > ```sh
 > msf auxiliary(scanner/snmp/snmp_enumusers) > run
@@ -147,7 +147,7 @@ ___
 [[Nmap]] — Grab service banner (*[snmp-info](https://nmap.org/nsedoc/scripts/snmp-info.html)*)
 
 ```sh
-nmap -sU <target> -p 161 --script snmp-info -oA snmp-script-banner-grabbing
+nmap -sU $target -p 161 --script snmp-info -oA snmp-script-banner-grabbing
 ```
 ___
 <!-- }}} -->
@@ -183,7 +183,7 @@ should be discovered via dictionary attack
 Identify [[Networking/Services/SNMP/General#Community Strings|community strings]]
 
 ```sh
-onesixtyone -c <wordlist.txt> <target>
+onesixtyone -c <wordlist.txt> $target
 ```
 
 <!-- Example {{{-->
@@ -228,7 +228,7 @@ use auxiliary/scanner/snmp/snmp_login
 > 4. [[Metasploit#Set Options|Set Options]]
 >
 > ```sh
-> msf auxiliary(scanner/snmp/snmp_login) > set RHOSTS <target_ip>
+> msf auxiliary(scanner/snmp/snmp_login) > set RHOSTS $target
 > ```
 > ```sh
 > msf auxiliary(scanner/snmp/snmp_login) > set PASS_FILE </path/to/community_wordlist.txt>
@@ -245,13 +245,13 @@ use auxiliary/scanner/snmp/snmp_login
 (*[snmp-brute](https://nmap.org/nsedoc/scripts/snmp-brute.html)*)
 
 ```sh
-nmap -sU <target> -p 161 --script snmp-brute [--script-args snmp-brute.communitiesdb=<wordlist.txt>]
+nmap -sU $target -p 161 --script snmp-brute [--script-args snmp-brute.communitiesdb=<wordlist.txt>]
 ```
 
 [[Hydra]] — Brute force
 
 ```sh
-hydra -P <wordlist.txt> <target> snmp
+hydra -P <wordlist.txt> $target snmp
 ```
 
 [snmpwalk](https://linux.die.net/man/1/snmpwalk) —
@@ -261,31 +261,31 @@ SNMP installation often retain default or weak community strings
 > [!example]-
 >
 > ```sh
-> snmpwalk -c public -v1 <target>
+> snmpwalk -c public -v1 $target
 > ```
 >
 > ```sh
-> snmpwalk -c private -v1 <target>
+> snmpwalk -c private -v1 $target
 > ```
 >
 > ```sh
-> snmpwalk -c public -v2c <target>
+> snmpwalk -c public -v2c $target
 > ```
 >
 > ```sh
-> snmpwalk -c private -v2c <target>
+> snmpwalk -c private -v2c $target
 > ```
 >
 > ```sh
-> snmpwalk -c admin -v2c <target>
+> snmpwalk -c admin -v2c $target
 > ```
 >
 > ```sh
-> snmpwalk -c manager -v2c <target>
+> snmpwalk -c manager -v2c $target
 > ```
 >
 > ```sh
-> snmpwalk -c community -v2c <target>
+> snmpwalk -c community -v2c $target
 > ```
 <!-- }}} -->
 
@@ -319,11 +319,11 @@ snmpget [COMMON OPTIONS] [-Cf] OID [OID]...
 System description (*`sysDescr`*)
 
 ```sh
-snmpget -v1 -c public <target> .1.3.6.1.2.1.1.1.0
+snmpget -v1 -c public $target .1.3.6.1.2.1.1.1.0
 ```
 
 ```sh
-snmpget -v2c -c public <target> sysDescr.0
+snmpget -v2c -c public $target sysDescr.0
 ```
 <!-- }}} -->
 
@@ -437,11 +437,11 @@ snmpwalk [APPLICATION OPTIONS] [COMMON OPTIONS] [OID]
 Connect and walk the entire [[Networking/Services/SNMP/General#MIB|MIB]] tree (*SNMPv1/v2c*)
 
 ```sh
-snmpwalk -v 1 -c <community_string> <target> | tee SNMPWALK.txt
+snmpwalk -v 1 -c <community_string> $target | tee SNMPWALK.txt
 ```
 
 ```sh
-snmpwalk -v 2c -c <community_string> <target> | tee SNMPWALK.txt
+snmpwalk -v 2c -c <community_string> $target | tee SNMPWALK.txt
 ```
 
 #### System
@@ -449,41 +449,41 @@ snmpwalk -v 2c -c <community_string> <target> | tee SNMPWALK.txt
 Hostname
 
 ```sh
-snmpwalk -v <version> -c public <target> 1.3.6.1.2.1.1.5.0
+snmpwalk -v <version> -c public $target 1.3.6.1.2.1.1.5.0
 ```
 
 System Description
 
 ```sh
-snmpget -v <version> -c public <target> .1.3.6.1.2.1.1.1.0
+snmpget -v <version> -c public $target .1.3.6.1.2.1.1.1.0
 ```
 
 System information
 
 ```sh
-snmpwalk -v <version> -c public <target> system
+snmpwalk -v <version> -c public $target system
 ```
 
 System Uptime
 
 ```sh
-snmpwalk -v <version> -c public <target> hrSystemUptime
+snmpwalk -v <version> -c public $target hrSystemUptime
 ```
 
 System CPU load (*Net-SNMP*)
 
 ```sh
-snmpwalk -v <version> -c public <target> .1.3.6.1.4.1.2021.11
+snmpwalk -v <version> -c public $target .1.3.6.1.4.1.2021.11
 ```
 
 Usernames and storage descriptions (*especially on Windows systems*)
 
 ```sh
-snmpwalk -v <version> -c public <target> .1.3.6.1.4.1.77.1.2.25
+snmpwalk -v <version> -c public $target .1.3.6.1.4.1.77.1.2.25
 ```
 
 ```sh
-snmpwalk -v <version> -c public <target> hrStorageTable
+snmpwalk -v <version> -c public $target hrStorageTable
 ```
 
 <!-- Example {{{-->
@@ -518,39 +518,39 @@ snmpwalk -v <version> -c public <target> hrStorageTable
 Network information (*Routing tables*)
 
 ```sh
-snmpwalk -v <version> -c public <target> .1.3.6.1.2.1.4.21.1.1
+snmpwalk -v <version> -c public $target .1.3.6.1.2.1.4.21.1.1
 ```
 
 ```sh
-snmpwalk -v <version> -c public <target> ipAddrTable
+snmpwalk -v <version> -c public $target ipAddrTable
 ```
 
 Network information (*ARP cache*)
 
 ```sh
-snmpwalk -v <version> -c public <target> .1.3.6.1.2.1.4.22.1.3
+snmpwalk -v <version> -c public $target .1.3.6.1.2.1.4.22.1.3
 ```
 
 Network interface configurations
 
 ```sh
-snmpwalk -v <version> -c public <target> .1.3.6.1.2.1.1.1.0
+snmpwalk -v <version> -c public $target .1.3.6.1.2.1.1.1.0
 ```
 
 ```sh
-snmpwalk -v <version> -c public <target> interfaces
+snmpwalk -v <version> -c public $target interfaces
 ```
 
 Network interface descriptions
 
 ```sh
-snmpwalk -v <version> -c public <target> .1.3.6.1.2.1.2.2.1.2
+snmpwalk -v <version> -c public $target .1.3.6.1.2.1.2.2.1.2
 ```
 
 Network interface IP addresses
 
 ```sh
-snmpwalk -v <version> -c public <target> .1.3.6.1.2.1.4.20.1.1
+snmpwalk -v <version> -c public $target .1.3.6.1.2.1.4.20.1.1
 ```
 
 Network Interface Status
@@ -564,17 +564,17 @@ snmpwalk -v2c -c public target.com .1.3.6.1.2.1.2.2.1.8
 Running services and processes
 
 ```sh
-snmpwalk -v <version> -c public <target> .1.3.6.1.2.1.25.4.2.1.2
+snmpwalk -v <version> -c public $target .1.3.6.1.2.1.25.4.2.1.2
 ```
 
 ```sh
-snmpwalk -v <version> -c public <target> hrSWRunTAble
+snmpwalk -v <version> -c public $target hrSWRunTAble
 ```
 
 Software versions
 
 ```sh
-snmpwalk -v <version> -c public <target> .1.3.6.1.2.1.25.6.3.1.2
+snmpwalk -v <version> -c public $target .1.3.6.1.2.1.25.6.3.1.2
 ```
 
 <!-- }}} -->
@@ -594,7 +594,7 @@ sudo apt install braa
 Syntax
 
 ```sh
-braa <community_string>@<target>:.1.3.6.*
+braa <community_string>@$target:.1.3.6.*
 ```
 
 <!-- Example {{{ -->

@@ -16,20 +16,20 @@ ___
 [[Nmap]] — Identify an FTP server
 
 ```sh
-nmap <target> -p 21,2121 -oA ftp-identify
+nmap $target -p 21,2121 -oA ftp-identify
 ```
 
 [[Nmap]] — Identify FTP server features
 (*default FTP unauthantecated script scan*)
 
 ```sh
-sudo nmap -sC -sV <target> -p 21,2121 -A --script-trace -oA ftp-default-script
+sudo nmap -sC -sV $target -p 21,2121 -A --script-trace -oA ftp-default-script
 ```
 
 [[Nmap]] — Run all FTP scripts
 
 ```sh
-nmap <target> -p 21,2121 --script ftp-* -oA ftp-script-all
+nmap $target -p 21,2121 --script ftp-* -oA ftp-script-all
 ```
 
 [[Metasploit]] — FTP Version Scanner
@@ -58,7 +58,7 @@ use auxiliary/scanner/ftp/ftp_version
 > use auxiliary/scanner/ftp/ftp_version
 > ```
 > ```sh
-> set RHOSTS <target>
+> set RHOSTS $target
 > ```
 > ```sh
 > set RPORT 21
@@ -79,14 +79,14 @@ use auxiliary/scanner/ftp/ftp_version
 ([ftp-bounce](https://nmap.org/nsedoc/scripts/ftp-bounce.html))
 
 ```sh
-nmap <target> -p 21,2121 --script ftp-bounce -oA ftp-script-bounce
+nmap $target -p 21,2121 --script ftp-bounce -oA ftp-script-bounce
 ```
 
 [[Nmap]] — Perform
 [TCP FTP Bounce Scan](https://nmap.org/book/scan-methods-ftp-bounce-scan.html)
 
 ```sh
-nmap -b <ftp_server_ip>:<port> <target_network> -oA ftp-bounce-scan
+nmap -b $target:<port> <target_network> -oA ftp-bounce-scan
 ```
 
 [[Metasploit]] —
@@ -138,7 +138,7 @@ use auxiliary/scanner/ftp/anonymous
 > use auxiliary/scanner/ftp/anonymous
 > ```
 > ```sh
-> set RHOSTS <target>
+> set RHOSTS $target
 > ```
 > ```sh
 > set RPORT 21
@@ -162,22 +162,22 @@ ___
 [[Netcat]] — Grab the FTP banner
 
 ```sh
-nc -nv <target> 21
+nc -nv $target 21
 ```
 
 ```sh
-nc -nv <target> 2121
+nc -nv $target 2121
 ```
 
 [[Telnet/General|Telnet]] —
 Grab the FTP banner
 
 ```sh
-telnet <target> 21
+telnet $target 21
 ```
 
 ```sh
-telnet <target> 2121
+telnet $target 2121
 ```
 ___
 
@@ -204,7 +204,7 @@ use auxiliary/scanner/ftp/bison_ftp_traversal
 > use auxiliary/scanner/ftp/bison_ftp_traversal
 > ```
 > ```sh
-> set RHOSTS <target>
+> set RHOSTS $target
 > ```
 > ```sh
 > set RPORT 21
@@ -235,7 +235,7 @@ use auxiliary/scanner/ftp/colorado_ftp_traversal
 > use auxiliary/scanner/ftp/colorado_ftp_traversal
 > ```
 > ```sh
-> set RHOSTS <target>
+> set RHOSTS $target
 > ```
 > ```sh
 > set RPORT 21
@@ -258,7 +258,7 @@ Titan FTP XCRC Directory Traversal Information Disclosure
 > ```sh
 > msfconsole
 > use auxiliary/scanner/ftp/titanftp_xcrc_traversal
-> set RHOSTS <target>
+> set RHOSTS $target
 > set RPORT 21
 > run
 > exit
@@ -278,7 +278,7 @@ Update the connection to TLS, display the server's
 - connection details
 
 ```sh
-openssl s_client -connect <target>:21 -starttls ftp
+openssl s_client -connect $target:21 -starttls ftp
 ```
 
 <!-- Example {{{-->
@@ -309,7 +309,7 @@ that may contain sensitive information
 [[Gobuster]] — Discover directories
 
 ```sh
-gobuster dir -u ftp://<target> -w <dirlist>
+gobuster dir -u ftp://$target -w <dirlist>
 ```
 
 [[Ffuf]] — Discover directories

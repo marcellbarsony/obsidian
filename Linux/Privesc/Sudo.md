@@ -105,7 +105,7 @@ sudo -R woot woot
 <!-- Info {{{-->
 > [!info]-
 >
-> Vunnerable sudo
+> Vulnerable sudo
 >
 > ```sh
 > pwn ~ $ sudo -R woot woot

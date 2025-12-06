@@ -18,7 +18,7 @@ public exploits
 [[Nmap]] — Identify Rsync server on a target host
 
 ```sh
-nmap <target> -p 873 -oA rsync-identify
+nmap $target -p 873 -oA rsync-identify
 ```
 
 <!-- Example {{{-->
@@ -43,7 +43,7 @@ nmap <target> -p 873 -oA rsync-identify
 [[Nmap]] — Identify [[Networking/Services/Rsync/General#R-Services|R-Services]]
 
 ```sh
-sudo nmap -sV <target> -p 512,513,514 -oA rsync-services
+sudo nmap -sV $target -p 512,513,514 -oA rsync-services
 ```
 
 <!-- Example {{{-->
@@ -85,7 +85,7 @@ ___
 [[Netcat]] — Grab banner and accessible [[Networking/Services/Rsync/General#Modules|modules]]
 
 ```sh
-nc -nv <target> 873
+nc -nv $target 873
 ```
 
 <!-- Example {{{-->
@@ -120,7 +120,7 @@ and find misconfiguration or sensitive information
 (*[rsync-list-modules](https://nmap.org/nsedoc/scripts/rsync-list-modules.html)*)
 
 ```sh
-nmap -sV <target> -p 873 --script "rsync-list-modules" -oA rsync-script-list-modules
+nmap -sV $target -p 873 --script "rsync-list-modules" -oA rsync-script-list-modules
 ```
 
 <!-- Example {{{-->
@@ -166,15 +166,16 @@ use auxiliary/scanner/rsync/modules_list
 [[Usage|Rsync]] — List modules
 
 ```sh
-rsync <target>::
+rsync $target::
 ```
 
 [[Usage|Rsync]] — List files in a module
 
 ```sh
-rsync -av --list-only rsync://<target>/<module_name>
+rsync -av --list-only rsync://$target/<module_name>
 ```
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sh
@@ -191,14 +192,16 @@ rsync -av --list-only rsync://<target>/<module_name>
 > sent 25 bytes  received 221 bytes  492.00 bytes/sec
 > total size is 0  speedup is 0.00
 > ```
+<!-- }}} -->
 
+<!-- Tip {{{-->
 > [!tip]-
 >
 > [[Usage#Synchronize|Synchronize]]
+<!-- }}} -->
 
 ___
 
 <!-- }}} -->
 
 <!-- }}} -->
-

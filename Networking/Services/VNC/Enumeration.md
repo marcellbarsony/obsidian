@@ -10,12 +10,14 @@ tags:
 <!-- Service {{{-->
 ## Service
 
+Detect [[VNC/General|VNC]] Service
+
 ```sh
-nmap -p 5900-5906 <target> -oA vnc-detect
+nmap $target -p 5900-5906 -oA vnc-detect
 ```
 
 ```sh
-nmap -sV --script vnc-info,realvnc-auth-bypass,vnc-title -p <target_port> <target_ip> -oA vnc-script-all
+nmap -sV $target -p <port> --script vnc-info,realvnc-auth-bypass,vnc-title -oA vnc-script-all
 ```
 
 ___
@@ -27,12 +29,12 @@ ___
 [[Netcat]] — Grab Service Banner
 
 ```sh
-nc -vn <target> 5900
+nc -vn $target 5900
 ```
 
 [[Netcat]] — Get VNC handshake
 
 ```sh
-echo "" | nc <target> 5900
+echo "" | nc $target 5900
 ```
 <!-- }}} -->

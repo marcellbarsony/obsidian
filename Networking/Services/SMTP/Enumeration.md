@@ -16,7 +16,7 @@ ___
 [[Nmap]] — Detect SMTP service
 
 ```sh
-nmap <target> -p 25,465,587 -oA smtp-identify
+nmap $target -p 25,465,587 -oA smtp-identify
 ```
 
 <!-- Example {{{-->
@@ -39,7 +39,7 @@ nmap <target> -p 25,465,587 -oA smtp-identify
 [[Nmap]] — Discover SMTP services & server capabilities
 
 ```sh
-sudo nmap -sC -sV <target> -p 25 -oA smtp-default-scripts
+sudo nmap -sC -sV $target -p 25 -oA smtp-default-scripts
 ```
 
 <!-- Example {{{-->
@@ -66,27 +66,27 @@ sudo nmap -sC -sV <target> -p 25 -oA smtp-default-scripts
 ([smtp-commands](https://nmap.org/nsedoc/scripts/smtp-commands.html))
 
 ```sh
-nmap <target> -p 25 --script smtp-commands -oA smtp-script-commands
+nmap $target -p 25 --script smtp-commands -oA smtp-script-commands
 ```
 
 [[Nmap]] — Discover SMTP users
 ([smtp-enum-users](https://nmap.org/nsedoc/scripts/smtp-enum-users.html))
 
 ```sh
-nmap <target> -p 25 --script smtp-enum-users -oA smtp-script-enum-users
+nmap $target -p 25 --script smtp-enum-users -oA smtp-script-enum-users
 ```
 
 [[Nmap]] — Discover NTLM authentication details
 ([smtp-ntlm-info](https://nmap.org/nsedoc/scripts/smtp-ntlm-info.html))
 
 ```sh
-nmap <target> -p 25 --script smtp-ntlm-info -oA smtp-script-ntlm-info
+nmap $target -p 25 --script smtp-ntlm-info -oA smtp-script-ntlm-info
 ```
 
 [[Nmap]] — Run all SMTP-related scripts
 
 ```sh
-nmap <target> -p 25,465,587 --script smtp-* -oA smtp--script-all
+nmap $target -p 25,465,587 --script smtp-* -oA smtp--script-all
 ```
 
 <!-- Example {{{-->
@@ -106,7 +106,7 @@ nmap <target> -p 25,465,587 --script smtp-* -oA smtp--script-all
 (*[smtp-open-relay](https://nmap.org/nsedoc/scripts/smtp-open-relay.html)*)
 
 ```sh
-nmap <target> -p25 --script smtp-open-relay -v -oA smtp-script-open-relay
+nmap $target -p25 --script smtp-open-relay -v -oA smtp-script-open-relay
 ```
 
 <!-- }}} -->
@@ -118,21 +118,21 @@ nmap <target> -p25 --script smtp-open-relay -v -oA smtp-script-open-relay
 (*[smtp-vuln-cve2010-4344](https://nmap.org/nsedoc/scripts/smtp-vuln-cve2010-4344.html)*)
 
 ```sh
-sudo nmap -sV <target> -p 25,465,587 -sV --script=smtp-vuln-cve2010-4344 -oA smtp-vuln-cve2010-4344
+sudo nmap -sV $target -p 25,465,587 -sV --script=smtp-vuln-cve2010-4344 -oA smtp-vuln-cve2010-4344
 ```
 
 [[Networking/Services/SMTP/Exploitation#CVE-2011-1720|CVE-2011-1720]]
 (*[smtp-vuln-cve2011-1720](https://nmap.org/nsedoc/scripts/smtp-vuln-cve2011-1720.html)*)
 
 ```sh
-sudo nmap -sV <target> -p 25,465,587 --script=smtp-vuln-cve2011-1720 -oA smtp-vuln-cve2011-1720
+sudo nmap -sV $target -p 25,465,587 --script=smtp-vuln-cve2011-1720 -oA smtp-vuln-cve2011-1720
 ```
 
 [[Networking/Services/SMTP/Exploitation#CVE-2011-1764|CVE-2011-1764]]
 (*[smtp-vuln-cve2010-1764](https://nmap.org/nsedoc/scripts/smtp-vuln-cve2011-1764.html)*)
 
 ```sh
-sudo nmap -sV <target> -p 25,465,587 --script=smtp-vuln-cve2011-1764 -oA smtp-vuln-cve2011-1764
+sudo nmap -sV $target -p 25,465,587 --script=smtp-vuln-cve2011-1764 -oA smtp-vuln-cve2011-1764
 ```
 
 <!-- }}} -->
@@ -150,19 +150,19 @@ ___
 [[Netcat]] — Get banner
 
 ```sh
-nc -vn <target> 25
+nc -vn $target 25
 ```
 
 [[Netcat]] `EHLO` — Get banner
 
 ```sh
-echo "EHLO test" | nc <target> 25
+echo "EHLO test" | nc $target 25
 ```
 
 [[Telnet/General|Telnet]] — Get banner
 
 ```sh
-telnet <target> 25
+telnet $target 25
 ```
 
 <!-- }}} -->
@@ -196,7 +196,7 @@ ___
 Verify specific user
 
 ```sh
-smtp-user-enum -M VRFY -u <user> -t <target> -w 20
+smtp-user-enum -M VRFY -u <user> -t $target -w 20
 ```
 
 <!-- Example {{{-->
@@ -223,7 +223,7 @@ smtp-user-enum -M VRFY -u <user> -t <target> -w 20
 Verify user list
 
 ```sh
-smtp-user-enum -M VRFY -U <users.txt> -t <target> -w 20
+smtp-user-enum -M VRFY -U <users.txt> -t $target -w 20
 ```
 
 <!-- Example {{{-->

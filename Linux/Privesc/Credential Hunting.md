@@ -27,7 +27,7 @@ ___
 Check current (*any*) directory for [[Secrets]]
 
 ```sh
-grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*' . -R
+grep -iE 'user.*|pass.*|key.*|secret.*|api.*|flag.*|htb.*' . -R
 ```
 
 <!-- }}} -->
@@ -38,7 +38,7 @@ grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*' . -R
 Check `home` directory for [[Secrets]]
 
 ```sh
-grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*' /home -R
+grep -iE 'user.*|pass.*|key.*|secret.*|api.*|flag.*|htb.*' /home -R
 ```
 
 <!-- }}} -->
@@ -51,21 +51,21 @@ Check system log directories for [[Secrets]]
 Main system logs
 
 ```sh
-grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*' /var/log -R
+grep -iE 'user.*|pass.*|key.*|secret.*|api.*|flag.*|htb.*' /var/log -R
 ```
 
 Web server logs
 
 ```sh
-grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*' /var/log/apache2 -R
+grep -iE 'user.*|pass.*|key.*|secret.*|api.*|flag.*|htb.*' /var/log/apache2 -R
 ```
 
 ```sh
-grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*' /var/log/httpd -R
+grep -iE 'user.*|pass.*|key.*|secret.*|api.*|flag.*|htb.*' /var/log/httpd -R
 ```
 
 ```sh
-grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*' /var/log/nginx -R
+grep -iE 'user.*|pass.*|key.*|secret.*|api.*|flag.*|htb.*' /var/log/nginx -R
 ```
 
 <!-- }}} -->
@@ -76,7 +76,7 @@ grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*' /var/log/nginx -R
 Check `/root` directory for [[Secrets]]
 
 ```sh
-grep -iE 'user.*|pass.*|key.*|secret.*|api.*' /root -R
+grep -iE 'user.*|pass.*|key.*|secret.*|api.*|flag.*|htb.*' /root -R
 ```
 
 <!-- }}} -->
@@ -95,25 +95,25 @@ ls -al /tmp /tmp/var /var/tmp /dev/shm
 `/tmp`
 
 ```sh
-grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*' /tmp -R
+grep -iE 'user.*|pass.*|key.*|secret.*|api.*|flag.*|htb.*' /tmp -R
 ```
 
 `/tmp/var`
 
 ```sh
-grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*' /tmp/var -R
+grep -iE 'user.*|pass.*|key.*|secret.*|api.*|flag.*|htb.*' /tmp/var -R
 ```
 
 `/var/tmp`
 
 ```sh
-grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*' /var/tmp -R
+grep -iE 'user.*|pass.*|key.*|secret.*|api.*|flag.*|htb.*' /var/tmp -R
 ```
 
 `/dev/shm`
 
 ```sh
-grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*' /dev/shm -R
+grep -iE 'user.*|pass.*|key.*|secret.*|api.*|flag.*|htb.*' /dev/shm -R
 ```
 
 <!-- }}} -->
@@ -124,21 +124,21 @@ grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*' /dev/shm -R
 [[Web Server Root#OS|OS-Specific Root]] (*`/var/www/`*)
 
 ```sh
-grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*' /var/www/* -R
+grep -iE 'user.*|pass.*|key.*|secret.*|api.*|flag.*|htb.*' /var/www/* -R
 ```
 
 ```sh
-find /var/www/ -type f -exec cat {} + | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*'
+find /var/www/ -type f -exec cat {} + | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|flag.*|htb.*'
 ```
 
 [[Web Server Root#Web Server|Web Server Application Root]]
 
 ```sh
-grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*' <path> -R
+grep -iE 'user.*|pass.*|key.*|secret.*|api.*|flag.*|htb.*' <path> -R
 ```
 
 ```sh
-find <path> -type f -exec cat {} + | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*'
+find <path> -type f -exec cat {} + | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|flag.*|htb.*'
 ```
 
 [wp-config.php](https://developer.wordpress.org/advanced-administration/wordpress/wp-config/)
@@ -148,7 +148,7 @@ grep 'DB_USER\|DB_PASSWORD' wp-config.php
 ```
 
 ```sh
-cat /var/wp-config.php | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*'
+cat /var/wp-config.php | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|flag.*|htb.*'
 ```
 
 <!-- }}} -->
@@ -170,7 +170,7 @@ find . -type f \( -iname "*.bak" -o -iname "*.backup" \) 2>/dev/null
 
 ```sh
 find / -type f \( -iname "*.bak" -o -iname "*.backup" \) 2>/dev/null \
- | xargs grep -Ei 'user|username|pass|password|secret|token|api|key|HTB' 2>/dev/null
+ | xargs grep -Ei 'user|username|pass|password|secret|token|api|key|flag|htb' 2>/dev/null
 ```
 
 <!-- }}} -->
@@ -186,7 +186,7 @@ find . -type f \( -iname "*.cfg" -o -iname "*.conf" -o -iname "*.config" -o -ina
 
 ```sh
 find / ! -path "*/proc/*" -type f \( -iname "*.cfg" -o -iname "*.conf" -o -iname "*.config" -o -iname "*.xml" \) 2>/dev/null \
-  | xargs grep -Ei 'user|username|pass|password|secret|token|api|key|HTB' 2>/dev/null
+  | xargs grep -Ei 'user|username|pass|password|secret|token|api|key|flag|htb' 2>/dev/null
 ```
 
 <!-- }}} -->
@@ -202,7 +202,7 @@ find . -type f \( -iname "*.db" -o -iname "*.sql" -o -iname "*.sqlite" \) 2>/dev
 
 ```sh
 find / -type f \( -iname "*.db" -o -iname "*.sql" -o -iname "*.sqlite" \) 2>/dev/null \
-  | xargs grep -Ei 'user|username|pass|password|secret|token|api|key|HTB' 2>/dev/null
+  | xargs grep -Ei 'user|username|pass|password|secret|token|api|key|flag|htb' 2>/dev/null
 ```
 
 <!-- }}} -->
@@ -218,7 +218,7 @@ or remote file systems should be mounted into the file system
 Enumerate `/etc/fstab` for [[Secrets]]
 
 ```sh
-grep -Ei 'user|username|pass|password|secret|token|api|key|HTB' /etc/fstab 2>/dev/null
+grep -Ei 'user|username|pass|password|secret|token|api|key|flag|htb' /etc/fstab 2>/dev/null
 ```
 
 <!-- }}} -->
@@ -242,7 +242,7 @@ Discover hidden files for [[Secrets]]
 
 ```sh
 find / -type f -name ".*" -exec ls -l {} \; 2>/dev/null \
-  | grep -Ei 'user|username|pass|password|key|secret|token|HTB'
+  | grep -Ei 'user|username|pass|password|key|secret|token|flag|htb'
 ```
 
 <!-- }}} -->
@@ -258,7 +258,7 @@ find / -type f \( -name '*_hist' -o -name '*_history' \) -exec ls -l {} \; 2>/de
 
 ```sh
 find / -type f \( -name '*_hist' -o -name '*_history' \) -exec ls -l {} \; 2>/dev/null \
-  | grep -Ei 'user|username|pass|password|key|secret|token|HTB'
+  | grep -Ei 'user|username|pass|password|key|secret|token|flag|htb'
 ```
 
 <!-- }}} -->
@@ -271,29 +271,29 @@ Search log files for [[Secrets]]
 Core system logs
 
 ```sh
-cat /var/log/syslog | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*'
+cat /var/log/syslog | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|flag.*|htb.*'
 ```
 
 ```sh
-cat /var/log/messages | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*'
+cat /var/log/messages | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|flag.*|htb.*'
 ```
 
 Authentication logs
 
 ```sh
-cat /var/log/auth.log | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*'
+cat /var/log/auth.log | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|flag.*|htb.*'
 ```
 
 Security logs
 
 ```sh
-cat /var/log/secure.log | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*'
+cat /var/log/secure.log | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|flag.*|htb.*'
 ```
 
 Kernel logs
 
 ```sh
-cat /var/log/secure.log | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*'
+cat /var/log/secure.log | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|flag.*|htb.*'
 ```
 
 <!-- }}} -->
@@ -313,7 +313,7 @@ find / -type f \( -iname "*.php" -o -iname "*.php5" -o -iname "*.php7" -o -iname
 ```sh
 find / -type f \( -iname "*.php" -o -iname "*.php5" -o -iname "*.php7" -o -iname "*.php8" \) 2>/dev/null \
   | grep -Ev "src|snap|share" \
-  | xargs grep -Ei 'user|username|pass|password|secret|token|api|key|HTB' 2>/dev/null
+  | xargs grep -Ei 'user|username|pass|password|secret|token|api|key|flag|htb' 2>/dev/null
 ```
 
 [[Python]]
@@ -326,7 +326,7 @@ find / -type f \( -iname "*.py" -o -iname "*.pyw"\) 2>/dev/null \
 ```sh
 find / -type f \( -iname "*.py" -o -iname "*.pyw"\) 2>/dev/null \
   | grep -Ev "src|snap|share" \
-  | xargs grep -Ei 'user|username|pass|password|secret|token|api|key|HTB' 2>/dev/null
+  | xargs grep -Ei 'user|username|pass|password|secret|token|api|key|flag|htb' 2>/dev/null
 ```
 
 [[Shell]]
@@ -339,7 +339,7 @@ find / -type f \( -iname "*.sh" \) 2>/dev/null \
 ```sh
 find / -type f \( -iname "*.sh" \) 2>/dev/null \
   | grep -Ev "src|snap|share" \
-  | xargs grep -Ei 'user|username|pass|password|secret|token|api|key|HTB' 2>/dev/null
+  | xargs grep -Ei 'user|username|pass|password|secret|token|api|key|flag|htb' 2>/dev/null
 ```
 
 
@@ -356,19 +356,19 @@ Search shell files for [[Secrets]]
 Bash history
 
 ```sh
-cat ~/.bash_history | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*'
+cat ~/.bash_history | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|flag.*|htb.*'
 ```
 
 Bash configuration
 
 ```sh
-cat ~/.bashrc | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*'
+cat ~/.bashrc | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|flag.*|htb.*'
 ```
 
 Bash env
 
 ```sh
-cat ~/.bashenv | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*'
+cat ~/.bashenv | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|flag.*|htb.*'
 ```
 
 <!-- }}} -->
@@ -379,19 +379,19 @@ cat ~/.bashenv | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*'
 Zsh history
 
 ```sh
-cat ~/.zsh_history | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*'
+cat ~/.zsh_history | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|flag.*|htb.*'
 ```
 
 Zsh configuration
 
 ```sh
-cat ~/.zshrc | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*'
+cat ~/.zshrc | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|flag.*|htb.*'
 ```
 
 Zsh env
 
 ```sh
-cat ~/.zshenv | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*'
+cat ~/.zshenv | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|flag.*|htb.*'
 ```
 
 <!-- }}} -->
@@ -409,7 +409,7 @@ find . -type f \( -iname "*.txt" -o -iname "*.backup" \) 2>/dev/null
 
 ```sh
 find / -type f \( -iname "*.bak" -o -iname "*.backup" \) 2>/dev/null \
-| xargs grep -Ei 'user|username|pass|password|secret|token|api|key|HTB' 2>/dev/null
+| xargs grep -Ei 'user|username|pass|password|secret|token|api|key|flag|htb' 2>/dev/null
 ```
 
 <!-- }}} -->
@@ -427,7 +427,7 @@ printenv | grep -iE 'user|password'
 ```
 
 ```sh
-printenv | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*'
+printenv | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|flag.*|htb.*'
 ```
 
 ```sh
@@ -461,18 +461,49 @@ printenv | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|HTB.*'
 ___
 <!-- }}} -->
 
+<!-- Clipboard {{{-->
+## Clipboard
+
+Enumerate the clipboard
+
+```sh
+if [ `which xclip 2>/dev/null` ]; then
+    echo "Clipboard: "`xclip -o -selection clipboard 2>/dev/null`
+    echo "Highlighted text: "`xclip -o 2>/dev/null`
+  elif [ `which xsel 2>/dev/null` ]; then
+    echo "Clipboard: "`xsel -ob 2>/dev/null`
+    echo "Highlighted text: "`xsel -o 2>/dev/null`
+  else echo "Not found xsel and xclip"
+  fi
+```
+
+___
+<!-- }}} -->
+
+<!-- Keys {{{-->
+## Keys
+
+Find [PGP Keys](https://en.wikipedia.org/wiki/Pretty_Good_Privacy)
+
+```sh
+gpg --list-keys 2>/dev/null
+```
+
+___
+<!-- }}} -->
+
 <!-- Processes {{{-->
 ## Processes
 
 Search [[Processes]] for [[Secrets]]
 
 ```sh
-ps -ef | grep -Ei 'user|username|pass|password|secret|token|api|key|htb' | grep -v grep
+ps -ef | grep -Ei 'user|username|pass|password|secret|token|api|key|flag|htb' | grep -v grep
 ```
 
 ```sh
 ps -eo pid,user,cmd --no-header \
-  | grep -IaiE 'user|username|pass|password|secret|token|api|key|htb'
+  | grep -IaiE 'user|username|pass|password|secret|token|api|key|flag|htb'
 ```
 
 <!-- Info {{{-->

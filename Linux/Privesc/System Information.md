@@ -117,8 +117,20 @@ searchsploit "Linux Kernel"
 <!-- Tip - Kernel Exploits Lists {{{-->
 > [!tip]- Kernel Exploits Lists
 >
+> - [Exloit DB - Binary Exploits](https://gitlab.com/exploit-database/exploitdb-bin-sploits)
+>
 > - [GitHub - Kernel exploits](https://github.com/lucyoa/kernel-exploits)
-> - [GitLab - Exloit DB](https://gitlab.com/exploit-database/exploitdb-bin-sploits)
+>
+> ```sh
+> curl https://raw.githubusercontent.com/lucyoa/kernel-exploits/master/README.md 2>/dev/null \
+> | grep "Kernels: " \
+> | cut -d ":" -f 2 \
+> | cut -d "<" -f 1 \
+> | tr -d "," \
+> | tr ' ' '\n' \
+> | grep -v "^d\.d$" \
+> | sort -u -r
+> ```
 <!-- }}} -->
 
 <!-- DirtyCow {{{-->

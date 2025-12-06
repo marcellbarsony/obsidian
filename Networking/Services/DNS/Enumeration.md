@@ -236,7 +236,7 @@ Brute Force DNS Subdomains
 DNS Subdomain Brute Forcing
 
 ```sh
-gobuster dns [flags] -d <target> -w <wordlist.txt> [-s <target_dns>]
+gobuster dns [flags] -d $target -w <wordlist.txt> [-s <target_dns>]
 ```
 
 <!-- Example {{{-->
@@ -254,8 +254,9 @@ gobuster dns [flags] -d <target> -w <wordlist.txt> [-s <target_dns>]
 DNS Subdomain Brute Forcing
 
 ```sh
-dnsenum --enum <target> -f <wordlist.txt> -r
+dnsenum --enum $target -f <wordlist.txt> -r
 ```
+
 ```sh
 dnsenum --dnsserver <target_dns> --enum -p 5 -s 5 -o subdomains.txt -f <wordlist.txt> <target_domain>
 ```

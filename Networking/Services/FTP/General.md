@@ -77,9 +77,8 @@ channel:
    of the **server**
 <!-- }}} -->
 
-<!-- }}} -->
-
 ___
+<!-- }}} -->
 
 <!-- }}} -->
 
@@ -103,8 +102,8 @@ sudo apt install vsftpd
 ```sh
 sudo pacman -Syu vsftpd
 ```
-<!-- }}} -->
 
+___
 <!-- }}} -->
 
 <!-- Configuration {{{-->
@@ -266,9 +265,8 @@ ls -R
 
 <!-- }}} -->
 
-<!-- }}} -->
-
 ___
+<!-- }}} -->
 
 <!-- }}} -->
 
@@ -292,8 +290,7 @@ between client and server processes.
 | `status`   | Shows FTFP status (e.g., transfer mode (ascii or binary)   |
 | `verbose`  | Toggles verbose mode                                       |
 
-<!-- }}} -->
-
 ___
+<!-- }}} -->
 
 <!-- }}} -->

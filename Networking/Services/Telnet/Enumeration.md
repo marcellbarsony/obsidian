@@ -15,13 +15,13 @@ ___
 [[Nmap]] — Identify Telnet server
 
 ```sh
-nmap -p 23 <target> -oA telnet-identify
+nmap $target -p 23 -oA telnet-identify
 ```
 
 [[Nmap]] — Assess encryption on Telnet server
 
 ```sh
-nmap -p 23 --script telnet-encrpytion <target> -oA telnet-script-encryption
+nmap $target -p 23 --script telnet-encrpytion -oA telnet-script-encryption
 ```
 ___
 <!-- }}} -->
@@ -32,13 +32,13 @@ ___
 [[Netcat]]
 
 ```sh
-ncat -nv <target_ip> 23
+ncat -nv $target 23
 ```
 
 [[Telnet/General|Telnet]]
 
 ```sh
-telnet <target_ip> 23
+telnet $target 23
 ```
 
 [Shodan-cli](https://help.shodan.io/)
@@ -50,7 +50,7 @@ shodan stream --ports 23,1023,2323 --datadir telnet-data/ --limit 10000
 [[Nmap]]
 
 ```sh
-nmap -sCV -p 23 --script "*telnet* and safe" <target_ip> -oA telnet-banner-grabbing
+nmap -sCV $target -p 23 --script "*telnet* and safe" -oA telnet-banner-grabbing
 ```
 
 [[Metasploit]] — Telnet Login Check Scanner

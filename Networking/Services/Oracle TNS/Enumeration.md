@@ -15,7 +15,7 @@ ___
 Scan the default Oracle [[Networking/Services/Oracle TNS/General#TNS Listener|TNS Listener]] port
 
 ```sh
-sudo nmap -sV <target> -p 1521 --open -oA oracle-tns-default
+sudo nmap -sV $target -p 1521 --open -oA oracle-tns-default
 ```
 
 <!-- Example {{{-->
@@ -49,30 +49,30 @@ Connect to the TNS Listener to gather version and service information
 [[Netcat]] — Grab banner and TNS version
 
 ```sh
-nc -nv <target> 1521
+nc -nv $target 1521
 ```
 
 ```sh
-echo "(CONNECT_DATA=(COMMAND=version))" | nc <target> 1521
+echo "(CONNECT_DATA=(COMMAND=version))" | nc $target 1521
 ```
 
 [[Nmap]] — Banner grabbing
 
 ```sh
-nmap -sV <target> -p 1521 -oA oracle-tns-banner
+nmap -sV $target -p 1521 -oA oracle-tns-banner
 ```
 
 [[Telnet/General|Telnet]] — Banner grabbing
 
 ```sh
-telnet <target> 1521
+telnet $target 1521
 ```
 
 [tnslsnr](https://www.kali.org/tools/tnscmd10g/) —
 Banner grabbing (*TNS ping*)
 
 ```sh
-tnslsnr <target> 1521
+tnslsnr $target 1521
 ```
 
 ___
@@ -103,7 +103,7 @@ is required to connect to Oracle databases and can be brute-forced
 [[Nmap]] — SID enumeration
 
 ```sh
-sudo nmap -sV <target> -p 1521 --open --script oracle-sid-brute -oA oracle-sid-brute
+sudo nmap -sV $target -p 1521 --open --script oracle-sid-brute -oA oracle-sid-brute
 ```
 
 <!-- Example {{{-->
@@ -150,14 +150,14 @@ use auxiliary/scanner/oracle/sid_enum
 [[#ODAT]] — SID enumeration
 
 ```sh
-odat sidguesser -s <target> -p 1521
+odat sidguesser -s $target -p 1521
 ```
 
 [sidguesser](https://www.kali.org/tools/sidguesser/) —
 SID enumeration
 
 ```sh
-sidguess -i <target> -d /usr/share/wordlists/metasploit/unix_users.txt
+sidguess -i $target -d /usr/share/wordlists/metasploit/unix_users.txt
 ```
 
 ___
@@ -172,7 +172,7 @@ can retrieve database names, versions, user accounts,
 vulnerabilities, misconfigurations
 
 ```sh
-./odat.py all -s <target>
+./odat.py all -s $target
 ```
 
 <!-- Example {{{-->
@@ -213,7 +213,7 @@ ___
 Log in as regular user
 
 ```sh
-sqlplus <username>/<password>@<target>/XE
+sqlplus <username>/<password>@$target/XE
 ```
 
 <!-- Example {{{-->
@@ -243,7 +243,7 @@ sqlplus <username>/<password>@<target>/XE
 Log in the regular user as `sysdba` (*System Database Admin*)
 
 ```sh
-sqlplus <user>/<password>@<target>/XE as sysdba
+sqlplus <user>/<password>@$target/XE as sysdba
 ```
 
 <!-- Example {{{-->
@@ -321,7 +321,7 @@ the **finger** output can leak:
 
 
 ```sh
-finger oracle@<target>
+finger oracle@$target
 ```
 
 <!-- Exmaple {{{-->

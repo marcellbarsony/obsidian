@@ -32,14 +32,14 @@ ___
 Detect MySQL service
 
 ```sh
-nmap <target> -p 3306 -oA mysql-service
+nmap $target -p 3306 -oA mysql-service
 ```
 
 Enumerate [[Networking/Services/MySQL/General#MySQL Database|MySQL Databases]]
 (*[[Nmap Scripting Engine|Nmap NSE]] scripts*)
 
 ```sh
-sudo nmap -sC -sV <target> -p 3306 --script "mysql-*" -oA mysql-default-scripts
+sudo nmap -sC -sV $target -p 3306 --script "mysql-*" -oA mysql-default-scripts
 ```
 
 <!-- Info {{{-->
@@ -324,19 +324,19 @@ Grab the MySQL service banner
 [[Nmap]]
 
 ```sh
-nmap -sV <target> -p 3306 -oA mysql-banner
+nmap -sV $target -p 3306 -oA mysql-banner
 ```
 
 [[Netcat]]
 
 ```sh
-nc -vn <target> 3306
+nc -vn $target 3306
 ```
 
 [[Telnet/General|Telnet]]
 
 ```sh
-telnet <target> 3306
+telnet $target 3306
 ```
 
 <!-- }}} -->

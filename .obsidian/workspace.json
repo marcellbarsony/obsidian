@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Linux/Privesc/Credential Hunting.md",
+                "file": "Linux/Privesc/Software/Screen.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Credential Hunting"
+              "title": "Screen"
             }
           }
         ]
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Linux/Privesc/Credential Hunting.md",
+                "file": "Linux/Privesc/Software/Screen.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Credential Hunting"
+              "title": "Outline of Screen"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Linux/Privesc/Credential Hunting.md",
+                "file": "Linux/Privesc/Software/Screen.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Credential Hunting"
+              "title": "Graph of Screen"
             }
           }
         ]
@@ -226,33 +226,34 @@
   "active": "6f4e890d1c374ce7",
   "lastOpenFiles": [
     "Linux/Privesc/Processes.md",
+    "Linux/Privesc/Software/Screen.md",
+    "Linux/Privesc/Software/User.md",
+    "Linux/Privesc/Software",
     "Linux/Privesc/Software Vulnerability.md",
-    "Linux/Privesc/System Information.md",
-    "Linux/Privesc/Filesystem.md",
-    "Linux/Privesc/Defenses.md",
-    "Linux/Privesc/Sudo.md",
-    "Linux/Privesc/Filesystem_1.md",
-    "Webapp/Exploitation/Cookies & Parameters.md",
-    "Webapp/Exploitation/Exploitation.md",
-    "Webapp/Exploitation/_Checklist.md",
-    "Webapp/Exploitation/Server-Side/Access Control/IDOR.md",
-    "Webapp/Exploitation/Server-Side/Access Control/Access Control.md",
-    "Networking/Services/ISAKMP/General.md",
+    "Linux/Privesc/Capabilities.md",
+    "Linux/Privesc/Credential Hunting.md",
+    "Linux/Privesc/Group.md",
+    "Linux/Privesc/Directory & File.md",
+    "Linux/Privesc/SSH Keys.md",
+    "Linux/Privesc/User.md",
+    "Linux/Privesc/User & Group_1.md",
     "Networking/Services/ISAKMP/Enumeration.md",
-    "Networking/Services/IPSEC IKE/General.md",
-    "Networking/Services/ISAKMP",
-    "Networking/Services/IPSEC IKE/Enumeration.md",
-    "Networking/Tools/Nmap/Host Enumeration.md",
-    "Networking/Services/IPSEC IKE",
-    "Networking/Enumeration/_Checklist.md",
-    "Networking/Enumeration/Host Discovery.md",
-    "Networking/Services/SSH/Exploitation.md",
-    "Pentest/Reverse Shell/Reverse Shell.md",
-    "Pentest/General/Kali Linux.md",
+    "Networking/Services/ISAKMP/General.md",
+    "Linux/Privesc/Sudo.md",
+    "Pentest/Tools/Cracking/Hashid.md",
+    "Pentest/Tools/Cracking/Hashcat.md",
+    "Linux/Privesc/Cron Jobs.md",
+    "Linux/Privesc/User.md",
+    "Linux/Privesc/System Information.md",
+    "Networking/Services/WinRM/Exploitation.md",
+    "Linux/General/Polkit.md",
+    "Networking/Services/WinRM/Enumeration.md",
+    "Networking/Services/VNC/Exploitation.md",
+    "Networking/Services/FTP/General.md",
+    "Linux/Privesc/Network.md",
     "Pentest/General/Preparation.md",
-    "Pentest/Tools/Brute Force/Wordlists/SecLists.md",
-    "Networking/Services/SSH/Enumeration.md",
-    "Networking/Services/SSH/Usage.md",
+    "Networking/Services/ISAKMP",
+    "Networking/Services/IPSEC IKE",
     "Programming/Python/Vulnerabilibies",
     "Programming/PHP",
     "Linux/General/Software/Security",
@@ -270,7 +271,6 @@
     "Webapp/Tools/Burp Suite/src/20251128-222424.png",
     "Webapp/Tools/ZAP/src",
     "Networking/Services/MongoDB",
-    "Webapp/Exploitation/Server-Side/Authentication",
     "Networking/Services/SMB/Untitled.canvas"
   ]
 }

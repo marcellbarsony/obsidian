@@ -20,9 +20,11 @@ Scan a network searching for SMB hosts
 nbtscan -r <target_network>/<cidr>
 ```
 
+<!-- Info {{{-->
 > [!info]-
 >
-> - `-r`: Use local port 137 for scans
+> - `-r`: Use local port `137` for scans
+<!-- }}} -->
 
 ___
 <!-- }}} -->
@@ -35,7 +37,7 @@ ___
 Banner grabbing with default scripts
 
 ```sh
-sudo nmap -sV -sC <target> -p 139,445 -oA smb-default-scripts
+sudo nmap -sV -sC $target -p 139,445 -oA smb-default-scripts
 ```
 
 <!-- Example {{{-->
@@ -65,21 +67,65 @@ Discover SMB versions and supported protocol features
 (*[smb-protocols](https://nmap.org/nsedoc/scripts/smb-protocols.html)*)
 
 ```sh
-nmap <target> -p 445 --script smb-protocols -oA smb-protocols
+nmap $target -p 445 --script smb-protocols -oA smb-protocols
 ```
 
 Extract OS/Host/Domain information
 (*[smb-os-discovery.nse](https://nmap.org/nsedoc/scripts/smb-os-discovery.html)*)
 
 ```sh
-nmap <target> -p 445 --script smb-os-discovery.nse -oA smb-os-discovery
+nmap $target -p 445 --script smb-os-discovery.nse -oA smb-os-discovery
 ```
 
 Run all `safe` and `smb-enum-*` scripts for non-destructive SMB enumeration
 
 ```sh
-nmap <target> -p 445 --script "safe or smb-enum-*" -oA smb-enumeration
+nmap $target -p 445 --script "safe or smb-enum-*" -oA smb-enumeration
 ```
+___
+<!-- }}} -->
+
+<!-- NetExec {{{-->
+## NetExec
+
+[NetExec](https://github.com/Pennyw0rth/NetExec) —
+The Network Execution Tool
+
+```sh
+netexec smb $target
+```
+
+```sh
+netexec smb $target -u "" -p ""
+```
+
+```sh
+netexec smb $target -u "" -p "" --users
+```
+
+```sh
+netexec smb $target -u "" -p "" --pass-pol
+```
+
+```sh
+netexec smb $target -u "guest" -p "" --rid-brute
+```
+
+```sh
+netexec smb $target -u "guest" -p "" --rid-brute | grep -i 'sidtypeuser' | awk 'print$6' | cut -d '\' -f2 | tee userlist2.txt
+```
+
+```sh
+netexec smb $target -u "guest" -p ""
+```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `--pass-pol`: Get the password policy of the domain
+> - `--rid-brute`: Enumerate users by bruteforcing the `RID`
+<!-- }}} -->
+
 ___
 <!-- }}} -->
 
@@ -107,7 +153,7 @@ use auxiliary/scanner/smb/smb_version
 > use auxiliary/scanner/smb/smb_version
 > ```
 > ```sh
-> set RHOSTS <target_ip>
+> set RHOSTS $target
 > ```
 > ```sh
 > set RPORT 139
@@ -139,7 +185,7 @@ use auxiliary/scanner/smb/smb2
 > use auxiliary/scanner/smb/smb2
 > ```
 > ```sh
-> set RHOSTS <target_ip>
+> set RHOSTS $target
 > ```
 > ```sh
 > set RPORT 139
@@ -170,7 +216,7 @@ use auxiliary/scanner/smb/smb_enumshares
 > use auxiliary/scanner/smb/smb_version
 > ```
 > ```sh
-> set RHOSTS <target_ip>
+> set RHOSTS $target
 > ```
 > ```sh
 > set RPORT 445
@@ -199,7 +245,7 @@ use auxiliary/scanner/smb/smb_enumusers
 > use auxiliary/scanner/smb/smb_enumusers
 > ```
 > ```sh
-> set RHOSTS <target_ip>
+> set RHOSTS $target
 > ```
 > ```sh
 > set RPORT 445
@@ -230,7 +276,7 @@ use auxiliary/scanner/smb/smb_lookupsid
 > use auxiliary/scanner/smb/smb_lookupsid
 > ```
 > ```sh
-> set RHOSTS <target_ip>
+> set RHOSTS $target
 > ```
 > ```sh
 > set RPORT 445
@@ -260,11 +306,11 @@ Detect Netapi
 <!-- }}} -->
 
 ```sh
-nmap <target> -p 445 --script smb-vuln-ms08-067.nse -oA smb-netapi-tcp
+nmap $target -p 445 --script smb-vuln-ms08-067.nse -oA smb-netapi-tcp
 ```
 
 ```sh
-nmap -sU <target> -p U:137 --script smb-vuln-ms08-067.nse -oA smb-netapi-udp
+nmap -sU $target -p U:137 --script smb-vuln-ms08-067.nse -oA smb-netapi-udp
 ```
 
 <!-- Example {{{-->
@@ -301,7 +347,7 @@ nmap -Pn <ip_netblock> -p 445 --open --max-hostgroup 3 --script smb-vuln-ms17-01
 ```
 
 ```sh
-nmap -A <target> -p 445
+nmap -A $target -p 445
 ```
 
 > [!info]-
@@ -367,7 +413,7 @@ and `smbclient` that interacts with the exposed services via named pipes
 2. Enumerate SMB host
 
 ```sh
-./enum4linux-ng.py <target> -A
+./enum4linux-ng.py $target -A
 ```
 
 <!-- Example {{{-->
@@ -565,17 +611,17 @@ and `smbclient` that interacts with the exposed services via named pipes
 <!-- }}} -->
 
 <!-- Warning {{{-->
-> [!warning]-
+> [!warning]- Deprecated
 >
-> **DEPRECATED**: Dump interesting information
+> Dump interesting information
 >
->```sh
->enum4linux -a [-u "<username>" -p "<password>"] <target>
->```
+> ```sh
+> enum4linux -a [-u "<user>" -p "<password>"] $target
+> ```
 >
->```sh
->enum4linux-ng -A [-u "<username>" -p "<password>"] <target>
->```
+> ```sh
+> enum4linux-ng -A [-u "<user>" -p "<password>"] $target
+> ```
 <!-- }}} -->
 
 <!-- }}} -->
@@ -627,48 +673,6 @@ Grab SMB server version
 > > May need to run a second time for success
 <!-- }}} -->
 
-<!-- }}} -->
-
-___
-<!-- }}} -->
-
-<!-- CrackMapExec {{{-->
-## CrackMapExec
-
-[CrackMapExec](https://github.com/byt3bl33d3r/CrackMapExec)
-— Enumerate SMB services
-
-> [!warning]
->
-> **DEPRECATED** to [NetExe](https://github.com/Pennyw0rth/NetExec)
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> crackmapexec smb <target>
-> ```
->
-> ```sh
-> crackmapexec smb <target> --pass-pol -u "" -p ""
-> ```
->
-> ```sh
-> crackmapexec smb <target> --pass-pol -u "guest" -p ""
-> ```
->
-> ```sh
-> SMB         10.129.14.128   445    DEVSMB           [*] Windows 6.1 Build 0 (name:DEVSMB) (domain:) (signing:False) (SMBv1:False)
-> SMB         10.129.14.128   445    DEVSMB           [+] \: 
-> SMB         10.129.14.128   445    DEVSMB           [+] Enumerated shares
-> SMB         10.129.14.128   445    DEVSMB           Share           Permissions     Remark
-> SMB         10.129.14.128   445    DEVSMB           -----           -----------     ------
-> SMB         10.129.14.128   445    DEVSMB           print$                          Printer Drivers
-> SMB         10.129.14.128   445    DEVSMB           home                            INFREIGHT Samba
-> SMB         10.129.14.128   445    DEVSMB           dev                             DEVenv
-> SMB         10.129.14.128   445    DEVSMB           notes           READ,WRITE      CheckIT
-> SMB         10.129.14.128   445    DEVSMB           IPC$                            IPC Service (DEVSM)
-> ```
 <!-- }}} -->
 
 ___
