@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Linux/Privesc/Kernel Exploits.md",
+                "file": "Microsoft/Windows/Privesc/Vulnerable Software.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Kernel Exploits"
+              "title": "Vulnerable Software"
             }
           }
         ]
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Linux/Privesc/Kernel Exploits.md",
+                "file": "Microsoft/Windows/Privesc/Vulnerable Software.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Kernel Exploits"
+              "title": "Outline of Vulnerable Software"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Linux/Privesc/Kernel Exploits.md",
+                "file": "Microsoft/Windows/Privesc/Vulnerable Software.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Kernel Exploits"
+              "title": "Graph of Vulnerable Software"
             }
           }
         ]
@@ -225,9 +225,25 @@
   },
   "active": "6f4e890d1c374ce7",
   "lastOpenFiles": [
+    "Microsoft/Windows/Privesc/User Privileges.md",
+    "Microsoft/Windows/Privesc/System Information.md",
+    "Microsoft/Windows/Privesc/Scheduled Tasks_1.md",
+    "Microsoft/Windows/Privesc/Network.md",
+    "Microsoft/Windows/Privesc/Kernel Exploits.md",
+    "Microsoft/Windows/Privesc/File System.md",
+    "Microsoft/Windows/Privesc/Enumeration Tools.md",
+    "Microsoft/Windows/Privesc/Credential Hunting.md",
+    "Microsoft/Windows/Privesc/Filesystem.md",
+    "Microsoft/Windows/Privesc/Network_1.md",
+    "Linux/Privesc/Filesystem.md",
+    "Microsoft/Windows/Privesc/Environment.md",
+    "Microsoft/Windows/Privesc/Kernel Exploits_1.md",
+    "Linux/Linux.md",
+    "Linux/Privesc/Credential Hunting.md",
+    "Linux/Privesc/Enumeration Tools.md",
+    "Linux/Privesc/Kernel Exploits.md",
     "Linux/Privesc/Shared Objects.md",
     "Linux/Privesc/Sudo.md",
-    "Linux/Privesc/Kernel Exploits.md",
     "Linux/Privesc/Kernel Exploits_1.md",
     "Linux/Privesc/Internals",
     "Linux/Privesc/Network.md",
@@ -236,23 +252,7 @@
     "Linux/Privesc/System Information_1.md",
     "Linux/Privesc/Group.md",
     "Linux/Privesc/Capabilities.md",
-    "Linux/Privesc/Cron Jobs.md",
-    "Linux/Privesc/Credential Hunting.md",
-    "Linux/Privesc/Software/Screen.md",
-    "Linux/Privesc/Processes.md",
-    "Linux/Privesc/Software/User.md",
     "Linux/Privesc/Software",
-    "Linux/Privesc/Software Vulnerability.md",
-    "Linux/Privesc/Directory & File.md",
-    "Linux/Privesc/SSH Keys.md",
-    "Linux/Privesc/User.md",
-    "Linux/Privesc/User & Group_1.md",
-    "Networking/Services/ISAKMP/Enumeration.md",
-    "Networking/Services/ISAKMP/General.md",
-    "Pentest/Tools/Cracking/Hashid.md",
-    "Pentest/Tools/Cracking/Hashcat.md",
-    "Linux/Privesc/User.md",
-    "Networking/Services/WinRM/Exploitation.md",
     "Networking/Services/ISAKMP",
     "Networking/Services/IPSEC IKE",
     "Programming/Python/Vulnerabilibies",

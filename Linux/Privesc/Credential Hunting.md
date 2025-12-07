@@ -489,6 +489,10 @@ Find [PGP Keys](https://en.wikipedia.org/wiki/Pretty_Good_Privacy)
 gpg --list-keys 2>/dev/null
 ```
 
+```sh
+gpg --list-secret-keys --keyid-format=long
+```
+
 ___
 <!-- }}} -->
 
