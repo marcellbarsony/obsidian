@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Linux/Privesc/Software/Screen.md",
+                "file": "Linux/Privesc/Kernel Exploits.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Screen"
+              "title": "Kernel Exploits"
             }
           }
         ]
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Linux/Privesc/Software/Screen.md",
+                "file": "Linux/Privesc/Kernel Exploits.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Screen"
+              "title": "Outline of Kernel Exploits"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Linux/Privesc/Software/Screen.md",
+                "file": "Linux/Privesc/Kernel Exploits.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Screen"
+              "title": "Graph of Kernel Exploits"
             }
           }
         ]
@@ -225,33 +225,34 @@
   },
   "active": "6f4e890d1c374ce7",
   "lastOpenFiles": [
-    "Linux/Privesc/Processes.md",
+    "Linux/Privesc/Shared Objects.md",
+    "Linux/Privesc/Sudo.md",
+    "Linux/Privesc/Kernel Exploits.md",
+    "Linux/Privesc/Kernel Exploits_1.md",
+    "Linux/Privesc/Internals",
+    "Linux/Privesc/Network.md",
+    "Linux/Privesc/System Information.md",
+    "Linux/Privesc/Kernel Exploit.md",
+    "Linux/Privesc/System Information_1.md",
+    "Linux/Privesc/Group.md",
+    "Linux/Privesc/Capabilities.md",
+    "Linux/Privesc/Cron Jobs.md",
+    "Linux/Privesc/Credential Hunting.md",
     "Linux/Privesc/Software/Screen.md",
+    "Linux/Privesc/Processes.md",
     "Linux/Privesc/Software/User.md",
     "Linux/Privesc/Software",
     "Linux/Privesc/Software Vulnerability.md",
-    "Linux/Privesc/Capabilities.md",
-    "Linux/Privesc/Credential Hunting.md",
-    "Linux/Privesc/Group.md",
     "Linux/Privesc/Directory & File.md",
     "Linux/Privesc/SSH Keys.md",
     "Linux/Privesc/User.md",
     "Linux/Privesc/User & Group_1.md",
     "Networking/Services/ISAKMP/Enumeration.md",
     "Networking/Services/ISAKMP/General.md",
-    "Linux/Privesc/Sudo.md",
     "Pentest/Tools/Cracking/Hashid.md",
     "Pentest/Tools/Cracking/Hashcat.md",
-    "Linux/Privesc/Cron Jobs.md",
     "Linux/Privesc/User.md",
-    "Linux/Privesc/System Information.md",
     "Networking/Services/WinRM/Exploitation.md",
-    "Linux/General/Polkit.md",
-    "Networking/Services/WinRM/Enumeration.md",
-    "Networking/Services/VNC/Exploitation.md",
-    "Networking/Services/FTP/General.md",
-    "Linux/Privesc/Network.md",
-    "Pentest/General/Preparation.md",
     "Networking/Services/ISAKMP",
     "Networking/Services/IPSEC IKE",
     "Programming/Python/Vulnerabilibies",
@@ -270,7 +271,6 @@
     "Webapp/Tools/Burp Suite/src/match-replace-rule.png",
     "Webapp/Tools/Burp Suite/src/20251128-222424.png",
     "Webapp/Tools/ZAP/src",
-    "Networking/Services/MongoDB",
     "Networking/Services/SMB/Untitled.canvas"
   ]
 }

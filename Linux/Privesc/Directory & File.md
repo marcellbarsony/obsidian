@@ -111,10 +111,10 @@ find / -user root -perm -6000 -exec ls -ldb {} \; 2>/dev/null
 ___
 <!-- }}} -->
 
-<!-- Writeable {{{-->
-## Writeable
+<!-- Writable {{{-->
+## Writable
 
-Find Writeable Files
+Find Writable Files
 
 ```sh
 find / -path /proc -prune -o -type f -perm -o+w 2>/dev/null
@@ -125,6 +125,7 @@ find / -path /proc -prune -o -type f -perm -o+w 2>/dev/null
 >
 > - Modify scripts
 > - Modify configuration files
+> - Modify [[Cron Jobs#Writable Scripts|Writable Cron Scripts]]
 <!-- }}} -->
 
 ___

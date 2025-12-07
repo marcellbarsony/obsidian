@@ -28,9 +28,9 @@ ___
 <!-- Kernel Exploits {{{-->
 ## Kernel Exploits
 
-- [ ] [[Kernel Exploits]]
-    - [ ] [[Kernel Exploits#Kernel Version|Kernel Version]]
-    - [ ] [[Kernel Exploits#Public Exploits|Public exploits]]
+- [ ] [[Microsoft/Windows/Privesc/Kernel Exploits]]
+    - [ ] [[Microsoft/Windows/Privesc/Kernel Exploits#Kernel Version|Kernel Version]]
+    - [ ] [[Microsoft/Windows/Privesc/Kernel Exploits#Public Exploits|Public exploits]]
 
 ___
 <!-- }}} -->
