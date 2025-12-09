@@ -9,9 +9,9 @@ tags:
 
 Enumerate a host with known IP address for
 
-- Operating system version
-- Open ports & services
-- Service versions & additional information
+- Operating System Version
+- Open Ports & Services
+- Service Versions & Additional Information
 
 ___
 
@@ -24,15 +24,17 @@ ___
 Basic OS detection scan
 
 ```sh
-sudo nmap -O <target> -v [-Pn] -oA os-detection
+sudo nmap -O $target -v [-Pn] -oA os-detection -v
 ```
 
+<!-- Info {{{-->
 > [!info]-
 >
 > - `-O`: OS detection
 > - `-v`: Include device type (*e.g., router, firewall, etc.*),
 >   OS family (*e.g., Linux*) and OS generation (*e.g., `2.6.X`*)
 > - `-Pn`: Disable ping probes (*optional*)
+<!-- }}} -->
 
 <!-- Example {{{-->
 > [!example]-
@@ -72,7 +74,7 @@ sudo nmap -O <target> -v [-Pn] -oA os-detection
 ### Version Scan
 
 ```sh
-nmap -sV -O <target> -v -oA os-detection-version
+nmap -sV -O $target -oA os-detection-version -v
 ```
 
 <!-- Example {{{-->
@@ -108,7 +110,7 @@ nmap -sV -O <target> -v -oA os-detection-version
 OS Detection & SYN Scan
 
 ```sh
-nmap -sS -O <target> -oA os-detection-syn
+nmap -sS -O $target -oA os-detection-syn -v
 ```
 
 <!-- }}} -->
@@ -118,14 +120,25 @@ nmap -sS -O <target> -oA os-detection-syn
 
 Aggressive Service Detection
 
-```sh
-nmap -sV <target> -A [-T4] -oA os-detection-aggressive
-```
-
 <!-- Warning {{{-->
 > [!warning]
 >
 > Might be blocked by firewall
+<!-- }}} -->
+
+```sh
+nmap -A $target -oA os-detection-aggressive -v
+```
+
+```sh
+nmap -A -T4 $target -oA os-detection-aggressive -v
+```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `-A`: Enable OS Detection (`-O`), Service Detection (`-sV`),
+>   Default Scripts (`-sC`)
 <!-- }}} -->
 
 <!-- }}} -->
@@ -142,32 +155,40 @@ ___
 Scan the most frequent TCP ports
 
 ```sh
-sudo nmap <target> --top-ports=10 -oA tcp-ports-top-10
+sudo nmap $target --top-ports=10 -oA tcp-ports-top-10 -v
 ```
 
-Disable on closed ports:
-
-- ICMP echo requests (`-Pn`)
-- DNS resolution (`-n`)
-- ARP ping scan (`--disable-arp-ping`).
+<!-- Tip {{{-->
+> [!tip]-
+>
+> Disable on closed ports:
+>
+> - ICMP echo requests (`-Pn`)
+> - DNS resolution (`-n`)
+> - ARP ping scan (`--disable-arp-ping`).
+>
+> ```sh
+> sudo nmap $target --top-ports=10 -Pn -n --disable-arp-ping -oA tcp-ports-top-10 -v
+> ```
+<!-- }}} -->
 
 <!-- Info {{{-->
-> [!info]-
+> [!info]- Top 10 TCP Ports
 >
 > Top 10 TCP Ports, ranked in the `nmap-services` file
 >
->| Port     | SERVICE       |
->| -------- | ------------- |
->| 21/tcp   | ftp           |
->| 22/tcp   | ssh           |
->| 23/tcp   | telnet        |
->| 25/tcp   | smtp          |
->| 80/tcp   | http          |
->| 110/tcp  | pop3          |
->| 139/tcp  | netbios-ssn   |
->| 443/tcp  | https         |
->| 445/tcp  | microsoft-ds  |
->| 3389/tcp | ms-wbt-server |
+> | Port     | SERVICE       |
+> | -------- | ------------- |
+> | 21/tcp   | ftp           |
+> | 22/tcp   | ssh           |
+> | 23/tcp   | telnet        |
+> | 25/tcp   | smtp          |
+> | 80/tcp   | http          |
+> | 110/tcp  | pop3          |
+> | 139/tcp  | netbios-ssn   |
+> | 443/tcp  | https         |
+> | 445/tcp  | microsoft-ds  |
+> | 3389/tcp | ms-wbt-server |
 <!-- }}} -->
 
 <!-- }}} -->
@@ -178,7 +199,13 @@ Disable on closed ports:
 Discover open ports on the target machine
 
 ```sh
-nmap -sV <target> --open -oA tcp-open-ports
+nmap $target --open -oA tcp-open-ports -v
+```
+
+Discover open ports on the target machine with service detection
+
+```sh
+nmap -sV $target --open -oA tcp-open-ports-sv -v
 ```
 
 <!-- Info {{{-->
@@ -197,7 +224,7 @@ nmap -sV <target> --open -oA tcp-open-ports
 Run a full port scan for services running on non-standard ports
 
 ```sh
-nmap <target> -p- --open -oA tcp-port-full
+nmap $target -p- --open -oA tcp-port-full -v
 ```
 
 <!-- Info {{{-->
@@ -217,7 +244,7 @@ Run a script scan on discovered ports
 (*e.g., `22`, `80`*)
 
 ```sh
-nmap -sC <target> -p <port> -oA tcp-script-scan
+nmap -sC $target -p <port> -oA tcp-script-scan -v
 ```
 
 <!-- Info {{{-->
@@ -237,11 +264,11 @@ nmap -sC <target> -p <port> -oA tcp-script-scan
 if a port is open
 
 ```sh
-sudo nmap <target> -p 443 -oA tcp-connect
+sudo nmap $target -p 443 -oA tcp-connect -v
 ```
 
 ```sh
-sudo nmap <target> -p 443 --packet-trace --disable-arp-ping -Pn -n --reason -sT -oA tcp-connect-trace
+sudo nmap $target -p 443 --packet-trace --disable-arp-ping -Pn -n --reason -sT -oA tcp-connect-trace -v
 ```
 <!-- }}} -->
 
@@ -267,7 +294,7 @@ ___
 Perform a quick aggressive scan
 
 ```sh
-nmap -sU -sV <target> -T5 -oA udp-quick-scan
+nmap -sU -sV $target -T5 -oA udp-quick-scan -v
 ```
 
 <!-- Info {{{-->
@@ -286,7 +313,7 @@ nmap -sU -sV <target> -T5 -oA udp-quick-scan
 Scan top 100 UDP ports
 
 ```sh
-sudo nmap <target_ip> -sU -F -oA udp-port-top-100
+sudo nmap $target -sU -F -oA udp-port-top-100 -v
 ```
 
 <!-- Info {{{-->
@@ -304,7 +331,7 @@ sudo nmap <target_ip> -sU -F -oA udp-port-top-100
 Scan all UDP ports
 
 ```sh
-sudo nmap -sU <target> -p- -oA udp-port-all
+sudo nmap -sU $target -p- -oA udp-port-all -v
 ```
 
 <!-- Info {{{-->
@@ -322,7 +349,7 @@ sudo nmap -sU <target> -p- -oA udp-port-all
 Scan specific UDP port
 
 ```sh
-sudo nmap -sU <target> -p <port> -Pn -n --disable-arp-ping --packet-trace --reason -oA udp-port-specific
+sudo nmap -sU $target -p <port> -Pn -n --disable-arp-ping --packet-trace --reason -oA udp-port-specific -v
 ```
 
 <!-- Info {{{-->

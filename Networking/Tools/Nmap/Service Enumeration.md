@@ -15,7 +15,7 @@ ___
 Full Port Scan & Service Version Detection
 
 ```sh
-sudo nmap <target> -p- -sV [-Pn] [-n] [--disable-arp-ping] [--stats-every=5s]
+sudo nmap $target -p- -sV [-Pn] [-n] [--disable-arp-ping] [--stats-every=5s]
 ```
 
 <!-- Info {{{-->
@@ -69,7 +69,7 @@ ___
 Grab the banner of a service
 
 ```sh
-ncat -nv <target> <port>
+ncat -nv $target <port>
 ```
 
 <!-- Example {{{-->
@@ -111,7 +111,7 @@ sudo tcpdump -i <network_interface> host <attacker_ip> and <target_ip>
 2. Grab the banner of a service
 
 ```sh
-ncat -nv <target> <port>
+ncat -nv $target <port>
 ```
 
 <!-- Example {{{-->

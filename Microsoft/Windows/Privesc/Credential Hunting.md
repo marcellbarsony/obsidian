@@ -1,17 +1,17 @@
 ---
-id: Exposed Credentials
+id: Credential Hunting
 aliases: []
 tags:
-  - Microsoft/Windows/Privesc/Exposed-Credentials
+  - Microsoft/Windows/Privesc/Credential-Hunting
 links: Privesc
 ---
 
-# Exposed Credentials
+# Credentials Hunting
 
-Look for exposed credentials in configuration files, log files,
-and user history files
+Look for exposed credentials in configuration files,
+log files, and user history files
 
-Search for patterns like `username`, `password`, `key`, `secret`, etc
+Search for patterns like `username`, `password`, `key`, `secret`, etc.
 
 ___
 
@@ -131,26 +131,25 @@ ___
 Windows stores credentials in **Credential Manager**,
 which may store usernames, passwords, and other authentication information
 
-### CMD
+CMD
 
 ```cmd
 cmdkey
 ```
 
-### PowerShell
-
-[Get-Credential - Microsoft Learn](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/get-credential)
+PowerShell - [Get-Credential](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/get-credential)
 
 ```powershell
 Get-Credential
 ```
 
-### Control Panel
+Control Panel
 
 1. Open `Control Panel`
 2. `User Accounts`
 3. `Credential Manager`
 
+___
 <!-- }}} -->
 
 <!-- Application Configuration Files {{{-->
@@ -158,62 +157,48 @@ Get-Credential
 
 Applications may store credentials in configuration files
 
-<!-- INI Files {{{-->
-### INI Files
+- INI Files
 
 ```cmd
 C:\ProgramData\<AppName>\config.ini
 ```
+
 ```sh
 C:\Users\<User>\AppData\Local\<AppName>\appsettings.ini
 ```
-<!-- }}} -->
 
-<!-- CONF Files {{{-->
-### CONF Files
+- CONF Files
 
 ```cmd
 C:\ProgramData\<AppName>\config.conf
 ```
+
 ```cmd
 C:\Users\<User>\AppData\Local\<AppName>\config.conf
 ```
-<!-- }}} -->
 
-<!-- XML Files {{{-->
-### XML Files
-
-Web servers or database apps use XML files to store data
+- XML Files - Web servers or database apps use `XML` files to store data
 
 ```cmd
 C:\Program Files\<AppName>\config.xml
 ```
-<!-- }}} -->
 
-<!-- JSON Files {{{-->
-### JSON Files
-
-Web apps and other softwar often use JSON configuration files
+- JSON Files - Web apps and other softwar often use `JSON` configuration files
 
 ```cmd
 C:\Users\<User>\AppData\Local\<AppName>\settings.json
 ```
-<!-- }}} -->
 
-<!-- YAML/Env Files {{{-->
-### YAML/Env Files
-
-Some application (e.g. Docker, Kubernetes) store configuragions in YAML or
-environment variable files
+- YAML/Env Files - Application (*e.g. Docker, Kubernetes*)
+store configurations in `YAML`, `JSON`, or environment variable files
 
 ```cmd
 C:\Users\<User>\.docker\config.json
 ```
+
 ```
 C:\Users\<User>\AppData\Local\<AppName>\config.yaml
 ```
-<!-- }}} -->
-___
 <!-- }}} -->
 
 <!-- Environment Variables {{{-->
@@ -229,6 +214,36 @@ dir env:
 ```
 ```powershell
 Get-ChildItem Env: | ft Key,Value -AutoSize
+```
+___
+<!-- }}} -->
+
+<!-- Clipboard {{{-->
+## Clipboard
+
+```cmd
+powershell -command "Get-Clipboard"
+```
+
+```powershell
+Get-Clipboard
+```
+
+___
+<!-- }}} -->
+
+<!-- Memory Mining {{{-->
+## Memory Mining
+
+[procdump](https://learn.microsoft.com/en-us/sysinternals/downloads/procdump) —
+Create a memory dump of a running process
+
+> [!tip]
+>
+> Services like FTP store their credentials in clear text in memory
+
+```sh
+procdump.exe -accepteula -ma <proc_name_tasklist>
 ```
 
 <!-- }}} -->

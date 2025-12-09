@@ -11,10 +11,10 @@ links: "[[Linux]]"
 
 ___
 
-<!-- Writeable Directories {{{-->
-## Writeable Directories
+<!-- Writable Directories {{{-->
+## Writable Directories
 
-Find Writeable Directories
+Find Writable Directories
 
 ```sh
 find / -path /proc -prune -o -type d -perm -o+w 2>/dev/null

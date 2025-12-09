@@ -28,7 +28,7 @@ having been received.
 Default scan (*Top 100 ports*)
 
 ```sh
-sudo nmap <target> -F
+sudo nmap $target -F
 ```
 
 <!-- Example {{{-->
@@ -53,7 +53,7 @@ Optimized RTT (*Round-Trip Time*)
 > may result in overlooking hosts
 
 ```sh
-sudo nmap <target> -F --initial-rtt-timeout 50ms --max-rtt-timeout 100ms
+sudo nmap $target -F --initial-rtt-timeout 50ms --max-rtt-timeout 100ms
 ```
 
 <!-- Example {{{-->

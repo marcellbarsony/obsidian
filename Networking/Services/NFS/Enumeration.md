@@ -106,7 +106,7 @@ Mount remote **NFS shares** to the local machine
 1. Create a mount directory
 
 ```sh
-mkdir target-NFS
+sudo mkdir /mnt/target-NFS
 ```
 
 2. Mount the NFS share(s)
@@ -114,6 +114,16 @@ mkdir target-NFS
 ```sh
 sudo mount -t nfs [-o vers=2] $target:<remote_folder> <local_folder> -o nolock
 ```
+
+```sh
+sudo mount -t nfs $target:/ /mnt/target-NFS -o nolock
+```
+
+> [!info]-
+>
+> - `-o`: `vers=2`, `vers=3`
+> - `proto=tcp`
+> - `nfs4_disable_idmapping`
 
 <!-- Example {{{-->
 > [!example]-
@@ -144,14 +154,74 @@ sudo mount -t nfs [-o vers=2] $target:<remote_folder> <local_folder> -o nolock
 > > - `-o nolock`: Mount option (disable file locking)
 <!-- }}} -->
 
-3. Change to the mount directory and show content
+3. Check for [[General#Default Configuration|Root Squashing]]
+
+```sh
+ls -ld /mnt/target-NFS
+```
+
+> [!example]-
+>
+> The NFS export applies `root_squash`
+>
+> ```sh
+> ls -ld /mnt/target-NFS
+> ```
+> ```sh
+> drwx------ 2 nobody nogroup 65536 Nov 10  2021 target-NFS
+> ```
+
+```sh
+sudo mount -t nfs $target:/TechSupport ./target-NFS -o nolock,uid=$(id -u nobody),gid=$(getent group nogroup | cut -d: -f3)
+```
+
+Remount the NFS share with the correct `uid`/`gid`
+
+```sh
+sudo umount target-NFS
+```
+
+```sh
+sudo mount -t nfs $target:/TechSupport ./target-NFS -o nolock,uid=65534,gid=65534
+```
+
+> [!todo]
+
+> [!resources]
+>
+> [vk9-sec.com](https://vk9-sec.com/2049-tcp-nfs-enumeration/)
+
+4. Change to the mount directory and show content
 
 ```sh
 cd target-NFS
 ```
+
 ```sh
 tree .
 ```
+
+```sh
+ls -lah
+```
+
+<!-- Permission Denied {{{-->
+> [!warning]- Permission Denied
+>
+> Try to elevate user privileges on `Permission Denied`
+> error
+>
+> ```sh
+> sudo su
+> ```
+>
+> Or list the contents as `sudo`
+>
+> ```sh
+> sudo ls -lA target-NFS/
+> ```
+<!-- }}} -->
+
 <!-- }}} -->
 
 <!-- Unmount NFS Shares {{{-->

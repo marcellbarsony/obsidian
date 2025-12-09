@@ -97,6 +97,16 @@ Virtual host fuzzing is recommended
 to possibly find alternate domain names of subdomains
 that point to a virtual host
 
+<!-- Hosts {{{-->
+> [!tip] Hosts
+>
+> Add the found virtual hosts to `/etc/hosts`
+>
+> ```sh
+> sudo sh -c "echo '$target app.inlanefreight.local dev.inlanefreight.local' >> /etc/hosts"
+> ```
+<!-- }}} -->
+
 <!-- Wordlists {{{-->
 > [!tip]- Wordlists
 >
@@ -113,16 +123,31 @@ that point to a virtual host
 > and it could lead to an unintended denial of service
 <!-- }}} -->
 
+[[Ffuf]]
+
+```sh
+ffuf -H "Host: FUZZ.<domain>" -H "User-Agent: PENTEST" -c -w "<wordlist.txt>" -u <target>
+```
+```sh
+ffuf -c -r -w "<wordlist.txt>" -u "http://FUZZ.<target>/"
+```
+
+Filter results by response sizes (*e.g., `-fs 109, 208`*)
+
+```sh
+ffuf -w namelist.txt -u http://10.129.184.109 -H "HOST: FUZZ.inlanefreight.htb" -fs 10918
+```
+
 [[Gobuster]]
 
 ```sh
-gobuster vhost -u http://<target> -w <wordlist.txt>
+gobuster vhost -u http://<target> -w <wordlist>
 ```
 ```sh
-gobuster vhost -u http://<target> -w <wordlist.txt> --domain <domain> --append-domain -t 60
+gobuster vhost -u http://<target> -w <wordlist> [--domain <domain>] --append-domain -t 60
 ```
 ```sh
-gobuster vhost -u http://<target> -w <wordlist.txt> -p <pattern_file> --exclude-length 301
+gobuster vhost -u http://<target> -w <wordlist> -p <pattern_file> --exclude-length 301
 ```
 ```sh
 gobuster vhost --useragent "PENTEST" --wordlist "<wordlist.txt>" --url <target>
@@ -178,24 +203,119 @@ gobuster vhost --useragent "PENTEST" --wordlist "<wordlist.txt>" --url <target>
 > <!-- }}} -->
 <!-- }}} -->
 
+<!-- }}} -->
+
+<!-- Recursive Fuzzing {{{-->
+### Recursive Fuzzing
+
+Conduct recursive virtual host fuzzing on the virtual hosts found
+
+<!-- Hosts {{{-->
+> [!tip] Hosts
+>
+> Add the found virtual hosts to `/etc/hosts`
+>
+> ```sh
+> sudo sh -c "echo '$target app.inlanefreight.local dev.inlanefreight.local' >> /etc/hosts"
+> ```
+<!-- }}} -->
+
+<!-- Wordlists {{{-->
+> [!tip]- Wordlists
+>
+> - [[SecLists#Subdomains|SecLists]]
+>
+<!-- }}} -->
+
+[[Gobuster]]
+
+```sh
+gobuster vhost -u http://<vhost>.<target> -w <wordlist>
+```
+```sh
+gobuster vhost -u http://<vhost>.<target> -w <wordlist> [--domain <domain>] --append-domain -t 60
+```
+```sh
+gobuster vhost -u http://<vhost>.<target>.<tld> -w <wordlist> -p <pattern_file> --exclude-length 301
+```
+```sh
+gobuster vhost --useragent "PENTEST" --wordlist "<wordlist.txt>" --url <vhost>.<target>
+```
+
+> [!example]-
+>
+> ```sh
+> gobuster vhost -u http://web1337.inlanefreight.htb:42427 -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt --append-domain -t 60
+> ```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `-p pattern`: The `pattern` file contains the domain name
+>
+> ```sh
+> cat pattern
+> ```
+> ```sh
+> {GOBUSTER}.inlanefreight.htb
+> ```
+>
+> - `-t 60`: Number of threads
+> - `-u`: Set URL to machine IP
+> - `-w`: Wordlist
+> - `--append-domain`: Appends the configured domain to each entry in the wordlist
+> - `--exclude-length 301`: Ignore results whose response body length
+>    equals 301 bytes
+> - `--useragent`: Define custom [[User Agent]]
+<!-- }}} -->
+
+<!-- Domain {{{-->
+> [!tip]- Domain
+>
+> Defining a domain may be necessary
+> when appending a domain (`--append-domain`)
+>
+> - `--domain <target.com>`: Set top- and second-level domains
+>   in the `Hostname:` header
+>
+> - `-p <pattern_file>`: Set custom domain pattern in the pattern file
+>
+> ```sh
+> cat pattern
+> ```
+> ```sh
+> {GOBUSTER}.inlanefreight.htb
+> ```
+>
+> <!-- VHost Header {{{-->
+> > [!example]- VHost Header
+> >
+> > ```sh
+> > HOST: admin.inlanefreight.thm
+> > HOST: test.inlanefreight.thm
+> > HOST: dev.inlanefreight.thm
+> > ```
+> <!-- }}} -->
+<!-- }}} -->
+
 [[Ffuf]]
 
 ```sh
-ffuf -H "Host: FUZZ.<domain>" -H "User-Agent: PENTEST" -c -w "<wordlist.txt>" -u <target>
+ffuf -H "Host: FUZZ.<domain>" -H "User-Agent: PENTEST" -c -w "<wordlist.txt>" -u <vhost.<target>
 ```
 ```sh
-ffuf -c -r -w "<wordlist.txt>" -u "http://FUZZ.<target>/"
+ffuf -c -r -w "<wordlist.txt>" -u "http://FUZZ.<vhost>.<target>/"
 ```
 
 Filter results by response sizes (*e.g., `-fs 109, 208`*)
 
 ```sh
-ffuf -w namelist.txt -u http://10.129.184.109 -H "HOST: FUZZ.inlanefreight.htb" -fs 10918
+ffuf -w namelist.txt -u http://10.129.184.109 -H "HOST: FUZZ.<vhost>.inlanefreight.htb" -fs 10918
 ```
 
-___
 <!-- }}} -->
 
+___
 <!-- }}} -->
 
 <!-- Hosts {{{-->
@@ -210,7 +330,7 @@ sudoedit /etc/hosts
 ```
 
 ```sh
-sudo sh -c "echo '10.129.122.20 app.inlanefreight.local dev.inlanefreight.local' >> /etc/hosts"
+sudo sh -c "echo '$target app.inlanefreight.local dev.inlanefreight.local' >> /etc/hosts"
 ```
 ___
 <!-- }}} -->

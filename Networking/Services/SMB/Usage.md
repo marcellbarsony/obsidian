@@ -30,22 +30,22 @@ and communicate between nodes on a network
 Connect to a share
 
 ```sh
-smbclient //<target_ip>/<share>
+smbclient //$target/<share>
 ```
 
 > [!example]-
 >
 > ```sh
-> smbclient //<target_ip>/anonymous
+> smbclient //$target/anonymous
 > ```
 > ```sh
-> smbclient //<target_ip>/IPC$
+> smbclient //$target/IPC$
 > ```
 
 Connect to share as specified user
 
 ```sh
-smbclient -U bob //10.129.14.128/users
+smbclient //$target/<share> -U <user>
 ```
 
 > [!info]-
@@ -93,7 +93,7 @@ smbclient -U bob //10.129.14.128/users
 Connect to a share
 
 ```sh
-smbclient -N \\\\<target_ip>\\<share>
+smbclient -N \\\\$target\\<share>
 ```
 
 <!-- Info {{{-->
@@ -105,7 +105,7 @@ smbclient -N \\\\<target_ip>\\<share>
 Connect to a share as specified user
 
 ```sh
-smbclient \\\\<target_ip>\\users -U "<username>"
+smbclient \\\\$target\\<share> -U "<user>"
 ```
 
 <!-- Info {{{-->
@@ -115,11 +115,11 @@ smbclient \\\\<target_ip>\\users -U "<username>"
 <!-- }}} -->
 
 ```sh
-smbclient "\\\\<target_ip>\\" -U <username> -W <domain_name>
+smbclient "\\\\$target\\" -U <user> -W <domain_name>
 ```
 
 ```sh
-smbclient "\\\\<target_ip>\\" -U <username> -W <domain_name> --pw-nt-hash `hash`
+smbclient "\\\\$target\\" -U <user> -W <domain_name> --pw-nt-hash `hash`
 ```
 
 <!-- Info {{{-->
@@ -195,7 +195,7 @@ Run Dialog — Interact with a shared folder
 List shared folder contents
 
 ```sh
-dir \\<target>\<share>\
+dir \\$target\<share>\
 ```
 
 <!-- Example {{{-->
@@ -220,11 +220,11 @@ dir \\<target>\<share>\
 Connect to a file share and and map its content to the drive letter `n`
 
 ```sh
-net use n: \\<target>\<share>
+net use n: \\$target\<share>
 ```
 
 ```sh
-net use n: \\<target>\<share> /user:<user> <password>
+net use n: \\$target\<share> /user:<user> <password>
 ```
 
 <!-- Example {{{-->
@@ -247,7 +247,7 @@ net use n: \\<target>\<share> /user:<user> <password>
 List shared folder contents
 
 ```powershell
-Get-ChildItem \\<target>\<share>\
+Get-ChildItem \\$target\<share>\
 ```
 
 <!-- Example {{{-->
@@ -269,7 +269,7 @@ Get-ChildItem \\<target>\<share>\
 Connect to a file share and and map its content to the drive letter `n`
 
 ```sh
-New-PSDrive -Name "N" -Root "\\<target>\<share>" -PSProvider "FileSystem"
+New-PSDrive -Name "N" -Root "\\$target\<share>" -PSProvider "FileSystem"
 ```
 
 <!-- Example {{{-->

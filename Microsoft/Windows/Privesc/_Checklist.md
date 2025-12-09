@@ -28,9 +28,9 @@ ___
 <!-- Kernel Exploits {{{-->
 ## Kernel Exploits
 
-- [ ] [[Microsoft/Windows/Privesc/Kernel Exploits]]
-    - [ ] [[Microsoft/Windows/Privesc/Kernel Exploits#Kernel Version|Kernel Version]]
-    - [ ] [[Microsoft/Windows/Privesc/Kernel Exploits#Public Exploits|Public exploits]]
+- [ ] [[Kernel]]
+    - [ ] [[Kernel#Kernel Version|Kernel Version]]
+    - [ ] [[Kernel#Public Exploits|Public exploits]]
 
 ___
 <!-- }}} -->
@@ -38,11 +38,11 @@ ___
 <!-- Installed Software {{{-->
 ## Installed Software
 
-- [ ] [[Vulnerable Software]]
-    - [ ] [[Vulnerable Software#Program Files|Program Files]]
-    - [ ] [[Vulnerable Software#PowerShell|PowerShell]]
-    - [ ] [[Vulnerable Software#WMIC|WMIC]]
-    - [ ] [[Vulnerable Software#LOLBAS|LOLBAS]]
+- [ ] [[Software]]
+    - [ ] [[Software#Program Files|Program Files]]
+    - [ ] [[Software#PowerShell|PowerShell]]
+    - [ ] [[Software#WMIC|WMIC]]
+    - [ ] [[Software#LOLBAS|LOLBAS]]
 
 ___
 <!-- }}} -->

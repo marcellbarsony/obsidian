@@ -6,23 +6,36 @@ tags:
 links: "[[Windows]]"
 ---
 
-
 # Connect
 
 ___
 
-<!-- PSExec.py {{{-->
-## PSExec.py
+<!-- Terminal {{{-->
+## Terminal
 
 [PSExec.py](https://github.com/fortra/impacket/blob/master/examples/psexec.py)
-([[Impacket]]) — Connect from a Linux host to a Windows target with credentials
+(*[[Impacket]]*) — Connect from a Linux host to a Windows target with credentials
 
 ```sh
-impacket-psexec <user>@<target>
+impacket-psexec <user>@$target
 ```
 
 ```sh
-psexec.py <user>@<target>
+psexec.py <user>@$target
 ```
 
+___
+<!-- }}} -->
+
+<!-- RDP {{{-->
+## RDP
+
+[xfreerdp](https://linux.die.net/man/1/xfreerdp) —
+FreeRDP X11 client
+
+```sh
+xfreerdp3 /v:$target /u:<user> /p:'<password>' [/dynamic-resolution]
+```
+
+___
 <!-- }}} -->

@@ -57,7 +57,11 @@ crontab -l
 cat /etc/crontab
 ```
 
-Investigate [[Processes#Running Processes|Running Processes]]
+<!-- Tip {{{-->
+> [!tip]
+>
+> Investigate [[Processes#Running Processes|Running Processes]]
+<!-- }}} -->
 
 <!-- Example {{{-->
 > [!example]-
@@ -128,7 +132,7 @@ ___
 <!-- Write Privilege {{{-->
 ### Write Privilege
 
-Check if the any of the Cron directories have write privilege
+Check if the any of the Cron directories or its files have write privilege set
 
 `/etc/cron.d`
 
@@ -214,14 +218,12 @@ test -w /var/spool/cron/crontabs/root && echo "Writable" || echo "Not Writable"
 find /var/spool/cron/crontabs/root -type f -perm -0002 -ls
 ```
 
-> [!todo]
->
-> To add Cron Jobs, write a bash script executing a reverse shell command
-
+<!-- Tip {{{-->
 > [!tip]
 >
-> Find [[Directory & File#Writeable Directories|Writeable Directories]] &
-> [[Directory & File#Writeable|Writeable Files]]
+> Find [[Directory & File#Writable Directories|Writable Directories]] &
+> [[Directory & File#Writable|Writable Files]]
+<!-- }}} -->
 
 <!-- }}} -->
 
@@ -347,8 +349,6 @@ to execute the arbitrary code
 > User htb-student may run the following commands on NIX02:
 >     (root) NOPASSWD: ALL
 > ```
-<!-- }}} -->
-
 <!-- }}} -->
 
 <!-- }}} -->
