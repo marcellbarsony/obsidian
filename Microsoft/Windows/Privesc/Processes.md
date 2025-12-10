@@ -7,7 +7,10 @@ tags:
 links: "[[Windows]]"
 ---
 
+<!-- Process Enumeration {{{-->
 # Process Enumeration
+
+Enumerate [[Processes/Processes|Processes]]
 
 ___
 
@@ -16,7 +19,7 @@ ___
 
 > [!tip]
 >
-> [[General/Processes#Standard Processes|Windows Standard Processes]]
+> [[Processes/Processes#Standard Processes|Windows Standard Processes]]
 
 [tasklist](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/tasklist) —
 Running processes and services
@@ -138,63 +141,17 @@ todos %username%" && echo.
 ___
 <!-- }}} -->
 
-<!-- Access Tokens {{{-->
-## Access Tokens
-
-[AccessTokens](https://learn.microsoft.com/en-us/windows/win32/secauthz/access-tokens)
-used to describe the security context (*security attributes or rules*)
-of a process or thread.
-
-The token includes information about the user account's identity
-and privileges related to a specific process or thread.
-
-When a user authenticates to a system, their password is verified
-against a security database, and if properly authenticated,
-they will be assigned an access token.
-
-Every time a user interacts with a process,
-a copy of this token will be presented to determine their privilege level.
-
-___
 <!-- }}} -->
 
 <!-- Named Pipes {{{-->
-## Named Pipes
+# Named Pipes
 
-[Named Pipes](https://en.wikipedia.org/wiki/Named_pipe) (*a.k.a FIFO*)
-on Windows are files stored in memory that get cleared out after being read
-and is one of the methods of inter-process communication
-(*[IPC](https://en.wikipedia.org/wiki/Inter-process_communication)*)
+Enumerate & Exploit [[Named Pipes]]
 
-> [!example]
->
-> ```sh
-> \\.\PipeName\\ExampleNamedPipeServer
-> ```
-
-<!-- Pipe Communication {{{-->
-### Pipe Communication
-
-Windows systems use a Client-Server implementation
-
-- **SERVER**: The process that creates a named pipe
-- **CLIENT**: The process communicating with the named pipe
-
-Named pipes can communicate using
-
-- **half-duplex** (*one-way*) channel
-  with the client only being able to write data to the server
-- **duplex** (*two-way*) channel
-  that allows the client to write data over the pipe,
-  and the server to respond back with data
-
-Every active connection to a named pipe server
-results in the creation of a new named pipe
-
-<!-- }}} -->
+___
 
 <!-- Enumeration {{{-->
-### Enumeration
+## Enumeration
 
 [PipeList](https://learn.microsoft.com/en-us/sysinternals/downloads/pipelist) —
 List named pipes
@@ -356,12 +313,25 @@ Enumerate a process's permissions by reviewing the Discretionary Access List (DA
 accesschk.exe /accepteula \\.\Pipe\<process> -v
 ```
 
+<!-- Example {{{-->
+> [!example]-
+>
+>
+> ```sh
+> cd C:\Tools\AcccessChk
+> ```
+> ```sh
+> accesschk.exe -accepteula -w \pipe\SQLLocal\SQLEXPRESS01 -v
+> ```
 <!-- }}} -->
 
+<!-- }}} -->
+
+___
 <!-- }}} -->
 
 <!-- Exploitation {{{-->
-### Exploitation
+## Exploitation
 
 [Exploit-DB - WindscribeService Named Pipe Privilege Escalation](https://www.exploit-db.com/exploits/48021)
 
@@ -388,7 +358,7 @@ accesschk.exe /accepteula \\.\Pipe\<process> -v
 >
 <!-- }}} -->
 
+___
 <!-- }}} -->
 
-___
 <!-- }}} -->

@@ -29,7 +29,7 @@ Enumerate the current user's security groups
 <!-- }}} -->
 
 [whoami](https://en.wikipedia.org/wiki/Whoami) -
-Current user's security groups & [[Privileges|privilege]] status
+Current user's security groups & [[Microsoft/Windows/Privesc/Privileges|privilege]] status
 
 ```sh
 whoami /groups
@@ -155,6 +155,63 @@ ___
 > [!info]- Resources
 >
 > [HackTricks](https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/privileged-groups-and-token-privileges.html)
+
+<!-- Admin Groups {{{-->
+### Admin Groups
+
+Administrators
+
+```powershell
+Get-NetGroupMember -Identity "Administrators" -Recurse
+```
+
+Domain Admins
+
+```powershell
+Get-NetGroupMember -Identity "Domain Admins" -Recurse
+```
+
+Enterprise Admins
+
+```powershell
+Get-NetGroupMember -Identity "Enterprise Admins" -Recurse
+```
+
+<!-- }}} -->
+
+<!-- Other Groups {{{-->
+### Other Groups
+
+Account Operators
+
+- Create and modify non-protected accounts and groups in the domain
+- Local login to the DC
+
+```powershell
+Get-NetGroupMember -Identity "Account Operators" -Recurse
+```
+
+AD Recycle Bin
+
+- Read deleted Active Directory objects
+
+```powershell
+Get-ADObject -filter 'isDeleted -eq $true' -includeDeletedObjects -Properties *
+```
+
+Backup Operators
+
+- Should be considered Domain Admins
+- Access to the `DC01` file system via [[SMB/General|SMB]]
+  (*due to the `SeBackup` and `SeRestore` privileges*)
+- Make shadow copies of the SAM/NTDS database
+- Read the registry remotely
+
+```powershell
+Get-NetGroupMember -Identity "Backup Operators" -Recurse
+```
+
+<!-- }}} -->
 
 ___
 <!-- }}} -->

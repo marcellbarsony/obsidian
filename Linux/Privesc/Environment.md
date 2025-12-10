@@ -16,7 +16,7 @@ specifies the set of directories where an executable can be located
 > [!tip]
 >
 > Any directory inside the `PATH` variable with
-> [[Permissions|write permissions]]
+> [[Linux/General/File System/Permissions|write permissions]]
 > may allow to hijack its libraries or binaries
 <!-- }}} -->
 

@@ -150,7 +150,7 @@ arp -a
 ### Routing Table
 
 ```sh
-C:\htb> route print
+route print
 ```
 
 <!-- Example {{{-->

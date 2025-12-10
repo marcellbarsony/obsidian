@@ -18,10 +18,7 @@ to resources on Windows hosts
 **Security Principals** are identified by a unique
 [Security Identifier (SID)](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/understand-security-identifiers)
 
-
-The user's access token
-(*including their user SID, SIDs for any groups they are members of,
-privilege list, and other access information*)
+The [[Access Token]]
 is compared against
 [Access Control Entries (ACEs)](https://learn.microsoft.com/en-us/windows/win32/secauthz/access-control-entries)
 within the object's
@@ -42,7 +39,6 @@ can be abused to escalate privileges
 >
 > | Group | Description |
 > | --- | --- |
-> | Default Administrators      | Domain Admins and Enterprise Admins are "super" groups |
 > | Server Operators            | Members can modify services, access SMB shares, and backup files |
 > | Backup Operators            | Members are allowed to log onto DCs locally and should be considered Domain Admins They can make shadow copies of the SAM/NTDS database, read the registry remotely, and access the file system on the DC via SMB  This group is sometimes added to the local Backup Operators group on non-DCs |
 > | Print Operators             | Members can log on to DCs locally and "trick" Windows into loading a malicious driver |

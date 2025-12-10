@@ -49,15 +49,9 @@ Get-Service
 
 Enumerate active local network services
 
-<!-- Tip {{{-->
-> [!tip]-
->
-> Look for entries
->
-> - Listening on loopback addresses (*`127.0.0.1` and `::1`*)
-> - Not listening on the machine's local IP
-> - Not listening on the broadcast address (*`0.0.0.0`, `::/0`*)
-<!-- }}} -->
+- Listening on loopback addresses (*`127.0.0.1` and `::1`*)
+- Not listening on the machine's local IP
+- Not listening on the broadcast address (*`0.0.0.0`, `::/0`*)
 
 [netstat](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/netstat) —
 List active TCP and UDP connections and ports listening
@@ -86,6 +80,13 @@ netstat -ano
 > <...SNIP...>
 >  ```
 <!-- }}} -->
+
+[tasklist](https://en.wikipedia.org/wiki/Tasklist) —
+Correlate found service `PID` with the service name
+
+```sh
+tasklist | findstr /c:"<pid>"
+```
 
 <!-- }}} -->
 

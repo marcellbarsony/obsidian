@@ -76,7 +76,7 @@ ___
 <!-- Permissions {{{-->
 ## Permissions
 
-Search files with [[Permissions#SUID & SGID|SUID & SGID]] bits set
+Search files with [[Linux/General/File System/Permissions#SUID & SGID|SUID & SGID]] bits set
 
 SUID
 

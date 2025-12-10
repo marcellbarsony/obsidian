@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Microsoft/Windows/General/Authorization/Authorization.md",
+                "file": "Microsoft/Windows/Privesc/Network.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Authorization"
+              "title": "Network"
             }
           }
         ]
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Microsoft/Windows/General/Authorization/Authorization.md",
+                "file": "Microsoft/Windows/Privesc/Network.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Authorization"
+              "title": "Outline of Network"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Microsoft/Windows/General/Authorization/Authorization.md",
+                "file": "Microsoft/Windows/Privesc/Network.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Authorization"
+              "title": "Graph of Network"
             }
           }
         ]
@@ -223,45 +223,45 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "6f4e890d1c374ce7",
+  "active": "5f07e9f23936f1f0",
   "lastOpenFiles": [
+    "Networking/Services/MSSQL/Usage.md",
+    "Networking/Services/MSSQL/Exploitation.md",
+    "Networking/Services/MSSQL/Enumeration.md",
+    "Networking/Services/MySQL/Exploitation.md",
+    "Networking/Services/MySQL/General.md",
+    "Networking/Services/MySQL/Usage.md",
+    "Networking/Services/SQL/Exploitation.md",
+    "Networking/Services/SQL/General.md",
+    "Networking/Services/SQL/Usage.md",
+    "Microsoft/Windows/General/Authorization/Access Token.md",
     "Microsoft/Windows/Privesc/Privileges.md",
     "Microsoft/Windows/General/Authorization/Authorization.md",
+    "Microsoft/Windows/General/Processes/Processes.md",
+    "Microsoft/Windows/General/User/Permissions.md",
+    "Microsoft/Windows/General/Authorization/Privileges.md",
+    "Microsoft/Windows/Privesc/Group.md",
+    "Microsoft/Windows/General/Groups.md",
+    "Microsoft/Windows/General/Privileges/Groups.md",
+    "Microsoft/Windows/General/Authorization/Authorization_1.md",
+    "Microsoft/Windows/General/Permissions/Privileges_1.md",
+    "Microsoft/Windows/General/Permissions",
+    "Microsoft/Windows/General/Privileges/Privileges_1.md",
+    "Microsoft/Windows/General/User",
+    "Microsoft/Windows/General/Privileges.md",
+    "Microsoft/Windows/Privesc/Processes.md",
+    "Microsoft/Windows/Privesc/Services.md",
+    "Microsoft/Windows/Privesc/User.md",
+    "Microsoft/Windows/General/Processes/Named Pipes.md",
+    "Microsoft/Windows/General/Processes",
     "Microsoft/Windows/General/Authorization/src/auth_process.png",
     "Microsoft/Windows/General/Authorization/src",
     "Microsoft/Windows/General/Authorization",
-    "Microsoft/Windows/Privesc/Processes.md",
-    "Microsoft/Windows/Privesc/Services.md",
-    "Microsoft/Windows/Privesc/Security.md",
-    "Microsoft/Windows/Privesc/Scheduled Tasks_1.md",
-    "Microsoft/Windows/Privesc/User.md",
-    "Microsoft/Windows/Privesc/Group.md",
-    "Microsoft/Windows/Privesc/Software.md",
-    "Microsoft/Windows/Privesc/System Information.md",
-    "Microsoft/Windows/Privesc/Network.md",
-    "Linux/Privesc/System Information.md",
-    "Linux/Privesc/Environment.md",
-    "Microsoft/Windows/Privesc/Environment.md",
-    "Microsoft/Windows/Privesc/Enumeration Tools_1.md",
-    "Microsoft/Windows/General/Processes.md",
-    "Microsoft/Windows/General/Connect.md",
-    "Microsoft/Windows/General/General.md",
-    "Linux/Privesc/Software/Screen.md",
-    "Microsoft/Windows/Privesc/Services_1.md",
-    "Linux/Privesc/Capabilities.md",
-    "Linux/Privesc/Credential Hunting.md",
-    "Linux/Privesc/Cron Jobs.md",
-    "Linux/Privesc/User.md",
-    "Linux/Privesc/System Files.md",
-    "Linux/Privesc/Sudo.md",
     "Microsoft/Windows/Privesc/-",
     "Linux/Privesc/Internals",
     "Linux/Privesc/Software",
     "Networking/Services/ISAKMP",
     "Networking/Services/IPSEC IKE",
-    "Programming/Python/Vulnerabilibies",
-    "Programming/PHP",
-    "Linux/General/Software/Security",
     "Networking/Services/SMB/src/windows-shared-folder.jpg",
     "Webapp/Tools/Burp Suite/src/match-replace-response.png",
     "Webapp/Tools/Burp Suite/src/scope.png",
