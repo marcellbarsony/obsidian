@@ -14,7 +14,8 @@ ___
 <!-- Windows Defender {{{-->
 ## Windows Defender
 
-Windows Defender Status
+[Get-MpComputerStatus](https://learn.microsoft.com/en-us/powershell/module/defender/get-mpcomputerstatus?view=windowsserver2025-ps) —
+Get Windows Defender Status
 
 ```sh
 Get-MpComputerStatus

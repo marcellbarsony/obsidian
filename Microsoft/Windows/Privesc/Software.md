@@ -13,15 +13,15 @@ unpatched versions are in use
 
 ___
 
-<!-- Program Files {{{-->
-## Program Files
+<!-- CMD {{{-->
+## CMD
 
-Check `C:\Program Files` to see what software is installed
+[wmic](https://learn.microsoft.com/en-us/windows/win32/wmisdk/wmic) —
+List installed apps
 
-```sh
-dir C:\Program Files
+```cmd
+wmic product get name, version
 ```
-
 ___
 <!-- }}} -->
 
@@ -51,15 +51,15 @@ Get-AppxPackage | Select Name, PackageFullName
 ___
 <!-- }}} -->
 
-<!-- CMD {{{-->
-## CMD
+<!-- Program Files {{{-->
+## Program Files
 
-[wmic](https://learn.microsoft.com/en-us/windows/win32/wmisdk/wmic) —
-List installed apps
+List `C:\Program Files` for installed software
 
-```cmd
-wmic product get name, version
+```sh
+dir C:\Program Files
 ```
+
 ___
 <!-- }}} -->
 

@@ -21,6 +21,9 @@ Enumerate General Network Information
 > - IP Address(es)
 > - DNS Information
 
+[ipconfig](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ipconfig) —
+Display TCP/IP, DHCP and DNS configuration
+
 ```sh
 ipconfig /all
 ```
@@ -111,6 +114,9 @@ ipconfig /all
 <!-- ARP Table {{{-->
 ### ARP Table
 
+[arp](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/arp) —
+Display and modify entries in the ARP cache
+
 ```sh
 arp -a
 ```
@@ -148,6 +154,9 @@ arp -a
 
 <!-- Routing Table {{{-->
 ### Routing Table
+
+[route](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/route_ws2008) —
+Display and modify entires in the local IP routing table
 
 ```sh
 route print
@@ -229,9 +238,15 @@ route print
 <!-- Internet Settings {{{-->
 ## Internet Settings
 
+Show current user's Internet-related settings
+(*e.g., proxy, connections, zones, etc.*)
+
 ```powershell
 reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings"
 ```
+
+Show system-wide internet settings
+applied by the machine or administrators
 
 ```powershell
 reg query "HKLM\Software\Microsoft\Windows\CurrentVersion\Internet Settings"

@@ -14,6 +14,7 @@ ___
 <!-- Identify {{{-->
 ## Identify
 
+[whoami](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/whoami) —
 All local user accounts, groups, privileges
 
 ```sh
@@ -23,6 +24,7 @@ whoami /all
 <!-- Current User {{{-->
 ### Current User
 
+[whoami](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/whoami) —
 Current user security identity
 
 ```sh
@@ -48,17 +50,22 @@ Discover additional user accounts and their rights on the system
 >
 > - Credential reuse
 
-All local user accounts
+[net user](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/net-user) —
+Get all local user accounts
 
 ```sh
 net user
 ```
 
+[Get-LocalUser](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts/get-localuser?view=powershell-5.1) —
+Get all local user accounts
+
 ```powershell
 Get-LocalUser | ft Name,Enabled,LastLogon
 ```
 
-Full user account details
+[Get-WmiObject](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-wmiobject?view=powershell-5.1) —
+Get full user account details
 
 ```powershell
 Get-WmiObject -Class Win32_UserAccount
@@ -67,7 +74,7 @@ Get-WmiObject -Class Win32_UserAccount
 <!-- HOME Folders {{{-->
 #### HOME Folders
 
-All local user HOME folders
+Discover & Enumerate all local user HOME folders
 
 ```powershell
 Get-ChildItem C:\Users -Force | select Name
@@ -86,6 +93,7 @@ dir C:\Users
 <!-- Password Policy {{{-->
 #### Password Policy
 
+[net](https://learn.microsoft.com/en-us/troubleshoot/windows-server/networking/net-commands-on-operating-systems) —
 Password policy
 
 ```cmd
@@ -148,6 +156,9 @@ net users %username%
 
 <!-- }}} -->
 
+<!-- }}} -->
+
+___
 <!-- }}} -->
 
 <!-- }}} -->

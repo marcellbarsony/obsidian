@@ -15,6 +15,9 @@ ___
 
 Enumerate all environment variables
 
+[set](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/set_1) —
+Displays, sets, or removes `cmd.exe` environment variables
+
 ```sh
 set
 ```
@@ -65,6 +68,13 @@ set
 > windir=C:\Windows 
 > ```
 <!-- }}} -->
+
+[Get-ChildItem](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-childitem?view=powershell-7.5) —
+Gets the items and child items in one or more specified locations
+
+```powershell
+Get-ChildItem Env:
+```
 
 ___
 <!-- }}} -->

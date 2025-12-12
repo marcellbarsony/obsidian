@@ -21,7 +21,7 @@ Connect remotely to the MSSQL server using Transact-SQL
 Connect to a MSSQL server
 
 ```sh
-impacket-mssqlclient <target_host|target_ip>/<user>@<target_ip> -windows-auth
+impacket-mssqlclient $target/<user>@<target_ip> -windows-auth
 ```
 
 <!-- Example {{{-->
@@ -73,25 +73,25 @@ impacket-mssqlclient <target_host|target_ip>/<user>@<target_ip> -windows-auth
 Windows authentication
 
 ```sh
-impacket-mssqlclient <DOMAIN>/<user>:<password>@<target>
+impacket-mssqlclient <DOMAIN>/<user>:<password>@$target
 ```
 
 SQL authentication
 
 ```sh
-impacket-mssqlclient sa:<password>@<target> -windows-auth
+impacket-mssqlclient sa:<password>@$target -windows-auth
 ```
 
 Connect to a specific database
 
 ```sh
-impacket-mssqlclient <user>:<password>@<target>m -db master
+impacket-mssqlclient <user>:<password>@$target -db master
 ```
 
 Connect with hash (*Pass-the-Hash*)
 
 ```sh
-impacket-mssqlclient <user>@<target> -hashes :NTHASH
+impacket-mssqlclient <user>@$target -hashes :NTHASH
 ```
 
 

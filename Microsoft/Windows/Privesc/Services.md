@@ -127,13 +127,17 @@ accesschk.exe -uwcqv "Todos" * /accepteula ::Spanish version
 <!-- Weak Permissions {{{-->
 #### Weak Permissions
 
-Check if n modify the binary that is executed by a service or if you have write permissions on the folder where the binary is located (DLL Hijacking).
+Check if it's possible to  modify the binary that is executed by a service
+or the folder is writable where the binary is located
+(*[[DLL Hijacking]]*)
 
-You can get every binary that is executed by a service using wmic (not in system32) and check your permissions using icacls:
+1. Extract executable paths of binaries executed by a service
 
 ```sh
 for /f "tokens=2 delims='='" %a in ('wmic service list full^|find /i "pathname"^|find /i /v "system32"') do @echo %a >> %temp%\perm.txt
 ```
+
+2. Check permissions
 
 ```sh
 for /f eol^=^"^ delims^=^" %a in (%temp%\perm.txt) do cmd.exe /c icacls "%a" 2>nul | findstr "(M) (F) :\"
@@ -141,13 +145,19 @@ for /f eol^=^"^ delims^=^" %a in (%temp%\perm.txt) do cmd.exe /c icacls "%a" 2>n
 
 Use `sc` and `icacls`
 
+1. Extract all service names to a file to `Servicenames.txt`
+
 ```sh
 sc query state= all | findstr "SERVICE_NAME:" >> C:\Temp\Servicenames.txt
 ```
 
+2. Extract the service names to `services.txt`
+
 ```sh
 FOR /F "tokens=2 delims= " %i in (C:\Temp\Servicenames.txt) DO @echo %i >> C:\Temp\services.txt
 ```
+
+3. Retrieve each service's executable path to `path.txt`
 
 ```sh
 FOR /F %i in (C:\Temp\services.txt) DO @sc qc %i | findstr "BINARY_PATH_NAME" >> C:\Temp\path.txt
@@ -180,7 +190,7 @@ ___
 <!-- }}} -->
 
 <!-- Service Management {{{-->
-### Service Management
+## Service Management
 
 <!-- Enable {{{-->
 #### Enable

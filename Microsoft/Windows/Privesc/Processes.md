@@ -25,7 +25,11 @@ ___
 Running processes and services
 
 ```sh
-Tasklist /svc
+tasklist
+```
+
+```sh
+tasklist /svc
 ```
 
 ```sh
@@ -89,16 +93,29 @@ tasklist /v /fi "username eq system"
 > ```
 <!-- }}} -->
 
-With allowed usernames
+[Get-WmiObject](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-wmiobject?view=powershell-5.1) —
+Get all processes (*name, `PID`, owner user account*)
 
 ```powershell
 Get-WmiObject -Query "Select * from Win32_Process" | where {$_.Name -notlike "svchost*"} | Select Name, Handle, @{Label="Owner";Expression={$_.GetOwner().User}} | ft -AutoSize
 ```
 
-Without usernames
+[Get-Process](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-process?view=powershell-7.5) —
+Get all processes (*name, `PID`*)
 
 ```powershell
 Get-Process | where {$_.ProcessName -notlike "svchost*"} | ft ProcessName, Id
+```
+
+[Get-Process](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-process?view=powershell-7.5) —
+Get `SYSTEM` processes
+
+```sh
+Get-Process -IncludeUserName | Where-Object { $_.UserName -match "SYSTEM" }
+```
+
+```powershell
+Get-Process -IncludeUserName | Where-Object UserName -EQ "NT AUTHORITY\SYSTEM"
 ```
 
 > [!tip]
@@ -115,7 +132,6 @@ ___
 > [!tip]
 >
 > [[DLL Hijacking]]
-
 
 Process binary permissions
 

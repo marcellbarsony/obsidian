@@ -12,13 +12,20 @@ ___
 
 ## Drives
 
-```powershell
+Show drive letters
+
+```sh
 wmic logicaldisk get caption || fsutil fsinfo drives
 ```
 
-```powershell
+List logical disks with drive letter, description and provider name
+(*network drives*)
+
+```sh
 wmic logicaldisk get caption,description,providername
 ```
+
+Show PowerShell filesystem drives with names and root paths
 
 ```powershell
 Get-PSDrive | where {$_.Provider -like "Microsoft.PowerShell.Core\FileSystem"}| ft Name,Root

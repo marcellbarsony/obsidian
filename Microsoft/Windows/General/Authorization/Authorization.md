@@ -18,7 +18,7 @@ to resources on Windows hosts
 **Security Principals** are identified by a unique
 [Security Identifier (SID)](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/understand-security-identifiers)
 
-The [[Access Token]]
+The [[Access Tokens]]
 is compared against
 [Access Control Entries (ACEs)](https://learn.microsoft.com/en-us/windows/win32/secauthz/access-control-entries)
 within the object's

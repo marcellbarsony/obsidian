@@ -17,7 +17,6 @@ ___
 - `csrss.exe` —
 [Client Server Runtime Subsystem](https://en.wikipedia.org/wiki/Client/Server_Runtime_Subsystem)
 
-- [Local Security Authority Subsystem Service (LSASS)](https://en.wikipedia.org/wiki/Local_Security_Authority_Subsystem_Service)
 
 - `ssms.exe` —
 [Session Manager Subsystem](https://en.wikipedia.org/wiki/Session_Manager_Subsystem)
@@ -26,6 +25,19 @@ ___
 
 - `winlogon.exe` —
 [WinLogon](https://en.wikipedia.org/wiki/Winlogon)
+
+### LSASS
+
+**Local Security Authority Subsystem Service**
+(*[LSASS](https://en.wikipedia.org/wiki/Local_Security_Authority_Subsystem_Service)*)
+is a process that is responsible for enforcing security policy on the system
+
+**LSASS** verifies users logging on to a computer,
+handles password changes, and creates [[Access Tokens]]
+
+> [!todo]
+>
+> LSASS stores user credentials after a user logs on to a system
 
 ___
 <!-- }}} -->

@@ -15,11 +15,9 @@ of a process or thread
 1. [Winlogon](https://en.wikipedia.org/wiki/Winlogon)
    presents the login UI
 2. The user logs in
-3. Credentials are verified by
-   [LSASS](https://en.wikipedia.org/wiki/Local_Security_Authority_Subsystem_Service)
+3. Credentials are verified by [[Processes/Processes#LSASS|LSASS]]
 4. Authentication providers check credentials (*Kerberos, NTLM, etc.*)
-5. [LSASS](https://en.wikipedia.org/wiki/Local_Security_Authority_Subsystem_Service)
-   builds the [[Access Token]]
+5. [[Processes/Processes#LSASS|LSASS]] builds the [[Access Tokens]]
 6. [Winlogon](https://en.wikipedia.org/wiki/Winlogon)
    starts the user session with the token
 7. `Userinit.exe`/`Explorer.exe` launch under the token

@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Microsoft/Windows/Privesc/Network.md",
+                "file": "Microsoft/Windows/Privesc/Group.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,31 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Network"
+              "title": "Group"
+            }
+          },
+          {
+            "id": "6f8b9a5dc64c7005",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Microsoft/Windows/General/Groups.md",
+                "mode": "preview",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Groups"
             }
           }
         ]
@@ -103,7 +127,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 208.5
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "d9ceb6f94f351234",
@@ -120,13 +145,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Microsoft/Windows/Privesc/Network.md",
+                "file": "Microsoft/Windows/Privesc/Group.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Network"
+              "title": "Outline of Group"
             }
           },
           {
@@ -175,7 +200,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Microsoft/Windows/Privesc/Network.md",
+                "file": "Microsoft/Windows/Privesc/Group.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,14 +228,14 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Network"
+              "title": "Graph of Group"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 227.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -223,45 +248,47 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "5f07e9f23936f1f0",
+  "active": "6f4e890d1c374ce7",
   "lastOpenFiles": [
-    "Networking/Services/MSSQL/Usage.md",
-    "Networking/Services/MSSQL/Exploitation.md",
-    "Networking/Services/MSSQL/Enumeration.md",
-    "Networking/Services/MySQL/Exploitation.md",
-    "Networking/Services/MySQL/General.md",
-    "Networking/Services/MySQL/Usage.md",
-    "Networking/Services/SQL/Exploitation.md",
-    "Networking/Services/SQL/General.md",
-    "Networking/Services/SQL/Usage.md",
-    "Microsoft/Windows/General/Authorization/Access Token.md",
-    "Microsoft/Windows/Privesc/Privileges.md",
-    "Microsoft/Windows/General/Authorization/Authorization.md",
-    "Microsoft/Windows/General/Processes/Processes.md",
-    "Microsoft/Windows/General/User/Permissions.md",
-    "Microsoft/Windows/General/Authorization/Privileges.md",
+    "Microsoft/Windows/Privesc/Credential Hunting.md",
     "Microsoft/Windows/Privesc/Group.md",
+    "Microsoft/Windows/General/SAM.md",
+    "Microsoft/AD/Domain Controller.md",
     "Microsoft/Windows/General/Groups.md",
-    "Microsoft/Windows/General/Privileges/Groups.md",
-    "Microsoft/Windows/General/Authorization/Authorization_1.md",
-    "Microsoft/Windows/General/Permissions/Privileges_1.md",
-    "Microsoft/Windows/General/Permissions",
-    "Microsoft/Windows/General/Privileges/Privileges_1.md",
-    "Microsoft/Windows/General/User",
-    "Microsoft/Windows/General/Privileges.md",
+    "Microsoft/Windows/Privesc/Privileges.md",
+    "Microsoft/Windows/General/Processes/Processes.md",
+    "Microsoft/Windows/General/Authorization/Privileges.md",
+    "Microsoft/Windows/Privesc/File System.md",
+    "Microsoft/Windows/General/Authorization/Permissions.md",
+    "Microsoft/AD/Active Directory.md",
+    "Pentest/File Transfer/Transferring Files.md",
+    "Pentest/File Transfer/Windows/Upload.md",
+    "Pentest/File Transfer/Windows/Download.md",
+    "Pentest/File Transfer/Linux/Download.md",
+    "Pentest/File Transfer/Linux/Upload.md",
     "Microsoft/Windows/Privesc/Processes.md",
-    "Microsoft/Windows/Privesc/Services.md",
-    "Microsoft/Windows/Privesc/User.md",
-    "Microsoft/Windows/General/Processes/Named Pipes.md",
+    "Microsoft/Windows/Privesc/src/privileges-sedebugprivilege-taskmgr.png",
+    "Microsoft/Windows/Privesc/src",
+    "Microsoft/Windows/General/Authorization/Access Tokens.md",
+    "Microsoft/Windows/General/Processes/LSASS.md",
+    "Microsoft/Windows/General/Processes/Processes_1.md",
+    "Networking/Services/MSSQL/Exploitation.md",
+    "Networking/Services/MSSQL/Usage.md",
+    "Networking/Services/MSSQL/Enumeration.md",
+    "Networking/Services/Kerberos/General.md",
+    "Microsoft/Windows/General/Authentication/Kerberos.md",
+    "Microsoft/Windows/General/Authentication/NTLM.md",
+    "Networking/Services/Kerberos",
+    "Microsoft/Windows/General/Authentication/src",
+    "Microsoft/Windows/General/Authentication",
+    "Microsoft/Windows/General/Authentication/src/ntlm-authentication.png",
+    "Microsoft/Windows/General/Permissions",
+    "Microsoft/Windows/General/User",
     "Microsoft/Windows/General/Processes",
     "Microsoft/Windows/General/Authorization/src/auth_process.png",
     "Microsoft/Windows/General/Authorization/src",
     "Microsoft/Windows/General/Authorization",
     "Microsoft/Windows/Privesc/-",
-    "Linux/Privesc/Internals",
-    "Linux/Privesc/Software",
-    "Networking/Services/ISAKMP",
-    "Networking/Services/IPSEC IKE",
     "Networking/Services/SMB/src/windows-shared-folder.jpg",
     "Webapp/Tools/Burp Suite/src/match-replace-response.png",
     "Webapp/Tools/Burp Suite/src/scope.png",
@@ -269,8 +296,6 @@
     "Webapp/Tools/ZAP/src/match-replace.png",
     "Webapp/Tools/ZAP/src/20251128-225440.png",
     "Webapp/Tools/ZAP/src/context-scope.png",
-    "Webapp/Tools/ZAP/src/20251128-224646.png",
-    "Webapp/Tools/Burp Suite/src/match-replace-rule.png",
     "Networking/Services/SMB/Untitled.canvas"
   ]
 }
