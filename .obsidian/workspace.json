@@ -13,31 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Microsoft/Windows/Privesc/Group.md",
-                "mode": "preview",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Group"
-            }
-          },
-          {
-            "id": "6f8b9a5dc64c7005",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Microsoft/Windows/General/Groups.md",
+                "file": "Microsoft/Windows/Privesc/Groups.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -53,6 +29,30 @@
               },
               "icon": "lucide-file",
               "title": "Groups"
+            }
+          },
+          {
+            "id": "6f8b9a5dc64c7005",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Microsoft/Windows/Privesc/Privileges.md",
+                "mode": "preview",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Privileges"
             }
           }
         ]
@@ -127,8 +127,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "d9ceb6f94f351234",
@@ -145,13 +144,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Microsoft/Windows/Privesc/Group.md",
+                "file": "Microsoft/Windows/Privesc/Groups.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Group"
+              "title": "Outline of Groups"
             }
           },
           {
@@ -200,7 +199,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Microsoft/Windows/Privesc/Group.md",
+                "file": "Microsoft/Windows/Privesc/Groups.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -228,7 +227,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Group"
+              "title": "Graph of Groups"
             }
           }
         ]
@@ -250,12 +249,13 @@
   },
   "active": "6f4e890d1c374ce7",
   "lastOpenFiles": [
+    "Microsoft/Windows/Privesc/Privileges.md",
+    "Microsoft/Windows/Privesc/Groups.md",
+    "Microsoft/Windows/General/Groups.md",
+    "Microsoft/Windows/Privesc/User.md",
     "Microsoft/Windows/Privesc/Credential Hunting.md",
-    "Microsoft/Windows/Privesc/Group.md",
     "Microsoft/Windows/General/SAM.md",
     "Microsoft/AD/Domain Controller.md",
-    "Microsoft/Windows/General/Groups.md",
-    "Microsoft/Windows/Privesc/Privileges.md",
     "Microsoft/Windows/General/Processes/Processes.md",
     "Microsoft/Windows/General/Authorization/Privileges.md",
     "Microsoft/Windows/Privesc/File System.md",
@@ -277,7 +277,6 @@
     "Networking/Services/MSSQL/Enumeration.md",
     "Networking/Services/Kerberos/General.md",
     "Microsoft/Windows/General/Authentication/Kerberos.md",
-    "Microsoft/Windows/General/Authentication/NTLM.md",
     "Networking/Services/Kerberos",
     "Microsoft/Windows/General/Authentication/src",
     "Microsoft/Windows/General/Authentication",

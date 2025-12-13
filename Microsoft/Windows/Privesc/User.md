@@ -31,6 +31,10 @@ Current user security identity
 whoami
 ```
 
+```sh
+whoami /user
+```
+
 Current user from environment variable
 
 ```sh

