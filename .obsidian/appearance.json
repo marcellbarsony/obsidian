@@ -2,5 +2,6 @@
   "theme": "obsidian",
   "showRibbon": true,
   "enabledCssSnippets": [],
-  "cssTheme": ""
+  "cssTheme": "",
+  "nativeMenus": false
 }

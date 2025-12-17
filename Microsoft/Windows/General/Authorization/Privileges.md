@@ -55,6 +55,10 @@ Enable privileges
 [PowerShell Gallery - PoshPrivilege 0.3.0.0](https://www.powershellgallery.com/packages/PoshPrivilege/0.3.0.0/Content/Scripts%5CEnable-Privilege.ps1)
 
 ```powershell
+Import-Module .\Enable-Privilege.ps1
+```
+
+```powershell
 .\Enable-Privilege.ps1
 ```
 

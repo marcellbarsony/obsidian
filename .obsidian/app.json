@@ -6,5 +6,6 @@
   "readableLineLength": false,
   "livePreview": true,
   "defaultViewMode": "preview",
-  "alwaysUpdateLinks": true
+  "alwaysUpdateLinks": true,
+  "showInlineTitle": true
 }

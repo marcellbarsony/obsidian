@@ -20,15 +20,17 @@ ___
 
 Applications may store credentials in configuration files
 
-- INI Files
-
-```cmd
-C:\ProgramData\<AppName>\config.ini
+```powershell
+findstr /SIM /C:"user" /C:"pass" /C:"htb" *.cfg *.conf *.config *.ini *.xml *.json *.yaml
 ```
 
-```sh
-C:\Users\<User>\AppData\Local\<AppName>\appsettings.ini
-```
+<!-- Info {{{-->
+> [!info]-
+>
+> - `/S`: Search subdirectories recursively
+> - `/I`: Case-insensitive search
+> - `/M`: Print file names instead of matching lines
+<!-- }}} -->
 
 - CONF Files
 
@@ -40,16 +42,26 @@ C:\ProgramData\<AppName>\config.conf
 C:\Users\<User>\AppData\Local\<AppName>\config.conf
 ```
 
+- INI Files
+
+```cmd
+C:\ProgramData\<AppName>\config.ini
+```
+
+```sh
+C:\Users\<User>\AppData\Local\<AppName>\appsettings.ini
+```
+
+- JSON Files - Web apps and other software often use `JSON` configuration files
+
+```cmd
+C:\Users\<User>\AppData\Local\<AppName>\settings.json
+```
+
 - XML Files - Web servers or database apps use `XML` files to store data
 
 ```cmd
 C:\Program Files\<AppName>\config.xml
-```
-
-- JSON Files - Web apps and other softwar often use `JSON` configuration files
-
-```cmd
-C:\Users\<User>\AppData\Local\<AppName>\settings.json
 ```
 
 - YAML/Env Files - Application (*e.g. Docker, Kubernetes*)
@@ -62,6 +74,29 @@ C:\Users\<User>\.docker\config.json
 ```
 C:\Users\<User>\AppData\Local\<AppName>\config.yaml
 ```
+
+<!-- Web Configuration Files {{{-->
+### Web Configuration Files
+
+Enumerate the [[Web Server Root]] for [[Secrets]]
+
+Web server config
+
+```powershell
+findstr /I /C:"user" /C:"pass" /C:"htb" C:\inetpub\wwwroot\web.config
+```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `/S`: Search subdirectories recursively
+> - `/I`: Case-insensitive search
+> - `/M`: Print file names instead of matching lines
+<!-- }}} -->
+
+<!-- }}} -->
+
+___
 <!-- }}} -->
 
 <!-- Clipboard {{{-->
@@ -83,6 +118,18 @@ Get-Clipboard
 ___
 <!-- }}} -->
 
+<!-- CMD {{{-->
+## CMD
+
+[doskey](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/doskey) —
+Recall previously entered command-line commands
+
+```cmd
+doskey /history
+```
+___
+<!-- }}} -->
+
 <!-- Credential Manager {{{-->
 ## Credential Manager
 
@@ -90,24 +137,44 @@ Windows stores credentials in **Credential Manager**,
 which may store usernames, passwords, and other authentication information
 
 [cmdkey](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/cmdkey) —
-Creates, lists, and deletes stored user names and passwords or credentials
+Create, list, and delete stored user names and passwords or credentials
 
 ```cmd
 cmdkey
 ```
 
+```cmd
+cmdkey.exe /list
+```
+
 [Get-Credential](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/get-credential) —
-Gets a credential object based on a user name and password
+Get a credential object based on a username and password
 
 ```powershell
 Get-Credential
 ```
 
-Control Panel
+[Control Panel](https://support.microsoft.com/en-us/windows/credential-manager-in-windows-1b5c916a-6a16-889f-8581-fc16e8165ac0)
 
 1. Open `Control Panel`
 2. `User Accounts`
 3. `Credential Manager`
+
+[CredentialManager](https://www.powershellgallery.com/packages/CredentialManager/2.0) —
+Extract credentials from the [Windows Credential Vault](https://practicalsecurityanalytics.com/credential-harvesting-with-powershell-and-specterinsight/#Extracting_Plaintext_Credentials_from_the_Windows_Credential_Vault)
+
+```powershell
+load CredentialManager;
+load PSCredentialManager.Api;
+
+Get-StoredCredential | % {
+    $ptr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($_.password);
+    New-Object PSObject -Property @{
+        Username = $_.Username;
+        Password = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($ptr);
+    }
+}
+```
 
 ___
 <!-- }}} -->

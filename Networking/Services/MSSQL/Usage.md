@@ -94,9 +94,7 @@ Connect with hash (*Pass-the-Hash*)
 impacket-mssqlclient <user>@$target -hashes :NTHASH
 ```
 
-
 ___
-
 <!-- }}} -->
 
 <!-- Database {{{-->

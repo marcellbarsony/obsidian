@@ -38,11 +38,33 @@ sc query
 ```
 
 [Get-Service](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-service?view=powershell-7.5) —
-List and manage services
+List services
 
 ```powershell
 Get-Service
 ```
+
+
+[Get-Service](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-service?view=powershell-7.5) —
+List services (*filter by name*)
+
+```sh
+Get-Service | ? {$_.DisplayName -like '<service>*'}
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> PS C:\htb> get-service | ? {$_.DisplayName -like 'Druva*'}
+> ```
+>
+> ```sh
+> Status   Name               DisplayName
+> ------   ----               -----------
+> Running  inSyncCPHService   Druva inSync Client Service
+> ```
+<!-- }}} -->
 
 <!-- Network Services {{{-->
 ### Network Services
@@ -81,12 +103,40 @@ netstat -ano
 >  ```
 <!-- }}} -->
 
+[netstat](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/netstat) —
+List active TCP and UDP connections on a specific port
+
+```sh
+netstat -ano | findstr 6064
+```
+
 [tasklist](https://en.wikipedia.org/wiki/Tasklist) —
 Correlate found service `PID` with the service name
 
 ```sh
 tasklist | findstr /c:"<pid>"
 ```
+
+[Get-Process](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-process?view=powershell-7.5) —
+Map the process PID back to the running process
+
+```sh
+get-process -Id <pid>
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> PS C:\htb> get-process -Id 3324
+> ```
+>
+> ```sh
+> Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName
+> -------  ------    -----      -----     ------     --  -- -----------
+>     149      10     1512       6748              3324   0 inSyncCPHwnet64
+> ```
+<!-- }}} -->
 
 <!-- }}} -->
 

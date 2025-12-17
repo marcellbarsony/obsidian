@@ -49,10 +49,14 @@ rdesktop -u <user> -p '<password>' $target[:port]
 ```
 
 [remmina](https://manpages.debian.org/unstable/remmina/remmina.1.en.html) —
-Remmina the GTK+ Remote Desktop Client
+Remmina GTK+ Remote Desktop Client
 
 ```sh
 sudo apt install remmina
+```
+
+```sh
+remmina -c rdp://<user>:<password>@$target
 ```
 
 ___
