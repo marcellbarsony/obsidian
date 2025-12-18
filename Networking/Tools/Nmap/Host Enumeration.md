@@ -118,7 +118,7 @@ nmap -sS -O $target -oA os-detection-syn -v
 <!-- Aggressive Scan {{{-->
 ### Aggressive Scan
 
-Aggressive Service Detection
+Aggressive Service Detection (*includes `-sC`, `-sV` and `-O`*)
 
 <!-- Warning {{{-->
 > [!warning]
