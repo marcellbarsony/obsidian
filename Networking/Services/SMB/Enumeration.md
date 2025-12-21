@@ -306,6 +306,32 @@ netexec smb $target -u "guest" -p "" --rid-brute | grep -i 'sidtypeuser' | awk '
 ___
 <!-- }}} -->
 
+<!-- Groups {{{-->
+## Groups
+
+<!-- Netexec {{{-->
+### Netexec
+
+[[Netexec]] — Enumerate groups
+
+
+```sh
+nxc smb $target --groups
+```
+
+```sh
+nxc smb $target -u '' -p '' --groups
+```
+
+```sh
+nxc smb $target -u 'guest' -p '' --groups
+```
+
+<!-- }}} -->
+
+___
+<!-- }}} -->
+
 <!-- Shares {{{-->
 ## Shares
 
@@ -384,25 +410,16 @@ Enumerate SMB shares on the host
 #### Linux
 
 Connect to server and list shares
-(*[Anonymous Null Session](https://hackviser.com/tactics/pentesting/services/smb#smb-null-session)*)
 
 ```sh
 smbclient -N -L //$target
 ```
 
 Connect to server and list shares as user
-(*[Anonymous Null Session](https://hackviser.com/tactics/pentesting/services/smb#smb-null-session)*)
 
 ```sh
 smbclient -N -L //$target -U <user>
 ```
-
-<!-- Info {{{-->
-> [!info]-
->
-> - `-N`: Null session / Anonymous access
-> - `-L`: List shares
-<!-- }}} -->
 
 Connect to server and list shares (*implicit null creds*)
 
@@ -415,6 +432,13 @@ Connect to server and list shares (*explicit null creds*)
 ```sh
 smbclient -N -L //$target --user ''%''
 ```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `-N`: Null session / Anonymous access
+> - `-L`: List shares
+<!-- }}} -->
 
 Downgrade SMB dialect
 
@@ -435,11 +459,24 @@ smbclient -N //$target/ --option="client min protocol"=LANMAN1
 <!-- Windows {{{-->
 #### Windows
 
-Connect to server and list shares (*[Anonymous Null Session](https://hackviser.com/tactics/pentesting/services/smb#smb-null-session),
+Connect to server and list shares
+(*[Anonymous Null Session](https://hackviser.com/tactics/pentesting/services/smb#smb-null-session),
 Windows UNC path*)
 
 ```sh
 smbclient -N -L \\\\$target\\
+```
+
+Connect to server and list shares (*implicit null creds*)
+
+```sh
+smbclient -N -L \\\\$target\\ --no-pass
+```
+
+Connect to server and list shares (*explicit null creds*)
+
+```sh
+smbclient -N -L \\\\$target\\ --user ''%''
 ```
 
 <!-- Info {{{-->
@@ -448,18 +485,6 @@ smbclient -N -L \\\\$target\\
 > - `-N`: Null session / Anonymous access
 > - `-L`: List shares
 <!-- }}} -->
-
-Connect to server and list shares (*implicit null creds*)
-
-```sh
-smbclient --no-pass  -N -L \\\\$target\\
-```
-
-Connect to server and list shares (*explicit null creds*)
-
-```sh
-smbclient --user ''%'' -N -L \\\\$target\\
-```
 
 Downgrade SMB dialect
 
@@ -563,7 +588,7 @@ ___
 <!-- Password Policy {{{-->
 ## Password Policy
 
-[[Netexec]] — Enumerate password policy of the domain
+[[Netexec]] — Enumerate domain password policy
 
 ```sh
 netexec smb $target --pass-pol
@@ -576,7 +601,6 @@ netexec smb $target -u "" -p "" --pass-pol
 ```sh
 netexec smb $target -u "guest" -p "" --pass-pol
 ```
-
 ___
 <!-- }}} -->
 
@@ -586,7 +610,7 @@ ___
 <!-- Netapi {{{-->
 ### Netapi
 
-Detect [[Exploitation#Netapi|Netapi]]
+[[Nmap]] — Detect [[Exploitation#Netapi|Netapi]]
 (*[MS08-067](https://learn.microsoft.com/en-us/security-updates/securitybulletins/2008/ms08-067))
 (*[smb-vuln-ms08-067](https://nmap.org/nsedoc/scripts/smb-vuln-ms08-067.html)*)
 
@@ -629,7 +653,7 @@ nmap -sU $target -p U:137 --script smb-vuln-ms08-067.nse -oA smb-netapi-udp
 <!-- EternalBlue {{{-->
 ### EternalBlue
 
-Detect [[Exploitation#EternalBlue|EternalBlue]]
+[[Nmap]] — Detect [[Exploitation#EternalBlue|EternalBlue]]
 (*[SM17-010](https://learn.microsoft.com/en-us/security-updates/securitybulletins/2017/ms17-010)*)
 (*[smb-vuln-ms17-010](https://nmap.org/nsedoc/scripts/smb-vuln-ms17-010.html)*)
 
@@ -669,6 +693,18 @@ nmap -A $target -p 445
 > |_      https://blogs.technet.microsoft.com/msrc/2017/05/12/customer-guidance-for-wannacrypt-attacks/
 > ```
 <!-- }}} -->
+
+<!-- }}} -->
+
+<!-- SMBGhost {{{-->
+### SMBGhost
+
+[[Netexec]] — Detect [[Exploitation#SMBGhost|SMBGhost]]
+(*[CVE-2020-0796](https://nvd.nist.gov/vuln/detail/cve-2020-0796)*)
+
+```sh
+nxc smb <ip> -u '' -p '' -M smbghost
+```
 
 <!-- }}} -->
 

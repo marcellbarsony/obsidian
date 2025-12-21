@@ -22,63 +22,8 @@ ___
 ___
 <!-- }}} -->
 
-<!-- Proxy {{{-->
-## Proxy
-
-<!-- Automatic Modification {{{-->
-### Automatic Modification
-
-<!-- Request {{{-->
-#### Request
-
-Automatic Request Modification
-
-```sh
-Proxy > Match and replace
-```
-```sh
-Proxy > Proxy settings > Tools > Proxy > HTTP match and replace rules
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ![[match-replace-rule.png]]
-<!-- }}} -->
-
-<!-- }}} -->
-
-<!-- Response {{{-->
-#### Response
-
-Automatic Response Modification
-
-```sh
-Proxy > Proxy settings > Tools > Proxy > HTTP match and replace rules
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ![[match-replace-response.png]]
-<!-- }}} -->
-
-<!-- }}} -->
-
-<!-- }}} -->
-
-___
-<!-- }}} -->
-
 <!-- Intruder {{{-->
 ## Intruder
-
-
-___
-<!-- }}} -->
-
-<!-- Scanner {{{-->
-## Scanner
 
 
 ___

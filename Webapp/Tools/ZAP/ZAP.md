@@ -36,137 +36,21 @@ Tools > Options > Display > Look and Feel
 
 <!-- }}} -->
 
-<!-- Proxy Listener {{{-->
-### Proxy Listener
-
-```sh
-Tools > Options > Network > Local Servers / Proxies
-```
-
-<!-- CA Certificate {{{-->
-#### CA Certificate
-
-```sh
-Tools > Options > Network > Server Certificates
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ![[ca-certificate-zap.png]]
-<!-- }}} -->
-
-<!-- Firefox Import {{{-->
-##### Firefox Import
-
-1. Open Certificate Manager
-
-```sh
-Settings > Certificates > View Certificates...
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ![[ca-certificate-view.png]]
-<!-- }}} -->
-
-2. Import Certificate
-
-<!-- Example {{{-->
-> [!example]-
->
-> ![[ca-certificate-manager.png]]
-<!-- }}} -->
-
-3. Trust Certificate
-
-<!-- Example {{{-->
-> [!example]-
->
-> ![[ca-certificate-trust.png]]
-<!-- }}} -->
-
-<!-- }}} -->
-
-<!-- }}} -->
-
-<!-- }}} -->
-
-<!-- Scope {{{-->
-### Scope
-
-Include a target in the scope
-
-```sh
-File > Session Properties > Contexts / Default Context > Include in context
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ![[context-scope.png]]
-<!-- }}} -->
-
-<!-- }}} -->
-
 ___
 <!-- }}} -->
 
-<!-- Proxy {{{-->
-## Proxy
+<!-- ZAP Marketplace {{{-->
+## ZAP Marketplace
 
-<!-- HUD {{{-->
-### HUD
+[ZAP Marketplace](https://www.zaproxy.org/addons/)
+ZAP Marketplace contains ZAP add-ons
+which have been written by the ZAP team and the community
 
-> [!todo]
+1. Click `Manage Add-ons`
 
-<!-- }}} -->
-
-<!-- Automatic Modification {{{-->
-### Automatic Modification
-
-<!-- Request {{{-->
-#### Request
-
-Automatic Request Modification
-
-```sh
-Tools > Replacer Options (Ctrl+R)
-```
-```sh
-Tools > Options > Replacer
-```
-
-<!-- Example {{{-->
 > [!example]-
 >
-> ![[match-replace.png]]
-<!-- }}} -->
-
-<!-- }}} -->
-
-<!-- Response {{{-->
-#### Response
-
-
-
-<!-- }}} -->
-
-<!-- }}} -->
-
-___
-<!-- }}} -->
-
-<!-- Fuzzer {{{-->
-## Fuzzer
-
-
-___
-<!-- }}} -->
-
-<!-- Scanner {{{-->
-## Scanner
+> ![[marketplace.png]]
 
 
 ___

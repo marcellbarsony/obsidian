@@ -131,14 +131,25 @@ nmap -A $target -oA os-detection-aggressive -v
 ```
 
 ```sh
+nmap -A $target -Pn -oA os-detection-aggressive -v
+```
+
+```sh
 nmap -A -T4 $target -oA os-detection-aggressive -v
+```
+
+```sh
+nmap -A -T4 $target -Pn -oA os-detection-aggressive -v
 ```
 
 <!-- Info {{{-->
 > [!info]-
 >
-> - `-A`: Enable OS Detection (`-O`), Service Detection (`-sV`),
->   Default Scripts (`-sC`)
+> `-A` include
+>
+> - `-O`: Enable OS Detection
+> - `-sV`: Service Detection
+> - `-sC`: Default Scripts
 <!-- }}} -->
 
 <!-- }}} -->

@@ -24,18 +24,16 @@ dig <target_domain> NS
 ```
 
 [nslookup](https://en.wikipedia.org/wiki/Nslookup) —
-Query the [[Networking/Services/DNS/General#Authoritative Name Server|Name Server]] with
+Query the [[Networking/Services/DNS/General#Authoritative Name Server|Name Server]]
 
 ```sh
 nslookup -type=NS <target_domain>
 ```
-
 ___
-
 <!-- }}} -->
 
-<!-- Banner Grabbing {{{-->
-## Banner Grabbing
+<!-- DNS Service {{{-->
+## DNS Service
 
 [dig](https://linux.die.net/man/1/dig) —
 Grab banner and
@@ -71,11 +69,10 @@ nc -nv -u <dns_ip> 53
 ```
 
 ___
-
 <!-- }}} -->
 
-<!-- DNS Subdomain {{{-->
-## DNS Subdomain
+<!-- DNS Subdomains {{{-->
+## DNS Subdomains
 
 Identify subdomains of the `*.domain.com` scope
 to widen the attack surface
@@ -302,7 +299,8 @@ DNS servers can be footprinted via queries
 <!-- NS Query {{{-->
 ### NS Query
 
-Query the DNS server for NS records of a domain
+[dig](https://linux.die.net/man/1/dig) —
+Query the DNS server for [[General#NS|NS]] records of a domain
 
 ```sh
 dig [@<dns_ip>] <target_domain> ns
@@ -324,7 +322,9 @@ dig [@<dns_ip>] <target_domain> ns
 <!-- ANY Query {{{-->
 ### ANY Query
 
-Query the DNS server for all available records of a domain
+[dig](https://linux.die.net/man/1/dig) —
+Query the DNS server for [[General#ANY|ANY]] (*all available*) records
+of a domain
 
 ```sh
 dig @<dns_ip> <target_domain> any
@@ -383,8 +383,9 @@ dig @<dns_ip> <target_domain> any
 <!-- AXFR Zone Transfer {{{-->
 ### AXFR Zone Transfer
 
-[[Networking/Services/DNS/General#DNS Zone Transfer|DNS Zone Transfer]]
-or **Asynchronous Full Transfer Zone** (**AXFR**) yields a full DNS zone dump
+[[General#DNS Zone Transfer|DNS Zone Transfer]]
+or **Asynchronous Full Transfer Zone** (*[[General#AXFR|AXFR]]*)
+yields a full DNS zone dump
 (*e.g. all hostnames, IPs, subdomains, etc.*)
 
 <!-- Info {{{-->
@@ -410,17 +411,86 @@ or **Asynchronous Full Transfer Zone** (**AXFR**) yields a full DNS zone dump
 > - **Slave DNS server**: The DNS server that obtains zone data from a master
 <!-- }}} -->
 
+<!-- Test {{{-->
+> [!tip]
+>
+> Test AXFR on all discovered internal names
+>
+> <!-- Example {{{-->
+> > [!example]-
+> >
+> > Test `AXFR` on
+> > - `app.inlanefreight.htb`
+> > - `dev.inlanefreight.htb`
+> > - `internal.inlanefreight.htb`
+> > - etc.
+> >
+> > ```sh
+> > dig @$target inlanefreight.htb AXFR
+> > ```
+> >
+> > ```sh
+> > ; <<>> DiG 9.20.11-4+b1-Debian <<>> @10.129.44.19 inlanefreight.htb AXFR
+> > ; (1 server found)
+> > ;; global options: +cmd
+> > inlanefreight.htb.      604800  IN      SOA     inlanefreight.htb. root.inlanefreight.htb. 2 604800 86400 2419200 604800
+> > inlanefreight.htb.      604800  IN      TXT     "MS=ms97310371"
+> > inlanefreight.htb.      604800  IN      TXT     "atlassian-domain-verification=t1rKCy68JFszSdCKVpw64A1QksWdXuYFUeSXKU"
+> > inlanefreight.htb.      604800  IN      TXT     "v=spf1 include:mailgun.org include:_spf.google.com include:spf.protection.outlook.com include:_spf.atlassian.net ip4:10.129.124.8 ip4:10.129.127.2 ip4:10.129.42.106 ~all"
+> > inlanefreight.htb.      604800  IN      NS      ns.inlanefreight.htb.
+> > app.inlanefreight.htb.  604800  IN      A       10.129.18.15
+> > dev.inlanefreight.htb.  604800  IN      A       10.12.0.1
+> > internal.inlanefreight.htb. 604800 IN   A       10.129.1.6
+> > mail1.inlanefreight.htb. 604800 IN      A       10.129.18.201
+> > ns.inlanefreight.htb.   604800  IN      A       127.0.0.1
+> > inlanefreight.htb.      604800  IN      SOA     inlanefreight.htb. root.inlanefreight.htb. 2 604800 86400 2419200 604800
+> > ;; Query time: 204 msec
+> > ;; SERVER: 10.129.44.19#53(10.129.44.19) (TCP)
+> > ;; WHEN: Thu Dec 18 20:53:31 EST 2025
+> > ;; XFR size: 11 records (messages 1, bytes 560)
+> > ```
+> <!-- }}} -->
+<!-- }}} -->
+
+[dig](https://linux.die.net/man/1/dig) —
 [[DIG#AXFR|DIG]] — Request AXFR Zone Transfer
 
+1. Enumerate [[General#Name Server|Name Server(s)]]
+
 ```sh
-dig @<dns_ip> <target_domain> -t axfr
+dig <target_domain> NS
 ```
 
 <!-- Example {{{-->
 > [!example]-
 >
-> Request a full zone transfer responsible for
+> Query the
 > [zonetransfer.me](https://digi.ninja/projects/zonetransferme.php)
+> domain for [[General#NS|NS]] records
+>
+> ```sh
+> dig zonetransfer.me NS +short
+> ```
+> ```sh
+> nsztm1.digi.ninja.
+> nsztm2.digi.ninja.
+> ```
+<!-- }}} -->
+
+2. Attempt [[General#DNS Zone Transfer|DNS Zone Transfer]] against each
+[[General#Name Server|Name Server]]
+
+```sh
+dig @<dns_ip> <target_domain> AXFR
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> Request a full [[General#DNS Zone Transfer|DNS Zone Transfer]]
+> from the [[General#Name Server|Name server(s)]] responsible for the
+> [zonetransfer.me](https://digi.ninja/projects/zonetransferme.php)
+> domain
 >
 > ```sh
 > dig axfr @nsztm1.digi.ninja zonetransfer.me
@@ -458,10 +528,46 @@ dig @<dns_ip> <target_domain> -t axfr
 fierce --domain <target_domain> --dns-servers <dns_ip>
 ```
 
+[[DNSRecon]] — Automate zone transfers
+
+```sh
+dnsrecon -d <target_domain> -t axfr
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> dnsrecon -d zonetransfer.me -t axfr
+> ```
 <!-- }}} -->
+
+<!-- }}} -->
+
+## Local Queries
+
+> [!todo]
+>
+> Validate commands
+
+```sh
+dig @<dns_ip> -x 127.0.0.1
+```
+
+```sh
+dig @<dns_ip> -x 127.0.0.2
+```
+
+
 
 ___
 
 <!-- }}} -->
 
+<!-- Automated Tools {{{-->
 ## Automated Tools
+
+> [!todo]
+
+___
+<!-- }}} -->

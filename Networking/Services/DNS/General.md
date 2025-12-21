@@ -12,13 +12,13 @@ port:
 <!-- DNS {{{-->
 # DNS
 
-**DNS** ([Domain Name System](https://en.wikipedia.org/wiki/Domain_Name_System))
+**Domain Name System** ([DNS](https://en.wikipedia.org/wiki/Domain_Name_System))
 is a [name service](https://en.wikipedia.org/wiki/Directory_service)
 that provides a naming system for computers, services and other resources
 on the Internet:<br>
 it is converting user-friendly domain names
 (*like [example.com](http://exmaple.com)*)
-into numerical IP addresses.
+into numerical IP addresses
 
 ___
 
@@ -36,11 +36,13 @@ authority, or control
 A [Subdomain](https://en.wikipedia.org/wiki/Subdomain)
 is a domain that is a part of another (*main*) domain
 
+<!-- Example {{{-->
 > [!example]-
 >
 > `en` is the subdomain, while `wikipedia` is the main domain
 >
 > ![[dns-subdomain.png]]
+<!-- }}} -->
 
 ___
 <!-- }}} -->
@@ -110,8 +112,10 @@ ___
 The [Root Server](https://en.wikipedia.org/wiki/Root_name_server)
 responsible for the
 [Top-Level Domain (TLD)](https://en.wikipedia.org/wiki/Top-level_domain).
+
 As the last instance, they are only requested if the [[#Name Server]]
-does not respond. The [13 root servers](https://www.iana.org/domains/root/servers)
+does not respond.
+The [13 root servers](https://www.iana.org/domains/root/servers)
 are coordinated by [ICANN](https://www.icann.org/).
 
 <!-- }}} -->
@@ -121,7 +125,7 @@ are coordinated by [ICANN](https://www.icann.org/).
 
 [Name Server](https://en.wikipedia.org/wiki/Name_server)
 provides responses to queries against a
-[directory service](https://en.wikipedia.org/wiki/Directory_service).
+[directory service](https://en.wikipedia.org/wiki/Directory_service)
 
 <!-- Authoritative Name Server {{{-->
 #### Authoritative Name Server
@@ -131,7 +135,7 @@ hold authority for a particular zone.
 If an **Authoritative Name Server** cannot answer a client's query,
 the request is forwarded to the [[#Root Name Server]].
 **Authoritative Name Server** provide answers to [[#Recursive Name Server]],
-assisting in finding the specific web server(s).
+assisting in finding the specific web server(s)
 
 <!-- }}} -->
 
@@ -141,7 +145,7 @@ assisting in finding the specific web server(s).
 [Recursive Name Server](https://en.wikipedia.org/wiki/Name_server#Recursive_Resolver)
 (*or Recursive Resolver*) collect information on specific DNS zones
 via recursive or iterative DNS querying — they are not responsible
-for a particular DNS zone.
+for a particular DNS zone
 
 <!-- }}} -->
 
@@ -158,7 +162,7 @@ for a specified period (*specified by the [[#Authoritative Name Server]]*).
 <!-- Forwarding Server {{{-->
 ### Forwarding Server
 
-**Forwarding servers** forward DNS queries to another DNS server.
+**Forwarding servers** forward DNS queries to another DNS server
 
 <!-- }}} -->
 
@@ -166,7 +170,7 @@ for a specified period (*specified by the [[#Authoritative Name Server]]*).
 ### Resolver
 
 **Resolvers** perform name resolution locally in the computer or router
-— they are not authoritative DNS servers.
+— they are not authoritative DNS servers
 
 <!-- }}} -->
 
@@ -176,6 +180,8 @@ ___
 
 <!-- DNS Records {{{-->
 ## DNS Records
+
+[Wkipedia - List of DNS record types](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
 
 <!-- Example {{{-->
 > [!example]-
@@ -193,45 +199,121 @@ ___
 > | **PTR** | Pointer Record | Used for reverse DNS lookups, mapping an IP address to a hostname. | `1.2.0.192.in-addr.arpa.` IN PTR `www.example.com.` |
 <!-- }}} -->
 
+<!-- A {{{-->
 ### A
 
+The **A** record (*[RFC 1035](https://www.rfc-editor.org/rfc/rfc1035)*)
+returns a 32-bit IPv4 address of the requested domain
+
+The **A** record is mapping the hostname to the IP address of the host
+
+<!-- }}} -->
+
+<!-- AAAA {{{-->
 ### AAAA
 
+The **AAAA** record (*[RFC 3596](https://www.rfc-editor.org/rfc/rfc3596)*)
+returns a 128-bit [[IPv6]] address of the requested domain
+
+The **AAAA** record is mapping the hostname to the IP address of the host
+
+<!-- }}} -->
+
+<!-- ANY {{{-->
 ### ANY
+
+The **ANY** record (*[RFC 1035](https://www.rfc-editor.org/rfc/rfc1035)*)
+returns all records of all types known to the name server
+
+> [!warning]
+>
+> The records returned may not be complete
 
 > [!warning]
 >
 > Many DNS servers ignore `ANY` queries to reduce load
 > and prevent abuse ([RFC 8482](https://datatracker.ietf.org/doc/html/rfc8482))
 
-<!-- CNAME {{{-->
-### CNAME
+<!-- }}} -->
 
-**Canonical Name record**
-([CNAME record](https://en.wikipedia.org/wiki/CNAME_record))
-serves as an alias for another domain name
-(*e.g., An `A` record for `hackthebox.eu` and a `CNAME` record for
-`www.hackthebox.eu` would make `www.hackthebox.eu`
-point to the same IP as `hackthebox.eu`*)
+<!-- AXFR {{{-->
+### AXFR
+
+The **AXFR** record (*[RFC 1035](https://www.rfc-editor.org/rfc/rfc1035)*)
+transfers the entire zone file from the primary name server
+to secondary name servers
 
 <!-- }}} -->
 
+<!-- CNAME {{{-->
+### CNAME
+
+The **Canonical Name** record
+(*[CNAME record](https://en.wikipedia.org/wiki/CNAME_record)*)
+(*[RFC 1035](https://www.rfc-editor.org/rfc/rfc1035)*)
+serves as an alias for another domain name
+
+<!-- Example {{{-->
+> [!example]-
+>
+> An `A` record for `hackthebox.eu` and a `CNAME` record for
+> `www.hackthebox.eu` would make `www.hackthebox.eu`
+> point to the same IP as `hackthebox.eu`
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- MX {{{-->
 ### MX
 
+The **MX** record
+(*[RFC 1035](https://www.rfc-editor.org/rfc/rfc1035)*)
+returns the responsible mail exchange servers
+that accept email for a domain
+
+<!-- }}} -->
+
+<!-- NS {{{-->
 ### NS
+
+The **NS** record
+(*[RFC 1035](https://www.rfc-editor.org/rfc/rfc1035)*)
+returns the DNS servers (nameservers) of the domain
+
+The **NS** record delegeates a [[#DNS Zone]] to use the given
+[[#Authoritative Name Server]]
+
+<!-- }}} -->
+
+<!-- PTR {{{-->
+### PTR
+
+The **PTR** record points to a [[#CNAME]]
+
+The **PTR** record is commonly used to implement
+[reverse DNS lookups](https://en.wikipedia.org/wiki/Reverse_DNS_lookup)
+as it converts IP addresses into valid domain names
+
+<!-- }}} -->
 
 <!-- SOA {{{-->
 ### SOA
 
-**Start of Authority**
+The **Start of Authority**
 ([SOA record](https://en.wikipedia.org/wiki/SOA_record))
 ([RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035))
-is a DNS resource record containing administrative information
-about the zone and [[#DNS Zone Transfer|DNS Zone Transfers]].
+record is a DNS resource record containing administrative information
+about the zone and [[#DNS Zone Transfer|DNS Zone Transfers]]
 
 <!-- }}} -->
 
+<!-- TXT {{{-->
 ### TXT
+
+The **TXT** record contains various information in a human-readable
+text format
+
+<!-- }}} -->
 
 ___
 <!-- }}} -->
@@ -245,25 +327,31 @@ in the Domain Name System
 ([DNS](https://en.wikipedia.org/wiki/Domain_Name_System)),
 which a specific organization or administrator manages
 
+<!-- Info {{{-->
 > [!info]-
 >
 > Illustration of DNS zone for `en.wiki.org`
 >
 > ![[dns-zone.png]]
+<!-- }}} -->
 
 ### DNS Zone Transfer
 
 [DNS Zone Transfer](https://en.wikipedia.org/wiki/DNS_zone_transfer)
-is a DNS transaction (**AXFR**) to replicate DNS databases within a zone
-(*a domain and its subdomains*) from one name server to another
+is a DNS transaction ([[#AXFR]]) to replicate DNS databases within a zone
+(*a domain and its subdomains*) from one [[#Name Server]] to another
 (e.g., *in case of DNS failure*)
 
+<!-- Info {{{-->
 > [!info]-
 >
+> AXFR Zone Transfer from the `primaryServer` to the `secondaryServer`
+>
 > ![[dns-zone-transfer.png]]
+<!-- }}} -->
 
 1. **Zone Transfer Request**:
-   The secondary DNS server sends a zone transfer request (*AXFR*)
+   The secondary DNS server sends a zone transfer request ([[#AXFR]])
    to the primary server
 
 2. **SOA Record Transfer**:
@@ -322,14 +410,13 @@ The configuration is roughly divided into two sections:
 A [Zone File](https://en.wikipedia.org/wiki/Zone_file)
 (*e.g., `/etc/bind/db.domain.com`*) is a text file describing
 a DNS zone with the
-[BIND file format](https://en.wikipedia.org/wiki/Zone_file#File_format).
+[BIND file format](https://en.wikipedia.org/wiki/Zone_file#File_format)
 
-There must be precisely one `SOA`
-[SOA record](https://en.wikipedia.org/wiki/SOA_record)
-and at least one [[#DNS Records|NS record]].
+There must be precisely one [[#SOA]] record
+and at least one [[#DNS Records|NS record]]
 
 The forward records allow the DNS server to identify which domain,
-hostname, and role the IP addresses belong to.
+hostname, and role the IP addresses belong to
 
 <!-- }}} -->
 
@@ -337,14 +424,14 @@ hostname, and role the IP addresses belong to.
 #### Reverse Name Resolution Zone Files
 
 For the Fully Qualified Domain Name (*FQDN*) to be resolved from the IP address,
-the DNS server must have a reverse lookup file (e.g., `/etc/bind/db.10.129.14`).
+the DNS server must have a reverse lookup file (e.g., `/etc/bind/db.10.129.14`)
 
 In this file, the computer name (*FQDN*) is assigned to the last octet
 of an IP address, which corresponds to the respective host,
-using a `PTR` record.
+using a [[#PTR]] record
 
-The`PTR` records are responsible for the reverse translation
-of IP addresses into names.
+The [[#PTR]] records are responsible for the reverse translation
+of IP addresses into names
 
 <!-- }}} -->
 

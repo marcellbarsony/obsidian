@@ -12,13 +12,13 @@ ___
 <!-- Service {{{-->
 ## Service
 
-Detect WinRM services and identify server capabilities
+[[Nmap]] — Detect WinRM services and identify server capabilities
 
 ```sh
 nmap $target -p 5985,5986 -oA winrm-service
 ```
 
-Detect WinRM version
+[[Nmap]] — Detect WinRM version
 
 ```sh
 nmap -sV $target -p 5985,5986 -oA winrm-service-version
@@ -27,13 +27,15 @@ nmap -sV $target -p 5985,5986 -oA winrm-service-version
 <!-- HTTP/S {{{-->
 ### HTTP/S
 
-Enumerate HTTP headers ([http-headers](https://nmap.org/nsedoc/scripts/http-methods.html))
+[[Nmap]] — Enumerate HTTP headers
+(*[http-headers](https://nmap.org/nsedoc/scripts/http-methods.html)*)
 
 ```sh
 nmap $target -p 5985 --script http-methods -oA winrm-script-http-methods
 ```
 
-Enumerate HTTP methods ([http-methods](https://nmap.org/nsedoc/scripts/http-methods.html))
+[[Nmap]] — Enumerate HTTP methods
+(*[http-methods](https://nmap.org/nsedoc/scripts/http-methods.html)*)
 
 ```sh
 nmap $target -p 5985 --script http-headers -oA winrm-script-http-headers
@@ -44,7 +46,7 @@ nmap $target -p 5985 --script http-headers -oA winrm-script-http-headers
 <!-- Configuration {{{-->
 ### Configuration
 
-Check WinRM configuration
+[[Nmap]] — Check WinRM configuration
 
 ```sh
 nmap $target -p 5985,5986 --script http-wsman-info -oA winrm-script-http-wsman-info
@@ -68,8 +70,7 @@ nmap $target -p 5985,5986 --script http-wsman-info -oA winrm-script-http-wsman-i
 ### PowerShell
 
 [Test-WSMan](https://learn.microsoft.com/en-us/powershell/module/microsoft.wsman.management/test-wsman?view=powershell-7.5&viewFallbackFrom=powershell-7.2) —
-Test whether the WinRM service is running
-on a local or remote computer
+Test whether the WinRM service is running on a local or remote computer
 
 ```powershell
 Test-WSMan -ComputerName "server01"
@@ -84,7 +85,7 @@ ___
 
 Gather version and service information
 
-[[netcat]]
+[[Netcat]]
 
 ```sh
 nc -vn $target 5985

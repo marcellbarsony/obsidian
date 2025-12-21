@@ -10,7 +10,7 @@ links: "[[Services]]"
 **DIG** ([Domain Information Groper](https://en.wikipedia.org/wiki/Dig_(command)))
 is a network administration command-line tool for querying
 [[Linux/General/General#DNS Structure|DNS servers]]
-to retrieve various types of [[Linux/General/General#DNS Records|DNS records]].
+to retrieve various types of [[Linux/General/General#DNS Records|DNS records]]
 
 ___
 
@@ -19,7 +19,7 @@ ___
 
 ### A
 
-IPv4 address ([[Linux/General/General#A|A record]])
+IPv4 address ([[DNS/General#A|A record]])
 associated with the domain
 
 ```sh
@@ -114,7 +114,7 @@ dig <domain.com> A
 
 ### AAAA
 
-IPv6 address ([[Linux/General/General#AAAA|AAAA record]])
+IPv6 address ([[DNS/General#AAAA|AAAA record]])
 associated with the domain
 
 ```sh
@@ -124,7 +124,7 @@ dig <domain.com> AAAA
 ### ANY
 
 All available DNS records
-([[Linux/General/General#ANY|ANY record]])
+([[DNS/General#ANY|ANY record]])
 for the domain
 
 ```sh
@@ -133,7 +133,8 @@ dig <domain.com> ANY
 
 ### AXFR
 
-Request a zone transfer
+Request a [[DNS/General#DNS Zone Transfer|zone transfer]]
+([[DNS/General#AXFR|AXFR record]])
 
 ```sh
 dig <domain.com> AXFR

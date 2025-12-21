@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Networking/Services/SMB/Enumeration.md",
+                "file": "Webapp/Tools/ZAP/Spider.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Enumeration"
+              "title": "Spider"
             }
           }
         ]
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/Services/SMB/Enumeration.md",
+                "file": "Webapp/Tools/ZAP/Spider.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Enumeration"
+              "title": "Outline of Spider"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/Services/SMB/Enumeration.md",
+                "file": "Webapp/Tools/ZAP/Spider.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Enumeration"
+              "title": "Graph of Spider"
             }
           }
         ]
@@ -225,52 +225,52 @@
   },
   "active": "6f4e890d1c374ce7",
   "lastOpenFiles": [
-    "Networking/Services/SMB/Exploitation.md",
-    "Networking/Services/SMB/Enumeration.md",
-    "Networking/Services/WinRM/Usage.md",
-    "Networking/Services/WinRM/General.md",
-    "Networking/Services/WinRM/Exploitation.md",
-    "Networking/Services/WinRM/Enumeration.md",
-    "Microsoft/Windows/Privesc/Privileges.md",
-    "Microsoft/Windows/General/Registry.md",
-    "Pentest/File Transfer/Windows/Download.md",
-    "Networking/Services/SMB/Usage.md",
-    "Networking/Services/SMB/General.md",
+    "Webapp/Tools/ZAP/Scanner.md",
+    "Webapp/Tools/ZAP/Spider.md",
+    "Webapp/Tools/ZAP/Scanner_1.md",
+    "Webapp/Tools/Burp Suite/Intruder.md",
+    "Webapp/Tools/Burp Suite/src/intruder.png",
+    "Webapp/Tools/Burp Suite/src/20251221-025915.png",
+    "Webapp/Tools/Burp Suite/Proxy.md",
+    "Webapp/Tools/Burp Suite/src/repeater.png",
+    "Webapp/Tools/Burp Suite/src/20251221-024645.png",
+    "Webapp/Tools/Burp Suite/Scanner.md",
+    "Webapp/Tools/Burp Suite/src/match-replace-response.png",
+    "Webapp/Tools/Burp Suite/src/20251221-023926.png",
+    "Webapp/Tools/Burp Suite/src/match-replace-rule.png",
+    "Webapp/Tools/Burp Suite/src/20251221-023543.png",
+    "Webapp/Tools/Burp Suite/src/proxy-intercept-responses.png",
+    "Webapp/Tools/Burp Suite/src/20251221-022858.png",
+    "Webapp/Tools/Burp Suite/Burp Suite.md",
+    "Webapp/Tools/Burp Suite/Configuration.md",
+    "Webapp/Tools/ZAP/Proxy.md",
+    "Webapp/Tools/ZAP/Report.md",
+    "Webapp/Tools/ZAP/ZAP.md",
+    "Webapp/Tools/ZAP/Fuzzer.md",
+    "Pentest/General/Reporting.md",
+    "Pentest/General/Kali Linux.md",
+    "Webapp/Exploitation/Server-Side/XSS/XSS.md",
+    "Webapp/Exploitation/Server-Side/XSS",
+    "Networking/Services/DNS/Enumeration.md",
     "Networking/Tools/Nmap/Host Enumeration.md",
-    "Microsoft/Windows/Privesc/Environment.md",
-    "Microsoft/Windows/Privesc/File System.md",
-    "Microsoft/Windows/Privesc/Groups.md",
-    "Microsoft/Windows/Privesc/Network.md",
-    "Microsoft/Windows/Privesc/Credential Hunting.md",
-    "Microsoft/Windows/Privesc/Enumeration Tools.md",
-    "Pentest/Shells/Reverse Shell.md",
+    "Networking/Tools/Nmap/Host Discovery.md",
+    "Networking/Services/DNS/General.md",
+    "Networking/Services/DNS/Tools/DNSEnum.md",
+    "Networking/Services/DNS/Tools/dig.md",
+    "Networking/Services/SMB/Enumeration.md",
+    "Networking/Services/SMB/Exploitation.md",
+    "Microsoft/AD/src",
+    "Networking/Services/WinRM/Enumeration.md",
+    "Networking/Services/WinRM/Exploitation.md",
+    "Networking/Services/WinRM/Usage.md",
     "Microsoft/Windows/Privesc/Groups",
-    "Pentest/Shells/Web Shell.md",
-    "Pentest/Shells/Reverse Shell_1.md",
-    "Pentest/Shells/Bind Shell.md",
-    "Pentest/Reverse Shell/Reverse Shell_1.md",
-    "Pentest/Tools/Metasploit/Metasploit.md",
-    "Linux/Privesc/Kernel Exploits.md",
-    "Linux/Privesc/Sudo.md",
     "Microsoft/Windows/Privesc/Software",
-    "Pentest/Tools/Metasploit/src/engagement-structure.png",
     "Pentest/Tools/Metasploit/src",
-    "Microsoft/Windows/Privesc/src/privileges-sedebugprivilege-taskmgr.png",
     "Microsoft/Windows/Privesc/src",
     "Networking/Services/Kerberos",
     "Microsoft/Windows/General/Authentication/src",
     "Microsoft/Windows/General/Authentication",
-    "Microsoft/Windows/General/Authentication/src/ntlm-authentication.png",
     "Microsoft/Windows/General/Permissions",
-    "Microsoft/Windows/General/User",
-    "Microsoft/Windows/General/Processes",
-    "Microsoft/Windows/General/Authorization/src/auth_process.png",
-    "Networking/Services/SMB/src/windows-shared-folder.jpg",
-    "Webapp/Tools/Burp Suite/src/match-replace-response.png",
-    "Webapp/Tools/Burp Suite/src/scope.png",
-    "Webapp/Tools/Burp Suite/src/20251128-232932.png",
-    "Webapp/Tools/ZAP/src/match-replace.png",
-    "Webapp/Tools/ZAP/src/20251128-225440.png",
     "Networking/Services/SMB/Untitled.canvas"
   ]
 }
