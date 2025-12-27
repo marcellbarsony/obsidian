@@ -93,6 +93,10 @@ Settings > Certificates > View Certificates...
 > ![[ca-certificate-trust.png]]
 <!-- }}} -->
 
+**Chromium**
+
+> [!todo]
+
 <!-- }}} -->
 
 ___
@@ -104,9 +108,9 @@ ___
 [Scope](https://portswigger.net/burp/documentation/desktop/tools/target/scope)
 sets the URLs to test
 
-- Only show in-scope items in the Site Map and History
-- Only log or intercept in-scope requests
-- Only follow in-scope URLs in Intruder and Repeater
+- **Intercept** - Intercerpt and log in-scope requests only
+- **Site Map** & **History** - Show in-scope items only
+- [[Intruder]] & [[#Repeater]] - Follow in-scope URLs only
 
 Add a target to the scope
 
@@ -124,10 +128,12 @@ Target > Scope > Add
 
 Quickly specify static prefixes for URLs
 
+<!-- Warning {{{-->
 > [!warning]
 >
 > Wildcard expressions are not supported in URL prefixes
 > for normal scope control
+<!-- }}} -->
 
 <!-- Example {{{-->
 > [!example]-
@@ -144,6 +150,8 @@ Quickly specify static prefixes for URLs
 <!-- }}} -->
 
 **ADVANCED SCOPE**
+
+Advanced Scope settings
 
 - **Protocol** - The protocol that the rule must match: `HTTP`, `HTTPS`,
   or `any`

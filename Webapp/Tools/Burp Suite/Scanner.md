@@ -22,10 +22,20 @@ web vulnerability scanner
   The scanner analyzes the application's traffic
   and behavior to identify security vulnerabilities and other issues
 
+> [!warning] PRO FEATURE
+
 ___
 
 <!-- Scanner {{{-->
 ## Scanner
+
+1. Set [[Proxy#Scope|Target Scope]]
+
+2. Launch a Scan
+
+```sh
+CONTEXT > Scan
+```
 
 
 ___

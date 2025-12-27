@@ -54,7 +54,7 @@ mysql -h <hostname> -u root
 Connect to a remote MySQL server with password
 
 ```sh
-mysql -u <user> -p<password> -h <target_ip>
+mysql -u <user> -p<password> -h $target
 ```
 
 ```sh
@@ -123,6 +123,7 @@ mysql -h <hostname> -p<password> -u root@localhost
 > ```
 <!-- }}} -->
 
+<!-- Tip {{{-->
 > [!tip]- SSL/TLS ERROR 2026 (HY000)
 >
 > MySQL client may refuse to trust
@@ -152,6 +153,7 @@ mysql -h <hostname> -p<password> -u root@localhost
 > ```sh
 > --ssl-mode=PREFERRED
 > ```
+<!-- }}} -->
 
 <!-- }}} -->
 

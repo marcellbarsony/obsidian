@@ -11,9 +11,11 @@ port:
 
 # SMB
 
-**SMB** ([Server Message Block](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-smb/f210069c-7086-4dc2-885e-861d837df688))
-is a client-server protocol over TCP, designed for sharing files, directories,
-and other resources (*e.g., printers, routers, interfaces*) over a network.
+**SMB** (*[Server Message Block](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-smb/f210069c-7086-4dc2-885e-861d837df688)*)
+is a client-server protocol over TCP, designed for sharing files,
+directories, and other resources
+(*e.g., printers, routers, interfaces*)
+over a network
 
 ___
 
@@ -21,11 +23,11 @@ ___
 ## NetBIOS (Port 139)
 
 The [[Networking/Services/NetBIOS/General|NetBIOS]] is a software protocol
-designed to enable applications, PCs, and Desktops within a LAN to interact with
-network hardware and facilitate the transmission of data across the network.
+designed to enable applications, PCs, and Desktops within a LAN to interact
+with network hardware and facilitate the transmission of data
+across the network
 
 ___
-
 <!-- }}} -->
 
 <!-- SMB (Port 445) {{{-->
@@ -39,16 +41,16 @@ the NetBIOS layer (over TCP port `139`), enabling more efficient and modern file
 sharing and remote administration within LANs and across domain environments.
 
 ___
-
 <!-- }}} -->
 
 <!-- Samba {{{-->
 ## Samba
 
-**[Samba](https://www.samba.org/)** is an alternative implementation of the
-**SMB server** developed for Unix-based operating systems, that implements the
-Common Internet File System ([CIFS](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-cifs/934c2faa-54af-4526-ac74-6a24d126724e))
-network protocol (*often referred as SMB/CIFS*).
+**[Samba](https://www.samba.org/)** is an alternative implementation
+of the **SMB server** developed for Unix-based operating systems,
+that implements the Common Internet File System
+(*[CIFS](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-cifs/934c2faa-54af-4526-ac74-6a24d126724e)*)
+network protocol (*often referred as SMB/CIFS*)
 
 <!-- Service {{{-->
 ### Service
@@ -68,7 +70,6 @@ sudo systemctl restart smbd
 <!-- }}} -->
 
 ___
-
 <!-- }}} -->
 
 <!-- RPC {{{-->
@@ -76,15 +77,11 @@ ___
 
 The **Remote Procedure Call** ([RPC](https://www.geeksforgeeks.org/operating-systems/remote-procedure-call-rpc-in-operating-system/))
 is a way for a program to run a function on another computer in a network
-as if it were local.
+as if it were local
 
 1. The client sends a request (with arguments) to the server
 2. The server executes the function
 3. The server sends back the results
-
-___
-
-<!-- }}} -->
 
 <!-- Configuration {{{-->
 ### Configuration
@@ -142,5 +139,7 @@ Some of the settings enable sensitive options
 <!-- }}} -->
 
 ___
+<!-- }}} -->
 
+___
 <!-- }}} -->

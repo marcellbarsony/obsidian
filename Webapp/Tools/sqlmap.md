@@ -32,10 +32,12 @@ sqlmap -u 'http://<target>/dashboard.php?search=<search_query>' --cookie="<cooki
 > > - `--cookie`: HTTP header cookie value
 <!-- }}} -->
 
+<!-- Tip {{{-->
 > [!tip]
 >
 > To exploit the vulnerability, `sqlmap` should be called again
 > with the `--os-shell` option to conclude in a shell
+<!-- }}} -->
 
 <!-- Tip {{{-->
 > [!tip]

@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Webapp/Tools/ZAP/Spider.md",
+                "file": "Networking/Services/SMB/Enumeration.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,10 +28,35 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Spider"
+              "title": "Enumeration"
+            }
+          },
+          {
+            "id": "b2d9fc13982f7a3b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Networking/Services/SMB/Exploitation.md",
+                "mode": "preview",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Exploitation"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -103,7 +128,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 216.5
   },
   "right": {
     "id": "d9ceb6f94f351234",
@@ -120,13 +145,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Webapp/Tools/ZAP/Spider.md",
+                "file": "Networking/Services/SMB/Exploitation.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Spider"
+              "title": "Outline of Exploitation"
             }
           },
           {
@@ -175,7 +200,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Webapp/Tools/ZAP/Spider.md",
+                "file": "Networking/Services/SMB/Exploitation.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,14 +228,14 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Spider"
+              "title": "Graph of Exploitation"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 227.5
+    "width": 230.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -223,54 +248,54 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "6f4e890d1c374ce7",
+  "active": "b2d9fc13982f7a3b",
   "lastOpenFiles": [
-    "Webapp/Tools/ZAP/Scanner.md",
-    "Webapp/Tools/ZAP/Spider.md",
-    "Webapp/Tools/ZAP/Scanner_1.md",
-    "Webapp/Tools/Burp Suite/Intruder.md",
-    "Webapp/Tools/Burp Suite/src/intruder.png",
-    "Webapp/Tools/Burp Suite/src/20251221-025915.png",
-    "Webapp/Tools/Burp Suite/Proxy.md",
-    "Webapp/Tools/Burp Suite/src/repeater.png",
-    "Webapp/Tools/Burp Suite/src/20251221-024645.png",
-    "Webapp/Tools/Burp Suite/Scanner.md",
-    "Webapp/Tools/Burp Suite/src/match-replace-response.png",
-    "Webapp/Tools/Burp Suite/src/20251221-023926.png",
-    "Webapp/Tools/Burp Suite/src/match-replace-rule.png",
-    "Webapp/Tools/Burp Suite/src/20251221-023543.png",
-    "Webapp/Tools/Burp Suite/src/proxy-intercept-responses.png",
-    "Webapp/Tools/Burp Suite/src/20251221-022858.png",
-    "Webapp/Tools/Burp Suite/Burp Suite.md",
-    "Webapp/Tools/Burp Suite/Configuration.md",
-    "Webapp/Tools/ZAP/Proxy.md",
-    "Webapp/Tools/ZAP/Report.md",
-    "Webapp/Tools/ZAP/ZAP.md",
-    "Webapp/Tools/ZAP/Fuzzer.md",
-    "Pentest/General/Reporting.md",
-    "Pentest/General/Kali Linux.md",
-    "Webapp/Exploitation/Server-Side/XSS/XSS.md",
-    "Webapp/Exploitation/Server-Side/XSS",
-    "Networking/Services/DNS/Enumeration.md",
-    "Networking/Tools/Nmap/Host Enumeration.md",
-    "Networking/Tools/Nmap/Host Discovery.md",
-    "Networking/Services/DNS/General.md",
-    "Networking/Services/DNS/Tools/DNSEnum.md",
-    "Networking/Services/DNS/Tools/dig.md",
     "Networking/Services/SMB/Enumeration.md",
     "Networking/Services/SMB/Exploitation.md",
+    "Networking/Services/SMB/General.md",
+    "Networking/Services/SMB/Usage.md",
+    "Pentest/Brute Force/Brute Force.md",
+    "Pentest/Brute Force/PIN.md",
+    "Webapp/Exploitation/Login/Brute Force.md",
+    "Pentest/Brute Force",
+    "Pentest/Tools/Brute Force/Gobuster.md",
+    "Pentest/Tools/Brute Force/Crowbar.md",
+    "Pentest/Tools/Metasploit/Metasploit.md",
+    "Pentest/File Transfer/Transferring Files.md",
+    "Networking/Services/MySQL/Usage.md",
+    "Networking/Services/MSSQL/Usage.md",
+    "Networking/Services/MSSQL/Enumeration.md",
+    "Networking/Services/IMAP-POP3/Usage.md",
+    "Networking/Services/IMAP-POP3/General.md",
+    "Networking/Services/SMTP/Usage.md",
+    "Linux/Privesc/Credential Hunting.md",
+    "Microsoft/Windows/Privesc/Credential Hunting.md",
+    "Webapp/Exploitation/Client-Side/XSS/General.md",
+    "Webapp/Exploitation/Server-Side/File Inclusion/File Inclusion.md",
+    "Webapp/Exploitation/Server-Side/File Inclusion",
+    "Webapp/Exploitation/Server-Side/File-Inclusion",
+    "Pentest/General/Kali Linux.md",
+    "Programming/Python/Virtual Environment.md",
+    "Webapp/Exploitation/Client-Side/XSS/src/xss-dom-parameter.png",
+    "Webapp/Exploitation/Client-Side/XSS/src/xss-dom-network.png",
+    "Webapp/Exploitation/Client-Side/XSS/src/20251222-232900.png",
+    "Webapp/Exploitation/Client-Side/XSS/src/xss-dom.png",
+    "Webapp/Exploitation/Client-Side/XSS/src/20251222-232403.png",
+    "Webapp/Exploitation/Client-Side/XSS/Enumeration.md",
+    "Webapp/Exploitation/Client-Side/XSS/Exploitation.md",
+    "Webapp/Exploitation/Client-Side/XSS/src/xss-reflected-network.jpg",
+    "Webapp/Exploitation/Client-Side/XSS/src",
+    "Webapp/Exploitation/Server-Side/XSS/General.md",
+    "Webapp/Exploitation/Client-Side/XSS",
+    "Webapp/Exploitation/Client-Side",
+    "Webapp/Tools/Burp Suite/src/intruder-payloads.png",
+    "Webapp/Tools/Burp Suite/src/20251221-220356.png",
+    "Webapp/Tools/Burp Suite/src/intruder-positions.png",
+    "Webapp/Tools/Burp Suite/src/20251221-220041.png",
+    "Webapp/Exploitation/Server-Side/XSS",
     "Microsoft/AD/src",
-    "Networking/Services/WinRM/Enumeration.md",
-    "Networking/Services/WinRM/Exploitation.md",
-    "Networking/Services/WinRM/Usage.md",
     "Microsoft/Windows/Privesc/Groups",
     "Microsoft/Windows/Privesc/Software",
-    "Pentest/Tools/Metasploit/src",
-    "Microsoft/Windows/Privesc/src",
-    "Networking/Services/Kerberos",
-    "Microsoft/Windows/General/Authentication/src",
-    "Microsoft/Windows/General/Authentication",
-    "Microsoft/Windows/General/Permissions",
     "Networking/Services/SMB/Untitled.canvas"
   ]
 }

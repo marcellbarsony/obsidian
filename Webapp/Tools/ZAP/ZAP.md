@@ -27,8 +27,10 @@ ___
 <!-- Configuration {{{-->
 ## Configuration
 
-<!-- Dark Theme {{{-->
-### Dark Theme
+<!-- Custom Theme {{{-->
+### Custom Theme
+
+Set a custom theme
 
 ```sh
 Tools > Options > Display > Look and Feel

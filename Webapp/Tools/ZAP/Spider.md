@@ -6,6 +6,7 @@ tags:
 links: "[[Webapp/Enumeration/Tools/Tools|Tools]]"
 ---
 
+<!-- Spider {{{-->
 # Spider
 
 [Spider](https://www.zaproxy.org/docs/desktop/addons/spider/)
@@ -58,7 +59,12 @@ ___
 # AJAX Spider
 
 [AJAX Spider](https://www.zaproxy.org/docs/desktop/addons/ajax-spider/)
-identifies the pages of the trageted site
+identifies the pages of the trageted site by exploring websites
+that load content dynamically with JavaScript (*AJAX*),
+instead of static HTML
+
+**AJAX Spidering** can find links and data
+that appear after the page loads
 
 1. Open the [AJAX Spider dialog](https://www.zaproxy.org/docs/desktop/addons/ajax-spider/scandialog/)
 

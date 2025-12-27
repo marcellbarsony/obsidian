@@ -75,6 +75,8 @@ openssl s_client -connect <target>:imaps
 > ```
 <!-- }}} -->
 
+___
+
 <!-- IMAP Commands {{{-->
 ## IMAP Commands
 
@@ -169,7 +171,6 @@ login <user@domain.com> <password>
 <!-- }}} -->
 
 ___
-
 <!-- }}} -->
 
 <!-- Authenticated {{{-->
@@ -706,5 +707,4 @@ ___
 <!-- }}} -->
 
 ___
-
 <!-- }}} -->

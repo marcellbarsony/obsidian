@@ -33,14 +33,17 @@ Connect to a share
 smbclient //$target/<share>
 ```
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sh
 > smbclient //$target/anonymous
 > ```
+>
 > ```sh
 > smbclient //$target/IPC$
 > ```
+<!-- }}} -->
 
 Connect to share as specified user
 
@@ -48,9 +51,11 @@ Connect to share as specified user
 smbclient //$target/<share> -U <user>
 ```
 
+<!-- Info {{{-->
 > [!info]-
 >
 > - `-U`: Connect as user with known credentials
+<!-- }}} -->
 
 <!-- }}} -->
 
@@ -266,7 +271,7 @@ Get-ChildItem \\$target\<share>\
 <!-- }}} -->
 
 [New-PSDrive](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/new-psdrive?view=powershell-7.5) —
-Connect to a file share and and map its content to the drive letter `n`
+Connect to a file share and and map its content to the drive letter `N`
 
 ```sh
 New-PSDrive -Name "N" -Root "\\$target\<share>" -PSProvider "FileSystem"
@@ -286,23 +291,147 @@ New-PSDrive -Name "N" -Root "\\$target\<share>" -PSProvider "FileSystem"
 > ```
 <!-- }}} -->
 
-To provide credentials, a
-[PSCredential Object](https://learn.microsoft.com/en-us/dotnet/api/system.management.automation.pscredential?view=powershellsdk-7.4.0)
-needs to be created
+[New-PSDrive](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/new-psdrive?view=powershell-7.5) —
+Connect to a file share with credentials
 
 <!-- Example {{{-->
 > [!example]-
 >
-> ```powershell
-> PS C:\htb> $username = 'plaintext'
-> PS C:\htb> $password = 'Password123'
-> PS C:\htb> $secpassword = ConvertTo-SecureString $password -AsPlainText -Force
-> PS C:\htb> $cred = New-Object System.Management.Automation.PSCredential $username, $secpassword
-> PS C:\htb> New-PSDrive -Name "N" -Root "\\192.168.220.129\Finance" -PSProvider "FileSystem" -Credential $cred
+> Create a [PSCredential Object](https://learn.microsoft.com/en-us/dotnet/api/system.management.automation.pscredential?view=powershellsdk-7.4.0)
 >
+> ```powershell
+> $username = 'user'
+> ```
+> ```powershell
+> $password = 'Password123'
+> ```
+> ```powershell
+> $secpassword = ConvertTo-SecureString $password -AsPlainText -Force
+> ```
+> ```powershell
+> $cred = New-Object System.Management.Automation.PSCredential $username, $secpassword
+> ```
+> ```powershell
+> New-PSDrive -Name "N" -Root "\\192.168.220.129\Finance" -PSProvider "FileSystem" -Credential $cred
+> ```
+>
+> ```powershell
 > Name           Used (GB)     Free (GB) Provider      Root                                                              CurrentLocation
 > ----           ---------     --------- --------      ----                                                              ---------------
 > N                                      FileSystem    \\192.168.220.129\Finance
+> ```
+<!-- }}} -->
+
+<!-- }}} -->
+
+___
+<!-- }}} -->
+
+<!-- Linux {{{-->
+## Linux
+
+Linux (UNIX) machines can also mount and browse SMB shares,
+whether the target server is Windows machine or Samba server
+
+<!-- Impacket {{{-->
+### Impacket
+
+> [!todo]
+
+[[Impacket]] - [PsExec](https://github.com/fortra/impacket/blob/master/examples/psexec.py) —
+Python PsExec like functionality example using
+[RemComSvc](https://github.com/kavika13/RemCom)
+
+```sh
+impacket-psexec <user>:'<password>'@$target
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> MarciPwns@htb[/htb]$ impacket-psexec administrator:'Password123!'@10.10.110.17
+> ```
+>
+> ```sh
+> Impacket v0.9.22 - Copyright 2020 SecureAuth Corporation
+>
+> [*] Requesting shares on 10.10.110.17.....
+> [*] Found writable share ADMIN$
+> [*] Uploading file EHtJXgng.exe
+> [*] Opening SVCManager on 10.10.110.17.....
+> [*] Creating service nbAc on 10.10.110.17.....
+> [*] Starting service nbAc.....
+> [!] Press help for extra shell commands
+> Microsoft Windows [Version 10.0.19041.1415]
+> (c) Microsoft Corporation. All rights reserved.
+> ```
+>
+> ```sh
+> C:\Windows\system32>whoami && hostname
+> ```
+>
+> ```sh
+> nt authority\system
+> WIN7BOX
+> ```
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- Mount {{{-->
+### Mount
+
+Mount and browse SMB shares
+
+1. Install [cifs-utils](https://www.kali.org/tools/cifs-utils/)
+
+```sh
+sudo apt install cifs-utils
+```
+
+2. Create a temporary mount directory
+
+```sh
+sudo mkdir /mnt/tmp
+```
+
+3. Mount the SMB share
+
+```sh
+sudo mount -t cifs -o username=<username>,password=<password>,domain=. //$target/<share> /mnt/ext
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> MarciPwns@htb[/htb]$ sudo mkdir /mnt/Finance
+> ```
+> ```sh
+> MarciPwns@htb[/htb]$ sudo mount -t cifs -o username=plaintext,password=Password123,domain=. //192.168.220.129/Finance /mnt/Finance
+> ```
+<!-- }}} -->
+
+```sh
+mount -t cifs //$target/<share> /mnt/ext -o credentials=/path/credentialfile
+```
+
+<!-- Credential File {{{-->
+> [!info]- Credential File
+>
+> ```sh
+> username=plaintext
+> password=Password123
+> domain=.
+> ```
+<!-- }}} -->
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> MarciPwns@htb[/htb]$ mount -t cifs //192.168.220.129/Finance /mnt/Finance -o credentials=/path/credentialfile
 > ```
 <!-- }}} -->
 

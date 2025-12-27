@@ -12,6 +12,7 @@ ___
 <!-- Connect {{{-->
 ## Connect
 
+<!-- Mssqlclient {{{-->
 ### Mssqlclient
 
 [[Impacket]] - [mssqlclient.py](https://github.com/fortra/impacket/blob/master/examples/mssqlclient.py) —
@@ -93,6 +94,52 @@ Connect with hash (*Pass-the-Hash*)
 ```sh
 impacket-mssqlclient <user>@$target -hashes :NTHASH
 ```
+
+<!-- }}} -->
+
+<!-- SQLCMD {{{-->
+### SQLCMD
+
+[sqlcmd](https://learn.microsoft.com/en-us/sql/tools/sqlcmd/sqlcmd-use-utility) —
+the [sqlcmd utility](https://learn.microsoft.com/en-us/sql/tools/sqlcmd/sqlcmd-utility?view=sql-server-ver17)
+allows enter Transact-SQL statements, system procedures,
+and script files through a variety of available modes
+
+```sh
+sqlcmd -S $target -U <username> -P <password>
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> C:\htb> sqlcmd -S 10.129.20.13 -U username -P Password123
+> ```
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- SQSH {{{-->
+### SQSH
+
+
+[sqsh](https://en.wikipedia.org/wiki/Sqsh) —
+Connect to a MSSQL server over the
+[TDS protocol](https://en.wikipedia.org/wiki/Tabular_Data_Stream)
+
+```sh
+sqsh -S $target -U <username> -P <password>
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> sqsh -S 10.129.20.13 -U username -P Password123
+> ```
+<!-- }}} -->
+
+<!-- }}} -->
 
 ___
 <!-- }}} -->
