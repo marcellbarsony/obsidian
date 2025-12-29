@@ -177,13 +177,33 @@ ___
 An [SMB Null Session](https://hackviser.com/tactics/pentesting/services/smb#smb-null-session)
 refers to an unauthenticated connection to an SMB server ^f374c7
 
-**SMBCLIENT**
+<!-- NetExec {{{-->
+### NetExec
+
+[[Netexec]] — [Enumerate Null Sessions](https://www.netexec.wiki/smb-protocol/enumeration/enumerate-null-sessions)
+
+```sh
+netexec smb $target
+```
+
+```sh
+netexec smb $target -u "" -p ""
+```
+
+```sh
+netexec smb $target -u "guest" -p ""
+```
+
+<!-- }}} -->
+
+<!-- SMBClient {{{-->
+### SMBClient
 
 [[Usage#smbclient|smbclient]] —
 Enumerate SMB shares on the host
 (*[Anonymous Null Session](https://hackviser.com/tactics/pentesting/services/smb#smb-null-session)*)
 
-**Linux**
+**LINUX**
 
 Connect to server and list shares
 
@@ -230,7 +250,7 @@ smbclient -N //$target/ --option="client min protocol"=LANMAN1
 >   (Legacy)
 <!-- }}} -->
 
-**Windows**
+**WINDOWS**
 
 Connect to server and list shares
 (*[Anonymous Null Session](https://hackviser.com/tactics/pentesting/services/smb#smb-null-session),
@@ -273,7 +293,10 @@ smbclient -N \\\\$target\\ --option="client min protocol"=LANMAN1
 >   (Legacy)
 <!-- }}} -->
 
-**SMBMap**
+<!-- }}} -->
+
+<!-- SMBMap {{{-->
+### SMBMap
 
 [SMBmap](https://github.com/ShawnDEvans/smbmap) —
 Enumerate SMB shares and associated permissions on the host
@@ -395,22 +418,9 @@ smbmap -H $target --upload test.txt "notes\test.txt"
 > ```
 <!-- }}} -->
 
-**NETEXEC**
+<!-- }}} -->
 
-[[Netexec]] — [Enumerate Null Sessions](https://www.netexec.wiki/smb-protocol/enumeration/enumerate-null-sessions)
-
-```sh
-netexec smb $target
-```
-
-```sh
-netexec smb $target -u "" -p ""
-```
-
-```sh
-netexec smb $target -u "guest" -p ""
-```
-
+___
 <!-- }}} -->
 
 <!-- SMB Guest Logon {{{-->
@@ -546,77 +556,6 @@ use auxiliary/scanner/smb/smb_lookupsid
 > ```
 <!-- }}} -->
 
-[[Netexec]] — [Enumerate Domain Users](https://www.netexec.wiki/smb-protocol/enumeration/enumerate-domain-users)
-
-```sh
-nxc smb $target --users
-```
-
-```sh
-nxc smb $target -u "" -p "" --users
-```
-
-```sh
-nxc smb $target -u "guest" -p "" --users
-```
-
-```sh
-nxc smb $target -u "guest" -p "" --users-export users.txt
-```
-
-[[Netexec]] — [Enumerate Users by Bruteforcing RID](https://www.netexec.wiki/smb-protocol/enumeration/enumerate-users-by-bruteforcing-rid)
-
-```sh
-nxc smb $target --rid-brute
-```
-
-```sh
-nxc smb $target -u "" -p "" --rid-brute
-```
-
-```sh
-nxc smb $target -u "guest" -p "" --rid-brute
-```
-
-```sh
-nxc smb $target -u "guest" -p "" --rid-brute | grep -i 'sidtypeuser' | awk 'print$6' | cut -d '\' -f2 | tee userlist2.txt
-```
-
-___
-<!-- }}} -->
-
-<!-- Groups {{{-->
-## Groups
-
-[[NetExec]] — [Enumerate Groups](https://www.netexec.wiki/ldap-protocol/enumerate-group-members)
-
-```sh
-nxc smb $target --groups
-```
-
-```sh
-nxc smb $target -u '' -p '' --groups
-```
-
-```sh
-nxc smb $target -u 'guest' -p '' --groups
-```
-
-[[NetExec]] — [Enumerate Local Groups](https://www.netexec.wiki/ldap-protocol/enumerate-group-members)
-
-
-```sh
-nxc smb 192.168.1.0/24 -u UserNAme -p 'PASSWORDHERE' --local-group
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> nxc smb 192.168.1.0/24 -u UserName -p 'PASSWORDHERE' --local-group
-> ```
-<!-- }}} -->
-
 ___
 <!-- }}} -->
 
@@ -655,22 +594,6 @@ use auxiliary/scanner/smb/smb_enumshares
 > run
 > ```
 <!-- }}} -->
-
-[[Netexec]] — 
-[Enumerate Shares and Access](https://www.netexec.wiki/smb-protocol/enumeration/enumerate-shares-and-access)
-Enumerate SMB shares
-
-```sh
-netexec smb $target --shares
-```
-
-```sh
-netexec smb $target -u "" -p "" --shares
-```
-
-```sh
-netexec smb $target -u "guest" -p "" --shares
-```
 
 ___
 <!-- }}} -->

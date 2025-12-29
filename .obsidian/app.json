@@ -7,5 +7,6 @@
   "livePreview": true,
   "defaultViewMode": "preview",
   "alwaysUpdateLinks": true,
-  "showInlineTitle": true
+  "showInlineTitle": true,
+  "attachmentFolderPath": "./"
 }

@@ -15,7 +15,17 @@ links: "[[SSH]]"
 Connect to a host
 
 ```sh
-ssh <user>@<target>
+ssh <user>@$target
+```
+
+Connect with private key
+
+```sh
+chmod 600 <private_key>
+```
+
+```sh
+ssh -i <private_key> <user>@$target
 ```
 
 <!-- Example {{{-->
@@ -28,12 +38,6 @@ ssh <user>@<target>
 > - `-i id_rsa`: Specify private key (*optional*)
 > - `-p 1234`: Specify target port (*optional*)
 <!-- }}} -->
-
-Connect with private key
-
-```sh
-ssh -i <path/to/private_key> <user>@<target>
-```
 
 Connect over a jump host
 
@@ -49,13 +53,13 @@ ssh -J <first_host> <second_host>
 >   described by destination
 <!-- }}} -->
 
-<!-- Authenticate {{{-->
-### Authenticate
+<!-- Authentication {{{-->
+### Authentication
 
 Check authentication method
 
 ```sh
-ssh -v <user>@<target>
+ssh -v <user>@$target
 ```
 
 <!-- Example {{{-->
@@ -77,7 +81,7 @@ ssh -v <user>@<target>
 Set authentication method to `password`
 
 ```sh
-ssh <user>@<target> -o PreferredAuthentications=password
+ssh <user>@$target -o PreferredAuthentications=password
 ```
 
 <!-- Example {{{-->
@@ -100,5 +104,4 @@ ssh <user>@<target> -o PreferredAuthentications=password
 <!-- }}} -->
 
 ___
-
 <!-- }}} -->
