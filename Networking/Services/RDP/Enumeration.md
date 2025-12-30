@@ -11,64 +11,20 @@ links:
 
 ___
 
-<!-- Service Detection {{{-->
-## Service Detection
+<!-- Service {{{-->
+## Service
 
 [[Nmap]] — Detect RDP services and identify capabilities
 
 ```sh
 nmap $target -p 3389 -oA rdp-identify
 ```
-___
-<!-- }}} -->
-
-<!-- Version and Configuration Check {{{-->
-## Version and Configuration Check
-
-Extract RDP version and security configuration information.
-
-[[Nmap]] — Check Windows version through RDP
-
-```sh
-nmap $target -p 3389 --script rdp-ntlm-info -oA rdp-script-ntlm-info
-```
-
-> [!tip]-
->
-> - Check if [[Networking/Services/RDP/General#Network Level Authentication|NLA]] is enabled
-
-[[Nmap]] — Check security layer
-
-```sh
-nmap $target -p 3389 --script rdp-enum-encryption -oA rdp-script-enum-encryption
-```
-
-> [!info]-
->
-> The output shows:
->
-> - RDP Protocol version
-> - Security layer (RDP/TLS/CredSSP)
-> - Encryption level
-
-[[Nmap]] — Run all scripts
-(*including [rdp-vuln-ms12-020](https://nmap.org/nsedoc/scripts/rdp-vuln-ms12-020.html)*)
-
-```sh
-nmap -sC -sV $target -p 3389 --script rdp* -oA rdp-script-all
-```
-
-```sh
-nmap -sC -sV $target -p 3389 --packet-trace --disable-ap-ping -n -oA rdp-script-trace
-```
-___
-
-<!-- }}} -->
 
 <!-- Banner Grabbing {{{-->
-## Banner Grabbing
+### Banner Grabbing
 
-Connect to RDP services to gather version and security information
+Grab to RDP service banner
+(*version and security information*)
 
 [[Netcat]]
 
@@ -94,11 +50,56 @@ python rdp-sec-check.py $target
 telnet $target 3389
 ```
 
-___
+<!-- }}} -->
+
+<!-- Version and Configuration {{{-->
+### Version and Configuration
+
+Extract RDP version and security configuration information
+
+[[Nmap]] — Check Windows version through RDP
+
+```sh
+nmap $target -p 3389 --script rdp-ntlm-info -oA rdp-script-ntlm-info
+```
+
+<!-- Tip {{{-->
+> [!tip]-
+>
+> - Check if [[Networking/Services/RDP/General#Network Level Authentication|NLA]] is enabled
+<!-- }}} -->
+
+[[Nmap]] — Check security layer
+
+```sh
+nmap $target -p 3389 --script rdp-enum-encryption -oA rdp-script-enum-encryption
+```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> The output shows
+>
+> - RDP Protocol version
+> - Security layer (RDP/TLS/CredSSP)
+> - Encryption level
+<!-- }}} -->
+
+[[Nmap]] — Run all scripts
+(*including [rdp-vuln-ms12-020](https://nmap.org/nsedoc/scripts/rdp-vuln-ms12-020.html)*)
+
+```sh
+nmap -sC -sV $target -p 3389 --script rdp* -oA rdp-script-all
+```
+
+```sh
+nmap -sC -sV $target -p 3389 --packet-trace --disable-ap-ping -n -oA rdp-script-trace
+```
+
 <!-- }}} -->
 
 <!-- Certificate {{{-->
-## Certificate
+### Certificate
 
 [openssl](https://en.wikipedia.org/wiki/OpenSSL) —
 Check RDP certificate
@@ -106,11 +107,11 @@ Check RDP certificate
 ```sh
 openssl s_client -connect $target:3389 < /dev/null 2>&1 | openssl x509 -noout -text
 ```
-___
+
 <!-- }}} -->
 
 <!-- RDP Security Check {{{-->
-## RDP Security Check
+### RDP Security Check
 
 Perl script developed by [Cisco CX Security Labs](https://github.com/CiscoCXSecurity)
 to enumerate security settings of an RDP Service
@@ -126,6 +127,8 @@ git clone https://github.com/CiscoCXSecurity/rdp-sec-check.git
 ```sh
 ./rdp-sec-check.pl $target
 ```
+
+<!-- }}} -->
 
 ___
 <!-- }}} -->
@@ -175,9 +178,11 @@ ___
 Enumerate active RDP sessions
 to identify logged-in users and their session states
 
+<!-- Warning {{{-->
 > [!warning]
 >
 > Access required
+<!-- }}} -->
 
 List active sessions
 
@@ -198,5 +203,4 @@ quser /server:$target
 ```
 
 ___
-
 <!-- }}} -->

@@ -12,6 +12,8 @@ ___
 <!-- Service {{{-->
 ## Service
 
+Enumerate MongoDB service
+
 [[Nmap]] — Service detection
 
 ```sh
@@ -30,18 +32,18 @@ nmap $target -p 27017 --script mongodb-info -oA mongodb-script-mongodb-info
 nmap $target -p 27017 --script mongodb-databases -oA mongodb-script-mongodb-databases
 ```
 
-___
-
-<!-- }}} -->
-
 <!-- Banner Grabbing {{{-->
-## Banner Grabbing
+### Banner Grabbing
+
+Grab MongoDB service banner
 
 [[Netcat]] — Banner grabbing
 
 ```sh
 nc -vn $target 27017
 ```
+<!-- }}} -->
+
 ___
 <!-- }}} -->
 

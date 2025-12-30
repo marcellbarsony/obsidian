@@ -5,7 +5,8 @@ tags:
   - Networking/Services/MSSQL/General
 links: "[[Services]]"
 port:
-  - 1443
+  - 1433
+  - 1434
 ---
 
 # MSSQL
@@ -101,19 +102,34 @@ ___
 <!-- Default Configuration {{{-->
 ### Default Configuration
 
-Connecting form the client-side is possible through [Windows Authentication](https://learn.microsoft.com/en-us/windows-server/security/windows-authentication/windows-authentication-overview).
-Windows will process the login request either via
+MSSQL supports two [authentication modes](https://learn.microsoft.com/en-us/sql/connect/ado-net/sql/authentication-sql-server?view=sql-server-ver17)
 
-- local SAM database
-- or the domain controller (hosting Active Directory))
+1. [Windows Authentication mode](https://learn.microsoft.com/en-us/windows-server/security/windows-authentication/windows-authentication-overview)
 
-before allowing connectivity to the database management system.
+Windows will process the login request to the database management system
+either via
 
-Using Active Directory can be ideal for auditing activity and controlling access
-in a Windows environment, but if an account is compromised, it could lead to
-privilege escalation and lateral movement across a Windows domain environment.
+- Local [[SAM]] database
+- [[Domain Controller]] (*hosting [[Active Directory]]*)
 
-Initially, the SQL service will likely run as `NT SERVICE\MSSQLSERVER`.
+> [!tip]- Active Directory
+>
+> Using [[Active Directory]] can be ideal for auditing activity and
+> controlling access in a Windows environment
+>
+> > [!warning]
+> > In case an account is compromised,
+> > it could lead to privilege escalation
+> > and lateral movement across a Windows domain environment
+
+2. Mixed mode
+
+Mixed mode supports authentication by
+
+- SQL server: Credentials are stored within the SQL server
+- [[Domain Controller]] (*hosting [[Active Directory]]*)
+
+Initially, the SQL service will likely run as `NT SERVICE\MSSQLSERVER`
 
 > [!example]-
 >

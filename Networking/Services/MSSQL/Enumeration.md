@@ -86,6 +86,55 @@ sudo nmap \
 > ```
 <!-- }}} -->
 
+
+[[Nmap]] — Banner Grabbing
+
+```sh
+nmap -sC -sV -Pn $target -p 1433
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> nmap -sC -sV -Pn 10.10.10.125 -p 1433
+> ```
+> 
+> ```sh
+> Host discovery disabled (-Pn). All addresses will be marked 'up', and scan times will be slower.
+> Starting Nmap 7.91 ( https://nmap.org ) at 2021-08-26 02:09 BST
+> Nmap scan report for 10.10.10.125
+> Host is up (0.0099s latency).
+> 
+> PORT     STATE SERVICE  VERSION
+> 1433/tcp open  ms-sql-s Microsoft SQL Server 2017 14.00.1000.00; RTM
+> | ms-sql-ntlm-info: 
+> |   Target_Name: HTB
+> |   NetBIOS_Domain_Name: HTB
+> |   NetBIOS_Computer_Name: mssql-test
+> |   DNS_Domain_Name: HTB.LOCAL
+> |   DNS_Computer_Name: mssql-test.HTB.LOCAL
+> |   DNS_Tree_Name: HTB.LOCAL
+> |_  Product_Version: 10.0.17763
+> | ssl-cert: Subject: commonName=SSL_Self_Signed_Fallback
+> | Not valid before: 2021-08-26T01:04:36
+> |_Not valid after:  2051-08-26T01:04:36
+> |_ssl-date: 2021-08-26T01:11:58+00:00; +2m05s from scanner time.
+> 
+> Host script results:
+> |_clock-skew: mean: 2m04s, deviation: 0s, median: 2m04s
+> | ms-sql-info: 
+> |   10.10.10.125:1433: 
+> |     Version: 
+> |       name: Microsoft SQL Server 2017 RTM
+> |       number: 14.00.1000.00
+> |       Product: Microsoft SQL Server 2017
+> |       Service pack level: RTM
+> |       Post-SP patches applied: false
+> |_    TCP port: 1433
+> ```
+<!-- }}} -->
+
 ___
 
 <!-- }}} -->
@@ -226,7 +275,6 @@ use auxiliary/scanner/mssql/mssql_login
 > msf auxiliary(mssql_login) > run
 > ```
 <!-- }}} -->
-
 
 <!-- }}} -->
 

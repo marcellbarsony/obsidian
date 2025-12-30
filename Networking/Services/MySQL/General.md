@@ -49,8 +49,18 @@ syntax and high response speed are essential.
   Apache, MySQL, PHP
 - [LEMP](https://lemp.io/): Linux OS, Nginx, MySQL, PHP
 
-___
+<!-- Databases {{{-->
+> [!info]- Databases
+>
+> | Database             | Description |
+> | -------------------- | ----------- |
+> | `mysql`              | System database that contains tables that store information required by the MySQL server |
+> | `information_schema` | Provides access to database metadata |
+> | `performance_schema` | Feature for monitoring MySQL Server execution at a low level |
+> | `sys`                | Set of objects that helps DBAs and developers interpret data collected by the Performance Schema |
+<!-- }}} -->
 
+___
 <!-- }}} -->
 
 <!-- MySQL Commands {{{-->
@@ -93,7 +103,6 @@ confirmation of a change, or an error message — to the web application.
 <!-- }}} -->
 
 ___
-
 <!-- }}} -->
 
 <!-- Configuration {{{-->
@@ -173,6 +182,6 @@ by others.
 > If an attacker can read files or gain shell access, they may retrieve the file
 > containing the MySQL username and password.
 <!-- }}} -->
-___
 
+___
 <!-- }}} -->

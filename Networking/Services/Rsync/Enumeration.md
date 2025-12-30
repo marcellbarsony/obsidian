@@ -75,12 +75,8 @@ sudo nmap -sV $target -p 512,513,514 -oA rsync-services
 nmap -sV <target_host> --script=rsync-list-modules -oA rsync-script-list-modules
 ```
 
-___
-
-<!-- }}} -->
-
 <!-- Banner Grabbing {{{-->
-## Banner Grabbing
+### Banner Grabbing
 
 [[Netcat]] — Grab banner and accessible [[Networking/Services/Rsync/General#Modules|modules]]
 
@@ -106,8 +102,9 @@ nc -nv $target 873
 > - `@RSYNCD: AUTHREQD`: Password needed
 <!-- }}} -->
 
-___
+<!-- }}} -->
 
+___
 <!-- }}} -->
 
 <!-- Modules {{{-->

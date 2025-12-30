@@ -9,10 +9,10 @@ tags:
 
 ___
 
-<!-- Network Scan {{{-->
-## Network Scan
+<!-- Network {{{-->
+## Network
 
-Scan the network for port `623`
+Scan the network for IPMI service (*`UDP/623`*)
 
 TCP Scan
 
@@ -43,7 +43,7 @@ ___
 (*[ipmi-version](https://nmap.org/nsedoc/scripts/ipmi-version.html)*)
 
 ```sh
-sudo nmap -sU $target -p 623 --script ipmi-version  -oA ipmi-version
+sudo nmap -sU $target -p 623 --script ipmi-version -oA ipmi-version
 ```
 
 <!-- Example {{{-->

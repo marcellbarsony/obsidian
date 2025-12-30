@@ -23,11 +23,9 @@ nmap $target -p 23 -oA telnet-identify
 ```sh
 nmap $target -p 23 --script telnet-encrpytion -oA telnet-script-encryption
 ```
-___
-<!-- }}} -->
 
 <!-- Banner Grabbing {{{-->
-## Banner Grabbing
+### Banner Grabbing
 
 [[Netcat]]
 
@@ -84,6 +82,8 @@ use auxiliary/scanner/telnet/telnet_version
 > ```sh
 > msf > exploit
 > ```
+<!-- }}} -->
+
 <!-- }}} -->
 
 ___

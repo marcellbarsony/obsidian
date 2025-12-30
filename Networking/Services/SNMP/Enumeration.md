@@ -58,6 +58,18 @@ nmap -sU -sV $target -p 161 --script snmp-netstat -oA snmp-script-netstat
 nmap -sU -sV $target -p 161 --script snmp-processes -oA snmp-script-processes
 ```
 
+<!-- Banner Grabbing {{{-->
+### Banner Grabbing
+
+[[Nmap]] — Grab service banner (*[snmp-info](https://nmap.org/nsedoc/scripts/snmp-info.html)*)
+
+```sh
+nmap -sU $target -p 161 --script snmp-info -oA snmp-script-banner-grabbing
+```
+
+<!-- }}} -->
+
+<!-- Windows {{{-->
 ### Windows
 
 [[Metasploit]] — Enumerate SNMP (*Windows only*)
@@ -124,6 +136,7 @@ SNMP Windows SMB Share Enumeration
 use auxiliary/scanner/snmp/snmp_enumshares
 ```
 
+<!-- Example {{{-->
 > [!example]-
 >
 > Use LanManager OID values to enumerate SMB shares on a Windows system via SNMP
@@ -137,18 +150,10 @@ use auxiliary/scanner/snmp/snmp_enumshares
 > ```sh
 > msf auxiliary(scanner/snmp/snmp_enumshares) > run
 > ```
-
-___
 <!-- }}} -->
 
-<!-- Banner Grabbing {{{-->
-## Banner Grabbing
+<!-- }}} -->
 
-[[Nmap]] — Grab service banner (*[snmp-info](https://nmap.org/nsedoc/scripts/snmp-info.html)*)
-
-```sh
-nmap -sU $target -p 161 --script snmp-info -oA snmp-script-banner-grabbing
-```
 ___
 <!-- }}} -->
 

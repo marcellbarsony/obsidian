@@ -155,16 +155,19 @@ use auxiliary/scanner/mysql/mysql_authbypass_hashdump
 <!-- Info {{{-->
 > [!info]-
 >
-> This module exploits a password bypass vulnerability in MySQL
-> in order to extract the usernames and encrypted password hashes
+> This module exploits a password bypass vulnerability
+> [[Exploitation#CVE-2012-2122|CVE-2012-2122]] in MySQL in order to
+> extract the usernames and encrypted password hashes
 > from a MySQL server
 >
-> Impacts MySQL versions:
+> Affected MySQL versions
+>
 > - `5.1.x` before `5.1.63`
 > - `5.5.x` before `5.5.24`
 > - `5.6.x` before `5.6.6`
 >
-> And MariaDB versions:
+> Affected MariaDB versions
+>
 > - `5.1.x` before `5.1.62`
 > - `5.2.x` before `5.2.12`
 > - `5.3.x` before `5.3.6`
@@ -182,106 +185,6 @@ use auxiliary/scanner/mysql/mysql_authbypass_hashdump
 > msf auxiliary(mysql_authbypass_hashdump) > show options
 >     ...show and set options...
 > msf auxiliary(mysql_authbypass_hashdump) > run
-> ```
-<!-- }}} -->
-
-MYSQL Password Hashdump
-(*[mysql_hashdump](https://www.rapid7.com/db/modules/auxiliary/scanner/mysql/mysql_hashdump/)*)
-
-```sh
-use auxiliary/scanner/mysql/mysql_hashdump
-```
-
-<!-- Info {{{-->
-> [!info]-
->
-> Exploit a password bypass vulnerability to extract usernames
-> and encrypted password hashes
->
-> Impacts MySQL versions:
->
-> - `5.1.x` before `5.1.63`
-> - `5.5.x` before `5.5.24`
-> - `5.6.x` before `5.6.6`
->
-> And MariaDB versions:
->
-> - `5.1.x` before `5.1.62`
-> - `5.2.x` before `5.2.12`
-> - `5.3.x` before `5.3.6`
-> - `5.5.x` before `5.5.23`
-<!-- }}} -->
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> msf > use auxiliary/scanner/mysql/mysql_hashdump
-> msf auxiliary(mysql_hashdump) > show actions
->     ...actions...
-> msf auxiliary(mysql_hashdump) > set ACTION < action-name >
-> msf auxiliary(mysql_hashdump) > show options
->     ...show and set options...
-> msf auxiliary(mysql_hashdump) > run
-> ```
-<!-- }}} -->
-
-MySQL Enumeration Module
-(*[mysql_enum](https://www.rapid7.com/db/modules/auxiliary/admin/mysql/mysql_enum/)*)
-
-> [!warning]
->
-> Valid credentials required
-
-```sh
-use auxiliary/admin/mysql/mysql_enum
-```
-
-<!-- Info {{{-->
-> [!info]-
->
-> This module allows for simple enumeration of MySQL Database Server
-> **provided proper credentials** to connect remotely
-<!-- }}} -->
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> msf > use auxiliary/admin/mysql/mysql_enum
-> msf auxiliary(mysql_enum) > show actions
->     ...actions...
-> msf auxiliary(mysql_enum) > set ACTION < action-name >
-> msf auxiliary(mysql_enum) > show options
->     ...show and set options...
-> msf auxiliary(mysql_enum) > run
-> ```
-<!-- }}} -->
-
-MYSQL Schema Dump
-(*[mysql_schemadump](https://www.rapid7.com/db/modules/auxiliary/scanner/mysql/mysql_schemadump/)*)
-
-```sh
-use auxiliary/scanner/mysql/mysql_schemadump
-```
-
-<!-- Info {{{-->
-> [!info]-
->
-> This module extracts the schema information from a MySQL DB server
-<!-- }}} -->
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> msf > use auxiliary/scanner/mysql/mysql_schemadump
-> msf auxiliary(mysql_schemadump) > show actions
->     ...actions...
-> msf auxiliary(mysql_schemadump) > set ACTION < action-name >
-> msf auxiliary(mysql_schemadump) > show options
->     ...show and set options...
-> msf auxiliary(mysql_schemadump) > run
 > ```
 <!-- }}} -->
 

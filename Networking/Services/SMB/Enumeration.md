@@ -171,285 +171,6 @@ nmap $target -p 445 --script "safe or smb-enum-*" -oA smb-enumeration
 ___
 <!-- }}} -->
 
-<!-- SMB Null Session {{{-->
-## SMB Null Session
-
-An [SMB Null Session](https://hackviser.com/tactics/pentesting/services/smb#smb-null-session)
-refers to an unauthenticated connection to an SMB server ^f374c7
-
-<!-- NetExec {{{-->
-### NetExec
-
-[[Netexec]] — [Enumerate Null Sessions](https://www.netexec.wiki/smb-protocol/enumeration/enumerate-null-sessions)
-
-```sh
-netexec smb $target
-```
-
-```sh
-netexec smb $target -u "" -p ""
-```
-
-```sh
-netexec smb $target -u "guest" -p ""
-```
-
-<!-- }}} -->
-
-<!-- SMBClient {{{-->
-### SMBClient
-
-[[Usage#smbclient|smbclient]] —
-Enumerate SMB shares on the host
-(*[Anonymous Null Session](https://hackviser.com/tactics/pentesting/services/smb#smb-null-session)*)
-
-**LINUX**
-
-Connect to server and list shares
-
-```sh
-smbclient -N -L //$target
-```
-
-Connect to server and list shares as user
-
-```sh
-smbclient -N -L //$target -U <user>
-```
-
-Connect to server and list shares (*implicit null creds*)
-
-```sh
-smbclient -N -L //$target --no-pass
-```
-
-Connect to server and list shares (*explicit null creds*)
-
-```sh
-smbclient -N -L //$target --user ''%''
-```
-
-<!-- Info {{{-->
-> [!info]-
->
-> - `-N`: Null session / Anonymous access
-> - `-L`: List shares
-<!-- }}} -->
-
-Downgrade SMB dialect
-
-```sh
-smbclient -N //$target/ --option="client min protocol"=LANMAN1
-```
-
-<!-- Info {{{-->
-> [!info]-
->
-> - `-N`: Null session / Anonymous access
-> - `--option="client min protocol"=LANMAN1`: Set minimum SMB dialect to LANMAN1
->   (Legacy)
-<!-- }}} -->
-
-**WINDOWS**
-
-Connect to server and list shares
-(*[Anonymous Null Session](https://hackviser.com/tactics/pentesting/services/smb#smb-null-session),
-Windows UNC path*)
-
-```sh
-smbclient -N -L \\\\$target\\
-```
-
-Connect to server and list shares (*implicit null creds*)
-
-```sh
-smbclient -N -L \\\\$target\\ --no-pass
-```
-
-Connect to server and list shares (*explicit null creds*)
-
-```sh
-smbclient -N -L \\\\$target\\ --user ''%''
-```
-
-<!-- Info {{{-->
-> [!info]-
->
-> - `-N`: Null session / Anonymous access
-> - `-L`: List shares
-<!-- }}} -->
-
-Downgrade SMB dialect
-
-```sh
-smbclient -N \\\\$target\\ --option="client min protocol"=LANMAN1
-```
-
-<!-- Info {{{-->
-> [!info]-
->
-> - `-N`: Null session / Anonymous access
-> - `--option="client min protocol"=LANMAN1`: Set minimum SMB dialect to LANMAN1
->   (Legacy)
-<!-- }}} -->
-
-<!-- }}} -->
-
-<!-- SMBMap {{{-->
-### SMBMap
-
-[SMBmap](https://github.com/ShawnDEvans/smbmap) —
-Enumerate SMB shares and associated permissions on the host
-(*[Anonymous Null Session](https://hackviser.com/tactics/pentesting/services/smb#smb-null-session)*)
-
-<!-- Warning {{{-->
-> [!warning]
->
-> SMBmap is a detailed and aggressive automated script
-<!-- }}} -->
-
-```sh
-smbmap -H $target
-```
-
-```sh
-smbmap -H $target -u "" -p ""
-```
-
-```sh
-smbmap -H $target -u null -p null
-```
-
-```sh
-smbmap -H $target -u guest
-```
-
-<!-- Info {{{-->
-> [!info]-
->
-> - `-H`: Specify the host IP
-> - `-u ""`: Supply an empty username
-> - `-p ""`: Supply an empty password
-<!-- }}} -->
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> smbmap -H 10.129.14.128
-> ```
-> ```sh
-> [+] Finding open SMB ports....
-> [+] User SMB session established on 10.129.14.128...
-> [+] IP: 10.129.14.128:445       Name: 10.129.14.128
->         Disk                                                    Permissions     Comment
->         ----                                                    -----------     -------
->         print$                                                  NO ACCESS       Printer Drivers
->         home                                                    NO ACCESS       INFREIGHT Samba
->         dev                                                     NO ACCESS       DEVenv
->         notes                                                   NO ACCESS       CheckIT
->         IPC$                                                    NO ACCESS       IPC Service (DEVSM)
-> ```
-<!-- }}} -->
-
-Browse directories recursively
-
-```sh
-smbmap -H $target -r share
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> MarciPwns@htb[/htb]$ smbmap -H 10.129.14.128 -r notes
-> ```
-> ```sh
-> [+] Guest session       IP: 10.129.14.128:445    Name: 10.129.14.128                           
->         Disk                                                    Permissions     Comment
->         --                                                   ---------    -------
->         notes                                                   READ, WRITE
->         .\notes\*
->         dr--r--r               0 Mon Nov  2 00:57:44 2020    .
->         dr--r--r               0 Mon Nov  2 00:57:44 2020    ..
->         dr--r--r               0 Mon Nov  2 00:57:44 2020    LDOUJZWBSG
->         fw--w--w             116 Tue Apr 16 07:43:19 2019    note.txt
->         fr--r--r               0 Fri Feb 22 07:43:28 2019    SDT65CB.tmp
->         dr--r--r               0 Mon Nov  2 00:54:57 2020    TPLRNSMWHQ
->         dr--r--r               0 Mon Nov  2 00:56:51 2020    WDJEQFZPNO
->         dr--r--r               0 Fri Feb 22 07:44:02 2019    WindowsImageBackup
-> ```
-<!-- }}} -->
-
-Download a file
-
-```sh
-smbmap -H $target --download "notes\note.txt"
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> MarciPwns@htb[/htb]$ smbmap -H 10.129.14.128 --download "notes\note.txt"
-> ```
-> ```sh
-> [+] Starting download: notes\note.txt (116 bytes)
-> [+] File output to: /htb/10.129.14.128-notes_note.txt
-> ```
-<!-- }}} -->
-
-Upload a file
-
-```sh
-smbmap -H $target --upload test.txt "notes\test.txt"
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> MarciPwns@htb[/htb]$ smbmap -H 10.129.14.128 --upload test.txt "notes\test.txt"
-> ```
->
-> ```sh
-> [+] Starting upload: test.txt (20 bytes)
-> [+] Upload complete.
-> ```
-<!-- }}} -->
-
-<!-- }}} -->
-
-___
-<!-- }}} -->
-
-<!-- SMB Guest Logon {{{-->
-## SMB Guest Logon
-
-Enumerate target SMB service for guest logon
-via random username and password
-
-[[NetExec]] - [Enumerate Guest Logon](https://www.netexec.wiki/smb-protocol/enumeration/enumerate-guest-logon)
-
-
-```sh
-nxc smb $target -u 'a' -p ''
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> nxc smb 10.10.10.178 -u 'a' -p ''
-> ```
-> ```sh
-> nxc smb 10.10.10.178 -u 'a' -p '' --shares
-> ```
-<!-- }}} -->
-
-___
-<!-- }}} -->
-
 <!-- Users {{{-->
 ## Users
 
@@ -459,70 +180,6 @@ Enumerate users on the SMB service
 > [!tip]
 >
 > Enumerate [[#Shares]] and [[#Users]] if a user is found
-<!-- }}} -->
-
-[[Impacket]] - [lookupsid.py](https://github.com/fortra/impacket/blob/master/examples/lookupsid.py) —
-Brute force [Windows Security Identifiers (SID)](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/understand-security-identifiers)
-
-```sh
-impacket-lookupsid '<domain>/<user>'@$target -no-pass
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> impacket-lookupsid 'cicada.htb/guest'@cicada.htb -no-pass
-> ```
-<!-- }}} -->
-
-[[Impacket]] - [lookupsid.py](https://github.com/fortra/impacket/blob/master/examples/lookupsid.py) —
-Brute force [Windows Security Identifiers (SID)](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/understand-security-identifiers)
-(*usernames only*)
-
-```sh
-impacket-lookupsid '[domain/]<user>'@$target -no-pass | \
-  grep 'SidTypeUser' | \
-  sed 's/.*\\\(.*\) (SidTypeUser)/\1/' > users.txt
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> impacket-lookupsid 'cicada.htb/guest'@cicada.htb -no-pass | \
->   grep 'SidTypeUser' | \
->   sed 's/.*\\\(.*\) (SidTypeUser)/\1/' > users.txt
-> ```
-<!-- }}} -->
-
-[[Metasploit]] — [smb_enumusers](https://www.rapid7.com/db/modules/auxiliary/scanner/smb/smb_enumusers/) —
-SMB User Enumeration (*SAM EnumUsers*)
-
-```sh
-use auxiliary/scanner/smb/smb_enumusers
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> Determine what users exist via the SAM RPC service
->
-> ```sh
-> msfconsole
-> ```
-> ```sh
-> use auxiliary/scanner/smb/smb_enumusers
-> ```
-> ```sh
-> set RHOSTS $target
-> ```
-> ```sh
-> set RPORT 445
-> ```
-> ```sh
-> run
-> ```
 <!-- }}} -->
 
 [[Metasploit]] — [smb_lookupsid](https://www.rapid7.com/db/modules/auxiliary/scanner/smb/smb_lookupsid/) —
@@ -559,41 +216,275 @@ use auxiliary/scanner/smb/smb_lookupsid
 ___
 <!-- }}} -->
 
-<!-- Shares {{{-->
-## Shares
+<!-- SMB Null Session {{{-->
+## SMB Null Session
 
-Enumerate SMB shares on the target
+An [SMB Null Session](https://hackviser.com/tactics/pentesting/services/smb#smb-null-session)
+refers to an unauthenticated connection to an SMB server ^f374c7
 
-[[Metasploit]] — [smb_enumshares](https://www.rapid7.com/db/modules/auxiliary/scanner/smb/smb_enumshares/) —
-SMB Share Enumeration
+<!-- NetExec {{{-->
+### NetExec
+
+[[NetExec]] — [Enumerate Null Sessions](https://www.netexec.wiki/smb-protocol/enumeration/enumerate-null-sessions)
 
 ```sh
-use auxiliary/scanner/smb/smb_enumshares
+nxc smb $target
+```
+
+```sh
+nxc smb $target -u "" -p ""
+```
+
+<!-- }}} -->
+
+<!-- SMBClient {{{-->
+### SMBClient
+
+[[Usage#smbclient|smbclient]] —
+Enumerate SMB shares on the host
+(*[Anonymous Null Session](https://hackviser.com/tactics/pentesting/services/smb#smb-null-session)*)
+
+**LINUX**
+
+Connect to server and list shares
+
+```sh
+smbclient -N -L //$target
+```
+
+```sh
+smbclient -N -L //$target -U <user>
+```
+
+```sh
+smbclient -N -L //$target --no-pass
+```
+
+```sh
+smbclient -N -L //$target --user ''%''
+```
+
+```sh
+smbclient -N //$target/ --option="client min protocol"=LANMAN1
+```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `-N`: Null session / Anonymous access
+> - `-L`: List shares
+> - `-U`: Specify user
+> - `--no-pass`: Implicit null credentials
+> - `--user ''%''`: Explicit null credentials
+> - `--option="client min protocol"=LANMAN1`: Downgrade SMB dialect to
+>   [LANMAN](https://en.wikipedia.org/wiki/LAN_Manager)
+>   (*Legacy*)
+<!-- }}} -->
+
+**WINDOWS**
+
+Connect to server and list shares
+(*Windows UNC path*)
+
+```sh
+smbclient -N -L \\\\$target\\
+```
+
+```sh
+smbclient -N -L \\\\$target\\ -U <user>
+```
+
+```sh
+smbclient -N -L \\\\$target\\ --no-pass
+```
+
+```sh
+smbclient -N -L \\\\$target\\ --user ''%''
+```
+
+```sh
+smbclient -N \\\\$target\\ --option="client min protocol"=LANMAN1
+```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `-N`: Null session / Anonymous access
+> - `-L`: List shares
+> - `-U`: Specify user
+> - `--no-pass`: Implicit null credentials
+> - `--option="client min protocol"=LANMAN1`: Downgrade SMB dialect to
+>   [LANMAN](https://en.wikipedia.org/wiki/LAN_Manager)
+>   (*Legacy*)
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- SMBMap {{{-->
+### SMBMap
+
+[SMBmap](https://github.com/ShawnDEvans/smbmap) —
+Enumerate SMB shares and associated permissions on the host
+(*[Anonymous Null Session](https://hackviser.com/tactics/pentesting/services/smb#smb-null-session)*)
+
+<!-- Warning {{{-->
+> [!warning]
+>
+> SMBmap is a detailed and aggressive automated script
+<!-- }}} -->
+
+```sh
+smbmap -H $target
+```
+
+```sh
+smbmap -H $target -u "" -p ""
+```
+
+```sh
+smbmap -H $target -u null -p null
+```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `-H`: Specify the host IP
+> - `-u ""`: Supply an empty username
+> - `-p ""`: Supply an empty password
+<!-- }}} -->
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> smbmap -H 10.129.14.128
+> ```
+> ```sh
+> [+] Finding open SMB ports....
+> [+] User SMB session established on 10.129.14.128...
+> [+] IP: 10.129.14.128:445       Name: 10.129.14.128
+>         Disk                                                    Permissions     Comment
+>         ----                                                    -----------     -------
+>         print$                                                  NO ACCESS       Printer Drivers
+>         home                                                    NO ACCESS       INFREIGHT Samba
+>         dev                                                     NO ACCESS       DEVenv
+>         notes                                                   NO ACCESS       CheckIT
+>         IPC$                                                    NO ACCESS       IPC Service (DEVSM)
+> ```
+<!-- }}} -->
+
+Browse directories recursively
+
+```sh
+smbmap -H $target -r <share>
 ```
 
 <!-- Example {{{-->
 > [!example]-
 >
-> Determine what shares are provided by the SMB service,
-> which ones are readable/writable and collect additional information
-> (*e.g., share types, directories, files, time stamps, etc.*)
->
 > ```sh
-> msfconsole
+> smbmap -H 10.129.14.128 -r notes
 > ```
 > ```sh
-> use auxiliary/scanner/smb/smb_version
-> ```
-> ```sh
-> set RHOSTS $target
-> ```
-> ```sh
-> set RPORT 445
-> ```
-> ```sh
-> run
+> [+] Guest session       IP: 10.129.14.128:445    Name: 10.129.14.128                           
+>         Disk                                                    Permissions     Comment
+>         --                                                   ---------    -------
+>         notes                                                   READ, WRITE
+>         .\notes\*
+>         dr--r--r               0 Mon Nov  2 00:57:44 2020    .
+>         dr--r--r               0 Mon Nov  2 00:57:44 2020    ..
+>         dr--r--r               0 Mon Nov  2 00:57:44 2020    LDOUJZWBSG
+>         fw--w--w             116 Tue Apr 16 07:43:19 2019    note.txt
+>         fr--r--r               0 Fri Feb 22 07:43:28 2019    SDT65CB.tmp
+>         dr--r--r               0 Mon Nov  2 00:54:57 2020    TPLRNSMWHQ
+>         dr--r--r               0 Mon Nov  2 00:56:51 2020    WDJEQFZPNO
+>         dr--r--r               0 Fri Feb 22 07:44:02 2019    WindowsImageBackup
 > ```
 <!-- }}} -->
+
+Download a file
+
+```sh
+smbmap -H $target --download "<share>\<file>"
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> MarciPwns@htb[/htb]$ smbmap -H 10.129.14.128 --download "notes\note.txt"
+> ```
+> ```sh
+> [+] Starting download: notes\note.txt (116 bytes)
+> [+] File output to: /htb/10.129.14.128-notes_note.txt
+> ```
+<!-- }}} -->
+
+Upload a file
+
+```sh
+smbmap -H $target --upload <file> "<share>\<out_file>"
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> smbmap -H 10.129.14.128 --upload test.txt "notes\test.txt"
+> ```
+>
+> ```sh
+> [+] Starting upload: test.txt (20 bytes)
+> [+] Upload complete.
+> ```
+<!-- }}} -->
+
+<!-- }}} -->
+
+___
+<!-- }}} -->
+
+<!-- SMB Guest Logon {{{-->
+## SMB Guest Logon
+
+Enumerate target SMB service for guest logon
+via random username and password
+
+[[NetExec]] — [Enumerate Guest Logon](https://www.netexec.wiki/smb-protocol/enumeration/enumerate-guest-logon)
+
+```sh
+nxc smb $target -u 'a' -p ''
+```
+
+```sh
+nxc smb $target -u 'a' -p '' --shares
+```
+
+```sh
+nxc smb $target -u "guest" -p ""
+```
+
+```sh
+nxc smb $target -u "guest" -p "" --shares
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> nxc smb 10.10.10.178 -u 'a' -p ''
+> ```
+> ```sh
+> nxc smb 10.10.10.178 -u 'a' -p '' --shares
+> ```
+<!-- }}} -->
+
+[SMBmap](https://github.com/ShawnDEvans/smbmap) —
+Enumerate SMB guest logon
+
+```sh
+smbmap -H $target -u guest
+```
 
 ___
 <!-- }}} -->

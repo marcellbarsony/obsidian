@@ -71,6 +71,32 @@ use auxiliary/scanner/ftp/ftp_version
 > ```
 <!-- }}} -->
 
+<!-- Banner Grabbing {{{-->
+### Banner Grabbing
+
+[[Netcat]] — Grab the FTP banner
+
+```sh
+nc -nv $target 21
+```
+
+```sh
+nc -nv $target 2121
+```
+
+[[Telnet/General|Telnet]] —
+Grab the FTP banner
+
+```sh
+telnet $target 21
+```
+
+```sh
+telnet $target 2121
+```
+
+<!-- }}} -->
+
 <!-- FTP Bounce Attack {{{-->
 ### FTP Bounce Attack
 
@@ -154,33 +180,6 @@ use auxiliary/scanner/ftp/anonymous
 <!-- }}} -->
 
 ___
-<!-- }}} -->
-
-<!-- Banner Grabbing {{{-->
-## Banner Grabbing
-
-[[Netcat]] — Grab the FTP banner
-
-```sh
-nc -nv $target 21
-```
-
-```sh
-nc -nv $target 2121
-```
-
-[[Telnet/General|Telnet]] —
-Grab the FTP banner
-
-```sh
-telnet $target 21
-```
-
-```sh
-telnet $target 2121
-```
-___
-
 <!-- }}} -->
 
 <!-- CVE Vulnerabilities {{{-->

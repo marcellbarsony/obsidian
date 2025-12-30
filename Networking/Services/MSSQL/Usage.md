@@ -101,13 +101,24 @@ impacket-mssqlclient <user>@$target -hashes :NTHASH
 ### SQLCMD
 
 [sqlcmd](https://learn.microsoft.com/en-us/sql/tools/sqlcmd/sqlcmd-use-utility) —
-the [sqlcmd utility](https://learn.microsoft.com/en-us/sql/tools/sqlcmd/sqlcmd-utility?view=sql-server-ver17)
+The [sqlcmd utility](https://learn.microsoft.com/en-us/sql/tools/sqlcmd/sqlcmd-utility?view=sql-server-ver17)
 allows enter Transact-SQL statements, system procedures,
 and script files through a variety of available modes
 
 ```sh
 sqlcmd -S $target -U <username> -P <password>
 ```
+
+```sh
+sqlcmd -S $target -U <username> -P <password> -y 30 -Y 30
+```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `-y`: [variable_length_type_display_width](https://learn.microsoft.com/en-us/sql/tools/sqlcmd/sqlcmd-utility?view=sql-server-ver17&tabs=go%2Cwindows-support&pivots=cs1-bash#-y-variable_length_type_display_width)
+> - `-Y`: [fixed_length_type_display_width](https://learn.microsoft.com/en-us/sql/tools/sqlcmd/sqlcmd-utility?view=sql-server-ver17&tabs=go%2Cwindows-support&pivots=cs1-bash#-y-fixed_length_type_display_width)
+<!-- }}} -->
 
 <!-- Example {{{-->
 > [!example]-
@@ -117,19 +128,56 @@ sqlcmd -S $target -U <username> -P <password>
 > ```
 <!-- }}} -->
 
+<!-- Tip {{{-->
+> [!tip]
+>
+> `sqlcmd` requires to issue `GO` after the query
+>
+> ```sh
+> SELECT name FROM master.dbo.sysdatabases
+> ```
+> ```sh
+> GO
+> ```
+>
+> <!-- Example {{{-->
+> > [!example]-
+> >
+> > ```sh
+> > 1> SELECT name FROM master.dbo.sysdatabases
+> > ```
+> > ```sh
+> > 2> GO
+> > ```
+> >
+> > ```sh
+> > name
+> > --------------------------------------------------
+> > master
+> > tempdb
+> > model
+> > msdb
+> > htbusers
+> > ```
+> <!-- }}} -->
 <!-- }}} -->
 
 <!-- SQSH {{{-->
 ### SQSH
-
 
 [sqsh](https://en.wikipedia.org/wiki/Sqsh) —
 Connect to a MSSQL server over the
 [TDS protocol](https://en.wikipedia.org/wiki/Tabular_Data_Stream)
 
 ```sh
-sqsh -S $target -U <username> -P <password>
+sqsh -S $target -U <username> -P <password> -h
 ```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `-h`: Disable headers and footers
+<!-- }}} -->
 
 <!-- Example {{{-->
 > [!example]-

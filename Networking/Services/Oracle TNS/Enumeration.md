@@ -37,12 +37,8 @@ sudo nmap -sV $target -p 1521 --open -oA oracle-tns-default
 > ```
 <!-- }}} -->
 
-___
-
-<!-- }}} -->
-
 <!-- Banner Grabbing {{{-->
-## Banner Grabbing
+### Banner Grabbing
 
 Connect to the TNS Listener to gather version and service information
 
@@ -75,8 +71,9 @@ Banner grabbing (*TNS ping*)
 tnslsnr $target 1521
 ```
 
-___
+<!-- }}} -->
 
+___
 <!-- }}} -->
 
 <!-- SID Enumeration {{{-->

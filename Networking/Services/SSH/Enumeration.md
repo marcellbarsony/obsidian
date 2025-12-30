@@ -10,8 +10,10 @@ links: "[[SSH]]"
 
 ___
 
-<!-- Identify Server {{{-->
-## Identify Server
+<!-- Service {{{-->
+## Service
+
+Identify and enumerate SSH service
 
 [[Nmap]] — Identify SSH server on a host
 
@@ -25,13 +27,10 @@ nmap $target -p 22 -oA ssh-identify
 nmap $target -p 22 --script ssh-auth-methods --script-args="ssh.user=<username>" -oA ssh-script-ssh-auth-methods
 ```
 
-___
-<!-- }}} -->
-
 <!-- Banner Grabbing {{{-->
-## Banner Grabbing
+### Banner Grabbing
 
-[[Netcat|netcat]] — SSH banner grabbing
+[[Netcat|netcat]] — SSH service banner grabbing
 
 ```sh
 ncat -vn $target 22
@@ -64,16 +63,17 @@ ncat -vn $target 22
 > ```
 <!-- }}} -->
 
-___
 <!-- }}} -->
 
 <!-- SSH Audit {{{-->
-## SSH Audit
+### SSH Audit
 
 [ssh-audit](https://github.com/jtesta/ssh-audit)
 analyzing SSH connections, providing details on banners,
 OS/software recognition, compression detection,
 algorithm information and security recommendations
+
+1. Install [SSH Audit](https://github.com/jtesta/ssh-audit)
 
 ```sh
 sudo apt install ssh-audit
@@ -82,23 +82,54 @@ sudo apt install ssh-audit
 ```sh
 ssh-audit $target 22
 ```
-___
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> ssh-audit 10.129.14.132
+> ```
+>
+> ```sh
+> # general
+> (gen) banner: SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.3
+> (gen) software: OpenSSH 8.2p1
+> (gen) compatibility: OpenSSH 7.4+, Dropbear SSH 2018.76+
+> (gen) compression: enabled (zlib@openssh.com)                                   
+>
+> # key exchange algorithms
+> (kex) curve25519-sha256                     -- [info] available since OpenSSH 7.4, Dropbear SSH 2018.76                            
+> (kex) curve25519-sha256@libssh.org          -- [info] available since OpenSSH 6.5, Dropbear SSH 2013.62
+> (kex) ecdh-sha2-nistp256                    -- [fail] using weak elliptic curves
+>                                             `- [info] available since OpenSSH 5.7, Dropbear SSH 2013.62
+> (kex) ecdh-sha2-nistp384                    -- [fail] using weak elliptic curves
+>                                             `- [info] available since OpenSSH 5.7, Dropbear SSH 2013.62
+> (kex) ecdh-sha2-nistp521                    -- [fail] using weak elliptic curves
+>                                             `- [info] available since OpenSSH 5.7, Dropbear SSH 2013.62
+> (kex) diffie-hellman-group-exchange-sha256 (2048-bit) -- [info] available since OpenSSH 4.4
+> (kex) diffie-hellman-group16-sha512         -- [info] available since OpenSSH 7.3, Dropbear SSH 2016.73
+> (kex) diffie-hellman-group18-sha512         -- [info] available since OpenSSH 7.3
+> (kex) diffie-hellman-group14-sha256         -- [info] available since OpenSSH 7.3, Dropbear SSH 2016.73
+>
+> # host-key algorithms
+> (key) rsa-sha2-512 (3072-bit)               -- [info] available since OpenSSH 7.2
+> (key) rsa-sha2-256 (3072-bit)               -- [info] available since OpenSSH 7.2
+> (key) ssh-rsa (3072-bit)                    -- [fail] using weak hashing algorithm
+>                                             `- [info] available since OpenSSH 2.5.0, Dropbear SSH 0.28
+>                                             `- [info] a future deprecation notice has been issued in OpenSSH 8.2: https://www.openssh.com/txt/release-8.2
+> (key) ecdsa-sha2-nistp256                   -- [fail] using weak elliptic curves
+>                                             `- [warn] using weak random number generator could reveal the key
+>                                             `- [info] available since OpenSSH 5.7, Dropbear SSH 2013.62
+> (key) ssh-ed25519                           -- [info] available since OpenSSH 6.5
+>
+> ...SNIP...
+> ```
 <!-- }}} -->
 
-<!-- Public Key {{{-->
-## Public Key
-
-[ssh-keyscan](https://man.openbsd.org/ssh-keyscan.1) —
-Fetch the server's RSA public SSH host key
-
-```sh
-ssh-keyscan -t rsa $target -p <port>
-```
-___
 <!-- }}} -->
 
 <!-- Cipher Algorithms {{{-->
-## Cipher Algorithms
+### Cipher Algorithms
 
 Enumerate the algorithms the target server offers
 
@@ -115,6 +146,20 @@ Test SSL/TLS enabled services to discover supported cipher suites
 sslscan :22
 ```
 
+<!-- }}} -->
+
+___
+<!-- }}} -->
+
+<!-- Public Key {{{-->
+## Public Key
+
+[ssh-keyscan](https://man.openbsd.org/ssh-keyscan.1) —
+Fetch the server's RSA public SSH host key
+
+```sh
+ssh-keyscan -t rsa $target -p <port>
+```
 ___
 <!-- }}} -->
 
@@ -154,75 +199,7 @@ use auxiliary/fuzzers/ssh/ssh_version_2
 > ```
 <!-- }}} -->
 
-<!-- }}} -->
-
-<!-- Configuration {{{-->
-## Configuration
-
-Checks the client and server-side configuration
-
-1. Install [SSH Audit](https://github.com/jtesta/ssh-audit)
-
-> [!example]-
->
-> ```sh
-> git clone https://github.com/jtesta/ssh-audit.git
-> ```
-> ```sh
-> cd ssh-audit
-> ```
-
-2. Run [SSH Audit](https://github.com/jtesta/ssh-audit)
-
-```sh
-./ssh-audit.py $target
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> ./ssh-audit.py 10.129.14.132
-> ```
->
-> ```sh
-> # general
-> (gen) banner: SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.3
-> (gen) software: OpenSSH 8.2p1
-> (gen) compatibility: OpenSSH 7.4+, Dropbear SSH 2018.76+
-> (gen) compression: enabled (zlib@openssh.com)                                   
->
-> # key exchange algorithms
-> (kex) curve25519-sha256                     -- [info] available since OpenSSH 7.4, Dropbear SSH 2018.76                            
-> (kex) curve25519-sha256@libssh.org          -- [info] available since OpenSSH 6.5, Dropbear SSH 2013.62
-> (kex) ecdh-sha2-nistp256                    -- [fail] using weak elliptic curves
->                                             `- [info] available since OpenSSH 5.7, Dropbear SSH 2013.62
-> (kex) ecdh-sha2-nistp384                    -- [fail] using weak elliptic curves
->                                             `- [info] available since OpenSSH 5.7, Dropbear SSH 2013.62
-> (kex) ecdh-sha2-nistp521                    -- [fail] using weak elliptic curves
->                                             `- [info] available since OpenSSH 5.7, Dropbear SSH 2013.62
-> (kex) diffie-hellman-group-exchange-sha256 (2048-bit) -- [info] available since OpenSSH 4.4
-> (kex) diffie-hellman-group16-sha512         -- [info] available since OpenSSH 7.3, Dropbear SSH 2016.73
-> (kex) diffie-hellman-group18-sha512         -- [info] available since OpenSSH 7.3
-> (kex) diffie-hellman-group14-sha256         -- [info] available since OpenSSH 7.3, Dropbear SSH 2016.73
->
-> # host-key algorithms
-> (key) rsa-sha2-512 (3072-bit)               -- [info] available since OpenSSH 7.2
-> (key) rsa-sha2-256 (3072-bit)               -- [info] available since OpenSSH 7.2
-> (key) ssh-rsa (3072-bit)                    -- [fail] using weak hashing algorithm
->                                             `- [info] available since OpenSSH 2.5.0, Dropbear SSH 0.28
->                                             `- [info] a future deprecation notice has been issued in OpenSSH 8.2: https://www.openssh.com/txt/release-8.2
-> (key) ecdsa-sha2-nistp256                   -- [fail] using weak elliptic curves
->                                             `- [warn] using weak random number generator could reveal the key
->                                             `- [info] available since OpenSSH 5.7, Dropbear SSH 2013.62
-> (key) ssh-ed25519                           -- [info] available since OpenSSH 6.5
->
-> ...SNIP...
-> ```
-<!-- }}} -->
-
 ___
-
 <!-- }}} -->
 
 <!-- Usernames {{{-->

@@ -33,18 +33,6 @@ Connect to a share
 smbclient //$target/<share>
 ```
 
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> smbclient //$target/anonymous
-> ```
->
-> ```sh
-> smbclient //$target/IPC$
-> ```
-<!-- }}} -->
-
 Connect to share as specified user
 
 ```sh
@@ -55,6 +43,18 @@ smbclient //$target/<share> -U <user>
 > [!info]-
 >
 > - `-U`: Connect as user with known credentials
+<!-- }}} -->
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> smbclient //$target/anonymous
+> ```
+>
+> ```sh
+> smbclient //$target/IPC$
+> ```
 <!-- }}} -->
 
 <!-- }}} -->
@@ -157,7 +157,7 @@ smb: \> dir
 Get file
 
 ```sh
-smb: \> get <remote_file_name> [local_file_name]
+smb: \> get <remote_file> [local_file]
 ```
 
 Execute local system command
@@ -174,13 +174,12 @@ smb: \> exit
 <!-- }}} -->
 
 ___
-
 <!-- }}} -->
 
 <!-- Linux {{{-->
 ## Linux
 
-Linux (UNIX) machines can also mount and browse SMB shares,
+Linux (*UNIX*) machines can also mount and browse SMB shares,
 whether the target server is Windows machine or Samba server
 
 <!-- Impacket {{{-->
@@ -316,6 +315,14 @@ nxc smb $target -u <user> -p '<password>' --local-auth
 
 <!-- Pass-The-Hash {{{-->
 ### Pass-The-Hash
+
+[Pass the Hash](https://en.wikipedia.org/wiki/Pass_the_hash)
+may allow to authenticate to remote server or service
+with [[NTLM]] or [[LanMan]] hash
+
+> [!tip]
+>
+> Capture hashes using [[Exploitation#Forced Authentcation|Forced Authentcation]]
 
 ```sh
 nxc smb $target -u <user> -H 'LM:NT'
