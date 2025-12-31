@@ -20,40 +20,57 @@ over a network
 ___
 
 <!-- NetBIOS (Port 139) {{{-->
-## NetBIOS (Port 139)
+## NetBIOS
 
-The [[Networking/Services/NetBIOS/General|NetBIOS]] is a software protocol
-designed to enable applications, PCs, and Desktops within a LAN to interact
-with network hardware and facilitate the transmission of data
-across the network
+The [[Networking/Services/NetBIOS/General|NetBIOS]] (**port 139**)
+is a software protocol designed to enable applications, PCs, and Desktops
+within a LAN to interact with network hardware
+and facilitate the transmission of data across the network
 
 ___
 <!-- }}} -->
 
 <!-- SMB (Port 445) {{{-->
-## SMB (Port 445)
+## SMB
 
-The **SMB** protocol operates over **port 445** to provide shared access to
-files, printers, and serial ports between nodes on a network.
+The **SMB** protocol (**port 445**) provides shared access to
+files, printers, and serial ports between nodes on a network
 
 **SMB** over TCP port `445` allows direct TCP/IP transport without relying on
 the NetBIOS layer (over TCP port `139`), enabling more efficient and modern file
-sharing and remote administration within LANs and across domain environments.
+sharing and remote administration within LANs and across domain environments
 
-___
+<!-- Versions {{{-->
+### Versions
+
+- SMB 1.0 (*CIFS*): Deprecated
+- SMB 2.0 / 2.1: Fewer requests, Better performance
+- SMB 3.0+: Encryption, Bigning improvements, Multichannel
+
+<!-- Example {{{-->
+> [!info]-
+>
+> | SMB Version | Supported | Features |
+> | --- | --- | --- |
+> | CIFS | Windows NT 4.0 | Communication via NetBIOS interface |
+> | SMB 1.0 | Windows 2000 | Direct connection via TCP |
+> | SMB 2.0 | Windows Vista, Windows Server 2008 | Performance upgrades, improved message signing, caching feature |
+> | SMB 2.1 | Windows 7, Windows Server 2008 R2 | Locking mechanisms |
+> | SMB 3.0 | Windows 8, Windows Server 2012 | Multichannel connections, end-to-end encryption, remote storage access |
+> | SMB 3.0.2 | Windows 8.1, Windows Server 2012 R2 |
+> | SMB 3.1.1 | Windows 10, Windows Server 2016 | Integrity checking, AES-128 encryption
+<!-- }}} -->
+
 <!-- }}} -->
 
 <!-- Samba {{{-->
-## Samba
+### Samba
 
 **[Samba](https://www.samba.org/)** is an alternative implementation
 of the **SMB server** developed for Unix-based operating systems,
 that implements the Common Internet File System
 (*[CIFS](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-cifs/934c2faa-54af-4526-ac74-6a24d126724e)*)
 network protocol (*often referred as SMB/CIFS*)
-
-<!-- Service {{{-->
-### Service
 
 Display the Samba server's status
 
@@ -83,8 +100,11 @@ as if it were local
 2. The server executes the function
 3. The server sends back the results
 
+___
+<!-- }}} -->
+
 <!-- Configuration {{{-->
-### Configuration
+## Configuration
 
 [smb.conf](https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html) —
 The configuration file for the Samba suite is located at `/etc/samba/smb.conf`
@@ -92,12 +112,12 @@ The configuration file for the Samba suite is located at `/etc/samba/smb.conf`
 To apply changes in the configuration, the service daemon must be restarted
 
 <!-- Default Configuration {{{-->
-#### Default Configuration
+### Default Configuration
 
 Default configuration parameters and values
 
 Global settings are defined under the `[global]` share, and can be overwritten
-in individual shares (e.g., `[printers]`, `[print$]`, etc.).
+in individual shares (*e.g., `[printers]`, `[print$]`, etc.*)
 
 > [!info]- Default Configuration
 >
@@ -118,7 +138,7 @@ in individual shares (e.g., `[printers]`, `[print$]`, etc.).
 <!-- }}} -->
 
 <!-- Dangerous Settings {{{-->
-#### Dangerous Settings
+### Dangerous Settings
 
 Some of the settings enable sensitive options
 
@@ -136,9 +156,6 @@ Some of the settings enable sensitive options
 >| `logon script = script.sh`  | What script needs to be executed on the user's login               |
 >| `magic script = script.sh`  | Which script should be executed when the script gets closed        |
 >| `magic output = script.out` | Where the output of the magic script needs to be stored            |
-<!-- }}} -->
-
-___
 <!-- }}} -->
 
 ___

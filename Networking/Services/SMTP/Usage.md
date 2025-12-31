@@ -43,7 +43,7 @@ perform the required action
 **SMTP** server through TCP connection
 
 ```sh
-telnet <target_ip> <target_port>
+telnet $target <port>
 ```
 
 The initialization of the session is done with `HELO` or `EHLO`

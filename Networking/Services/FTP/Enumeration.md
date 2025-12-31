@@ -71,8 +71,8 @@ use auxiliary/scanner/ftp/ftp_version
 > ```
 <!-- }}} -->
 
-<!-- Banner Grabbing {{{-->
-### Banner Grabbing
+<!-- Banner {{{-->
+### Banner
 
 [[Netcat]] — Grab the FTP banner
 
@@ -143,8 +143,35 @@ use auxiliary/scanner/ftp/ftp_bounce
 
 <!-- }}} -->
 
-<!-- Anonymous Access {{{-->
-### Anonymous Access
+<!-- Certificate {{{-->
+### Certificate
+
+Update the connection to TLS, display the server's
+
+- TLS certificate (e.g., *hostname*, *e-mail*, *etc*.)
+- connection details
+
+```sh
+openssl s_client -connect $target:21 -starttls ftp
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> openssl s_client -connect crossfit.htb:21 -starttls ftp
+> ```
+<!-- }}} -->
+
+<!-- }}} -->
+
+___
+<!-- }}} -->
+
+<!-- Anonymous Authentication {{{-->
+## Anonymous Authentication
+
+FTP may allow connection without needing to specific identity
 
 [[Metasploit]] —
 [[Networking/Services/FTP/Exploitation#Anonymous Login|Anonymous FTP Access]] Detection
@@ -177,7 +204,45 @@ use auxiliary/scanner/ftp/anonymous
 > ```
 <!-- }}} -->
 
+Anonymous login
+
+```sh
+ftp $target [port]
+```
+```sh
+ftp $target [port] -p
+```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `-p`: Use passive mode in environments
+> where a firewall prevents connections from the outside world
+> back to the client machine
 <!-- }}} -->
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> ftp -p 10.129.42.253
+> ```
+>
+> ```sh
+> Connected to 10.129.42.253.
+> 220 (vsFTPd 3.0.3)
+> Name (10.129.42.253:user): anonymous
+> 230 Login successful.
+> Remote system type is UNIX.
+> Using binary mode to transfer files.
+> ```
+<!-- }}} -->
+
+Anonymous [[Usage#Web Browser Connection|Browser Login]]
+
+```sh
+ftp://anonymous:anonymous@$target
+```
 
 ___
 <!-- }}} -->
@@ -268,30 +333,6 @@ ___
 
 <!-- }}} -->
 
-<!-- Certificate {{{-->
-## Certificate
-
-Update the connection to TLS, display the server's
-
-- TLS certificate (e.g., *hostname*, *e-mail*, *etc*.)
-- connection details
-
-```sh
-openssl s_client -connect $target:21 -starttls ftp
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> openssl s_client -connect crossfit.htb:21 -starttls ftp
-> ```
-<!-- }}} -->
-
-___
-
-<!-- }}} -->
-
 <!-- Directories {{{-->
 ## Directories
 
@@ -301,20 +342,26 @@ that may contain sensitive information
 <!-- Wordlists {{{-->
 > [!tip]- Wordlists
 >
-> - [[Dirbuster#Directories|Dirbuster - Directories]]
-> - [[SecLists#Directories|SecLists - Directories]]
+> - [[Dirbuster#Directories|Dirbuster]]
+> - [[SecLists#Directories|SecLists]]
 <!-- }}} -->
 
 [[Gobuster]] — Discover directories
 
 ```sh
-gobuster dir -u ftp://$target -w <dirlist>
+gobuster dir -u ftp://$target -w <wordlist.txt>
 ```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `-u`: Specify URL
+<!-- }}} -->
 
 [[Ffuf]] — Discover directories
 
 ```sh
-ffuf
+ffuf -u ftp://$target/FUZZ -w <wordlist.txt>
 ```
 
 ___

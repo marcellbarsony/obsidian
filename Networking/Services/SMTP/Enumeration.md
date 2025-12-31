@@ -59,6 +59,49 @@ sudo nmap -sC -sV $target -p 25 -oA smtp-default-scripts
 > ```
 <!-- }}} -->
 
+<!-- Banner {{{-->
+### Banner
+
+<!-- SMTP {{{-->
+#### SMTP
+
+[[Netcat]] — Get banner
+
+```sh
+nc -vn $target 25
+```
+
+```sh
+echo "EHLO test" | nc $target 25
+```
+
+[[Telnet/General|Telnet]] — Get banner
+
+```sh
+telnet $target 25
+```
+
+<!-- }}} -->
+
+<!-- SMTPS {{{-->
+#### SMTPS
+
+SSL/TLS with `starttls` command
+
+```sh
+openssl s_client -starttls smtp -crlf -connect smtp.mailgun.org:587
+```
+
+SSL/TLS without `starttls` command
+
+```sh
+openssl s_client -crlf -connect smtp.mailgun.org:465
+```
+
+<!-- }}} -->
+
+<!-- }}} -->
+
 <!-- Scripts {{{-->
 ### Scripts
 
@@ -111,8 +154,11 @@ nmap $target -p25 --script smtp-open-relay -v -oA smtp-script-open-relay
 
 <!-- }}} -->
 
+___
+<!-- }}} -->
+
 <!-- CVE Scripts {{{-->
-### CVE Scripts
+## CVE Scripts
 
 [[Networking/Services/SMTP/Exploitation#CVE-2010-4344|CVE-2010-4344]]
 (*[smtp-vuln-cve2010-4344](https://nmap.org/nsedoc/scripts/smtp-vuln-cve2010-4344.html)*)
@@ -134,55 +180,6 @@ sudo nmap -sV $target -p 25,465,587 --script=smtp-vuln-cve2011-1720 -oA smtp-vul
 ```sh
 sudo nmap -sV $target -p 25,465,587 --script=smtp-vuln-cve2011-1764 -oA smtp-vuln-cve2011-1764
 ```
-
-<!-- }}} -->
-
-___
-
-<!-- }}} -->
-
-<!-- Banner Grabbing {{{-->
-## Banner Grabbing
-
-<!-- SMTP {{{-->
-### SMTP
-
-[[Netcat]] — Get banner
-
-```sh
-nc -vn $target 25
-```
-
-[[Netcat]] `EHLO` — Get banner
-
-```sh
-echo "EHLO test" | nc $target 25
-```
-
-[[Telnet/General|Telnet]] — Get banner
-
-```sh
-telnet $target 25
-```
-
-<!-- }}} -->
-
-<!-- SMTPS {{{-->
-### SMTPS
-
-SSL/TLS with `starttls` command
-
-```sh
-openssl s_client -starttls smtp -crlf -connect smtp.mailgun.org:587
-```
-
-SSL/TLS without `starttls` command
-
-```sh
-openssl s_client -crlf -connect smtp.mailgun.org:465
-```
-
-<!-- }}} -->
 
 ___
 <!-- }}} -->

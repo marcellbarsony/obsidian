@@ -12,7 +12,7 @@ links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
 dnsenum is a perl script that enumerates DNS information
 
 ```sh
-dnsenum --enum <target> -f <wordlist.txt> -r
+dnsenum --enum $target -f <wordlist.txt> -r
 ```
 
 <!-- Example {{{-->

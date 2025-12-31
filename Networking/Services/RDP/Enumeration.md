@@ -20,8 +20,8 @@ ___
 nmap $target -p 3389 -oA rdp-identify
 ```
 
-<!-- Banner Grabbing {{{-->
-### Banner Grabbing
+<!-- Banner {{{-->
+### Banner
 
 Grab to RDP service banner
 (*version and security information*)

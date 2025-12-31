@@ -157,17 +157,17 @@ Download all files
 (*[[Networking/Services/FTP/Exploitation#Anonymous Login|Anonymous Login]]*)
 
 ```sh
-wget -m ftp://anonymous:anonymous@<target>
+wget -m ftp://anonymous:anonymous@$target
 ```
 
 ```sh
-wget -m --no-passive ftp://anonymous:anonymous@<target>
+wget -m --no-passive ftp://anonymous:anonymous@$target
 ```
 
 Supply credentials with special characters
 
 ```sh
-wget -r --user="<user>" --password="<user>" ftp://<target>
+wget -r --user="<user>" --password="<user>" ftp://$target
 ```
 
 <!-- }}} -->

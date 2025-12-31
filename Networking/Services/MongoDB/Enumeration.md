@@ -32,8 +32,8 @@ nmap $target -p 27017 --script mongodb-info -oA mongodb-script-mongodb-info
 nmap $target -p 27017 --script mongodb-databases -oA mongodb-script-mongodb-databases
 ```
 
-<!-- Banner Grabbing {{{-->
-### Banner Grabbing
+<!-- Banner {{{-->
+### Banner
 
 Grab MongoDB service banner
 

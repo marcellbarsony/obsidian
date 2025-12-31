@@ -99,11 +99,9 @@ nmap $target -p 143 --script imap-capabilities -oA imap-server-capabilities
 ```sh
 nmap $target -p 143,993 --script imap-* -oA imap-scripts-all
 ```
-___
-<!-- }}} -->
 
-<!-- Banner Grabbing {{{-->
-### Banner Grabbing
+<!-- Banner {{{-->
+#### Banner
 
 Grab the IMAP service banner
 
@@ -130,6 +128,9 @@ openssl s_client -connect $target:993 -quiet
 ```sh
 telnet $target 143
 ```
+
+<!-- }}} -->
+
 ___
 <!-- }}} -->
 
@@ -371,11 +372,8 @@ nmap $target -p 110 --script pop3-capabilities -oA pop3-capabilities
 nmap $target -p 110 --script pop3-ntlm-info -oA pop3-ntlm-info
 ```
 
-___
-<!-- }}} -->
-
-<!-- Banner Grabbing {{{-->
-### Banner Grabbing
+<!-- Banner {{{-->
+#### Banner
 
 Grab the POP3 service banner
 
@@ -396,6 +394,8 @@ openssl s_client -connect $target:995 -crlf -quiet
 ```sh
 telnet $target 110
 ```
+
+<!-- }}} -->
 
 ___
 <!-- }}} -->

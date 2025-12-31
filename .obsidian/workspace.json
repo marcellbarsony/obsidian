@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Networking/Services/SMTP/Exploitation.md",
+                "file": "Networking/Services/Rsync/Enumeration.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Exploitation"
+              "title": "Enumeration"
             }
           }
         ]
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/Services/SMTP/Exploitation.md",
+                "file": "Networking/Services/Rsync/Enumeration.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Exploitation"
+              "title": "Outline of Enumeration"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/Services/SMTP/Exploitation.md",
+                "file": "Networking/Services/Rsync/Enumeration.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Exploitation"
+              "title": "Graph of Enumeration"
             }
           }
         ]
@@ -225,32 +225,32 @@
   },
   "active": "6f4e890d1c374ce7",
   "lastOpenFiles": [
+    "Networking/Services/SMTP/Exploitation.md",
     "Networking/Services/SMTP/Enumeration.md",
-    "Networking/Services/SMB/Usage.md",
-    "Networking/Services/SMB/Exploitation.md",
-    "Networking/Services/SMB/General.md",
-    "Networking/Services/SMB/Enumeration.md",
-    "Networking/Services/WMI/Enumeration.md",
-    "Networking/Services/WMI/General.md",
-    "Networking/Services/Services.md",
-    "Networking/Services/WinRM/General.md",
-    "Networking/Services/WinRM/Usage.md",
-    "Networking/Services/WinRM/Exploitation.md",
-    "Networking/Services/WinRM/Enumeration.md",
-    "Networking/Services/VNC/Exploitation.md",
-    "Networking/Services/VNC/Enumeration.md",
-    "Networking/Services/SNMP/General.md",
     "Networking/Services/SNMP/Exploitation.md",
     "Networking/Services/SNMP/Enumeration.md",
-    "Networking/Services/Telnet/Exploitation.md",
+    "Networking/Services/SQL/General.md",
+    "Networking/Services/SQL/Exploitation.md",
+    "Networking/Services/FTP/Exploitation.md",
+    "Networking/Services/FTP/Enumeration.md",
     "Networking/Services/Telnet/Enumeration.md",
-    "Networking/Services/Telnet/General.md",
+    "Networking/Services/Telnet/Exploitation.md",
+    "Networking/Services/SMB/Exploitation.md",
+    "Networking/Services/SMB/Enumeration.md",
+    "Networking/Services/WinRM/Enumeration.md",
+    "Networking/Services/WinRM/Exploitation.md",
     "Networking/Services/SSH/Exploitation.md",
     "Networking/Services/SSH/Enumeration.md",
-    "Networking/Services/SMTP/Exploitation.md",
-    "Networking/Services/Rsync/Exploitation.md",
-    "Networking/Services/Rsync/Enumeration.md",
-    "Networking/Services/RDP/Usage.md",
+    "Networking/Services/RDP/Exploitation.md",
+    "Networking/Services/RDP/Enumeration.md",
+    "Networking/Services/Oracle TNS/Exploitation.md",
+    "Networking/Services/Oracle TNS/Enumeration.md",
+    "Networking/Services/NFS/Exploitation.md",
+    "Networking/Services/NFS/Enumeration.md",
+    "Networking/Services/MSSQL/Exploitation.md",
+    "Networking/Services/MSSQL/Enumeration.md",
+    "Networking/Services/MongoDB/Exploitation.md",
+    "Networking/Services/MongoDB/Enumeration.md",
     "Networking/Services/LDAP",
     "Microsoft/AD/src/ad-forests-domains.png",
     "Pentest/Brute Force",

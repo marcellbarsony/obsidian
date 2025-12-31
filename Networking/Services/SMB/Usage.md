@@ -139,31 +139,47 @@ smbclient "\\\\$target\\" -U <user> -W <domain_name> --pw-nt-hash `hash`
 
 <!-- }}} -->
 
-<!-- SMB Actions {{{-->
-### SMB Actions
+<!-- Actions {{{-->
+### Actions
+
+Current directory
+
+```sh
+pwd
+```
 
 Change directory
 
 ```sh
-smb: \> cd
+cd
 ```
 
 List files
 
 ```sh
-smb: \> dir
+ls
+```
+
+```sh
+dir
 ```
 
 Get file
 
 ```sh
-smb: \> get <remote_file> [local_file]
+get <remote_file> [local_file]
+```
+
+Put file
+
+```sh
+put <local_file> [remote_file]
 ```
 
 Execute local system command
 
 ```sh
-smb: \> !ls
+!ls
 ```
 
 Exit

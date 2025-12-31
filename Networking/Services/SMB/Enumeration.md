@@ -28,7 +28,7 @@ nbtscan -r <target_network>/<cidr>
 > - `-r`: Use local port `137` for scans
 <!-- }}} -->
 
-[[NetExec]] - [Map Network Hosts](https://www.netexec.wiki/smb-protocol/enumeration/enumerate-hosts) — 
+[[NetExec]] - [Map Network Hosts](https://www.netexec.wiki/smb-protocol/enumeration/enumerate-hosts) —
 Return a list of live hosts on the network
 
 ```sh
@@ -57,6 +57,68 @@ ___
 ## Service
 
 Enumerate the identified SMB service on the target host
+
+<!-- NetBIOS {{{-->
+### NetBIOS
+
+Enumerate NetBIOS name
+
+[nbtscan](https://www.kali.org/tools/nbtscan/) —
+Enumerate target hostname
+
+```sh
+nbtscan $target
+```
+
+[nmblookup](https://www.samba.org/samba/docs/current/man-html/nmblookup.1.html) —
+NetBIOS over TCP/IP client to lookup NetBIOS names
+
+```sh
+nmblookup -A $target
+```
+
+<!-- }}} -->
+
+<!-- Banner {{{-->
+### Banner
+
+Grab service banner
+
+[[Nmap]] — Banner grabbing with default scripts
+
+```sh
+sudo nmap -sC -sV $target -p 139,445 -oA smb-default-scripts
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> PORT    STATE SERVICE     VERSION
+> 139/tcp open  netbios-ssn Samba smbd 4
+> 445/tcp open  netbios-ssn Samba smbd 4
+>
+> Host script results:
+> |_nbstat: NetBIOS name: DEVSMB, NetBIOS user: <unknown>, NetBIOS MAC: <unknown> (unknown)
+> | smb2-security-mode:
+> |   3:1:1:
+> |_    Message signing enabled but not required
+> | smb2-time:
+> |   date: 2025-10-13T15:19:02
+> |_  start_date: N/A
+> ```
+>
+> > [!warning]
+> >
+> > May take a long time
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- Version {{{-->
+### Version
+
+Get SMB version
 
 [[Metasploit]] - [smb_version](https://www.rapid7.com/db/modules/auxiliary/scanner/smb/smb_version/) —
 SMB Version Detection
@@ -90,6 +152,27 @@ use auxiliary/scanner/smb/smb_version
 > ```
 <!-- }}} -->
 
+<!-- }}} -->
+
+<!-- Host {{{-->
+### Host
+
+Enumerate OS/Host/Domain information
+
+[[Nmap]] — Extract OS/Host/Domain information
+(*[smb-os-discovery.nse](https://nmap.org/nsedoc/scripts/smb-os-discovery.html)*)
+
+```sh
+nmap $target -p 445 --script smb-os-discovery.nse -oA smb-os-discovery
+```
+
+<!-- }}} -->
+
+<!-- Protocol {{{-->
+### Protocol
+
+Enumerate SMB protocols
+
 [[Metasploit]] - [smb2](https://www.rapid7.com/db/modules/auxiliary/scanner/smb/smb2/) —
 SMB 2.0 Protocol Detection
 
@@ -119,48 +202,19 @@ use auxiliary/scanner/smb/smb2
 > ```
 <!-- }}} -->
 
-[[Nmap]] — Banner grabbing with default scripts
-
-```sh
-sudo nmap -sC -sV $target -p 139,445 -oA smb-default-scripts
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> PORT    STATE SERVICE     VERSION
-> 139/tcp open  netbios-ssn Samba smbd 4
-> 445/tcp open  netbios-ssn Samba smbd 4
->
-> Host script results:
-> |_nbstat: NetBIOS name: DEVSMB, NetBIOS user: <unknown>, NetBIOS MAC: <unknown> (unknown)
-> | smb2-security-mode:
-> |   3:1:1:
-> |_    Message signing enabled but not required
-> | smb2-time:
-> |   date: 2025-10-13T15:19:02
-> |_  start_date: N/A
-> ```
->
-> > [!warning]
-> >
-> > May take a long time
-<!-- }}} -->
-
-[[Nmap]] — Discover SMB versions and supported protocol features
+[[Nmap]] — Discover SMB supported protocol features and dialects
 (*[smb-protocols](https://nmap.org/nsedoc/scripts/smb-protocols.html)*)
 
 ```sh
 nmap $target -p 445 --script smb-protocols -oA smb-protocols
 ```
 
-[[Nmap]] — Extract OS/Host/Domain information
-(*[smb-os-discovery.nse](https://nmap.org/nsedoc/scripts/smb-os-discovery.html)*)
+<!-- }}} -->
 
-```sh
-nmap $target -p 445 --script smb-os-discovery.nse -oA smb-os-discovery
-```
+<!-- Scripts {{{-->
+### Scripts
+
+Execute all safe SMB enumeration scripts
 
 [[Nmap]] — Run all `safe` and `smb-enum-*` scripts for non-destructive SMB enumeration
 
@@ -168,62 +222,25 @@ nmap $target -p 445 --script smb-os-discovery.nse -oA smb-os-discovery
 nmap $target -p 445 --script "safe or smb-enum-*" -oA smb-enumeration
 ```
 
-___
-<!-- }}} -->
-
-<!-- Users {{{-->
-## Users
-
-Enumerate users on the SMB service
-
-<!-- Tip {{{-->
-> [!tip]
->
-> Enumerate [[#Shares]] and [[#Users]] if a user is found
-<!-- }}} -->
-
-[[Metasploit]] — [smb_lookupsid](https://www.rapid7.com/db/modules/auxiliary/scanner/smb/smb_lookupsid/) —
-SMB SID User Enumeration (*LookupSid*)
+[[Nmap]] — Run all `vuln*` scripts
 
 ```sh
-use auxiliary/scanner/smb/smb_lookupsid
+sudo nmap $target -p 129,445 --script smb-vuln* -oA smb-scripts-vuln
 ```
 
-<!-- Example {{{-->
-> [!example]-
->
-> Determine what users exist via brute force SID lookups.
-> Enumerate both local and domain accounts by setting `ACTION`
-> to either `LOCAL` or `DOMAIN`
->
-> ```sh
-> msfconsole
-> ```
-> ```sh
-> use auxiliary/scanner/smb/smb_lookupsid
-> ```
-> ```sh
-> set RHOSTS $target
-> ```
-> ```sh
-> set RPORT 445
-> ```
-> ```sh
-> run
-> ```
 <!-- }}} -->
 
 ___
 <!-- }}} -->
 
+<!-- Anonymous Authentication {{{-->
+## Anonymous Authentication
+
 <!-- SMB Null Session {{{-->
-## SMB Null Session
+### SMB Null Session
 
-An [SMB Null Session](https://hackviser.com/tactics/pentesting/services/smb#smb-null-session)
+[SMB Null Session](https://hackviser.com/tactics/pentesting/services/smb#smb-null-session)
 refers to an unauthenticated connection to an SMB server ^f374c7
-
-<!-- NetExec {{{-->
-### NetExec
 
 [[NetExec]] — [Enumerate Null Sessions](https://www.netexec.wiki/smb-protocol/enumeration/enumerate-null-sessions)
 
@@ -235,18 +252,11 @@ nxc smb $target
 nxc smb $target -u "" -p ""
 ```
 
-<!-- }}} -->
-
-<!-- SMBClient {{{-->
-### SMBClient
-
 [[Usage#smbclient|smbclient]] —
 Enumerate SMB shares on the host
 (*[Anonymous Null Session](https://hackviser.com/tactics/pentesting/services/smb#smb-null-session)*)
 
-**LINUX**
-
-Connect to server and list shares
+Connect to server and list share
 
 ```sh
 smbclient -N -L //$target
@@ -280,8 +290,6 @@ smbclient -N //$target/ --option="client min protocol"=LANMAN1
 >   [LANMAN](https://en.wikipedia.org/wiki/LAN_Manager)
 >   (*Legacy*)
 <!-- }}} -->
-
-**WINDOWS**
 
 Connect to server and list shares
 (*Windows UNC path*)
@@ -317,11 +325,6 @@ smbclient -N \\\\$target\\ --option="client min protocol"=LANMAN1
 >   [LANMAN](https://en.wikipedia.org/wiki/LAN_Manager)
 >   (*Legacy*)
 <!-- }}} -->
-
-<!-- }}} -->
-
-<!-- SMBMap {{{-->
-### SMBMap
 
 [SMBmap](https://github.com/ShawnDEvans/smbmap) —
 Enumerate SMB shares and associated permissions on the host
@@ -402,50 +405,10 @@ smbmap -H $target -r <share>
 > ```
 <!-- }}} -->
 
-Download a file
-
-```sh
-smbmap -H $target --download "<share>\<file>"
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> MarciPwns@htb[/htb]$ smbmap -H 10.129.14.128 --download "notes\note.txt"
-> ```
-> ```sh
-> [+] Starting download: notes\note.txt (116 bytes)
-> [+] File output to: /htb/10.129.14.128-notes_note.txt
-> ```
-<!-- }}} -->
-
-Upload a file
-
-```sh
-smbmap -H $target --upload <file> "<share>\<out_file>"
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> smbmap -H 10.129.14.128 --upload test.txt "notes\test.txt"
-> ```
->
-> ```sh
-> [+] Starting upload: test.txt (20 bytes)
-> [+] Upload complete.
-> ```
-<!-- }}} -->
-
-<!-- }}} -->
-
-___
 <!-- }}} -->
 
 <!-- SMB Guest Logon {{{-->
-## SMB Guest Logon
+### SMB Guest Logon
 
 Enumerate target SMB service for guest logon
 via random username and password
@@ -457,15 +420,7 @@ nxc smb $target -u 'a' -p ''
 ```
 
 ```sh
-nxc smb $target -u 'a' -p '' --shares
-```
-
-```sh
 nxc smb $target -u "guest" -p ""
-```
-
-```sh
-nxc smb $target -u "guest" -p "" --shares
 ```
 
 <!-- Example {{{-->
@@ -485,6 +440,139 @@ Enumerate SMB guest logon
 ```sh
 smbmap -H $target -u guest
 ```
+
+<!-- }}} -->
+
+<!-- Enumeration {{{-->
+### Enumeration
+
+Enumerate disks on the target
+
+[[NetExec]] — [Enumerate Disks](https://www.netexec.wiki/smb-protocol/enumeration/enumerate-disks)
+
+```sh
+nxc smb $target --disks
+```
+
+```sh
+nxc smb $target -u '' -p '' --disks
+```
+
+```sh
+nxc smb $target -u 'guest' -p '' --disks
+```
+
+Enumerate groups on the target
+
+[[NetExec]] — [Enumerate Local Groups](https://www.netexec.wiki/smb-protocol/enumeration/enumerate-local-groups)
+
+```sh
+nxc smb $target --local-group
+```
+
+```sh
+nxc smb $target -u '' -p '' --local-group
+```
+
+```sh
+nxc smb $target -u 'guest' -p '' --local-group
+```
+
+Enumerate domain password policy
+
+[[Netexec]] — [Enumerate Domain Password Policy](https://www.netexec.wiki/smb-protocol/enumeration/enumerate-domain-password-policy-1)
+
+```sh
+nxc smb $target --pass-pol
+```
+
+```sh
+nxc smb $target -u "" -p "" --pass-pol
+```
+
+```sh
+nxc smb $target -u "guest" -p "" --pass-pol
+```
+
+Enumerate processes on the target
+
+[[NetExec]] — [Enumerate Remote Processes](https://www.netexec.wiki/smb-protocol/enumeration/enumerate-remote-processes)
+
+```sh
+nxc smb $target --tasklist
+```
+
+```sh
+nxc smb $target -u '' -p '' --tasklist
+```
+
+```sh
+nxc smb $target -u 'guest' -p '' --tasklist
+```
+
+Enumerate SMB shares on the target
+
+[[NetExec]] — [Enumerate Shares and Access](https://www.netexec.wiki/smb-protocol/enumeration/enumerate-shares-and-access)
+
+```sh
+nxc smb $target --shares
+```
+
+```sh
+nxc smb $target -u "" -p "" --shares
+```
+
+```sh
+nxc smb $target -u 'guest' -p '' --shares
+```
+
+[[Metasploit]] — [smb_enumshares](https://www.rapid7.com/db/modules/auxiliary/scanner/smb/smb_enumshares/) —
+SMB Share Enumeration
+
+```sh
+use auxiliary/scanner/smb/smb_enumshares
+```
+
+Enumerate users on the SMB service
+
+[[Metasploit]] — [smb_lookupsid](https://www.rapid7.com/db/modules/auxiliary/scanner/smb/smb_lookupsid/) —
+SMB SID User Enumeration (*LookupSid*)
+
+```sh
+use auxiliary/scanner/smb/smb_lookupsid
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> Determine what users exist via brute force SID lookups.
+> Enumerate both local and domain accounts by setting `ACTION`
+> to either `LOCAL` or `DOMAIN`
+>
+> ```sh
+> msfconsole
+> ```
+> ```sh
+> use auxiliary/scanner/smb/smb_lookupsid
+> ```
+> ```sh
+> set RHOSTS $target
+> ```
+> ```sh
+> set RPORT 445
+> ```
+> ```sh
+> run
+> ```
+<!-- }}} -->
+
+<!-- Tip {{{-->
+> [!tip]
+>
+> Enumerate [[#Shares]] and [[#Users]] if a user is found
+<!-- }}} -->
+
+<!-- }}} -->
 
 ___
 <!-- }}} -->
@@ -554,12 +642,14 @@ nmap -Pn <ip_netblock> -p 445 --open --max-hostgroup 3 --script smb-vuln-ms17-01
 nmap -A $target -p 445
 ```
 
+<!-- Info {{{-->
 > [!info]-
 >
 > - `-Pn`: Skip ping check, treat hosts as online
 > - `--max-hostgroup 3`: Limit the number of parallel hosts scanned
 > - `<ip_netblock>`: Target IP range/subnet (e.g. `192.168.1.0/24`)
 > - `-A`: Enable OS detection, version detection, script scanning, and traceroute
+<!-- }}} -->
 
 <!-- Example {{{-->
 > [!example]-
@@ -583,7 +673,8 @@ nmap -A $target -p 445
 > ```
 <!-- }}} -->
 
-[[Netexec]]
+[[NetExec]] —
+[Scan for MS17-010](https://www.netexec.wiki/smb-protocol/scan-for-vulnerabilities#ms17-010-not-tested-outside-lab-environment)
 
 > [!warning]
 >
@@ -601,10 +692,33 @@ nxc smb $target -u '' -p '' -M ms17-010
 Detect [[Exploitation#SMBGhost|SMBGhost]]
 (*[CVE-2020-0796](https://nvd.nist.gov/vuln/detail/cve-2020-0796)*)
 
-[[Netexec]]
+[[Netexec]] - [Scan for SMBGhost](https://www.netexec.wiki/smb-protocol/scan-for-vulnerabilities#smbghost)
 
 ```sh
 nxc smb $target -u '' -p '' -M smbghost
+```
+
+```sh
+nxc smb $target -u 'guest' -p '' -M smbghost
+```
+
+
+<!-- }}} -->
+
+<!-- ZeroLogon {{{-->
+### ZeroLogon
+
+Detect [[Exploitation#ZeroLogon|ZeroLogon]]
+(*[CVE-2020-1472](https://nvd.nist.gov/vuln/detail/cve-2020-1472)*)
+
+> [!warning]
+>
+> Affects [[Domain Controller|Domain Controllers]] only
+
+[[NetExec]] - [Scan for ZeroLogon](https://www.netexec.wiki/smb-protocol/scan-for-vulnerabilities#zerologon)
+
+```sh
+nxc smb <ip> -u '' -p '' -M zerologon
 ```
 
 <!-- }}} -->
@@ -619,24 +733,23 @@ ___
 
 [enum4linux-ng](https://github.com/cddmp/enum4linux-ng)
 is a wrapper around the Samba tools `nmblookup`, `net`, `rpcclient`
-and `smbclient` that interacts with the exposed services via
-[named pipes](https://learn.microsoft.com/en-us/windows/win32/ipc/named-pipes)
+and [[Usage#smbclient|smbclient]] that interacts with the exposed services
+via [named pipes](https://learn.microsoft.com/en-us/windows/win32/ipc/named-pipes)
 
-1. Install [enum4linux-ng](https://github.com/cddmp/enum4linux-ng)
+1. Clone the [enum4linux-ng](https://github.com/cddmp/enum4linux-ng)
+   repository
 
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> git clone https://github.com/cddmp/enum4linux-ng.git
-> ```
-> ```sh
-> cd enum4linux-ng
-> ```
-> ```sh
-> pip3 install -r requirements.txt
-> ```
-<!-- }}} -->
+```sh
+git clone https://github.com/cddmp/enum4linux-ng.git && cd enum4linux-ng
+```
+
+2. Initialize [[Python]] [[Virtual Environment]]
+
+3. Install requirements
+
+```sh
+pip3 install -r requirements.txt
+```
 
 2. Enumerate SMB host
 

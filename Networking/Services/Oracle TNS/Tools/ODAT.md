@@ -101,7 +101,7 @@ ___
 Run ODAT against a target
 
 ```sh
-odat all -s <target>
+odat all -s $target
 ```
 
 > [!info]-

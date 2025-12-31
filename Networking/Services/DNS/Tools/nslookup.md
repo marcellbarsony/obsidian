@@ -38,5 +38,5 @@ Resolve an **IP address** to the corresponding **domain name**
 (*reverse lookup*)
 
 ```sh
-nslookup -type=PTR <target>
+nslookup -type=PTR $target
 ```

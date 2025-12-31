@@ -22,7 +22,7 @@ Connect remotely to the MSSQL server using Transact-SQL
 Connect to a MSSQL server
 
 ```sh
-impacket-mssqlclient $target/<user>@<target_ip> -windows-auth
+impacket-mssqlclient <DOMAIN>/<user>@$target -windows-auth
 ```
 
 <!-- Example {{{-->

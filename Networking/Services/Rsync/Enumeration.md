@@ -72,11 +72,11 @@ sudo nmap -sV $target -p 512,513,514 -oA rsync-services
 (*[rsync-list-modules](https://nmap.org/nsedoc/scripts/rsync-list-modules.html)*)
 
 ```sh
-nmap -sV <target_host> --script=rsync-list-modules -oA rsync-script-list-modules
+nmap -sV $target --script=rsync-list-modules -oA rsync-script-list-modules
 ```
 
-<!-- Banner Grabbing {{{-->
-### Banner Grabbing
+<!-- Banner {{{-->
+### Banner
 
 [[Netcat]] — Grab banner and accessible [[Networking/Services/Rsync/General#Modules|modules]]
 
@@ -198,6 +198,52 @@ rsync -av --list-only rsync://$target/<module_name>
 <!-- }}} -->
 
 ___
+
+<!-- }}} -->
+
+<!-- Anonymous Authentication {{{-->
+## Anonymous Authentication
+
+Authenticate to the `Rsync` service anonymously
+
+```sh
+rsync $target::
+```
+
+```sh
+rsync rsync://None@$target/
+```
+
+<!-- Shares {{{-->
+### Shares
+
+List shares
+
+```sh
+rsync $target:: --list-only
+```
+
+```sh
+rsync rsync://None@$target/ --list-only
+```
+
+List contents of a share
+
+```sh
+rsync $target::<share> --list-only
+```
+
+```sh
+rsync rsync://None@$target/<share> --list-only
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> rsync 10.10.10.10::public --list-only
+> ```
+<!-- }}} -->
 
 <!-- }}} -->
 

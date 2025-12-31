@@ -17,7 +17,7 @@ links: "[[Services]]"
 Connect to an Rsync server with the [rsync command](https://linux.die.net/man/1/rsync)
 
 ```sh
-rsync rsync://<user>@<target>/
+rsync rsync://<user>@$target/
 ```
 
 > [!tip]
@@ -25,7 +25,6 @@ rsync rsync://<user>@<target>/
 > The URL format is `[rsync://][user@]host[:port]/module`
 
 ___
-
 <!-- }}} -->
 
 <!-- File Operations {{{-->
@@ -37,27 +36,25 @@ ___
 Copy a local file/folder to the target
 
 ```sh
-rsync -av </home/user/dir/> rsync://<user>@<target>/<home/user/dir>
+rsync -av <local_file> rsync://<user>@$target/<share/file>
 ```
 
 Copy a remote file/folder from the target
 
 ```sh
-rsync -av rsync://<user>@<target>/<home/user/dir> </home/user/dir/>
+rsync -av rsync://<user>@$target/<share/file> .
 ```
-
-#### SSH
 
 Copy a local file/folder to the target over [[SSH/General|SSH]]
 
 ```sh
-rsync -av -e ssh </home/user/dir/> <user>@<target>:</home/user/dir/>
+rsync -av -e ssh </home/user/dir/> <user>@$target:</home/user/dir/>
 ```
 
 Copy a remote file/folder from the target over [[SSH/General|SSH]]
 
 ```sh
-rsync -av -e ssh <user>@<target>:</home/user/dir/> </home/user/dir/>
+rsync -av -e ssh <user>@$target:</home/user/dir/> </home/user/dir/>
 ```
 
 <!-- }}} -->
@@ -68,21 +65,17 @@ rsync -av -e ssh <user>@<target>:</home/user/dir/> </home/user/dir/>
 Sync all files from the target
 
 ```sh
-rsync -av rsync://<target>/<dir>
+rsync -av rsync://$target/<dir> .
 ```
-
-#### SSH
 
 Sync all files from the target through [[SSH/General|SSH]]
 
 ```sh
-rsync -av rsync://127.0.0.1/dev -e ssh
+rsync -av rsync://$target/<dir> . -e ssh
 ```
 
-Sync all files from the target through [[SSH/General|SSH]] with custom port
-
 ```sh
-rsync -av rsync://127.0.0.1/dev -e "ssh -p2222"
+rsync -av rsync://$target/<dir> . -e "ssh -p2222"
 ```
 
 > [!info]-
@@ -92,7 +85,6 @@ rsync -av rsync://127.0.0.1/dev -e "ssh -p2222"
 <!-- }}} -->
 
 ___
-
 <!-- }}} -->
 
 <!-- }}} -->
@@ -109,7 +101,7 @@ ___
 — Log in to a server (*`TCP/513`*)
 
 ```sh
-rlogin <target> -l <user>
+rlogin $target -l <user>
 ```
 
 > [!example]-
@@ -130,7 +122,7 @@ rlogin <target> -l <user>
 — Execute shell commands on a remote host without login procedure (*`TCP/514`*)
 
 ```sh
-rsh <target> <command>
+rsh $target <command>
 ```
 
 <!-- }}} -->
@@ -163,7 +155,7 @@ rwho -a
 — List authenticated users
 
 ```sh
-rusers -al <target>
+rusers -al $target
 ```
 
 > [!example]-
@@ -184,7 +176,7 @@ rusers -al <target>
 — Show remote system performance statistics from the kernel
 
 ```sh
-rstat <target>
+rstat $target
 ```
 
 [ruptime](https://linux.die.net/man/1/ruptime)
@@ -199,13 +191,13 @@ ruptime
 <!-- File Operations {{{-->
 ### File Operations
 
-[rcp](https://www.ibm.com/docs/en/aix/7.2.0?topic=r-rcp-command)
-— Copy a file/directory between local and remote systems with
+[rcp](https://www.ibm.com/docs/en/aix/7.2.0?topic=r-rcp-command) —
+Copy a file/directory between local and remote systems
 
 Copy local file/directory to remote host
 
 ```sh
-rcp <local_file> <target>:<dir>
+rcp <local_file> $target:<dir>
 ```
 
 > [!example]-
@@ -217,7 +209,7 @@ rcp <local_file> <target>:<dir>
 Copy remote file/directory to local host
 
 ```sh
-rcp <target>:<file> <local_file>
+rcp $target:<file> <local_file>
 ```
 
 > [!example]-
@@ -241,5 +233,4 @@ rcp <target_1>:<file> <target_2>:<file>
 <!-- }}} -->
 
 ___
-
 <!-- }}} -->

@@ -24,8 +24,8 @@ nmap $target -p 23 -oA telnet-identify
 nmap $target -p 23 --script telnet-encrpytion -oA telnet-script-encryption
 ```
 
-<!-- Banner Grabbing {{{-->
-### Banner Grabbing
+<!-- Banner {{{-->
+### Banner
 
 [[Netcat]]
 
@@ -84,6 +84,48 @@ use auxiliary/scanner/telnet/telnet_version
 > ```
 <!-- }}} -->
 
+<!-- }}} -->
+
+___
+<!-- }}} -->
+
+
+<!-- Anonymous Authentication {{{-->
+## Anonymous Authentication
+
+Connect to the target and provide a username, without password
+
+<!-- Common Credentials {{{-->
+> [!tip]- Common Credentials
+>
+> Try common credentials if anonymous login is disabled
+>
+> - `admin`
+> - `administrator`
+> - `root`
+> - `user`
+> - `test`
+<!-- }}} -->
+
+```sh
+telnet $target [port]
+```
+
+```sh
+printf "<user>\n<password>\n" | telnet <host> [port]
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> telnet $target <port>
+> ```
+>
+> ```sh
+> login:
+> Password:
+> ```
 <!-- }}} -->
 
 ___

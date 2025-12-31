@@ -13,5 +13,5 @@ The `ping` command is used to send **ICMP Echo Request** messages to a target
 host
 
 ```sh
-ping <target_ip>
+ping $target
 ```

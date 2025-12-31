@@ -27,8 +27,8 @@ nmap $target -p 22 -oA ssh-identify
 nmap $target -p 22 --script ssh-auth-methods --script-args="ssh.user=<username>" -oA ssh-script-ssh-auth-methods
 ```
 
-<!-- Banner Grabbing {{{-->
-### Banner Grabbing
+<!-- Banner {{{-->
+### Banner
 
 [[Netcat|netcat]] — SSH service banner grabbing
 

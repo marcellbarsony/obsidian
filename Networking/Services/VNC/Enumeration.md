@@ -20,11 +20,8 @@ nmap $target -p 5900-5906 -oA vnc-detect
 nmap -sV $target -p <port> --script vnc-info,realvnc-auth-bypass,vnc-title -oA vnc-script-all
 ```
 
-___
-<!-- }}} -->
-
-<!-- Banner Grabbing {{{-->
-## Banner Grabbing
+<!-- Banner {{{-->
+### Banner
 
 [[Netcat]] — Grab Service Banner
 
@@ -37,4 +34,8 @@ nc -vn $target 5900
 ```sh
 echo "" | nc $target 5900
 ```
+
+<!-- }}} -->
+
+___
 <!-- }}} -->

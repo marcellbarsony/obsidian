@@ -15,5 +15,5 @@ links: "[[SQL]]"
 Connect to a MSSQL server
 
 ```sh
-impacket-mssqlclient <TARGET_HOST/USER|TARGET_IP/USER>@<TARGET_IP> -windows_auth
+impacket-mssqlclient <TARGET_HOST/USER|TARGET_IP/USER>@$target -windows_auth
 ```

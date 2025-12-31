@@ -58,8 +58,8 @@ nmap -sU -sV $target -p 161 --script snmp-netstat -oA snmp-script-netstat
 nmap -sU -sV $target -p 161 --script snmp-processes -oA snmp-script-processes
 ```
 
-<!-- Banner Grabbing {{{-->
-### Banner Grabbing
+<!-- Banner {{{-->
+### Banner
 
 [[Nmap]] — Grab service banner (*[snmp-info](https://nmap.org/nsedoc/scripts/snmp-info.html)*)
 

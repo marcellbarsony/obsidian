@@ -24,6 +24,25 @@ nmap $target -p 5985,5986 -oA winrm-service
 nmap -sV $target -p 5985,5986 -oA winrm-service-version
 ```
 
+<!-- Banner {{{-->
+### Banner
+
+Gather version and service information
+
+[[Netcat]]
+
+```sh
+nc -vn $target 5985
+```
+
+[[cURL]]
+
+```sh
+curl http://$target:5985/wsman
+```
+
+<!-- }}} -->
+
 <!-- HTTP/S {{{-->
 ### HTTP/S
 
@@ -76,26 +95,6 @@ Test whether the WinRM service is running on a local or remote computer
 Test-WSMan -ComputerName "server01"
 ```
 <!-- }}} -->
-
-___
-<!-- }}} -->
-
-<!-- Banner Grabbing {{{-->
-## Banner Grabbing
-
-Gather version and service information
-
-[[Netcat]]
-
-```sh
-nc -vn $target 5985
-```
-
-[[cURL]]
-
-```sh
-curl http://$target:5985/wsman
-```
 
 ___
 <!-- }}} -->

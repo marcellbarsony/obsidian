@@ -103,13 +103,13 @@ ___
 Connect remotely
 
 ```sh
-mongosh "mongodb://<target_ip>:<port>"
+mongosh "mongodb://$target:<port>"
 ```
 
 Mongo Shell
 
 ```sh
-mongo <target_ip>:<port>
+mongo $target:<port>
 ```
 
 ___

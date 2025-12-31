@@ -13,7 +13,7 @@ Connect and interact with an **IMAP** server using **openssl**
 (*TLS Encrypted Interaction*)
 
 ```sh
-openssl s_client -connect <target>:imaps
+openssl s_client -connect $target:imaps
 ```
 
 <!-- Exmaple {{{-->

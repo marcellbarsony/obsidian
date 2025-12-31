@@ -12,8 +12,9 @@ ___
 <!-- Configuration File {{{-->
 ## Configuration File
 
-Often, the rights for the [[Networking/Services/MySQL/General#Configuration|configuration file]] of the
-[[Networking/Services/MySQL/General#MySQL Database|MySQL databases]] are not assigned correctly
+Often, the rights for the [[MySQL/General#Configuration|configuration file]]
+of the [[MySQL/General#MySQL Database|MySQL databases]]
+are not assigned correctly
 
 > [!tip]
 >
@@ -23,11 +24,8 @@ Often, the rights for the [[Networking/Services/MySQL/General#Configuration|conf
 ___
 <!-- }}} -->
 
-<!-- Reconnaissance {{{-->
-## Reconnaissance
-
 <!-- Service {{{-->
-### Service
+## Service
 
 Detect MySQL service
 
@@ -112,6 +110,29 @@ sudo nmap -sC -sV $target -p 3306 --script "mysql-*" -oA mysql-default-scripts
 > The **scan results should be confirmed manually**
 > as some of the information might turn out to be **false-positive**
 <!-- }}} -->
+
+<!-- Banner {{{-->
+### Banner
+
+Grab the MySQL service banner
+
+[[Nmap]]
+
+```sh
+nmap -sV $target -p 3306 -oA mysql-banner
+```
+
+[[Netcat]]
+
+```sh
+nc -vn $target 3306
+```
+
+[[Telnet/General|Telnet]]
+
+```sh
+telnet $target 3306
+```
 
 <!-- }}} -->
 
@@ -219,36 +240,11 @@ use exploit/windows/mysql/mysql_start_up
 
 <!-- }}} -->
 
-<!-- Banner Grabbing {{{-->
-### Banner Grabbing
-
-Grab the MySQL service banner
-
-[[Nmap]]
-
-```sh
-nmap -sV $target -p 3306 -oA mysql-banner
-```
-
-[[Netcat]]
-
-```sh
-nc -vn $target 3306
-```
-
-[[Telnet/General|Telnet]]
-
-```sh
-telnet $target 3306
-```
-
-<!-- }}} -->
-
 ___
 <!-- }}} -->
 
-<!-- Database Enumeration {{{-->
-## Database Enumeration
+<!-- Database {{{-->
+## Database
 
 The most important databases on a MySQL server are
 
@@ -355,8 +351,8 @@ SELECT * FROM sys.schema_table_statistics ORDER BY rows_fetched DESC LIMIT 10;
 ___
 <!-- }}} -->
 
-<!-- Permission Enumeration {{{-->
-## Permission Enumeration
+<!-- Permissions  {{{-->
+## Permissions
 
 Enumerate [MySQL Permissions](https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-mysql.html#mysql-permissions-enumeration):
 
