@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Networking/Services/Rsync/Enumeration.md",
+                "file": "Pentest/Tools/Metasploit/Sessions/Meterpreter.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Enumeration"
+              "title": "Meterpreter"
             }
           }
         ]
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/Services/Rsync/Enumeration.md",
+                "file": "Pentest/Tools/Metasploit/Sessions/Meterpreter.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Enumeration"
+              "title": "Outline of Meterpreter"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/Services/Rsync/Enumeration.md",
+                "file": "Pentest/Tools/Metasploit/Sessions/Meterpreter.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Enumeration"
+              "title": "Graph of Meterpreter"
             }
           }
         ]
@@ -225,32 +225,33 @@
   },
   "active": "6f4e890d1c374ce7",
   "lastOpenFiles": [
-    "Networking/Services/SMTP/Exploitation.md",
-    "Networking/Services/SMTP/Enumeration.md",
-    "Networking/Services/SNMP/Exploitation.md",
+    "Pentest/Tools/Metasploit/Sessions/Sessions.md",
+    "Pentest/Tools/Metasploit/Sessions/Meterpreter.md",
+    "Pentest/Tools/Metasploit/Sessions/Jobs.md",
+    "Pentest/Tools/Metasploit/Sessions/Sessions_1.md",
+    "Pentest/Tools/Metasploit/Sessions",
+    "Pentest/Tools/Metasploit/Metasploit.md",
+    "Pentest/Tools/Metasploit/Metasploit_1.md",
+    "Pentest/Tools/Metasploit/Msfvenom.md",
+    "Pentest/Tools/Metasploit/Plugins.md",
     "Networking/Services/SNMP/Enumeration.md",
-    "Networking/Services/SQL/General.md",
-    "Networking/Services/SQL/Exploitation.md",
-    "Networking/Services/FTP/Exploitation.md",
-    "Networking/Services/FTP/Enumeration.md",
-    "Networking/Services/Telnet/Enumeration.md",
-    "Networking/Services/Telnet/Exploitation.md",
+    "Pentest/General/Kali Linux.md",
     "Networking/Services/SMB/Exploitation.md",
+    "Pentest/Tools/Brute Force/Wordlists/SecLists.md",
+    "Linux/General/Tools/Find.md",
+    "Webapp/Enumeration/Discovery/Execution Paths.md",
+    "Webapp/Enumeration/Discovery/Crawling.md",
+    "Networking/Tools/Nmap/Host Enumeration.md",
+    "Pentest/Tools/Ffuf/Ffuf.md",
+    "Webapp/Enumeration/_Checklist.md",
+    "Networking/Services/DNS/Enumeration.md",
+    "Webapp/Enumeration/Enumeration.md",
+    "Webapp/Enumeration/Infrastructure/DNS.md",
+    "Webapp/Enumeration/Infrastructure/Virtual Hosts.md",
+    "Webapp/Enumeration/Infrastructure/Domain.md",
+    "Webapp/Enumeration/Content/Web Contents.md",
     "Networking/Services/SMB/Enumeration.md",
-    "Networking/Services/WinRM/Enumeration.md",
-    "Networking/Services/WinRM/Exploitation.md",
-    "Networking/Services/SSH/Exploitation.md",
-    "Networking/Services/SSH/Enumeration.md",
-    "Networking/Services/RDP/Exploitation.md",
-    "Networking/Services/RDP/Enumeration.md",
-    "Networking/Services/Oracle TNS/Exploitation.md",
     "Networking/Services/Oracle TNS/Enumeration.md",
-    "Networking/Services/NFS/Exploitation.md",
-    "Networking/Services/NFS/Enumeration.md",
-    "Networking/Services/MSSQL/Exploitation.md",
-    "Networking/Services/MSSQL/Enumeration.md",
-    "Networking/Services/MongoDB/Exploitation.md",
-    "Networking/Services/MongoDB/Enumeration.md",
     "Networking/Services/LDAP",
     "Microsoft/AD/src/ad-forests-domains.png",
     "Pentest/Brute Force",
@@ -270,7 +271,6 @@
     "Webapp/Tools/Burp Suite/src/intruder-positions.png",
     "Webapp/Exploitation/Server-Side/XSS",
     "Microsoft/AD/src",
-    "Microsoft/Windows/Privesc/Groups",
     "Networking/Services/SMB/Untitled.canvas"
   ]
 }
