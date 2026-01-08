@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Pentest/Tools/Metasploit/Sessions/Meterpreter.md",
+                "file": "Networking/Services/SMB/Exploitation.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Meterpreter"
+              "title": "Exploitation"
             }
           }
         ]
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Pentest/Tools/Metasploit/Sessions/Meterpreter.md",
+                "file": "Networking/Services/SMB/Exploitation.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Meterpreter"
+              "title": "Outline of Exploitation"
             }
           },
           {
@@ -135,7 +135,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Networking/Services/SQL/SQL.md",
+                "file": "Networking/Services/SMB/Exploitation.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -145,7 +145,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for SQL"
+              "title": "Backlinks for Exploitation"
             }
           },
           {
@@ -154,12 +154,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Networking/Services/SQL/SQL.md",
+                "file": "Networking/Services/SMB/Exploitation.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from SQL"
+              "title": "Outgoing links from Exploitation"
             }
           }
         ]
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Pentest/Tools/Metasploit/Sessions/Meterpreter.md",
+                "file": "Networking/Services/SMB/Exploitation.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,14 +203,14 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Meterpreter"
+              "title": "Graph of Exploitation"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 219.5
+    "width": 244.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -225,18 +225,22 @@
   },
   "active": "6f4e890d1c374ce7",
   "lastOpenFiles": [
+    "Networking/Services/SMB/Enumeration.md",
+    "Networking/Services/SMB/Exploitation.md",
+    "Pentest/Tools/Metasploit/Sessions/Jobs.md",
+    "Pentest/Tools/Metasploit/Components",
     "Pentest/Tools/Metasploit/Sessions/Sessions.md",
     "Pentest/Tools/Metasploit/Sessions/Meterpreter.md",
-    "Pentest/Tools/Metasploit/Sessions/Jobs.md",
+    "Pentest/Tools/Metasploit/Components/Database.md",
+    "Pentest/Tools/Metasploit/Components/Plugins.md",
+    "Pentest/Tools/Metasploit/Metasploit.md",
+    "Pentest/Tools/Metasploit/Msfvenom.md",
+    "Pentest/Tools/Metasploit/SearchSploit.md",
+    "Pentest/Tools/Metasploit/Metasploit_1.md",
     "Pentest/Tools/Metasploit/Sessions/Sessions_1.md",
     "Pentest/Tools/Metasploit/Sessions",
-    "Pentest/Tools/Metasploit/Metasploit.md",
-    "Pentest/Tools/Metasploit/Metasploit_1.md",
-    "Pentest/Tools/Metasploit/Msfvenom.md",
-    "Pentest/Tools/Metasploit/Plugins.md",
     "Networking/Services/SNMP/Enumeration.md",
     "Pentest/General/Kali Linux.md",
-    "Networking/Services/SMB/Exploitation.md",
     "Pentest/Tools/Brute Force/Wordlists/SecLists.md",
     "Linux/General/Tools/Find.md",
     "Webapp/Enumeration/Discovery/Execution Paths.md",
@@ -249,9 +253,6 @@
     "Webapp/Enumeration/Infrastructure/DNS.md",
     "Webapp/Enumeration/Infrastructure/Virtual Hosts.md",
     "Webapp/Enumeration/Infrastructure/Domain.md",
-    "Webapp/Enumeration/Content/Web Contents.md",
-    "Networking/Services/SMB/Enumeration.md",
-    "Networking/Services/Oracle TNS/Enumeration.md",
     "Networking/Services/LDAP",
     "Microsoft/AD/src/ad-forests-domains.png",
     "Pentest/Brute Force",
@@ -270,7 +271,6 @@
     "Webapp/Tools/Burp Suite/src/20251221-220356.png",
     "Webapp/Tools/Burp Suite/src/intruder-positions.png",
     "Webapp/Exploitation/Server-Side/XSS",
-    "Microsoft/AD/src",
     "Networking/Services/SMB/Untitled.canvas"
   ]
 }

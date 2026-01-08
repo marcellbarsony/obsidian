@@ -225,7 +225,7 @@ nmap $target -p 445 --script "safe or smb-enum-*" -oA smb-enumeration
 [[Nmap]] — Run all `vuln*` scripts
 
 ```sh
-sudo nmap $target -p 129,445 --script smb-vuln* -oA smb-scripts-vuln
+sudo nmap $target -p 139,445 --script smb-vuln* -oA smb-scripts-vuln
 ```
 
 <!-- }}} -->
@@ -533,45 +533,6 @@ SMB Share Enumeration
 use auxiliary/scanner/smb/smb_enumshares
 ```
 
-Enumerate users on the SMB service
-
-[[Metasploit]] — [smb_lookupsid](https://www.rapid7.com/db/modules/auxiliary/scanner/smb/smb_lookupsid/) —
-SMB SID User Enumeration (*LookupSid*)
-
-```sh
-use auxiliary/scanner/smb/smb_lookupsid
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> Determine what users exist via brute force SID lookups.
-> Enumerate both local and domain accounts by setting `ACTION`
-> to either `LOCAL` or `DOMAIN`
->
-> ```sh
-> msfconsole
-> ```
-> ```sh
-> use auxiliary/scanner/smb/smb_lookupsid
-> ```
-> ```sh
-> set RHOSTS $target
-> ```
-> ```sh
-> set RPORT 445
-> ```
-> ```sh
-> run
-> ```
-<!-- }}} -->
-
-<!-- Tip {{{-->
-> [!tip]
->
-> Enumerate [[#Shares]] and [[#Users]] if a user is found
-<!-- }}} -->
-
 <!-- }}} -->
 
 ___
@@ -721,6 +682,86 @@ Detect [[Exploitation#ZeroLogon|ZeroLogon]]
 nxc smb <ip> -u '' -p '' -M zerologon
 ```
 
+<!-- }}} -->
+
+___
+<!-- }}} -->
+
+<!-- IPC$ Share {{{-->
+## IPC$ Share
+
+Remote Procedure Call ([[Services/SMB/General#RPC|RPC]])
+Enumeration through anonymous null session
+
+[RPCclient](https://www.samba.org/samba/docs/current/man-html/rpcclient.1.html) —
+Connect to an IPC$ share to test MS-RPC functionality in Samba
+(*[SMB Null Session](https://hackviser.com/tactics/pentesting/services/smb#smb-null-session)*)
+
+```sh
+rpcclient $target
+```
+
+```sh
+rpcclient -U "" $target
+```
+
+```sh
+rpcclient -U "%" $target
+```
+
+```sh
+rpcclient -N -U "" $target
+```
+
+```sh
+rpcclient -N -U "" $target -L
+```
+
+```sh
+rpcclient -N -U "%" $target
+```
+
+```sh
+rpcclient -N -U "%" $target -L
+```
+
+```sh
+rpcclient -U "username%password" $target
+```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `-N` / `--no-pass`: Suppress the normal password prompt
+> - `-U`: Set SMB username and password
+> - `-L`: List shares
+<!-- }}} -->
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> rpcclient -U "" 10.129.244.136
+> ```
+>
+> Press `Enter` to bypass the password prompt
+>
+> ```sh
+> Enter WORKGROUP\'s password:
+> rpcclient $>
+> ```
+>
+> ```sh
+> rpcclient $> enumdomusers
+> ```
+>
+> ```sh
+> user:[mhope] rid:[0x641]
+> user:[svc-ata] rid:[0xa2b]
+> user:[svc-bexec] rid:[0xa2c]
+> user:[roleary] rid:[0xa36]
+> user:[smorgan] rid:[0xa37]
+> ```
 <!-- }}} -->
 
 ___
