@@ -105,6 +105,48 @@ The [sqlcmd utility](https://learn.microsoft.com/en-us/sql/tools/sqlcmd/sqlcmd-u
 allows enter Transact-SQL statements, system procedures,
 and script files through a variety of available modes
 
+<!-- Install {{{-->
+#### Install
+
+[Download and install the sqlcmd utility](https://learn.microsoft.com/en-us/sql/tools/sqlcmd/sqlcmd-download-install?view=sql-server-ver17&tabs=linux)
+
+1. Import the public repository GPG keys
+
+```sh
+curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc
+```
+
+2. Install common software repositories
+
+```sh
+sudo apt install software-properties-common
+```
+
+3. Add the Microsoft repository
+(*`ubuntu/20.04` segment might be `debian/11`, `ubuntu/20.04`,
+or `ubuntu/22.04`*)
+
+```sh
+sudo add-apt-repository "$(wget -qO- https://packages.microsoft.com/config/ubuntu/20.04/prod.list)"
+```
+
+4. Install sqlcmd with apt
+
+```sh
+sudo apt install sqlcmd
+```
+
+<!-- }}} -->
+
+<!-- Connect {{{-->
+#### Connect
+
+Connect
+
+```sh
+sqlcmd -S $target -U <username>
+```
+
 ```sh
 sqlcmd -S $target -U <username> -P <password>
 ```
@@ -125,6 +167,9 @@ sqlcmd -S $target -U <username> -P <password> -y 30 -Y 30
 >
 > ```sh
 > C:\htb> sqlcmd -S 10.129.20.13 -U username -P Password123
+> ```
+> ```sh
+> 1>
 > ```
 <!-- }}} -->
 
@@ -162,12 +207,18 @@ sqlcmd -S $target -U <username> -P <password> -y 30 -Y 30
 > <!-- }}} -->
 <!-- }}} -->
 
+<!-- }}} -->
+
+<!-- }}} -->
+
 <!-- SQSH {{{-->
 ### SQSH
 
 [sqsh](https://en.wikipedia.org/wiki/Sqsh) —
 Connect to a MSSQL server over the
 [TDS protocol](https://en.wikipedia.org/wiki/Tabular_Data_Stream)
+
+SQL Authentication
 
 ```sh
 sqsh -S $target -U <username> -P <password> -h
@@ -176,6 +227,8 @@ sqsh -S $target -U <username> -P <password> -h
 <!-- Info {{{-->
 > [!info]-
 >
+> - `-U`: Username
+> - `-P`: Password
 > - `-h`: Disable headers and footers
 <!-- }}} -->
 
@@ -186,6 +239,47 @@ sqsh -S $target -U <username> -P <password> -h
 > sqsh -S 10.129.20.13 -U username -P Password123
 > ```
 <!-- }}} -->
+
+Windows Authentication
+
+```sh
+sqsh -S $target -U .\\<username> -P <password> -h
+```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `-U`: Username
+> - `-P`: Password
+> - `-h`: Disable headers and footers
+<!-- }}} -->
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> sqsh -S 10.129.203.7 -U .\\julio -P 'MyPassword!' -h
+> ```
+> ```sh
+> sqsh-2.5.16.1 Copyright (C) 1995-2001 Scott C. Gray
+> Portions Copyright (C) 2004-2014 Michael Peppler and Martin Wesdorp
+> This is free software with ABSOLUTELY NO WARRANTY
+> For more information type '\warranty'
+> 1>
+> ```
+<!-- }}} -->
+
+Windows Authentication (*Domain Account*)
+
+```sh
+sqsh -S $target -U <DOMAIN>\\<user> -P '<password>'
+```
+
+Windows Authentication (*Local Account*)
+
+```sh
+sqsh -S $target -U <HOSTNAME>\\<user> -P '<password>!'
+```
 
 <!-- }}} -->
 
@@ -218,7 +312,12 @@ SELECT name FROM master.dbo.sysdatabases;
 > [!example]-
 >
 > ```sh
-> SQL (ILF-SQL-01\backdoor  dbo@master)> SELECT name FROM sys.databases;
+> 1> SELECT name FROM sys.databases;
+> ```
+> ```sh
+> 2> GO
+> ```
+> ```sh
 > name
 > ---------
 > master
@@ -251,15 +350,20 @@ Select a database
 USE <database_name>;
 ```
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sql
-> USE my_database;
+> 1> USE my_database;
+> ```
+> ```sh
+> 2> GO
 > ```
 > ```sql
 > ENVCHANGE(DATABASE): Old Value: master, New Value: Employees
 > INFO(ILF-SQL-01): Line 1: Changed database context to 'Employees'.
 > ```
+<!-- }}} -->
 
 <!-- }}} -->
 

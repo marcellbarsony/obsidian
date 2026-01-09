@@ -18,6 +18,74 @@ ___
 nmap $target -p 1433 -oA mssql-service-detection
 ```
 
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> nmap $target -p 1433 -oA mssql-service-detection
+> ```
+> ```sh
+> Starting Nmap 7.95 ( https://nmap.org ) at 2026-01-08 21:33 EST
+> Nmap scan report for 10.129.203.12
+> Host is up (0.049s latency).
+>
+> PORT     STATE SERVICE
+> 1433/tcp open  ms-sql-s
+>
+> Nmap done: 1 IP address (1 host up) scanned in 0.28 seconds
+> ```
+>
+> The MSSQL service is up
+<!-- }}} -->
+
+[[Nmap]] — Service Banner
+
+```sh
+nmap -sC -sV -Pn $target -p 1433
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> nmap -sC -sV -Pn 10.10.10.125 -p 1433
+> ```
+>
+> ```sh
+> Host discovery disabled (-Pn). All addresses will be marked 'up', and scan times will be slower.
+> Starting Nmap 7.91 ( https://nmap.org ) at 2021-08-26 02:09 BST
+> Nmap scan report for 10.10.10.125
+> Host is up (0.0099s latency).
+>
+> PORT     STATE SERVICE  VERSION
+> 1433/tcp open  ms-sql-s Microsoft SQL Server 2017 14.00.1000.00; RTM
+> | ms-sql-ntlm-info: 
+> |   Target_Name: HTB
+> |   NetBIOS_Domain_Name: HTB
+> |   NetBIOS_Computer_Name: mssql-test
+> |   DNS_Domain_Name: HTB.LOCAL
+> |   DNS_Computer_Name: mssql-test.HTB.LOCAL
+> |   DNS_Tree_Name: HTB.LOCAL
+> |_  Product_Version: 10.0.17763
+> | ssl-cert: Subject: commonName=SSL_Self_Signed_Fallback
+> | Not valid before: 2021-08-26T01:04:36
+> |_Not valid after:  2051-08-26T01:04:36
+> |_ssl-date: 2021-08-26T01:11:58+00:00; +2m05s from scanner time.
+>
+> Host script results:
+> |_clock-skew: mean: 2m04s, deviation: 0s, median: 2m04s
+> | ms-sql-info: 
+> |   10.10.10.125:1433: 
+> |     Version: 
+> |       name: Microsoft SQL Server 2017 RTM
+> |       number: 14.00.1000.00
+> |       Product: Microsoft SQL Server 2017
+> |       Service pack level: RTM
+> |       Post-SP patches applied: false
+> |_    TCP port: 1433
+> ```
+<!-- }}} -->
+
 [[Nmap]] — [[Networking/Services/MSSQL/General|MSSQL]] script scan
 
 ```sh
@@ -86,57 +154,7 @@ sudo nmap \
 > ```
 <!-- }}} -->
 
-
-[[Nmap]] — Banner Grabbing
-
-```sh
-nmap -sC -sV -Pn $target -p 1433
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> nmap -sC -sV -Pn 10.10.10.125 -p 1433
-> ```
-> 
-> ```sh
-> Host discovery disabled (-Pn). All addresses will be marked 'up', and scan times will be slower.
-> Starting Nmap 7.91 ( https://nmap.org ) at 2021-08-26 02:09 BST
-> Nmap scan report for 10.10.10.125
-> Host is up (0.0099s latency).
-> 
-> PORT     STATE SERVICE  VERSION
-> 1433/tcp open  ms-sql-s Microsoft SQL Server 2017 14.00.1000.00; RTM
-> | ms-sql-ntlm-info: 
-> |   Target_Name: HTB
-> |   NetBIOS_Domain_Name: HTB
-> |   NetBIOS_Computer_Name: mssql-test
-> |   DNS_Domain_Name: HTB.LOCAL
-> |   DNS_Computer_Name: mssql-test.HTB.LOCAL
-> |   DNS_Tree_Name: HTB.LOCAL
-> |_  Product_Version: 10.0.17763
-> | ssl-cert: Subject: commonName=SSL_Self_Signed_Fallback
-> | Not valid before: 2021-08-26T01:04:36
-> |_Not valid after:  2051-08-26T01:04:36
-> |_ssl-date: 2021-08-26T01:11:58+00:00; +2m05s from scanner time.
-> 
-> Host script results:
-> |_clock-skew: mean: 2m04s, deviation: 0s, median: 2m04s
-> | ms-sql-info: 
-> |   10.10.10.125:1433: 
-> |     Version: 
-> |       name: Microsoft SQL Server 2017 RTM
-> |       number: 14.00.1000.00
-> |       Product: Microsoft SQL Server 2017
-> |       Service pack level: RTM
-> |       Post-SP patches applied: false
-> |_    TCP port: 1433
-> ```
-<!-- }}} -->
-
 ___
-
 <!-- }}} -->
 
 <!-- Metasploit {{{-->
@@ -311,6 +329,7 @@ Info gathering
 
 Search for insteresting data
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sh
@@ -319,9 +338,11 @@ Search for insteresting data
 > ```sh
 > msf> use auxiliary/admin/mssql/mssql_idf
 > ```
+<!-- }}} -->
 
-Privesc
+Privilege Escalation (*Privesc*)
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sh
@@ -329,7 +350,7 @@ Privesc
 > ```
 >
 > Elevate privileges if the user has
-[[Privileges#SeImpersonatePrivilege|SeImpersonatePrivilege]]
+> [[Privileges#SeImpersonatePrivilege|SeImpersonatePrivilege]]
 >
 > ```sh
 > msf> use admin/mssql/mssql_escalate_execute_as
@@ -340,9 +361,11 @@ Privesc
 > ```sh
 > msf> use admin/mssql/mssql_escalate_dbowner
 > ```
+<!-- }}} -->
 
 Code execution
 
+<!-- Example {{{-->
 > [!example]-
 >
 > Execute commands
@@ -356,17 +379,19 @@ Code execution
 > ```sh
 > msf> use exploit/windows/mssql/mssql_payload
 > ```
+<!-- }}} -->
 
 Add new admin user from meterpreter session
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sh
 > msf> use windows/manage/mssql_local_auth_bypass
 > ```
+<!-- }}} -->
 
 <!-- }}} -->
 
 ___
-
 <!-- }}} -->

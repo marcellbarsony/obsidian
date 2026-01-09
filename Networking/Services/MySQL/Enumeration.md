@@ -16,10 +16,13 @@ Often, the rights for the [[MySQL/General#Configuration|configuration file]]
 of the [[MySQL/General#MySQL Database|MySQL databases]]
 are not assigned correctly
 
+<!-- Tip {{{-->
 > [!tip]
 >
-> If an attacker can read files or gain shell access, they may retrieve the file
+> If an attacker can read files or gain shell access,
+> they may retrieve the file
 > containing the MySQL username and password
+<!-- }}} -->
 
 ___
 <!-- }}} -->

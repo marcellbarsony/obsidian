@@ -8,12 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "6f4e890d1c374ce7",
+            "id": "2054a597ab595a1d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Networking/Services/SMB/Exploitation.md",
+                "file": "Networking/Services/MSSQL/Exploitation.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -120,7 +120,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/Services/SMB/Exploitation.md",
+                "file": "Networking/Services/MSSQL/Exploitation.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/Services/SMB/Exploitation.md",
+                "file": "Networking/Services/MSSQL/Exploitation.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -223,36 +223,36 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "6f4e890d1c374ce7",
+  "active": "2054a597ab595a1d",
   "lastOpenFiles": [
-    "Networking/Services/SMB/Enumeration.md",
+    "Networking/Services/MSSQL/Usage.md",
+    "Pentest/General/Kali Linux.md",
+    "Pentest/Tools/Metasploit/SearchSploit.md",
+    "Pentest/Tools/Metasploit/Metasploit.md",
+    "Networking/Services/MSSQL/Exploitation.md",
+    "Networking/Services/MSSQL/Enumeration.md",
+    "Networking/Services/MSSQL/General.md",
+    "Networking/Services/RDP/Enumeration.md",
+    "Networking/Services/MySQL/Exploitation.md",
+    "Networking/Services/MySQL/Enumeration.md",
+    "Networking/Services/MySQL/Usage.md",
     "Networking/Services/SMB/Exploitation.md",
+    "Networking/Services/SMB/Enumeration.md",
     "Pentest/Tools/Metasploit/Sessions/Jobs.md",
     "Pentest/Tools/Metasploit/Components",
     "Pentest/Tools/Metasploit/Sessions/Sessions.md",
     "Pentest/Tools/Metasploit/Sessions/Meterpreter.md",
     "Pentest/Tools/Metasploit/Components/Database.md",
     "Pentest/Tools/Metasploit/Components/Plugins.md",
-    "Pentest/Tools/Metasploit/Metasploit.md",
     "Pentest/Tools/Metasploit/Msfvenom.md",
-    "Pentest/Tools/Metasploit/SearchSploit.md",
     "Pentest/Tools/Metasploit/Metasploit_1.md",
     "Pentest/Tools/Metasploit/Sessions/Sessions_1.md",
     "Pentest/Tools/Metasploit/Sessions",
     "Networking/Services/SNMP/Enumeration.md",
-    "Pentest/General/Kali Linux.md",
     "Pentest/Tools/Brute Force/Wordlists/SecLists.md",
     "Linux/General/Tools/Find.md",
     "Webapp/Enumeration/Discovery/Execution Paths.md",
     "Webapp/Enumeration/Discovery/Crawling.md",
-    "Networking/Tools/Nmap/Host Enumeration.md",
-    "Pentest/Tools/Ffuf/Ffuf.md",
-    "Webapp/Enumeration/_Checklist.md",
-    "Networking/Services/DNS/Enumeration.md",
-    "Webapp/Enumeration/Enumeration.md",
-    "Webapp/Enumeration/Infrastructure/DNS.md",
-    "Webapp/Enumeration/Infrastructure/Virtual Hosts.md",
-    "Webapp/Enumeration/Infrastructure/Domain.md",
     "Networking/Services/LDAP",
     "Microsoft/AD/src/ad-forests-domains.png",
     "Pentest/Brute Force",
