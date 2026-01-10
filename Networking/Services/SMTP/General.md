@@ -13,15 +13,17 @@ port:
 # SMTP
 
 **SMTP** ([Simple Mail Transfer Protocol](https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol))
-is a TCP/IP protocol for sending e-mails.
+is a TCP/IP protocol for sending e-mails
 
 **SMTP** in principle is a *client-server*-based protocol, and it can be used
 between an e-mail client and an outgoing mail server or between two **SMTP**
-servers.
+servers
 
 **SMTP** is often combined with
-[[Networking/Services/IMAP-POP3/General|IMAP/POP3]], due to its limitations in
-queuing messages on the recipient's end.
+[[IMAP-POP3/General|IMAP/POP3]], due to its limitations in
+queuing messages on the recipient's end
+
+___
 
 <!-- Ports {{{-->
 ## Ports
@@ -36,7 +38,6 @@ queuing messages on the recipient's end.
   providing a username and password.
 
 ___
-
 <!-- }}} -->
 
 <!-- Operation {{{-->
@@ -45,11 +46,11 @@ ___
 Modern **SMTP** servers support the protocol extension [ESMTP](https://www.geeksforgeeks.org/computer-networks/what-is-esmtp-extended-simple-mail-transfer-protocol/)
 with [SMTP-Auth](https://en.wikipedia.org/wiki/SMTP_Authentication) to prevent
 spam using authentication mechanisms that allow only authorized users to send
-e-mails.
+e-mails
 
 - **SMTP Client**, (a.k.a. **E-mail Client** or **Mail User Agent** ([MUA](https://en.wikipedia.org/wiki/Email_client))),
   composes the e-mail (with headers and body *as per [RFC 5322](https://datatracker.ietf.org/doc/html/rfc5322)*)
-  and submits it to the **SMTP Server** via port 587
+  and submits it to the **SMTP Server** via port `587`
 
 - **Mail Submission Agent** ([MSA](https://en.wikipedia.org/wiki/Message_submission_agent))
   (*optional*) authenticates the sender and checks policy before passing the
@@ -68,14 +69,20 @@ e-mails.
 - The **Mail Delivery Agent** ([MDA](https://en.wikipedia.org/wiki/Message_delivery_agent))
   transfers it to the recipient's mailbox (via [[Networking/Services/IMAP-POP3/General|IMAP/POP3]])
 
-E-mail Client ([MUA](https://en.wikipedia.org/wiki/Email_client))
-➞ Submission Agent ([MSA](https://en.wikipedia.org/wiki/Message_submission_agent))
-➞ Open Relay ([MTA](https://en.wikipedia.org/wiki/Open_mail_relay))
-➞ Mail Delivery Agent ([MDA](https://en.wikipedia.org/wiki/Message_delivery_agent))
-➞ Mailbox (POP3/IMAP)
+<!-- Info {{{-->
+> [!info]-
+>
+> E-mail Client ([MUA](https://en.wikipedia.org/wiki/Email_client))
+> ➞ Submission Agent ([MSA](https://en.wikipedia.org/wiki/Message_submission_agent))
+> ➞ Open Relay ([MTA](https://en.wikipedia.org/wiki/Open_mail_relay))
+> ➞ Mail Delivery Agent ([MDA](https://en.wikipedia.org/wiki/Message_delivery_agent))
+> ➞ Mailbox (POP3/IMAP)
+>
+> ![[process.png]]
+>
+<!-- }}} -->
 
 ___
-
 <!-- }}} -->
 
 <!-- Disadvantages {{{-->
@@ -83,14 +90,16 @@ ___
 
 **SMTP** has two disadvantages inherent to the network protocol:
 
-1. Sending an e-mail using **SMTP** does not return a usable delivery
-   confirmation:<br>Its formatting is not specified by default, so that usually an
+1. **Sending an e-mail using **SMTP** does not return a usable delivery
+   confirmation**:<br>
+   Its formatting is not specified by default, so that usually an
    English-language error message (including the sent mail's header) is returned
 
-2. Users are not authenticated when the connection is established, and the
-   sender of an e-mail therefore is unreliable:<br>**SMTP** relays are often
-   misused to send spam, and the originators usually use arbitrary fake sender
-   addresses (mail spoofing). To authenticate senders, DomainKeys
+2. **Users are not authenticated when the connection is established,
+   and the sender of an e-mail therefore is unreliable**:<br>
+   **SMTP** relays are often misused to send spam,
+   and the originators usually use arbitrary fake sender
+   addresses (*mail spoofing*). To authenticate senders, DomainKeys
    ([DKIM](https://dkim.org/)) and the Sender Policy Framework
    ([SPF](https://dmarcian.com/what-is-spf/)) can be used.
 
@@ -100,9 +109,14 @@ ___
 <!-- Configuration {{{-->
 ## Configuration
 
+<!-- Default Configuration {{{-->
 ### Default Configuration
 
 The default configuration is usually located at `/etc/postfix/main.cf`
+
+```sh
+cat /etc/postfix/main.cf | grep -v "#" | sed -r "/^\s*$/d"
+```
 
 <!-- Example {{{-->
 > [!example]-
@@ -137,17 +151,19 @@ The default configuration is usually located at `/etc/postfix/main.cf`
 <!-- Dangerous Settings {{{-->
 ### Dangerous Settings
 
-To prevent the sent e-mails from being filtered by spam filters, the sender can
-use a relay server that the recipient trusts. The sender must authenticate
-himself to the relay server before using it.
+To prevent the sent e-mails from being filtered by spam filters,
+the sender can use a relay server that the recipient trusts.
+The sender must authenticate himself to the relay server before using it.
 
+<!-- Open Relay Configuration {{{-->
 #### Open Relay Configuration
 
 The **SMTP Server** can send fake e-mails
 ([[Networking/Services/SMTP/Exploitation#Open Relay Attack|Open Relay Attack]])
 and thus initialize communication between multiple parties
 
-> [!danger]-
+<!-- Danger {{{-->
+> [!danger]
 >
 > Allow connections from any IP address
 >
@@ -156,6 +172,11 @@ and thus initialize communication between multiple parties
 > ```
 <!-- }}} -->
 
-___
+<!-- }}} -->
 
+<!-- }}} -->
+
+<!-- }}} -->
+
+___
 <!-- }}} -->

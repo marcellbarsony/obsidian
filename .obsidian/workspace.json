@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Networking/Services/MSSQL/Exploitation.md",
+                "file": "Networking/Services/SMTP/Exploitation.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -120,7 +120,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/Services/MSSQL/Exploitation.md",
+                "file": "Networking/Services/SMTP/Exploitation.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/Services/MSSQL/Exploitation.md",
+                "file": "Networking/Services/SMTP/Exploitation.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -225,14 +225,26 @@
   },
   "active": "2054a597ab595a1d",
   "lastOpenFiles": [
+    "Networking/Services/SMTP/Enumeration.md",
+    "Networking/Services/SMTP/General.md",
+    "Networking/Services/SMTP/Exploitation.md",
+    "Networking/Services/SMTP/Usage.md",
+    "Networking/Services/IMAP-POP3/Usage.md",
+    "Networking/Services/SMTP/src/process.png",
+    "Networking/Services/RDP/Exploitation.md",
+    "Networking/Services/SMTP/src",
+    "Networking/Services/RDP/src/restricted-admin-mode.png",
+    "Networking/Services/RDP/src",
+    "Networking/Services/RDP/Usage.md",
+    "Networking/Services/RDP/General.md",
+    "Networking/Services/RDP/Enumeration.md",
     "Networking/Services/MSSQL/Usage.md",
+    "Networking/Services/MSSQL/Exploitation.md",
+    "Networking/Services/MSSQL/Enumeration.md",
     "Pentest/General/Kali Linux.md",
     "Pentest/Tools/Metasploit/SearchSploit.md",
     "Pentest/Tools/Metasploit/Metasploit.md",
-    "Networking/Services/MSSQL/Exploitation.md",
-    "Networking/Services/MSSQL/Enumeration.md",
     "Networking/Services/MSSQL/General.md",
-    "Networking/Services/RDP/Enumeration.md",
     "Networking/Services/MySQL/Exploitation.md",
     "Networking/Services/MySQL/Enumeration.md",
     "Networking/Services/MySQL/Usage.md",
@@ -244,15 +256,7 @@
     "Pentest/Tools/Metasploit/Sessions/Meterpreter.md",
     "Pentest/Tools/Metasploit/Components/Database.md",
     "Pentest/Tools/Metasploit/Components/Plugins.md",
-    "Pentest/Tools/Metasploit/Msfvenom.md",
-    "Pentest/Tools/Metasploit/Metasploit_1.md",
-    "Pentest/Tools/Metasploit/Sessions/Sessions_1.md",
     "Pentest/Tools/Metasploit/Sessions",
-    "Networking/Services/SNMP/Enumeration.md",
-    "Pentest/Tools/Brute Force/Wordlists/SecLists.md",
-    "Linux/General/Tools/Find.md",
-    "Webapp/Enumeration/Discovery/Execution Paths.md",
-    "Webapp/Enumeration/Discovery/Crawling.md",
     "Networking/Services/LDAP",
     "Microsoft/AD/src/ad-forests-domains.png",
     "Pentest/Brute Force",
@@ -266,11 +270,7 @@
     "Webapp/Exploitation/Client-Side/XSS/src/xss-reflected-network.jpg",
     "Webapp/Exploitation/Client-Side/XSS/src",
     "Webapp/Exploitation/Client-Side/XSS",
-    "Webapp/Exploitation/Client-Side",
     "Webapp/Tools/Burp Suite/src/intruder-payloads.png",
-    "Webapp/Tools/Burp Suite/src/20251221-220356.png",
-    "Webapp/Tools/Burp Suite/src/intruder-positions.png",
-    "Webapp/Exploitation/Server-Side/XSS",
     "Networking/Services/SMB/Untitled.canvas"
   ]
 }

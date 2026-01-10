@@ -138,17 +138,21 @@ ___
 
 RDP allows username enumeration
 
+<!-- Info {{{-->
 > [!info]-
 >
 > Through RDP login attempts RDP returns different errors for
 >
 > - Valid user, wrong password
 > - Invalid user
+<!-- }}} -->
 
+<!-- Tip {{{-->
 > [!tip]-
 >
 > Check for common usernames
 > (*e.g., `Administrator`, `admin`, `user`, `guest`, etc.*)
+<!-- }}} -->
 
 [[Impacket]] - [rdp_check.py](https://github.com/fortra/impacket/blob/master/examples/rdp_check.py)
 
@@ -169,7 +173,6 @@ rdp_check.exe $target <usernames.txt>
 ```
 
 ___
-
 <!-- }}} -->
 
 <!-- Session Enumeration {{{-->

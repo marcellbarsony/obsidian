@@ -48,11 +48,13 @@ echo %USERNAME%
 
 Discover additional user accounts and their rights on the system
 
+<!-- Tip {{{-->
 > [!tip]-
 >
 > Lateral movement
 >
 > - Credential reuse
+<!-- }}} -->
 
 [net user](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/net-user) —
 Get all local user accounts

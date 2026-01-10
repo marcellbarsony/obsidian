@@ -544,7 +544,10 @@ dnsrecon -d <target_domain> -t axfr
 
 <!-- }}} -->
 
-## Local Queries
+<!-- Local Query {{{-->
+### Local Query
+
+Query `localhost` for records
 
 > [!todo]
 >
@@ -557,11 +560,35 @@ dig @<dns_ip> -x 127.0.0.1
 ```sh
 dig @<dns_ip> -x 127.0.0.2
 ```
+<!-- }}} -->
 
+<!-- MX Query {{{-->
+### MX Query
 
+Enumerate [[DNS/General#MX|MX]] records
+
+```sh
+dig [@<dns_ip>] <target_domain> mx
+```
+
+```sh
+dig [@<dns_ip>] <target_domain> mx | grep "MX" | grep -v ";"
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> dig microsoft.com mx | grep "MX" | grep -v ";"
+> ```
+> ```sh
+> microsoft.com.          3301    IN      MX      10 microsoft-com.mail.protection.outlook.com.
+> ```
+<!-- }}} -->
+
+<!-- }}} -->
 
 ___
-
 <!-- }}} -->
 
 <!-- Automated Tools {{{-->

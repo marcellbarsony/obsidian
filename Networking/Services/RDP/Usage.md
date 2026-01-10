@@ -94,13 +94,13 @@ rdesktop -u <username> -p <password> $target
 Full screen
 
 ```sh
-rdesktop -f -u <username> $target
+rdesktop -u <username> $target -f
 ```
 
 Specific resolution
 
 ```sh
-rdesktop -g 1920x1080 -u <username> $target
+rdesktop -u <username> $target -g 1920x1080
 ```
 <!-- }}} -->
 
@@ -110,6 +110,7 @@ ___
 <!-- Windows {{{-->
 ## Windows
 
+<!-- mstsc {{{-->
 ### mstsc
 
 [mstsc](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/mstsc) —
@@ -145,5 +146,8 @@ Save connection settings
 ```sh
 mstsc /v:$target /save:connection.rdp
 ```
+
+<!-- }}} -->
+
 ___
 <!-- }}} -->
