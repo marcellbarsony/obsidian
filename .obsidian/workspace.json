@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Networking/Services/SMTP/Exploitation.md",
+                "file": "Networking/Services/Tomcat/Exploitation.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -120,7 +120,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/Services/SMTP/Exploitation.md",
+                "file": "Networking/Services/Tomcat/Exploitation.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/Services/SMTP/Exploitation.md",
+                "file": "Networking/Services/Tomcat/Exploitation.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -225,9 +225,19 @@
   },
   "active": "2054a597ab595a1d",
   "lastOpenFiles": [
+    "Networking/Services/Tomcat/Enumeration.md",
+    "Networking/Services/Tomcat/Exploitation.md",
+    "Networking/Services/Tomcat/src/wam-deploy.png",
+    "Networking/Services/Tomcat/src/20260111-005449.png",
+    "Networking/Services/Tomcat/src",
+    "Networking/Services/Tomcat/General.md",
+    "Networking/Services/HTTP/General.md",
+    "Networking/Services/Tomcat",
+    "test.md",
+    "Networking/Tools/Nmap/Host Enumeration.md",
+    "Networking/Services/SMTP/Exploitation.md",
     "Networking/Services/SMTP/Enumeration.md",
     "Networking/Services/SMTP/General.md",
-    "Networking/Services/SMTP/Exploitation.md",
     "Networking/Services/SMTP/Usage.md",
     "Networking/Services/IMAP-POP3/Usage.md",
     "Networking/Services/SMTP/src/process.png",
@@ -248,14 +258,7 @@
     "Networking/Services/MySQL/Exploitation.md",
     "Networking/Services/MySQL/Enumeration.md",
     "Networking/Services/MySQL/Usage.md",
-    "Networking/Services/SMB/Exploitation.md",
-    "Networking/Services/SMB/Enumeration.md",
-    "Pentest/Tools/Metasploit/Sessions/Jobs.md",
     "Pentest/Tools/Metasploit/Components",
-    "Pentest/Tools/Metasploit/Sessions/Sessions.md",
-    "Pentest/Tools/Metasploit/Sessions/Meterpreter.md",
-    "Pentest/Tools/Metasploit/Components/Database.md",
-    "Pentest/Tools/Metasploit/Components/Plugins.md",
     "Pentest/Tools/Metasploit/Sessions",
     "Networking/Services/LDAP",
     "Microsoft/AD/src/ad-forests-domains.png",
@@ -267,10 +270,6 @@
     "Webapp/Exploitation/Client-Side/XSS/src/20251222-232900.png",
     "Webapp/Exploitation/Client-Side/XSS/src/xss-dom.png",
     "Webapp/Exploitation/Client-Side/XSS/src/20251222-232403.png",
-    "Webapp/Exploitation/Client-Side/XSS/src/xss-reflected-network.jpg",
-    "Webapp/Exploitation/Client-Side/XSS/src",
-    "Webapp/Exploitation/Client-Side/XSS",
-    "Webapp/Tools/Burp Suite/src/intruder-payloads.png",
     "Networking/Services/SMB/Untitled.canvas"
   ]
 }
