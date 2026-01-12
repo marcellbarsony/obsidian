@@ -28,7 +28,7 @@ nmap -p 8080,8443,8009 $target
 <!-- Banner {{{-->
 ### Banner
 
-Grab Service Banner
+Grab service banner and server header
 
 [[Netcat]]
 
@@ -48,7 +48,7 @@ Grab service banner
 curl -I http://$target:8080
 ```
 
-Check Server header
+Check server header
 
 ```sh
 curl -s -D - http://$target:8080 | grep Server
@@ -74,16 +74,22 @@ Common version disclosure locations
 http://$target:8080/
 ```
 ```sh
-http://$target:8080/docs/
+curl -s http://$target:8080/docs/
 ```
 ```sh
-http://$target:8080/examples/
+curl -s http://$target:8080/docs/ | grep Tomcat
 ```
 ```sh
-http://$target:8080/RELEASE-NOTES.txt
+curl -s http://$target:8080/examples/
 ```
 ```sh
-http://$target:8080/docs/RELEASE-NOTES.txt
+curl -s http://$target:8080/RELEASE-NOTES.txt
+```
+```sh
+curl -s http://$target:8080/docs/RELEASE-NOTES.txt
+```
+```sh
+curl -s http://$target:8080/manager/status
 ```
 
 [[cURL]]
@@ -91,7 +97,7 @@ http://$target:8080/docs/RELEASE-NOTES.txt
 Check error pages for version
 
 ```sh
-curl http://$target:8080/nonexistent
+curl -i curl http://$target:8080/nonexistent
 ```
 
 Check documentation pages
@@ -138,8 +144,10 @@ nmap $target -p 8080 --script http-tomcat-* -oA tomcat-scripts-all
 ___
 <!-- }}} -->
 
-<!-- Directory Enumeration {{{-->
-## Directory Enumeration
+<!-- Directories {{{-->
+## Directories
+
+Enumerate Tomcat directories
 
 <!-- Tip {{{-->
 > [!tip]- Wordlists
@@ -171,6 +179,50 @@ ffuf -u http://$target:8080/FUZZ -w <wordlist.txt>
 ```
 
 ___
+<!-- }}} -->
+
+<!-- Manager {{{-->
+## Manager
+
+Enumerate the exact locations of the
+[[Exploitation#Web Application Manager|Web Applicaiton Manager]]
+(*`/manager` and `/host-manager` directories*)
+as their names might be altered
+
+```sh
+http://$target:8080/manager
+```
+
+```sh
+http://$target:8080/%252E%252E/manager/html
+```
+
+```sh
+http://$target:8080/host-manager
+```
+
+___
+<!-- }}} -->
+
+<!-- Password {{{-->
+## Password
+
+Accessing `/auth.jsp` may reveal the password in a backtrace
+
+```sh
+http://$target:8080/auth.jsp
+```
+
+___
+<!-- }}} -->
+
+<!-- Scripts {{{-->
+## Scripts
+
+Apache Tomcat versions `4.x` to `7.x` include example scripts
+that are susceptible to information disclosure
+and cross-site scripting (*XSS*) attacks
+
 <!-- }}} -->
 
 <!-- User {{{-->

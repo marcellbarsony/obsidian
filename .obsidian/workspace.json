@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Networking/Services/Tomcat/Exploitation.md",
+                "file": "Pentest/Tools/Metasploit/Sessions/Meterpreter.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Exploitation"
+              "title": "Meterpreter"
             }
           }
         ]
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/Services/Tomcat/Exploitation.md",
+                "file": "Pentest/Tools/Metasploit/Sessions/Meterpreter.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Exploitation"
+              "title": "Outline of Meterpreter"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/Services/Tomcat/Exploitation.md",
+                "file": "Pentest/Tools/Metasploit/Sessions/Meterpreter.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Exploitation"
+              "title": "Graph of Meterpreter"
             }
           }
         ]
@@ -225,16 +225,26 @@
   },
   "active": "2054a597ab595a1d",
   "lastOpenFiles": [
-    "Networking/Services/Tomcat/Enumeration.md",
+    "Networking/Services/FTP/Exploitation.md",
+    "Pentest/Tools/Metasploit/Privesc.md",
+    "Microsoft/Windows/Privesc/Meterpreter.md",
+    "Pentest/Tools/Metasploit/Sessions/Meterpreter.md",
+    "Networking/Services/FTP/Enumeration.md",
+    "Pentest/Tools/Metasploit/Sessions/Sessions.md",
+    "Networking/Tools/Nmap/Host Enumeration.md",
+    "Networking/Services/SMB/Enumeration.md",
+    "Networking/Services/SMB/Exploitation.md",
+    "Networking/Services/SMB/General.md",
+    "Networking/Networking.md",
     "Networking/Services/Tomcat/Exploitation.md",
+    "Networking/Services/Tomcat/Enumeration.md",
+    "Networking/Services/Tomcat/General.md",
     "Networking/Services/Tomcat/src/wam-deploy.png",
     "Networking/Services/Tomcat/src/20260111-005449.png",
     "Networking/Services/Tomcat/src",
-    "Networking/Services/Tomcat/General.md",
     "Networking/Services/HTTP/General.md",
     "Networking/Services/Tomcat",
     "test.md",
-    "Networking/Tools/Nmap/Host Enumeration.md",
     "Networking/Services/SMTP/Exploitation.md",
     "Networking/Services/SMTP/Enumeration.md",
     "Networking/Services/SMTP/General.md",
@@ -249,15 +259,6 @@
     "Networking/Services/RDP/General.md",
     "Networking/Services/RDP/Enumeration.md",
     "Networking/Services/MSSQL/Usage.md",
-    "Networking/Services/MSSQL/Exploitation.md",
-    "Networking/Services/MSSQL/Enumeration.md",
-    "Pentest/General/Kali Linux.md",
-    "Pentest/Tools/Metasploit/SearchSploit.md",
-    "Pentest/Tools/Metasploit/Metasploit.md",
-    "Networking/Services/MSSQL/General.md",
-    "Networking/Services/MySQL/Exploitation.md",
-    "Networking/Services/MySQL/Enumeration.md",
-    "Networking/Services/MySQL/Usage.md",
     "Pentest/Tools/Metasploit/Components",
     "Pentest/Tools/Metasploit/Sessions",
     "Networking/Services/LDAP",

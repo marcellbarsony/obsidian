@@ -120,8 +120,7 @@ sudo nmap -sC -sV $target -p 139,445 -oA smb-default-scripts
 
 Get SMB version
 
-[[Metasploit]] - [smb_version](https://www.rapid7.com/db/modules/auxiliary/scanner/smb/smb_version/) —
-SMB Version Detection
+[[Metasploit]] — [SMB Version Detection](https://www.rapid7.com/db/modules/auxiliary/scanner/smb/smb_version/)
 
 ```sh
 use auxiliary/scanner/smb/smb_version
@@ -173,8 +172,7 @@ nmap $target -p 445 --script smb-os-discovery.nse -oA smb-os-discovery
 
 Enumerate SMB protocols
 
-[[Metasploit]] - [smb2](https://www.rapid7.com/db/modules/auxiliary/scanner/smb/smb2/) —
-SMB 2.0 Protocol Detection
+[[Metasploit]] — [SMB 2.0 Protocol Detection](https://www.rapid7.com/db/modules/auxiliary/scanner/smb/smb2/)
 
 ```sh
 use auxiliary/scanner/smb/smb2
@@ -526,8 +524,7 @@ nxc smb $target -u "" -p "" --shares
 nxc smb $target -u 'guest' -p '' --shares
 ```
 
-[[Metasploit]] — [smb_enumshares](https://www.rapid7.com/db/modules/auxiliary/scanner/smb/smb_enumshares/) —
-SMB Share Enumeration
+[[Metasploit]] — [SMB Share Enumeration](https://www.rapid7.com/db/modules/auxiliary/scanner/smb/smb_enumshares/)
 
 ```sh
 use auxiliary/scanner/smb/smb_enumshares
@@ -547,8 +544,7 @@ ___
 Detect [[Exploitation#Netapi|Netapi]]
 (*[MS08-067](https://learn.microsoft.com/en-us/security-updates/securitybulletins/2008/ms08-067)*)
 
-[[Nmap]] —
-[smb-vuln-ms08-067](https://nmap.org/nsedoc/scripts/smb-vuln-ms08-067.html)
+[[Nmap]] — [smb-vuln-ms08-067](https://nmap.org/nsedoc/scripts/smb-vuln-ms08-067.html)
 
 <!-- Warning {{{-->
 > [!warning]
@@ -592,11 +588,10 @@ nmap -sU $target -p U:137 --script smb-vuln-ms08-067.nse -oA smb-netapi-udp
 Detect [[Exploitation#EternalBlue|EternalBlue]]
 (*[MS17-010](https://learn.microsoft.com/en-us/security-updates/securitybulletins/2017/ms17-010)*)
 
-[[Nmap]] —
-[smb-vuln-ms17-010](https://nmap.org/nsedoc/scripts/smb-vuln-ms17-010.html)
+[[Nmap]] — [smb-vuln-ms17-010](https://nmap.org/nsedoc/scripts/smb-vuln-ms17-010.html)
 
 ```sh
-nmap -Pn <ip_netblock> -p 445 --open --max-hostgroup 3 --script smb-vuln-ms17-010  -oA smb-eternalblue
+nmap -Pn $target -p 445 --open --max-hostgroup 3 --script smb-vuln-ms17-010  -oA smb-eternalblue
 ```
 
 ```sh
@@ -616,6 +611,12 @@ nmap -A $target -p 445
 > [!example]-
 >
 > ```sh
+> nmap -Pn $target -p 445 --open --max-hostgroup 3 --script smb-vuln-ms17-010  -oA smb-eternalblue
+> ```
+> ```sh
+> PORT    STATE SERVICE
+> 445/tcp open  microsoft-ds
+>
 > Host script results:
 > | smb-vuln-ms17-010:
 > |   VULNERABLE:
@@ -634,12 +635,13 @@ nmap -A $target -p 445
 > ```
 <!-- }}} -->
 
-[[NetExec]] —
-[Scan for MS17-010](https://www.netexec.wiki/smb-protocol/scan-for-vulnerabilities#ms17-010-not-tested-outside-lab-environment)
+[[NetExec]] — [Scan for MS17-010](https://www.netexec.wiki/smb-protocol/scan-for-vulnerabilities#ms17-010-not-tested-outside-lab-environment)
 
+<!-- Waning {{{-->
 > [!warning]
 >
 > Not tested outside LAB environment
+<!-- }}} -->
 
 ```sh
 nxc smb $target -u '' -p '' -M ms17-010
