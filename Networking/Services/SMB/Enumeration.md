@@ -541,7 +541,7 @@ ___
 <!-- Netapi {{{-->
 ### Netapi
 
-Detect [[Exploitation#Netapi|Netapi]]
+Detect [[Networking/Services/SMB/Exploitation#Netapi|Netapi]]
 (*[MS08-067](https://learn.microsoft.com/en-us/security-updates/securitybulletins/2008/ms08-067)*)
 
 [[Nmap]] — [smb-vuln-ms08-067](https://nmap.org/nsedoc/scripts/smb-vuln-ms08-067.html)
@@ -585,7 +585,7 @@ nmap -sU $target -p U:137 --script smb-vuln-ms08-067.nse -oA smb-netapi-udp
 <!-- EternalBlue {{{-->
 ### EternalBlue
 
-Detect [[Exploitation#EternalBlue|EternalBlue]]
+Detect [[Networking/Services/SMB/Exploitation#EternalBlue|EternalBlue]]
 (*[MS17-010](https://learn.microsoft.com/en-us/security-updates/securitybulletins/2017/ms17-010)*)
 
 [[Nmap]] — [smb-vuln-ms17-010](https://nmap.org/nsedoc/scripts/smb-vuln-ms17-010.html)
@@ -652,7 +652,7 @@ nxc smb $target -u '' -p '' -M ms17-010
 <!-- SMBGhost {{{-->
 ### SMBGhost
 
-Detect [[Exploitation#SMBGhost|SMBGhost]]
+Detect [[Networking/Services/SMB/Exploitation#SMBGhost|SMBGhost]]
 (*[CVE-2020-0796](https://nvd.nist.gov/vuln/detail/cve-2020-0796)*)
 
 [[Netexec]] - [Scan for SMBGhost](https://www.netexec.wiki/smb-protocol/scan-for-vulnerabilities#smbghost)
@@ -671,7 +671,7 @@ nxc smb $target -u 'guest' -p '' -M smbghost
 <!-- ZeroLogon {{{-->
 ### ZeroLogon
 
-Detect [[Exploitation#ZeroLogon|ZeroLogon]]
+Detect [[Networking/Services/SMB/Exploitation#ZeroLogon|ZeroLogon]]
 (*[CVE-2020-1472](https://nvd.nist.gov/vuln/detail/cve-2020-1472)*)
 
 > [!warning]

@@ -235,7 +235,7 @@ Oracle default passwords
 
 The [finger service](https://en.wikipedia.org/wiki/Finger_(protocol)) is still
 used by organizations together with oracle,
-[[Enumeration#Finger|which can put Oracle's service at risk]].
+[[Networking/Services/Oracle TNS/Enumeration#Finger|which can put Oracle's service at risk]].
 
 <!-- }}} -->
 

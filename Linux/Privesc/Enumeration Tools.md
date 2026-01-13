@@ -58,6 +58,10 @@ Kali local script
 /usr/share/peass/linpeas/linpeas.sh
 ```
 
+```sh
+cp /usr/share/peass/linpeas/linpeas.sh .
+```
+
 <!-- }}} -->
 
 <!-- Usage {{{-->

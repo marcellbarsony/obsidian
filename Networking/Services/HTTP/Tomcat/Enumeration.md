@@ -185,7 +185,7 @@ ___
 ## Manager
 
 Enumerate the exact locations of the
-[[Exploitation#Web Application Manager|Web Applicaiton Manager]]
+[[Networking/Services/HTTP/Tomcat/Exploitation#Web Application Manager|Web Applicaiton Manager]]
 (*`/manager` and `/host-manager` directories*)
 as their names might be altered
 

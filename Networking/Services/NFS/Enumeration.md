@@ -154,7 +154,7 @@ sudo mount -t nfs $target:/ /mnt/target-NFS -o nolock
 > > - `-o nolock`: Mount option (disable file locking)
 <!-- }}} -->
 
-3. Check for [[General#Default Configuration|Root Squashing]]
+3. Check for [[Networking/Services/NFS/General#Default Configuration|Root Squashing]]
 
 ```sh
 ls -ld /mnt/target-NFS

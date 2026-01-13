@@ -368,7 +368,7 @@ use auxiliary/scanner/ipmi/ipmi_dumphashes
 <!-- Tip - Hash Cracking {{{-->
 > [!tip]- Hash Cracking
 >
-> [[Exploitation#Hash Cracking|Crack Hashes]]
+> [[Networking/Services/IPMI/Exploitation#Hash Cracking|Crack Hashes]]
 <!-- }}} -->
 
 ___

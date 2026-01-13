@@ -249,21 +249,21 @@ ___
 <!-- CVE Scripts {{{-->
 ## CVE Scripts
 
-[[Exploitation#CVE-2010-4344|CVE-2010-4344]]
+[[Networking/Services/SMTP/Exploitation#CVE-2010-4344|CVE-2010-4344]]
 (*[smtp-vuln-cve2010-4344](https://nmap.org/nsedoc/scripts/smtp-vuln-cve2010-4344.html)*)
 
 ```sh
 sudo nmap -sV $target -p 25,465,587 -sV --script=smtp-vuln-cve2010-4344 -oA smtp-vuln-cve2010-4344
 ```
 
-[[Exploitation#CVE-2011-1720|CVE-2011-1720]]
+[[Networking/Services/SMTP/Exploitation#CVE-2011-1720|CVE-2011-1720]]
 (*[smtp-vuln-cve2011-1720](https://nmap.org/nsedoc/scripts/smtp-vuln-cve2011-1720.html)*)
 
 ```sh
 sudo nmap -sV $target -p 25,465,587 --script=smtp-vuln-cve2011-1720 -oA smtp-vuln-cve2011-1720
 ```
 
-[[Exploitation#CVE-2011-1764|CVE-2011-1764]]
+[[Networking/Services/SMTP/Exploitation#CVE-2011-1764|CVE-2011-1764]]
 (*[smtp-vuln-cve2010-1764](https://nmap.org/nsedoc/scripts/smtp-vuln-cve2011-1764.html)*)
 
 ```sh
@@ -276,7 +276,7 @@ ___
 <!-- Open Relay {{{-->
 ## Open Relay
 
-Enumerate [[Exploitation#Open Relay Attack|Open Relay Attack]]
+Enumerate [[Networking/Services/SMTP/Exploitation#Open Relay Attack|Open Relay Attack]]
 
 [[Nmap]]
 (*[smtp-open-relay](https://nmap.org/nsedoc/scripts/smtp-open-relay.html)*)

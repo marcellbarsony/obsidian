@@ -300,7 +300,7 @@ DNS servers can be footprinted via queries
 ### NS Query
 
 [dig](https://linux.die.net/man/1/dig) —
-Query the DNS server for [[General#NS|NS]] records of a domain
+Query the DNS server for [[Networking/Services/DNS/General#NS|NS]] records of a domain
 
 ```sh
 dig [@<dns_ip>] <target_domain> ns
@@ -323,7 +323,7 @@ dig [@<dns_ip>] <target_domain> ns
 ### ANY Query
 
 [dig](https://linux.die.net/man/1/dig) —
-Query the DNS server for [[General#ANY|ANY]] (*all available*) records
+Query the DNS server for [[Networking/Services/DNS/General#ANY|ANY]] (*all available*) records
 of a domain
 
 ```sh
@@ -383,8 +383,8 @@ dig @<dns_ip> <target_domain> any
 <!-- AXFR Zone Transfer {{{-->
 ### AXFR Zone Transfer
 
-[[General#DNS Zone Transfer|DNS Zone Transfer]]
-or **Asynchronous Full Transfer Zone** (*[[General#AXFR|AXFR]]*)
+[[Networking/Services/DNS/General#DNS Zone Transfer|DNS Zone Transfer]]
+or **Asynchronous Full Transfer Zone** (*[[Networking/Services/DNS/General#AXFR|AXFR]]*)
 yields a full DNS zone dump
 (*e.g. all hostnames, IPs, subdomains, etc.*)
 
@@ -455,7 +455,7 @@ yields a full DNS zone dump
 [dig](https://linux.die.net/man/1/dig) —
 [[DIG#AXFR|DIG]] — Request AXFR Zone Transfer
 
-1. Enumerate [[General#Name Server|Name Server(s)]]
+1. Enumerate [[Networking/Services/DNS/General#Name Server|Name Server(s)]]
 
 ```sh
 dig <target_domain> NS
@@ -466,7 +466,7 @@ dig <target_domain> NS
 >
 > Query the
 > [zonetransfer.me](https://digi.ninja/projects/zonetransferme.php)
-> domain for [[General#NS|NS]] records
+> domain for [[Networking/Services/DNS/General#NS|NS]] records
 >
 > ```sh
 > dig zonetransfer.me NS +short
@@ -477,8 +477,8 @@ dig <target_domain> NS
 > ```
 <!-- }}} -->
 
-2. Attempt [[General#DNS Zone Transfer|DNS Zone Transfer]] against each
-[[General#Name Server|Name Server]]
+2. Attempt [[Networking/Services/DNS/General#DNS Zone Transfer|DNS Zone Transfer]] against each
+[[Networking/Services/DNS/General#Name Server|Name Server]]
 
 ```sh
 dig @<dns_ip> <target_domain> AXFR
@@ -487,8 +487,8 @@ dig @<dns_ip> <target_domain> AXFR
 <!-- Example {{{-->
 > [!example]-
 >
-> Request a full [[General#DNS Zone Transfer|DNS Zone Transfer]]
-> from the [[General#Name Server|Name server(s)]] responsible for the
+> Request a full [[Networking/Services/DNS/General#DNS Zone Transfer|DNS Zone Transfer]]
+> from the [[Networking/Services/DNS/General#Name Server|Name server(s)]] responsible for the
 > [zonetransfer.me](https://digi.ninja/projects/zonetransferme.php)
 > domain
 >

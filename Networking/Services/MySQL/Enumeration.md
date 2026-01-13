@@ -180,7 +180,7 @@ use auxiliary/scanner/mysql/mysql_authbypass_hashdump
 > [!info]-
 >
 > This module exploits a password bypass vulnerability
-> [[Exploitation#CVE-2012-2122|CVE-2012-2122]] in MySQL in order to
+> [[Networking/Services/MySQL/Exploitation#CVE-2012-2122|CVE-2012-2122]] in MySQL in order to
 > extract the usernames and encrypted password hashes
 > from a MySQL server
 >
@@ -359,12 +359,12 @@ ___
 
 Enumerate [MySQL Permissions](https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-mysql.html#mysql-permissions-enumeration):
 
-1. **[[Enumeration#Privilege Discovery|Privilege Discovery]]** &
-   **[[Enumeration#Account Enumeration|Account Enumeration]]**:
+1. **[[Networking/Services/MySQL/Enumeration#Privilege Discovery|Privilege Discovery]]** &
+   **[[Networking/Services/MySQL/Enumeration#Account Enumeration|Account Enumeration]]**:
    `SHOW GRANTS` + `mysql.user` queries
-2. **[[Enumeration#High-risk Privilege Check|Prioritization]]**:
+2. **[[Networking/Services/MySQL/Enumeration#High-risk Privilege Check|Prioritization]]**:
    Pivot to `FILE`/`SUPER` owners
-3. **[[Enumeration#Exploitation Checks|Exploitation Checks]]**:
+3. **[[Networking/Services/MySQL/Enumeration#Exploitation Checks|Exploitation Checks]]**:
    Inspect functions/plugins
 
 <!-- Privilege Discovery {{{-->

@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Pentest/Tools/Metasploit/Sessions/Meterpreter.md",
+                "file": "Pentest/Shells/Bind Shell.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Meterpreter"
+              "title": "Bind Shell"
             }
           }
         ]
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Pentest/Tools/Metasploit/Sessions/Meterpreter.md",
+                "file": "Pentest/Shells/Bind Shell.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Meterpreter"
+              "title": "Outline of Bind Shell"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Pentest/Tools/Metasploit/Sessions/Meterpreter.md",
+                "file": "Pentest/Shells/Bind Shell.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Meterpreter"
+              "title": "Graph of Bind Shell"
             }
           }
         ]
@@ -225,52 +225,52 @@
   },
   "active": "2054a597ab595a1d",
   "lastOpenFiles": [
+    "Linux/Privesc/Sudo.md",
+    "Pentest/Shells/Bind Shell.md",
+    "Pentest/Shells/Examples/python.md",
+    "Pentest/Shells/Examples/shell_1.py",
+    "Pentest/Shells/Reverse Shell.md",
+    "Pentest/Shells/Examples/Python/shell_1.py",
+    "Pentest/Shells/Examples/Python",
+    "Pentest/Shells/Examples",
+    "Pentest/Shells/Samples/Python/shell_1.py",
+    "Pentest/Shells/Samples/Python",
+    "Pentest/Shells/Samples",
+    "Pentest/File Transfer/Linux/Download.md",
+    "Pentest/File Transfer/Transferring Files.md",
+    "Linux/Privesc/Cron Jobs.md",
+    "Pentest/Shells/Web Shell.md",
+    "Linux/Privesc/Enumeration Tools.md",
+    "Webapp/Webapp.md",
+    "Linux/Privesc/Filesystem.md",
+    "Linux/Privesc/System Files.md",
+    "Linux/General/Users & Groups.md",
+    "Webapp/Enumeration/Discovery/Execution Paths.md",
+    "Networking/Tools/Nmap/Host Enumeration.md",
+    "Networking/Software/PRTG/PRTG Network Monitor.md",
+    "Networking/Enumeration/Host Discovery.md",
+    "Networking/Software/PRTG/src/prtg-notifications-launch.png",
+    "Networking/Software/PRTG/src/prtg-notifications-execute.png",
+    "Networking/Software/PRTG/src/prtg-notifications-new.png",
+    "Networking/Software/PRTG/src/prtg-notifications.png",
+    "Networking/Software/PRTG/src/20260112-215618.png",
+    "Networking/Software/PRTG/src/20260112-222629.png",
+    "Networking/Software/PRTG/src/20260112-215644.png",
+    "Networking/Software/PRTG/src/20260112-220140.png",
+    "Networking/Software/PRTG/src",
+    "Networking/Software/PRTG Network Monitor.md",
+    "Networking/Software/PRTG",
+    "Networking/Software",
     "Networking/Services/FTP/Exploitation.md",
+    "Pentest/Tools/Metasploit/Sessions/Meterpreter.md",
     "Pentest/Tools/Metasploit/Privesc.md",
     "Microsoft/Windows/Privesc/Meterpreter.md",
-    "Pentest/Tools/Metasploit/Sessions/Meterpreter.md",
     "Networking/Services/FTP/Enumeration.md",
     "Pentest/Tools/Metasploit/Sessions/Sessions.md",
-    "Networking/Tools/Nmap/Host Enumeration.md",
     "Networking/Services/SMB/Enumeration.md",
     "Networking/Services/SMB/Exploitation.md",
-    "Networking/Services/SMB/General.md",
-    "Networking/Networking.md",
-    "Networking/Services/Tomcat/Exploitation.md",
-    "Networking/Services/Tomcat/Enumeration.md",
-    "Networking/Services/Tomcat/General.md",
-    "Networking/Services/Tomcat/src/wam-deploy.png",
+    "Networking/Services/HTTP/Tomcat/src/wam-deploy.png",
     "Networking/Services/Tomcat/src/20260111-005449.png",
-    "Networking/Services/Tomcat/src",
-    "Networking/Services/HTTP/General.md",
-    "Networking/Services/Tomcat",
-    "test.md",
-    "Networking/Services/SMTP/Exploitation.md",
-    "Networking/Services/SMTP/Enumeration.md",
-    "Networking/Services/SMTP/General.md",
-    "Networking/Services/SMTP/Usage.md",
-    "Networking/Services/IMAP-POP3/Usage.md",
-    "Networking/Services/SMTP/src/process.png",
-    "Networking/Services/RDP/Exploitation.md",
-    "Networking/Services/SMTP/src",
-    "Networking/Services/RDP/src/restricted-admin-mode.png",
-    "Networking/Services/RDP/src",
-    "Networking/Services/RDP/Usage.md",
-    "Networking/Services/RDP/General.md",
-    "Networking/Services/RDP/Enumeration.md",
-    "Networking/Services/MSSQL/Usage.md",
-    "Pentest/Tools/Metasploit/Components",
-    "Pentest/Tools/Metasploit/Sessions",
-    "Networking/Services/LDAP",
-    "Microsoft/AD/src/ad-forests-domains.png",
-    "Pentest/Brute Force",
-    "Webapp/Exploitation/Server-Side/File Inclusion",
-    "Webapp/Exploitation/Server-Side/File-Inclusion",
-    "Webapp/Exploitation/Client-Side/XSS/src/xss-dom-parameter.png",
-    "Webapp/Exploitation/Client-Side/XSS/src/xss-dom-network.png",
-    "Webapp/Exploitation/Client-Side/XSS/src/20251222-232900.png",
-    "Webapp/Exploitation/Client-Side/XSS/src/xss-dom.png",
-    "Webapp/Exploitation/Client-Side/XSS/src/20251222-232403.png",
     "Networking/Services/SMB/Untitled.canvas"
   ]
 }
