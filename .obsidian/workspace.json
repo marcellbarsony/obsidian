@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Pentest/Shells/Bind Shell.md",
+                "file": "Networking/Services/SMB/Usage.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Bind Shell"
+              "title": "Usage"
             }
           }
         ]
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Pentest/Shells/Bind Shell.md",
+                "file": "Networking/Services/SMB/Usage.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Bind Shell"
+              "title": "Outline of Usage"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Pentest/Shells/Bind Shell.md",
+                "file": "Networking/Services/SMB/Usage.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Bind Shell"
+              "title": "Graph of Usage"
             }
           }
         ]
@@ -225,30 +225,42 @@
   },
   "active": "2054a597ab595a1d",
   "lastOpenFiles": [
+    "Networking/Services/SMB/Enumeration.md",
+    "Networking/Services/SMB/Exploitation.md",
+    "Linux/Privesc/Credential Hunting.md",
+    "Microsoft/Windows/General/Group Policy/Group Policy.md",
+    "Microsoft/Windows/General/Group Policy",
+    "LanMan.md",
+    "Networking/Services/SMB/General.md",
+    "Networking/Services/SMB/Usage.md",
+    "Pentest/Tools/Metasploit/Sessions/Meterpreter.md",
+    "Pentest/Tools/Metasploit/Sessions/Jobs.md",
+    "Pentest/Tools/Metasploit/Metasploit.md",
+    "Microsoft/Windows/Privesc/Enumeration Tools.md",
+    "Microsoft/Windows/Privesc/UAC.md",
+    "Microsoft/Windows/Privesc/System Information.md",
+    "Microsoft/Windows/Privesc/Software.md",
+    "Networking/Services/HTTP/HttpFileServer/Rejetto HttpFileServer.md",
+    "Microsoft/Windows/Privesc/Environment.md",
+    "Pentest/Tools/Metasploit/Sessions/Sessions.md",
+    "Microsoft/Windows/Privesc/Services.md",
+    "Microsoft/Windows/Privesc/Scheduled Tasks_1.md",
+    "Microsoft/Windows/Privesc/Security.md",
+    "Microsoft/Windows/Privesc/Processes.md",
+    "Microsoft/Windows/Privesc/Privileges.md",
+    "Microsoft/Windows/Privesc/User.md",
+    "Microsoft/Windows/Privesc/DLL Hijacking.md",
+    "Microsoft/Windows/Privesc/Credential Hunting.md",
     "Linux/Privesc/Sudo.md",
-    "Pentest/Shells/Bind Shell.md",
-    "Pentest/Shells/Examples/python.md",
+    "Networking/Services/HTTP/HttpFileServer",
+    "Webapp/Software/Nibbleblog",
+    "Webapp/Software",
     "Pentest/Shells/Examples/shell_1.py",
-    "Pentest/Shells/Reverse Shell.md",
     "Pentest/Shells/Examples/Python/shell_1.py",
     "Pentest/Shells/Examples/Python",
     "Pentest/Shells/Examples",
     "Pentest/Shells/Samples/Python/shell_1.py",
     "Pentest/Shells/Samples/Python",
-    "Pentest/Shells/Samples",
-    "Pentest/File Transfer/Linux/Download.md",
-    "Pentest/File Transfer/Transferring Files.md",
-    "Linux/Privesc/Cron Jobs.md",
-    "Pentest/Shells/Web Shell.md",
-    "Linux/Privesc/Enumeration Tools.md",
-    "Webapp/Webapp.md",
-    "Linux/Privesc/Filesystem.md",
-    "Linux/Privesc/System Files.md",
-    "Linux/General/Users & Groups.md",
-    "Webapp/Enumeration/Discovery/Execution Paths.md",
-    "Networking/Tools/Nmap/Host Enumeration.md",
-    "Networking/Software/PRTG/PRTG Network Monitor.md",
-    "Networking/Enumeration/Host Discovery.md",
     "Networking/Software/PRTG/src/prtg-notifications-launch.png",
     "Networking/Software/PRTG/src/prtg-notifications-execute.png",
     "Networking/Software/PRTG/src/prtg-notifications-new.png",
@@ -257,18 +269,6 @@
     "Networking/Software/PRTG/src/20260112-222629.png",
     "Networking/Software/PRTG/src/20260112-215644.png",
     "Networking/Software/PRTG/src/20260112-220140.png",
-    "Networking/Software/PRTG/src",
-    "Networking/Software/PRTG Network Monitor.md",
-    "Networking/Software/PRTG",
-    "Networking/Software",
-    "Networking/Services/FTP/Exploitation.md",
-    "Pentest/Tools/Metasploit/Sessions/Meterpreter.md",
-    "Pentest/Tools/Metasploit/Privesc.md",
-    "Microsoft/Windows/Privesc/Meterpreter.md",
-    "Networking/Services/FTP/Enumeration.md",
-    "Pentest/Tools/Metasploit/Sessions/Sessions.md",
-    "Networking/Services/SMB/Enumeration.md",
-    "Networking/Services/SMB/Exploitation.md",
     "Networking/Services/HTTP/Tomcat/src/wam-deploy.png",
     "Networking/Services/Tomcat/src/20260111-005449.png",
     "Networking/Services/SMB/Untitled.canvas"

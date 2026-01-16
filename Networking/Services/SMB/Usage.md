@@ -30,13 +30,33 @@ and communicate between nodes on a network
 Connect to a share
 
 ```sh
-smbclient //$target/<share>
+smbclient //$target/
 ```
+
+```sh
+smbclient //$target/[share]
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> smbclient //$target/anonymous
+> ```
+> ```sh
+> smbclient //$target/IPC$
+> ```
+>
+<!-- }}} -->
 
 Connect to share as specified user
 
 ```sh
-smbclient //$target/<share> -U <user>
+smbclient //$target/[share] -U <user>
+```
+
+```sh
+smbclient //$target/[share] -U <user>%<password>
 ```
 
 <!-- Info {{{-->
@@ -49,12 +69,13 @@ smbclient //$target/<share> -U <user>
 > [!example]-
 >
 > ```sh
-> smbclient //$target/anonymous
+> smbclient -U SVC_TGS //$target/Users
 > ```
 >
 > ```sh
-> smbclient //$target/IPC$
+> smbclient -U SVC_TGS%GPPstillStandingStrong2k18 //$target/Users
 > ```
+>
 <!-- }}} -->
 
 <!-- }}} -->
@@ -187,6 +208,17 @@ Exit
 ```
 smb: \> exit
 ```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> smb: \> exit
+> ```
+>
+<!-- }}} -->
+
+
 <!-- }}} -->
 
 ___

