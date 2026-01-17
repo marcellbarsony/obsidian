@@ -207,8 +207,11 @@ subfinder -d "<target_domain>"
 findomain -t "<target_domain>" -a
 ```
 
+[DNSDumpster](https://dnsdumpster.com/) —
 
-[DNSDumpster](https://dnsdumpster.com/) — 
+```sh
+
+```
 
 <!-- }}} -->
 
@@ -223,7 +226,6 @@ Brute Force DNS Subdomains
 <!-- Wordlists {{{-->
 > [!tip]- Wordlists
 >
->
 > [[SecLists#Subdomains|SecLists - Subdomain]]
 >
 <!-- }}} -->
@@ -233,7 +235,7 @@ Brute Force DNS Subdomains
 DNS Subdomain Brute Forcing
 
 ```sh
-gobuster dns [flags] -d $target -w <wordlist.txt> [-s <target_dns>]
+gobuster dns [flags] -d $target -w <wordlist> [-s <target_dns>]
 ```
 
 <!-- Example {{{-->
@@ -251,11 +253,11 @@ gobuster dns [flags] -d $target -w <wordlist.txt> [-s <target_dns>]
 DNS Subdomain Brute Forcing
 
 ```sh
-dnsenum --enum $target -f <wordlist.txt> -r
+dnsenum --enum $target -f <wordlist> -r
 ```
 
 ```sh
-dnsenum --dnsserver <target_dns> --enum -p 5 -s 5 -o subdomains.txt -f <wordlist.txt> <target_domain>
+dnsenum --dnsserver <target_dns> --enum -p 5 -s 5 -o subdomains.txt -f <wordlist> <target_domain>
 ```
 
 <!-- Info {{{-->
@@ -267,7 +269,7 @@ dnsenum --dnsserver <target_dns> --enum -p 5 -s 5 -o subdomains.txt -f <wordlist
 > - `-p 5`: Number of threads for reverse lookup (`0` to disable)
 > - `-s 5`: Number of threads for subdomain brute-forcing (`0` to disable)
 > - `-o subdomains.txt`: Output file for results
-> - `-f <wordlist.txt>`: Wordlist file for subdomain brute-forcing
+> - `-f <wordlist>`: Wordlist file for subdomain brute-forcing
 <!-- }}} -->
 
 <!-- }}} -->

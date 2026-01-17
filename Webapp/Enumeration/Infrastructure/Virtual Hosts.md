@@ -9,16 +9,17 @@ links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
 # Virtual Hosts
 
 [Virtual Hosting](https://en.wikipedia.org/wiki/Virtual_hosting)
+(*or [Server Blocks](https://docs.nginx.com/)*)
 is the ability of web servers to distinguish between multiple websites
 or applications sharing the same IP address by leveraging
-the `HTTP Host` header.
+the `HTTP Host` header
 
 **Virtual Hosts** are configurations within a web server
 that allow multiple websites or applications
-to be hosted on a single server.
+to be hosted on a single server
 
 **Virtual Hosts** can be associated with top-level domains
-(*e.g., example.com*) or subdomains (*e.g., dev.example.com*).
+(*e.g., example.com*) or subdomains (*e.g., dev.example.com*)
 
 <!-- Hosts File {{{-->
 > [!tip] Hosts File
@@ -34,7 +35,7 @@ ___
 ## Configuration
 
 Virtual hosts can also be configured to use different domains,
-not just subdomains
+not only subdomains
 
 <!-- Example {{{-->
 > [!example]-
@@ -90,17 +91,33 @@ based on the `Host` header
    The web server retrieves the resources associated with the website
    and sends them back as the HTTP response
 
+___
+<!-- }}} -->
+
+<!-- Discovery {{{-->
+## Discovery
+
 <!-- Fuzzing {{{-->
 ### Fuzzing
 
 Virtual host fuzzing is recommended
-to possibly find alternate domain names of subdomains
-that point to a virtual host
+to possibly find alternate domain names
+of subdomains that point to a virtual host
+
+<!-- Warning {{{-->
+> [!warning]
+>
+> Virtual Host Discovery can generate significant traffic
+> and might be detected by intrusion detection systems (*IDS*)
+> or web application firewalls (*WAF*)
+> and it could lead to an unintended denial of service
+<!-- }}} -->
 
 <!-- Hosts {{{-->
 > [!tip] Hosts
 >
-> Add the found virtual hosts to `/etc/hosts`
+> Add the found virtual hosts to the
+> [[DNS/General#Hosts File|Hosts File]]
 >
 > ```sh
 > sudo sh -c "echo '$target app.inlanefreight.local dev.inlanefreight.local' >> /etc/hosts"
@@ -114,43 +131,56 @@ that point to a virtual host
 >
 <!-- }}} -->
 
-<!-- Warning {{{-->
-> [!warning]
->
-> Virtual Host Discovery can generate significant traffic
-> and might be detected by intrusion detection systems (*IDS*)
-> or web application firewalls (*WAF*)
-> and it could lead to an unintended denial of service
-<!-- }}} -->
-
 [[Ffuf]]
 
 ```sh
-ffuf -H "Host: FUZZ.<domain>" -H "User-Agent: PENTEST" -c -w "<wordlist.txt>" -u <target>
-```
-```sh
-ffuf -c -r -w "<wordlist.txt>" -u "http://FUZZ.<target>/"
+ffuf -w <wordlist> -u http://FUZZ.$target/ -c -r
 ```
 
-Filter results by response sizes (*e.g., `-fs 109, 208`*)
+```sh
+ffuf -w <wordlist> -u http://$target/ -H "Host: FUZZ.<domain>" -c -r
+```
 
 ```sh
-ffuf -w namelist.txt -u http://10.129.184.109 -H "HOST: FUZZ.inlanefreight.htb" -fs 10918
+ffuf -w <wordlist> -u http://$target/ -H "Host: FUZZ.<domain>" -H "User-Agent: PENTEST" -c -r
 ```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> [[Ffuf#Filtering|Filter]] response sizes
+>
+> ```sh
+> ffuf -w <wordlist> -u http://$target -H "HOST: FUZZ.inlanefreight.htb" -fs 10918
+> ```
+>
+<!-- }}} -->
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `-c`: Colorize output (*default: `false`*)
+> - `-r`: Follow redirects (*default: `false`*)
+> - `-u`: Target URL
+> - `-w`: Wordlist file path and (*optional*) keyword
+>         separated by colon.
+>         (*e.g., `'/path/to/wordlist:KEYWORD'`*)
+>
+<!-- }}} -->
 
 [[Gobuster]]
 
 ```sh
-gobuster vhost -u http://<target> -w <wordlist>
+gobuster vhost -u http://$target -w <wordlist>
 ```
 ```sh
-gobuster vhost -u http://<target> -w <wordlist> [--domain <domain>] --append-domain -t 60
+gobuster vhost -u http://$target -w <wordlist> [--domain <domain>] --append-domain -t 60
 ```
 ```sh
-gobuster vhost -u http://<target> -w <wordlist> -p <pattern_file> --exclude-length 301
+gobuster vhost -u http://$target -w <wordlist> -p <pattern_file> --exclude-length 301
 ```
 ```sh
-gobuster vhost --useragent "PENTEST" --wordlist "<wordlist.txt>" --url <target>
+gobuster vhost --useragent "PENTEST" --wordlist "<wordlist>" --url $target
 ```
 
 <!-- Info {{{-->
@@ -230,16 +260,16 @@ Conduct recursive virtual host fuzzing on the virtual hosts found
 [[Gobuster]]
 
 ```sh
-gobuster vhost -u http://<vhost>.<target> -w <wordlist>
+gobuster vhost -u http://<vhost>.$target -w <wordlist>
 ```
 ```sh
-gobuster vhost -u http://<vhost>.<target> -w <wordlist> [--domain <domain>] --append-domain -t 60
+gobuster vhost -u http://<vhost>.$target -w <wordlist> [--domain <domain>] --append-domain -t 60
 ```
 ```sh
-gobuster vhost -u http://<vhost>.<target>.<tld> -w <wordlist> -p <pattern_file> --exclude-length 301
+gobuster vhost -u http://<vhost>.$target.<tld> -w <wordlist> -p <pattern_file> --exclude-length 301
 ```
 ```sh
-gobuster vhost --useragent "PENTEST" --wordlist "<wordlist.txt>" --url <vhost>.<target>
+gobuster vhost --useragent "PENTEST" --wordlist "<wordlist>" --url <vhost>.$target
 ```
 
 > [!example]-
@@ -301,10 +331,10 @@ gobuster vhost --useragent "PENTEST" --wordlist "<wordlist.txt>" --url <vhost>.<
 [[Ffuf]]
 
 ```sh
-ffuf -H "Host: FUZZ.<domain>" -H "User-Agent: PENTEST" -c -w "<wordlist.txt>" -u <vhost.<target>
+ffuf -H "Host: FUZZ.<domain>" -H "User-Agent: PENTEST" -c -w "<wordlist>" -u <vhost.$target
 ```
 ```sh
-ffuf -c -r -w "<wordlist.txt>" -u "http://FUZZ.<vhost>.<target>/"
+ffuf -c -r -w "<wordlist>" -u "http://FUZZ.<vhost>.$target/"
 ```
 
 Filter results by response sizes (*e.g., `-fs 109, 208`*)
@@ -332,6 +362,14 @@ sudoedit /etc/hosts
 ```sh
 sudo sh -c "echo '$target app.inlanefreight.local dev.inlanefreight.local' >> /etc/hosts"
 ```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `-c`: Colorize output (*default: `false`*)
+>
+<!-- }}} -->
+
 ___
 <!-- }}} -->
 
@@ -344,7 +382,7 @@ ___
 Show response headers
 
 ```sh
-curl -I http://<target>
+curl -I http://$target
 ```
 
 ```sh
