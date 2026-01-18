@@ -19,30 +19,30 @@ ___
 Simple scan (*no exploitation*)
 
 ```sh
-wpscan --url <target>
+wpscan --url $target
 ```
 
 Enumerate users
 
 ```sh
-wpscan --url <target> --enumerate u
+wpscan --url $target --enumerate u
 ```
 
 Enumerate a range of users
 
 ```sh
-wpscan --url <target> --enumerate u1-100
+wpscan --url $target --enumerate u1-100
 ```
 
 Bruteforce a user
 
 ```sh
-wpscan --url <target> --username <username> --passwords "<wordlist.txt>"
+wpscan --url $target --username <username> --passwords "<wordlist.txt>"
 ```
 
 Enumerate and bruteforce users
 
 ```sh
-wpscan --url <target> --enumerate u --passwords "<wordlist.txt>"
+wpscan --url $target --enumerate u --passwords "<wordlist.txt>"
 ```
 <!-- }}} -->

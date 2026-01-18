@@ -30,15 +30,18 @@ ___
 [/.well-known/security.txt](https://securitytxt.org/) ([RFC 9116](https://www.rfc-editor.org/rfc/rfc9116.html))
 is a standard which allows websites to define security standards
 
+<!-- Info {{{-->
 > [!info]-
 >
 > - [Wikipedia - security.txt](https://en.wikipedia.org/wiki/Security.txt)
 > - [cisa.gov - security.txt: A Simple File with Big Value](https://www.cisa.gov/news-events/news/securitytxt-simple-file-big-value)
+<!-- }}} -->
 
 ```sh
 https://target.com/.well-known/security.txt
 ```
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```http
@@ -50,6 +53,7 @@ https://target.com/.well-known/security.txt
 > ```sh
 > https://github.com/.well-known/security.txt
 > ```
+<!-- }}} -->
 
 ___
 <!-- }}} -->
@@ -58,12 +62,12 @@ ___
 ## Change Password
 
 [/.well-known/change-password](https://github.com/w3c/webappsec-change-password-url)
-provides a standard URL for directing users to a password change page
+provides a standard URL for directing users
+to a password change page
 
 ```sh
 https://target.com/.well-known/change-password
 ```
-
 ___
 <!-- }}} -->
 
@@ -71,9 +75,10 @@ ___
 ## OpenID Configuration
 
 [/.well-known/openid-configuration](https://openid.net/specs/openid-connect-discovery-1_0.html)
-defines configuration details for [OpenID Connect](https://openid.net/developers/how-connect-works/)
+defines configuration details for
+[OpenID Connect](https://openid.net/developers/how-connect-works/)
 
-
+<!-- Info {{{-->
 > [!info]-
 >
 > The `openid-configuration` URI is part of the
@@ -89,12 +94,13 @@ defines configuration details for [OpenID Connect](https://openid.net/developers
 > - supported authentication methods
 > - token issuance
 > - etc.
-
+<!-- }}} -->
 
 ```sh
 https://target.com/.well-known/openid-configuration
 ```
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sh
@@ -113,7 +119,7 @@ https://target.com/.well-known/openid-configuration
 >   "scopes_supported": ["openid", "profile", "email"]
 > }
 > ```
-
+<!-- }}} -->
 
 ___
 <!-- }}} -->

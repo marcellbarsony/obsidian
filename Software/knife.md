@@ -26,6 +26,8 @@ ___
 <!-- Privilege Escalation {{{-->
 ## Privilege Escalation
 
+[GTFOBins - knife](https://gtfobins.github.io/gtfobins/knife/)
+
 1. Enumerate if `knife` can be launched as `root`
 
 ```sh

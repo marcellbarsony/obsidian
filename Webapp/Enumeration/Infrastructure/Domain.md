@@ -21,11 +21,11 @@ ___
 
 [WHOIS](https://en.wikipedia.org/wiki/WHOIS)
 returns domain registration information —
-it is a query and response protocol used for querying databases that store
-information about registered internet resources
+it is a query and response protocol used for querying databases
+that store information about registered internet resources
 
 ```sh
-whois <target>
+whois $target
 ```
 
 <!-- Example {{{-->

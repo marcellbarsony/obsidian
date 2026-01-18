@@ -17,7 +17,7 @@ ___
 ## Usage
 
 ```sh
-sqlmap -u 'http://<target>/dashboard.php?search=<search_query>' --cookie="<cookie_value>"
+sqlmap -u 'http://$target/dashboard.php?search=<search_query>' --cookie="<cookie_value>"
 ```
 
 <!-- Example {{{-->

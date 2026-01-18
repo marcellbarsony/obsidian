@@ -31,8 +31,12 @@ to be hosted on a single server
 
 ___
 
+
+<!-- General {{{-->
+## General
+
 <!-- Configuration {{{-->
-## Configuration
+### Configuration
 
 Virtual hosts can also be configured to use different domains,
 not only subdomains
@@ -60,18 +64,19 @@ not only subdomains
 > ```
 <!-- }}} -->
 
-___
 <!-- }}} -->
 
 <!-- Server VHost Lookup {{{-->
-## Server VHost Lookup
+### Server VHost Lookup
 
 A web server determines the correct content to serve
 based on the `Host` header
 
+<!-- Info {{{-->
 > [!info]-
 >
 > ![[virtualhost_lookup.png]]
+<!-- }}} -->
 
 1. **Browser requests a website**:
    The browser initiates an HTTP request to the web server
@@ -91,6 +96,8 @@ based on the `Host` header
    The web server retrieves the resources associated with the website
    and sends them back as the HTTP response
 
+<!-- }}} -->
+
 ___
 <!-- }}} -->
 
@@ -100,9 +107,9 @@ ___
 <!-- Fuzzing {{{-->
 ### Fuzzing
 
-Virtual host fuzzing is recommended
-to possibly find alternate domain names
-of subdomains that point to a virtual host
+Virtual Host fuzzing is recommended
+to possibly find alternate domain names of subdomains
+that point to a virtual host
 
 <!-- Warning {{{-->
 > [!warning]
@@ -145,17 +152,6 @@ ffuf -w <wordlist> -u http://$target/ -H "Host: FUZZ.<domain>" -c -r
 ffuf -w <wordlist> -u http://$target/ -H "Host: FUZZ.<domain>" -H "User-Agent: PENTEST" -c -r
 ```
 
-<!-- Example {{{-->
-> [!example]-
->
-> [[Ffuf#Filtering|Filter]] response sizes
->
-> ```sh
-> ffuf -w <wordlist> -u http://$target -H "HOST: FUZZ.inlanefreight.htb" -fs 10918
-> ```
->
-<!-- }}} -->
-
 <!-- Info {{{-->
 > [!info]-
 >
@@ -165,6 +161,17 @@ ffuf -w <wordlist> -u http://$target/ -H "Host: FUZZ.<domain>" -H "User-Agent: P
 > - `-w`: Wordlist file path and (*optional*) keyword
 >         separated by colon.
 >         (*e.g., `'/path/to/wordlist:KEYWORD'`*)
+>
+<!-- }}} -->
+
+<!-- Example {{{-->
+> [!example]-
+>
+> [[Ffuf#Filtering|Filter]] response sizes
+>
+> ```sh
+> ffuf -w <wordlist> -u http://$target -H "HOST: FUZZ.inlanefreight.htb" -fs 10918
+> ```
 >
 <!-- }}} -->
 
@@ -331,7 +338,7 @@ gobuster vhost --useragent "PENTEST" --wordlist "<wordlist>" --url <vhost>.$targ
 [[Ffuf]]
 
 ```sh
-ffuf -H "Host: FUZZ.<domain>" -H "User-Agent: PENTEST" -c -w "<wordlist>" -u <vhost.$target
+ffuf -H "Host: FUZZ.<domain>" -H "User-Agent: PENTEST" -c -w "<wordlist>" -u <vhost>.$target
 ```
 ```sh
 ffuf -c -r -w "<wordlist>" -u "http://FUZZ.<vhost>.$target/"
@@ -351,24 +358,44 @@ ___
 <!-- Hosts {{{-->
 ## Hosts
 
+<!-- Tip {{{-->
 > [!tip]
 >
 > Add the discovered virtual hosts to `/etc/hosts`
+<!-- }}} -->
 
 ```sh
 sudoedit /etc/hosts
 ```
 
 ```sh
-sudo sh -c "echo '$target app.inlanefreight.local dev.inlanefreight.local' >> /etc/hosts"
+sudo sh -c "echo '$target subdomain.domain.tld subdomain2.domain.tld' >> /etc/hosts"
 ```
 
 <!-- Info {{{-->
 > [!info]-
 >
-> - `-c`: Colorize output (*default: `false`*)
+> - `-c`: Read commands from string.
+>   If there are arguments after the string,
+>   they are assigned to the positional parameters,
+>   starting with `$0`
 >
 <!-- }}} -->
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> sudo sh -c "echo '10.10.10.123   app.inlanefreight.local dev.inlanefreight.local' >> /etc/hosts"
+> ```
+> ```sh
+> 127.0.0.1        localhost
+> ::1              localhost
+> 127.0.1.1        arch
+> 10.10.10.123     app.inlanefreight.local dev.inlanefreight.local
+> ```
+<!-- }}} -->
+
 
 ___
 <!-- }}} -->
@@ -379,14 +406,14 @@ ___
 <!-- Banner Grabbing {{{-->
 ### Banner Grabbing
 
-Show response headers
+[[cURL]] - Show response headers
 
 ```sh
 curl -I http://$target
 ```
 
 ```sh
-curl -s -D - -o /dev/null -H "Host: <target_vhost>" http://<target_ip>/
+curl -s -D - -o /dev/null -H "Host: <vhost>" http://$target/
 ```
 
 <!-- Info {{{-->
@@ -398,45 +425,58 @@ curl -s -D - -o /dev/null -H "Host: <target_vhost>" http://<target_ip>/
 > - `-H "Host: …"`: Set the Host header (*for vhost brute-forcing*)
 <!-- }}} -->
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sh
 > curl -s -D - -o /dev/null -H "Host: app.inlanefreight.local" http://10.129.222.107/
 > ```
+<!-- }}} -->
 
-Show response headers and body
+[[cURL]] - Show response headers and body
 
 ```sh
-curl -v -H "Host: <target_vhost>" http://<target_ip>/
+curl -v -H "Host: <vhost>" http://$target/
 ```
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sh
 > curl -v -H "Host: app.inlanefreight.local" http://10.129.222.107/
 > ```
+<!-- }}} -->
 
 Raw TCP
 
 ```sh
-printf 'GET / HTTP/1.1\r\nHost: app.inlanefreight.local\r\nConnection: close\r\n\r\n' | nc 10.129.222.107 80
+printf 'GET / HTTP/1.1\r\nHost: <vhost>.<domain>.<tld>\r\nConnection: close\r\n\r\n' | nc $target 80
 ```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> printf 'GET / HTTP/1.1\r\nHost: app.inlanefreight.local\r\nConnection: close\r\n\r\n' | nc 10.129.222.107 80
+> ```
+>
+<!-- }}} -->
 
 <!-- }}} -->
 
 <!-- Invalid Header {{{-->
 ### Invalid Header
 
-Feed `localhost` header
+[[cURL]] - Feed `localhost` header
 
 ```sh
-curl -v -H "Host: localhost" http://<target_ip>/
+curl -v -H "Host: localhost" http://$target/
 ```
 
-Feed random host header
+[[cURL]] - Feed random host header
 
 ```sh
-curl -v -H "Host: random" http://<target_ip>/
+curl -v -H "Host: random" http://$target/
 ```
 
 <!-- }}} -->

@@ -93,10 +93,11 @@ on every new visited URL
 <!-- HTML Tag {{{-->
 ### HTML Tag
 
-Get the tag (*HTML metadata element*) used by default in popular CMS
+Get the tag (*HTML metadata element*)
+used by default in popular [[CMS]]
 
 ```sh
-curl -s http://<target>/index.php | grep '<meta name="generator"'
+curl -s http://$target/index.php | grep '<meta name="generator"'
 ```
 
 <!-- }}} -->

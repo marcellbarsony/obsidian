@@ -47,7 +47,7 @@ Define a target with regex
 <!-- }}} -->
 
 ```sh
-http://<target_ip>[:<target_port>].*
+http://$target[:<target_port>].*
 ```
 
 <!-- Example {{{-->

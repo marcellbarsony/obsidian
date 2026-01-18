@@ -1,22 +1,13 @@
----
-id: Fingerprinting
-aliases: []
-tags:
-  - Webapp/Enumeration/Fingerprinting
-links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
----
 
-# Fingerprinting
+# Enumeration
 
-Fingerpring the web server for version, application framework,
+Enumerate the web service for version, application framework,
 authentication options, and missing security options
 
 ___
 
-<!-- Version Details & CVEs {{{-->
-## Version Details & CVEs
-
-[[HTTP/Enumeration|Enumerate]] the HTTP service
+<!-- Service {{{-->
+## Service
 
 [[Nmap]] — Search for additional version information
 

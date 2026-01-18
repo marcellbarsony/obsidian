@@ -23,11 +23,13 @@ have contributed to building the website
 https://target.com/humans.txt
 ```
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```http
 > https://www.example.com/humans.txt
 > ```
+<!-- }}} -->
 
 ___
 <!-- }}} -->
@@ -45,6 +47,7 @@ telling the search engine crawlers which URLs they cannot access
 https://target.com/robots.txt
 ```
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```http
@@ -62,6 +65,7 @@ https://target.com/robots.txt
 >
 > Sitemap: https://www.example.com/sitemap.xml
 > ```
+<!-- }}} -->
 
 ___
 <!-- }}} -->
@@ -70,8 +74,8 @@ ___
 ## Sitemap.xml
 
 [Sitemaps](https://en.wikipedia.org/wiki/Sitemaps)
-informs search engines about URLs on a website that are available
-for web crawling
+informs search engines about URLs on a website
+that are available for web crawling
 
 ```sh
 https://target.com/sitemap.xml

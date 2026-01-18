@@ -66,12 +66,14 @@ ___
 Run ReconSpider
 
 ```sh
-python3 ReconSpider.py http://<target>
+python3 ReconSpider.py http://$target
 ```
 
+<!-- Info {{{-->
 > [!info]
 >
 > The output is stored in `results.json`
+<!-- }}} -->
 
 ___
 <!-- }}} -->

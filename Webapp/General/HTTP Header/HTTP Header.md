@@ -1,11 +1,11 @@
 ---
-id: HTTP Headers
+id: HTTP Header
 aliases: []
 tags:
-  - Webapp/General/HTTP-Headers
+  - Webapp/General/HTTP-Header
 ---
 
-# HTTP Headers
+# HTTP Header
 
 - [Medium - Understanding multipart/form-data: The Ultimate Guide for Beginners](https://medium.com/@muhebollah.diu/understanding-multipart-form-data-the-ultimate-guide-for-beginners-fd039c04553d)
 

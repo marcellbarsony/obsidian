@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Programming/PHP/Exploitation.md",
+                "file": "Webapp/Enumeration/Infrastructure/Virtual Hosts.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Exploitation"
+              "title": "Virtual Hosts"
             }
           },
           {
@@ -144,13 +144,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Programming/PHP/Exploitation.md",
+                "file": "Webapp/Enumeration/Infrastructure/Virtual Hosts.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Exploitation"
+              "title": "Outline of Virtual Hosts"
             }
           },
           {
@@ -199,7 +199,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Programming/PHP/Exploitation.md",
+                "file": "Webapp/Enumeration/Infrastructure/Virtual Hosts.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -227,7 +227,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Exploitation"
+              "title": "Graph of Virtual Hosts"
             }
           }
         ]
@@ -249,43 +249,43 @@
   },
   "active": "2054a597ab595a1d",
   "lastOpenFiles": [
+    "Networking/Services/DNS/General.md",
+    "Webapp/Enumeration/Infrastructure/Virtual Hosts.md",
+    "Webapp/Enumeration/Infrastructure/Subdomain.md",
+    "Webapp/Enumeration/Technologies/WAF.md",
+    "Webapp/Enumeration/Vulnerabilities/Scanning.md",
+    "Webapp/Enumeration/Vulnerabilities/Public Exploits.md",
+    "Webapp/Enumeration/Tools/amass.md",
+    "Webapp/Enumeration/Technologies/CMS.md",
+    "Webapp/Enumeration/Content/Web Contents.md",
+    "Webapp/Enumeration/Fingerprinting/Error Page.md",
+    "Webapp/Enumeration/Fingerprinting/Fingerprinting.md",
+    "Webapp/Enumeration/Fingerprinting/HTTP Headers.md",
+    "Networking/Services/HTTP/Enumeration.md",
+    "Webapp/General/HTTP Header/HTTP Header.md",
+    "Webapp/General/HTTP Header",
+    "Webapp/General/HTTP Headers/HTTP Header.md",
+    "Webapp/Enumeration/Fingerprinting/Banner Grabbing.md",
+    "Webapp/Enumeration/Metafiles/Metafiles.md",
+    "Programming/PHP/Exploitation.md",
     "Software/vi.md",
     "Software/knife.md",
     "Software",
     "Pentest/Software/Knife.md",
     "Pentest/Software/knife.md",
-    "Programming/PHP/Exploitation.md",
     "Pentest/Software/vi.md",
     "Pentest/Software",
     "Pentest/Software.md",
     "Webapp/Enumeration/Discovery/Execution Paths.md",
     "Programming/PHP/Exploitation",
     "Webapp/Enumeration/Discovery/Login Functionality.md",
-    "Networking/Services/HTTP/Apache HTTP Server/Enumeration.md",
-    "Networking/Services/HTTP/Apache HTTP Server/Exploitation.md",
-    "Pentest/Tools/Metasploit/Sessions/Jobs.md",
-    "Linux/Vulnerabilities/Shellshock.md",
-    "Networking/Services/HTTP/Apache HTTP Server/Exploitation_1.md",
-    "Networking/Services/HTTP/Rejetto HTTP File Server/General.md",
-    "Networking/Services/HTTP/Rejetto HTTP File Server/Rejetto HTTP File Server.md",
-    "Networking/Services/HTTP/Rejetto HTTP File Server/Rejetto HttpFileServer.md",
     "Networking/Services/HTTP/Rejetto HTTP File Server",
-    "Networking/Services/HTTP/Apache HTTP Server/General.md",
     "Networking/Services/HTTP/Apache Tomcat/src/wam-deploy.png",
     "Networking/Services/HTTP/Apache Tomcat/src",
-    "Networking/Services/HTTP/Apache Tomcat/General.md",
-    "Networking/Services/HTTP/Apache Tomcat/Exploitation.md",
-    "Networking/Services/HTTP/Apache Tomcat/Enumeration.md",
     "Networking/Services/HTTP/Apache Tomcat",
     "Networking/Services/HTTP/Apache HTTP Server",
-    "Networking/Services/HTTP/Rejetto HttpFileServer/Rejetto HttpFileServer.md",
     "Networking/Services/HTTP/Rejetto HttpFileServer",
-    "Networking/Services/DNS/Enumeration.md",
-    "Pentest/Tools/Metasploit/Metasploit.md",
-    "Linux/Exploitation/Shellshock.md",
     "Linux/Vulnerabilities",
-    "Programming/Bash/Bash.md",
-    "Linux/Exploitation",
     "Networking/Software/PRTG/src/prtg-notifications-launch.png",
     "Networking/Software/PRTG/src/prtg-notifications-execute.png",
     "Networking/Software/PRTG/src/prtg-notifications-new.png",

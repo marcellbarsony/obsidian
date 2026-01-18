@@ -8,7 +8,8 @@ links: "[[Webapp/Enumeration/Passive|Enumeration]]"
 
 # Search Engine Discovery
 
-**Search Engine Discovery** ([Google dorking](https://en.wikipedia.org/wiki/Google_hacking))
+**Search Engine Discovery**
+(*[Google dorking](https://en.wikipedia.org/wiki/Google_hacking)*)
 is a technique that uses Google Search (*and other search engines*)
 to find vulnerabilities
 
