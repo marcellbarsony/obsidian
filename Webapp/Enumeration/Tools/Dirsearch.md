@@ -26,9 +26,20 @@ ___
 <!-- Usage {{{-->
 ## Usage
 
+Synopsys
+
 ```sh
 dirsearch [-u|--url] <target> [-e|--extensions] <extensions> [options]
 ```
 
+Help
+
+```sh
+dirsearch -h
+```
+
+```sh
+dirsearch --help
+```
 ___
 <!-- }}} -->

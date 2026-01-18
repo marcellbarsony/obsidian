@@ -20,6 +20,8 @@ Enumerate common pages, files and their extensions
 <!-- General {{{-->
 ### General
 
+Enumerate common general pages
+
 <!-- Wordlists {{{-->
 > [!tip]- Wordlists
 >
@@ -33,8 +35,16 @@ Enumerate common pages, files and their extensions
 [[Ffuf]] - General enumeration (*Page/File/Directory*)
 
 ```sh
-ffuf -w <wordlist>:FUZZ -u http://$target[:port]/FUZZ
+ffuf -w <wordlist>:FUZZ -u http://$target/FUZZ -ic
 ```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `-c`: Colorize output
+> - `-ic`: Ignore wordlist comments (*default: `false`*)
+>
+<!-- }}} -->
 
 <!-- Example {{{-->
 > [!example]-
@@ -42,19 +52,29 @@ ffuf -w <wordlist>:FUZZ -u http://$target[:port]/FUZZ
 > Wordlists
 >
 > ```sh
-> ffuf -u http://$target/FUZZ -w /usr/share/seclists/Discovery/Web-Content/common.txt:FUZZ
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/common.txt:FUZZ \
+> -u http://$target/FUZZ \
+> -ic
 > ```
 > ```sh
-> ffuf -u http://$target/FUZZ -w /usr/share/seclists/Discovery/Web-Content/big.txt:FUZZ
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/big.txt:FUZZ \
+> -u http://$target/FUZZ \
+> -ic
 > ```
 > ```sh
-> ffuf -u http://$target/FUZZ -w /usr/share/seclists/Discovery/Web-Content/raft-small-files-lowercase.txt:FUZZ
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-small-files-lowercase.txt:FUZZ \
+> -u http://$target/FUZZ \
+> -ic
 > ```
 > ```sh
-> ffuf -u http://$target/FUZZ -w /usr/share/seclists/Discovery/Web-Content/raft-medium-files-lowercase.txt:FUZZ
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-medium-files-lowercase.txt:FUZZ \
+> -u http://$target/FUZZ \
+> -ic
 > ```
 > ```sh
-> ffuf -u http://$target/FUZZ -w /usr/share/seclists/Discovery/Web-Content/raft-large-files-lowercase.txt:FUZZ
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-large-files-lowercase.txt:FUZZ \
+> -u http://$target/FUZZ \
+> -ic
 > ```
 <!-- }}} -->
 
@@ -62,6 +82,8 @@ ffuf -w <wordlist>:FUZZ -u http://$target[:port]/FUZZ
 
 <!-- Extensions {{{-->
 ### Extensions
+
+Enumerate web extensions
 
 <!-- Wordlists {{{-->
 > [!tip]- Wordlists
@@ -89,7 +111,7 @@ ffuf -w <wordlist>:FUZZ -u http://$target[:port]/FUZZ
 <!-- }}} -->
 
 ```sh
-ffuf -w <wordlist>:FUZZ -u http://$target[:port]/indexFUZZ
+ffuf -w <wordlist>:FUZZ -u http://$target/indexFUZZ
 ```
 
 <!-- Example {{{-->
@@ -98,26 +120,70 @@ ffuf -w <wordlist>:FUZZ -u http://$target[:port]/indexFUZZ
 > Wordlists
 >
 > ```sh
-> ffuf -u http://$target/FUZZ/indexFUZZ -w /usr/share/seclists/Discovery/Web-Content/web-extensions.txt:FUZZ
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/web-extensions.txt:FUZZ \
+> -u http://$target/FUZZ/indexFUZZ
 > ```
 > ```sh
-> ffuf -u http://$target/FUZZ/indexFUZZ -w /usr/share/seclists/Discovery/Web-Content/web-extensions-big.txt:FUZZ
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/web-extensions-big.txt:FUZZ \
+> -u http://$target/FUZZ/indexFUZZ
 > ```
 > ```sh
-> ffuf -u http://$target/FUZZ/indexFUZZ -w /usr/share/seclists/Discovery/Web-Content/raft-small-extensions-lowercase.txt:FUZZ
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-small-extensions-lowercase.txt:FUZZ \
+> -u http://$target/FUZZ/indexFUZZ
 > ```
 > ```sh
-> ffuf -u http://$target/FUZZ/indexFUZZ -w /usr/share/seclists/Discovery/Web-Content/raft-medium-extensions-lowercase.txt:FUZZ
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-medium-extensions-lowercase.txt:FUZZ \
+> -u http://$target/FUZZ/indexFUZZ
 > ```
 > ```sh
-> ffuf -u http://$target/FUZZ/indexFUZZ -w /usr/share/seclists/Discovery/Web-Content/raft-large-extensions-lowercase.txt:FUZZ
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-large-extensions-lowercase.txt:FUZZ \
+> -u http://$target/FUZZ/indexFUZZ
 > ```
 <!-- }}} -->
 
-2. Enumerate pages for found extension(s)
+2. Validate and examine index page response
 
 ```sh
-ffuf -w <wordlist>:FUZZ -u http://$target[:port]/FUZZ -w <wordlist> -e .php,.txt
+curl -I http://$target/index.<ext>
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> Extensions
+>
+> ```sh
+> curl -I http://$target/index.html
+> ```
+> ```sh
+> curl -I http://$target/index.php
+> ```
+> ```sh
+> curl -I http://$target/index.php7
+> ```
+>
+> Example
+>
+> ```sh
+> curl -I http://$target/index.php
+> ```
+> ```sh
+> HTTP/1.1 200 OK
+> Date: Sun, 18 Jan 2026 02:47:34 GMT
+> Server: Apache/2.4.41 (Ubuntu)
+> X-Powered-By: PHP/8.1.0-dev
+> Content-Type: text/html; charset=UTF-8
+> ```
+>
+> - The target is vulnerable to
+>   [HTTP: PHP 8.1.0-dev User-Agentt Header Remote Code Execution](https://www.exploit-db.com/exploits/49933)
+>
+<!-- }}} -->
+
+3. Enumerate additional pages for the found extension(s)
+
+```sh
+ffuf -w <wordlist>:FUZZ -u http://$target/FUZZ -e <ext1>,<ext2>
 ```
 
 <!-- Example {{{-->
@@ -126,19 +192,34 @@ ffuf -w <wordlist>:FUZZ -u http://$target[:port]/FUZZ -w <wordlist> -e .php,.txt
 > Wordlists
 >
 > ```sh
-> ffuf -u http://$target/FUZZ -w /usr/share/seclists/Discovery/Web-Content/common.txt:FUZZ -e .php.txt
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/common.txt:FUZZ \
+> -u http://$target/FUZZ \
+> -e .php.txt \
+> -ic
 > ```
 > ```sh
-> ffuf -u http://$target/FUZZ -w /usr/share/seclists/Discovery/Web-Content/big.txt:FUZZ -e .php,.txt
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/big.txt:FUZZ \
+> -u http://$target/FUZZ \
+> -e .php.txt \
+> -ic
 > ```
 > ```sh
-> ffuf -u http://$target/FUZZ -w /usr/share/seclists/Discovery/Web-Content/raft-small-files-lowercase.txt:FUZZ -e .php,.txt
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-small-files-lowercase.txt:FUZZ \
+> -u http://$target/FUZZ \
+> -e .php.txt \
+> -ic
 > ```
 > ```sh
-> ffuf -u http://$target/FUZZ -w /usr/share/seclists/Discovery/Web-Content/raft-medium-files-lowercase.txt:FUZZ -e .php,.txt
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-medium-files-lowercase.txt:FUZZ \
+> -u http://$target/FUZZ \
+> -e .php.txt \
+> -ic
 > ```
 > ```sh
-> ffuf -u http://$target/FUZZ -w /usr/share/seclists/Discovery/Web-Content/raft-large-files-lowercase.txt:FUZZ -e .php,.txt
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-large-files-lowercase.txt:FUZZ \
+> -u http://$target/FUZZ \
+> -e .php.txt \
+> -ic
 > ```
 <!-- }}} -->
 
@@ -199,17 +280,34 @@ Conduct general directory enumeration
 
 [[Burp Suite]]
 
-[[Dirsearch|dirsearch.py]]
+[[Dirsearch]]
 
 ```sh
-dirsearch.py [-u|--url] $target [-e|--extensions] <extensions> [options]
+dirsearch [-u|--url] $target [-e|--extensions] <extensions> [options]
 ```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> dirsearch -w <wordlist> -u $target
+> ```
+>
+<!-- }}} -->
 
 [[Ffuf]]
 
 ```sh
-ffuf -w <wordlist>:FUZZ -u http://$target[:<port>]/FUZZ
+ffuf -w <wordlist>:FUZZ -u http://$target/FUZZ -c -ic
 ```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `-c`: Colorize output
+> - `-ic`: Ignore wordlist comments (*default: `false`*)
+>
+<!-- }}} -->
 
 <!-- Example {{{-->
 > [!example]-
@@ -217,18 +315,37 @@ ffuf -w <wordlist>:FUZZ -u http://$target[:<port>]/FUZZ
 > Wordlists
 >
 > ```sh
-> ffuf -u http://$target/FUZZ -w /usr/share/seclists/Discovery/Web-Content/DirBuster-2007_directory-list-lowercase-2.3-small.txt:FUZZ
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/DirBuster-2007_directory-list-lowercase-2.3-small.txt:FUZZ \
+> -u http://$target/FUZZ \
+> -ic
 > ```
 > ```sh
-> ffuf -u http://$target/FUZZ -w /usr/share/seclists/Discovery/Web-Content/DirBuster-2007_directory-list-lowercase-2.3-medium.txt:FUZZ
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/DirBuster-2007_directory-list-lowercase-2.3-medium.txt:FUZZ \
+> -u http://$target/FUZZ \
+> -ic
 > ```
 > ```sh
-> ffuf -u http://$target/FUZZ -w /usr/share/seclists/Discovery/Web-Content/DirBuster-2007_directory-list-lowercase-2.3-big.txt:FUZZ
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/DirBuster-2007_directory-list-lowercase-2.3-big.txt:FUZZ \
+> -u http://$target/FUZZ \
+> -ic
 > ```
 > ```sh
-> ffuf -u http://$target/FUZZ -w /usr/share/seclists/Discovery/Web-Content/combined_directories.txt:FUZZ
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/combined_directories.txt:FUZZ \
+> -u http://$target/FUZZ \
+> -ic
 > ```
 >
+> Example
+>
+> ```sh
+> ffuf -w /opt/useful/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt:FUZZ \
+> -u http://faculty.academy.htb:30511/FUZZ \
+> -recursion -recursion-depth 1 \
+> -e .php,.php,.php7 \
+> -fs 287 \
+> -mr "You don't have access!" \
+> -t 100
+> ```
 <!-- }}} -->
 
 [[Gobuster]]
@@ -261,7 +378,7 @@ Conduct recursive directory enumeration
 
 [[Burp Suite]]
 
-[[Dirsearch|dirsearch.py]]
+[[Dirsearch]]
 
 ```sh
 
@@ -270,8 +387,94 @@ Conduct recursive directory enumeration
 [[Ffuf]]
 
 ```sh
-ffuf -w <wordlist>:FUZZ -u http://$target[:<port>]/content/private/plugins/FUZZ
+ffuf -w <wordlist>:FUZZ \
+-u http://$target/FUZZ \
+-recursion -recursion-depth 1 \
+-ic
 ```
+
+```sh
+ffuf -w <wordlist>:FUZZ \
+-u http://$target/dir1/dir2/FUZZ \
+-ic
+```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `-ic`: Ignore wordlist comments
+>   (*default: `false`*)
+> - `-recursion`: Scan recursively
+> - `-recursion-depth`: Maximum recursion depth
+>   (*default: `false`*)
+>
+<!-- }}} -->
+
+<!-- Example {{{-->
+> [!example]-
+>
+> Wordlists - Automatic recursion
+>
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/DirBuster-2007_directory-list-lowercase-2.3-small.txt:FUZZ \
+> -u http://$target/FUZZ \
+> -recursion -recursion-depth 1 \
+> -ic
+> ```
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/DirBuster-2007_directory-list-lowercase-2.3-medium.txt:FUZZ
+> -u http://$target/FUZZ \
+> -recursion -recursion-depth 1 \
+> -ic
+> ```
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/DirBuster-2007_directory-list-lowercase-2.3-big.txt:FUZZ
+> -u http://$target/FUZZ \
+> -recursion -recursion-depth 1 \
+> -ic
+> ```
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/combined_directories.txt:FUZZ \
+> -u http://$target/FUZZ \
+> -recursion -recursion-depth 1 \
+> -ic
+> ```
+>
+> Wordlists - Explicit recursion
+>
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/DirBuster-2007_directory-list-lowercase-2.3-small.txt:FUZZ \
+> -u http://$target/<dir>/FUZZ \
+> -ic
+> ```
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/DirBuster-2007_directory-list-lowercase-2.3-medium.txt:FUZZ \
+> -u http://$target/<dir>/FUZZ \
+> -ic
+> ```
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/DirBuster-2007_directory-list-lowercase-2.3-big.txt:FUZZ \
+> -u http://$target/<dir>/FUZZ \
+> -ic
+> ```
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/combined_directories.txt:FUZZ \
+> -u http://$target/<dir>/FUZZ \
+> -ic
+> ```
+>
+> Example - Automatic recursion
+>
+> ```sh
+> ffuf -w /opt/useful/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt:FUZZ \
+> -u http://faculty.academy.htb:30511/FUZZ \
+> -recursion -recursion-depth 1 \
+> -e .php,.php,.php7 \
+> -fs 287 \
+> -mr "You don't have access!" \
+> -t 100
+> ```
+<!-- }}} -->
 
 [[Gobuster#Recursive Directory Enumeration|Gobuster]]
 

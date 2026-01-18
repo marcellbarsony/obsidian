@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Webapp/Enumeration/Discovery/Execution Paths.md",
+                "file": "Programming/PHP/Exploitation.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Execution Paths"
+              "title": "Exploitation"
             }
           },
           {
@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Networking/Services/DNS/Enumeration.md",
+                "file": "Linux/Vulnerabilities/Shellshock.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Enumeration"
+              "title": "Shellshock"
             }
           }
         ]
@@ -144,13 +144,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Webapp/Enumeration/Discovery/Execution Paths.md",
+                "file": "Programming/PHP/Exploitation.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Execution Paths"
+              "title": "Outline of Exploitation"
             }
           },
           {
@@ -199,7 +199,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Webapp/Enumeration/Discovery/Execution Paths.md",
+                "file": "Programming/PHP/Exploitation.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -227,14 +227,14 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Execution Paths"
+              "title": "Graph of Exploitation"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 244.5
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -249,42 +249,43 @@
   },
   "active": "2054a597ab595a1d",
   "lastOpenFiles": [
-    "Pentest/Tools/Brute Force/Gobuster.md",
+    "Software/vi.md",
+    "Software/knife.md",
+    "Software",
+    "Pentest/Software/Knife.md",
+    "Pentest/Software/knife.md",
+    "Programming/PHP/Exploitation.md",
+    "Pentest/Software/vi.md",
+    "Pentest/Software",
+    "Pentest/Software.md",
     "Webapp/Enumeration/Discovery/Execution Paths.md",
-    "Webapp/Enumeration/Infrastructure/Virtual Hosts.md",
-    "Networking/Services/DNS/Enumeration.md",
-    "Webapp/Enumeration/Infrastructure/Subdomain.md",
-    "Networking/Services/DNS/General.md",
-    "Webapp/Enumeration/Infrastructure/Domain.md",
-    "test.md",
-    "Webapp/Enumeration/Discovery/Crawling.md",
-    "Webapp/Enumeration/Metafiles/Metafiles.md",
-    "Webapp/Enumeration/Infrastructure/DNS.md",
-    "Pentest/Tools/Ffuf/Ffuf.md",
-    "Networking/Services/SMB/Usage.md",
-    "Networking/Services/SMB/Enumeration.md",
-    "Networking/Services/SMB/Exploitation.md",
-    "Linux/Privesc/Credential Hunting.md",
-    "Microsoft/Windows/General/Group Policy/Group Policy.md",
-    "Microsoft/Windows/General/Group Policy",
-    "LanMan.md",
-    "Networking/Services/SMB/General.md",
-    "Pentest/Tools/Metasploit/Sessions/Meterpreter.md",
+    "Programming/PHP/Exploitation",
+    "Webapp/Enumeration/Discovery/Login Functionality.md",
+    "Networking/Services/HTTP/Apache HTTP Server/Enumeration.md",
+    "Networking/Services/HTTP/Apache HTTP Server/Exploitation.md",
     "Pentest/Tools/Metasploit/Sessions/Jobs.md",
+    "Linux/Vulnerabilities/Shellshock.md",
+    "Networking/Services/HTTP/Apache HTTP Server/Exploitation_1.md",
+    "Networking/Services/HTTP/Rejetto HTTP File Server/General.md",
+    "Networking/Services/HTTP/Rejetto HTTP File Server/Rejetto HTTP File Server.md",
+    "Networking/Services/HTTP/Rejetto HTTP File Server/Rejetto HttpFileServer.md",
+    "Networking/Services/HTTP/Rejetto HTTP File Server",
+    "Networking/Services/HTTP/Apache HTTP Server/General.md",
+    "Networking/Services/HTTP/Apache Tomcat/src/wam-deploy.png",
+    "Networking/Services/HTTP/Apache Tomcat/src",
+    "Networking/Services/HTTP/Apache Tomcat/General.md",
+    "Networking/Services/HTTP/Apache Tomcat/Exploitation.md",
+    "Networking/Services/HTTP/Apache Tomcat/Enumeration.md",
+    "Networking/Services/HTTP/Apache Tomcat",
+    "Networking/Services/HTTP/Apache HTTP Server",
+    "Networking/Services/HTTP/Rejetto HttpFileServer/Rejetto HttpFileServer.md",
+    "Networking/Services/HTTP/Rejetto HttpFileServer",
+    "Networking/Services/DNS/Enumeration.md",
     "Pentest/Tools/Metasploit/Metasploit.md",
-    "Microsoft/Windows/Privesc/Enumeration Tools.md",
-    "Microsoft/Windows/Privesc/UAC.md",
-    "Microsoft/Windows/Privesc/System Information.md",
-    "Microsoft/Windows/Privesc/Software.md",
-    "Networking/Services/HTTP/HttpFileServer",
-    "Webapp/Software/Nibbleblog",
-    "Webapp/Software",
-    "Pentest/Shells/Examples/shell_1.py",
-    "Pentest/Shells/Examples/Python/shell_1.py",
-    "Pentest/Shells/Examples/Python",
-    "Pentest/Shells/Examples",
-    "Pentest/Shells/Samples/Python/shell_1.py",
-    "Pentest/Shells/Samples/Python",
+    "Linux/Exploitation/Shellshock.md",
+    "Linux/Vulnerabilities",
+    "Programming/Bash/Bash.md",
+    "Linux/Exploitation",
     "Networking/Software/PRTG/src/prtg-notifications-launch.png",
     "Networking/Software/PRTG/src/prtg-notifications-execute.png",
     "Networking/Software/PRTG/src/prtg-notifications-new.png",
@@ -294,7 +295,6 @@
     "Networking/Software/PRTG/src/20260112-215644.png",
     "Networking/Software/PRTG/src/20260112-220140.png",
     "Networking/Services/HTTP/Tomcat/src/wam-deploy.png",
-    "Networking/Services/Tomcat/src/20260111-005449.png",
     "Networking/Services/SMB/Untitled.canvas"
   ]
 }

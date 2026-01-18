@@ -9,7 +9,7 @@ port:
 
 # Rejetto HTTP File Server
 
-[HFS - HTTP File Server](https://rejetto.com/hfs/)
+[HFS - HTTP File Server](https://rejetto.com/hfs/) (*HttpFileServer*)
 is a web file server for your computer.
 Share folders or even a single file thanks to the virtual file system.
 

