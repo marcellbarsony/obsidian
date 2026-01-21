@@ -480,7 +480,7 @@ subsequently enabling the execution of a process with `SYSTEM` privileges
 1. **TARGET**: [[MSSQL/Exploitation#User|Enumerate User Privileges]]
    for enabled `SeImpersonatePrivilege`
 
-2. **TARGET**: [[File Transfer/Windows/Download|Download]]
+2. **TARGET**: [[Pentest/File Transfer/Windows/Download|Download]]
    the exploit and [[Netcat]] to the target
 
 3. **ATTACKER**: Listen with [[Netcat]] on port `8443`

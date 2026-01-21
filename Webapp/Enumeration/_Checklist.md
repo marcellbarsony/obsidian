@@ -74,9 +74,9 @@ ___
 
 - [ ] [[Fingerprinting]]
     - [ ] [[Fingerprinting#Version Details & CVEs|Version Details & CVEs]]
-- [ ] [[HTTP Headers]]
-    - [ ] [[HTTP Headers#HTTP Request|HTTP Request]]
-    - [ ] [[HTTP Headers#Web Tools|Web Tools]]
+- [ ] [[Webapp/Enumeration/Fingerprinting/HTTP Header]]
+    - [ ] [[Webapp/Enumeration/Fingerprinting/HTTP Header#HTTP Request|HTTP Request]]
+    - [ ] [[Webapp/Enumeration/Fingerprinting/HTTP Header#Web Tools|Web Tools]]
 - [ ] [[Error Page]]
     - [ ] [[Error Page#Get Error Page|Get Error Page]]
 - [ ] [[Banner Grabbing#Banner Grabbing|Banner Grabbing]]

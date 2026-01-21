@@ -13,21 +13,25 @@ ___
 <!-- Page Source Code {{{-->
 ## Page Source Code
 
-Inspect the page soruce code (`Ctrl + U`) for sensitive information:
+[[cURL]] - Inspect the page soruce code for [[Secrets]]
 
-- IDs
-- API Keys
-- Usernames (`admin`)
-- Passwords
-- Other useful information
+```sh
+curl http://$target | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|flag.*|htb.*' 
+```
 
+[Firefox](https://www.firefox.com/en-US/) - View Page Source
+
+```sh
+Ctrl + U
+```
+
+<!-- HTML Comments {{{-->
 ### HTML Comments
 
 Inspect HTML comments
 
 - [[ZAP#HUD|ZAP HUD]]
 
-___
 <!-- }}} -->
 
 <!-- JavaScript Code {{{-->
@@ -40,6 +44,20 @@ Inspect JavaScript code for
 - tokens
 - keys
 
+[Firefox](https://www.firefox.com/en-US/) -
+View JavaScript code in the
+[Debugger](https://firefox-source-docs.mozilla.org/devtools-user/debugger/)
+
+```sh
+Ctrl + Shift + I
+```
+
+```sh
+Debugger
+```
+
+<!-- }}} -->
+
 ___
 <!-- }}} -->
 
@@ -48,19 +66,38 @@ ___
 
 Check if `autocomplete` is disabled
 
+1. Inspect webpage
+
+2. Search for `autocomplete=off`
+
 ```html
 autocomplete="off"
 ```
 
+<!-- Info {{{-->
 > [!info]-
 >
 > Setting `autocomplete="off"` on input fields has two effects:
 >
-> 1. It tells the browser not to save data inputted by the user for later
+> 1. Tells the browser not to save data inputted by the user for later
 >    autocompletion
-> 2. It stops the browser from caching form data in the session history
+> 2. Stops the browser from caching form data in the session history
 >
 > [MDN - How to turn off autocompletion](https://developer.mozilla.org/en-US/docs/Web/Security/Practical_implementation_guides/Turning_off_form_autocompletion)
+>
+<!-- }}} -->
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```html
+> <input type="text" name="email" autocomplete="off">
+> ```
+>
+> ```html
+> <form autocomplete="off">
+> ```
+<!-- }}} -->
 
 ___
 <!-- }}} -->

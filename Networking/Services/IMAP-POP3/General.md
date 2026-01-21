@@ -70,7 +70,7 @@ ___
 <!-- Configuration {{{-->
 ## Configuration
 
-Both **IMAP** and **POP3** have a large number of configuration options, making
+Both **IMAP** and **POP3** have a large number of configuration options,
 (*[dovecot-imapd](https://packages.debian.org/sid/dovecot-imapd),
 [dovecot-pop3d](https://doc.dovecot.org/2.3/configuration_manual/protocols/pop3_server/)*)
 
@@ -81,9 +81,7 @@ Improper configuration could allow an attacker to obtain additional information
 (e.g., *debugging executed commands*, *logging in as anonymous*, *etc*.)
 
 <!-- Danger {{{-->
-> [!danger]-
->
-> **Dangerous Settings**
+> [!danger]- Dangerous Settings
 >
 >| Setting                   | Description                   |
 >| ------------------------- | ----------------------------- |

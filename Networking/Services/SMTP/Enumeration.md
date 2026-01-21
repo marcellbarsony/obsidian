@@ -185,14 +185,31 @@ telnet $target 25
 with `STARTTLS` command
 
 ```sh
-openssl s_client -starttls smtp -crlf -connect smtp.mailgun.org:587
+openssl s_client -starttls smtp -crlf -connect <target>:587
 ```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> openssl s_client -starttls smtp -crlf -connect smtp.mailgun.org:587
+> ```
+<!-- }}} -->
 
 SSL/TLS without `STARTTLS` command
 
 ```sh
-openssl s_client -crlf -connect smtp.mailgun.org:465
+openssl s_client -crlf -connect <target>:465
 ```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> openssl s_client -crlf -connect smtp.mailgun.org:465
+> ```
+<!-- }}} -->
+
 
 <!-- }}} -->
 
@@ -249,21 +266,21 @@ ___
 <!-- CVE Scripts {{{-->
 ## CVE Scripts
 
-[[Networking/Services/SMTP/Exploitation#CVE-2010-4344|CVE-2010-4344]]
+[[SMTP/Exploitation#CVE-2010-4344|CVE-2010-4344]]
 (*[smtp-vuln-cve2010-4344](https://nmap.org/nsedoc/scripts/smtp-vuln-cve2010-4344.html)*)
 
 ```sh
 sudo nmap -sV $target -p 25,465,587 -sV --script=smtp-vuln-cve2010-4344 -oA smtp-vuln-cve2010-4344
 ```
 
-[[Networking/Services/SMTP/Exploitation#CVE-2011-1720|CVE-2011-1720]]
+[[SMTP/Exploitation#CVE-2011-1720|CVE-2011-1720]]
 (*[smtp-vuln-cve2011-1720](https://nmap.org/nsedoc/scripts/smtp-vuln-cve2011-1720.html)*)
 
 ```sh
 sudo nmap -sV $target -p 25,465,587 --script=smtp-vuln-cve2011-1720 -oA smtp-vuln-cve2011-1720
 ```
 
-[[Networking/Services/SMTP/Exploitation#CVE-2011-1764|CVE-2011-1764]]
+[[SMTP/Exploitation#CVE-2011-1764|CVE-2011-1764]]
 (*[smtp-vuln-cve2010-1764](https://nmap.org/nsedoc/scripts/smtp-vuln-cve2011-1764.html)*)
 
 ```sh
@@ -278,7 +295,7 @@ ___
 
 Enumerate [[Networking/Services/SMTP/Exploitation#Open Relay Attack|Open Relay Attack]]
 
-[[Nmap]]
+[[Nmap]] — Enumerate Open Relay
 (*[smtp-open-relay](https://nmap.org/nsedoc/scripts/smtp-open-relay.html)*)
 
 ```sh
@@ -489,5 +506,4 @@ use auxiliary/scanner/smtp/smtp_enum
 <!-- }}} -->
 
 ___
-
 <!-- }}} -->

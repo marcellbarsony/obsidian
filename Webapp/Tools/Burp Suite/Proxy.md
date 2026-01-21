@@ -15,6 +15,7 @@ ___
 
 Configure Burp Suite proxy
 
+<!-- Proxy Listener {{{-->
 ### Proxy Listener
 
 Configure a proxy listener
@@ -23,9 +24,11 @@ Configure a proxy listener
 Proxy > Proxy settings > Tools > Proxy
 ```
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ![[proxy-listener.png]]
+<!-- }}} -->
 
 <!-- Defaults {{{-->
 > [!info]- Defaults
@@ -41,6 +44,8 @@ Proxy > Proxy settings > Tools > Proxy
 > ```sh
 > Loopback only
 > ```
+<!-- }}} -->
+
 <!-- }}} -->
 
 <!-- CA Certificate {{{-->
@@ -159,6 +164,14 @@ Advanced Scope settings
   or an IP range (*format: `10.1.1.1/24` or `10.1.1-20.1-127`*)
 - **Port** - A regular expression to match one or more port numbers
 - **File** - The file or path portion of the URL for the rule to match
+
+<!-- Example {{{-->
+> [!example]-
+>
+> Set an advanced scope for `http://10.129.229.26:55555`
+>
+> ![[scope-advanced.png]]
+<!-- }}} -->
 
 ___
 <!-- }}} -->

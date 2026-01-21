@@ -1,30 +1,51 @@
 ---
-id: HTTP Headers
+id: HTTP Header
 aliases: []
 tags:
-  - Webapp/Enumeration/Fingerprinting/HTTP-Headers
+  - Webapp/Enumeration/Fingerprinting/HTTP-Header
 links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
 ---
 
 
 # HTTP Headers
 
-The [[HTTP Header]] fields define the operating parameters
+The [[Webapp/General/HTTP/HTTP Header]] fields define the operating parameters
 of an [[HTTP/General|HTTP]] transaction
 
 ___
 
-<!-- Banner Grabbing {{{-->
-## Banner Grabbing
+<!-- Inspect {{{-->
+## Inspect
 
-Enumerate [[HTTP Header|HTTP Response Headers]]
+Enumerate [[Webapp/General/HTTP/HTTP Header|HTTP Response Headers]]
 to reveal technologies used (*e.g., [[CMS]]*)
 
-[[cURL]] — Simple HTTP request
+Inspect HTTP headers in the browser
+
+1. Inspect webpage
 
 ```sh
-curl --location --head $target
+Ctrl + Shift + I
 ```
+
+2. Select the `Network` tab
+
+```sh
+Ctrl + Shift + E
+```
+
+3. Reload the page
+
+```sh
+F5
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ![[inspect-browser.png]]
+>
+<!-- }}} -->
 
 [[cURL]] — Grab banner
 

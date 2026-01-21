@@ -7,6 +7,7 @@ links: "[[Services]]"
 
 # Usage
 
+<!-- IMAP Connect {{{-->
 ## IMAP Connect
 
 Connect and interact with an **IMAP** server using **openssl**
@@ -76,6 +77,7 @@ openssl s_client -connect $target:imaps
 <!-- }}} -->
 
 ___
+<!-- }}} -->
 
 <!-- IMAP Commands {{{-->
 ## IMAP Commands
@@ -92,7 +94,7 @@ ___
 Query server capabilities
 
 ```sh
-capability
+a1 CAPABILITY
 ```
 
 <!-- Example {{{-->
@@ -100,6 +102,8 @@ capability
 >
 > ```sh
 > a1 CAPABILITY
+> ```
+> ```sh
 > * CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE SORT SORT=DISPLAY THREAD=REFERENCES THREAD=REFS THREAD=ORDEREDSUBJECT MULTIAPPEND URL-PARTIAL CATENATE UNSELECT CHILDREN NAMESPACE UIDPLUS LIST-EXTENDED I18NLEVEL=1 CONDSTORE QRESYNC ESEARCH ESORT SEARCHRES WITHIN CONTEXT=SEARCH LIST-STATUS BINARY MOVE SNIPPET=FUZZY PREVIEW=FUZZY LITERAL+ NOTIFY SPECIAL-USE
 > a1 OK Capability completed (0.001 + 0.000 secs).
 > ```
@@ -110,10 +114,11 @@ capability
 <!-- STARTTLS {{{-->
 #### STARTTLS
 
-Start encrypted session (*only if `STARTTLS` [[#CAPABILITY]] is available*)
+Start encrypted session
+(*only if `STARTTLS` [[#CAPABILITY]] is available*)
 
 ```sh
-starttls
+a1 STARTTLS
 ```
 
 <!-- Example {{{-->
@@ -121,6 +126,8 @@ starttls
 >
 > ```sh
 > a1 STARTTLS
+> ```
+> ```sh
 > a1 OK Begin TLS negotiation now.
 > ```
 <!-- }}} -->
@@ -130,12 +137,11 @@ starttls
 <!-- AUTHENTICATE {{{-->
 #### AUTHENTICATE
 
-Initiate a
-[SASL](https://en.wikipedia.org/wiki/Simple_Authentication_and_Security_Layer)
+Initiate a [SASL](https://en.wikipedia.org/wiki/Simple_Authentication_and_Security_Layer)
 authentication
 
 ```sh
-authenticate login
+a1 authenticate login
 ```
 
 <!-- Example {{{-->
@@ -154,7 +160,7 @@ authenticate login
 Log in with credentials
 
 ```sh
-login <user@domain.com> <password>
+a1 login <user> <password>
 ```
 
 <!-- Example {{{-->
@@ -163,7 +169,9 @@ login <user@domain.com> <password>
 > Log in as `robin`:`robin`
 >
 > ```sh
-> a1 LOGIN robin robin
+> a1 LOGIN robin@company.com robin
+> ```
+> ```sh
 > a1 OK [CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE SORT SORT=DISPLAY THREAD=REFERENCES THREAD=REFS THREAD=ORDEREDSUBJECT MULTIAPPEND URL-PARTIAL CATENATE UNSELECT CHILDREN NAMESPACE UIDPLUS LIST-EXTENDED I18NLEVEL=1 CONDSTORE QRESYNC ESEARCH ESORT SEARCHRES WITHIN CONTEXT=SEARCH LIST-STATUS BINARY MOVE SNIPPET=FUZZY PREVIEW=FUZZY LITERAL+ NOTIFY SPECIAL-USE] Logged in
 > ```
 <!-- }}} -->
@@ -182,34 +190,37 @@ ___
 List all mailboxes/folders
 
 ```sh
-LIST "" *
-```
-
-List a specific mailbox/folder
-
-```sh
-list "<mailbox>/" *
+a1 LIST "" *
 ```
 
 <!-- Example {{{-->
 > [!example]-
 >
-> List all mailboxes/folders
->
 > ```sh
 > a1 LIST "" *
+> ```
+> ```sh
 > * LIST (\Noselect \HasChildren) "." DEV
 > * LIST (\Noselect \HasChildren) "." DEV.DEPARTMENT
 > * LIST (\HasNoChildren) "." DEV.DEPARTMENT.INT
 > * LIST (\HasNoChildren) "." INBOX
 > a1 OK List completed (0.001 + 0.000 secs).
 > ```
->
-> List specific mailbox/folder
+<!-- }}} -->
+
+List a specific mailbox/folder
+
+```sh
+a1 LIST "<mailbox>/" *
+```
+
+<!-- Example {{{-->
+> [!example]-
 >
 > ```sh
-> 1 list "INBOX/" *
-> 1 OK List completed (0.001 + 0.000 secs).
+> a1 list "INBOX/" *
+> ```
+> ```sh
 > ```
 <!-- }}} -->
 
@@ -221,7 +232,7 @@ list "<mailbox>/" *
 Request the status of the provided mailbox/folder
 
 ```sh
-status <mailbox> (<option_1> <option_2> ...)
+a1 STATUS <mailbox> (<option_1> <option_2> ...)
 ```
 
 <!-- Options {{{-->
@@ -257,7 +268,7 @@ status <mailbox> (<option_1> <option_2> ...)
 Select a particular mailbox/folder
 
 ```sh
-select "<mailbox>"
+a1 SELECT "<mailbox>"
 ```
 
 <!-- Example {{{-->
@@ -266,21 +277,25 @@ select "<mailbox>"
 > Select the mailbox/folder `DET.DEPARTMENT.INT`
 >
 > ```sh
-> 1 select "DEV.DEPARTMENT.INT"
+> a1 select "DEV.DEPARTMENT.INT"
+> ```
+>
+> ```sh
 > * FLAGS (\Answered \Flagged \Deleted \Seen \Draft)
 > * OK [PERMANENTFLAGS (\Answered \Flagged \Deleted \Seen \Draft \*)] Flags permitted.
 > * 1 EXISTS
 > * 0 RECENT
 > * OK [UIDVALIDITY 1636414279] UIDs valid
 > * OK [UIDNEXT 2] Predicted next UID
-> 1 OK [READ-WRITE] Select completed (0.001 + 0.000 secs).
+> a1 OK [READ-WRITE] Select completed (0.001 + 0.000 secs).
 > ```
 <!-- }}} -->
 
-Examine a particular mailbox/folder (*Same as [[#SELECT]] but read-only*)
+Examine a particular mailbox/folder
+(*Same as [[#SELECT]] but read-only*)
 
 ```sh
-examine "<mailbox>"
+a1 EXAMINE "<mailbox>"
 ```
 
 <!-- Example {{{-->
@@ -307,15 +322,17 @@ The following commands become available once in
 Request the server to complete some housekeeping on the mailbox
 
 ```sh
-check
+a1 CHECK
 ```
 
 <!-- Example {{{-->
 > [!example]-
 >
 > ```sh
-> A1 CHECK
-> A1 OK CHECK Completed
+> a1 CHECK
+> ```
+> ```sh
+> a1 OK CHECK Completed
 > ```
 <!-- }}} -->
 
@@ -327,7 +344,7 @@ check
 Close the currently selected mailbox and run [[#EXPUNGE]]
 
 ```sh
-close
+a1 CLOSE
 ```
 
 <!-- Example {{{-->
@@ -335,6 +352,8 @@ close
 >
 > ```sh
 > a1 CLOSE
+> ```
+> ```sh
 > a1 OK CLOSE completed
 > ```
 <!-- }}} -->
@@ -347,14 +366,16 @@ close
 Delete messages with the `\Deleted` flag set
 
 ```
-expunge
+a1 EXPUNGE
 ```
 
 <!-- Example {{{-->
 > [!example]-
 >
 > ```sh
-> a1 expunge
+> a1 EXPUNGE
+> ```
+> ```sh
 > * 2 EXPUNGE
 > OK Expunge completed.
 > ```
@@ -368,7 +389,7 @@ expunge
 Search messages in the selected mailbox/folder
 
 ```sh
-search <option>
+a1 SEARCH <option>
 ```
 
 <!-- Options {{{-->
@@ -421,9 +442,11 @@ search <option>
 > Search all mails in the selected mailbox by [[#UID]]
 >
 > ```sh
-> s1 uid search all
+> a1 uid search all
+> ```
+> ```sh
 > * SEARCH 1
-> s1 OK Search completed (0.001 + 0.000 secs)
+> a1 OK Search completed (0.001 + 0.000 secs)
 > ```
 <!-- }}} -->
 
@@ -435,7 +458,7 @@ search <option>
 Fetch messages from the selected mailbox/folder
 
 ```sh
-fetch (<option>)
+a1 FETCH (<option>)
 ```
 
 <!-- Options {{{-->
@@ -467,6 +490,8 @@ fetch (<option>)
 >
 > ```sh
 > A1 UID FETCH 1 (UID RFC822.SIZE BODY.PEEK[])
+> ```
+> ```sh
 > * 1 FETCH (UID 1 RFC822.SIZE 167 BODY[] {167}
 > Subject: Flag
 > To: Robin <robin@inlanefreight.htb>
@@ -487,7 +512,7 @@ fetch (<option>)
 Copy a message from the currently selected folder to a different folder
 
 ```sh
-copy <id> "<destination_folder>"
+a1 COPY <id> "<destination_folder>"
 ```
 
 <!-- Example {{{-->
@@ -495,6 +520,8 @@ copy <id> "<destination_folder>"
 >
 > ```sh
 > c1 COPY 10 "work.due today"
+> ```
+> ```sh
 > c1 OK [COPYUID 1548379804 17 1] Copy completed (0.007 + 0.000 + 0.006 secs).
 > ```
 <!-- }}} -->
@@ -508,13 +535,15 @@ UID instructs the server to use UIDs as arguments or results
 (*rather than message sequence numbers, as is the default*)
 
 UID is a modifier command
-(e.g., [[#COPY|COPY]], [[#FETCH|FETCH]], [[#SEARCH|SEARCH]])
+(e.g., [[#COPY]], [[#FETCH]], [[#SEARCH]])
 
 <!-- Example {{{-->
 > [!example]-
 >
 > ```sh
 > A1 UID FETCH 1 (UID RFC822.SIZE BODY.PEEK[])
+> ```
+> ```sh
 > * FLAGS (\Answered \Flagged \Deleted \Seen \Draft some-flag a-different-flag a-funny-flag)
 > * OK [PERMANENTFLAGS (\Answered \Flagged \Deleted \Seen \Draft some-flag a-different-flag a-funny-flag \*)] Flags permitted.
 > * 3 FETCH (UID 10 FLAGS (a-funny-flag))
@@ -535,14 +564,16 @@ UID is a modifier command
 Subscribe to a set of mailboxes/folders to be notified of updates
 
 ```sh
-subscribe <mailbox>
+a1 SUBSRCIBE <mailbox>
 ```
 
 <!-- Example {{{-->
 > [!example]-
 >
-> ```sh
+> ```
 > a1 SUBSCRIBE #news.comp.mail.mime
+> ```
+> ```sh
 > a1 OK SUBSCRIBE completed
 > ```
 <!-- }}} -->
@@ -554,16 +585,17 @@ subscribe <mailbox>
 
 Unsubscribe from the specified mailbox/folder
 
-
 ```sh
-unsubscribe <mailbox>
+a1 UNSUBSCRIBE <mailbox>
 ```
 
 <!-- Example {{{-->
 > [!example]-
 >
-> ```sh
+> ```
 > a1 UNSUBSCRIBE #news.comp.mail.mime
+> ```
+> ```sh
 > a1 OK UNSUBSCRIBE completed
 > ```
 <!-- }}} -->
@@ -573,10 +605,10 @@ unsubscribe <mailbox>
 <!-- LSUB {{{-->
 ##### LSUB
 
-[[#LIST|LIST]], but only return subscribed mailboxes
+[[#LIST]], but only return subscribed mailboxes
 
 ```sh
-a1 lsub "#news." "comp.mail.*"
+a1 LSUB "#news." "comp.mail.*"
 ```
 
 <!-- Example {{{-->
@@ -600,7 +632,7 @@ a1 lsub "#news." "comp.mail.*"
 Create new folder
 
 ```sh
-create <folder>
+a1 CREATE <folder>
 ```
 
 <!-- Example {{{-->
@@ -608,6 +640,8 @@ create <folder>
 >
 > ```sh
 > c CREATE work
+> ```
+> ```sh
 > c OK Create completed (0.002 + 0.000 + 0.001 secs).
 > k2 LIST "" "*"
 > * LIST (\HasNoChildren \Trash) "." Trash
@@ -626,7 +660,7 @@ create <folder>
 Delete a folder
 
 ```sh
-delete <folder>
+a1 DELETE <folder>
 ```
 
 <!-- Example {{{-->
@@ -634,6 +668,8 @@ delete <folder>
 >
 > ```sh
 > A683 DELETE blurdybloop
+> ```
+> ```sh
 > A683 OK DELETE completed
 > ```
 <!-- }}} -->
@@ -646,7 +682,7 @@ delete <folder>
 Rename a folder
 
 ```sh
-rename <folder_old> <folder_new>
+a1 RENAME <folder_old> <folder_new>
 ```
 
 <!-- Example {{{-->
@@ -660,15 +696,22 @@ rename <folder_old> <folder_new>
 
 <!-- }}} -->
 
+<!-- APPEND {{{-->
 ##### APPEND
 
 Append a message to the specified mailbox
+
+```sh
+a1 APPEND "<text>" <id>
+```
 
 <!-- Example {{{-->
 > [!example]-
 >
 > ```sh
 > a1 APPEND "work.due today" {89}
+> ```
+> ```sh
 > + OK
 > Subject: Send the weekly report
 >
@@ -679,8 +722,9 @@ Append a message to the specified mailbox
 
 <!-- }}} -->
 
-___
+<!-- }}} -->
 
+___
 <!-- }}} -->
 
 <!-- }}} -->

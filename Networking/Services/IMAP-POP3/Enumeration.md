@@ -73,6 +73,41 @@ sudo nmap -sC -sV $target -p 110,143,993,995 -oA imap-pop3-basic-script
 >   the service on the corresponding port
 <!-- }}} -->
 
+[[Nmap]] — Enumerate UDP listeners (*legacy setup*)
+
+```sh
+sudo nmap -sV -sC -sU $target -p U:110,143,993,995 -oA imap-pop3-udp-basic
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> sudo nmap -sU -sV -sC -p U:161,22,110,143,993,995 10.129.78.175
+> ```
+>
+> ```sh
+> Starting Nmap 7.92 ( https://nmap.org ) at 2022-11-28 22:53 GMT
+> Nmap scan report for 10.129.78.175
+> Host is up (0.073s latency).
+>
+> PORT    STATE  SERVICE VERSION
+> 22/udp  closed ssh
+> 110/udp closed pop3
+> 143/udp closed imap
+> 161/udp open   snmp    net-snmp; net-snmp SNMPv3 server
+> | snmp-info:
+> |   enterprise: net-snmp
+> |   engineIDFormat: unknown
+> |   engineIDData: 5b99e75a10288b6100000000
+> |   snmpEngineBoots: 10
+> |_  snmpEngineTime: 25m10s
+> 993/udp closed imaps
+> 995/udp closed pop3s
+> ```
+>
+<!-- }}} -->
+
 ___
 <!-- }}} -->
 

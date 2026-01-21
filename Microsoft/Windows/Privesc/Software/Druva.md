@@ -56,7 +56,7 @@ Modify the `$cmd` variable to the command to execute:
 - Add a local admin user
 - Reverse shell
 
-[[Windows/Download|Download]] the PowerShell reverse shell
+[[Pentest/File Transfer/Windows/Download|Download]] the PowerShell reverse shell
 from the attacker web server into the target's memory
 
 ```sh

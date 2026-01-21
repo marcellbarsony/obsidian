@@ -298,7 +298,7 @@ dirsearch [-u|--url] $target [-e|--extensions] <extensions> [options]
 [[Ffuf]]
 
 ```sh
-ffuf -w <wordlist>:FUZZ -u http://$target/FUZZ -c -ic
+ffuf -w <wordlist>:FUZZ -u http://$target/FUZZ
 ```
 
 <!-- Info {{{-->
@@ -384,19 +384,14 @@ Conduct recursive directory enumeration
 
 ```
 
-[[Ffuf]]
+[[Ffuf]] - Automatic/Explicit recursion
 
 ```sh
-ffuf -w <wordlist>:FUZZ \
--u http://$target/FUZZ \
--recursion -recursion-depth 1 \
--ic
+ffuf -w <wordlist>:FUZZ -u http://$target/FUZZ -recursion -recursion-depth 1
 ```
 
 ```sh
-ffuf -w <wordlist>:FUZZ \
--u http://$target/dir1/dir2/FUZZ \
--ic
+ffuf -w <wordlist>:FUZZ -u http://$target/dir1/dir2/FUZZ
 ```
 
 <!-- Info {{{-->

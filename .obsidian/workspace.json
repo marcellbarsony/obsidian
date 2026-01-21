@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Webapp/Enumeration/Infrastructure/Virtual Hosts.md",
+                "file": "Linux/General/Netfilter.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,16 +28,16 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Virtual Hosts"
+              "title": "Netfilter"
             }
           },
           {
-            "id": "97b3d35374b78397",
+            "id": "aa44dfa096c265c4",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Linux/Vulnerabilities/Shellshock.md",
+                "file": "Linux/Privesc/Kernel Exploits.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -52,10 +52,11 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Shellshock"
+              "title": "Kernel Exploits"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -144,13 +145,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Webapp/Enumeration/Infrastructure/Virtual Hosts.md",
+                "file": "Linux/Privesc/Kernel Exploits.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Virtual Hosts"
+              "title": "Outline of Kernel Exploits"
             }
           },
           {
@@ -199,7 +200,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Webapp/Enumeration/Infrastructure/Virtual Hosts.md",
+                "file": "Linux/Privesc/Kernel Exploits.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -227,7 +228,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Virtual Hosts"
+              "title": "Graph of Kernel Exploits"
             }
           }
         ]
@@ -247,54 +248,54 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "2054a597ab595a1d",
+  "active": "aa44dfa096c265c4",
   "lastOpenFiles": [
-    "Networking/Services/DNS/General.md",
-    "Webapp/Enumeration/Infrastructure/Virtual Hosts.md",
-    "Webapp/Enumeration/Infrastructure/Subdomain.md",
-    "Webapp/Enumeration/Technologies/WAF.md",
-    "Webapp/Enumeration/Vulnerabilities/Scanning.md",
-    "Webapp/Enumeration/Vulnerabilities/Public Exploits.md",
-    "Webapp/Enumeration/Tools/amass.md",
-    "Webapp/Enumeration/Technologies/CMS.md",
-    "Webapp/Enumeration/Content/Web Contents.md",
-    "Webapp/Enumeration/Fingerprinting/Error Page.md",
-    "Webapp/Enumeration/Fingerprinting/Fingerprinting.md",
-    "Webapp/Enumeration/Fingerprinting/HTTP Headers.md",
-    "Networking/Services/HTTP/Enumeration.md",
-    "Webapp/General/HTTP Header/HTTP Header.md",
-    "Webapp/General/HTTP Header",
-    "Webapp/General/HTTP Headers/HTTP Header.md",
-    "Webapp/Enumeration/Fingerprinting/Banner Grabbing.md",
-    "Webapp/Enumeration/Metafiles/Metafiles.md",
-    "Programming/PHP/Exploitation.md",
-    "Software/vi.md",
-    "Software/knife.md",
-    "Software",
-    "Pentest/Software/Knife.md",
-    "Pentest/Software/knife.md",
-    "Pentest/Software/vi.md",
-    "Pentest/Software",
-    "Pentest/Software.md",
+    "Linux/General/Netfilter.md",
+    "Linux/Privesc/Kernel Exploits.md",
+    "Linux/Privesc/Polkit.md",
+    "Linux/General/Polkit.md",
+    "Linux/Privesc/System Information_1.md",
+    "Linux/Privesc/Group.md",
+    "Linux/Privesc/Containers.md",
+    "Linux/Privesc/User.md",
+    "Linux/General/Containers/General.md",
+    "Linux/Privesc/Software Vulnerability.md",
+    "Networking/Services/SSH/Usage.md",
+    "Linux/General/Containers/src/containers-vms.png",
+    "Linux/General/Containers/src",
+    "Linux/General/Containers",
+    "Linux/Privesc/Privesc_1.md",
+    "Networking/Services/SSH/Enumeration.md",
+    "Networking/Services/FTP/Enumeration.md",
+    "Networking/Services/FTP/General.md",
     "Webapp/Enumeration/Discovery/Execution Paths.md",
-    "Programming/PHP/Exploitation",
-    "Webapp/Enumeration/Discovery/Login Functionality.md",
-    "Networking/Services/HTTP/Rejetto HTTP File Server",
+    "Networking/Services/IMAP-POP3/Usage.md",
+    "Networking/Services/SNMP/Enumeration.md",
+    "Networking/Services/IMAP-POP3/Enumeration.md",
+    "Webapp/Enumeration/Content/Web Contents.md",
+    "Webapp/Enumeration/Fingerprinting/Fingerprinting.md",
+    "Webapp/Enumeration/Fingerprinting/Error Page.md",
+    "Linux/Privesc/Credential Hunting.md",
+    "Linux/Privesc/Directory & File.md",
+    "Linux/Privesc/Filesystem.md",
+    "Linux/Privesc/System Files.md",
+    "Pentest/Steganography/Enumeration",
+    "Pentest/Steganography",
+    "Pentest/File Transfer/Windows",
+    "Pentest/File Transfer/Linux",
+    "Pentest/File Transfer",
+    "Pentest/Steganography/Windows",
+    "Pentest/Steganography/Linux",
+    "Pentest/File/Enumeration",
+    "Webapp/Enumeration/Fingerprinting/src/inspect-browser.png",
+    "Webapp/Enumeration/Fingerprinting/src/20260119-025119.png",
+    "Webapp/Tools/Burp Suite/src/scope-advanced.png",
+    "Webapp/Tools/Burp Suite/src/20260119-005046.png",
     "Networking/Services/HTTP/Apache Tomcat/src/wam-deploy.png",
-    "Networking/Services/HTTP/Apache Tomcat/src",
-    "Networking/Services/HTTP/Apache Tomcat",
-    "Networking/Services/HTTP/Apache HTTP Server",
-    "Networking/Services/HTTP/Rejetto HttpFileServer",
-    "Linux/Vulnerabilities",
     "Networking/Software/PRTG/src/prtg-notifications-launch.png",
     "Networking/Software/PRTG/src/prtg-notifications-execute.png",
     "Networking/Software/PRTG/src/prtg-notifications-new.png",
     "Networking/Software/PRTG/src/prtg-notifications.png",
-    "Networking/Software/PRTG/src/20260112-215618.png",
-    "Networking/Software/PRTG/src/20260112-222629.png",
-    "Networking/Software/PRTG/src/20260112-215644.png",
-    "Networking/Software/PRTG/src/20260112-220140.png",
-    "Networking/Services/HTTP/Tomcat/src/wam-deploy.png",
     "Networking/Services/SMB/Untitled.canvas"
   ]
 }
