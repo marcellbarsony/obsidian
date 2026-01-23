@@ -6,6 +6,7 @@ tags:
 links: "[[Webapp/Enumeration/Discovery]]"
 ---
 
+<!-- Execution Paths {{{-->
 # Execution Paths
 
 Check if directory listing is enabled and search for execution paths
@@ -25,8 +26,6 @@ Enumerate common general pages
 <!-- Wordlists {{{-->
 > [!tip]- Wordlists
 >
-> General
->
 > - [[Dirbuster#Pages|Dirbuster]]
 > - [[SecLists#Pages|SecLists]]
 >
@@ -35,32 +34,32 @@ Enumerate common general pages
 [[Ffuf]] - General enumeration (*Page/File/Directory*)
 
 ```sh
-ffuf -w <wordlist>:FUZZ -u http://$target/FUZZ -ic
+ffuf -w <wordlist>:FUZZ -u http://<domain>/FUZZ
 ```
-
-<!-- Info {{{-->
-> [!info]-
->
-> - `-c`: Colorize output
-> - `-ic`: Ignore wordlist comments (*default: `false`*)
->
-<!-- }}} -->
 
 <!-- Example {{{-->
 > [!example]-
 >
-> Wordlists
+> **Wordlists**
+>
+> Common
 >
 > ```sh
 > ffuf -w /usr/share/seclists/Discovery/Web-Content/common.txt:FUZZ \
 > -u http://$target/FUZZ \
 > -ic
 > ```
+>
+> Big
+>
 > ```sh
 > ffuf -w /usr/share/seclists/Discovery/Web-Content/big.txt:FUZZ \
 > -u http://$target/FUZZ \
 > -ic
 > ```
+>
+> Raft Files (*Lowercase*)
+>
 > ```sh
 > ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-small-files-lowercase.txt:FUZZ \
 > -u http://$target/FUZZ \
@@ -76,6 +75,96 @@ ffuf -w <wordlist>:FUZZ -u http://$target/FUZZ -ic
 > -u http://$target/FUZZ \
 > -ic
 > ```
+>
+> Raft Files
+>
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-small-files.txt:FUZZ \
+> -u http://$target/FUZZ \
+> -ic
+> ```
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-medium-files.txt:FUZZ \
+> -u http://$target/FUZZ \
+> -ic
+> ```
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-large-files.txt:FUZZ \
+> -u http://$target/FUZZ \
+> -ic
+> ```
+>
+> <!-- Info {{{-->
+> > [!info]-
+> >
+> > - `-c`: Colorize output
+> > - `-ic`: Ignore wordlist comments (*default: `false`*)
+> >
+> <!-- }}} -->
+>
+<!-- }}} -->
+
+[[Gobuster]]
+
+```sh
+gobuster dir [flags] -u <target> -w <wordlist>
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> Common
+>
+> ```sh
+> gobuster dir -u http://$target \
+> -w /usr/share/seclists/Discovery/Web-Content/common.txt
+> ```
+>
+> Big
+>
+> ```sh
+> gobuster dir -u http://$target \
+> -w /usr/share/seclists/Discovery/Web-Content/big.txt
+> ```
+>
+> Raft Files (*Lowercase*)
+>
+> ```sh
+> gobuster dir -u http://$target \
+> -w /usr/share/seclists/Discovery/Web-Content/raft-small-files-lowercase.txt
+> ```
+> ```sh
+> gobuster dir -u http://$target \
+> -w /usr/share/seclists/Discovery/Web-Content/raft-medium-files-lowercase.txt
+> ```
+> ```sh
+> gobuster dir -u http://$target \
+> -w /usr/share/seclists/Discovery/Web-Content/raft-large-files-lowercase.txt
+> ```
+>
+> Raft Files
+>
+> ```sh
+> gobuster dir -u http://$target \
+> -w /usr/share/seclists/Discovery/Web-Content/raft-small-files.txt
+> ```
+> ```sh
+> gobuster dir -u http://$target \
+> -w /usr/share/seclists/Discovery/Web-Content/raft-medium-files.txt
+> ```
+> ```sh
+> gobuster dir -u http://$target \
+> -w /usr/share/seclists/Discovery/Web-Content/raft-large-files.txt
+> ```
+>
+> <!-- Info {{{-->
+> > [!info]-
+> >
+> > - `-c`: Colorize output
+> > - `-ic`: Ignore wordlist comments (*default: `false`*)
+> >
+> <!-- }}} -->
+>
 <!-- }}} -->
 
 <!-- }}} -->
@@ -276,24 +365,10 @@ Conduct general directory enumeration
 >
 > - [[Dirbuster#Directories|Dirbuster]]
 > - [[SecLists#Web Directories|SecLists]]
+>
 <!-- }}} -->
 
 [[Burp Suite]]
-
-[[Dirsearch]]
-
-```sh
-dirsearch [-u|--url] $target [-e|--extensions] <extensions> [options]
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> dirsearch -w <wordlist> -u $target
-> ```
->
-<!-- }}} -->
 
 [[Ffuf]]
 
@@ -301,18 +376,12 @@ dirsearch [-u|--url] $target [-e|--extensions] <extensions> [options]
 ffuf -w <wordlist>:FUZZ -u http://$target/FUZZ
 ```
 
-<!-- Info {{{-->
-> [!info]-
->
-> - `-c`: Colorize output
-> - `-ic`: Ignore wordlist comments (*default: `false`*)
->
-<!-- }}} -->
-
 <!-- Example {{{-->
 > [!example]-
 >
-> Wordlists
+> **Wordlists**
+>
+> DirBuster Directories List (*Lowercase*)
 >
 > ```sh
 > ffuf -w /usr/share/seclists/Discovery/Web-Content/DirBuster-2007_directory-list-lowercase-2.3-small.txt:FUZZ \
@@ -329,13 +398,70 @@ ffuf -w <wordlist>:FUZZ -u http://$target/FUZZ
 > -u http://$target/FUZZ \
 > -ic
 > ```
+>
+> DirBuster Directories Lists
+>
 > ```sh
-> ffuf -w /usr/share/seclists/Discovery/Web-Content/combined_directories.txt:FUZZ \
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/DirBuster-2007_directory-list-2.3-small.txt:FUZZ \
+> -u http://$target/FUZZ \
+> -ic
+> ```
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/DirBuster-2007_directory-list-2.3-medium.txt:FUZZ \
+> -u http://$target/FUZZ \
+> -ic
+> ```
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/DirBuster-2007_directory-list-2.3-big.txt:FUZZ \
 > -u http://$target/FUZZ \
 > -ic
 > ```
 >
-> Example
+> Raft Directory Lists (*Lowercase*)
+>
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-small-directories-lowercase.txt:FUZZ \
+> -u http://$target/FUZZ \
+> -ic
+> ```
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories-lowercase.txt:FUZZ \
+> -u http://$target/FUZZ \
+> -ic
+> ```
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-large-directories-lowercase.txt:FUZZ \
+> -u http://$target/FUZZ \
+> -ic
+> ```
+>
+> Raft Directory Lists
+>
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-small-directories.txt:FUZZ \
+> -u http://$target/FUZZ \
+> -ic
+> ```
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt:FUZZ \
+> -u http://$target/FUZZ \
+> -ic
+> ```
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-large-directories.txt:FUZZ \
+> -u http://$target/FUZZ \
+> -ic
+> ```
+>
+> <!-- Info {{{-->
+> > [!info]-
+> >
+> > - `-c`: Colorize output
+> > - `-ic`: Ignore wordlist comments (*default: `false`*)
+> >
+> <!-- }}} -->
+>
+> **Example**
 >
 > ```sh
 > ffuf -w /opt/useful/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt:FUZZ \
@@ -346,6 +472,7 @@ ffuf -w <wordlist>:FUZZ -u http://$target/FUZZ
 > -mr "You don't have access!" \
 > -t 100
 > ```
+>
 <!-- }}} -->
 
 [[Gobuster]]
@@ -357,15 +484,98 @@ gobuster dir -u $target -w <wordlist> -x <file_extensions>
 <!-- Example {{{-->
 > [!example]-
 >
+> **Wordlists**
+>
+> DirBuster Directories List (*Lowercase*)
+>
 > ```sh
-> gobuster dir -u http://10.10.159.137 -w /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt -x php,php3,html
+> gobuster dir \
+> -u http://$target/FUZZ \
+> -w /usr/share/seclists/Discovery/Web-Content/DirBuster-2007_directory-list-lowercase-2.3-small.txt
 > ```
+> ```sh
+> gobuster dir \
+> -u http://$target/FUZZ \
+> -w /usr/share/seclists/Discovery/Web-Content/DirBuster-2007_directory-list-lowercase-2.3-medium.txt
+> ```
+> ```sh
+> gobuster dir \
+> -u http://$target/FUZZ \
+> -w /usr/share/seclists/Discovery/Web-Content/DirBuster-2007_directory-list-lowercase-2.3-big.txt
+> ```
+>
+> DirBuster Directories Lists
+>
+> ```sh
+> gobuster dir \
+> -u http://$target/FUZZ \
+> -w /usr/share/seclists/Discovery/Web-Content/DirBuster-2007_directory-list-2.3-small.txt
+> ```
+> ```sh
+> gobuster dir \
+> -u http://$target/FUZZ \
+> -w /usr/share/seclists/Discovery/Web-Content/DirBuster-2007_directory-list-2.3-medium.txt
+> ```
+> ```sh
+> gobuster dir \
+> -u http://$target/FUZZ \
+> -w /usr/share/seclists/Discovery/Web-Content/DirBuster-2007_directory-list-2.3-big.txt
+> ```
+>
+> Raft Directory Lists (*Lowercase*)
+>
+> ```sh
+> gobuster dir \
+> -u http://$target/FUZZ \
+> -w /usr/share/seclists/Discovery/Web-Content/raft-small-directories-lowercase.txt
+> ```
+> ```sh
+> gobuster dir \
+> -u http://$target/FUZZ \
+> -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories-lowercase.txt
+> ```
+> ```sh
+> gobuster dir \
+> -u http://$target/FUZZ \
+> -w /usr/share/seclists/Discovery/Web-Content/raft-large-directories-lowercase.txt
+> ```
+>
+> Raft Directory Lists
+>
+> ```sh
+> gobuster dir \
+> -u http://$target/FUZZ \
+> -w /usr/share/seclists/Discovery/Web-Content/raft-small-directories.txt
+> ```
+> ```sh
+> gobuster dir \
+> -u http://$target/FUZZ \
+> -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt
+> ```
+> ```sh
+> gobuster dir \
+> -u http://$target/FUZZ \
+> -w /usr/share/seclists/Discovery/Web-Content/raft-large-directories.txt
+> ```
+>
+> **Example**
+>
+> ```sh
+> ffuf -w /opt/useful/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt:FUZZ \
+> -u http://faculty.academy.htb:30511/FUZZ \
+> -recursion -recursion-depth 1 \
+> -e .php,.php,.php7 \
+> -fs 287 \
+> -mr "You don't have access!" \
+> -t 100
+> ```
+>
 <!-- }}} -->
 
 <!-- }}} -->
 
-<!-- Recursive Directory Enumeration {{{-->
-### Recursive Directory Enumeration
+<!-- Recursive {{{-->
+### Recursive
 
 Conduct recursive directory enumeration
 
@@ -377,12 +587,6 @@ Conduct recursive directory enumeration
 <!-- }}} -->
 
 [[Burp Suite]]
-
-[[Dirsearch]]
-
-```sh
-
-```
 
 [[Ffuf]] - Automatic/Explicit recursion
 
@@ -482,13 +686,118 @@ gobuster dir -u http://<host>/content/private/plugins/ -w <wordlist>
 ___
 <!-- }}} -->
 
+<!-- }}} -->
+
 <!-- Investigate Findings {{{-->
-## Investigate Findings
+# Investigate Findings
 
-Investigate discovered files and directories for secrets and clues
+Investigate discovered files and directories for [[Secrets]]
+and clues
 
-<!-- File Upload Directories {{{-->
-### File Upload Directories
+**Admin & Management Interfaces**
+
+Often protected or restricted,
+may expose controls or sensitive data
+
+<!-- Example {{{-->
+> [!example]-
+>
+> - `/admin`
+> - `/administrator`
+> - `/backend`
+> - `/dashboard`
+> - `/cms`
+> - `/controlpanel`
+> - `/panel`
+<!-- }}} -->
+
+**API Endpoints**
+
+Useful for interacting with backend services:
+
+<!-- Example {{{-->
+> [!example]-
+>
+> - `/api`
+> - `/api/v1`
+> - `/graphql`
+> - `/rest`
+<!-- }}} -->
+
+**Authentication & User Management**
+
+Could help with login brute force, password resets, etc.
+
+<!-- Example {{{-->
+> [!example]-
+>
+> - `/login`
+> - `/logout`
+> - `/register`
+> - `/signup`
+> - `/users, /user`
+> - `/account`
+> - `/profile`
+> - `/auth`
+> - `/session`
+<!-- }}} -->
+
+**Backup or Misconfigured Paths**
+
+Can leak source code or database dumps
+
+<!-- Example {{{-->
+> [!example]-
+>
+> - `/backup`
+> - `/backups`
+> - `/old`
+> - `/test`
+> - `/dev`
+> - `/.git/`
+> - `/.svn/`
+> - `/.hg/`
+> - `/db`
+> - `/database`
+<!-- }}} -->
+
+**Common CMS / Framework Paths**
+
+Identify common Framework and [[CMS#Paths|CMS Paths]]
+
+<!-- Example {{{-->
+> [!example]-
+>
+> - **WordPress**: `/wp-admin`, `/wp-content/`, `/wp-includes/`, `class-wp.php`
+> - **Joomla**: `/joomla`, `/libraries/joomla/`, `/components/com_content/`
+> - **Drupal**: `/drupal`, `/core/lib/Drupal/`, `/modules/`, `Drupal\Core\`
+> - **Magento**: `/app/code/Magento/`, `Mage::`
+> - **TYPO3**: `/typo3`, `/typo3/sysext/`, `TYPO3\CMS\`
+> - **Laravel-based CMS** (*like OctoberCMS*): `/vendor`, `/vendor/laravel/`, `October\Rain\`
+> - **DotNetNuke / DNN**: `DotNetNuke.` namespaces
+> - **Sitecore**: `Sitecore.` namespaces or `/App_Config/Sitecore.config`
+> - **Node.js**: `/node_modules`
+<!-- }}} -->
+
+**Configuration / Debug / Dev Tools**
+
+May reveal sensitive info or debug output
+
+<!-- Example {{{-->
+> [!example]-
+>
+> - `/config`
+> - `/configuration`
+> - `/debug`
+> - `/test`
+> - `/dev`
+> - `/env`
+> - `/logs`
+> - `/error`
+> - `/status`
+<!-- }}} -->
+
+**File Upload Directories**
 
 Note down the directories that may store uploaded files
 
@@ -509,130 +818,7 @@ Note down the directories that may store uploaded files
 > - `/uploads`
 <!-- }}} -->
 
-<!-- }}} -->
-
-<!-- Admin & Management Interfaces {{{-->
-### Admin & Management Interfaces
-
-Often protected or restricted, may expose controls or sensitive data
-
-<!-- Example {{{-->
-> [!example]-
->
-> - `/admin`
-> - `/administrator`
-> - `/backend`
-> - `/dashboard`
-> - `/cms`
-> - `/controlpanel`
-> - `/panel`
-<!-- }}} -->
-
-<!-- }}} -->
-
-<!-- Authentication & User Management {{{-->
-### Authentication & User Management
-
-Could help with login brute force, password resets, etc.
-
-<!-- Example {{{-->
-> [!example]-
->
-> - `/login`
-> - `/logout`
-> - `/register`
-> - `/signup`
-> - `/users, /user`
-> - `/account`
-> - `/profile`
-> - `/auth`
-> - `/session`
-<!-- }}} -->
-
-<!-- }}} -->
-
-<!-- Configuration / Debug / Dev Tools {{{-->
-### Configuration / Debug / Dev Tools
-
-May reveal sensitive info or debug output
-
-<!-- Example {{{-->
-> [!example]-
->
-> - `/config`
-> - `/configuration`
-> - `/debug`
-> - `/test`
-> - `/dev`
-> - `/env`
-> - `/logs`
-> - `/error`
-> - `/status`
-<!-- }}} -->
-
-<!-- }}} -->
-
-<!-- API Endpoints {{{-->
-### API Endpoints
-
-Useful for interacting with backend services:
-
-<!-- Example {{{-->
-> [!example]-
->
-> - `/api`
-> - `/api/v1`
-> - `/graphql`
-> - `/rest`
-<!-- }}} -->
-
-<!-- }}} -->
-
-<!-- Common CMS / Framework Paths {{{-->
-### Common CMS / Framework Paths
-
-Identify common Framework and [[CMS#Paths|CMS Paths]]
-
-<!-- Example {{{-->
-> [!example]-
->
-> - **WordPress**: `/wp-admin`, `/wp-content/`, `/wp-includes/`, `class-wp.php`
-> - **Joomla**: `/joomla`, `/libraries/joomla/`, `/components/com_content/`
-> - **Drupal**: `/drupal`, `/core/lib/Drupal/`, `/modules/`, `Drupal\Core\`
-> - **Magento**: `/app/code/Magento/`, `Mage::`
-> - **TYPO3**: `/typo3`, `/typo3/sysext/`, `TYPO3\CMS\`
-> - **Laravel-based CMS** (*like OctoberCMS*): `/vendor`, `/vendor/laravel/`, `October\Rain\`
-> - **DotNetNuke / DNN**: `DotNetNuke.` namespaces
-> - **Sitecore**: `Sitecore.` namespaces or `/App_Config/Sitecore.config`
-> - **Node.js**: `/node_modules`
-<!-- }}} -->
-
-<!-- }}} -->
-
-<!-- Backup or Misconfigured Paths {{{-->
-### Backup or Misconfigured Paths
-
-Can leak source code or database dumps
-
-<!-- Example {{{-->
-> [!example]-
->
-> - `/backup`
-> - `/backups`
-> - `/old`
-> - `/test`
-> - `/dev`
-> - `/.git/`
-> - `/.svn/`
-> - `/.hg/`
-> - `/db`
-> - `/database`
-<!-- }}} -->
-
-<!-- }}} -->
-
-<!-- Other Useful Targets {{{-->
-### Other Useful Targets
+**Other Useful Targets**
 
 <!-- Example {{{-->
 > [!example]-
@@ -640,8 +826,6 @@ Can leak source code or database dumps
 > - `/private`
 > - `/secret`
 > - `/hidden`
-<!-- }}} -->
-
 <!-- }}} -->
 
 ___

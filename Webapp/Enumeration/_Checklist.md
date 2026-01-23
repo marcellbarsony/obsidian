@@ -36,12 +36,12 @@ ___
         - [ ] [[DNS/Enumeration#AXFR Zone Transfer|AXFR Zone Transfer]]
     - [ ] [[DNS/Enumeration#Automated Tools|Automated Tools]]
         - [ ] [[DNS/Tools/DNSRecon|DNSRecon]]
-- [ ] [[Virtual Hosts]]
-    - [ ] [[Virtual Hosts#Fuzzing|Fuzzing]]
+- [ ] [[VHost]]
+    - [ ] [[VHost#Fuzzing|Fuzzing]]
         - [ ] [[Ffuf#Vhost Fuzzing|Vhost Fuzzing]]
-    - [ ] [[Virtual Hosts#Hosts|Hosts]]
-    - [ ] [[Virtual Hosts#Banner Grabbing|Banner Grabbing]]
-        - [ ] [[Virtual Hosts#Invalid Header|Invalid Header]]
+    - [ ] [[VHost#Hosts|Hosts]]
+    - [ ] [[VHost#Banner Grabbing|Banner Grabbing]]
+        - [ ] [[VHost#Invalid Header|Invalid Header]]
 
 ___
 <!-- }}} -->

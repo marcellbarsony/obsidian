@@ -32,7 +32,8 @@ is being used
 [http-waf-fingerprint](https://nmap.org/nsedoc/scripts/http-waf-fingerprint.html)*)
 
 ```sh
-nmap -p <target_port> --script=http-waf-fingerprint,http-waf-detect $target
+nmap $target -p <port> \
+--script=http-waf-fingerprint,http-waf-detect
 ```
 
 [[wafw00f]] — Identify WAF

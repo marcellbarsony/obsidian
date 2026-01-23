@@ -17,6 +17,8 @@ ___
 
 [[Nikto]] — Fingerprint the website
 
+> [!todo]
+
 ___
 <!-- }}} -->
 
@@ -24,6 +26,8 @@ ___
 ## WhatWeb
 
 [[WhatWeb]] — Fingerprint the website
+
+> [!todo]
 
 ___
 <!-- }}} -->

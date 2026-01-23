@@ -13,13 +13,13 @@ ___
 <!-- Page Source Code {{{-->
 ## Page Source Code
 
-[[cURL]] - Inspect the page soruce code for [[Secrets]]
+[[cURL]] — Inspect the page soruce code for [[Secrets]]
 
 ```sh
-curl http://$target | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|flag.*|htb.*' 
+curl http://$target | grep -iE 'user.*|pass.*|key.*|secret.*|api.*|flag.*|htb.*'
 ```
 
-[Firefox](https://www.firefox.com/en-US/) - View Page Source
+[Firefox](https://www.firefox.com/en-US/) — View Page Source
 
 ```sh
 Ctrl + U
@@ -30,7 +30,13 @@ Ctrl + U
 
 Inspect HTML comments
 
-- [[ZAP#HUD|ZAP HUD]]
+[[ZAP#HUD|ZAP HUD]]
+
+[Firefox](https://www.firefox.com/en-US/) — View Page Source
+
+```sh
+Ctrl + U
+```
 
 <!-- }}} -->
 
@@ -44,7 +50,7 @@ Inspect JavaScript code for
 - tokens
 - keys
 
-[Firefox](https://www.firefox.com/en-US/) -
+[Firefox](https://www.firefox.com/en-US/) —
 View JavaScript code in the
 [Debugger](https://firefox-source-docs.mozilla.org/devtools-user/debugger/)
 

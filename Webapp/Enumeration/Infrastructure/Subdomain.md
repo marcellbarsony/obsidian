@@ -9,6 +9,18 @@ tags:
 
 [[DNS/General#Subdomain|Subdomain]] enumeration
 
+<!-- Hosts {{{-->
+> [!tip] Hosts
+>
+> Add the discovered subdomains hosts to the
+> [[DNS/General#Hosts File|Hosts File]]
+>
+> ```sh
+> sudo sh -c "echo '$target sd1.target.com sd2.target.com' >> /etc/hosts"
+> ```
+>
+<!-- }}} -->
+
 <!-- Wordlists {{{-->
 > [!tip]- Wordlists
 >
@@ -33,7 +45,9 @@ ffuf -w <wordlist> -u http://FUZZ.$target/ -c -r
 <!-- Example {{{-->
 > [!example]-
 >
-> Wordlists
+> **Wordlists**
+>
+> Subdomains Top 1 Million
 >
 > ```sh
 > ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt \
@@ -59,7 +73,7 @@ ffuf -w <wordlist> -u http://FUZZ.$target/ -c -r
 > -c -ic
 > ```
 >
-> Wordlists - Additional
+> Shubs
 >
 > ```sh
 > ffuf -w /usr/share/SecLists/Discovery/DNS/shubs-subdomains.txt \
@@ -67,13 +81,15 @@ ffuf -w <wordlist> -u http://FUZZ.$target/ -c -r
 > -c -ic
 > ```
 >
+> Bitquark
+>
 > ```sh
 > ffuf -w /usr/share/SecLists/Discovery/DNS/bitquark-subdomains-top100000.txt \
 > -u http://FUZZ.$target/ \
 > -c -ic
 > ```
 >
-> Wordlist - Combined
+> Combined
 >
 > ```sh
 > ffuf -w /usr/share/SecLists/Discovery/DNS/combined_subdomains.txt \
@@ -82,3 +98,9 @@ ffuf -w <wordlist> -u http://FUZZ.$target/ -c -r
 > ```
 >
 <!-- }}} -->
+
+[[Gobuster]]
+
+```sh
+gobuster
+```

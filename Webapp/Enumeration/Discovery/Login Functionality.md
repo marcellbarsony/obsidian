@@ -11,11 +11,12 @@ Discover and test the login functionality of the web application
 
 ___
 
-<!-- Discover Login Page {{{-->
-## Discover Login Page
+<!-- Discover{{{-->
+## Discover
 
 Discover the login page
 
+<!-- Example {{{-->
 > [!example]- Login Pages
 >
 > - `/admin.php`
@@ -26,7 +27,15 @@ Discover the login page
 > - `/cms/login.aspx`
 > - `/admin/login.aspx`
 > - `/wp-login.php`
+<!-- }}} -->
 
 ___
 <!-- }}} -->
 
+<!-- Enumerate {{{-->
+## Enumerate
+
+> [!todo]
+
+___
+<!-- }}} -->

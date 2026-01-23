@@ -18,7 +18,16 @@ ___
 Retrieve the error page (*status code `404`*)
 
 ```sh
-curl -X GET http://<example.com>/404page
+curl -X GET http://$target/404page
 ```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> curl -X GET http://example.com/404page
+> ```
+<!-- }}} -->
+
 ___
 <!-- }}} -->

@@ -1,3 +1,10 @@
+---
+id: Enumeration
+aliases: []
+tags:
+  - Networking/Services/HTTP/Enumeration
+links: "[[Services]]"
+---
 
 # Enumeration
 
@@ -9,10 +16,19 @@ ___
 <!-- Service {{{-->
 ## Service
 
+[[Nmap]] — Default script scan
+
+```sh
+nmap -sC $target -p 80,443 -oA http-script-default
+```
+
 [[Nmap]] — Search for additional version information
 
 ```sh
 nmap -sV [--version-all] $target [--stats-every=10s] -oA http-version
+```
+```sh
+nmap -sV $target --version-all
 ```
 
 <!-- Example {{{-->
@@ -21,13 +37,14 @@ nmap -sV [--version-all] $target [--stats-every=10s] -oA http-version
 > ```sh
 > nmap -sV --version-all example.com
 > ```
+>
 <!-- }}} -->
 
 [[Nmap]] — Enumerate common web application directories
 (*[http-enum script](https://nmap.org/nsedoc/scripts/http-enum.html)*)
 
 ```sh
-nmap -sV $target --script=http-enum [--stats-every=10s] -oA http-script-enum
+nmap -sV $target --script=http-enum -oA http-script-enum
 ```
 
 <!-- Info {{{-->

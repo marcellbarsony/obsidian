@@ -336,7 +336,7 @@ to the system (`/usr/local`) without `root` privileges
 <!-- Tip {{{-->
 > [!tip]
 >
-> Executables in `/usr/local/bin` are in the [[Environment#PATH|PATH]]
+> Executables in `/usr/local/bin` are in the [[Path#PATH|PATH]]
 > variable of any user, and they may take precedence over
 > the executables in `/bin` and `/usr/bin` with the same name
 <!-- }}} -->

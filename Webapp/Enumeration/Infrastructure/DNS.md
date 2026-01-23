@@ -8,8 +8,9 @@ tags:
 # DNS
 
 The **Domain Name System** (*[DNS](https://en.wikipedia.org/wiki/Domain_Name_System)*)
-is a hierarchical and distributed name service that provides a naming system
-for computers, services, and other resources on the Internet.
+is a hierarchical and distributed name service
+that provides a naming system for computers,
+services, and other resources on the Internet
 
 ___
 
@@ -33,6 +34,7 @@ mail servers, and other infrastructure
 >
 > - [[Fierce]]
 > - [[DNSRecon]]
+>
 <!-- }}} -->
 
 ___
