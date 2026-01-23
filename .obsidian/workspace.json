@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Webapp/Enumeration/Infrastructure/VHost.md",
+                "file": "Webapp/Enumeration/Discovery/Crawling.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "VHost"
+              "title": "Crawling"
             }
           },
           {
@@ -144,13 +144,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Webapp/Enumeration/Infrastructure/VHost.md",
+                "file": "Webapp/Enumeration/Discovery/Crawling.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of VHost"
+              "title": "Outline of Crawling"
             }
           },
           {
@@ -199,7 +199,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Webapp/Enumeration/Infrastructure/VHost.md",
+                "file": "Webapp/Enumeration/Discovery/Crawling.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -227,7 +227,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of VHost"
+              "title": "Graph of Crawling"
             }
           }
         ]
@@ -249,15 +249,18 @@
   },
   "active": "aa44dfa096c265c4",
   "lastOpenFiles": [
-    "Pentest/Tools/Brute Force/Wordlists/SecLists.md",
+    "Webapp/Tools/katana.md",
+    "Programming/Go/General.md",
+    "Programming/Go",
+    "Webapp/Enumeration/Discovery/Crawling.md",
     "Webapp/Enumeration/Infrastructure/VHost.md",
+    "Pentest/Tools/Brute Force/Wordlists/SecLists.md",
     "Webapp/Enumeration/Infrastructure/Virtual Hosts.md",
     "Webapp/Enumeration/Infrastructure/Domain.md",
     "Webapp/Enumeration/Infrastructure/Subdomain.md",
     "Webapp/Enumeration/Discovery/Execution Paths.md",
     "Pentest/Tools/Brute Force/Gobuster.md",
     "Webapp/Enumeration/Discovery/Login Functionality.md",
-    "Webapp/Enumeration/Discovery/Crawling.md",
     "Webapp/Enumeration/Content/Web Contents.md",
     "Webapp/Enumeration/Fingerprinting/Error Page.md",
     "Webapp/Enumeration/Discovery/Well-Known.md",
@@ -273,9 +276,7 @@
     "Pentest/Tools/Metasploit/Sessions/Meterpreter.md",
     "Pentest/Steganography/Binary.md",
     "Pentest/Shells/Web Shell.md",
-    "Networking/Services/HTTP/Microsoft IIS/Exploitation.md",
     "Networking/Services/HTTP/Nostromo",
-    "Networking/Services/HTTP/Microsoft IIS/General.md",
     "test.txt",
     "Networking/Services/HTTP/Microsoft IIS",
     "Linux/Privesc/Environment",
@@ -285,7 +286,6 @@
     "Pentest/Steganography/Enumeration",
     "Pentest/Steganography",
     "Pentest/File Transfer/Windows",
-    "Pentest/File Transfer/Linux",
     "Webapp/Enumeration/Fingerprinting/src/inspect-browser.png",
     "Webapp/Enumeration/Fingerprinting/src/20260119-025119.png",
     "Webapp/Tools/Burp Suite/src/scope-advanced.png",
