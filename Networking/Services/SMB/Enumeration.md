@@ -786,7 +786,7 @@ via [named pipes](https://learn.microsoft.com/en-us/windows/win32/ipc/named-pipe
 git clone https://github.com/cddmp/enum4linux-ng.git && cd enum4linux-ng
 ```
 
-2. Initialize [[Python]] [[Virtual Environment]]
+2. Initialize [[python]] [[Virtual Environment]]
 
 3. Install requirements
 

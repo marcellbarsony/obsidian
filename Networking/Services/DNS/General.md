@@ -7,6 +7,7 @@ tags:
 links: "[[Services]]"
 port:
   - UDP/53
+  - TCP/53
 ---
 
 <!-- DNS {{{-->
@@ -345,9 +346,31 @@ is a DNS transaction ([[#AXFR]]) to replicate DNS databases within a zone
 <!-- Info {{{-->
 > [!info]-
 >
+> The zone file must be kept identical on several name servers: synchronization
+> between the servers involved is realized by zone transfers,
+> using a secret `rndc-key`
+>
+> - **Primary server**: The original data on the zone
+>   is located on the primary server (*master*)
+>
+> - **Secondary server**: Secondary name servers (*mandatory for some TLDs*)
+>   installed to increase reliability, realize simple load distribution,
+>   or protect the primary from attacks (*master or slave*)
+>
+> DNS entries are only created, modified, or deleted
+> on the **primary name server**.
+> This can be done manually, or by a dynamic update from a database.
+>
+> - **Master DNS server**: The DNS server that serves
+>   as direct source for synchronizing
+>
+> - **Slave DNS server**: The DNS server that obtains zone data from a master
+>
+>
 > AXFR Zone Transfer from the `primaryServer` to the `secondaryServer`
 >
 > ![[dns-zone-transfer.png]]
+>
 <!-- }}} -->
 
 1. **Zone Transfer Request**:

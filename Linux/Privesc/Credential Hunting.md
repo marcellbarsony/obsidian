@@ -316,7 +316,7 @@ find / -type f \( -iname "*.php" -o -iname "*.php5" -o -iname "*.php7" -o -iname
   | xargs grep -Ei 'user|username|pass|password|secret|token|api|key|flag|htb' 2>/dev/null
 ```
 
-[[Python]]
+[[python]]
 
 ```sh
 find / -type f \( -iname "*.py" -o -iname "*.pyw"\) 2>/dev/null \

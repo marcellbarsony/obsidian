@@ -6,7 +6,6 @@ tags:
 links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
 ---
 
-<!-- Well-Known {{{-->
 # Well-Known
 
 The [.well-known standard](https://en.wikipedia.org/wiki/Well-known_URI)
@@ -122,6 +121,4 @@ https://target.com/.well-known/openid-configuration
 <!-- }}} -->
 
 ___
-<!-- }}} -->
-
 <!-- }}} -->

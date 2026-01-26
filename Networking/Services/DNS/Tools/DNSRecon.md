@@ -9,8 +9,11 @@ links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
 # DNSRecon
 
 [DNSRecon](https://github.com/darkoperator/dnsrecon)
-is a DNS Enumeration Script
+is a DNS Enumeration Script written in [[Python/General|Python]]
 
+___
+
+<!-- Usage {{{-->
 ## Usage
 
 General enumeration
@@ -31,3 +34,6 @@ DNS bruteforcing/dictionary attack
 ```sh
 dnsrecon -t brt -d "<target_domain>" -n "<nameserver.com>" -D "<wordlist.txt>"
 ```
+
+___
+<!-- }}} -->

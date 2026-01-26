@@ -24,7 +24,7 @@ Install **Wafw00f**
 pipx install <tool>
 ```
 
-[[Python]]
+[[python]]
 
 
 ```sh

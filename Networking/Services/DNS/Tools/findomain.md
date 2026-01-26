@@ -1,8 +1,27 @@
+---
+id: Findomain
+tags:
+  - Networking/Services/DNS/Tools/host
+links: "[[Services]]"
+---
+
+
 # Findomain
 
 [Findomain](https://github.com/Findomain/Findomain)
-uses Certificate Transparency logs and well-tested APIs to find subdomains
+is the fastest and complete solution for domain recognition.
 
+Supports screenshoting, port scan, HTTP check,
+data import from other tools, subdomain monitoring,
+alerts via Discord, Slack and Telegram,
+multiple API Keys for sources and much more
+
+Findomain uses Certificate Transparency logs
+and well-tested APIs to find subdomains
+
+___
+
+<!-- Installation {{{-->
 ## Installation
 
 Install on Debian-based distributions
@@ -17,6 +36,10 @@ Verify installation
 findomain -h
 ```
 
+___
+<!-- }}} -->
+
+<!-- Usage {{{-->
 ## Usage
 
 DNS Subdomain enumeration
@@ -24,3 +47,6 @@ DNS Subdomain enumeration
 ```sh
 findomain -t "<target_domain>" -a
 ```
+
+___
+<!-- }}} -->

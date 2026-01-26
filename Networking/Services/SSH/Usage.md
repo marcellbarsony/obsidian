@@ -86,6 +86,10 @@ chmod 600 id_rsa
 ```
 
 ```sh
+sudo chown root:root id_rsa
+```
+
+```sh
 ssh -i id_rsa <user>@$target
 ```
 

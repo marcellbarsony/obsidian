@@ -66,9 +66,28 @@ Get-MpComputerStatus
 > ```
 <!-- }}} -->
 
+[Set-MpPreference](https://learn.microsoft.com/en-us/powershell/module/defender/set-mppreference?view=windowsserver2025-ps) —
+Disable Windows Defender
+
+```sh
+Set-MpPreference -DisableRealtimeMonitoring $true
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> PS C:\Users\user> Set-MpPreference -DisableRealtimeMonitoring $true
+> ```
+<!-- }}} -->
+
 > [!todo]
 >
-> [MsMpEng.exe]
+> [msmpeng.exe](https://www.freecodecamp.org/news/what-is-msmpeng-exe-why-is-it-of-high-cpu-disk-usage/)
+> (*formerly known as Windows Defender*)
+> scans the computer for various threats
+> ranging from malware to spyware,
+> then renders the appropriate solution(*s*).
 
 ___
 <!-- }}} -->

@@ -9,7 +9,7 @@ links: "[[Webapp/Enumeration/Discovery]]"
 <!-- Execution Paths {{{-->
 # Execution Paths
 
-Check if directory listing is enabled and search for execution paths
+Check if directory listing is enabled and fuzz execution paths
 
 ___
 
@@ -169,8 +169,39 @@ gobuster dir [flags] -u <target> -w <wordlist>
 
 <!-- }}} -->
 
-<!-- Extensions {{{-->
-### Extensions
+<!-- Context {{{-->
+### Context
+
+Enumerate based on context
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> one-app.api.target.com
+> ```
+>
+> Enumerate based on keywords in URL
+> (*e.g., `api`, `app`, `one`*)
+>
+> ```sh
+> one-app.api.target.com/api/FUZZ
+> ```
+> ```sh
+> one-app.api.target.com/app/FUZZ
+> ```
+> ```sh
+> one-app.api.target.com/one/FUZZ
+> ```
+<!-- }}} -->
+
+___
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- Extension Enumeration {{{-->
+## Extension Enumeration
 
 Enumerate web extensions
 
@@ -181,7 +212,7 @@ Enumerate web extensions
 >
 > - [[SecLists#File Extensions|SecLists]]
 >
-> General
+> Web Pages
 >
 > - [[Dirbuster#Pages|Dirbuster]]
 > - [[SecLists#Pages|SecLists]]
@@ -210,23 +241,28 @@ ffuf -w <wordlist>:FUZZ -u http://$target/indexFUZZ
 >
 > ```sh
 > ffuf -w /usr/share/seclists/Discovery/Web-Content/web-extensions.txt:FUZZ \
-> -u http://$target/FUZZ/indexFUZZ
+> -u http://$target/FUZZ/indexFUZZ \
+> -ic
 > ```
 > ```sh
 > ffuf -w /usr/share/seclists/Discovery/Web-Content/web-extensions-big.txt:FUZZ \
-> -u http://$target/FUZZ/indexFUZZ
+> -u http://$target/FUZZ/indexFUZZ \
+> -ic
 > ```
 > ```sh
 > ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-small-extensions-lowercase.txt:FUZZ \
-> -u http://$target/FUZZ/indexFUZZ
+> -u http://$target/FUZZ/indexFUZZ \
+> -ic
 > ```
 > ```sh
 > ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-medium-extensions-lowercase.txt:FUZZ \
-> -u http://$target/FUZZ/indexFUZZ
+> -u http://$target/FUZZ/indexFUZZ \
+> -ic
 > ```
 > ```sh
 > ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-large-extensions-lowercase.txt:FUZZ \
-> -u http://$target/FUZZ/indexFUZZ
+> -u http://$target/FUZZ/indexFUZZ \
+> -ic
 > ```
 <!-- }}} -->
 
@@ -283,66 +319,39 @@ ffuf -w <wordlist>:FUZZ -u http://$target/FUZZ -e <ext1>,<ext2>
 > ```sh
 > ffuf -w /usr/share/seclists/Discovery/Web-Content/common.txt:FUZZ \
 > -u http://$target/FUZZ \
-> -e .php.txt \
+> -e .php,.txt \
 > -ic
 > ```
 > ```sh
 > ffuf -w /usr/share/seclists/Discovery/Web-Content/big.txt:FUZZ \
 > -u http://$target/FUZZ \
-> -e .php.txt \
+> -e .php,.txt \
 > -ic
 > ```
+>
+> Raft Files (*lowercase*)
+>
 > ```sh
 > ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-small-files-lowercase.txt:FUZZ \
 > -u http://$target/FUZZ \
-> -e .php.txt \
+> -e .php,.txt \
 > -ic
 > ```
 > ```sh
 > ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-medium-files-lowercase.txt:FUZZ \
 > -u http://$target/FUZZ \
-> -e .php.txt \
+> -e .php,.txt \
 > -ic
 > ```
 > ```sh
 > ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-large-files-lowercase.txt:FUZZ \
 > -u http://$target/FUZZ \
-> -e .php.txt \
+> -e .php,.txt \
 > -ic
 > ```
 <!-- }}} -->
 
-<!-- }}} -->
-
-<!-- Context {{{-->
-### Context
-
-Enumerate based on context
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> one-app.api.target.com
-> ```
->
-> Enumerate based on keywords in URL
-> (*e.g., `api`, `app`, `one`*)
->
-> ```sh
-> one-app.api.target.com/api/FUZZ
-> ```
-> ```sh
-> one-app.api.target.com/app/FUZZ
-> ```
-> ```sh
-> one-app.api.target.com/one/FUZZ
-> ```
-<!-- }}} -->
-
 ___
-<!-- }}} -->
-
 <!-- }}} -->
 
 <!-- Directory Enumeration {{{-->
@@ -686,6 +695,37 @@ gobuster dir -u http://<host>/content/private/plugins/ -w <wordlist>
 ___
 <!-- }}} -->
 
+<!-- Web Shell Enumeration {{{-->
+## Web Shell Enumeration
+
+Enumerate web shells
+
+<!-- Tip {{{-->
+> [!tip]- Wordlists
+>
+> [[Wordlists/Custom/web-shells.txt]]
+>
+<!-- }}} -->
+
+[[Ffuf]] - General webshell enumeration
+
+```sh
+ffuf -w <wordlist>:FUZZ -u http://<domain>/FUZZ
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> **Wordlists**
+>
+> ```sh
+> ffuf -w web-shells.txt \
+> -u http://$target/FUZZ \
+> -ic
+>
+<!-- }}} -->
+
+___
 <!-- }}} -->
 
 <!-- Investigate Findings {{{-->

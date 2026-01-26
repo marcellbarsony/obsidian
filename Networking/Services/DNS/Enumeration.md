@@ -16,15 +16,15 @@ ___
 
 Identify the DNS servers associated with the target domain
 
-[dig](https://linux.die.net/man/1/dig) —
-Query the [[Networking/Services/DNS/General#Authoritative Name Server|Name Server]]
+[[dig]] —
+Query the [[DNS/General#Authoritative Name Server|Name Server]]
 
 ```sh
 dig <target_domain> NS
 ```
 
-[nslookup](https://en.wikipedia.org/wiki/Nslookup) —
-Query the [[Networking/Services/DNS/General#Authoritative Name Server|Name Server]]
+[[nslookup]] —
+Query the [[DNS/General#Authoritative Name Server|Name Server]]
 
 ```sh
 nslookup -type=NS <target_domain>
@@ -35,8 +35,7 @@ ___
 <!-- DNS Service {{{-->
 ## DNS Service
 
-[dig](https://linux.die.net/man/1/dig) —
-Grab banner and
+[[dig]] — Grab banner and
 [BIND](https://en.wikipedia.org/wiki/BIND)
 server version
 
@@ -61,8 +60,7 @@ Grab banner
 nmap --script dns-nsid <dns_ip>
 ```
 
-[[netcat]] —
-Grab banner
+[[Netcat]] — Grab banner
 
 ```sh
 nc -nv -u <dns_ip> 53
@@ -84,6 +82,7 @@ to widen the attack surface
 (*[[Search Engine Discovery#Google Dorking|Google Dorking]]*) —
 Find [[Networking/Services/DNS/General#Subdomain|Subdomains]]
 
+<!-- Operator {{{-->
 > [!tip]- Operators
 >
 > - `site:`: Find subdomains
@@ -94,6 +93,7 @@ Find [[Networking/Services/DNS/General#Subdomain|Subdomains]]
 > > ```sh
 > > site:wikipedia.org -en.wikipedia.org
 > > ```
+<!-- }}} -->
 
 <!-- }}} -->
 
@@ -105,6 +105,7 @@ Find [[Networking/Services/DNS/General#Subdomain|Subdomains]]
 is a process intended to enable the verification of issued digital certificates
 for encrypted Internet connections
 
+<!-- Certificate Transparency Logs {{{-->
 > [!tip]- Certificate Transparency Logs
 >
 > **Certificate Transparency Logs**
@@ -115,6 +116,7 @@ for encrypted Internet connections
 > - [Censys](https://search.censys.io/)
 > - [Facebook's CT Monitor](https://developers.facebook.com/tools/ct/)
 > - [Google's CT Monitor](https://transparencyreport.google.com/https/certificates)
+<!-- }}} -->
 
 [[cURL]] — List SSL certificates
 
@@ -122,9 +124,11 @@ for encrypted Internet connections
 curl -s https://crt.sh/\?q\=<example.com>\&output\=json | jq .
 ```
 
+<!-- Info {{{-->
 > [!info]-
 >
 > - `-s`: Silent mode, suppress progress bars and error messages
+<!-- }}} -->
 
 [[cURL]] — List and filter
 ([jq](https://en.wikipedia.org/wiki/Jq_(programming_language)))
@@ -188,6 +192,7 @@ SSL certificate by unique subdomains
 >   sort -u
 > ```
 <!-- }}} -->
+
 <!-- }}} -->
 
 <!-- Passive Enumeration {{{-->
@@ -215,11 +220,8 @@ findomain -t "<target_domain>" -a
 
 <!-- }}} -->
 
-___
-<!-- }}} -->
-
-<!-- Brute Forcing {{{-->
-### Brute Forcing
+<!-- Brute Force {{{-->
+### Brute Force
 
 Brute Force DNS Subdomains
 
@@ -230,7 +232,77 @@ Brute Force DNS Subdomains
 >
 <!-- }}} -->
 
-<!-- Gobuster {{{-->
+[[Ffuf]]
+
+```sh
+ffuf -w <wordlist> -u http://FUZZ.$target/ -c -r
+```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `-c`: Colorize output (*default: `false`*)
+> - `-r`: Follow redirects (*default: `false`*)
+>
+<!-- }}} -->
+
+<!-- Example {{{-->
+> [!example]-
+>
+> **Wordlists**
+>
+> Subdomains Top 1 Million
+>
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt \
+> -u http://FUZZ.$target/ \
+> -c -ic
+> ```
+>
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt \
+> -u http://FUZZ.$target/ \
+> -c -ic
+> ```
+>
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt \
+> -u http://FUZZ.$target/ \
+> -c -ic
+> ```
+>
+> ```sh
+> ffuf -w /usr/share/SecLists/Discovery/DNS/namelist.txt \
+> -u http://FUZZ.$target/ \
+> -c -ic
+> ```
+>
+> Shubs
+>
+> ```sh
+> ffuf -w /usr/share/SecLists/Discovery/DNS/shubs-subdomains.txt \
+> -u http://FUZZ.$target/ \
+> -c -ic
+> ```
+>
+> Bitquark
+>
+> ```sh
+> ffuf -w /usr/share/SecLists/Discovery/DNS/bitquark-subdomains-top100000.txt \
+> -u http://FUZZ.$target/ \
+> -c -ic
+> ```
+>
+> Combined
+>
+> ```sh
+> ffuf -w /usr/share/SecLists/Discovery/DNS/combined_subdomains.txt \
+> -u http://FUZZ.$target/ \
+> -c -ic
+> ```
+>
+<!-- }}} -->
+
 [[Gobuster#DNS Subdomain Enumeration|Gobuster]] —
 DNS Subdomain Brute Forcing
 
@@ -241,42 +313,281 @@ gobuster dns [flags] -d $target -w <wordlist> [-s <target_dns>]
 <!-- Example {{{-->
 > [!example]-
 >
+> **Wordlists**
+>
+> Subdomains Top 1 Million
+>
+> ```sh
+> gobuster dns \
+> -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt \
+> -d <target_domain> \
+> -s <target_dns>
+> ```
+>
+> ```sh
+> gobuster dns \
+> -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt \
+> -d <target_domain> \
+> -s <target_dns>
+> ```
+>
+> ```sh
+> gobuster dns \
+> -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt \
+> -d <target_domain> \
+> -s <target_dns>
+> ```
+>
+> ```sh
+> gobuster dns \
+> -w /usr/share/SecLists/Discovery/DNS/namelist.txt \
+> -d <target_domain> \
+> -s <target_dns>
+> ```
+>
+> Additional lists
+>
+> ```sh
+> gobuster dns \
+> -w /usr/share/SecLists/Discovery/DNS/shubs-subdomains.txt \
+> -d <target_domain> \
+> -s <target_dns>
+> ```
+>
+> ```sh
+> gobuster dns \
+> -w /usr/share/SecLists/Discovery/DNS/bitquark-subdomains-top100000.txt \
+> -d <target_domain> \
+> -s <target_dns>
+> ```
+>
+> Combined List
+>
+> ```sh
+> gobuster dns \
+> -w /usr/share/SecLists/Discovery/DNS/combined_subdomains.txt \
+> -d <target_domain> \
+> -s <target_dns>
+> ```
+>
+> <!-- Info {{{-->
+> > [!info]-
+> >
+> > The combined list consists of
+> >
+> > - `bitquark-subdomains-top100000.txt`
+> > - `shubs-subdomains.txt`
+> > - `subdomains-top1million-110000.txt`
+> >
+> <!-- }}} -->
+>
+> **Example**
+>
 > ```sh
 > gobuster dns -d inlanefreight.com -w /usr/share/SecLists/Discovery/DNS/namelist.txt
 > ```
 <!-- }}} -->
 
-<!-- }}} -->
-
-<!-- DNSEnum {{{-->
 [[DNSEnum]] —
 DNS Subdomain Brute Forcing
 
 ```sh
-dnsenum --enum $target -f <wordlist> -r
+dnsenum --enum --dnsserver $target -f <wordlist> -r
 ```
 
+<!-- Info {{{-->
+> [!info]-
+>
+> - `--enum`: Run all enumeration steps
+>   (*`A`, `NS`, `MX`, and subdomain brute-forcing,
+>   and some zone-transfer attempts*)
+> - `-o subdomains.txt`: Output file for results
+> - `-f <wordlist>`: Wordlist file for subdomain brute-forcing
+> - `-r`: Recursion on subdomains
+<!-- }}} -->
+
+<!-- Example {{{-->
+> [!example]-
+>
+> **Wordlists**
+>
+> General Subdomain & Virtual Host Lists
+>
+> ```sh
+> dnsenum --enum $target \
+> -f /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt \
+> <target_domain> \
+> -o subdomains.txt
+> ```
+>
+> ```sh
+> dnsenum --enum $target \
+> -f /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt \
+> <target_domain> \
+> -o subdomains.txt
+> ```
+>
+> ```sh
+> dnsenum --enum $target \
+> -f /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt \
+> <target_domain> \
+> -o subdomains.txt
+> ```
+>
+> ```sh
+> dnsenum --enum $target \
+> -f /usr/share/SecLists/Discovery/DNS/namelist.txt \
+> <target_domain> \
+> -o subdomains.txt
+> ```
+>
+> Additional lists
+>
+> ```sh
+> dnsenum --enum $target \
+> -f /usr/share/SecLists/Discovery/DNS/shubs-subdomains.txt \
+> <target_domain> \
+> -o subdomains.txt
+> ```
+>
+> ```sh
+> dnsenum --enum $target \
+> -f /usr/share/SecLists/Discovery/DNS/bitquark-subdomains-top100000.txt \
+> <target_domain> \
+> -o subdomains.txt
+> ```
+>
+> Combined List
+>
+> ```sh
+> dnsenum --enum $target \
+> -f /usr/share/SecLists/Discovery/DNS/combined_subdomains.txt \
+> <target_domain> \
+> -o subdomains.txt
+> ```
+>
+> <!-- Info {{{-->
+> > [!info]-
+> >
+> > The combined list consists of
+> >
+> > - `bitquark-subdomains-top100000.txt`
+> > - `shubs-subdomains.txt`
+> > - `subdomains-top1million-110000.txt`
+> >
+> <!-- }}} -->
+>
+<!-- }}} -->
+
 ```sh
-dnsenum --dnsserver <target_dns> --enum -p 5 -s 5 -o subdomains.txt -f <wordlist> <target_domain>
+dnsenum --enum --dnsserver $target <target_domain> -f <wordlist.txt> -p 5 -s 5 -o subdomains.txt
 ```
 
 <!-- Info {{{-->
 > [!info]-
 >
 > - `--dnsserver <dns_ip>`: Target DNS server to query
-> - `--enum`: Run all enumeration steps (`A`, `NS`, `MX`, and subdomain
->   brute-forcing, and some zone-transfer attempts)
-> - `-p 5`: Number of threads for reverse lookup (`0` to disable)
-> - `-s 5`: Number of threads for subdomain brute-forcing (`0` to disable)
+> - `--enum`: Run all enumeration steps
+>   (*`A`, `NS`, `MX`, and subdomain brute-forcing,
+>   and some zone-transfer attempts*)
+> - `-p 5`: Threads for reverse lookup
+>   (*`0` to disable*)
+> - `-s 5`: Threads for subdomain brute-forcing
+>   (*`0` to disable*)
 > - `-o subdomains.txt`: Output file for results
 > - `-f <wordlist>`: Wordlist file for subdomain brute-forcing
+>
 <!-- }}} -->
 
+<!-- Example {{{-->
+> [!example]-
+>
+> General Subdomain & Virtual Host Lists
+>
+> ```sh
+> dnsenum \
+> --dnsserver $target \
+> -f /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt \
+> --enum -p 5 -s 5 \
+> <target_domain> \
+> -o subdomains.txt
+> ```
+>
+> ```sh
+> dnsenum \
+> --dnsserver $target \
+> -f /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt \
+> <target_domain> \
+> --enum -p 5 -s 5 \
+> -o subdomains.txt
+> ```
+>
+> ```sh
+> dnsenum \
+> --dnsserver $target \
+> -f /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt \
+> <target_domain> \
+> --enum -p 5 -s 5 \
+> -o subdomains.txt
+> ```
+>
+> ```sh
+> dnsenum \
+> --dnsserver $target \
+> -f /usr/share/SecLists/Discovery/DNS/namelist.txt \
+> <target_domain> \
+> --enum -p 5 -s 5 \
+> -o subdomains.txt
+> ```
+>
+> Additional lists
+>
+> ```sh
+> dnsenum \
+> -f /usr/share/SecLists/Discovery/DNS/shubs-subdomains.txt \
+> --dnsserver $target \
+> <target_domain> \
+> --enum -p 5 -s 5 \
+> -o subdomains.txt
+> ```
+>
+> ```sh
+> dnsenum \
+> -f /usr/share/SecLists/Discovery/DNS/bitquark-subdomains-top100000.txt \
+> --dnsserver $target \
+> <target_domain> \
+> --enum -p 5 -s 5 \
+> -o subdomains.txt
+> ```
+>
+> Combined List
+>
+> ```sh
+> dnsenum \
+> -f /usr/share/SecLists/Discovery/DNS/combined_subdomains.txt \
+> --dnsserver $target \
+> <target_domain> \
+> --enum -p 5 -s 5 \
+> -o subdomains.txt
+> ```
+>
+> <!-- Info {{{-->
+> > [!info]-
+> >
+> > The combined list consists of
+> >
+> > - `bitquark-subdomains-top100000.txt`
+> > - `shubs-subdomains.txt`
+> > - `subdomains-top1million-110000.txt`
+> >
+> <!-- }}} -->
+>
 <!-- }}} -->
 
-<!-- Bash {{{-->
 [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) —
 DNS Subdomain Brute Forcing
+
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sh
@@ -288,6 +599,8 @@ DNS Subdomain Brute Forcing
 >     tee -a subdomains.txt; \
 > done
 > ```
+<!-- }}} -->
+
 <!-- }}} -->
 
 ___
@@ -390,29 +703,6 @@ or **Asynchronous Full Transfer Zone** (*[[Networking/Services/DNS/General#AXFR|
 yields a full DNS zone dump
 (*e.g. all hostnames, IPs, subdomains, etc.*)
 
-<!-- Info {{{-->
-> [!info]-
->
-> The zone file must be kept identical on several name servers: synchronization
-> between the servers involved is realized by zone transfers, using a secret
-> `rndc-key`.
->
-> - **Primary server**: The original data on the zone is located on the primary
->   server (master)
->
-> - **Secondary server**: Secondary name servers (mandatory for some TLDs)
->   installed to increase reliability, realize simple load distribution, or
->   protect the primary from attacks (master or slave)
->
-> DNS entries are only created, modified, or deleted on the **primary name
-> server**. This can be done manually, or by a dynamic update from a database.
->
-> - **Master DNS server**: The DNS server that serves as direct source
->   for synchronizing
->
-> - **Slave DNS server**: The DNS server that obtains zone data from a master
-<!-- }}} -->
-
 <!-- Test {{{-->
 > [!tip]
 >
@@ -454,8 +744,9 @@ yields a full DNS zone dump
 > <!-- }}} -->
 <!-- }}} -->
 
-[dig](https://linux.die.net/man/1/dig) —
-[[DIG#AXFR|DIG]] — Request AXFR Zone Transfer
+**MANUAL**
+
+[[Dig#AXFR|Dig]] — Request AXFR Zone Transfer
 
 1. Enumerate [[Networking/Services/DNS/General#Name Server|Name Server(s)]]
 
@@ -483,7 +774,7 @@ dig <target_domain> NS
 [[Networking/Services/DNS/General#Name Server|Name Server]]
 
 ```sh
-dig @<dns_ip> <target_domain> AXFR
+dig @$target <target_domain> AXFR
 ```
 
 <!-- Example {{{-->
@@ -524,10 +815,12 @@ dig @<dns_ip> <target_domain> AXFR
 > ```
 <!-- }}} -->
 
+**AUTOMATE**
+
 [[fierce]] — Automate zone transfers and perform dictionary attacks
 
 ```sh
-fierce --domain <target_domain> --dns-servers <dns_ip>
+fierce --domain <target_domain> --dns-servers $target
 ```
 
 [[DNSRecon]] — Automate zone transfers

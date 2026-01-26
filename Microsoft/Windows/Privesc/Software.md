@@ -8,8 +8,8 @@ links: "[[Windows]]"
 
 # Vulnerable Software
 
-Look for public exploits of any installed software, especially if older,
-unpatched versions are in use
+Look for public exploits of any installed software,
+especially if older, unpatched versions are in use
 
 ___
 
@@ -22,6 +22,14 @@ List installed apps
 ```cmd
 wmic product get name, version
 ```
+
+<!-- Tip {{{-->
+> [!tip]-
+>
+> Enumerate installed programming languages
+>
+<!-- }}} -->
+
 ___
 <!-- }}} -->
 

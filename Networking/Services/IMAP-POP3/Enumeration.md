@@ -247,8 +247,8 @@ openssl s_client -connect $target:imaps
 <!-- Telnet (NTLM Auth) {{{-->
 #### Telnet (NTLM Auth)
 
-[[Telnet/General|Telnet]] — Obtain sensitive info
-if the server supports [NTLM auth](https://learn.microsoft.com/en-us/troubleshoot/windows-server/windows-security/ntlm-user-authentication)
+[[Telnet/General|Telnet]] —  Enumerate
+[NTLM auth](https://learn.microsoft.com/en-us/troubleshoot/windows-server/windows-security/ntlm-user-authentication)
 (*Windows only*)
 
 ```sh
@@ -378,7 +378,6 @@ and read (or even send) the individual messages
 <!-- }}} -->
 
 <!-- }}} -->
-
 
 <!-- }}} -->
 
@@ -511,16 +510,17 @@ ___
 <!-- Password Logging {{{-->
 ### Password Logging
 
-If `auth_debug`/`auth_verbose_passwords` options are enabled, plain text
-passwiords appear directly in the logs
+If `auth_debug`/`auth_verbose_passwords` options are enabled,
+plain text passwiords appear directly in the logs
 
 <!-- Log Files {{{-->
 > [!info]- Log Files
 >
-> - `/var/log/auth.log` (Debian/Ubuntu)
-> - `/var/log/mail.log` (Debian/Ubuntu)
-> - `/var/log/maillog` (RHEL/CentOS)
+> - `/var/log/auth.log` (*Debian/Ubuntu*)
+> - `/var/log/mail.log` (*Debian/Ubuntu*)
+> - `/var/log/maillog` (*RHEL/CentOS*)
 > - `/var/log/dovecot.log` or `/var/log/dovecot-info.log`
+>
 <!-- }}} -->
 
 ```sh

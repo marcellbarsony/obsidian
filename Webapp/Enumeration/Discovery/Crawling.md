@@ -33,21 +33,29 @@ ___
 <!-- Methodology {{{-->
 ### Methodology
 
-#### Breadth-First
+**Breadth-First Search** (*[BFS](https://en.wikipedia.org/wiki/Breadth-first_search)*)
+and **Depth-First Search** (*[DFS](https://en.wikipedia.org/wiki/Depth-first_search)*)
+are two fundamental algorithms used for traversing or searching
+graphs and trees:
 
-**Breadth-First Crawling** prioritizes exploring a website's width
-before its depth.
+- **Breadth-First Crawling** starts crawling all the links on the seed page,
+  then moves on to the links on those pages
 
-**Breadth-First Crawling** starts crawling all the links on the seed page,
-then moves on to the links on those pages.
+- **Depth-First Crawling** follows a single path of links as far as possible
+  before backtracking nd exploring other paths
 
-#### Depth-First
-
-**Depth-First Crawling** prioritizes exploring a website's depth
-before its width.
-
-**Depth-First Crawling** follows a single path of links as far as possible
-before backtracking nd exploring other paths.
+<!-- Info {{{-->
+> [!info]-
+>
+> **Breadth-First Crawling** prioritizes exploring a website's width
+> before its depth
+>
+> **Depth-First Crawling** prioritizes exploring a website's depth
+> before its width
+>
+> ![[crawling-methodology.png]]
+>
+<!-- }}} -->
 
 <!-- }}} -->
 

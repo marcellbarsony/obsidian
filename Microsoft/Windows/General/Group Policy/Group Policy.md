@@ -3,7 +3,7 @@ id: Group Policy
 aliases: []
 tags:
   - Microsoft/Windows/General/Group-Policy
-links: "[[General]]"
+links: "[[Linux/General/General]]"
 ---
 
 # Group Policy
