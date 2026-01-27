@@ -24,7 +24,7 @@ ___
 Basic OS detection scan
 
 ```sh
-sudo nmap -O $target -v [-Pn] -oA os-detection -v
+sudo nmap -O $target -v [-Pn] -oA os-detection
 ```
 
 <!-- Info {{{-->
@@ -118,7 +118,8 @@ nmap -sS -O $target -oA os-detection-syn -v
 <!-- Aggressive Scan {{{-->
 ### Aggressive Scan
 
-Aggressive Service Detection (*includes `-sC`, `-sV` and `-O`*)
+Aggressive Service Detection
+(*includes `-sC`, `-sV` and `-O`*)
 
 <!-- Warning {{{-->
 > [!warning]

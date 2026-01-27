@@ -29,6 +29,13 @@ systeminfo
 systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
 ```
 
+[hostname](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/hostname) —
+Display the host name portion of the full computer name of the computer
+
+```sh
+hostname
+```
+
 [System.Environment](https://learn.microsoft.com/en-us/dynamics365/business-central/application/system/namespace/system.environment)
 Namespace — Provide core environment management functionality
 
@@ -37,7 +44,7 @@ Namespace — Provide core environment management functionality
 ```
 
 [Get-WmiObject](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-wmiobject?view=powershell-5.1) —
-Get instances of Windows Management Instrumentation (*WMI*) classes
+Get instances of Windows Management Instrumentation ([[WMI]]) classes
 
 ```powershell
 Get-WmiObject -Class win32_OperatingSystem | select Version,BuildNumber

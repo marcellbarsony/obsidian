@@ -20,7 +20,7 @@ ___
 Network ICMP discovery
 
 ```sh
-nmap -PE -PP -PM -sn <network_range> -oA network_icmp_discovery
+nmap -PE -PP -PM -sn <network_range> -oA network-icmp-discovery
 ```
 
 > [!info]-
@@ -33,7 +33,7 @@ nmap -PE -PP -PM -sn <network_range> -oA network_icmp_discovery
 List IPs with details
 
 ```sh
-sudo nmap 10.129.2.0/24 -sn -oA network_icmp_scan
+sudo nmap <network_range> -sn -oA network-icmp-scan
 ```
 
 > [!info]-
@@ -42,7 +42,7 @@ sudo nmap 10.129.2.0/24 -sn -oA network_icmp_scan
 > - `-oA`: Save scan results
 
 ```sh
-sudo nmap 10.129.2.0/24 -sn -oA network_icmp_scan -PE
+sudo nmap <network_range> -sn -PE -oA network-icmp-scan
 ```
 
 > [!info]-
@@ -52,7 +52,7 @@ sudo nmap 10.129.2.0/24 -sn -oA network_icmp_scan -PE
 > - `-PE`: Make sure ICMP packet is sent
 
 ```sh
-sudo nmap 10.129.2.0/24 -sn -oA network_icmp_scan -PE --reason
+sudo nmap <network_range> -sn -PE -oA network-icmp-scan --reason
 ```
 
 > [!info]-
@@ -65,7 +65,7 @@ sudo nmap 10.129.2.0/24 -sn -oA network_icmp_scan -PE --reason
 List IPs only
 
 ```sh
-sudo nmap 10.129.2.0/24 -sn -oA network_icmp_scan | grep for | cut -d" " -f5
+sudo nmap <network_range> -sn -oA network-icmp-scan | grep for | cut -d" " -f5
 ```
 
 <!-- }}} -->
@@ -76,18 +76,26 @@ sudo nmap 10.129.2.0/24 -sn -oA network_icmp_scan | grep for | cut -d" " -f5
 Scan multiple IP addresses
 
 ```sh
-sudo nmap -sn -oA network_icmp_scan 10.129.2.18 10.129.2.19 10.129.2.20
+sudo nmap -sn $target $target2 -oA network-icmp-scan
 ```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> sudo nmap -sn -oA network_icmp_scan 10.129.2.18 10.129.2.19 10.129.2.20
+> ```
+<!-- }}} -->
 
 <!-- }}} -->
 
 <!-- Scan IP Range {{{-->
 ### Scan IP Range
 
-Scan a range of IP addresses (`18-20`)
+Scan a range of IP addresses (*`18-20`*)
 
 ```sh
-sudo nmap -sn -oA network_icmp_scan 10.129.2.18-20
+sudo nmap -sn -oA network-icmp-scan 10.129.2.18-20
 ```
 
 <!-- }}} -->
@@ -98,7 +106,7 @@ sudo nmap -sn -oA network_icmp_scan 10.129.2.18-20
 Scan list of IPs
 
 ```sh
-sudo nmap -sn -oA network_icmp_scan -iL hosts.txt
+sudo nmap -sn -oA network-icmp-scan -iL hosts.txt
 ```
 
 > [!info]-
