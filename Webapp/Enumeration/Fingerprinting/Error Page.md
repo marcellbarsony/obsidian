@@ -10,6 +10,8 @@ links: "[[Webapp]]"
 
 Error messages can leak information regarding the technologies used
 
+> [!todo]
+> [0xdf - 404 Cheatsheet](https://0xdf.gitlab.io/cheatsheets/404#)
 ___
 
 <!-- Get Error Page {{{-->

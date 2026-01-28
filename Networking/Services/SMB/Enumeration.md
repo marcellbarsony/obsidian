@@ -8,6 +8,13 @@ links: "[[SMB]]"
 
 # Enumeration
 
+<!-- Info {{{-->
+> [!info]- Resources
+>
+> [0xdf - SMB Enumeration Cheat Sheet](https://0xdf.gitlab.io/cheatsheets/smb-enum#)
+>
+<!-- }}} -->
+
 ___
 
 <!-- Network {{{-->

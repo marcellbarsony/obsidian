@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Pentest/General/Shells/Web Shell.md",
+                "file": "Pentest/General/File Transfer/Windows/Download.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Web Shell"
+              "title": "Download"
             }
           }
         ]
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Pentest/General/Shells/Web Shell.md",
+                "file": "Pentest/General/File Transfer/Windows/Download.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Web Shell"
+              "title": "Outline of Download"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Pentest/General/Shells/Web Shell.md",
+                "file": "Pentest/General/File Transfer/Windows/Download.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Web Shell"
+              "title": "Graph of Download"
             }
           }
         ]
@@ -225,9 +225,23 @@
   },
   "active": "2507f684083cc665",
   "lastOpenFiles": [
+    "Pentest/General/File Transfer/Windows/Upload.md",
+    "Pentest/General/File Transfer/Windows/Download.md",
+    "Pentest/General/File Transfer/Windows/src/rdp.png",
+    "Pentest/General/File Transfer/Windows/src/tsclient.jpg",
+    "Pentest/General/File Transfer/Windows/src",
+    "Networking/Services/RDP/Exploitation.md",
+    "Networking/Services/WinRM/Enumeration.md",
+    "Networking/Services/WinRM/General.md",
+    "Pentest/General/File Transfer/Linux/Upload.md",
+    "Pentest/General/File Transfer/Linux/Download.md",
+    "Networking/Tools/Netcat/Netcat.md",
+    "Pentest/General/File Transfer/Transferring Files.md",
+    "Pentest/General/Base64.md",
+    "Pentest/General/File Transfer/Tools/SCP.md",
+    "Pentest/General/Shells/Web Shell.md",
     "Pentest/General/Shells/Reverse Shell.md",
     "Pentest/General/Shells/Bind Shell.md",
-    "Pentest/General/Shells/Web Shell.md",
     "Networking/Services/SMB/Usage.md",
     "Linux/Exploitation/General.md",
     "Linux/Exploitation",
@@ -237,24 +251,12 @@
     "Networking/Services/SMB/General.md",
     "Pentest/Tools/Metasploit/Windows.md",
     "Networking/Tools/Nmap/Service Enumeration.md",
-    "Networking/Tools/Netcat/Netcat.md",
     "Networking/Tools/Nmap/Host Discovery.md",
     "Networking/Tools/Nmap/Host Enumeration.md",
     "Networking/Tools/NetExec/NetExec.md",
-    "Microsoft/Windows/Privesc/Software.md",
-    "Pentest/Tools/Metasploit/Msfvenom.md",
-    "Pentest/Tools/Metasploit/Metasploit.md",
-    "Pentest/General/Shells/Payloads/General.md",
-    "Programming/PowerShell/General.md",
-    "Programming/PowerShell/Bash.md",
     "Programming/PowerShell",
-    "Pentest/General/Shells/Payloads.md",
-    "Pentest/General/Shells/Payloads/Payloads.md",
     "Pentest/General/Shells/Payloads",
-    "Networking/Services/HTTP/General.md",
-    "Microsoft/Windows/General/WMI.md",
     "Linux/Android",
-    "Networking/Services/RDP/Usage.md",
     "Pentest/Tools/OpenVAS/src/openvas-target-list.png",
     "Pentest/Tools/OpenVAS/src/openvas-target.png",
     "Pentest/Tools/OpenVAS/src/openvas-configure.png",
@@ -264,13 +266,10 @@
     "Pentest/General/File Transfer/Tools",
     "Pentest/Tools/Brute Force/Wordlists/Custom/web-shells.txt",
     "Pentest/Tools/Brute Force/Wordlists/Custom",
-    "Webapp/Technology/WordPress",
     "Webapp/Enumeration/Discovery/src/crawling-methodology.png",
     "Webapp/Enumeration/Discovery/src/BFS-and-DFS-Algorithms.png",
     "Linux/General/Containers/src/containers-vms.png",
     "Webapp/Enumeration/Fingerprinting/src/inspect-browser.png",
-    "Webapp/Enumeration/Fingerprinting/src/20260119-025119.png",
-    "Webapp/Tools/Burp Suite/src/scope-advanced.png",
     "Networking/Services/SMB/Untitled.canvas"
   ]
 }
