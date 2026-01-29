@@ -1,8 +1,8 @@
 ---
-id: Nagios
+id: Screen
 aliases: []
 tags:
-  - Linux/General/Software/Nagios
+  - Linux/General/Software/Screen
 ---
 
 # Screen

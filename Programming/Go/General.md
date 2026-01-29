@@ -5,6 +5,8 @@ tags:
   - Pentest/Brute-Force
 ---
 
+# Go
+
 [Go](https://go.dev/)
 is a high-level, general-purpose programming language
 that is statically-typed and compiled

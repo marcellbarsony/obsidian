@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Pentest/General/File Transfer/Windows/Download.md",
+                "file": "Pentest/General/Shells/Reverse Shell.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Download"
+              "title": "Reverse Shell"
             }
           }
         ]
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Pentest/General/File Transfer/Windows/Download.md",
+                "file": "Pentest/General/Shells/Reverse Shell.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Download"
+              "title": "Outline of Reverse Shell"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Pentest/General/File Transfer/Windows/Download.md",
+                "file": "Pentest/General/Shells/Reverse Shell.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Download"
+              "title": "Graph of Reverse Shell"
             }
           }
         ]
@@ -225,51 +225,52 @@
   },
   "active": "2507f684083cc665",
   "lastOpenFiles": [
-    "Pentest/General/File Transfer/Windows/Upload.md",
+    "Pentest/General/Shells/Interactive Shell.md",
+    "Pentest/General/Shells/Reverse Shell.md",
+    "Networking/Services/Telnet/Exploitation.md",
+    "Networking/Software/rConfig/General.md",
+    "Networking/Software/rConfig/src/rconfig.png",
+    "Networking/Software/rConfig/src/20260129-014920.png",
+    "Networking/Software/rConfig/src",
+    "Microsoft/AD/Active Directory.md",
+    "Networking/Software/rConfig/PRTG Network Monitor.md",
+    "Networking/Software/rConfig",
     "Pentest/General/File Transfer/Windows/Download.md",
-    "Pentest/General/File Transfer/Windows/src/rdp.png",
-    "Pentest/General/File Transfer/Windows/src/tsclient.jpg",
+    "Pentest/General/File Transfer/Windows/Upload.md",
+    "Networking/Services/HTTP/General.md",
+    "Networking/Services/HTTP/Nginx/Usage.md",
+    "Networking/Services/HTTP/Nginx/General.md",
+    "Networking/Services/HTTP/Nginx/Enumeration.md",
+    "Networking/Services/HTTP/Nginx/General_1_1.md",
+    "Networking/Services/HTTP/Nginx/General_1.md",
+    "Networking/Services/HTTP/Nginx",
+    "Pentest/General/File Transfer/Linux/Upload.md",
+    "Pentest/General/File Transfer/Linux/Download.md",
+    "Webapp/Enumeration/Fingerprinting/Error Page.md",
+    "Webapp/Enumeration/Fingerprinting/src/404-blazor.png",
+    "Webapp/Enumeration/Fingerprinting/src/inspect-browser.png",
+    "Webapp/Enumeration/Fingerprinting/src/404.png",
+    "Webapp/Enumeration/Fingerprinting/src/20260128-191140.png",
+    "Webapp/Enumeration/Fingerprinting/src/404-asp-dotnet.png",
+    "Webapp/Enumeration/Fingerprinting/src/20260128-190847.png",
+    "Webapp/Enumeration/Fingerprinting/src/404-ruby.png",
+    "Webapp/Enumeration/Fingerprinting/src/20260128-185627.png",
     "Pentest/General/File Transfer/Windows/src",
     "Networking/Services/RDP/Exploitation.md",
     "Networking/Services/WinRM/Enumeration.md",
     "Networking/Services/WinRM/General.md",
-    "Pentest/General/File Transfer/Linux/Upload.md",
-    "Pentest/General/File Transfer/Linux/Download.md",
     "Networking/Tools/Netcat/Netcat.md",
     "Pentest/General/File Transfer/Transferring Files.md",
     "Pentest/General/Base64.md",
     "Pentest/General/File Transfer/Tools/SCP.md",
     "Pentest/General/Shells/Web Shell.md",
-    "Pentest/General/Shells/Reverse Shell.md",
     "Pentest/General/Shells/Bind Shell.md",
-    "Networking/Services/SMB/Usage.md",
-    "Linux/Exploitation/General.md",
     "Linux/Exploitation",
-    "Microsoft/Windows/Exploitation/General.md",
-    "Microsoft/Windows/Exploitation/Windows.md",
-    "Microsoft/Windows/General/CMD.md",
-    "Networking/Services/SMB/General.md",
-    "Pentest/Tools/Metasploit/Windows.md",
-    "Networking/Tools/Nmap/Service Enumeration.md",
-    "Networking/Tools/Nmap/Host Discovery.md",
-    "Networking/Tools/Nmap/Host Enumeration.md",
-    "Networking/Tools/NetExec/NetExec.md",
     "Programming/PowerShell",
     "Pentest/General/Shells/Payloads",
     "Linux/Android",
-    "Pentest/Tools/OpenVAS/src/openvas-target-list.png",
-    "Pentest/Tools/OpenVAS/src/openvas-target.png",
-    "Pentest/Tools/OpenVAS/src/openvas-configure.png",
-    "Pentest/Tools/OpenVAS/src/openvas-scan.png",
     "Pentest/Tools/OpenVAS/src",
     "Pentest/Tools/OpenVAS",
-    "Pentest/General/File Transfer/Tools",
-    "Pentest/Tools/Brute Force/Wordlists/Custom/web-shells.txt",
-    "Pentest/Tools/Brute Force/Wordlists/Custom",
-    "Webapp/Enumeration/Discovery/src/crawling-methodology.png",
-    "Webapp/Enumeration/Discovery/src/BFS-and-DFS-Algorithms.png",
-    "Linux/General/Containers/src/containers-vms.png",
-    "Webapp/Enumeration/Fingerprinting/src/inspect-browser.png",
     "Networking/Services/SMB/Untitled.canvas"
   ]
 }

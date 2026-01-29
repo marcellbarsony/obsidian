@@ -33,8 +33,6 @@ ___
 [WinPEAS-ng](https://github.com/peass-ng/PEASS-ng/tree/master/winPEAS) —
 Privilege Escalation Awesome Scripts SUITE (*with colors*)
 
-#### Usage
-
 1. Download the script
 
 ```sh
@@ -54,6 +52,7 @@ wget https://github.com/peass-ng/PEASS-ng/blob/master/winPEAS/winPEASbat/winPEAS
 ```sh
 .\winpeas.bat
 ```
+
 <!-- }}} -->
 
 <!-- windows-privesc-check {{{-->
@@ -62,6 +61,19 @@ wget https://github.com/peass-ng/PEASS-ng/blob/master/winPEAS/winPEASbat/winPEAS
 [windows-privesc-check](https://github.com/pentestmonkey/windows-privesc-check) —
 Standalone Executable to Check for Simple Privilege Escalation Vectors
 on Windows Systems (*by [Pentestmonkey](https://pentestmonkey.net/)*)
+
+> [!warning]
+>
+> Last updated 11 years ago
+
+<!-- }}} -->
+
+<!-- Windows Exploit Suggester {{{-->
+### Windows Exploit Suggester
+
+[GitHub - Windows Exploit Suggester](https://github.com/strozfriedberg/Windows-Exploit-Suggester)
+
+> [warning] DEPRECATED
 
 <!-- }}} -->
 
@@ -91,6 +103,15 @@ PowerShell script to enumerate privilege escalation vectors
 [Sherlock](https://github.com/rasta-mouse/Sherlock) —
 PowerShell script to quickly find missing software patches
 for local privilege escalation vulnerabilities
+
+> [!warning] DEPRECATED
+
+<!-- }}} -->
+
+<!-- Watson {{{-->
+### Watson
+
+[GitHub - Watson](https://github.com/rasta-mouse/Watson)
 
 > [!warning] DEPRECATED
 

