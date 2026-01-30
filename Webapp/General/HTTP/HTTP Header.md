@@ -14,6 +14,14 @@ A [response header](https://developer.mozilla.org/en-US/docs/Glossary/Response_h
 is an HTTP header that can be used in an HTTP response
 and that doesn't relate to the content of the message
 
+<!-- Content-Type {{{-->
+## Content-Type
+
+> [!todo]
+
+___
+<!-- }}} -->
+
 <!-- multipart/form-data {{{-->
 ### multipart/form-data
 

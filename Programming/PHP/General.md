@@ -8,7 +8,8 @@ tags:
 # PHP
 
 [PHP](https://en.wikipedia.org/wiki/PHP)
-is a general-purpose scripting language geared towards web development
+is a general-purpose scripting language,
+typically used as part of a web stack that powers a website
 
 ___
 

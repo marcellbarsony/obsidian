@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Pentest/General/Shells/Reverse Shell.md",
+                "file": "Pentest/General/Steganography/Document.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Reverse Shell"
+              "title": "Document"
             }
           }
         ]
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Pentest/General/Shells/Reverse Shell.md",
+                "file": "Pentest/General/Steganography/Document.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Reverse Shell"
+              "title": "Outline of Document"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Pentest/General/Shells/Reverse Shell.md",
+                "file": "Pentest/General/Steganography/Document.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Reverse Shell"
+              "title": "Graph of Document"
             }
           }
         ]
@@ -225,52 +225,52 @@
   },
   "active": "2507f684083cc665",
   "lastOpenFiles": [
+    "Pentest/General/Steganography/General.md",
+    "Pentest/General/Steganography/Tools/Binwalk.md",
+    "Pentest/General/Steganography/Tools/binwalk.md",
+    "Pentest/General/Steganography/Tools/ExifTool_1.md",
+    "Pentest/General/Steganography/Tools/ExifTool.md",
+    "Pentest/General/Steganography/Tools/exiftool.md",
+    "Pentest/General/Steganography/Tools",
     "Pentest/General/Shells/Interactive Shell.md",
-    "Pentest/General/Shells/Reverse Shell.md",
-    "Networking/Services/Telnet/Exploitation.md",
-    "Networking/Software/rConfig/General.md",
-    "Networking/Software/rConfig/src/rconfig.png",
-    "Networking/Software/rConfig/src/20260129-014920.png",
-    "Networking/Software/rConfig/src",
-    "Microsoft/AD/Active Directory.md",
-    "Networking/Software/rConfig/PRTG Network Monitor.md",
-    "Networking/Software/rConfig",
-    "Pentest/General/File Transfer/Windows/Download.md",
-    "Pentest/General/File Transfer/Windows/Upload.md",
-    "Networking/Services/HTTP/General.md",
-    "Networking/Services/HTTP/Nginx/Usage.md",
-    "Networking/Services/HTTP/Nginx/General.md",
-    "Networking/Services/HTTP/Nginx/Enumeration.md",
-    "Networking/Services/HTTP/Nginx/General_1_1.md",
-    "Networking/Services/HTTP/Nginx/General_1.md",
-    "Networking/Services/HTTP/Nginx",
-    "Pentest/General/File Transfer/Linux/Upload.md",
-    "Pentest/General/File Transfer/Linux/Download.md",
-    "Webapp/Enumeration/Fingerprinting/Error Page.md",
-    "Webapp/Enumeration/Fingerprinting/src/404-blazor.png",
-    "Webapp/Enumeration/Fingerprinting/src/inspect-browser.png",
-    "Webapp/Enumeration/Fingerprinting/src/404.png",
-    "Webapp/Enumeration/Fingerprinting/src/20260128-191140.png",
-    "Webapp/Enumeration/Fingerprinting/src/404-asp-dotnet.png",
-    "Webapp/Enumeration/Fingerprinting/src/20260128-190847.png",
-    "Webapp/Enumeration/Fingerprinting/src/404-ruby.png",
-    "Webapp/Enumeration/Fingerprinting/src/20260128-185627.png",
-    "Pentest/General/File Transfer/Windows/src",
-    "Networking/Services/RDP/Exploitation.md",
-    "Networking/Services/WinRM/Enumeration.md",
-    "Networking/Services/WinRM/General.md",
-    "Networking/Tools/Netcat/Netcat.md",
-    "Pentest/General/File Transfer/Transferring Files.md",
+    "Pentest/General/Shells/Reverse Shell/Windows.md",
+    "Pentest/General/Shells/Reverse Shell/Linux.md",
+    "Pentest/General/Shells/Examples/Python.md",
+    "Pentest/General/Shells/Examples/PHP.md",
+    "Networking/Tools/Netcat/Nc.md",
+    "Networking/Tools/Netcat/Netcat_1.md",
+    "Pentest/General/Shells/Reverse Shell/General.md",
+    "Pentest/General/Shells/Reverse Shell/Linux_1.md",
+    "Pentest/General/Shells/Web Shell",
+    "Pentest/General/Shells/Bind Shell",
+    "Pentest/General/Shells/Reverse Shell",
+    "Pentest/General/Shells/Bind Shell/General.md",
+    "Pentest/General/File Transfer/Living Off The Land.md",
+    "Pentest/General/Kali Linux.md",
     "Pentest/General/Base64.md",
-    "Pentest/General/File Transfer/Tools/SCP.md",
-    "Pentest/General/Shells/Web Shell.md",
-    "Pentest/General/Shells/Bind Shell.md",
-    "Linux/Exploitation",
-    "Programming/PowerShell",
-    "Pentest/General/Shells/Payloads",
-    "Linux/Android",
-    "Pentest/Tools/OpenVAS/src",
-    "Pentest/Tools/OpenVAS",
+    "Pentest/General/Payloads/General.md",
+    "Pentest/General/Payloads/Examples/General.md",
+    "Pentest/Tools/Metasploit/Components/Database.md",
+    "Pentest/Tools/Metasploit/Msfvenom.md",
+    "Pentest/General/Payloads/Examples",
+    "Networking/Tools/Netcat/Netcat.md",
+    "Programming/PowerShell/General.md",
+    "Programming/Bash/General.md",
+    "Programming/Bash/IO",
+    "Networking/Software/rConfig/src/rconfig-web-shell.png",
+    "Networking/Software/rConfig/src/20260129-184604.png",
+    "Networking/Software/rConfig/src/rconfig-burp.png",
+    "Networking/Software/rConfig/src/2.png",
+    "Networking/Software/rConfig/src/1.png",
+    "Networking/Software/rConfig/src/20260129-183642.png",
+    "Networking/Software/rConfig/src/20260129-183517.png",
+    "Networking/Software/rConfig/src/rconfig-vendors.png",
+    "Networking/Software/rConfig/src/20260129-181937.png",
+    "Networking/Software/rConfig/src/rconfig.png",
+    "Networking/Software/rConfig/src",
+    "Networking/Software/rConfig",
+    "Networking/Services/HTTP/Nginx",
+    "Pentest/General/File Transfer/Windows/src",
     "Networking/Services/SMB/Untitled.canvas"
   ]
 }

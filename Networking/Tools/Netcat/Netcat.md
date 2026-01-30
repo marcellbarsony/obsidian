@@ -256,7 +256,7 @@ Open a listener and listen to an incoming connection
 1. Open a netcat listener
 
 ```sh
-ncat -lvnp <listening_port>
+ncat -lvnp <listening_port> [-ssl]
 ```
 
 > [!example]-
