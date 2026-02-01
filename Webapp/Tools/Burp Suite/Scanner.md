@@ -29,7 +29,7 @@ ___
 <!-- Scanner {{{-->
 ## Scanner
 
-1. Set [[Proxy#Scope|Target Scope]]
+1. Set [[Webapp/Tools/Burp Suite/Proxy#Scope|Target Scope]]
 
 2. Launch a Scan
 

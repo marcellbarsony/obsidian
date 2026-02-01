@@ -124,8 +124,7 @@ sudo nmap -sV $target -p 1521 --open --script oracle-sid-brute -oA oracle-sid-br
 > ```
 <!-- }}} -->
 
-[[Metasploit]] — Oracle TNS Listener SID Enumeration
-(*[sid_enum](https://www.rapid7.com/db/modules/auxiliary/scanner/oracle/sid_enum/)*)
+[[Metasploit]] — [Oracle TNS Listener SID Enumeration](https://www.rapid7.com/db/modules/auxiliary/scanner/oracle/sid_enum/)
 
 ```sh
 use auxiliary/scanner/oracle/sid_enum
@@ -164,9 +163,9 @@ ___
 <!-- ODAT {{{-->
 ## ODAT
 
-[[ODAT]] - [(Oracle Database Attacking Tool)](https://github.com/quentinhardy/odat)
+[[ODAT]] ([Oracle Database Attacking Tool](https://github.com/quentinhardy/odat))
 can retrieve database names, versions, user accounts,
-vulnerabilities, misconfigurations
+vulnerabilities and misconfigurations
 
 ```sh
 ./odat.py all -s $target

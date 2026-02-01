@@ -4,7 +4,7 @@ aliases:
   - Address Resolution Protocol
 tags:
   - Networking/General/Layer-3/ARP
-links: "[[Layer-3]]"
+links: "[[Networking/General/Layer-3/General]]"
 ---
 
 # Address Resolution Protocol (ARP)

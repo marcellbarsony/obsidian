@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Pentest/General/Steganography/Tools/Binwalk.md",
+                "file": "Pentest/General/Payloads/Files.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Binwalk"
+              "title": "Files"
             }
           }
         ]
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Pentest/General/Steganography/Tools/Binwalk.md",
+                "file": "Pentest/General/Payloads/Files.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Binwalk"
+              "title": "Outline of Files"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Pentest/General/Steganography/Tools/Binwalk.md",
+                "file": "Pentest/General/Payloads/Files.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Binwalk"
+              "title": "Graph of Files"
             }
           }
         ]
@@ -225,42 +225,44 @@
   },
   "active": "2507f684083cc665",
   "lastOpenFiles": [
-    "Pentest/General/Steganography/Tools/ExifTool.md",
-    "Pentest/General/Steganography/Tools/pngcheck.md",
-    "Pentest/General/Steganography/Tools/Poppler-Utils.md",
-    "Pentest/General/Steganography/Tools/steghide.md",
-    "Pentest/General/Steganography/Tools/zsteg.md",
-    "Pentest/General/Steganography/Files/Image.md",
-    "Pentest/General/Steganography/General.md",
-    "Pentest/General/General.md",
-    "Pentest/General/Encoding/URL.md",
-    "Pentest/General/Encoding/Base64.md",
-    "Pentest/General/Encoding/General.md",
-    "Pentest/General/Encoding/General_1.md",
-    "Pentest/General/Encoding/Base64_1.md",
+    "Pentest/General/Payloads/General.md",
+    "Pentest/General/Payloads/Files.md",
+    "Webapp/Exploitation/Server-Side/File Upload/Upload Functionality.md",
+    "Pentest/General/Shells/Web Shell/General.md",
+    "Webapp/Exploitation/Server-Side/File Inclusion/Local File Inclusion.md",
+    "Webapp/Exploitation/Server-Side/File Inclusion/Tools/liffy.md",
+    "Webapp/Exploitation/Server-Side/File Inclusion/Tools/LFISuite_1.md",
+    "Webapp/Exploitation/Server-Side/File Inclusion/Tools/shellfire.md",
+    "Pentest/General/Steganography/Tools/stegsnow.md",
+    "Webapp/Exploitation/Server-Side/File Inclusion/Tools/LFISuite.md",
+    "Webapp/Exploitation/Server-Side/File Inclusion/Tools",
+    "Webapp/Exploitation/Client-Side/XSS/General.md",
+    "Webapp/Exploitation/Server-Side/File Inclusion/File Inclusion.md",
+    "Webapp/Exploitation/Server-Side/File Inclusion/Remote File Inclusion.md",
+    "Webapp/Exploitation/Server-Side/File Inclusion/RFI.md",
+    "Webapp/Exploitation/Server-Side/File Inclusion/LFI.md",
+    "Webapp/Exploitation/Server-Side/File Inclusion/File Inclusion_2.md",
+    "Webapp/Exploitation/Server-Side/File Inclusion/File Inclusion_1.md",
+    "Webapp/Exploitation/Server-Side/File Inclusion/src/lfi-encode.png",
+    "Webapp/Exploitation/Server-Side/File Inclusion/src/20260201-024811.png",
+    "Webapp/Exploitation/Server-Side/File Inclusion/src",
+    "Webapp/Exploitation/Server-Side/Access Control/Access Control.md",
+    "Webapp/Exploitation/Server-Side/Access Control/IDOR.md",
+    "Webapp/Exploitation/Server-Side/Path Traversal/Path Traversal.md",
+    "Programming/Java/General.md",
+    "Programming/Java",
+    "Webapp/Exploitation/Dashboard/Admin Panel.md",
+    "Programming/JavaScript/General.md",
+    "Programming/JavaScript",
+    "Webapp/Exploitation/Dashboard/Plugins.md",
+    "Webapp/Enumeration/Content/Web Contents.md",
+    "Webapp/Exploitation/Cookies & Parameters.md",
+    "Linux/Privesc/Exploits/shocker.c",
+    "Linux/Privesc/Exploits/shocker-2.c",
+    "Linux/Privesc/Exploits",
+    "Networking/General/Proxy/src",
+    "Networking/Services/SMB/Tools",
     "Pentest/General/Encoding",
-    "Pentest/General/Reporting/Reporting.md",
-    "Pentest/General/Reporting",
-    "Pentest/General/Secrets.md",
-    "Pentest/General/Steganography/Files/Text.md",
-    "Pentest/General/Steganography/Files",
-    "Pentest/General/Steganography/Files/Document.md",
-    "Pentest/General/Steganography/Files/Binary.md",
-    "Programming/Ruby/Gems.md",
-    "Programming/Ruby/General_1.md",
-    "Programming/Ruby/General.md",
-    "Programming/Ruby",
-    "Pentest/General/Steganography/Tools/qpdf_1.md",
-    "Pentest/General/Steganography/Tools/qpdf.md",
-    "Pentest/General/Steganography/Tools/poppler-utils.md",
-    "Pentest/General/Steganography/Tools/pdfinfo.md",
-    "Pentest/General/Steganography/Tools/Binwalk_1.md",
-    "Pentest/General/Steganography/Tools",
-    "Pentest/General/Shells/Web Shell",
-    "Pentest/General/Shells/Bind Shell",
-    "Pentest/General/Shells/Reverse Shell",
-    "Pentest/General/Payloads/Examples",
-    "Programming/Bash/IO",
     "Networking/Software/rConfig/src/rconfig-web-shell.png",
     "Networking/Software/rConfig/src/20260129-184604.png",
     "Networking/Software/rConfig/src/rconfig-burp.png",
@@ -269,8 +271,6 @@
     "Networking/Software/rConfig/src/20260129-183642.png",
     "Networking/Software/rConfig/src/20260129-183517.png",
     "Networking/Software/rConfig/src/rconfig-vendors.png",
-    "Networking/Software/rConfig/src/20260129-181937.png",
-    "Networking/Software/rConfig/src/rconfig.png",
     "Networking/Services/SMB/Untitled.canvas"
   ]
 }

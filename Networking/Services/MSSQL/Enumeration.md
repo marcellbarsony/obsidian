@@ -86,7 +86,7 @@ nmap -sC -sV -Pn $target -p 1433
 > ```
 <!-- }}} -->
 
-[[Nmap]] — [[Networking/Services/MSSQL/General|MSSQL]] script scan
+[[Nmap]] — [[MSSQL/General|MSSQL]] script scan
 
 ```sh
 sudo nmap \
@@ -165,8 +165,7 @@ ___
 <!-- Without Credentials {{{-->
 ### Without Credentials
 
-MSSQL Ping Utility
-([mssql_ping](https://www.rapid7.com/db/modules/auxiliary/scanner/mssql/mssql_ping/))
+[MSSQL Ping Utility](https://www.rapid7.com/db/modules/auxiliary/scanner/mssql/mssql_ping/)
 
 ```sh
 use auxiliary/scanner/mssql/mssql_ping
@@ -270,8 +269,7 @@ use auxiliary/scanner/mssql/mssql_ping
 > <!-- }}} -->
 <!-- }}} -->
 
-MSSQL Login Utility
-([mssql_login](https://www.rapid7.com/db/modules/auxiliary/scanner/mssql/mssql_login/))
+[MSSQL Login Utility](https://www.rapid7.com/db/modules/auxiliary/scanner/mssql/mssql_login/)
 
 ```sh
 use auxiliary/scanner/mssql/mssql_login

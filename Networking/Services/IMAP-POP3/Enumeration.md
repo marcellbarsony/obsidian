@@ -282,8 +282,7 @@ nmap <target_domain> -p 143 --script imap-ntlm-info -oA imap-ntlm-info
 <!-- cURL {{{-->
 #### cURL
 
-With the access credentials, an attacker could log in to the mail server
-and read (or even send) the individual messages
+Log in to the mail server and read (*or send*) messages
 
 <!-- Warning {{{-->
 > [!warning]
@@ -294,7 +293,7 @@ and read (or even send) the individual messages
 <!-- Example {{{-->
 > [!example]-
 >
-> 1. List mailboxes (*IMAP command `LIST "" "*"`*)
+> 1. List mailboxes (IMAP command `LIST "" "*"`)
 >
 > ```sh
 > curl -k 'imaps://10.129.14.128' --user user:pass

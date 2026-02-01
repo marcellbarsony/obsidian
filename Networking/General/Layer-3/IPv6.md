@@ -4,7 +4,7 @@ aliases:
   - Internet Protocol v6
 tags:
   - Networking/General/Layer-3/IPv6
-links: "[[Layer-3]]"
+links: "[[Networking/General/Layer-3/General]]"
 ---
 
 # IPv6 Addresses

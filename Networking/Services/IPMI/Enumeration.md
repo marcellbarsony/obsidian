@@ -293,10 +293,20 @@ before authentication takes place
 > or
 > [MD5](https://en.wikipedia.org/wiki/MD5)
 > hash of the requested user password to the client
+>
+> **Mitigation**
+>
+> There is no direct "fix" to this issue because the flaw is a critical component
+> of the [[Networking/Services/IPMI/General|IPMI]] specification
+>
+> Clients can opt for
+> - difficult to crack, long passwords
+> - [[Networking/Services/IPMI/General#BMC|BMC]] direct access restriction
+>   by implementing network segmentation rules
 <!-- }}} -->
 
-[[Metasploit]] — IPMI 2.0 RAKP Remote SHA1 Password Hash Retrieval
-(*[ipmi_dumphashes](https://www.rapid7.com/db/modules/auxiliary/scanner/ipmi/ipmi_dumphashes/)*)
+1. [[Metasploit]] — IPMI 2.0 RAKP Remote SHA1 Password Hash Retrieval
+   (*[ipmi_dumphashes](https://www.rapid7.com/db/modules/auxiliary/scanner/ipmi/ipmi_dumphashes/)*)
 
 ```sh
 use auxiliary/scanner/ipmi/ipmi_dumphashes
@@ -353,23 +363,8 @@ use auxiliary/scanner/ipmi/ipmi_dumphashes
 > ```
 <!-- }}} -->
 
-<!-- Mitigation {{{-->
-> [!Tip]- Mitigation
->
-> There is no direct "fix" to this issue because the flaw is a critical component
-> of the [[Networking/Services/IPMI/General|IPMI]] specification
->
-> Clients can opt for
-> - difficult to crack, long passwords
-> - [[Networking/Services/IPMI/General#BMC|BMC]] direct access restriction
->   by implementing network segmentation rules
-<!-- }}} -->
 
-<!-- Tip - Hash Cracking {{{-->
-> [!tip]- Hash Cracking
->
-> [[Networking/Services/IPMI/Exploitation#Hash Cracking|Crack Hashes]]
-<!-- }}} -->
+2. [[IPMI/Exploitation#Hash Cracking|Hash Cracking]]
 
 ___
 <!-- }}} -->

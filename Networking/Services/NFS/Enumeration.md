@@ -44,8 +44,7 @@ sudo nmap -sC -sV $target -p 111,2049 -oA nfs-default-scripts
 sudo nmap -sV $target -p 111,2049 --script nfs* -oA nfs-rpc-detection
 ```
 
-[[Metasploit]] — NFS Mount Scanner
-(*[nfsmount](https://www.rapid7.com/db/modules/auxiliary/scanner/nfs/nfsmount/)*)
+[[Metasploit]] — [NFS Mount Scanner](https://www.rapid7.com/db/modules/auxiliary/scanner/nfs/nfsmount/)
 
 ```sh
 use scanner/nfs/nfsmount

@@ -142,8 +142,9 @@ telnet $target 3306
 <!-- Metasploit {{{-->
 ### Metasploit
 
-MySQL Server Version Enumeration
-(*[mysql_version](https://www.rapid7.com/db/modules/auxiliary/scanner/mysql/mysql_version/)*)
+[[Metasploit]]
+
+[MySQL Server Version Enumeration](https://www.rapid7.com/db/modules/auxiliary/scanner/mysql/mysql_version/)
 
 ```sh
 use auxiliary/scanner/mysql/mysql_version
@@ -169,8 +170,7 @@ use auxiliary/scanner/mysql/mysql_version
 > ```
 <!-- }}} -->
 
-MySQL Authentication Bypass Password Dump
-(*[mysql_authbypass_hashdump](https://www.rapid7.com/db/modules/auxiliary/scanner/mysql/mysql_authbypass_hashdump/)*)
+[MySQL Authentication Bypass Password Dump](https://www.rapid7.com/db/modules/auxiliary/scanner/mysql/mysql_authbypass_hashdump/)
 
 ```sh
 use auxiliary/scanner/mysql/mysql_authbypass_hashdump
@@ -212,8 +212,7 @@ use auxiliary/scanner/mysql/mysql_authbypass_hashdump
 > ```
 <!-- }}} -->
 
-Oracle MySQL for Microsoft Windows FILE Privilege Abuse
-(*[mysql_start_up](https://www.rapid7.com/db/modules/exploit/windows/mysql/mysql_start_up/)*)
+[Oracle MySQL for Microsoft Windows FILE Privilege Abuse](https://www.rapid7.com/db/modules/exploit/windows/mysql/mysql_start_up/)
 
 ```sh
 use exploit/windows/mysql/mysql_start_up
@@ -359,12 +358,14 @@ ___
 
 Enumerate [MySQL Permissions](https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-mysql.html#mysql-permissions-enumeration):
 
-1. **[[Networking/Services/MySQL/Enumeration#Privilege Discovery|Privilege Discovery]]** &
-   **[[Networking/Services/MySQL/Enumeration#Account Enumeration|Account Enumeration]]**:
+1. [[MySQL/Enumeration#Privilege Discovery|Privilege Discovery]] &
+   [[MySQL/Enumeration#Account Enumeration|Account Enumeration]]:
    `SHOW GRANTS` + `mysql.user` queries
-2. **[[Networking/Services/MySQL/Enumeration#High-risk Privilege Check|Prioritization]]**:
+
+2. [[MySQL/Enumeration#High-risk Privilege Check|Prioritization]]:
    Pivot to `FILE`/`SUPER` owners
-3. **[[Networking/Services/MySQL/Enumeration#Exploitation Checks|Exploitation Checks]]**:
+
+3. [[MySQL/Enumeration#Exploitation Checks|Exploitation Checks]]:
    Inspect functions/plugins
 
 <!-- Privilege Discovery {{{-->
@@ -431,8 +432,9 @@ Full dump of user accounts, privileges, and password hashes
 <!-- Example {{{-->
 > [!example]-
 >
-> Lists every MySQL user account, their authentication plugin, password hash,
-> and all individual privilege columns (like `Select_priv`, `Insert_priv`, etc.)
+> List every MySQL user account, their authentication plugin, password hash,
+> and all individual privilege columns
+> (*like `Select_priv`, `Insert_priv`, etc.*)
 >
 > ```sql
 > SELECT * FROM mysql.user;
@@ -447,7 +449,7 @@ Full dump of user accounts, privileges, and password hashes
 >
 > > [!warning]
 > >
-> > This is a bad practice
+> > Bad practice
 > >
 > > ```sh
 > > `root`@`%`
@@ -488,6 +490,7 @@ Find users with `FILE` and `SUPER` privileges
 > > **: `SUPER` allows global operations
 > > (e.g., *killing threads*, *changing replication*,
 > > *modifying global variables*)
+>
 <!-- }}} -->
 
 <!-- }}} -->

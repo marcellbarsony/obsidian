@@ -779,32 +779,12 @@ ___
 <!-- Automated Scripts {{{-->
 ## Automated Scripts
 
-**ENUM4LINUX**
+[[enum4linux-ng]]
 
-[enum4linux-ng](https://github.com/cddmp/enum4linux-ng)
-is a wrapper around the Samba tools `nmblookup`, `net`, `rpcclient`
-and [[Usage#smbclient|smbclient]] that interacts with the exposed services
-via [named pipes](https://learn.microsoft.com/en-us/windows/win32/ipc/named-pipes)
-
-1. Clone the [enum4linux-ng](https://github.com/cddmp/enum4linux-ng)
-   repository
+Enumerate SMB host
 
 ```sh
-git clone https://github.com/cddmp/enum4linux-ng.git && cd enum4linux-ng
-```
-
-2. Initialize [[python]] [[Virtual Environment]]
-
-3. Install requirements
-
-```sh
-pip3 install -r requirements.txt
-```
-
-2. Enumerate SMB host
-
-```sh
-./enum4linux-ng.py $target -A -C
+enum4linux-ng $target -A -C
 ```
 
 <!-- Example {{{-->
@@ -1015,7 +995,7 @@ pip3 install -r requirements.txt
 > ```
 <!-- }}} -->
 
-**ADDITIONAL SCRIPTS**
+**Additional Scripts**
 
 Grab SMB server version
 

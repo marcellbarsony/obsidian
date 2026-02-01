@@ -19,7 +19,35 @@ ___
 Connect to FTP
 
 ```sh
-ftp <ip> [port]
+ftp $target [port]
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> ftp ftp.example.com
+> ```
+<!-- }}} -->
+
+Connect to FTP (*specify user*)
+
+```sh
+ftp <user>@$target
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> ftp user@ftp.example.com
+> ```
+<!-- }}} -->
+
+Connect to FTP (*non-interactive mode*)
+
+```sh
+ftp -n $target
 ```
 
 <!-- }}} -->
@@ -35,8 +63,6 @@ lftp <ip>
 
 <!-- Example {{{-->
 > [!example]-
->
-> **LFTP Connection**
 >
 > ```sh
 > lftp 10.10.10.208
@@ -127,8 +153,8 @@ ___
 <!-- File Operations {{{-->
 ## File Operations
 
-<!-- List Files {{{-->
-### List Files
+<!-- List {{{-->
+### List
 
 List all files (*including hidden files*)
 
@@ -144,8 +170,8 @@ ftp> ls -R
 ```
 <!-- }}} -->
 
-<!-- Download Files {{{-->
-### Download Files
+<!-- Download {{{-->
+### Download
 
 Download a file
 
@@ -172,8 +198,8 @@ wget -r --user="<user>" --password="<user>" ftp://$target
 
 <!-- }}} -->
 
-<!-- Upload Files {{{-->
-### Upload Files
+<!-- Upload {{{-->
+### Upload
 
 Uploading files may allow for [LFI vulnerabilities](https://en.wikipedia.org/wiki/File_inclusion_vulnerability)
 leading to [Remote Command Execution](https://en.wikipedia.org/wiki/Arbitrary_code_execution)

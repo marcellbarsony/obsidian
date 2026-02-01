@@ -4,7 +4,7 @@ aliases:
   - Internet Control Message Protocol
 tags:
   - Networking/General/Layer-3/ICMP
-links: "[[Layer-3]]"
+links: "[[Networking/General/Layer-3/General]]"
 ---
 
 # ICMP

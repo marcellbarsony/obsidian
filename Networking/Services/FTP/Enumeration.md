@@ -32,8 +32,7 @@ sudo nmap -sC -sV $target -p 21,2121 -A --script-trace -oA ftp-default-script
 nmap $target -p 21,2121 --script ftp-* -oA ftp-script-all
 ```
 
-[[Metasploit]] — FTP Version Scanner
-(*[ftp_version](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/ftp_version/)*)
+[[Metasploit]] — [FTP Version Scanner](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/ftp_version/)
 
 ```sh
 use auxiliary/scanner/ftp/ftp_version
@@ -101,7 +100,7 @@ telnet $target 2121
 ### FTP Bounce Attack
 
 [[Nmap]] — Detect
-[[Networking/Services/FTP/Exploitation#FTP Bounce Attack|FTP Bounce Attack]]
+[[FTP/Exploitation#FTP Bounce Attack|FTP Bounce Attack]]
 ([ftp-bounce](https://nmap.org/nsedoc/scripts/ftp-bounce.html))
 
 ```sh
@@ -115,9 +114,8 @@ nmap $target -p 21,2121 --script ftp-bounce -oA ftp-script-bounce
 nmap -b $target:<port> <target_network> -oA ftp-bounce-scan
 ```
 
-[[Metasploit]] —
-[[Networking/Services/FTP/Exploitation#FTP Bounce Attack|FTP Bounce]]
-Port Scanner
+[[Metasploit]] — Detect
+[[FTP/Exploitation#FTP Bounce Attack|FTP Bounce Attack]]
 (*[ftpbounce](https://www.rapid7.com/db/modules/auxiliary/scanner/portscan/ftpbounce/)*)
 
 ```sh
@@ -173,9 +171,7 @@ ___
 
 FTP may allow connection without needing to specific identity
 
-[[Metasploit]] —
-[[Networking/Services/FTP/Exploitation#Anonymous Login|Anonymous FTP Access]] Detection
-(*[anonymous](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/anonymous/)*)
+[[Metasploit]] — [Anonymous FTP Access Detection](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/anonymous/)
 
 ```sh
 use auxiliary/scanner/ftp/anonymous

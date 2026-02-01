@@ -121,7 +121,6 @@ in place of the usual `x` in the file's permission set.
 drwxrws---. 2 marci marci  69 Apr  7  2022 my_articles
 ```
 
-
 ___
 <!-- }}} -->
 
