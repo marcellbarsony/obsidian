@@ -4,7 +4,7 @@ aliases:
   - Services
 tags:
   - Microsoft/Windows/Services
-links: "[[Windows]]"
+links: "[[Microsoft/Windows/Windows]]"
 ---
 
 # Services

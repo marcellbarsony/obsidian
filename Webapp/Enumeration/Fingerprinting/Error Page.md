@@ -38,7 +38,8 @@ Default error page examples
 <!-- Resources {{{-->
 > [!info]- Resources
 >
-> [0xdf - 404 Cheatsheet](https://0xdf.gitlab.io/cheatsheets/404#)
+> - [0xdf - 404 Cheatsheet](https://0xdf.gitlab.io/cheatsheets/404#)
+>
 <!-- }}} -->
 
 <!-- AIOHTTP {{{-->

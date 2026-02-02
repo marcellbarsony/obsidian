@@ -3,7 +3,7 @@ id: Authorization
 aliases: []
 tags:
   - Microsoft/Windows/Authorization
-links: "[[Windows]]"
+links: "[[Microsoft/Windows/Windows]]"
 ---
 
 # Authorization

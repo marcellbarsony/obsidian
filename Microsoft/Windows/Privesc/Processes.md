@@ -4,7 +4,7 @@ aliases:
   - Processes
 tags:
   - Microsoft/Windows/Processes
-links: "[[Windows]]"
+links: "[[Microsoft/Windows/Windows]]"
 ---
 
 <!-- Process Enumeration {{{-->

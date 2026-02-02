@@ -3,7 +3,7 @@ id: Connect
 aliases: []
 tags:
   - Microsoft/Windows/Connect
-links: "[[Windows]]"
+links: "[[Microsoft/Windows/Windows]]"
 ---
 
 # Connect

@@ -19,3 +19,25 @@ efficient and extensible server that provides HTTP services
 in sync with the current HTTP standards
 
 ___
+
+<!-- Configuration {{{-->
+## Configuration
+
+<!-- .htaccess {{{-->
+### .htaccess
+
+<!-- Info {{{-->
+> [!info]- Resources
+>
+> - [PayloadsAlltheThings - Configuration Apache .htaccess](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Upload%20Insecure%20Files/Configuration%20Apache%20.htaccess)
+>
+<!-- }}} -->
+
+[.htaccess](https://httpd.apache.org/docs/current/howto/htaccess.html)
+
+
+<!-- }}} -->
+
+___
+<!-- }}} -->
+

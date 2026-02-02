@@ -3,7 +3,7 @@ id: Vulnerable Software
 aliases: []
 tags:
   - Microsoft/Windows/Vulnerable-Software
-links: "[[Windows]]"
+links: "[[Microsoft/Windows/Windows]]"
 ---
 
 # Vulnerable Software

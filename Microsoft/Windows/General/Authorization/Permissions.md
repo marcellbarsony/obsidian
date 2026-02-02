@@ -3,7 +3,7 @@ id: Permissions
 aliases: []
 tags:
   - Microsoft/Windows/Permissions/Permissions
-links: "[[Windows]]"
+links: "[[Microsoft/Windows/Windows]]"
 ---
 
 # Permissions

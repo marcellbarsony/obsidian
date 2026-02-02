@@ -3,7 +3,7 @@ id: Kerberos
 aliases: []
 tags:
   - Microsoft/Windows/General/Authentication/Kerberos
-links: "[[Windows]]"
+links: "[[Microsoft/Windows/Windows]]"
 ---
 
 # Kerberos

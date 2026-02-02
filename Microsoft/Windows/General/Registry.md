@@ -3,7 +3,7 @@ id: Registry
 aliases: []
 tags:
   - Microsoft/Windows/General/Registry
-links: "[[Windows]]"
+links: "[[Microsoft/Windows/Windows]]"
 ---
 
 # Registry

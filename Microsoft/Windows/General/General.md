@@ -3,7 +3,7 @@ id: General
 aliases: []
 tags:
   - Microsoft/Windows/General
-links: "[[Windows]]"
+links: "[[Microsoft/Windows/Windows]]"
 ---
 
 # General

@@ -3,7 +3,7 @@ id: Directory & File
 aliases: []
 tags:
   - Linux/Privesc/Directory-File
-links: "[[Linux]]"
+links: "[[Linux/Linux]]"
 ---
 
 <!-- Directory Enumeration {{{-->

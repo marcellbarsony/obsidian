@@ -1,9 +1,10 @@
 ---
 id: UAC
-aliases: ["User Account Control"]
+aliases:
+  - User Account Control
 tags:
   - Microsoft/Windows/General/UAC
-links: "[[Windows]]"
+links: "[[Microsoft/Windows/Windows]]"
 ---
 
 # User Account Control (UAC)

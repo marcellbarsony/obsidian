@@ -3,7 +3,7 @@ id: Containers
 aliases: ""
 tags:
   - Linux/Privesc/Containers
-links: "[[Linux]]"
+links: "[[Linux/Linux]]"
 ---
 
 # Containers

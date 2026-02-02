@@ -1,7 +1,8 @@
 ---
 id: Linux Privilege Escalation
-aliases: ["Linux Privesc"]
+aliases:
+  - Linux Privesc
 tags:
   - Linux/Privesc
-links: "[[Linux]]"
+links: "[[Linux/Linux]]"
 ---

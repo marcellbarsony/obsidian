@@ -3,7 +3,7 @@ id: Named Pipes
 aliases: []
 tags:
   - Microsoft/Windows/Processes/Named-Pipes
-links: "[[Windows]]"
+links: "[[Microsoft/Windows/Windows]]"
 ---
 
 

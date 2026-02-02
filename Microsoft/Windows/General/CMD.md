@@ -1,9 +1,10 @@
 ---
 id: CMD
-aliases: ["Command Prompt"]
+aliases:
+  - Command Prompt
 tags:
   - Microsoft/Windows/CMD
-links: "[[Windows]]"
+links: "[[Microsoft/Windows/Windows]]"
 ---
 
 # CMD

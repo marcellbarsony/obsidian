@@ -2,7 +2,7 @@
 id: General
 aliases: []
 tags: []
-links: "[[Linux]]"
+links: "[[Linux/Linux]]"
 ---
 
 # General

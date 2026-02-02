@@ -3,7 +3,7 @@ id: Restricted Shell
 aliases: []
 tags:
   - Linux/Privesc/Restricted-Shell
-links: "[[Linux]]"
+links: "[[Linux/Linux]]"
 ---
 
 <!-- Restricted Shells {{{-->

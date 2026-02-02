@@ -3,7 +3,7 @@ id: Access Token
 aliases: []
 tags:
   - Microsoft/Windows/Authorization/Access-Token
-links: "[[Windows]]"
+links: "[[Microsoft/Windows/Windows]]"
 ---
 
 # Access Token

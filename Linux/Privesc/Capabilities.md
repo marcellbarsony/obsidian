@@ -93,7 +93,7 @@ Change the ownership of any file
 > ```
 <!-- }}} -->
 
-2. [[Payloads/Files#File Overwrite|Change root password]]
+2. [[Pentest/Payloads/Files#File Overwrite|Change root password]]
    and escalate privileges
 
 ```sh

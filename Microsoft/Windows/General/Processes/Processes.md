@@ -3,7 +3,7 @@ id: Processes
 aliases: []
 tags:
   - Microsoft/Windows/Processes/Processes
-links: "[[Windows]]"
+links: "[[Microsoft/Windows/Windows]]"
 ---
 
 # Processes

@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Pentest/General/Payloads/Files.md",
+                "file": "Webapp/Exploitation/Server-Side/File Upload/General.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Files"
+              "title": "General"
             }
           }
         ]
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Pentest/General/Payloads/Files.md",
+                "file": "Webapp/Exploitation/Server-Side/File Upload/General.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Files"
+              "title": "Outline of General"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Pentest/General/Payloads/Files.md",
+                "file": "Webapp/Exploitation/Server-Side/File Upload/General.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Files"
+              "title": "Graph of General"
             }
           }
         ]
@@ -225,44 +225,45 @@
   },
   "active": "2507f684083cc665",
   "lastOpenFiles": [
-    "Pentest/General/Payloads/General.md",
-    "Pentest/General/Payloads/Files.md",
-    "Webapp/Exploitation/Server-Side/File Upload/Upload Functionality.md",
-    "Pentest/General/Shells/Web Shell/General.md",
-    "Webapp/Exploitation/Server-Side/File Inclusion/Local File Inclusion.md",
-    "Webapp/Exploitation/Server-Side/File Inclusion/Tools/liffy.md",
-    "Webapp/Exploitation/Server-Side/File Inclusion/Tools/LFISuite_1.md",
-    "Webapp/Exploitation/Server-Side/File Inclusion/Tools/shellfire.md",
-    "Pentest/General/Steganography/Tools/stegsnow.md",
-    "Webapp/Exploitation/Server-Side/File Inclusion/Tools/LFISuite.md",
+    "Webapp/Exploitation/Server-Side/File Upload/src/file-upload-select-file-types.jpg",
+    "Webapp/Exploitation/Server-Side/Access Control/Access Control.md",
+    "Webapp/Exploitation/Login/SQL Injection.md",
+    "Webapp/Exploitation/Login/Login Functionality.md",
+    "Webapp/Exploitation/Login/Brute Force.md",
+    "Webapp/Exploitation/Login/Authentication.md",
+    "Webapp/Exploitation/Dashboard/Plugins.md",
+    "Webapp/Exploitation/Dashboard/Admin Panel.md",
+    "Webapp/Exploitation/Server-Side/File Upload/General.md",
+    "Webapp/General/HTTP/HTTP Header.md",
+    "Webapp/General/Web Server/Web Server Root.md",
+    "Webapp/General/HTTP/Content-Type.md",
+    "Networking/Services/HTTP/General.md",
+    "Webapp/General/HTTP/Content-Pyte.md",
+    "Webapp/General/HTTP/Content Type.md",
+    "Webapp/General/HTTP/HTTP Header_1.md",
+    "Pentest/Secrets.md",
+    "Pentest/Preparation.md",
+    "Pentest/Kali Linux.md",
+    "Pentest/Reporting/General.md",
+    "Pentest/Shells/Web Shell/General.md",
+    "Pentest/Shells/Bind Shell/General.md",
+    "Pentest/Shells/Reverse Shell/Windows.md",
+    "Pentest/Shells/Reverse Shell/Linux.md",
+    "Pentest/Shells/Reverse Shell/General.md",
+    "Webapp/Exploitation/Server-Side/File Upload/src/file-upload-mindmap.png",
+    "Webapp/Exploitation/Server-Side/File Upload/src",
+    "Pentest/Payloads/Files.md",
     "Webapp/Exploitation/Server-Side/File Inclusion/Tools",
-    "Webapp/Exploitation/Client-Side/XSS/General.md",
-    "Webapp/Exploitation/Server-Side/File Inclusion/File Inclusion.md",
-    "Webapp/Exploitation/Server-Side/File Inclusion/Remote File Inclusion.md",
-    "Webapp/Exploitation/Server-Side/File Inclusion/RFI.md",
-    "Webapp/Exploitation/Server-Side/File Inclusion/LFI.md",
-    "Webapp/Exploitation/Server-Side/File Inclusion/File Inclusion_2.md",
-    "Webapp/Exploitation/Server-Side/File Inclusion/File Inclusion_1.md",
     "Webapp/Exploitation/Server-Side/File Inclusion/src/lfi-encode.png",
     "Webapp/Exploitation/Server-Side/File Inclusion/src/20260201-024811.png",
     "Webapp/Exploitation/Server-Side/File Inclusion/src",
-    "Webapp/Exploitation/Server-Side/Access Control/Access Control.md",
-    "Webapp/Exploitation/Server-Side/Access Control/IDOR.md",
-    "Webapp/Exploitation/Server-Side/Path Traversal/Path Traversal.md",
-    "Programming/Java/General.md",
     "Programming/Java",
-    "Webapp/Exploitation/Dashboard/Admin Panel.md",
-    "Programming/JavaScript/General.md",
     "Programming/JavaScript",
-    "Webapp/Exploitation/Dashboard/Plugins.md",
-    "Webapp/Enumeration/Content/Web Contents.md",
-    "Webapp/Exploitation/Cookies & Parameters.md",
     "Linux/Privesc/Exploits/shocker.c",
     "Linux/Privesc/Exploits/shocker-2.c",
     "Linux/Privesc/Exploits",
     "Networking/General/Proxy/src",
     "Networking/Services/SMB/Tools",
-    "Pentest/General/Encoding",
     "Networking/Software/rConfig/src/rconfig-web-shell.png",
     "Networking/Software/rConfig/src/20260129-184604.png",
     "Networking/Software/rConfig/src/rconfig-burp.png",
@@ -270,7 +271,6 @@
     "Networking/Software/rConfig/src/1.png",
     "Networking/Software/rConfig/src/20260129-183642.png",
     "Networking/Software/rConfig/src/20260129-183517.png",
-    "Networking/Software/rConfig/src/rconfig-vendors.png",
     "Networking/Services/SMB/Untitled.canvas"
   ]
 }

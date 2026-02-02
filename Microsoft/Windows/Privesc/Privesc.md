@@ -4,7 +4,7 @@ aliases:
   - Privesc
 tags:
   - Microsoft/Windows/Privesc
-links: "[[Windows]]"
+links: "[[Microsoft/Windows/Windows]]"
 ---
 
 # Windows Privilege Escalation

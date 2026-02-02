@@ -3,7 +3,7 @@ id: Privileges
 aliases: []
 tags:
   - Microsoft/Windows/Privileges/Privileges
-links: "[[Windows]]"
+links: "[[Microsoft/Windows/Windows]]"
 ---
 
 # Privileges

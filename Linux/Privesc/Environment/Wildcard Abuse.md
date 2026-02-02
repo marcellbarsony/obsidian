@@ -3,7 +3,7 @@ id: Wildcard Abuse
 aliases: []
 tags:
   - Linux/Privesc/Environment/Wildcard-Abuse
-links: "[[Linux]]"
+links: "[[Linux/Linux]]"
 ---
 
 <!-- Wildcard Abuse {{{-->

@@ -3,7 +3,7 @@ id: SAM
 aliases: []
 tags:
   - Microsoft/Windows/General/SAM
-links: "[[Windows]]"
+links: "[[Microsoft/Windows/Windows]]"
 ---
 
 # Security Account Manager

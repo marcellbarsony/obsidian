@@ -1,9 +1,10 @@
 ---
 id: NTLM
-aliases: ["New Technology LAN Manager"]
+aliases:
+  - New Technology LAN Manager
 tags:
   - Microsoft/Windows/General/Authentication/NTLM
-links: "[[Windows]]"
+links: "[[Microsoft/Windows/Windows]]"
 ---
 
 # NTLM
