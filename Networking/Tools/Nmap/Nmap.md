@@ -8,12 +8,29 @@ links: "[[Networking/Tools/Tools]]"
 
 # Nmap
 
-- [Nmap: the Network Mapper](https://nmap.org/)
-- [Nmap - man](https://linux.die.net/man/1/nmap)
 
-- [Reddit - Good nmap scan commands?](https://www.reddit.com/r/hackthebox/comments/dft53d/good_nmap_scan_commands/)
-- [Reddit - nmap -p- scans](https://www.reddit.com/r/hackthebox/comments/1aguh1o/nmap_p_scans/)
-- [Reddit - Nmap Cheat Sheet (figured yall could use this) ](https://www.reddit.com/r/hackthebox/comments/egcxkc/nmap_cheat_sheet_figured_yall_could_use_this/)
+[Nmap](https://nmap.org/) is a network scanner used to
+discover hosts and services on a computer network
+by sending packets and analyzing the responses
+
+<!-- Info {{{-->
+> [!info]- Resources
+>
+> Wikipedia
+>
+> - [Nmap](https://en.wikipedia.org/wiki/Nmap)
+>
+> Man page
+>
+> - [man](https://linux.die.net/man/1/nmap)
+>
+> Reddit
+>
+> - [Reddit - Good nmap scan commands?](https://www.reddit.com/r/hackthebox/comments/dft53d/good_nmap_scan_commands/)
+> - [Reddit - nmap -p- scans](https://www.reddit.com/r/hackthebox/comments/1aguh1o/nmap_p_scans/)
+> - [Reddit - Nmap Cheat Sheet (figured yall could use this) ](https://www.reddit.com/r/hackthebox/comments/egcxkc/nmap_cheat_sheet_figured_yall_could_use_this/)
+>
+<!-- }}} -->
 
 ___
 

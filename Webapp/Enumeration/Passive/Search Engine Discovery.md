@@ -10,8 +10,17 @@ links: "[[Webapp/Enumeration/Passive|Enumeration]]"
 
 **Search Engine Discovery**
 (*[Google dorking](https://en.wikipedia.org/wiki/Google_hacking)*)
-is a technique that uses Google Search (*and other search engines*)
-to find vulnerabilities
+is a technique that uses search engines to find vulnerabilities
+
+<!-- Info {{{-->
+> [!info]- Resources
+>
+> OWASP WSTG
+>
+> - [Conduct Search Engine Discovery Reconnaissance for Information Leakage](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/01-Information_Gathering/01-Conduct_Search_Engine_Discovery_Reconnaissance_for_Information_Leakage)
+>
+<!-- }}} -->
+
 
 ___
 
@@ -55,7 +64,8 @@ ___
 <!-- Google Dorking {{{-->
 ## Google Dorking
 
-Find useful exposed information via the [Google Hacking Database](https://www.exploit-db.com/google-hacking-database)
+[Google Hacking Database](https://www.exploit-db.com/google-hacking-database) —
+Find useful exposed information
 
 Login pages
 

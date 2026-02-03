@@ -72,8 +72,8 @@ ___
 <!-- Fingerprinting {{{-->
 ## Fingerprinting
 
-- [ ] [[Fingerprinting]]
-    - [ ] [[Fingerprinting#Version Details & CVEs|Version Details & CVEs]]
+- [ ] [[Webapp/Enumeration/Fingerprinting/General]]
+    - [ ] [[Webapp/Enumeration/Fingerprinting/General#Version Details & CVEs|Version Details & CVEs]]
 - [ ] [[Webapp/Enumeration/Fingerprinting/HTTP Header]]
     - [ ] [[Webapp/Enumeration/Fingerprinting/HTTP Header#HTTP Request|HTTP Request]]
     - [ ] [[Webapp/Enumeration/Fingerprinting/HTTP Header#Web Tools|Web Tools]]

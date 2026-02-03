@@ -8,10 +8,22 @@ links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
 
 # Web contents
 
+<!-- Info {{{-->
+> [!info]- Resoruces
+>
+> [OWASP WSTG](https://owasp.org/www-project-web-security-testing-guide/stable)
+>
+> - [Review Webpage Content for Information Leakage](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/01-Information_Gathering/05-Review_Webpage_Content_for_Information_Leakage)
+>
+<!-- }}} -->
+
+
 ___
 
 <!-- Page Source Code {{{-->
 ## Page Source Code
+
+
 
 [[cURL]] — Inspect the page soruce code for [[Secrets]]
 
@@ -28,7 +40,7 @@ Ctrl + U
 <!-- HTML Comments {{{-->
 ### HTML Comments
 
-Inspect HTML comments
+Review HTML comments and metadata to find any information leakage
 
 [[ZAP#HUD|ZAP HUD]]
 
@@ -43,12 +55,8 @@ Ctrl + U
 <!-- JavaScript Code {{{-->
 ### JavaScript Code
 
-Inspect JavaScript code for
-
-- hidden endpoints
-- credentials
-- tokens
-- keys
+Inspect JavaScript code for hidden endpoints,
+tokens, keys and [[Secrets]]
 
 [Firefox](https://www.firefox.com/en-US/) —
 View JavaScript code in the
@@ -56,10 +64,6 @@ View JavaScript code in the
 
 ```sh
 Ctrl + Shift + I
-```
-
-```sh
-Debugger
 ```
 
 <!-- }}} -->

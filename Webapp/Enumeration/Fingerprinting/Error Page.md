@@ -10,6 +10,17 @@ links: "[[Webapp]]"
 
 Error messages can leak information regarding the technologies used
 
+<!-- Info {{{-->
+> [!info]- Resources
+>
+> 0xdf
+>
+> - [Default 404 Pages](https://0xdf.gitlab.io/cheatsheets/404)
+>
+<!-- }}} -->
+
+___
+
 <!-- Get Error Page {{{-->
 ## Get Error Page
 
@@ -26,6 +37,12 @@ curl -X GET http://$target/404page
 > curl -X GET http://example.com/404page
 > ```
 <!-- }}} -->
+
+Send malformed requests
+
+```sh
+GET / MALFORMED REQUEST/1.1
+```
 
 ___
 <!-- }}} -->

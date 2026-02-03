@@ -11,17 +11,39 @@ links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
 Fingerpring the web server for version, application framework,
 authentication options, and missing security options
 
+<!-- Info {{{-->
+> [!info]- Resources
+>
+> OWASP WSTG
+>
+> [Fingerprint Web server](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/01-Information_Gathering/02-Fingerprint_Web_Server)
+>
+<!-- }}} -->
+
+<!-- Warning {{{-->
+> [!warning]
+>
+> Servers running older versions of software
+> without up-to-date security patches
+> can be susceptible to known version-specific exploits
+>
+<!-- }}} -->
+
+
 ___
 
-<!-- Version Details & CVEs {{{-->
-## Version Details & CVEs
+<!-- Web Server {{{-->
+## Web Server
 
-[[HTTP/Enumeration|Enumerate]] the HTTP service
+[[HTTP/Enumeration|Enumerate]] the [[HTTP/General|HTTP service]]
 
 [[Nmap]] — Search for additional version information
 
 ```sh
 nmap -sV [--version-all] $target [--stats-every=10s] -oA http-version
+```
+```sh
+nmap -sV $target --version-all -oA http-version
 ```
 
 <!-- Example {{{-->

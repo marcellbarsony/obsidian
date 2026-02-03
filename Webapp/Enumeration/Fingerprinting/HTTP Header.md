@@ -9,15 +9,15 @@ links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
 
 # HTTP Headers
 
-The [[Webapp/General/HTTP/HTTP Header]] fields define the operating parameters
-of an [[HTTP/General|HTTP]] transaction
+The [[HTTP/Header/General|HTTP Header]] fields define the operating parameters
+of an [[Networking/Services/HTTP/General|HTTP]] transaction
 
 ___
 
 <!-- Inspect {{{-->
 ## Inspect
 
-Enumerate [[Webapp/General/HTTP/HTTP Header|HTTP Response Headers]]
+Enumerate [[HTTP/Header/Response/General|HTTP Response Headers]]
 to reveal technologies used (*e.g., [[CMS]]*)
 
 Inspect HTTP headers in the browser
@@ -95,7 +95,7 @@ Grab banner & web server headers
 curl -IL http://$target
 ```
 
-Spoof [[User Agent]] and follow redirects
+Spoof [[Networking/Services/HTTP/General|User Agent String]] and follow redirects
 
 ```sh
 curl -A "Custom user-agent" -L http://$target

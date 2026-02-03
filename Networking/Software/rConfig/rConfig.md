@@ -175,8 +175,8 @@ use rconfig_vendors_auth_file_upload_rce
 >
 <!-- }}} -->
 
-4. Capture the [[HTTP/General#POST|POST]] request
-   and edit the [[HTTP Header#Content-Type|Content-Type]] header
+4. Capture the [[Networking/Services/HTTP/General#POST|POST]] request
+   and edit the [[Webapp/General/HTTP/Header/General#Content-Type|Content-Type]] header
 
 ```sh
 Content-Type: image/gif
