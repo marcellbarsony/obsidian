@@ -3,7 +3,7 @@ id: Dirsearch
 aliases: []
 tags:
   - Webapp/Enumeration/Tools/Dirsearch
-links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
+links: "[[Webapp/Enumeration/General|General]]"
 ---
 
 # Dirsearch

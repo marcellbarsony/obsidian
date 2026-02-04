@@ -3,7 +3,7 @@ id: Error Pages
 aliases: []
 tags:
   - Webapp/Enumeration/Fingerprinting/Error-Pages
-links: "[[Webapp]]"
+links: "[[Webapp/General]]"
 ---
 
 # Error Page

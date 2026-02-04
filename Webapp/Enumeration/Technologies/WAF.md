@@ -3,7 +3,7 @@ id: WAF
 aliases: []
 tags:
   - Webapp/Enumeration/Fingerprinting/WAF
-links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
+links: "[[Webapp/Enumeration/General|General]]"
 ---
 
 # WAF

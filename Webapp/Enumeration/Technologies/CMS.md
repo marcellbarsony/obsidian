@@ -3,7 +3,7 @@ id: CMS
 aliases: []
 tags:
   - Webapp/Enumeration/Fingerprinting/CMS
-links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
+links: "[[Webapp/Enumeration/General|General]]"
 ---
 
 # CMS

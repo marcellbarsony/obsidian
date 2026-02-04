@@ -3,7 +3,7 @@ id: amass
 aliases: []
 tags:
   - Webapp/Enumeration/Tools/amass
-links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
+links: "[[Webapp/Enumeration/General|General]]"
 ---
 
 # Amass

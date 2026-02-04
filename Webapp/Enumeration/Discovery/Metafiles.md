@@ -3,7 +3,7 @@ id: Metafiles
 aliases: []
 tags:
   - Webapp/Enumeration/Metafiles
-links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
+links: "[[Webapp/Enumeration/General|General]]"
 ---
 
 # Metafiles

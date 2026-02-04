@@ -3,7 +3,7 @@ id: theHarvester
 aliases: []
 tags:
   - Webapp/Enumeration/Tools/theHarvester
-links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
+links: "[[Webapp/Enumeration/General|General]]"
 ---
 
 # theHarvester

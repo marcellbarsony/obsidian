@@ -3,7 +3,7 @@ id: FinalRecon
 aliases: []
 tags:
   - Webapp/Enumeration/Fingerprinting/FinalRecon
-links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
+links: "[[Webapp/Enumeration/General|General]]"
 ---
 
 # FinalRecon

@@ -3,7 +3,7 @@ id: DNSEnum
 aliases: []
 tags:
   - Networking/Services/DNS/Tools/DNSEnum
-links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
+links: "[[Webapp/Enumeration/General|General]]"
 ---
 
 # DNSEnum

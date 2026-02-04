@@ -3,7 +3,7 @@ id: Web Contents
 aliases: []
 tags:
   - Webapp/Enumeration/Web-Contents
-links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
+links: "[[Webapp/Enumeration/General|General]]"
 ---
 
 # Web contents

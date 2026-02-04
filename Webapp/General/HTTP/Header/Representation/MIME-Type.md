@@ -25,8 +25,7 @@ or [Magic Bytes](https://web.archive.org/web/20240522030920/https://opensource.a
 <!-- Example {{{-->
 > [!example]-
 >
-> - GIF: `GIF87a` or `GIF89a`
+> - GIF: `GIF8`, `GIF87a`, `GIF89a`
 > - Text: Plain text
 >
 <!-- }}} -->
-

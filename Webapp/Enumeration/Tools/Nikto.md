@@ -3,7 +3,7 @@ id: Nikto
 aliases: []
 tags:
   - Webapp/Enumeration/Fingerprinting/Nikto
-links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
+links: "[[Webapp/Enumeration/General|General]]"
 ---
 
 # Nikto

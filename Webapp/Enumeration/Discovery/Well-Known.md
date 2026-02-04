@@ -3,7 +3,7 @@ id: Well-Known
 aliases: []
 tags:
   - Webapp/Enumeration/Well-Known
-links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
+links: "[[Webapp/Enumeration/General|General]]"
 ---
 
 # Well-Known

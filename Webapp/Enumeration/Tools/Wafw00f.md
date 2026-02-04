@@ -3,7 +3,7 @@ id: Wafw00f
 aliases: []
 tags:
   - Webapp/Enumeration/Fingerprinting/Wafw00f
-links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
+links: "[[Webapp/Enumeration/General|General]]"
 ---
 
 # Wafw00f

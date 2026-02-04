@@ -3,7 +3,7 @@ id: Virtual Hosts
 aliases: []
 tags:
   - Webapp/Enumeration/Infrastructure/Virtual_Hosts
-links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
+links: "[[Webapp/Enumeration/General|General]]"
 ---
 
 # Virtual Hosts

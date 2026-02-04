@@ -3,7 +3,7 @@ id: WhatWeb
 aliases: []
 tags:
   - Webapp/Enumeration/Fingerprinting/Tools/WhatWeb
-links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
+links: "[[Webapp/Enumeration/General|General]]"
 ---
 
 # WhatWeb

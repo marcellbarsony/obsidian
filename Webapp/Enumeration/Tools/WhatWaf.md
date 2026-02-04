@@ -3,7 +3,7 @@ id: WhatWaf
 aliases: []
 tags:
   - Webapp/Enumeration/Fingerprinting/Tools/WhatWaf
-links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
+links: "[[Webapp/Enumeration/General|General]]"
 ---
 
 # WhatWaf

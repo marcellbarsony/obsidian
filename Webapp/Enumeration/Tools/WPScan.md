@@ -3,7 +3,7 @@ id: WPScan
 aliases: []
 tags:
   - Webapp/Enumeration/Fingerprinting/Tools/WPScan
-links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
+links: "[[Webapp/Enumeration/General|General]]"
 ---
 
 # WPScan

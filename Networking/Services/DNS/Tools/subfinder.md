@@ -3,7 +3,7 @@ id: subfinder
 aliases: []
 tags:
   - Networking/Services/DNS/Tools/subfinder
-links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
+links: "[[Webapp/Enumeration/General|General]]"
 ---
 
 # subfinder

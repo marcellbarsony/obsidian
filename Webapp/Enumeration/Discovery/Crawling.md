@@ -3,7 +3,7 @@ id: Crawling
 aliases: []
 tags:
   - Webapp/Enumeration/Discovery/Crawling
-links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
+links: "[[Webapp/Enumeration/General|General]]"
 ---
 
 # Crawling

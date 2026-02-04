@@ -3,7 +3,7 @@ id: Fingerprinting
 aliases: []
 tags:
   - Webapp/Enumeration/Fingerprinting
-links: "[[Webapp/Enumeration/Enumeration|Enumeration]]"
+links: "[[Webapp/Enumeration/General|General]]"
 ---
 
 # Fingerprinting
