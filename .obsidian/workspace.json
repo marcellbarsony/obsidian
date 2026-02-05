@@ -55,37 +55,6 @@
           {
             "id": "42fe3f39e3ddeb1b",
             "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Webapp/Exploitation/Server-Side/File Upload/Exploitation.md",
-                "mode": "preview",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Exploitation"
-            }
-          }
-        ],
-        "currentTab": 1
-      },
-      {
-        "id": "956741d82314b023",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "adab4af5cda9c6a9",
-            "type": "leaf",
             "pinned": true,
             "state": {
               "type": "markdown",
@@ -108,8 +77,33 @@
               "icon": "lucide-file",
               "title": "Exploitation"
             }
+          },
+          {
+            "id": "3bae0957fbf13d91",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Webapp/Exploitation/Server-Side/File Upload/General.md",
+                "mode": "preview",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "General"
+            }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -181,8 +175,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 242.5,
-    "collapsed": true
+    "width": 221.5
   },
   "right": {
     "id": "d9ceb6f94f351234",
@@ -199,13 +192,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Webapp/Exploitation/Server-Side/File Upload/Exploitation.md",
+                "file": "Webapp/Exploitation/Server-Side/File Upload/General.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Exploitation"
+              "title": "Outline of General"
             }
           },
           {
@@ -254,7 +247,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Webapp/Exploitation/Server-Side/File Upload/Exploitation.md",
+                "file": "Webapp/Exploitation/Server-Side/File Upload/General.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -282,7 +275,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Exploitation"
+              "title": "Graph of General"
             }
           }
         ]
@@ -302,20 +295,28 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "adab4af5cda9c6a9",
+  "active": "3bae0957fbf13d91",
   "lastOpenFiles": [
-    "Webapp/Exploitation/Server-Side/File Upload/Enumeration.md",
     "Webapp/Exploitation/Server-Side/File Upload/Exploitation.md",
-    "Webapp/Exploitation/Server-Side/File Upload/src/canvas.canvas",
     "Webapp/Exploitation/Server-Side/File Upload/General.md",
-    "Webapp/Exploitation/Server-Side/File Upload/src/burp-filename-modification.png",
-    "Webapp/Exploitation/Server-Side/File Upload/src/burp-brm.png",
-    "Webapp/Exploitation/Server-Side/File Upload/src/20260204-014312.png",
+    "Webapp/Exploitation/Server-Side/File Upload/src/svg-xxe-base64.png",
+    "Webapp/Exploitation/Server-Side/File Upload/src/svg-xee-base64.png",
+    "Webapp/Exploitation/Server-Side/File Upload/src/20260205-040949.png",
+    "Webapp/Exploitation/Server-Side/File Upload/src/svg-xxe.png",
+    "Webapp/Exploitation/Server-Side/File Upload/src/20260205-040148.png",
+    "Webapp/Exploitation/Server-Side/File Upload/Enumeration.md",
+    "Webapp/Exploitation/Server-Side/File Inclusion/Local File Inclusion.md",
+    "Webapp/Exploitation/Server-Side/File Inclusion/General.md",
+    "Webapp/Tools/ZAP/Fuzzer.md",
+    "Webapp/Exploitation/Server-Side/File Upload/src/file-upload-mindmap.png",
+    "Webapp/Technology/Camaleon.md",
+    "Webapp/Exploitation/Server-Side/File Upload/src/page-inspector.png",
+    "Webapp/Exploitation/Server-Side/File Upload/src/file-upload-select-file-types.jpg",
     "Webapp/Exploitation/Server-Side/File Upload/src/file-upload-arbitrary.png",
-    "Webapp/Exploitation/Server-Side/File Upload/src/upload-file-arbitrary.png",
-    "Webapp/Exploitation/Server-Side/File Upload/src/20260204-002338.png",
+    "Webapp/Exploitation/Server-Side/File Upload/src/canvas.canvas",
+    "Webapp/Exploitation/Server-Side/File Upload/src/burp-polyglot.png",
+    "Webapp/Tools/ZAP/Proxy.md",
     "Webapp/Exploitation/Server-Side/File Upload/Enumeration_1.md",
-    "Webapp/Exploitation/Server-Side/File Inclusion/src/burp-encode.png",
     "Webapp/Exploitation/Server-Side/File Inclusion/src/Untitled.canvas",
     "Webapp/Exploitation/Cookies & Parameters.md",
     "Webapp/Enumeration/Technologies/CMS.md",
@@ -323,15 +324,11 @@
     "Webapp/Enumeration/Vulnerabilities/Public Exploits.md",
     "Webapp/Enumeration/Checklist.md",
     "Webapp/General.md",
-    "Webapp/Technology/Camaleon.md",
     "Webapp/Technology/Nibbleblog.md",
-    "Webapp/Exploitation/Server-Side/File Upload/src/file-upload-mindmap.png",
     "test.txt",
     "Untitled.canvas",
     "Untitled.base",
     "Untitled.md",
-    "Webapp/Exploitation/Server-Side/File Upload/src/burp-content-type.png",
-    "Webapp/Exploitation/Server-Side/File Upload/src/burp-fuzz-content-type.png",
     "Webapp/General/HTTP/Header/Representation/MIME-Type.md",
     "Webapp/Exploitation/Checklist.md",
     "Pentest/Shells/Web Shell/General.md",
@@ -340,10 +337,6 @@
     "Webapp/Enumeration/Fingerprinting/HTTP Header.md",
     "Webapp/Enumeration/Discovery/Login Functionality.md",
     "Webapp/Enumeration/Discovery/Metafiles.md",
-    "Webapp/Enumeration/Content/Web Contents.md",
-    "Webapp/General/HTTP/Method/TRACE.md",
-    "Webapp/General/HTTP/Method/OPTIONS_1.md",
-    "Webapp/General/HTTP/Method/OPTIONS.md",
     "Webapp/General/HTTP/Header/Representation",
     "Webapp/General/HTTP/Header/Response",
     "Webapp/General/HTTP/Header/Request",
