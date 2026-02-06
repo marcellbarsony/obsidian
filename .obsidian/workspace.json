@@ -79,12 +79,12 @@
             }
           },
           {
-            "id": "3bae0957fbf13d91",
+            "id": "b53eaec95172394a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Webapp/Exploitation/Server-Side/File Upload/General.md",
+                "file": "Webapp/Exploitation/Server-Side/File Upload/Exploitation.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -99,7 +99,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "General"
+              "title": "Exploitation"
             }
           }
         ],
@@ -192,13 +192,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Webapp/Exploitation/Server-Side/File Upload/General.md",
+                "file": "Webapp/Exploitation/Server-Side/File Upload/Exploitation.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of General"
+              "title": "Outline of Exploitation"
             }
           },
           {
@@ -247,7 +247,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Webapp/Exploitation/Server-Side/File Upload/General.md",
+                "file": "Webapp/Exploitation/Server-Side/File Upload/Exploitation.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -275,7 +275,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of General"
+              "title": "Graph of Exploitation"
             }
           }
         ]
@@ -295,27 +295,37 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "3bae0957fbf13d91",
+  "active": "b53eaec95172394a",
   "lastOpenFiles": [
+    "Webapp/Exploitation/Server-Side/File Upload/Enumeration.md",
     "Webapp/Exploitation/Server-Side/File Upload/Exploitation.md",
     "Webapp/Exploitation/Server-Side/File Upload/General.md",
-    "Webapp/Exploitation/Server-Side/File Upload/src/svg-xxe-base64.png",
-    "Webapp/Exploitation/Server-Side/File Upload/src/svg-xee-base64.png",
-    "Webapp/Exploitation/Server-Side/File Upload/src/20260205-040949.png",
-    "Webapp/Exploitation/Server-Side/File Upload/src/svg-xxe.png",
-    "Webapp/Exploitation/Server-Side/File Upload/src/20260205-040148.png",
-    "Webapp/Exploitation/Server-Side/File Upload/Enumeration.md",
-    "Webapp/Exploitation/Server-Side/File Inclusion/Local File Inclusion.md",
-    "Webapp/Exploitation/Server-Side/File Inclusion/General.md",
-    "Webapp/Tools/ZAP/Fuzzer.md",
-    "Webapp/Exploitation/Server-Side/File Upload/src/file-upload-mindmap.png",
-    "Webapp/Technology/Camaleon.md",
-    "Webapp/Exploitation/Server-Side/File Upload/src/page-inspector.png",
-    "Webapp/Exploitation/Server-Side/File Upload/src/file-upload-select-file-types.jpg",
-    "Webapp/Exploitation/Server-Side/File Upload/src/file-upload-arbitrary.png",
-    "Webapp/Exploitation/Server-Side/File Upload/src/canvas.canvas",
-    "Webapp/Exploitation/Server-Side/File Upload/src/burp-polyglot.png",
+    "Pentest/Kali Linux.md",
+    "Linux/General.md",
     "Webapp/Tools/ZAP/Proxy.md",
+    "Webapp/Tools/ZAP/General.md",
+    "Webapp/Tools/ZAP/HUD.md",
+    "Webapp/Tools/ZAP/Report.md",
+    "Webapp/Tools/ZAP/Fuzzer.md",
+    "Webapp/Exploitation/Server-Side/Access Control/IDOR.md",
+    "Webapp/Exploitation/Server-Side/Access Control/Access Control.md",
+    "Webapp/Exploitation/Server-Side/File Inclusion/RFI.md",
+    "Webapp/Tools/ZAP/src/hud-comments.png",
+    "Webapp/Tools/ZAP/src/20260205-213258.png",
+    "Webapp/Tools/ZAP/src/hud-break.png",
+    "Webapp/Tools/ZAP/src/20260205-212029.png",
+    "Webapp/Tools/ZAP/src/hud-fields.png",
+    "Webapp/Tools/ZAP/src/hud-scope.png",
+    "Webapp/Tools/ZAP/src/20260205-211520.png",
+    "Webapp/Tools/ZAP/src/20260205-211438.png",
+    "Webapp/Tools/ZAP/src/hud-sites.png",
+    "Webapp/Tools/ZAP/src/20260205-210932.png",
+    "Webapp/Tools/ZAP/Spider.md",
+    "Webapp/Tools/ZAP/Spider_1.md",
+    "Webapp/Exploitation/Server-Side/File Inclusion/LFI.md",
+    "Webapp/Exploitation/Server-Side/File Inclusion/General.md",
+    "Webapp/Technology/Camaleon.md",
+    "Webapp/Exploitation/Server-Side/File Upload/src/canvas.canvas",
     "Webapp/Exploitation/Server-Side/File Upload/Enumeration_1.md",
     "Webapp/Exploitation/Server-Side/File Inclusion/src/Untitled.canvas",
     "Webapp/Exploitation/Cookies & Parameters.md",
@@ -328,15 +338,6 @@
     "test.txt",
     "Untitled.canvas",
     "Untitled.base",
-    "Untitled.md",
-    "Webapp/General/HTTP/Header/Representation/MIME-Type.md",
-    "Webapp/Exploitation/Checklist.md",
-    "Pentest/Shells/Web Shell/General.md",
-    "Webapp/Enumeration/Discovery/Execution Paths.md",
-    "Networking/Services/HTTP/General.md",
-    "Webapp/Enumeration/Fingerprinting/HTTP Header.md",
-    "Webapp/Enumeration/Discovery/Login Functionality.md",
-    "Webapp/Enumeration/Discovery/Metafiles.md",
     "Webapp/General/HTTP/Header/Representation",
     "Webapp/General/HTTP/Header/Response",
     "Webapp/General/HTTP/Header/Request",

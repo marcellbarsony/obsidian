@@ -4,5 +4,5 @@ aliases:
   - Linux Privesc
 tags:
   - Linux/Privesc
-links: "[[Linux/Linux]]"
+links: "[[Linux/General]]"
 ---

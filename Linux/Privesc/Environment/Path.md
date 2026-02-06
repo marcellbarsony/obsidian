@@ -3,7 +3,7 @@ id: Environment
 aliases: []
 tags:
   - Linux/Privesc/Environment
-links: "[[Linux/Linux]]"
+links: "[[Linux/General]]"
 ---
 
 # PATH

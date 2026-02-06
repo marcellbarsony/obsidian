@@ -42,7 +42,7 @@ Ctrl + U
 
 Review HTML comments and metadata to find any information leakage
 
-[[ZAP#HUD|ZAP HUD]]
+[[Webapp/Tools/ZAP/General#HUD|ZAP HUD]]
 
 [Firefox](https://www.firefox.com/en-US/) — View Page Source
 
@@ -117,7 +117,7 @@ ___
 
 Inspect the webapp for hidden fields
 
-- [[ZAP#HUD|ZAP HUD]]
+- [[Webapp/Tools/ZAP/General#HUD|ZAP HUD]]
 
 ___
 <!-- }}} -->
