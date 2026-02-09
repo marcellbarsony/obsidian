@@ -8,77 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "f58d89d382e4f8c3",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "canvas",
-              "state": {
-                "file": "Webapp/Exploitation/Server-Side/File Upload/src/canvas.canvas",
-                "viewState": {
-                  "x": -566.5147406433326,
-                  "y": 449.38990894375877,
-                  "zoom": -0.8000000000000002
-                }
-              },
-              "pinned": true,
-              "icon": "lucide-layout-dashboard",
-              "title": "canvas"
-            }
-          },
-          {
-            "id": "d981790980c6e232",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Webapp/Exploitation/Server-Side/File Upload/Enumeration.md",
-                "mode": "preview",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "pinned": true,
-              "icon": "lucide-file",
-              "title": "Enumeration"
-            }
-          },
-          {
-            "id": "42fe3f39e3ddeb1b",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Webapp/Exploitation/Server-Side/File Upload/Exploitation.md",
-                "mode": "preview",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "pinned": true,
-              "icon": "lucide-file",
-              "title": "Exploitation"
-            }
-          },
-          {
             "id": "b53eaec95172394a",
             "type": "leaf",
             "state": {
@@ -102,8 +31,7 @@
               "title": "Exploitation"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -297,44 +225,47 @@
   },
   "active": "b53eaec95172394a",
   "lastOpenFiles": [
-    "Webapp/Exploitation/Server-Side/File Upload/Enumeration.md",
+    "Webapp/Exploitation/Server-Side/Path Traversal/Exploitation.md",
     "Webapp/Exploitation/Server-Side/File Upload/Exploitation.md",
     "Webapp/Exploitation/Server-Side/File Upload/General.md",
-    "Pentest/Kali Linux.md",
-    "Linux/General.md",
-    "Webapp/Tools/ZAP/Proxy.md",
-    "Webapp/Tools/ZAP/General.md",
-    "Webapp/Tools/ZAP/HUD.md",
-    "Webapp/Tools/ZAP/Report.md",
-    "Webapp/Tools/ZAP/Fuzzer.md",
-    "Webapp/Exploitation/Server-Side/Access Control/IDOR.md",
-    "Webapp/Exploitation/Server-Side/Access Control/Access Control.md",
-    "Webapp/Exploitation/Server-Side/File Inclusion/RFI.md",
+    "Webapp/Exploitation/Server-Side/Path Traversal/Enumeration.md",
+    "Webapp/Exploitation/Server-Side/Path Traversal/General.md",
+    "Webapp/Exploitation/Server-Side/Path Traversal/src/burp-intercept.png",
+    "Webapp/Exploitation/Server-Side/Path Traversal/src/burp-repeater.png",
+    "Webapp/Exploitation/Server-Side/Path Traversal/src/source-code.png",
+    "Networking/Tools/Amass.md",
+    "Pentest/config.sh",
+    "Networking/Tools/Pivoting/Pivoting.md",
+    "Networking/Tools/Pivoting/Chisel.md",
+    "Networking/Tools/Pivoting/Ligolo.md",
+    "Networking/Services/General.md",
+    "Networking/Services/SMB/Tools/enum4linux-ng.md",
+    "Networking/Services/Oracle TNS/Tools/SQL Plus.md",
+    "Networking/Services/Oracle TNS/Tools/ODAT.md",
+    "Networking/Services/IPMI/Tools/ipmitool.md",
+    "Networking/Services/FTP/General.md",
+    "Networking/Services/FTP/Enumeration.md",
+    "Networking/Services/FTP/Usage.md",
+    "Networking/Services/DNS/General.md",
+    "Networking/Services/DNS/Exploitation.md",
+    "Networking/Services/DNS/Enumeration.md",
+    "Networking/Networking.md",
+    "Networking/Tools/General.md",
+    "Networking/Tools/Responder.md",
+    "Networking/Tools/Impacket.md",
+    "Pentest/Preparation.md",
+    "Pentest/Secrets.md",
+    "Pentest/install.sh",
+    "Microsoft/AD/src/ad.svg",
+    "Webapp/Technology/Joomla",
     "Webapp/Tools/ZAP/src/hud-comments.png",
     "Webapp/Tools/ZAP/src/20260205-213258.png",
     "Webapp/Tools/ZAP/src/hud-break.png",
     "Webapp/Tools/ZAP/src/20260205-212029.png",
     "Webapp/Tools/ZAP/src/hud-fields.png",
     "Webapp/Tools/ZAP/src/hud-scope.png",
-    "Webapp/Tools/ZAP/src/20260205-211520.png",
-    "Webapp/Tools/ZAP/src/20260205-211438.png",
-    "Webapp/Tools/ZAP/src/hud-sites.png",
-    "Webapp/Tools/ZAP/src/20260205-210932.png",
-    "Webapp/Tools/ZAP/Spider.md",
-    "Webapp/Tools/ZAP/Spider_1.md",
-    "Webapp/Exploitation/Server-Side/File Inclusion/LFI.md",
-    "Webapp/Exploitation/Server-Side/File Inclusion/General.md",
-    "Webapp/Technology/Camaleon.md",
     "Webapp/Exploitation/Server-Side/File Upload/src/canvas.canvas",
-    "Webapp/Exploitation/Server-Side/File Upload/Enumeration_1.md",
     "Webapp/Exploitation/Server-Side/File Inclusion/src/Untitled.canvas",
-    "Webapp/Exploitation/Cookies & Parameters.md",
-    "Webapp/Enumeration/Technologies/CMS.md",
-    "Webapp/Enumeration/Vulnerabilities/Scanning.md",
-    "Webapp/Enumeration/Vulnerabilities/Public Exploits.md",
-    "Webapp/Enumeration/Checklist.md",
-    "Webapp/General.md",
-    "Webapp/Technology/Nibbleblog.md",
     "test.txt",
     "Untitled.canvas",
     "Untitled.base",
@@ -343,9 +274,6 @@
     "Webapp/General/HTTP/Header/Request",
     "Webapp/General/HTTP/Method",
     "Webapp/General/HTTP/Header",
-    "Pentest/shell.sh",
-    "Webapp/Exploitation/Server-Side/File Upload/src",
-    "Webapp/Exploitation/Server-Side/File Inclusion/Tools",
     "Networking/Services/SMB/Untitled.canvas"
   ]
 }

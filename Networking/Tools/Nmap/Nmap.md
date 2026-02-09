@@ -3,7 +3,7 @@ id: Nmap
 aliases: []
 tags:
   - Networking/Tools/Nmap
-links: "[[Networking/Tools/Tools]]"
+links: "[[Networking/Tools/General]]"
 ---
 
 # Nmap

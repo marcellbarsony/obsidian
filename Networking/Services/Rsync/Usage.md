@@ -3,7 +3,7 @@ id: Rsync
 aliases: []
 tags:
   - Networking/Services/Rsync/Usage
-links: "[[Services]]"
+links: "[[Networking/Services/General]]"
 ---
 
 # Usage

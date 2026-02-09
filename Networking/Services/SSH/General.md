@@ -6,7 +6,7 @@ tags:
   - Networking/Services/SSH/General
 port:
   - 22
-links: "[[Services]]"
+links: "[[Networking/Services/General]]"
 ---
 
 <!-- SSH {{{-->

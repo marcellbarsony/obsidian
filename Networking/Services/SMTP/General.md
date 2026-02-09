@@ -3,7 +3,7 @@ id: General
 aliases: []
 tags:
   - Networking/Services/SMTP/General
-links: "[[Services]]"
+links: "[[Networking/Services/General]]"
 port:
   - 25
   - 465

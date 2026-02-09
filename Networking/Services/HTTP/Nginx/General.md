@@ -3,7 +3,7 @@ id: General
 aliases: []
 tags:
   - Networking/Services/HTTP/Nginx/General
-links: "[[Services]]"
+links: "[[Networking/Services/General]]"
 ---
 
 # General

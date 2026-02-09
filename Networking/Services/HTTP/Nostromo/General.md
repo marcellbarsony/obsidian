@@ -1,9 +1,10 @@
 ---
 id: General
-aliases: ["Nostromo NHTTPD"]
+aliases:
+  - Nostromo NHTTPD
 tags:
   - Networking/Services/HTTP/Nostromo/General
-links: "[[Services]]"
+links: "[[Networking/Services/General]]"
 ---
 
 # General

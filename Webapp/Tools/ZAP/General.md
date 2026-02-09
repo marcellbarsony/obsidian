@@ -15,7 +15,7 @@ is the world’s most widely used web app scanner
 <!-- Install {{{-->
 ## Install
 
-[Kali Tools - zaproxy](https://www.kali.org/tools/zaproxy/)
+[Kali Tools](https://www.kali.org/tools/zaproxy/)
 
 ```sh
 sudo apt install zaproxy

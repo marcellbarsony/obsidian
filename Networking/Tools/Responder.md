@@ -3,7 +3,7 @@ id: Responder
 aliases: []
 tags:
   - Networking/Tools/Responder
-links: "[[Networking/Tools/Tools]]"
+links: "[[Networking/Tools/General]]"
 ---
 
 # Responder

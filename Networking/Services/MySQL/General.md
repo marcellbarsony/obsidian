@@ -3,7 +3,7 @@ id: General
 aliases: []
 tags:
   - Networking/Services/MySQL/General
-links: "[[Services]]"
+links: "[[Networking/Services/General]]"
 port:
   - 3306
 ---

@@ -3,7 +3,7 @@ id: Impacket
 aliases: []
 tags:
   - Networking/Tools/Impacket
-links: "[[Networking/Tools/Tools]]"
+links: "[[Networking/Tools/General]]"
 ---
 
 # Impacket
@@ -30,6 +30,23 @@ sudo apt install impacket-scripts
 ```sh
 sudo apt install python3-impacket
 ```
+
+[pipx](https://github.com/pypa/pipx)
+is recommended over `pip` for system-wide installations
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> sudo apt install pipx git
+> pipx ensurepath
+> ```
+>
+> ```sh
+> python3 -m pipx install impacket
+> ```
+<!-- }}} -->
+
 ___
 <!-- }}} -->
 

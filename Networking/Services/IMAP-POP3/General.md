@@ -4,7 +4,7 @@ aliases:
   - IMAP-POP3
 tags:
   - Networking/Services/IMAP-POP3/General
-links: "[[Services]]"
+links: "[[Networking/Services/General]]"
 ports:
   - 110
   - 143

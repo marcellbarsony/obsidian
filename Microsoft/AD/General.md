@@ -72,6 +72,7 @@ ___
 > - **Root Domain** (*Forest*):
 >   Root domain that contains subdomains
 >  (*e.g., `INLANEFREIGHT.LOCAL`*)
+> - **Forests**: `INLANEFREIGHT.LOCAL`, `FREIGHTLOGISTICS.LOCAL`
 > - **Subdomain**:
 >  (*e.g., `ADMIN.INLANEFREIGHT.LOCAL`,
 >  `CORP.INLANEFREIGHT.LOCAL`
@@ -96,8 +97,6 @@ ___
 > ```
 <!-- }}} -->
 
-- **Forests**: `INLANEFREIGHT.LOCAL`, `FREIGHTLOGISTICS.LOCAL`
-
 ![[ad-forests-domains.png]]
 
 ### Objects
@@ -117,9 +116,7 @@ that run in the context of a user or computer account
 
 A **Forest** is a collection of Active Directory domains
 
-#### Tree
-
-#### Domain
+##### Domain
 
 ##### Organizational Units
 

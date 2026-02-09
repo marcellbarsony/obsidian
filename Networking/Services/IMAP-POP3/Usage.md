@@ -2,7 +2,7 @@
 id: IMAP-POP3
 tags:
   - Networking/Services/IMAP-POP3/Usage
-links: "[[Services]]"
+links: "[[Networking/Services/General]]"
 ---
 
 # Usage

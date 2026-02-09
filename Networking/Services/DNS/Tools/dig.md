@@ -2,7 +2,7 @@
 id: dig
 tags:
   - Networking/Services/DNS/Tools/dig
-links: "[[Services]]"
+links: "[[Networking/Services/General]]"
 ---
 
 # DIG

@@ -4,7 +4,7 @@ aliases:
   - Simple Query Language
 tags:
   - Networking/Services/SQL
-links: "[[Services]]"
+links: "[[Networking/Services/General]]"
 ---
 
 # SQL

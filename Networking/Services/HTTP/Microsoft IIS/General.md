@@ -1,9 +1,10 @@
 ---
 id: Microsoft IIS
-aliases: ["Microsoft"]
+aliases:
+  - Microsoft
 tags:
   - Networking/Services/HTTP/Microsoft-IIS/General
-links: "[[Services]]"
+links: "[[Networking/Services/General]]"
 ---
 
 # General

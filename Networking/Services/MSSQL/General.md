@@ -3,7 +3,7 @@ id: General
 aliases: []
 tags:
   - Networking/Services/MSSQL/General
-links: "[[Services]]"
+links: "[[Networking/Services/General]]"
 port:
   - 1433
   - 1434
@@ -110,11 +110,11 @@ Windows will process the login request to the database management system
 either via
 
 - Local [[SAM]] database
-- [[Domain Controller]] (*hosting [[Active Directory]]*)
+- [[Domain Controller]] (*hosting [[Microsoft/AD/General]]*)
 
 > [!tip]- Active Directory
 >
-> Using [[Active Directory]] can be ideal for auditing activity and
+> Using [[Microsoft/AD/General]] can be ideal for auditing activity and
 > controlling access in a Windows environment
 >
 > > [!warning]
@@ -127,7 +127,7 @@ either via
 Mixed mode supports authentication by
 
 - SQL server: Credentials are stored within the SQL server
-- [[Domain Controller]] (*hosting [[Active Directory]]*)
+- [[Domain Controller]] (*hosting [[Microsoft/AD/General]]*)
 
 Initially, the SQL service will likely run as `NT SERVICE\MSSQLSERVER`
 

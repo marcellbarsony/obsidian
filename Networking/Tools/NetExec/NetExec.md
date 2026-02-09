@@ -4,7 +4,7 @@ aliases:
   - CrackMapExec
 tags:
   - Networking/Tools/NetExec
-links: "[[Networking/Tools/Tools]]"
+links: "[[Networking/Tools/General]]"
 ---
 
 # NetExec (Nm)
@@ -25,6 +25,29 @@ NetExec [Installation](https://www.netexec.wiki/getting-started/installation)
 ```sh
 sudo apt install netexec
 ```
+
+Install via [NetExec Wiki](https://www.netexec.wiki/)
+
+<!-- Tip {{{-->
+> [!tip]
+>
+> Using [pipx](https://github.com/pypa/pipx) to install NetExec is recommended.
+> This allows to use `NetExec` and the `nxcdb` system-wide.
+<!-- }}} -->
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> sudo apt install pipx git
+> ```
+> ```sh
+> pipx ensurepath
+> ```
+> ```sh
+> pipx install git+https://github.com/Pennyw0rth/NetExec
+> ```
+<!-- }}} -->
 
 ___
 <!-- }}} -->

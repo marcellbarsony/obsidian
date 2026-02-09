@@ -22,7 +22,7 @@ Privilege Escalation may be necessary
    (*e.g., a database*)
 3. To gain [NT AUTHORITY\System](https://learn.microsoft.com/en-us/windows/win32/services/localsystem-account)
    level access on a domain-joined machine
-   to gain a foothold into the client's [[Active Directory]] environment
+   to gain a foothold into the client's [[Microsoft/AD/General]] environment
 4. To obtain credentials to move laterally
    or escalate privileges within the client's network
 

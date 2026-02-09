@@ -54,7 +54,7 @@ Get-LocalUser <user> | Get-LocalGroupMember
 **DOMAIN**
 
 [Get-ADUser](https://learn.microsoft.com/en-us/powershell/module/activedirectory/get-aduser?view=windowsserver2025-ps) —
-Get [[Active Directory]] user
+Get [[Microsoft/AD/General]] user
 
 ```powershell
 Get-ADUser <user> -Properties MemberOf | Select-Object -Expand MemberOf
@@ -133,14 +133,14 @@ C:\htb> net localgroup
 **DOMAIN**
 
 [net group](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc754051(v=ws.11)) —
-Get [[Active Directory]] domain groups
+Get [[Microsoft/AD/General]] domain groups
 
 ```sh
 net group /domain
 ```
 
 [Get-ADGroup](https://learn.microsoft.com/en-us/powershell/module/activedirectory/get-adgroup?view=windowsserver2025-ps) —
-Get [[Active Directory]] domain groups
+Get [[Microsoft/AD/General]] domain groups
 
 ```powershell
 Get-ADGroup -Filter *
@@ -247,7 +247,7 @@ Get-NetGroupMember -Identity "Domain Admins" -Recurse
 can control everything across every domain in the entire forest
 
 **Enterprise Admins** exist only in the root domain of an
-[[Active Directory]] forest of domains
+[[Microsoft/AD/General]] forest of domains
 
 <!-- Actions {{{-->
 > [!tip]- Actions
@@ -314,7 +314,7 @@ unless the user is part of [[#Server Operators]]
 <!-- Actions {{{-->
 > [!tip]- Actions
 >
-> - Read deleted [[Active Directory]] objects
+> - Read deleted [[Microsoft/AD/General]] objects
 <!-- }}} -->
 
 ```powershell
@@ -356,7 +356,7 @@ Get-NetGroupMember -Identity "Backup Operators" -Recurse
 <!-- Export NTLM Hashes {{{-->
 **Export NTLM Hashes**
 
-The [[Active Directory]] database `NTDS.dit` contains
+The [[Microsoft/AD/General]] database `NTDS.dit` contains
 the NTLM hashes for all user and computer objects in the domain
 
 1. Log in to the [[Domain Controller]]
@@ -526,7 +526,7 @@ robocopy /B F:\Windows\NTDS .\ntds ntds.dit
 <!-- }}} -->
 
 [secretsdump.py](https://github.com/fortra/impacket/blob/master/examples/secretsdump.py) —
-Extract all [[Active Directory]] account credentials
+Extract all [[Microsoft/AD/General]] account credentials
 
 ```sh
 secretsdump.py -ntds ntds.dit -system SYSTEM -hashes lmhash:nthash LOCAL
@@ -562,7 +562,7 @@ secretsdump.py -ntds ntds.dit -system SYSTEM -hashes lmhash:nthash LOCAL
 <!-- }}} -->
 
 [DSInternals](https://github.com/MichaelGrafnetter/DSInternals) —
-Extract all [[Active Directory]] account credentials
+Extract all [[Microsoft/AD/General]] account credentials
 
 ```powershell
 Import-Module .\DSInternals.psd1
@@ -794,7 +794,7 @@ that can be leveraged to escalate privileges on a [[Domain Controller]]
 > [!danger]
 >
 > [[DNS/General|DNS]] may be taken down
-> for the entire [[Active Directory]] environment
+> for the entire [[Microsoft/AD/General]] environment
 <!-- }}} -->
 
 <!-- Attack Overview {{{-->

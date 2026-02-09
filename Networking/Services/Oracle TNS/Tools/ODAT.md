@@ -3,7 +3,7 @@ id: ODAT
 aliases: []
 tags:
   - Networking/Tools/ODAT
-links: "[[Networking/Tools/Tools]]"
+links: "[[Networking/Tools/General]]"
 ---
 
 # ODAT
@@ -13,6 +13,14 @@ is designed to enumerate and exploit security flaws
 (*e.g., SQL injection, remote code execution, privilege escalation*)
 in Oracle databases
 
+<!-- Info {{{-->
+> [!info]- Resources
+>
+> - [GitHub](https://github.com/quentinhardy/odat)
+> - [LevelBlue - Cracking the Giant: How ODAT Challenges Oracle, the King of Databases](https://www.levelblue.com/blogs/spiderlabs-blog/cracking-the-giant-how-odat-challenges-oracle-the-king-of-databases/)
+>
+<!-- }}} -->
+
 ___
 
 <!-- Install {{{-->
@@ -21,7 +29,7 @@ ___
 <!-- Repository {{{-->
 ### Repository
 
-[Kali tools](https://www.kali.org/tools/odat/)
+[Kali Tools](https://www.kali.org/tools/odat/)
 
 ```sh
 sudo apt install odat
@@ -104,10 +112,12 @@ Run ODAT against a target
 odat all -s $target
 ```
 
+<!-- Info {{{-->
 > [!info]-
 >
 > - `all`: run all modules
 > - `-s`: 
+<!-- }}} -->
 
 <!-- Example {{{-->
 > [!example]-

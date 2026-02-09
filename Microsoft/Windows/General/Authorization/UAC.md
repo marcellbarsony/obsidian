@@ -24,7 +24,7 @@ can perform tasks that could potentially compromise the system
 Administrators can use security policies to configure UAC
 
 - Local: [secpol.msc](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/security-policy-settings/how-to-configure-security-policy-settings)
-- [[Active Directory]]: [[GPO]]
+- [[Microsoft/AD/General]]: [[GPO]]
 
 [Microsoft Learn - User Account Control settings and configuration](https://learn.microsoft.com/en-us/windows/security/application-security/application-control/user-account-control/settings-and-configuration)
 

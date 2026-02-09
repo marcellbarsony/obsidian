@@ -4,7 +4,7 @@ aliases:
   - Network File System
 tags:
   - Networking/Services/NFS/Enumeration
-links: "[[Services]]"
+links: "[[Networking/Services/General]]"
 ---
 
 # Enumeration

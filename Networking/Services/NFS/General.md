@@ -4,10 +4,10 @@ aliases:
   - Network File System
 tags:
   - Networking/Services/NFS/General
-links: "[[Services]]"
+links: "[[Networking/Services/General]]"
 ports:
-    - 111
-    - 2049
+  - 111
+  - 2049
 ---
 
 # NFS

@@ -3,7 +3,7 @@ id: Amass
 aliases: []
 tags:
   - Networking/Tools/Amass
-links: "[[Networking/Tools/Tools]]"
+links: "[[Networking/Tools/General]]"
 ---
 
 # Amass

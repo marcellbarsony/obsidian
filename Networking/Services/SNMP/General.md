@@ -4,7 +4,7 @@ aliases:
   - Simple Network Management Protocol
 tags:
   - Networking/Services/SNMP/General
-links: "[[Services]]"
+links: "[[Networking/Services/General]]"
 port:
   - 161
   - 162

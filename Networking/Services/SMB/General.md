@@ -3,7 +3,7 @@ id: General
 aliases: []
 tags:
   - Networking/Services/SMB/General
-links: "[[Services]]"
+links: "[[Networking/Services/General]]"
 port:
   - 139
   - 445

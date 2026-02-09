@@ -5,7 +5,7 @@ tags:
   - Networking/Services/Rsync/General
 port:
   - 873
-links: "[[Services]]"
+links: "[[Networking/Services/General]]"
 ---
 
 # General

@@ -4,7 +4,7 @@ aliases:
   - Domain Name System
 tags:
   - Networking/Services/DNS/Enumeration
-links: "[[Services]]"
+links: "[[Networking/Services/General]]"
 ---
 
 # Enumeration

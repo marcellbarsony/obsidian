@@ -3,7 +3,7 @@ id: Usage
 aliases: []
 tags:
   - Networking/Services/HTTP/Nginx/Usage
-links: "[[Services]]"
+links: "[[Networking/Services/General]]"
 ---
 
 # Usage

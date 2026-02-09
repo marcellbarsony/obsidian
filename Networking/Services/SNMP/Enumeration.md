@@ -3,7 +3,7 @@ id: Enumeration
 aliases: []
 tags:
   - Networking/Services/SNMP/Enumeration
-links: "[[Services]]"
+links: "[[Networking/Services/General]]"
 ---
 
 # Enumeration

@@ -4,7 +4,7 @@ aliases:
   - Hypertext Transfer Protocol
 tags:
   - Networking/Services/HTTP/General
-links: "[[Services]]"
+links: "[[Networking/Services/General]]"
 port:
   - 80
   - 443

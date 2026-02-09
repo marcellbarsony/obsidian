@@ -2,7 +2,7 @@
 id: dig
 tags:
   - Networking/Services/DNS/Tools/nslookup
-links: "[[Services]]"
+links: "[[Networking/Services/General]]"
 ---
 
 # nslookup

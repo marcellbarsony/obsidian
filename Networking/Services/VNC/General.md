@@ -4,7 +4,7 @@ aliases:
   - Virtual Network Computing
 tags:
   - Networking/Services/VNC/General
-links: "[[Services]]"
+links: "[[Networking/Services/General]]"
 port:
   - 5800
   - 5801

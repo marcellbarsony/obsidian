@@ -2,7 +2,7 @@
 id: Findomain
 tags:
   - Networking/Services/DNS/Tools/host
-links: "[[Services]]"
+links: "[[Networking/Services/General]]"
 ---
 
 

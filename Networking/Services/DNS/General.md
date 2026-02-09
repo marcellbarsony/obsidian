@@ -4,7 +4,7 @@ aliases:
   - Domain Name System
 tags:
   - Networking/Services/DNS/General
-links: "[[Services]]"
+links: "[[Networking/Services/General]]"
 port:
   - UDP/53
   - TCP/53

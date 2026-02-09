@@ -3,7 +3,7 @@ id: General
 aliases: []
 tags:
   - Networking/Services/IPMI/General
-links: "[[Services]]"
+links: "[[Networking/Services/General]]"
 port:
   - UDP/623
 ---

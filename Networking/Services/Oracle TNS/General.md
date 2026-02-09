@@ -4,7 +4,7 @@ aliases:
   - ""
 tags:
   - Networking/Services/Oracle-TNS/General
-links: "[[Services]]"
+links: "[[Networking/Services/General]]"
 ports:
   - 1521
   - 1522-1529

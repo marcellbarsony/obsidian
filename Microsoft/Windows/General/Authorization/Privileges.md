@@ -22,7 +22,7 @@ and granted via a [[Access Tokens]]
 - Enabled security policies that map gorups to privileges
 
 An account can have different privileges on different systems
-if the account belongs to an [[Active Directory]] domain
+if the account belongs to an [[Microsoft/AD/General]] domain
 
 Each time a user attempts to perform a privileged action,
 the system reviews the user's [[Access Tokens]] to determine
