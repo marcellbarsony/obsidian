@@ -29,14 +29,19 @@ ___
 <!-- Info {{{-->
 > [!info]- Resources
 >
-> - [PayloadsAlltheThings - Configuration Apache .htaccess](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Upload%20Insecure%20Files/Configuration%20Apache%20.htaccess)
+> - [PayloadsAlltheThings](https://swisskyrepo.github.io/PayloadsAllTheThings/Upload%20Insecure%20Files/Configuration%20Apache%20.htaccess/)
 >
 <!-- }}} -->
 
-[.htaccess](https://httpd.apache.org/docs/current/howto/htaccess.html)
+Servers allow developers to create special configuration files
+within individual directories in order to override
+or add to one or more of the global settings
+
+Apache servers will load a directory-specific configuration
+from [.htaccess](https://httpd.apache.org/docs/current/howto/htaccess.html)
+if one is present
 
 <!-- }}} -->
 
 ___
 <!-- }}} -->
-
