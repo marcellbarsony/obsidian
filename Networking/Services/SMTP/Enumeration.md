@@ -8,12 +8,24 @@ links: "[[Networking/Services/SMTP/General|SMTP]]"
 
 # Enumeration
 
+<!-- Resources {{{-->
+> [!info]- Resources
+>
+> - [HackTricks](https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-smtp/index.html)
+> - [Hackviser](https://hackviser.com/tactics/pentesting/services/smtp#enumeration)
+>
+<!-- }}} -->
+
 ___
 
 <!-- Server {{{-->
 ## Server
 
-Identify the target mail server via its [[DNS/General#MX|MX]] records
+Identify the target mail server
+
+1. Query [[DNS/General#MX|MX]] records
+
+[[dig]]
 
 ```sh
 dig <target_domain> mx | grep "MX" | grep -v ";"
@@ -34,29 +46,58 @@ dig [@<dns_ip>] <target_domain> mx | grep "MX" | grep -v ";"
 > ```
 <!-- }}} -->
 
-<!-- Tip {{{-->
-> [!tip]
->
-> Query the found e-mail servers for their [[DNS/General#A|A]] records
+[[host]]
+
+```sh
+host -t MX <target_domain>
+```
+
+<!-- Example {{{-->
+> [!example]-
 >
 > ```sh
-> dig [@<dns_ip>] <smtp_server_ip> a
+> host -t MX microsoft.com
 > ```
+<!-- }}} -->
+
+2. Query the found e-mail servers for their [[DNS/General#A|A]] records
+
+[[dig]]
+
+```sh
+dig [@<dns_ip>] <smtp_server_ip> a
+```
+
+<!-- Example {{{-->
+> [!example]-
 >
-> <!-- Example {{{-->
-> > [!example]-
-> >
-> > ```sh
-> > dig microsoft-com.mail.protection.outlook.com a
-> > ```
-> > ```sh
-> > ;; ANSWER SECTION:
-> > microsoft-com.mail.protection.outlook.com. 2400 IN A 52.101.9.26
-> > microsoft-com.mail.protection.outlook.com. 2400 IN A 52.101.11.3
-> > microsoft-com.mail.protection.outlook.com. 2400 IN A 52.101.41.26
-> > microsoft-com.mail.protection.outlook.com. 2400 IN A 52.101.10.8
-> > ```
-> <!-- }}} -->
+> ```sh
+> dig microsoft-com.mail.protection.outlook.com a
+> ```
+> ```sh
+> ;; ANSWER SECTION:
+> microsoft-com.mail.protection.outlook.com. 2400 IN A 52.101.9.26
+> microsoft-com.mail.protection.outlook.com. 2400 IN A 52.101.11.3
+> microsoft-com.mail.protection.outlook.com. 2400 IN A 52.101.41.26
+> microsoft-com.mail.protection.outlook.com. 2400 IN A 52.101.10.8
+> ```
+<!-- }}} -->
+
+[[host]]
+
+```sh
+host -t A <smtp_server_ip>
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> host -t A mail1.inlanefreight.htb.
+> ```
+> ```sh
+> mail1.inlanefreight.htb has address 10.129.14.128
+> ```
 >
 <!-- }}} -->
 
@@ -65,6 +106,21 @@ ___
 
 <!-- Service {{{-->
 ## Service
+
+<!-- Info {{{-->
+> [!info]- Ports
+>
+> | Port      | Service                 |
+> | --------- | ----------------------- |
+> | `TCP/25`  | SMTP Unencrypted        |
+> | `TCP/143` | IMAP4 Unencrypted       |
+> | `TCP/110` | POP3 Unencrypted        |
+> | `TCP/465` | SMTP Encrypted          |
+> | `TCP/587` | SMTP Encrypted/STARTTLS |
+> | `TCP/993` | IMAP4 Encrypted         |
+> | `TCP/995` | POP3 Encrypted          |
+>
+<!-- }}} -->
 
 [[Nmap]] — Detect SMTP service
 
@@ -328,181 +384,6 @@ swaks --to external@domain.com --from external@otherdomain.com --server <target_
 > ```sh
 > swaks --to external@domain.com --from external@otherdomain.com --server target.com
 > ```
-<!-- }}} -->
-
-___
-<!-- }}} -->
-
-<!-- User {{{-->
-## User
-
-<!-- smtp-user-enum {{{-->
-### smtp-user-enum
-
-[smtp-user-enum](https://github.com/pentestmonkey/smtp-user-enum) —
-Username guessing tool
-
-<!-- Tip {{{-->
-> [!tip]
->
-> Can use either [[#EXPN]], [[#VRFY]] or [[#RCPT TO]] methods
-<!-- }}} -->
-
-```sh
-smtp-user-enum -M <method> -u <user> [-D <domain>] -t $target [-w 20]
-```
-
-[[Usage#VRFY|VRFY]] — Verify specific user
-
-```sh
-smtp-user-enum -M VRFY -u <user> -t $target -w 20 [-D <domain>]
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> smtp-user-enum -M VRFY -u root -t 10.129.33.217
-> ```
-> ```sh
->  ----------------------------------------------------------
-> |                   Scan Information                       |
->  ----------------------------------------------------------
->
-> Mode ..................... VRFY
-> Worker Processes ......... 5
-> Target count ............. 1
-> Username count ........... 1
-> Target TCP port .......... 25
-> Query timeout ............ 5 secs
-> Target domain ............ 
-> ```
-<!-- }}} -->
-
-[[Usage#VRFY|VRFY]] — Verify list of users
-
-<!-- Tip {{{-->
-> [!tip]- Wordlists
->
-> ```sh
-> /usr/share/wordlists/metasploit/unix_users.txt
-> ```
-<!-- }}} -->
-
-<!-- Warning {{{-->
-> [!warning]
->
-> Some servers may have higher timeout
->
-> > [!tip]-
-> >
-> > Set timeout to `20` seconds (*defaults to* `10` *seconds*)
-> >
-> > ```sh
-> > smtp-user-enum -M VRFY -U users.txt -t 10.129.33.217 -w 20
-> > ```
-<!-- }}} -->
-
-```sh
-smtp-user-enum -M VRFY -U <users.txt> -t $target -w 20
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> smtp-user-enum -M VRFY -U /usr/share/wordlists/metasploit/unix_users.txt -t 10.129.33.217
-> ```
-<!-- }}} -->
-
-[[Usage#RCPT TO|RCPT TO]] — Identify the recipient of an e-mail message
-
-```sh
-smtp-user-enum -M RCPT -u <user> -t $target -w 20 [-D <domain>]
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> smtp-user-enum -M RCPT -U userlist.txt -D inlanefreight.htb -t 10.129.203.7
-> ```
-> ```sh
-> Starting smtp-user-enum v1.2 ( http://pentestmonkey.net/tools/smtp-user-enum )
->
->  ----------------------------------------------------------
-> |                   Scan Information                       |
->  ----------------------------------------------------------
->
-> Mode ..................... RCPT
-> Worker Processes ......... 5
-> Usernames file ........... userlist.txt
-> Target count ............. 1
-> Username count ........... 78
-> Target TCP port .......... 25
-> Query timeout ............ 5 secs
-> Target domain ............ inlanefreight.htb
->
-> ######## Scan started at Thu Apr 21 06:53:07 2022 #########
-> 10.129.203.7: jose@inlanefreight.htb exists
-> 10.129.203.7: pedro@inlanefreight.htb exists
-> 10.129.203.7: kate@inlanefreight.htb exists
-> ######## Scan completed at Thu Apr 21 06:53:18 2022 #########
-> 3 results.
->
-> 78 queries in 11 seconds (7.1 queries / sec)
-> ```
-<!-- }}} -->
-
-[[Usage#EXPN|EXPN]] — Identify the recipient of an e-mail message
-
-```sh
-smtp-user-enum -M EXPN -u <user> -t $target -w 20 [-D <domain>]
-```
-
-<!-- }}} -->
-
-<!-- Metasploit {{{-->
-### Metasploit
-
-The [smtp_enum](https://www.rapid7.com/db/modules/auxiliary/scanner/smtp/smtp_enum/)
-scanner can reveal a list of valid users
-
-```sh
-use auxiliary/scanner/smtp/smtp_enum
-```
-
-<!-- Example {{{-->
-> [!example]-
->
->
-> 1. [[Metasploit#Launch Metasploit|Launch Metasploit]]
->
-> 2. [[Metasploit#Search Exploit|Search Scanner]]
->
-> ```sh
-> search smtp
-> ```
->
-> 3. [[Metasploit#Select Exploit|Select Scanner]]
->
-> ```sh
-> use auxiliary/scanner/smtp/smtp_enum
-> ```
->
-> 4. [[Metasploit#Show Actions|Show Actions]]
->
-> 5. [[Metasploit#Set Actions|Set Actions]]
->
-> 6. [[Metasploit#Show Options|Show Options]]
->
-> 7. [[Metasploit#Set Options|Set Options]]
->
-> 8. [[Metasploit#Check Exploit|Check Scanner]]
->
-> 9. [[Metasploit#Run Exploit|Run]]
-<!-- }}} -->
-
 <!-- }}} -->
 
 ___

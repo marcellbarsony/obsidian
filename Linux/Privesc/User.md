@@ -3,7 +3,7 @@ id: User Enumeration
 aliases: []
 tags:
   - Linux/Privesc/User-Enumeration
-links: "[[Privesc]]"
+links: "[[Linux/Privesc/General]]"
 ---
 
 <!-- User Enumeration {{{-->

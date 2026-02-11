@@ -3,7 +3,7 @@ id: Polkit
 aliases: []
 tags:
   - Linux/Privesc/Polkit
-links: "[[Privesc]]"
+links: "[[Linux/Privesc/General]]"
 ---
 
 # Polkit

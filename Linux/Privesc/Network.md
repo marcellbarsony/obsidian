@@ -3,7 +3,7 @@ id: Network
 aliases: []
 tags:
   - Linux/Privesc/Network
-links: "[[Privesc]]"
+links: "[[Linux/Privesc/General]]"
 ---
 
 # Network

@@ -23,6 +23,14 @@ servers
 [[IMAP-POP3/General|IMAP/POP3]], due to its limitations in
 queuing messages on the recipient's end
 
+<!-- Resources {{{-->
+> [!info]- Resources
+>
+> - [HackTricks](https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-smtp/index.html)
+> - [Hackviser](https://hackviser.com/tactics/pentesting/services/smtp#enumeration)
+>
+<!-- }}} -->
+
 ___
 
 <!-- Ports {{{-->

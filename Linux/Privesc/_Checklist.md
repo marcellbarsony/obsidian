@@ -46,12 +46,12 @@ ___
 <!-- Enumeration Tools {{{-->
 ## Enumeration Tools
 
-- [ ] [[Linux/Privesc/Enumeration Tools|Enumeration Tools]]
-    - [ ] [[Linux/Privesc/Enumeration Tools#Linpeas|LinPEAS]]
-    - [ ] [[Linux/Privesc/Enumeration Tools#Linux Exploit Suggester|Linux Exploit Suggester]]
-    - [ ] [[Linux/Privesc/Enumeration Tools#LinEnum|LinEnum]]
-    - [ ] [[Linux/Privesc/Enumeration Tools#linuxprivchecker|linuxprivchecker]]
-- [ ] [[Linux/Privesc/Enumeration Tools#Manual Enumeration|Manual Enumeration]]
+- [ ] [[LinPEAS|LinPEAS]]
+    - [ ] [[LinPEAS#Linpeas|LinPEAS]]
+    - [ ] [[LinPEAS#Linux Exploit Suggester|Linux Exploit Suggester]]
+    - [ ] [[LinPEAS#LinEnum|LinEnum]]
+    - [ ] [[LinPEAS#linuxprivchecker|linuxprivchecker]]
+- [ ] [[LinPEAS#Manual Enumeration|Manual Enumeration]]
 
 ___
 <!-- }}} -->

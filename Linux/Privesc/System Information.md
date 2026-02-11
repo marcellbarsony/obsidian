@@ -3,7 +3,7 @@ id: System Information
 aliases: []
 tags:
   - Linux/Privesc/System-Information
-links: "[[Privesc]]"
+links: "[[Linux/Privesc/General]]"
 ---
 
 # System Information

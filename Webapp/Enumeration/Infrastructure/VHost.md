@@ -143,9 +143,150 @@ that point to a virtual host
 ffuf -w <wordlist> -u http://FUZZ.$target/ -c -r
 ```
 
+<!-- Example {{{-->
+> [!example]-
+>
+> [[SecLists]]
+>
+> Subdomains Top 1 Million (*VHosts*)
+>
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt:FUZZ \
+> -u http://FUZZ.$target/ \
+> -ic
+> ```
+>
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt:FUZZ \
+> -u http://FUZZ.$target/ \
+> -ic
+> ```
+>
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt:FUZZ \
+> -u http://FUZZ.$target/ \
+> -ic
+> ```
+>
+> DNS Namelist
+>
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/DNS/namelist.txt:FUZZ \
+> -u http://FUZZ.$target/ \
+> -ic
+> ```
+>
+> Shubs
+>
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/DNS/shubs-subdomains.txt:FUZZ \
+> -u http://FUZZ.$target/ \
+> -ic
+> ```
+>
+> Bitquark
+>
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt:FUZZ \
+> -u http://FUZZ.$target/ \
+> -ic
+> ```
+>
+> Combined List
+>
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/DNS/combined_subdomains.txt:FUZZ \
+> -u http://FUZZ.$target/ \
+> -ic
+> ```
+>
+> <!-- Info {{{-->
+> > [!info]-
+> >
+> > - bitquark-subdomains-top100000.txt
+> > - shubs-subdomains.txt
+> > - subdomains-top1million-110000.txt
+> <!-- }}} -->
+>
+<!-- }}} -->
+
 ```sh
 ffuf -w <wordlist> -u http://$target/ -H "Host: FUZZ.<domain>" -c -r
 ```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> [[SecLists]]
+>
+> Subdomains Top 1 Million (*VHosts*)
+>
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt:FUZZ \
+> -u http://$target/ \
+> -H "Host: FUZZ.<domain>" \
+> -ic
+> ```
+>
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt:FUZZ \
+> -u http://$target/ \
+> -H "Host: FUZZ.<domain>" \
+> -ic
+> ```
+>
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt:FUZZ \
+> -u http://$target/ \
+> -H "Host: FUZZ.<domain>" \
+> -ic
+> ```
+>
+> Namelist
+>
+> ```sh
+> ffuf -w /usr/share/SecLists/Discovery/DNS/namelist.txt:FUZZ \
+> -u http://$target/ \
+> -H "Host: FUZZ.<domain>" \
+> -ic
+> ```
+>
+> Shubs
+>
+> ```sh
+> ffuf -w /usr/share/SecLists/Discovery/DNS/shubs-subdomains.txt:FUZZ \
+> -u http://$target/ \
+> -H "Host: FUZZ.<domain>" \
+> -ic
+> ```
+>
+> Bitquark
+>
+> ```sh
+> ffuf -w /usr/share/SecLists/Discovery/DNS/bitquark-subdomains-top100000.txt:FUZZ \
+> -u http://$target/ \
+> -H "Host: FUZZ.<domain>" \
+> -ic
+> ```
+>
+> Combined List
+>
+> ```sh
+> ffuf -w /usr/share/SecLists/Discovery/DNS/combined_subdomains.txt:FUZZ \
+> -u http://$target/ \
+> -H "Host: FUZZ.<domain>" \
+> -ic
+> ```
+>
+> <!-- Info {{{-->
+> > [!info]-
+> >
+> > - bitquark-subdomains-top100000.txt
+> > - shubs-subdomains.txt
+> > - subdomains-top1million-110000.txt
+> <!-- }}} -->
+>
+<!-- }}} -->
 
 ```sh
 ffuf -w <wordlist> -u http://$target/ -H "Host: FUZZ.<domain>" -H "User-Agent: PENTEST" -c -r
@@ -160,164 +301,6 @@ ffuf -w <wordlist> -u http://$target/ -H "Host: FUZZ.<domain>" -H "User-Agent: P
 > - `-w`: Wordlist file path and (*optional*) keyword
 >         separated by colon.
 >         (*e.g., `'/path/to/wordlist:KEYWORD'`*)
->
-<!-- }}} -->
-
-<!-- Example {{{-->
-> [!example]-
->
-> Fuzz URL
->
-> ```sh
-> ffuf -w <wordlist> -u http://FUZZ.$target/
-> ```
->
-> <!-- Example {{{-->
-> > [!example]-
-> >
-> > **Wordlists**
-> >
-> > Subdomains Top 1 Million (*VHosts*)
-> >
-> > ```sh
-> > ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt:FUZZ \
-> > -u http://FUZZ.$target/ \
-> > -ic
-> > ```
-> >
-> > ```sh
-> > ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt:FUZZ \
-> > -u http://FUZZ.$target/ \
-> > -ic
-> > ```
-> >
-> > ```sh
-> > ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt:FUZZ \
-> > -u http://FUZZ.$target/ \
-> > -ic
-> > ```
-> >
-> > DNS Namelist
-> >
-> > ```sh
-> > ffuf -w /usr/share/SecLists/Discovery/DNS/namelist.txt:FUZZ \
-> > -u http://FUZZ.$target/ \
-> > -ic
-> > ```
-> >
-> > Shubs
-> >
-> > ```sh
-> > ffuf -w /usr/share/SecLists/Discovery/DNS/shubs-subdomains.txt:FUZZ \
-> > -u http://FUZZ.$target/ \
-> > -ic
-> > ```
-> >
-> > Bitquark
-> >
-> > ```sh
-> > ffuf -w /usr/share/SecLists/Discovery/DNS/bitquark-subdomains-top100000.txt:FUZZ \
-> > -u http://FUZZ.$target/ \
-> > -ic
-> > ```
-> >
-> > Combined List
-> >
-> > ```sh
-> > ffuf -w /usr/share/SecLists/Discovery/DNS/combined_subdomains.txt:FUZZ \
-> > -u http://FUZZ.$target/ \
-> > -ic
-> > ```
-> >
-> > <!-- Info {{{-->
-> > > [!info]-
-> > >
-> > > - bitquark-subdomains-top100000.txt
-> > > - shubs-subdomains.txt
-> > > - subdomains-top1million-110000.txt
-> > <!-- }}} -->
-> >
-> <!-- }}} -->
->
-> Fuzz Host header
->
-> ```sh
-> ffuf -w <wordlist> -u http://$target/ -H "Host: FUZZ.<domain>" -c -r
-> ```
->
-> <!-- Example {{{-->
-> > [!example]-
-> >
-> > **Wordlists**
-> >
-> > Subdomains Top 1 Million (*VHosts*)
-> >
-> > ```sh
-> > ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt:FUZZ \
-> > -u http://$target/ \
-> > -H "Host: FUZZ.<domain>" \
-> > -ic
-> > ```
-> >
-> > ```sh
-> > ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt:FUZZ \
-> > -u http://$target/ \
-> > -H "Host: FUZZ.<domain>" \
-> > -ic
-> > ```
-> >
-> > ```sh
-> > ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt:FUZZ \
-> > -u http://$target/ \
-> > -H "Host: FUZZ.<domain>" \
-> > -ic
-> > ```
-> >
-> > Namelist
-> >
-> > ```sh
-> > ffuf -w /usr/share/SecLists/Discovery/DNS/namelist.txt:FUZZ \
-> > -u http://$target/ \
-> > -H "Host: FUZZ.<domain>" \
-> > -ic
-> > ```
-> >
-> > Shubs
-> >
-> > ```sh
-> > ffuf -w /usr/share/SecLists/Discovery/DNS/shubs-subdomains.txt:FUZZ \
-> > -u http://$target/ \
-> > -H "Host: FUZZ.<domain>" \
-> > -ic
-> > ```
-> >
-> > Bitquark
-> >
-> > ```sh
-> > ffuf -w /usr/share/SecLists/Discovery/DNS/bitquark-subdomains-top100000.txt:FUZZ \
-> > -u http://$target/ \
-> > -H "Host: FUZZ.<domain>" \
-> > -ic
-> > ```
-> >
-> > Combined List
-> >
-> > ```sh
-> > ffuf -w /usr/share/SecLists/Discovery/DNS/combined_subdomains.txt:FUZZ \
-> > -u http://$target/ \
-> > -H "Host: FUZZ.<domain>" \
-> > -ic
-> > ```
-> >
-> > <!-- Info {{{-->
-> > > [!info]-
-> > >
-> > > - bitquark-subdomains-top100000.txt
-> > > - shubs-subdomains.txt
-> > > - subdomains-top1million-110000.txt
-> > <!-- }}} -->
-> >
-> <!-- }}} -->
 >
 <!-- }}} -->
 

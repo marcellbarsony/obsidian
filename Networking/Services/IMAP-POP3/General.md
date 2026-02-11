@@ -54,14 +54,19 @@ ___
 is used to list, retrieve, and delete e-mails from the server,
 typically downloading them for offline use
 
-**POP3** works unencrypted by default (*including credentials*)
+<!-- Warning {{{-->
+> [!warning]
+>
+> **POP3** is unencrypted by default (*including credentials*)
+>
+<!-- }}} -->
 
 Many e-mail servers require establishing an encrypted **POP3** session:
 - **Port** `110`: Explicitly upgraded via [STARTTLS](https://en.wikipedia.org/wiki/Post_Office_Protocol)
 - **Port** `995`: Encrypted by default, using SSL/TLS
 
 **POP3** clients have the option to leave e-mails on the server after retrieval
-and only download new messages (*identified by the UIDL command*)
+and only download new messages (*identified by the `UIDL` command*)
 
 ___
 

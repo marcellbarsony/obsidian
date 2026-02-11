@@ -76,10 +76,17 @@ ___
 <!-- Permissions {{{-->
 ## Permissions
 
-Search files with [[Linux/General/File System/Permissions#SUID & SGID|SUID & SGID]]
+Search files with [[Permissions#SUID & SGID|SUID & SGID]]
 bits set
 
-SUID
+<!-- Tip {{{-->
+> [!tip]-
+>
+> - [GTFOBins](https://gtfobins.org/)
+>
+<!-- }}} -->
+
+[[Permissions#SUID|SUID]]
 
 ```sh
 find / -perm -4000 -type f 2>/dev/null
@@ -89,7 +96,7 @@ find / -perm -4000 -type f 2>/dev/null
 find / -user root -perm -4000 -exec ls -ldb {} \; 2>/dev/null
 ```
 
-SGID
+[[Permissions#SGID|SGID]]
 
 ```sh
 find / -perm -2000 -type f 2>/dev/null
@@ -99,7 +106,7 @@ find / -perm -2000 -type f 2>/dev/null
 find / -group root -perm -2000 -exec ls -ldb {} \; 2>/dev/null
 ```
 
-SUID & SGID
+[[Permissions#SUID & SGID|SUID & SGID]]
 
 ```sh
 find / -perm /6000 -type f 2>/dev/null

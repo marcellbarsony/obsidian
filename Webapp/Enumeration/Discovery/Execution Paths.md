@@ -6,12 +6,165 @@ tags:
 links: "[[Webapp/Enumeration/Discovery]]"
 ---
 
-<!-- Execution Paths {{{-->
 # Execution Paths
 
 Check if directory listing is enabled and fuzz execution paths
 
 ___
+
+<!-- Extension Enumeration {{{-->
+## Extension Enumeration
+
+Enumerate web extensions
+
+<!-- Wordlists {{{-->
+> [!tip]- Wordlists
+>
+> Web Extensions
+>
+> - [[SecLists#File Extensions|SecLists]]
+>
+> Web Pages
+>
+> - [[Dirbuster#Pages|Dirbuster]]
+> - [[SecLists#Pages|SecLists]]
+>
+<!-- }}} -->
+
+[[Ffuf]] - Enumerate web extensions
+
+1. Enumerate `index` page extensions
+
+<!-- Info {{{-->
+> [!info]-
+>
+> Assume `index.<ext>`is the default page on most websites
+>
+<!-- }}} -->
+
+```sh
+ffuf -w <wordlist>:FUZZ -u http://$target/indexFUZZ
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> Wordlists
+>
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/web-extensions.txt:FUZZ \
+> -u http://$target/FUZZ/indexFUZZ \
+> -ic
+> ```
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/web-extensions-big.txt:FUZZ \
+> -u http://$target/FUZZ/indexFUZZ \
+> -ic
+> ```
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-small-extensions-lowercase.txt:FUZZ \
+> -u http://$target/FUZZ/indexFUZZ \
+> -ic
+> ```
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-medium-extensions-lowercase.txt:FUZZ \
+> -u http://$target/FUZZ/indexFUZZ \
+> -ic
+> ```
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-large-extensions-lowercase.txt:FUZZ \
+> -u http://$target/FUZZ/indexFUZZ \
+> -ic
+> ```
+<!-- }}} -->
+
+2. Validate and examine index page response
+
+```sh
+curl -I http://$target/index.<ext>
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> Extensions
+>
+> ```sh
+> curl -I http://$target/index.html
+> ```
+> ```sh
+> curl -I http://$target/index.php
+> ```
+> ```sh
+> curl -I http://$target/index.php7
+> ```
+>
+> Example
+>
+> ```sh
+> curl -I http://$target/index.php
+> ```
+> ```sh
+> HTTP/1.1 200 OK
+> Date: Sun, 18 Jan 2026 02:47:34 GMT
+> Server: Apache/2.4.41 (Ubuntu)
+> X-Powered-By: PHP/8.1.0-dev
+> Content-Type: text/html; charset=UTF-8
+> ```
+>
+> - The target is vulnerable to
+>   [HTTP: PHP 8.1.0-dev User-Agentt Header Remote Code Execution](https://www.exploit-db.com/exploits/49933)
+>
+<!-- }}} -->
+
+3. Enumerate additional pages for the found extension(s)
+
+```sh
+ffuf -w <wordlist>:FUZZ -u http://$target/FUZZ -e <ext1>,<ext2>
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> Wordlists
+>
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/common.txt:FUZZ \
+> -u http://$target/FUZZ \
+> -e .php,.txt \
+> -ic
+> ```
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/big.txt:FUZZ \
+> -u http://$target/FUZZ \
+> -e .php,.txt \
+> -ic
+> ```
+>
+> Raft Files (*lowercase*)
+>
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-small-files-lowercase.txt:FUZZ \
+> -u http://$target/FUZZ \
+> -e .php,.txt \
+> -ic
+> ```
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-medium-files-lowercase.txt:FUZZ \
+> -u http://$target/FUZZ \
+> -e .php,.txt \
+> -ic
+> ```
+> ```sh
+> ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-large-files-lowercase.txt:FUZZ \
+> -u http://$target/FUZZ \
+> -e .php,.txt \
+> -ic
+> ```
+<!-- }}} -->
+
+___
+<!-- }}} -->
 
 <!-- Page Enumeration {{{-->
 ## Page Enumeration
@@ -198,160 +351,6 @@ Enumerate based on context
 ___
 <!-- }}} -->
 
-<!-- }}} -->
-
-<!-- Extension Enumeration {{{-->
-## Extension Enumeration
-
-Enumerate web extensions
-
-<!-- Wordlists {{{-->
-> [!tip]- Wordlists
->
-> Web Extensions
->
-> - [[SecLists#File Extensions|SecLists]]
->
-> Web Pages
->
-> - [[Dirbuster#Pages|Dirbuster]]
-> - [[SecLists#Pages|SecLists]]
->
-<!-- }}} -->
-
-[[Ffuf]] - Enumerate web extensions
-
-1. Enumerate `index` page extensions
-
-<!-- Info {{{-->
-> [!info]-
->
-> Assume `index.<ext>`is the default page on most websites
->
-<!-- }}} -->
-
-```sh
-ffuf -w <wordlist>:FUZZ -u http://$target/indexFUZZ
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> Wordlists
->
-> ```sh
-> ffuf -w /usr/share/seclists/Discovery/Web-Content/web-extensions.txt:FUZZ \
-> -u http://$target/FUZZ/indexFUZZ \
-> -ic
-> ```
-> ```sh
-> ffuf -w /usr/share/seclists/Discovery/Web-Content/web-extensions-big.txt:FUZZ \
-> -u http://$target/FUZZ/indexFUZZ \
-> -ic
-> ```
-> ```sh
-> ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-small-extensions-lowercase.txt:FUZZ \
-> -u http://$target/FUZZ/indexFUZZ \
-> -ic
-> ```
-> ```sh
-> ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-medium-extensions-lowercase.txt:FUZZ \
-> -u http://$target/FUZZ/indexFUZZ \
-> -ic
-> ```
-> ```sh
-> ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-large-extensions-lowercase.txt:FUZZ \
-> -u http://$target/FUZZ/indexFUZZ \
-> -ic
-> ```
-<!-- }}} -->
-
-2. Validate and examine index page response
-
-```sh
-curl -I http://$target/index.<ext>
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> Extensions
->
-> ```sh
-> curl -I http://$target/index.html
-> ```
-> ```sh
-> curl -I http://$target/index.php
-> ```
-> ```sh
-> curl -I http://$target/index.php7
-> ```
->
-> Example
->
-> ```sh
-> curl -I http://$target/index.php
-> ```
-> ```sh
-> HTTP/1.1 200 OK
-> Date: Sun, 18 Jan 2026 02:47:34 GMT
-> Server: Apache/2.4.41 (Ubuntu)
-> X-Powered-By: PHP/8.1.0-dev
-> Content-Type: text/html; charset=UTF-8
-> ```
->
-> - The target is vulnerable to
->   [HTTP: PHP 8.1.0-dev User-Agentt Header Remote Code Execution](https://www.exploit-db.com/exploits/49933)
->
-<!-- }}} -->
-
-3. Enumerate additional pages for the found extension(s)
-
-```sh
-ffuf -w <wordlist>:FUZZ -u http://$target/FUZZ -e <ext1>,<ext2>
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> Wordlists
->
-> ```sh
-> ffuf -w /usr/share/seclists/Discovery/Web-Content/common.txt:FUZZ \
-> -u http://$target/FUZZ \
-> -e .php,.txt \
-> -ic
-> ```
-> ```sh
-> ffuf -w /usr/share/seclists/Discovery/Web-Content/big.txt:FUZZ \
-> -u http://$target/FUZZ \
-> -e .php,.txt \
-> -ic
-> ```
->
-> Raft Files (*lowercase*)
->
-> ```sh
-> ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-small-files-lowercase.txt:FUZZ \
-> -u http://$target/FUZZ \
-> -e .php,.txt \
-> -ic
-> ```
-> ```sh
-> ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-medium-files-lowercase.txt:FUZZ \
-> -u http://$target/FUZZ \
-> -e .php,.txt \
-> -ic
-> ```
-> ```sh
-> ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-large-files-lowercase.txt:FUZZ \
-> -u http://$target/FUZZ \
-> -e .php,.txt \
-> -ic
-> ```
-<!-- }}} -->
-
-___
 <!-- }}} -->
 
 <!-- Directory Enumeration {{{-->

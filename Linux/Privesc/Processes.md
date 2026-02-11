@@ -3,7 +3,7 @@ id: Software Vulnerability
 aliases: []
 tags:
   - Linux/Privesc/Processes
-links: "[[Privesc]]"
+links: "[[Linux/Privesc/General]]"
 ---
 
 # Processes

@@ -3,7 +3,7 @@ id: Group Enumeration
 aliases: []
 tags:
   - Linux/Privesc/Group-Enumeration
-links: "[[Privesc]]"
+links: "[[Linux/Privesc/General]]"
 ---
 
 # Group Enumeration

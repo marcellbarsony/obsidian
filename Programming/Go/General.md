@@ -11,7 +11,7 @@ tags:
 is a high-level, general-purpose programming language
 that is statically-typed and compiled
 
-It is syntactically similar to [[C/General|C]],
+It is syntactically similar to [[Networking/Services/VNC/General|C]],
 but also has garbage collection, structural typing,
 and CSP-style concurrency
 

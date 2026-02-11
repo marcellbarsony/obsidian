@@ -3,7 +3,7 @@ id: Shared Objects
 aliases: []
 tags:
   - Linux/Privesc/Shared-Objects
-links: "[[Privesc]]"
+links: "[[Linux/Privesc/General]]"
 ---
 
 <!-- Shared Objects {{{-->

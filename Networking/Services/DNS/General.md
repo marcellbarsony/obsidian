@@ -268,6 +268,7 @@ serves as an alias for another domain name
 ### MX
 
 The **MX** record
+(*Mail eXchanger*)
 (*[RFC 1035](https://www.rfc-editor.org/rfc/rfc1035)*)
 returns the responsible mail exchange servers
 that accept email for a domain

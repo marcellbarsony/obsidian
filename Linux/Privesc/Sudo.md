@@ -3,7 +3,7 @@ id: Sudo Enumeration
 aliases: []
 tags:
   - Linux/Privesc/Sudo-Enumeration
-links: "[[Privesc]]"
+links: "[[Linux/Privesc/General]]"
 ---
 
 # Sudo Enumeration

@@ -7,6 +7,13 @@ tags:
 
 # Usage
 
+<!-- Resources {{{-->
+> [!info]- Resources
+>
+> - [HackTricks](https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-smtp/index.html)
+> - [Hackviser](https://hackviser.com/tactics/pentesting/services/smtp#enumeration)
+>
+<!-- }}} -->
 ___
 
 <!-- Commands {{{-->
@@ -50,8 +57,8 @@ ___
 <!-- Telnet {{{-->
 ### Telnet
 
-[[Networking/Services/Telnet/General|Telnet]] can be used to interact with the
-**SMTP** server through TCP connection
+[[Telnet/General|Telnet]] — Interact with the **SMTP** server
+through TCP connection
 
 <!-- Connect {{{-->
 #### Connect
@@ -180,7 +187,8 @@ VRFY <user>
 >
 > ```sh
 > 550 5.1.1 <testuser>: Recipient address rejected: User unknown in local recipient table
-> ```sh
+> ```
+>
 <!-- }}} -->
 
 <!-- }}} -->
@@ -208,7 +216,7 @@ EXPN <distribution_list>
 <!-- Example {{{-->
 > [!example]-
 >
-> Check if user `john` exist
+> Query if user exist (`john`)
 >
 > ```sh
 > EXPN john
@@ -217,7 +225,7 @@ EXPN <distribution_list>
 > 250 2.1.0 john@inlanefreight.htb
 > ```
 >
-> List users of the `support-team` distribution list
+> Query distirbution list users (`support-team`)
 >
 > ```sh
 > EXPN support-team
@@ -225,6 +233,16 @@ EXPN <distribution_list>
 > ```sh
 > 250 2.0.0 carol@inlanefreight.htb
 > 250 2.1.5 elisa@inlanefreight.htb
+> ```
+>
+> Query distribution list alias (`all`)
+>
+> ```sh
+> EXPN all
+> ```
+> ```sh
+> 250 2.0.0 admin@inlanefreight.htb
+> 250 2.1.5 hr@inlanefreight.htb
 > ```
 <!-- }}} -->
 
@@ -306,8 +324,9 @@ USER <user>
 <!-- Send an Email {{{-->
 #### Send an Email
 
-Send an e-mail manually through an **SMTP Server** at IP `10.129.14.128` on port
-`25`. The structure of the header is defined in
+Send an e-mail manually through an **SMTP Server**
+
+The header structure defined in
 [RFC 5322](https://datatracker.ietf.org/doc/html/rfc5322)
 
 <!-- Example {{{-->
@@ -375,7 +394,23 @@ Send an e-mail manually through an **SMTP Server** at IP `10.129.14.128` on port
 
 <!-- }}} -->
 
+___
 <!-- }}} -->
 
+<!-- POP3 {{{-->
+### POP3
+
+Enumerate via [[POP3/Usage#POP3 Commands|POP3 Commands]]
+
+<!-- Warning {{{-->
+> [!warning]
+>
+> Depending on the service implementation
+>
+<!-- }}} -->
+
+
 ___
+<!-- }}} -->
+
 <!-- }}} -->

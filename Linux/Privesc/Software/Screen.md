@@ -3,7 +3,7 @@ id: Screen
 aliases: []
 tags:
   - Linux/Privesc/Software/Screen
-links: "[[Privesc]]"
+links: "[[Linux/Privesc/General]]"
 ---
 
 # Screen
