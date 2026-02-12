@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Networking/Services/SMTP/Exploitation.md",
+                "file": "Pentest/Tools/Metasploit/Metasploit.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Exploitation"
+              "title": "Metasploit"
             }
           }
         ]
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/Services/SMTP/Exploitation.md",
+                "file": "Pentest/Tools/Metasploit/Metasploit.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Exploitation"
+              "title": "Outline of Metasploit"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/Services/SMTP/Exploitation.md",
+                "file": "Pentest/Tools/Metasploit/Metasploit.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -198,12 +198,12 @@
                   "repelStrength": 10,
                   "linkStrength": 1,
                   "linkDistance": 250,
-                  "scale": 0.19753086419753074,
+                  "scale": 0.1316872427983538,
                   "close": true
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Exploitation"
+              "title": "Graph of Metasploit"
             }
           }
         ]
@@ -225,36 +225,43 @@
   },
   "active": "b53eaec95172394a",
   "lastOpenFiles": [
+    "Networking/Services/RDP/src/david-martinez-v-5120x2880-18745.jpg",
+    "Webapp/Tools/proxychains.md",
+    "Networking/Services/RDP/Exploitation.md",
+    "Webapp/Tools/sqlmap",
+    "Networking/Services/RDP/Usage.md",
+    "Networking/Services/RDP/Tools/xfreerdp.md",
+    "Networking/Services/RDP/Tools",
+    "Networking/Services/RDP/Enumeration.md",
+    "Networking/Services/RDP/src/restricted-admin-mode-reg.png",
+    "Networking/Services/SMTP/Exploitation.md",
+    "Authentication",
+    "Microsoft/Windows/General/Authorization/Privileges.md",
+    "Networking/Services/RDP/General.md",
+    "Networking/Services/FTP/Exploitation.md",
+    "HTTP/Methods",
+    "HTTP",
+    "Networking/Services/FTP/Enumeration.md",
+    "Networking/Services/SMTP/Enumeration.md",
+    "Networking/Services/SMTP/General.md",
+    "IMAP-POP3",
+    "POP3",
+    "IMAP",
+    "Networking/Services/IMAP-POP3/Exploitation.md",
+    "Networking/Services/IMAP-POP3/Usage.md",
+    "Networking/Services/IMAP-POP3/Enumeration.md",
+    "Networking/Services/SMTP/Usage.md",
+    "Networking/Services/IMAP-POP3/General.md",
+    "openssl",
+    "Networking/Services/SMTP/Tools/smtp-user-enum.md",
+    "Telnet",
+    "Pentest/Tools/Brute Force/Wordlists/SecLists.md",
     "Networking/Services/SMTP/Tools/swaks.md",
     "Networking/Services/SMTP/Tools/smtp-user-enum_1.md",
-    "Networking/Services/SMTP/Enumeration.md",
-    "Networking/Services/SMTP/Exploitation.md",
-    "Networking/Services/SMTP/Tools/smtp-user-enum.md",
-    "SMTP",
-    "Networking/Services/SMTP/Tools",
-    "Wordlists",
-    "Networking/Services/SMTP/Usage.md",
-    "Networking/Services/SMTP/General.md",
-    "Networking/Services/IMAP-POP3/Usage.md",
     "Networking/Services/DNS/General.md",
     "Linux/Privesc/Directory & File.md",
     "Linux/General/File System/Permissions.md",
     "Linux/Privesc/Filesystem.md",
-    "Linux/Privesc/Software Vulnerability.md",
-    "Linux/Privesc/Tools/General.md",
-    "Linux/Privesc/Tools/LinEnum_1.md",
-    "Linux/Privesc/Kernel Exploits.md",
-    "Linux/Privesc/Capabilities.md",
-    "Linux/Privesc/Tools/linuxprivchecker.md",
-    "Linux/Privesc/Tools/LinEnum.md",
-    "Linux/Privesc/Tools/Linux Exploit Suggester.md",
-    "Linux/Privesc/Tools/LinPEAS.md",
-    "Linux/Privesc/Tools",
-    "Linux/Privesc/Software/Screen.md",
-    "Linux/Privesc/System Information.md",
-    "Linux/General.md",
-    "Linux/Privesc/User.md",
-    "Linux/Privesc/System Files.md",
     "Webapp/Technology/Dolibarr/src/preview.png",
     "Webapp/Technology/Dolibarr/src/inspect.png",
     "Webapp/Technology/Dolibarr/src/payload.png",
@@ -264,13 +271,6 @@
     "Webapp/Technology/Dolibarr/src/20260210-235102.png",
     "Webapp/Technology/Dolibarr/src/page.png",
     "Webapp/Technology/Dolibarr/src/20260210-234808.png",
-    "Webapp/Technology/Dolibarr/src/website.png",
-    "Webapp/Technology/Dolibarr/src",
-    "Webapp/Technology/Dolibarr",
-    "Http",
-    "Path Traversal",
-    "Pentest/config.sh",
-    "Pentest/install.sh",
     "Webapp/Exploitation/Server-Side/File Upload/src/canvas.canvas",
     "Webapp/Exploitation/Server-Side/File Inclusion/src/Untitled.canvas",
     "Untitled.canvas",

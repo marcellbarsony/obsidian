@@ -10,20 +10,21 @@ port:
 
 # RDP
 
-**RDP**
-([Remote Desktop Protocol](https://learn.microsoft.com/en-us/troubleshoot/windows-server/remote/understanding-remote-desktop-protocol))
-is developed by Microsoft for encrypted IP remote access.
+**RDP** (*[Remote Desktop Protocol](https://learn.microsoft.com/en-us/troubleshoot/windows-server/remote/understanding-remote-desktop-protocol)*)
+is a proprietary protocol developed by Microsoft
+for encrypted IP remote access
 
 For an **RDP** session to be established, both the network firewall
-and the firewall on the server must allow connections from the outside.
+and the firewall on the server must allow connections from the outside
 
 **RDP** is using
 [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security)
 or
 [RDP Security](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-rdpbcgr/8e8b2cca-c1fa-456c-8ecb-a82fc60b2322)
-for encryption.
+for encryption
 
-The Remote Desktop service is installed by default on Windows servers.
+The **Remote Desktop service** is installed by default
+on Windows servers
 
 ___
 
@@ -33,7 +34,7 @@ ___
 **Network Level Authentication**
 ([NLA](https://en.wikipedia.org/wiki/Remote_Desktop_Services#Network_Level_Authentication))
 is an RDP feature that requires the connecting user to authenticate
-before the session is established.
+before the session is established
 
 ___
 <!-- }}} -->

@@ -17,22 +17,6 @@ ___
 <!-- xfreerdp {{{-->
 ### xfreerdp
 
-[xfreerdp](https://linux.die.net/man/1/xfreerdp) —
-FreeRDP X11 client
-
-<!-- Install {{{-->
-#### Install
-
-Install
-
-```sh
-sudo apt install freerdp3-x11
-```
-<!-- }}} -->
-
-<!-- Connect {{{-->
-#### Connect
-
 Basic connection
 
 ```sh
@@ -71,8 +55,6 @@ xfreerdp /u: /p:<password> /v:$target /dynamic-resolution
 ```
 <!-- }}} -->
 
-<!-- }}} -->
-
 <!-- rdesktop {{{-->
 ### rdesktop
 
@@ -102,6 +84,7 @@ Specific resolution
 ```sh
 rdesktop -u <username> $target -g 1920x1080
 ```
+
 <!-- }}} -->
 
 ___

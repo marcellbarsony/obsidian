@@ -16,6 +16,47 @@ tags:
 <!-- }}} -->
 ___
 
+
+<!-- Connect {{{-->
+## Connect
+
+[[Telnet/General|Telnet]]
+
+```sh
+telnet $target 25
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> telnet $target 25
+> ```
+> ```sh
+> Trying 10.129.1.71...
+> Connected to 10.129.1.71.
+> Escape character is '^]'.
+> 220 WIN-02 ESMTP
+> ```
+>
+<!-- }}} -->
+
+[[Netcat]]
+
+```sh
+nc $target 25
+```
+
+[openssl s_client](https://docs.openssl.org/1.0.2/man1/s_client/)
+(*TLS Encrypted Interaction*)
+
+```sh
+openssl s_client -connect $target:465 -crlf -quiet
+```
+
+___
+<!-- }}} -->
+
 <!-- Commands {{{-->
 ## Commands
 
@@ -42,58 +83,8 @@ perform the required action
 >| `QUIT`       | The client terminates the session                                                       |
 <!-- }}} -->
 
-<!-- Netcat {{{-->
-### Netcat
-
-[[Netcat]] — Test connection to the SMTP Server
-
-```sh
-ncat $target 25
-```
-
-___
-<!-- }}} -->
-
-<!-- Telnet {{{-->
-### Telnet
-
-[[Telnet/General|Telnet]] — Interact with the **SMTP** server
-through TCP connection
-
-<!-- Connect {{{-->
-#### Connect
-
-Connect to the SMTP server
-
-```sh
-telnet $target <port>
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> telnet target.com 25
-> ```
->
-> Basic SMTP conversation
->
-> ```sh
-> EHLO attacker.com
-> MAIL FROM:<sender@attacker.com>
-> RCPT TO:<victim@target.com>
-> DATA
-> Subject: Test
-> Test message
-> .
-> QUIT
-> ```
-<!-- }}} -->
-
-<!-- }}} -->
-
 <!-- HELO {{{-->
-#### HELO
+### HELO
 
 `HELO`/`EHLO` — Initialize session
 
@@ -140,10 +131,39 @@ HELO <target_server>
 > ```
 <!-- }}} -->
 
+```sh
+EHLO all
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> 220 somedomain.com Microsoft ESMTP MAIL Service, Version: Y.Y.Y.Y ready at  Wed, 15 Sep 2021 12:13:28 +0200
+> ```
+> ```sh
+> EHLO all
+> ```
+> ```sh
+> 250-somedomain.com Hello [x.x.x.x]
+> 250-TURN
+> 250-SIZE 52428800
+> 250-ETRN
+> 250-PIPELINING
+> 250-DSN
+> 250-ENHANCEDSTATUSCODES
+> 250-8bitmime
+> 250-BINARYMIME
+> 250-CHUNKING
+> 250-VRFY
+> 250 OK
+> ```
+<!-- }}} -->
+
 <!-- }}} -->
 
 <!-- VRFY {{{-->
-#### VRFY
+### VRFY
 
 `VRFY` — Enumerate existing users on the system
 
@@ -194,7 +214,7 @@ VRFY <user>
 <!-- }}} -->
 
 <!-- EXPN {{{-->
-#### EXPN
+### EXPN
 
 `EXPN` — Enumerate existing users and users on a distribution list
 
@@ -249,7 +269,7 @@ EXPN <distribution_list>
 <!-- }}} -->
 
 <!-- RCPT TO {{{-->
-#### RCPT TO
+### RCPT TO
 
 Identify the recipient of an e-mail message
 
@@ -293,7 +313,7 @@ RCPT TO: john
 <!-- }}} -->
 
 <!-- USER {{{-->
-#### USER
+### USER
 
 Enumerate user (*[[POP3/Usage#POP3 Commands|POP3 Commands]]*)
 
@@ -322,7 +342,7 @@ USER <user>
 <!-- }}} -->
 
 <!-- Send an Email {{{-->
-#### Send an Email
+### Send an Email
 
 Send an e-mail manually through an **SMTP Server**
 
@@ -394,11 +414,55 @@ The header structure defined in
 
 <!-- }}} -->
 
+<!-- Internal Server Name {{{-->
+### Internal Server Name
+
+Some SMTP servers auto-complete a sender’s address
+when command `MAIL FROM` is issued without a full address,
+disclosing its internal name
+
+```sh
+MAIL FROM: me
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> 220 somedomain.com Microsoft ESMTP MAIL Service, Version: Y.Y.Y.Y ready at  Wed, 15 Sep 2021 12:13:28 +0200
+> ```
+> ```sh
+> EHLO all
+> ```
+> ```sh
+> 250-somedomain.com Hello [x.x.x.x]
+> 250-TURN
+> 250-SIZE 52428800
+> 250-ETRN
+> 250-PIPELINING
+> 250-DSN
+> 250-ENHANCEDSTATUSCODES
+> 250-8bitmime
+> 250-BINARYMIME
+> 250-CHUNKING
+> 250-VRFY
+> 250 OK
+> ```
+> ```sh
+> MAIL FROM: me
+> ```
+> ```sh
+> 250 2.1.0 me@PRODSERV01.somedomain.com....Sender OK
+> ```
+<!-- }}} -->
+
+<!-- }}} -->
+
 ___
 <!-- }}} -->
 
 <!-- POP3 {{{-->
-### POP3
+## POP3
 
 Enumerate via [[POP3/Usage#POP3 Commands|POP3 Commands]]
 
@@ -409,8 +473,5 @@ Enumerate via [[POP3/Usage#POP3 Commands|POP3 Commands]]
 >
 <!-- }}} -->
 
-
 ___
-<!-- }}} -->
-
 <!-- }}} -->

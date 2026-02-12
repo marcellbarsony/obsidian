@@ -3,14 +3,44 @@ id: IMAP-POP3
 tags:
   - Networking/Services/IMAP-POP3/Usage
 links: "[[Networking/Services/General]]"
+aliases: []
 ---
 
 # Usage
 
-<!-- IMAP Connect {{{-->
-## IMAP Connect
+___
 
-Connect and interact with an **IMAP** server using **openssl**
+<!-- IMAP Commands {{{-->
+## IMAP Commands
+
+**IMAP** command [references](https://donsutherland.org/crib/imap)
+(*[RFC 3501](https://datatracker.ietf.org/doc/html/rfc3501)*)
+
+<!-- Connect {{{-->
+### Connect
+
+[[Telnet/General|Telnet]]
+
+```sh
+telnet $target 143
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> telnet $target 143
+> ```
+> ```sh
+> Trying 10.129.1.71...
+> Connected to 10.129.1.71.
+> Escape character is '^]'.
+> ```
+<!-- }}} -->
+
+
+[openssl s_client](https://docs.openssl.org/1.0.2/man1/s_client/) —
+Connect and interact with an **IMAP** server
 (*TLS Encrypted Interaction*)
 
 ```sh
@@ -79,12 +109,6 @@ openssl s_client -connect $target:imaps
 ___
 <!-- }}} -->
 
-<!-- IMAP Commands {{{-->
-## IMAP Commands
-
-**IMAP** command [references](https://donsutherland.org/crib/imap)
-(*[RFC 3501](https://datatracker.ietf.org/doc/html/rfc3501)*)
-
 <!-- Unauthenticated {{{-->
 ### Unauthenticated
 
@@ -141,14 +165,15 @@ Initiate a [SASL](https://en.wikipedia.org/wiki/Simple_Authentication_and_Securi
 authentication
 
 ```sh
-a1 authenticate login
+a1 AUTHENTICATE login
 ```
 
 <!-- Example {{{-->
 > [!example]-
 >
 > ```sh
->
+> ```
+> ```sh
 > ```
 <!-- }}} -->
 
@@ -160,7 +185,7 @@ a1 authenticate login
 Log in with credentials
 
 ```sh
-a1 login <user> <password>
+a1 LOGIN "<user>[@<domain>]" "<password>"
 ```
 
 <!-- Example {{{-->
@@ -169,9 +194,10 @@ a1 login <user> <password>
 > Log in as `robin`:`robin`
 >
 > ```sh
-> a1 LOGIN robin@company.com robin
+> a1 LOGIN "robin@company.com" "robin"
 > ```
 > ```sh
+> a1 OK LOGIN completed
 > a1 OK [CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE SORT SORT=DISPLAY THREAD=REFERENCES THREAD=REFS THREAD=ORDEREDSUBJECT MULTIAPPEND URL-PARTIAL CATENATE UNSELECT CHILDREN NAMESPACE UIDPLUS LIST-EXTENDED I18NLEVEL=1 CONDSTORE QRESYNC ESEARCH ESORT SEARCHRES WITHIN CONTEXT=SEARCH LIST-STATUS BINARY MOVE SNIPPET=FUZZY PREVIEW=FUZZY LITERAL+ NOTIFY SPECIAL-USE] Logged in
 > ```
 <!-- }}} -->
@@ -184,8 +210,11 @@ ___
 <!-- Authenticated {{{-->
 ### Authenticated
 
+<!-- Mailbox Operations {{{-->
+#### Mailbox Operations
+
 <!-- LIST {{{-->
-#### LIST
+##### LIST
 
 List all mailboxes/folders
 
@@ -221,13 +250,15 @@ a1 LIST "<mailbox>/" *
 > a1 list "INBOX/" *
 > ```
 > ```sh
+> * LIST (\HasNoChildren) "." "INBOX"
+> a1 OK LIST completed
 > ```
 <!-- }}} -->
 
 <!-- }}} -->
 
 <!-- STATUS {{{-->
-#### STATUS
+##### STATUS
 
 Request the status of the provided mailbox/folder
 
@@ -255,6 +286,8 @@ a1 STATUS <mailbox> (<option_1> <option_2> ...)
 >
 > ```sh
 > 1 STATUS "DEV.DEPARTMENT.INT" (MESSAGES UNSEEN)
+> ```
+> ```sh
 > * STATUS DEV.DEPARTMENT.INT (MESSAGES 1 UNSEEN 0)
 > 1 OK Status completed (0.001 + 0.000 secs).
 > ```
@@ -263,7 +296,7 @@ a1 STATUS <mailbox> (<option_1> <option_2> ...)
 <!-- }}} -->
 
 <!-- SELECT {{{-->
-#### SELECT
+##### SELECT
 
 Select a particular mailbox/folder
 
@@ -316,8 +349,33 @@ a1 EXAMINE "<mailbox>"
 The following commands become available once in
 [[#SELECT|SELECT/EXAMINE]] mode
 
+<!-- UID {{{-->
+###### UID
+
+UID instructs the server to use UIDs as arguments or results
+(*rather than message sequence numbers, as is the default*)
+
+UID is a modifier command
+(e.g., [[#COPY]], [[#FETCH]], [[#SEARCH]])
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> A1 UID FETCH 1 (UID RFC822.SIZE BODY.PEEK[])
+> ```
+> ```sh
+> * FLAGS (\Answered \Flagged \Deleted \Seen \Draft some-flag a-different-flag a-funny-flag)
+> * OK [PERMANENTFLAGS (\Answered \Flagged \Deleted \Seen \Draft some-flag a-different-flag a-funny-flag \*)] Flags permitted.
+> * 3 FETCH (UID 10 FLAGS (a-funny-flag))
+> w OK Store completed (0.004 + 0.000 + 0.003 secs).
+> ```
+<!-- }}} -->
+
+<!-- }}} -->
+
 <!-- CHECK {{{-->
-##### CHECK
+###### CHECK
 
 Request the server to complete some housekeeping on the mailbox
 
@@ -339,7 +397,7 @@ a1 CHECK
 <!-- }}} -->
 
 <!-- CLOSE {{{-->
-##### CLOSE
+###### CLOSE
 
 Close the currently selected mailbox and run [[#EXPUNGE]]
 
@@ -361,7 +419,7 @@ a1 CLOSE
 <!-- }}} -->
 
 <!-- EXPUNGE {{{-->
-##### EXPUNGE
+###### EXPUNGE
 
 Delete messages with the `\Deleted` flag set
 
@@ -384,7 +442,7 @@ a1 EXPUNGE
 <!-- }}} -->
 
 <!-- SEARCH {{{-->
-##### SEARCH
+###### SEARCH
 
 Search messages in the selected mailbox/folder
 
@@ -453,7 +511,7 @@ a1 SEARCH <option>
 <!-- }}} -->
 
 <!-- FETCH {{{-->
-##### FETCH
+###### FETCH
 
 Fetch messages from the selected mailbox/folder
 
@@ -486,10 +544,14 @@ a1 FETCH (<option>)
 <!-- Example {{{-->
 > [!example]-
 >
-> Fetch message by [[UID]]
+> ```sh
+> a3 FETCH 1 BODY[]
+> ```
+>
+> Fetch message by [[#UID]]
 >
 > ```sh
-> A1 UID FETCH 1 (UID RFC822.SIZE BODY.PEEK[])
+> a1 UID FETCH 1 (UID RFC822.SIZE BODY.PEEK[])
 > ```
 > ```sh
 > * 1 FETCH (UID 1 RFC822.SIZE 167 BODY[] {167}
@@ -500,14 +562,14 @@ a1 FETCH (<option>)
 >
 > HTB{983uzn8jmfgpd8jmof8c34n7zio}
 > )
-> A1 OK Fetch completed (0.004 + 0.000 + 0.003 secs).
+> a1 OK Fetch completed (0.004 + 0.000 + 0.003 secs).
 > ```
 <!-- }}} -->
 
 <!-- }}} -->
 
 <!-- COPY {{{-->
-##### COPY
+###### COPY
 
 Copy a message from the currently selected folder to a different folder
 
@@ -528,26 +590,27 @@ a1 COPY <id> "<destination_folder>"
 
 <!-- }}} -->
 
-<!-- UID {{{-->
-##### UID
+<!-- }}} -->
 
-UID instructs the server to use UIDs as arguments or results
-(*rather than message sequence numbers, as is the default*)
+<!-- UNSELECT {{{-->
+##### UNSELECT
 
-UID is a modifier command
-(e.g., [[#COPY]], [[#FETCH]], [[#SEARCH]])
+Unselect selected mailbox/folder
+
+```sh
+a1 UNSELECT "<mailbox>"
+```
 
 <!-- Example {{{-->
 > [!example]-
 >
+> Select the mailbox/folder `INBOX`
+>
 > ```sh
-> A1 UID FETCH 1 (UID RFC822.SIZE BODY.PEEK[])
+> a1 UNSELECT "INBOX"
 > ```
+>
 > ```sh
-> * FLAGS (\Answered \Flagged \Deleted \Seen \Draft some-flag a-different-flag a-funny-flag)
-> * OK [PERMANENTFLAGS (\Answered \Flagged \Deleted \Seen \Draft some-flag a-different-flag a-funny-flag \*)] Flags permitted.
-> * 3 FETCH (UID 10 FLAGS (a-funny-flag))
-> w OK Store completed (0.004 + 0.000 + 0.003 secs).
 > ```
 <!-- }}} -->
 

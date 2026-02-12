@@ -29,6 +29,18 @@ queuing messages on the recipient's end
 > - [HackTricks](https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-smtp/index.html)
 > - [Hackviser](https://hackviser.com/tactics/pentesting/services/smtp#enumeration)
 >
+> Hack The Box
+>
+> - [Rabbit](https://app.hackthebox.com/machines/Rabbit):
+>   Brute-force Outlook Web Access (*OWA*)
+>   and then sending a document with a malicious macro
+>   to phish a user
+> - [SneakyMailer](https://app.hackthebox.com/machines/SneakyMailer):
+>   Phis and enumerate a user's inbox using [[Netcat]]
+>   and an [[IMAP-POP3/General|IMAP]] client
+> - [Reel](https://app.hackthebox.com/machines/Reel):
+>   Brute-force SMTP users and phish with a malicious RTF file
+>
 <!-- }}} -->
 
 ___
@@ -37,11 +49,12 @@ ___
 ## Ports
 
 **SMTP** servers accept connection requests on
-- **TCP port** `25`: Typically unencrypted connection (or may use `STARTTLS` to
+
+- `tcp/25`: Typically unencrypted connection (or may use `STARTTLS` to
   upgrade connection)
-- **TCP port** `465`: Used for SMTP over implicit TLS; the connection is
+- `tcp/465`: Used for SMTP over implicit TLS; the connection is
   encrypted from the start (no `STARTTLS`)
-- **TCP port** `587`: `STARTTLS` command is sent to switch the existing
+- `tcp/587`: `STARTTLS` command is sent to switch the existing
   plaintext connection to encrypted. The client should confirm its identity by
   providing a username and password.
 

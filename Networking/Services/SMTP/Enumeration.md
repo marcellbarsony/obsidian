@@ -21,7 +21,7 @@ ___
 <!-- Server {{{-->
 ## Server
 
-Identify the target mail server
+Identify an organization's mail server
 
 1. Query [[DNS/General#MX|MX]] records
 
@@ -106,6 +106,8 @@ ___
 
 <!-- Service {{{-->
 ## Service
+
+Enumerate SMTP/S service
 
 <!-- Info {{{-->
 > [!info]- Ports
@@ -211,10 +213,9 @@ sudo nmap -sC -sV -Pn $target -p25,143,110,465,587,993,995 -oA smtp-all-ports
 <!-- Banner {{{-->
 ### Banner
 
-Grab service banner
+**SMTP**
 
-<!-- SMTP {{{-->
-#### SMTP
+Grab SMTP service banner
 
 [[Netcat]]
 
@@ -232,30 +233,15 @@ echo "EHLO test" | nc $target 25
 telnet $target 25
 ```
 
-<!-- }}} -->
+**SMTPS**
 
-<!-- SMTPS {{{-->
-#### SMTPS
+Grab SMTPS service banner
 
-[Opportunistic TLS](https://en.wikipedia.org/wiki/Opportunistic_TLS)
-with `STARTTLS` command
-
-```sh
-openssl s_client -starttls smtp -crlf -connect <target>:587
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> openssl s_client -starttls smtp -crlf -connect smtp.mailgun.org:587
-> ```
-<!-- }}} -->
-
+[openssl s_client](https://docs.openssl.org/1.0.2/man1/s_client/) —
 SSL/TLS without `STARTTLS` command
 
 ```sh
-openssl s_client -crlf -connect <target>:465
+openssl s_client -crlf -connect $target:465
 ```
 
 <!-- Example {{{-->
@@ -266,7 +252,20 @@ openssl s_client -crlf -connect <target>:465
 > ```
 <!-- }}} -->
 
+[openssl s_client](https://docs.openssl.org/1.0.2/man1/s_client/) —
+[Opportunistic TLS](https://en.wikipedia.org/wiki/Opportunistic_TLS)
+with `STARTTLS` command
 
+```sh
+openssl s_client -starttls smtp -crlf -connect $target:587
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> openssl s_client -starttls smtp -crlf -connect smtp.mailgun.org:587
+> ```
 <!-- }}} -->
 
 <!-- }}} -->

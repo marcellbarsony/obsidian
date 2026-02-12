@@ -10,6 +10,13 @@ tags: []
 Username guessing tool primarily for use against
 the default Solaris SMTP service
 
+<!-- Info {{{-->
+> [!info]- Resources
+>
+> - [PentestMonkey](https://pentestmonkey.net/tools/user-enumeration/smtp-user-enum)
+>
+<!-- }}} -->
+
 <!-- Tip {{{-->
 > [!tip]
 >
@@ -41,8 +48,46 @@ ___
 Guess SMTP usernames
 
 ```sh
-smtp-user-enum -M <method> -u <user> [-D <domain>] -t $target [-w 20]
+smtp-user-enum -M <method> -u <user> -t $target [-D <domain>] [-w 20]
 ```
+
+<!-- VRFY {{{-->
+### VRFY
+
+```sh
+smtp-user-enum -M VRFY -U <users.txt> -t $target -w 20
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> [[SecLists]]
+>
+> ```sh
+> smtp-user-enum -M VRFY -U /usr/share/seclists/Usernames/top-usernames-shortlist.txt -t $target -w 20
+> ```
+> ```sh
+> smtp-user-enum -M VRFY -U /usr/share/seclists/Usernames/xato-net-10-million-usernames.txt -t $target -w 20
+> ```
+> ```sh
+> smtp-user-enum -M VRFY -U /usr/share/seclists/Usernames/xato-net-10-million-usernames-dup.txt -t $target -w 20
+> ```
+> ```sh
+> smtp-user-enum -M VRFY -U /usr/share/seclists/Usernames/Names/names.txt -t $target -w 20
+> ```
+>
+> [[Metasploit]]
+>
+> ```sh
+> smtp-user-enum -M VRFY -U /usr/share/wordlists/metasploit/unix_users.txt -t $target -w 20
+> ```
+>
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- Users {{{-->
+### Users
 
 [[Usage#VRFY|VRFY]] — Verify specific user
 
@@ -99,6 +144,11 @@ smtp-user-enum -M VRFY -U <users.txt> -t $target -w 20
 > ```
 <!-- }}} -->
 
+<!-- }}} -->
+
+<!-- Recipient {{{-->
+### Recipient
+
 [[Usage#RCPT TO|RCPT TO]] — Identify the recipient of an e-mail message
 
 ```sh
@@ -143,6 +193,8 @@ smtp-user-enum -M RCPT -u <user> -t $target -w 20 [-D <domain>]
 ```sh
 smtp-user-enum -M EXPN -u <user> -t $target -w 20 [-D <domain>]
 ```
+
+<!-- }}} -->
 
 ____
 <!-- }}} -->
