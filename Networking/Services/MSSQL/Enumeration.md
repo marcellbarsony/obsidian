@@ -12,6 +12,19 @@ ___
 <!-- Service {{{-->
 ## Service
 
+Enumerate MSSQL service
+
+<!-- Info {{{-->
+> [!info]-
+>
+> ```sh
+> ms-sql          1433/tcp
+> ms-sql-ssrs     1434/udp
+> ms-sql-hidden   2433/tcp
+> ```
+>
+<!-- }}} -->
+
 [[Nmap]] — Service detection
 
 ```sh
@@ -41,7 +54,7 @@ nmap $target -p 1433 -oA mssql-service-detection
 [[Nmap]] — Service Banner
 
 ```sh
-nmap -sC -sV -Pn $target -p 1433
+nmap -sC -sV -Pn $target -p 1433 -oA mssql-service-banner
 ```
 
 <!-- Example {{{-->
@@ -85,6 +98,13 @@ nmap -sC -sV -Pn $target -p 1433
 > |_    TCP port: 1433
 > ```
 <!-- }}} -->
+
+
+[[Nmap]] — Hidden mode
+
+```sh
+nmap -sC -sV -Pn $target -p 2433 -oA mssql-service-hidden
+```
 
 [[Nmap]] — [[MSSQL/General|MSSQL]] script scan
 
@@ -153,6 +173,7 @@ sudo nmap \
 > Nmap done: 1 IP address (1 host up) scanned in 8.52 seconds
 > ```
 <!-- }}} -->
+
 
 ___
 <!-- }}} -->

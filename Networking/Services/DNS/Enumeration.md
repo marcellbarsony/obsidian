@@ -52,20 +52,25 @@ dig @<dns_ip> version.bind CHAOS TXT
 > - `TXT`: Record type
 <!-- }}} -->
 
-[[Nmap Scripting Engine|Nmap script]]
-([dns-nsid](https://nmap.org/nsedoc/scripts/dns-nsid.html)) —
-Grab banner
-
-```sh
-nmap --script dns-nsid <dns_ip>
-```
-
 [[Netcat]] — Grab banner
 
 ```sh
 nc -nv -u <dns_ip> 53
 ```
 
+[[Nmap]] — Scan service with default scripts
+
+```sh
+nmap -sC -sV -Pn $target -p 53 -oA dns-service-scripts
+```
+
+[[Nmap Scripting Engine|Nmap script]]
+(*[dns-nsid](https://nmap.org/nsedoc/scripts/dns-nsid.html)*) —
+Grab banner
+
+```sh
+nmap --script dns-nsid <dns_ip> -oA dns-service-banner
+```
 ___
 <!-- }}} -->
 
@@ -203,8 +208,39 @@ DNS Subdomain enumeration using passive online resources
 [[subfinder]] — DNS Subdomain enumeration
 
 ```sh
-subfinder -d "<target_domain>"
+subfinder -d "<target_domain>" -v
 ```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> ./subfinder -d inlanefreight.com -v
+> ```
+> ```sh
+>         _     __ _
+> ____  _| |__ / _(_)_ _  __| |___ _ _
+> (_-< || | '_ \  _| | ' \/ _  / -_) '_|
+> /__/\_,_|_.__/_| |_|_||_\__,_\___|_| v2.4.5
+>                 projectdiscovery.io
+>
+> [WRN] Use with caution. You are responsible for your actions
+> [WRN] Developers assume no liability and are not responsible for any misuse or damage.
+> [WRN] By using subfinder, you also agree to the terms of the APIs used. 
+>
+> [INF] Enumerating subdomains for inlanefreight.com
+> [alienvault] www.inlanefreight.com
+> [dnsdumpster] ns1.inlanefreight.com
+> [dnsdumpster] ns2.inlanefreight.com
+> ...snip...
+> [bufferover] Source took 2.193235338s for enumeration
+> ns2.inlanefreight.com
+> www.inlanefreight.com
+> ns1.inlanefreight.com
+> support.inlanefreight.com
+> [INF] Found 4 subdomains for inlanefreight.com in 20 seconds 11 milliseconds
+> ```
+<!-- }}} -->
 
 [[Findomain]] — DNS Subdomain enumeration
 
@@ -584,6 +620,12 @@ dnsenum --enum --dnsserver $target <target_domain> -f <wordlist.txt> -p 5 -s 5 -
 >
 <!-- }}} -->
 
+[[Subbrute]]
+
+```sh
+./subbrute.py $target -s ./names.txt -r ./resolvers.txt
+```
+
 [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) —
 DNS Subdomain Brute Forcing
 
@@ -615,10 +657,11 @@ DNS servers can be footprinted via queries
 ### NS Query
 
 [dig](https://linux.die.net/man/1/dig) —
-Query the DNS server for [[Networking/Services/DNS/General#NS|NS]] records of a domain
+Query the DNS server for [[DNS/General#NS|NS]] records
+of a domain
 
 ```sh
-dig [@<dns_ip>] <target_domain> ns
+dig @$target <target_domain> NS
 ```
 
 <!-- Example {{{-->
@@ -638,11 +681,11 @@ dig [@<dns_ip>] <target_domain> ns
 ### ANY Query
 
 [dig](https://linux.die.net/man/1/dig) —
-Query the DNS server for [[Networking/Services/DNS/General#ANY|ANY]] (*all available*) records
+Query the DNS server for [[DNS/General#ANY|ANY]] (*all available*) records
 of a domain
 
 ```sh
-dig @<dns_ip> <target_domain> any
+dig @$target <target_domain> ANY
 ```
 
 <!-- Example {{{-->
@@ -823,6 +866,35 @@ dig @$target <target_domain> AXFR
 fierce --domain <target_domain> --dns-servers $target
 ```
 
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> fierce --domain zonetransfer.me
+> ```
+> ```sh
+> NS: nsztm2.digi.ninja. nsztm1.digi.ninja.
+> SOA: nsztm1.digi.ninja. (81.4.108.41)
+> Zone: success
+> {<DNS name @>: '@ 7200 IN SOA nsztm1.digi.ninja. robin.digi.ninja. 2019100801 '
+>                '172800 900 1209600 3600\n'
+>                '@ 300 IN HINFO "Casio fx-700G" "Windows XP"\n'
+>                '@ 301 IN TXT '
+>                '"google-site-verification=tyP28J7JAUHA9fw2sHXMgcCC0I6XBmmoVi04VlMewxA"\n'
+>                '@ 7200 IN MX 0 ASPMX.L.GOOGLE.COM.\n'
+>                '@ 7200 IN MX 10 ALT1.ASPMX.L.GOOGLE.COM.\n'
+>                '@ 7200 IN MX 10 ALT2.ASPMX.L.GOOGLE.COM.\n'
+>                '@ 7200 IN MX 20 ASPMX2.GOOGLEMAIL.COM.\n'
+>                '@ 7200 IN MX 20 ASPMX3.GOOGLEMAIL.COM.\n'
+>                '@ 7200 IN MX 20 ASPMX4.GOOGLEMAIL.COM.\n'
+>                '@ 7200 IN MX 20 ASPMX5.GOOGLEMAIL.COM.\n'
+>                '@ 7200 IN A 5.196.105.14\n'
+>                '@ 7200 IN NS nsztm1.digi.ninja.\n'
+>                '@ 7200 IN NS nsztm2.digi.ninja.',
+> ```
+>
+<!-- }}} -->
+
 [[DNSRecon]] — Automate zone transfers
 
 ```sh
@@ -849,11 +921,11 @@ Query `localhost` for records
 > Validate commands
 
 ```sh
-dig @<dns_ip> -x 127.0.0.1
+dig @$target -x 127.0.0.1
 ```
 
 ```sh
-dig @<dns_ip> -x 127.0.0.2
+dig @$target -x 127.0.0.2
 ```
 <!-- }}} -->
 
@@ -863,11 +935,11 @@ dig @<dns_ip> -x 127.0.0.2
 Enumerate [[DNS/General#MX|MX]] records
 
 ```sh
-dig [@<dns_ip>] <target_domain> mx
+dig [@$target] <target_domain> MX
 ```
 
 ```sh
-dig [@<dns_ip>] <target_domain> mx | grep "MX" | grep -v ";"
+dig [@$target] <target_domain> MX | grep "MX" | grep -v ";"
 ```
 
 <!-- Example {{{-->

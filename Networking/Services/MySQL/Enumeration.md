@@ -32,6 +32,15 @@ ___
 
 Detect MySQL service
 
+<!-- Info {{{-->
+> [!info]-
+>
+> ```sh
+> mysql           3306/tcp
+> ```
+>
+<!-- }}} -->
+
 ```sh
 nmap $target -p 3306 -oA mysql-service
 ```
@@ -255,7 +264,6 @@ The most important databases on a MySQL server are
 
 <!-- Example {{{-->
 > [!example]-
->
 >
 > 1. Select `sys` database
 >

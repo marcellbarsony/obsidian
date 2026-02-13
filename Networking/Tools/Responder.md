@@ -29,10 +29,17 @@ ___
 <!-- Usage {{{-->
 ## Usage
 
-Help
+**Help and Usage Information**
+
+Display the help menu and usage information for Responder,
+listing all available options and attack modes.
 
 ```sh
 responder -h
+```
+
+```sh
+responder --help
 ```
 
 <!-- Example {{{-->
@@ -99,10 +106,167 @@ responder -h
 > ```
 <!-- }}} -->
 
-Usage
+**Basic Execution**
+
+Start Responder with default settings on the specified network interface.
+It begins poisoning LLMNR and NBT-NS queries to capture credentials.
+
+```sh
+responder -I <interface>
+```
 
 ```sh
 responder -I eth0 -w -d
+```
+
+**Analyze Mode**
+
+Run Responder in analyze mode, monitoring network traffic
+without performing any poisoning.
+
+```sh
+responder -I <interface> -A
+```
+
+**Enable WPAD Proxy**
+
+Enable the Web Proxy Auto-Discovery (WPAD) rogue proxy server.
+It can capture HTTP authentication credentials from browsers
+and applications using WPAD for proxy configuration.
+
+```sh
+responder -I <interface> -w
+```
+
+**Force WPAD Authentication**
+
+Force WPAD authentication by serving a rogue PAC file
+that requires authentication.
+It's effective for capturing credentials from web browsers.
+
+```sh
+responder -I <interface> -w -F
+```
+
+**Disable SMB Server**
+
+Disable the SMB authentication server
+while keeping other services active.
+It's useful when targeting specific protocols or avoiding detection.
+
+```sh
+responder -I <interface> --disable-smb
+```
+
+**Disable HTTP Server**
+
+Disable the HTTP authentication server,
+focusing poisoning efforts on other protocols like SMB or FTP.
+
+```sh
+responder -I <interface> --disable-http
+```
+
+**Enable Fingerprinting**
+
+Enable detailed fingerprinting of connecting hosts,
+gathering information about operating systems,
+browser versions, and other client details.
+
+```sh
+responder -I <interface> -f
+```
+
+**Verbose Output**
+
+Enable verbose output mode, displaying detailed information
+about all poisoning attempts, authentication captures,
+and network activity.
+
+```sh
+responder -I <interface> -v
+```
+
+**Specify Log Directory**
+
+Set a custom directory for storing captured credentials and log files.
+It helps organize multiple assessment outputs.
+
+```sh
+responder -I <interface> -o /path/to/logs
+```
+
+**Listen on All Interfaces**
+
+Make Responder listen on all available network interfaces simultaneously,
+useful for systems with multiple network connections.
+
+```sh
+responder -I all
+```
+
+**Disable NetBIOS**
+
+Disable NBT-NS poisoning while keeping LLMNR poisoning active.
+It's useful for targeting specific name resolution protocols.
+
+```sh
+responder -I <interface> --disable-nbt
+```
+
+**Enable DHCP Poisoning**
+
+Enable DHCP poisoning to inject malicious DNS server addresses,
+redirecting name resolution queries to the attacker's system.
+
+```sh
+responder -I <interface> -d
+```
+
+**Custom Challenge**
+
+Set a custom NTLM challenge value instead of random challenges.
+It's useful for rainbow table attacks or specific testing scenarios.
+
+```sh
+responder -I <interface> --lm --challenge <challenge>
+```
+
+**Force LM Downgrade**
+
+Force LM hash downgrade attacks, attempting to capture
+weaker LM hashes that are easier to crack than NTLMv2.
+
+```sh
+responder -I <interface> --lm
+```
+
+**Run in Background**
+
+Runs Responde as a background process,
+allowing it to continue capturing credentials
+while performing other tasks.
+
+```sh
+responder -I <interface> &
+```
+
+**Target Specific Domain**
+
+Configure Responder to target a specific Windows domain,
+focusing poisoning efforts on domain-joined systems.
+
+```sh
+responder -I <interface> -r <domain>
+```
+
+**Disable Multicast**
+
+Disable multicast name resolution poisoning,
+focusing only on broadcast-based NBT-NS queries.
+
+```sh
+responder -I <interface> --disable-mdns
 ```
 
 ___

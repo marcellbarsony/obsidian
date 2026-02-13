@@ -14,12 +14,21 @@ port:
 database management system developed by [Oracle](https://www.mysql.com/).
 
 **MySQL** works according to the client-server principle and consist of a
-[[Networking/Services/MySQL/General#MySQL Database|MySQL Server]] and
-[[Networking/Services/MySQL/General#MySQL Clients|MySQL Client(s)]].
+[[MySQL/General#MySQL Database|MySQL Server]] and
+[[MySQL/General#MySQL Clients|MySQL Client(s)]]
 
 The **MySQL** database is controlled using the
 [SQL database language](https://www.w3schools.com/sql/sql_intro.asp),
-and is often stored in a single file with the file extension `.sql`.
+and is often stored in a single file with the file extension `.sql`
+
+**MySQL** is suited for applications (*e.g., dynamic websites*),
+where efficient syntax and high response speed are essential
+
+**MySQL databases** often exist in the following combinations:
+
+- [LAMP](https://en.wikipedia.org/wiki/LAMP_(software_bundle)): Linux OS,
+  Apache, MySQL, PHP
+- [LEMP](https://lemp.io/): Linux OS, Nginx, MySQL, PHP
 
 ___
 
@@ -40,14 +49,7 @@ ___
 <!-- MySQL Database {{{-->
 ## MySQL Database
 
-**MySQL** is suited for applications (e.g., dynamic websites), where efficient
-syntax and high response speed are essential.
-
-**MySQL databases** often exist in the following combinations:
-
-- [LAMP](https://en.wikipedia.org/wiki/LAMP_(software_bundle)): Linux OS,
-  Apache, MySQL, PHP
-- [LEMP](https://lemp.io/): Linux OS, Nginx, MySQL, PHP
+**MySQL** default system databases
 
 <!-- Databases {{{-->
 > [!info]- Databases
@@ -58,6 +60,7 @@ syntax and high response speed are essential.
 > | `information_schema` | Provides access to database metadata |
 > | `performance_schema` | Feature for monitoring MySQL Server execution at a low level |
 > | `sys`                | Set of objects that helps DBAs and developers interpret data collected by the Performance Schema |
+>
 <!-- }}} -->
 
 ___

@@ -160,10 +160,17 @@ mysql -h <hostname> -p<password> -u root@localhost
 ___
 <!-- }}} -->
 
-<!-- Databases {{{-->
-## Databases
+<!-- Database {{{-->
+## Database
 
 Databate operations — Enumerate databases to identify high-value targets
+
+<!-- Tip {{{-->
+> [!tip]
+>
+> Common [[General#MySQL Database|MySQL Databases]]
+>
+<!-- }}} -->
 
 <!-- Discover {{{-->
 ### Discover
@@ -289,6 +296,29 @@ SHOW TABLES;
 SELECT table_name FROM information_schema.TABLES WHERE table_schema=DATABASE();
 ```
 
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> mysql> SHOW TABLES;
+> ```
+> ```sh
+> +----------------------------+
+> | Tables_in_htbusers         |
+> +----------------------------+
+> | actions                    |
+> | permissions                |
+> | permissions_roles          |
+> | permissions_users          |
+> | roles                      |
+> | roles_users                |
+> | settings                   |
+> | users                      |
+> +----------------------------+
+> 8 rows in set (0.00 sec)
+> ```
+<!-- }}} -->
+
 <!-- }}} -->
 
 <!-- Structure {{{-->
@@ -406,6 +436,27 @@ Limit table data to `10` rows
 ```sql
 SELECT * FROM table_name LIMIT 10;
 ```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> mysql> SELECT * FROM users;
+> ```
+> ```sh
+> +----+---------------+------------+---------------------+
+> | id | username      | password   | date_of_joining     |
+> +----+---------------+------------+---------------------+
+> |  1 | admin         | p@ssw0rd   | 2020-07-02 00:00:00 |
+> |  2 | administrator | adm1n_p@ss | 2020-07-02 11:30:50 |
+> |  3 | john          | john123!   | 2020-07-02 11:47:16 |
+> |  4 | tom           | tom123!    | 2020-07-02 12:23:16 |
+> +----+---------------+------------+---------------------+
+> 4 rows in set (0.00 sec)
+> ```
+>
+<!-- }}} -->
+
 <!-- }}} -->
 
 <!-- Filter {{{-->

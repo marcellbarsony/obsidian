@@ -7,6 +7,43 @@ tags:
 
 # Usage
 
+Connect to an MSSQL database and run queries
+
+<!-- Tip {{{-->
+> [!tip]
+>
+> MSSQL syntax requires to issue `GO` after the query
+>
+> ```sh
+> SELECT name FROM master.dbo.sysdatabases
+> ```
+> ```sh
+> GO
+> ```
+>
+> <!-- Example {{{-->
+> > [!example]-
+> >
+> > ```sh
+> > 1> SELECT name FROM master.dbo.sysdatabases
+> > ```
+> > ```sh
+> > 2> GO
+> > ```
+> >
+> > ```sh
+> > name
+> > --------------------------------------------------
+> > master
+> > tempdb
+> > model
+> > msdb
+> > htbusers
+> > ```
+> <!-- }}} -->
+>
+<!-- }}} -->
+
 ___
 
 <!-- Connect {{{-->
@@ -100,48 +137,7 @@ impacket-mssqlclient <user>@$target -hashes :NTHASH
 <!-- SQLCMD {{{-->
 ### SQLCMD
 
-[sqlcmd](https://learn.microsoft.com/en-us/sql/tools/sqlcmd/sqlcmd-use-utility) —
-The [sqlcmd utility](https://learn.microsoft.com/en-us/sql/tools/sqlcmd/sqlcmd-utility?view=sql-server-ver17)
-allows enter Transact-SQL statements, system procedures,
-and script files through a variety of available modes
-
-<!-- Install {{{-->
-#### Install
-
-[Download and install the sqlcmd utility](https://learn.microsoft.com/en-us/sql/tools/sqlcmd/sqlcmd-download-install?view=sql-server-ver17&tabs=linux)
-
-1. Import the public repository GPG keys
-
-```sh
-curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc
-```
-
-2. Install common software repositories
-
-```sh
-sudo apt install software-properties-common
-```
-
-3. Add the Microsoft repository
-(*`ubuntu/20.04` segment might be `debian/11`, `ubuntu/20.04`,
-or `ubuntu/22.04`*)
-
-```sh
-sudo add-apt-repository "$(wget -qO- https://packages.microsoft.com/config/ubuntu/20.04/prod.list)"
-```
-
-4. Install sqlcmd with apt
-
-```sh
-sudo apt install sqlcmd
-```
-
-<!-- }}} -->
-
-<!-- Connect {{{-->
-#### Connect
-
-Connect
+[[sqlcmd]] — Connect to MSSQL servers
 
 ```sh
 sqlcmd -S $target -U <username>
@@ -171,42 +167,6 @@ sqlcmd -S $target -U <username> -P <password> -y 30 -Y 30
 > ```sh
 > 1>
 > ```
-<!-- }}} -->
-
-<!-- Tip {{{-->
-> [!tip]
->
-> `sqlcmd` requires to issue `GO` after the query
->
-> ```sh
-> SELECT name FROM master.dbo.sysdatabases
-> ```
-> ```sh
-> GO
-> ```
->
-> <!-- Example {{{-->
-> > [!example]-
-> >
-> > ```sh
-> > 1> SELECT name FROM master.dbo.sysdatabases
-> > ```
-> > ```sh
-> > 2> GO
-> > ```
-> >
-> > ```sh
-> > name
-> > --------------------------------------------------
-> > master
-> > tempdb
-> > model
-> > msdb
-> > htbusers
-> > ```
-> <!-- }}} -->
-<!-- }}} -->
-
 <!-- }}} -->
 
 <!-- }}} -->
@@ -291,9 +251,11 @@ ___
 
 Databate operations — Enumerate databases to identify high-value targets
 
+<!-- Tip {{{-->
 > [!tip]
 >
-> Common [[Networking/Services/MSSQL/General#Database|System Databases]]
+> Common [[MSSQL/General#Database|System Databases]]
+<!-- }}} -->
 
 <!-- Discover {{{-->
 ### Discover
@@ -439,6 +401,33 @@ SELECT table_name FROM information_schema.tables;
 SELECT name FROM sys.tables;
 ```
 
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> 1> SELECT table_name FROM htbusers.INFORMATION_SCHEMA.TABLES
+> ```
+>
+> ```sh
+> 2> GO
+> ```
+>
+> ```sh
+> table_name
+> --------------------------------
+> actions
+> permissions
+> permissions_roles
+> permissions_users
+> roles
+> roles_users
+> settings
+> users
+> (8 rows affected)
+> ```
+>
+<!-- }}} -->
+
 <!-- }}} -->
 
 <!-- Structure {{{-->
@@ -538,14 +527,37 @@ Table data operations
 View table data
 
 ```sql
-SELECT * FROM table_name;
+SELECT * FROM <table>;
 ```
 
 Limit table data to `10` rows
 
 ```sql
-SELECT * FROM table_name LIMIT 10;
+SELECT * FROM <table> LIMIT 10;
 ```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> 1> SELECT * FROM users
+> ```
+> ```sh
+> 2> go
+> ```
+> ```sh
+> id          username             password         data_of_joining
+> ----------- -------------------- ---------------- -----------------------
+>           1 admin                p@ssw0rd         2020-07-02 00:00:00.000
+>           2 administrator        adm1n_p@ss       2020-07-02 11:30:50.000
+>           3 john                 john123!         2020-07-02 11:47:16.000
+>           4 tom                  tom123!          2020-07-02 12:23:16.000
+>
+> (4 rows affected)
+> ```
+>
+<!-- }}} -->
+
 <!-- }}} -->
 
 <!-- Filter {{{-->
@@ -554,17 +566,17 @@ SELECT * FROM table_name LIMIT 10;
 Filter table data
 
 ```sql
-SELECT * FROM myTable WHERE id = 5;
+SELECT * FROM <table> WHERE id = 5;
 ```
 
 ```sql
-SELECT * FROM myTable WHERE name = 'Alice';
+SELECT * FROM <table> WHERE name = 'Alice';
 ```
 
 Filter table data (*multiple*)
 
 ```sql
-SELECT * FROM myTable WHERE age > 30 AND city = 'London';
+SELECT * FROM <table> WHERE age > 30 AND city = 'London';
 ```
 <!-- }}} -->
 ___

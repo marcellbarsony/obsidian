@@ -94,7 +94,7 @@ nmcli connection modify wlp1s0 ipv6.method "disabled"
 Disable IPv6 in the interface's configuration file
 
 ```sh
-/proc/sys/net/ipv6/conf/wlp1s0/disable_ipv6
+sudoedit /proc/sys/net/ipv6/conf/wlp1s0/disable_ipv6
 ```
 ```sh
 1

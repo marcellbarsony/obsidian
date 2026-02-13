@@ -12,7 +12,20 @@ ___
 <!-- Service {{{-->
 ## Service
 
-Scan the default Oracle [[Networking/Services/Oracle TNS/General#TNS Listener|TNS Listener]] port
+Enumerate Oracle-TNS service
+
+<!-- Info {{{-->
+> [!info]-
+>
+> ```sh
+> oracle-tns      1521/tcp
+> oracle-tns-alt  1526/tcp
+> oracle-tns-alt  1541/tcp
+> ```
+>
+<!-- }}} -->
+
+Scan the default Oracle [[Oracle TNS/General#TNS Listener|TNS Listener]] port
 
 ```sh
 sudo nmap -sV $target -p 1521 --open -oA oracle-tns-default

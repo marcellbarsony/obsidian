@@ -7,6 +7,7 @@ links: "[[Networking/Services/General]]"
 port:
   - 1433
   - 1434
+  - 2433
 ---
 
 # MSSQL
@@ -79,7 +80,7 @@ ___
 <!-- Database {{{-->
 ## Database
 
-**MSSQL** has default system databases
+**MSSQL** default system databases
 
 <!-- Info {{{-->
 > [!info]

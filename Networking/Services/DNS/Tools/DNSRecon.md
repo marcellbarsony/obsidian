@@ -13,6 +13,18 @@ is a DNS Enumeration Script written in [[Python/General|Python]]
 
 ___
 
+<!-- Installation {{{-->
+## Installation
+
+[Kali Tools](https://www.kali.org/tools/dnsrecon/)
+
+```sh
+sudo apt install dnsrecon
+```
+
+___
+<!-- }}} -->
+
 <!-- Usage {{{-->
 ## Usage
 
