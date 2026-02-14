@@ -7,14 +7,20 @@ tags:
 
 # Enumeration
 
+___
+
 <!-- Service {{{-->
 ## Service
 
-Detect [[VNC/General|VNC]] Service
+Enumerate VNC service
+
+[[Nmap]] — Detect VNC Service
 
 ```sh
-nmap $target -p 5900-5906 -oA vnc-detect
+nmap $target -p 5900-5906 -oA vnc-service-detect
 ```
+
+[[Nmap]] — Run default VNC enumeration scripts
 
 ```sh
 nmap -sV $target -p <port> --script vnc-info,realvnc-auth-bypass,vnc-title -oA vnc-script-all
@@ -22,6 +28,8 @@ nmap -sV $target -p <port> --script vnc-info,realvnc-auth-bypass,vnc-title -oA v
 
 <!-- Banner {{{-->
 ### Banner
+
+Grab VNC service banner
 
 [[Netcat]] — Grab Service Banner
 

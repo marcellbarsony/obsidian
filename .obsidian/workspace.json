@@ -10,10 +10,36 @@
           {
             "id": "b53eaec95172394a",
             "type": "leaf",
+            "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Networking/Tools/Responder.md",
+                "file": "Pentest/Secrets/Found Secrets.md",
+                "mode": "preview",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "pinned": true,
+              "icon": "lucide-file",
+              "title": "Found Secrets"
+            }
+          },
+          {
+            "id": "1550c3a57caa22be",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Networking/Services/FTP/Exploitation.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,10 +54,11 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Responder"
+              "title": "Exploitation"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -120,13 +147,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/Tools/Responder.md",
+                "file": "Networking/Services/FTP/Exploitation.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Responder"
+              "title": "Outline of Exploitation"
             }
           },
           {
@@ -175,7 +202,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/Tools/Responder.md",
+                "file": "Networking/Services/FTP/Exploitation.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +230,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Responder"
+              "title": "Graph of Exploitation"
             }
           }
         ]
@@ -223,46 +250,46 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "b53eaec95172394a",
+  "active": "1550c3a57caa22be",
   "lastOpenFiles": [
-    "Networking/Services/DNS/General.md",
-    "Networking/Services/DNS/Tools/bettercap.md",
-    "Networking/Services/DNS/Tools/Ettercap_1.md",
-    "Pentest/Security Assesment/General.md",
-    "Pentest/Security Assesment",
-    "Networking/Services/DNS/Enumeration.md",
-    "Networking/Services/DNS/Exploitation.md",
-    "Networking/Services/DNS/Tools/Ettercap.md",
-    "Networking/Services/DNS/Tools/puredns_1.md",
-    "Networking/Services/DNS/Tools/Subbrute.md",
-    "Networking/Services/DNS/Tools/Fierce_1.md",
-    "Networking/Services/MSSQL/Exploitation.md",
-    "PowerShell",
-    "Networking/Services/MSSQL/Usage.md",
-    "Networking/Services/MSSQL/Tools/sqlcmd.md",
-    "Networking/Services/MSSQL/Tools",
-    "Networking/Services/MSSQL/Tools.md",
-    "Networking/Services/MSSQL/Enumeration.md",
-    "Networking/Services/MySQL/Exploitation.md",
-    "Networking/Services/MySQL/Usage.md",
-    "Networking/Services/MySQL/Enumeration.md",
-    "Networking/Services/MySQL/General.md",
-    "Networking/Services/MSSQL/General.md",
     "Pentest/Shells/Web Shell/General.md",
-    "Pentest/Shells/Interactive Shell.md",
-    "Pentest/Tools/Metasploit/Metasploit.md",
+    "Networking/Services/FTP/Exploitation.md",
+    "Pentest/Secrets/Found Secrets.md",
+    "Networking/Tools/OpenSSL.md",
+    "Web Shell",
+    "Networking/Services/WMI/General.md",
+    "Networking/Services/WMI/Enumeration.md",
+    "Networking/Services/WinRM/Exploitation.md",
+    "Networking/Services/VNC/Enumeration.md",
+    "Networking/Services/VNC/Exploitation.md",
+    "Networking/Services/Telnet/Exploitation.md",
+    "Networking/Services/SSH/Exploitation.md",
+    "SSH/Exploitation",
+    "Networking/Services/SSH/Enumeration.md",
+    "Networking/Services/SQL/Exploitation.md",
+    "Networking/Services/SQL/General.md",
+    "Networking/Services/SNMP/Exploitation.md",
+    "Networking/Services/SNMP/Enumeration.md",
+    "Networking/Services/SMTP/Exploitation.md",
+    "Networking/Services/SMB/Exploitation.md",
+    "Networking/Services/Rsync/Exploitation.md",
+    "Networking/Services/Oracle TNS/Exploitation.md",
+    "Networking/Services/Oracle TNS/Enumeration.md",
+    "Networking/Services/NFS/Exploitation.md",
+    "Networking/Services/MongoDB/Exploitation.md",
+    "Networking/Services/LDAP/Enumeration.md",
+    "Networking/Services/IPMI/Exploitation.md",
+    "Networking/Services/IMAP-POP3/Exploitation.md",
+    "MSSQL",
+    "MySQL",
+    "SSH",
+    "WinRM",
+    "SMB",
+    "RDP",
+    "Pentest/Secrets",
+    "SMTP",
     "Networking/Services/RDP/src/david-martinez-v-5120x2880-18745.jpg",
-    "Webapp/Tools/proxychains.md",
-    "Networking/Services/RDP/Exploitation.md",
-    "Webapp/Tools/sqlmap",
-    "Networking/Services/RDP/Usage.md",
-    "Networking/Services/RDP/Tools",
     "Networking/Services/RDP/src/restricted-admin-mode-reg.png",
-    "Authentication",
-    "HTTP/Methods",
-    "HTTP",
-    "IMAP-POP3",
-    "POP3",
     "Webapp/Technology/Dolibarr/src/preview.png",
     "Webapp/Technology/Dolibarr/src/inspect.png",
     "Webapp/Technology/Dolibarr/src/payload.png",

@@ -112,14 +112,26 @@ Enumerate SMTP/S service
 <!-- Info {{{-->
 > [!info]- Ports
 >
+> [[SMTP/General#Ports|SMTP]]
+>
 > | Port      | Service                 |
 > | --------- | ----------------------- |
 > | `TCP/25`  | SMTP Unencrypted        |
-> | `TCP/143` | IMAP4 Unencrypted       |
-> | `TCP/110` | POP3 Unencrypted        |
 > | `TCP/465` | SMTP Encrypted          |
 > | `TCP/587` | SMTP Encrypted/STARTTLS |
+>
+> [[IMAP-POP3/General#IMAP|IMAP]]
+>
+> | Port      | Service                 |
+> | --------- | ----------------------- |
+> | `TCP/143` | IMAP4 Unencrypted       |
 > | `TCP/993` | IMAP4 Encrypted         |
+>
+> [[IMAP-POP3/General#POP3|POP3]]
+>
+> | Port      | Service                 |
+> | --------- | ----------------------- |
+> | `TCP/110` | POP3 Unencrypted        |
 > | `TCP/995` | POP3 Encrypted          |
 >
 <!-- }}} -->
@@ -147,7 +159,7 @@ nmap $target -p 25,465,587 -oA smtp-identify
 > ```
 <!-- }}} -->
 
-[[Nmap]] — Discover SMTP services & server capabilities
+[[Nmap]] — Enumerate SMTP services & server capabilities
 
 ```sh
 sudo nmap -sC -sV $target -p 25 -oA smtp-default-scripts
@@ -170,26 +182,11 @@ sudo nmap -sC -sV $target -p 25 -oA smtp-default-scripts
 > ```
 <!-- }}} -->
 
-[[Nmap]] — Enumerate all ports
+[[Nmap]] — Enumerate all SMTP ports
 
 ```sh
-sudo nmap -sC -sV -Pn $target -p25,143,110,465,587,993,995 -oA smtp-all-ports
+sudo nmap -sC -sV -Pn $target -p 25,110,143,465,587,993,995 -oA smtp-all-ports
 ```
-
-<!-- Info {{{-->
-> [!info]-
->
-> | Port | Service |
-> | --- | --- |
-> | TCP/25  | SMTP Unencrypted |
-> | TCP/143 | IMAP4 Unencrypted |
-> | TCP/110 | POP3 Unencrypted |
-> | TCP/465 | SMTP Encrypted |
-> | TCP/587 | SMTP Encrypted/STARTTLS |
-> | TCP/993 | IMAP4 Encrypted |
-> | TCP/995 | POP3 Encrypted |
->
-<!-- }}} -->
 
 <!-- Example {{{-->
 > [!example]-
@@ -213,9 +210,9 @@ sudo nmap -sC -sV -Pn $target -p25,143,110,465,587,993,995 -oA smtp-all-ports
 <!-- Banner {{{-->
 ### Banner
 
-**SMTP**
+Grab SMTP/S service banner
 
-Grab SMTP service banner
+**SMTP**
 
 [[Netcat]]
 
@@ -234,8 +231,6 @@ telnet $target 25
 ```
 
 **SMTPS**
-
-Grab SMTPS service banner
 
 [openssl s_client](https://docs.openssl.org/1.0.2/man1/s_client/) —
 SSL/TLS without `STARTTLS` command
@@ -264,8 +259,14 @@ openssl s_client -starttls smtp -crlf -connect $target:587
 > [!example]-
 >
 > ```sh
-> openssl s_client -starttls smtp -crlf -connect smtp.mailgun.org:587
+> openssl s_client -starttls smtp -crlf -connect inlanefreight.htb:587
 > ```
+> ```sh
+> Connecting to 10.129.4.29
+> CONNECTED(00000003)
+> Didn't find STARTTLS in server response, trying anyway...
+> ```
+>
 <!-- }}} -->
 
 <!-- }}} -->
@@ -274,30 +275,10 @@ openssl s_client -starttls smtp -crlf -connect $target:587
 ### Scripts
 
 [[Nmap]] — Discover SMTP commands
-([smtp-commands](https://nmap.org/nsedoc/scripts/smtp-commands.html))
+(*[smtp-commands](https://nmap.org/nsedoc/scripts/smtp-commands.html)*)
 
 ```sh
 nmap $target -p 25 --script smtp-commands -oA smtp-script-commands
-```
-
-[[Nmap]] — Discover SMTP users
-([smtp-enum-users](https://nmap.org/nsedoc/scripts/smtp-enum-users.html))
-
-```sh
-nmap $target -p 25 --script smtp-enum-users -oA smtp-script-enum-users
-```
-
-[[Nmap]] — Discover [[NTLM]] authentication details
-([smtp-ntlm-info](https://nmap.org/nsedoc/scripts/smtp-ntlm-info.html))
-
-```sh
-nmap $target -p 25 --script smtp-ntlm-info -oA smtp-script-ntlm-info
-```
-
-[[Nmap]] — Run all SMTP-related scripts
-
-```sh
-nmap $target -p 25,465,587 --script smtp-* -oA smtp--script-all
 ```
 
 <!-- Example {{{-->
@@ -312,6 +293,56 @@ nmap $target -p 25,465,587 --script smtp-* -oA smtp--script-all
 > |_smtp-commands: mail1, PIPELINING, SIZE 10240000, VRFY, ETRN, STARTTLS, ENHANCEDSTATUSCODES, 8BITMIME, DSN, SMTPUTF8, CHUNKING
 > ```
 <!-- }}} -->
+
+[[Nmap]] — Discover SMTP users
+(*[smtp-enum-users](https://nmap.org/nsedoc/scripts/smtp-enum-users.html)*)
+
+```sh
+nmap $target -p 25 --script smtp-enum-users -oA smtp-script-enum-users
+```
+
+[[Nmap]] — Run all SMTP-related scripts
+
+```sh
+nmap $target -p 25,465,587 --script smtp-* -oA smtp--script-all
+```
+
+[[Nmap]] — Enumerate [[NTLM]] authentication details (*Windows*)
+(*[smtp-ntlm-info](https://nmap.org/nsedoc/scripts/smtp-ntlm-info.html)*)
+
+```sh
+nmap $target -p 25 --script smtp-ntlm-info -oA smtp-script-ntlm-info
+```
+
+<!-- Tip {{{-->
+> [!tip]- Manual Testing
+>
+> Obtain version information
+>
+> ```sh
+> root@kali: telnet example.com 587
+> ```
+> ```sh
+> 220 example.com SMTP Server Banner
+> ```
+> ```sh
+> >> HELO
+> ```
+> ```sh
+> 250 example.com Hello [x.x.x.x]
+> ```
+> ```sh
+> >> AUTH NTLM 334
+> ```
+> ```sh
+> NTLM supported
+> ```
+> ```sh
+> >> TlRMTVNTUAABAAAAB4IIAAAAAAAAAAAAAAAAAAAAAAA=
+> 334 TlRMTVNTUAACAAAACgAKADgAAAAFgooCBqqVKFrKPCMAAAAAAAAAAEgASABCAAAABgOAJQAAAA9JAEkAUwAwADEAAgAKAEkASQBTADAAMQABAAoASQBJAFMAMAAxAAQACgBJAEkAUwAwADEAAwAKAEkASQBTADAAMQAHAAgAHwMI0VPy1QEAAAAA
+> ```
+<!-- }}} -->
+
 
 <!-- }}} -->
 
@@ -354,7 +385,7 @@ Enumerate [[Networking/Services/SMTP/Exploitation#Open Relay Attack|Open Relay A
 (*[smtp-open-relay](https://nmap.org/nsedoc/scripts/smtp-open-relay.html)*)
 
 ```sh
-nmap $target -p25 --script smtp-open-relay -v -oA smtp-script-open-relay
+nmap $target -p25 --script smtp-open-relay -oA smtp-script-open-relay -v
 ```
 
 Manual testing (*external to external*)
@@ -370,18 +401,21 @@ Test
 .
 ```
 
-[swaks](https://github.com/jetmore/swaks) —
-Enumerate Open Relay
+[[swaks]] — Enumerate Open Relay
 
 ```sh
-swaks --to external@domain.com --from external@otherdomain.com --server <target_server>
+swaks --server $target \
+  --to <external@domain.com> \
+  --from <external@otherdomain.com>
 ```
 
 <!-- Example {{{-->
 > [!example]-
 >
 > ```sh
-> swaks --to external@domain.com --from external@otherdomain.com --server target.com
+> swaks --server $target \
+>   --to <external@domain.com> \
+>   --from <external@otherdomain.com>
 > ```
 <!-- }}} -->
 

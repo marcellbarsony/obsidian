@@ -13,8 +13,8 @@ ___
 <!-- Connect {{{-->
 ## Connect
 
-<!-- FTP Connection {{{-->
-### FTP Connection
+<!-- FTP {{{-->
+### FTP
 
 Connect to FTP
 
@@ -29,6 +29,12 @@ ftp $target [port]
 > ftp ftp.example.com
 > ```
 <!-- }}} -->
+
+Connect to FTP (*Active mode*)
+
+```sh
+ftp -A $target [port]
+```
 
 Connect to FTP (*specify user*)
 
@@ -52,7 +58,7 @@ ftp -n $target
 
 <!-- }}} -->
 
-<!-- LFTP Connection {{{-->
+<!-- LFTP {{{-->
 ### LFTP Connection
 
 Connect using [lftp](https://linux.die.net/man/1/lftp)
@@ -79,8 +85,8 @@ lftp <ip>
 
 <!-- }}} -->
 
-<!-- Web Browser Connection {{{-->
-### Web Browser Connection
+<!-- Web Browser {{{-->
+### Web Browser
 
 Access the FTP server using a web browser
 
@@ -113,10 +119,14 @@ ___
 <!-- Settings {{{-->
 ## Settings
 
-Set passive mode
+Toggle passive mode
 
 ```sh
 passive
+```
+
+```sh
+passive off
 ```
 
 Disable interactive mode
@@ -133,15 +143,15 @@ prompt
 mget *
 ```
 
-Set transmission to binary —
-Move raw bytes
+Set transmission to binary
+(*move raw bytes*)
 
 ```sh
 binary
 ```
 
-Set transmission to ASCII —
-Move files as text
+Set transmission to ASCII
+(*move files as text*)
 
 ```sh
 ascii
