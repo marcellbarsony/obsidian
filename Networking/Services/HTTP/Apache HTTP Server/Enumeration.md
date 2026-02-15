@@ -77,7 +77,7 @@ ffuf -w <wordlist> -u http://$target/mod-cgi/FUZZ -ext .sh,.txt
 > ```
 <!-- }}} -->
 
-[[Metasploit]] - [Apache mod_cgi Bash Environment Variable Injection (Shellshock) Scanner](https://www.rapid7.com/db/modules/auxiliary/scanner/http/apache_mod_cgi_bash_env/)
+[[Pentest/Tools/Metasploit/Metasploit]] - [Apache mod_cgi Bash Environment Variable Injection (Shellshock) Scanner](https://www.rapid7.com/db/modules/auxiliary/scanner/http/apache_mod_cgi_bash_env/)
 
 ```sh
 use auxiliary/scanner/http/apache_mod_cgi_bash_env
@@ -95,7 +95,7 @@ use auxiliary/scanner/http/apache_mod_cgi_bash_env
 > <!-- Tip {{{-->
 > > [!tip]-
 > >
-> > Use `exploit/multi/handler` with a [[Metasploit#Payloads|Payload]]
+> > Use `exploit/multi/handler` with a [[Pentest/Tools/Metasploit/Metasploit#Payloads|Payload]]
 > > appropriate to your CMD,
 > > set `ExitOnSession` to `false`, run -j,
 > > and then run this module to create sessions on vulnerable hosts

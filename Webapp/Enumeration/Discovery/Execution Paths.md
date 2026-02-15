@@ -702,7 +702,7 @@ Enumerate web shells
 <!-- Tip {{{-->
 > [!tip]- Wordlists
 >
-> [[Wordlists/Custom/web-shells.txt]]
+> [[web-shells.txt]]
 >
 <!-- }}} -->
 

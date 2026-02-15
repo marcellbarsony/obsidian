@@ -32,7 +32,7 @@ sudo nmap -sC -sV $target -p 21,2121 -A --script-trace -oA ftp-default-script
 nmap $target -p 21,2121 --script ftp-* -oA ftp-script-all
 ```
 
-[[Metasploit]] — [FTP Version Scanner](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/ftp_version/)
+[[Pentest/Tools/Metasploit/Metasploit]] — [FTP Version Scanner](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/ftp_version/)
 
 ```sh
 use auxiliary/scanner/ftp/ftp_version
@@ -114,7 +114,7 @@ nmap $target -p 21,2121 --script ftp-bounce -oA ftp-script-bounce
 nmap -b $target:<port> <target_network> -oA ftp-bounce-scan
 ```
 
-[[Metasploit]] — Detect
+[[Pentest/Tools/Metasploit/Metasploit]] — Detect
 [[FTP/Exploitation#FTP Bounce Attack|FTP Bounce Attack]]
 (*[ftpbounce](https://www.rapid7.com/db/modules/auxiliary/scanner/portscan/ftpbounce/)*)
 
@@ -171,7 +171,7 @@ ___
 
 FTP may allow connection without needing to specific identity
 
-[[Metasploit]] — [Anonymous FTP Access Detection](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/anonymous/)
+[[Pentest/Tools/Metasploit/Metasploit]] — [Anonymous FTP Access Detection](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/anonymous/)
 
 ```sh
 use auxiliary/scanner/ftp/anonymous
@@ -249,7 +249,7 @@ ___
 <!-- CVE Vulnerabilities {{{-->
 ## CVE Vulnerabilities
 
-[[Metasploit]] —
+[[Pentest/Tools/Metasploit/Metasploit]] —
 BisonWare BisonFTP Server 3.5 Directory Traversal Information Disclosure
 (*[bison_ftp_traversal](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/bison_ftp_traversal/)*)
 
@@ -280,7 +280,7 @@ use auxiliary/scanner/ftp/bison_ftp_traversal
 > ```
 <!-- }}} -->
 
-[[Metasploit]] —
+[[Pentest/Tools/Metasploit/Metasploit]] —
 ColoradoFTP Server 1.3 Build 8 Directory Traversal Information Disclosure
 (*[colorado_ftp_traversal](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/colorado_ftp_traversal/)*)
 
@@ -311,7 +311,7 @@ use auxiliary/scanner/ftp/colorado_ftp_traversal
 > ```
 <!-- }}} -->
 
-[[Metasploit]] —
+[[Pentest/Tools/Metasploit/Metasploit]] —
 Titan FTP XCRC Directory Traversal Information Disclosure
 (*[titanftp_xcrc_traversal](https://www.rapid7.com/db/modules/auxiliary/scanner/ftp/titanftp_xcrc_traversal/)*)
 

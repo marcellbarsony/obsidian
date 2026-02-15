@@ -76,7 +76,7 @@ smtp-user-enum -M VRFY -U <users.txt> -t $target -w 20
 > smtp-user-enum -M VRFY -U /usr/share/seclists/Usernames/Names/names.txt -t $target -w 20
 > ```
 >
-> [[Metasploit]]
+> [[Pentest/Tools/Metasploit/Metasploit]]
 >
 > ```sh
 > smtp-user-enum -M VRFY -U /usr/share/wordlists/metasploit/unix_users.txt -t $target -w 20

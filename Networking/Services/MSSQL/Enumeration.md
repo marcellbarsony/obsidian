@@ -181,7 +181,7 @@ ___
 <!-- Metasploit {{{-->
 ## Metasploit
 
-[[Metasploit]] — Scan MSSQL service
+[[Pentest/Tools/Metasploit/Metasploit]] — Scan MSSQL service
 
 <!-- Without Credentials {{{-->
 ### Without Credentials
@@ -195,9 +195,9 @@ use auxiliary/scanner/mssql/mssql_ping
 <!-- Example {{{-->
 > [!example]-
 >
-> 1. [[Metasploit#Launch Metasploit|Launch Metasploit]]
+> 1. [[Pentest/Tools/Metasploit/Metasploit#Launch Metasploit|Launch Metasploit]]
 >
-> 2. [[Metasploit#Search Exploit|Search scanner]]
+> 2. [[Pentest/Tools/Metasploit/Metasploit#Search Exploit|Search scanner]]
 >
 > <!-- Example {{{-->
 > > [!example]-
@@ -232,7 +232,7 @@ use auxiliary/scanner/mssql/mssql_ping
 > > ```
 > <!-- }}} -->
 >
-> 3. [[Metasploit#Select Exploit|Select scanner]]
+> 3. [[Pentest/Tools/Metasploit/Metasploit#Select Exploit|Select scanner]]
 >
 > <!-- Example {{{-->
 > > [!example]-
@@ -242,9 +242,9 @@ use auxiliary/scanner/mssql/mssql_ping
 > > ```
 > <!-- }}} -->
 >
-> 4. [[Metasploit#Show Options|Show options]]
+> 4. [[Pentest/Tools/Metasploit/Metasploit#Show Options|Show options]]
 >
-> 5. [[Metasploit#Set Options|Set options]]
+> 5. [[Pentest/Tools/Metasploit/Metasploit#Set Options|Set options]]
 >
 > <!-- Example {{{-->
 > > [!example]-
@@ -266,9 +266,9 @@ use auxiliary/scanner/mssql/mssql_ping
 > > ```
 > <!-- }}} -->
 >
-> 6. [[Metasploit#Check Exploit|Check Module]]
+> 6. [[Pentest/Tools/Metasploit/Metasploit#Check Exploit|Check Module]]
 >
-> 7. [[Metasploit#Run Exploit|Run Module]]
+> 7. [[Pentest/Tools/Metasploit/Metasploit#Run Exploit|Run Module]]
 >
 > <!-- Example {{{-->
 > > [!example]-

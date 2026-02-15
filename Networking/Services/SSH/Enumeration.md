@@ -168,7 +168,7 @@ ___
 
 Fuzzing the SSH service could help to find vulnerabilities
 
-[[Metasploit]] —
+[[Pentest/Tools/Metasploit/Metasploit]] —
 SSH 2.0 Version Fuzzer
 
 ```sh
@@ -205,7 +205,7 @@ ___
 <!-- Usernames {{{-->
 ## Usernames
 
-[[Metasploit]] — SSH Username Enumeration
+[[Pentest/Tools/Metasploit/Metasploit]] — SSH Username Enumeration
 
 ```sh
 use auxiliary/scanner/ssh/ssh_enumusers

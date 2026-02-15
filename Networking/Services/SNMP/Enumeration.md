@@ -72,7 +72,7 @@ nmap -sU $target -p 161 --script snmp-info -oA snmp-script-banner-grabbing
 <!-- Windows {{{-->
 ### Windows
 
-[[Metasploit]] — Enumerate SNMP (*Windows only*)
+[[Pentest/Tools/Metasploit/Metasploit]] — Enumerate SNMP (*Windows only*)
 
 SNMP Enumeration Module
 (*[snmp_enum](https://www.rapid7.com/db/modules/auxiliary/scanner/snmp/snmp_enum/)*)
@@ -176,7 +176,7 @@ should be discovered via dictionary attack
 > /usr/share/seclists/Discovery/SNMP/snmp-onesixtyone.txt
 > ```
 >
-> [[Metasploit]]
+> [[Pentest/Tools/Metasploit/Metasploit]]
 >
 > ```sh
 > /usr/share/metasploit-framework/data/wordlists/snmp_default_pass.txt
@@ -210,7 +210,7 @@ onesixtyone -c <wordlist> $target
 > onesixtyone -c /usr/share/seclists/Discovery/SNMP/snmp-onesixtyone.txt $target
 > ```
 >
-> [[Metasploit]]
+> [[Pentest/Tools/Metasploit/Metasploit]]
 >
 > ```sh
 > onesixtyone -c /usr/share/metasploit-framework/data/wordlists/snmp_default_pass.txt $target
@@ -238,7 +238,7 @@ onesixtyone -c <wordlist> $target
 >
 <!-- }}} -->
 
-[[Metasploit]] — SNMP Community Login Scanner
+[[Pentest/Tools/Metasploit/Metasploit]] — SNMP Community Login Scanner
 (*[snmp_login](https://www.rapid7.com/db/modules/auxiliary/scanner/snmp/snmp_login/)*)
 
 ```sh
@@ -251,21 +251,21 @@ use auxiliary/scanner/snmp/snmp_login
 > Log in to SNMP devices using common
 > [[Networking/Services/SNMP/General#Community Strings|community strings]]
 >
-> 1. [[Metasploit#Search Exploit|Search Exploit]]
+> 1. [[Pentest/Tools/Metasploit/Metasploit#Search Exploit|Search Exploit]]
 >
 > ```sh
 > msf > search snmp
 > ```
 >
-> 2. [[Metasploit#Select Exploit|Select Exploit]]
+> 2. [[Pentest/Tools/Metasploit/Metasploit#Select Exploit|Select Exploit]]
 >
 > ```sh
 > msf > use auxiliary/scanner/snmp/snmp_login
 > ```
 >
-> 3. [[Metasploit#Show Options|Show Options]]
+> 3. [[Pentest/Tools/Metasploit/Metasploit#Show Options|Show Options]]
 >
-> 4. [[Metasploit#Set Options|Set Options]]
+> 4. [[Pentest/Tools/Metasploit/Metasploit#Set Options|Set Options]]
 >
 > ```sh
 > msf auxiliary(scanner/snmp/snmp_login) > set RHOSTS $target
@@ -274,7 +274,7 @@ use auxiliary/scanner/snmp/snmp_login
 > msf auxiliary(scanner/snmp/snmp_login) > set PASS_FILE <wordlist>
 > ```
 >
-> 5. [[Metasploit#Run Exploit|Run Exploit]]
+> 5. [[Pentest/Tools/Metasploit/Metasploit#Run Exploit|Run Exploit]]
 >
 > ```sh
 > msf auxiliary(scanner/snmp/snmp_login) > run

@@ -24,7 +24,7 @@ Content-Type: application/x-www-form-urlencoded
 >
 > Seclists
 >
-> - [[Seclists#Content Type|Content-Type]]
+> - [[SecLists#Content Type|Content-Type]]
 > - [All Web Content types](https://raw.githubusercontent.com/danielmiessler/SecLists/refs/heads/master/Discovery/Web-Content/web-all-content-types.txt)
 >
 <!-- }}} -->

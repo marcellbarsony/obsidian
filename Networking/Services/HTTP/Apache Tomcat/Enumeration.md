@@ -240,7 +240,7 @@ curl http://$target:8080/tomcat-users.xml
 curl http://$target:8080/conf/tomcat-users.xml
 ```
 
-[[Metasploit]] — [Apache Tomcat User Enumeration](https://www.rapid7.com/db/modules/auxiliary/scanner/http/tomcat_enum/)
+[[Pentest/Tools/Metasploit/Metasploit]] — [Apache Tomcat User Enumeration](https://www.rapid7.com/db/modules/auxiliary/scanner/http/tomcat_enum/)
 
 ```sh
 use auxiliary/scanner/http/tomcat_enum

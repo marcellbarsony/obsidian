@@ -53,7 +53,7 @@ ___
 [[MongoDB/Exploitation#Mongobleed|Mongobleed]]
 (*[CVE-2025-14847](https://nvd.nist.gov/vuln/detail/CVE-2025-14847)*)
 
-[[Metasploit]] - [MongoDB Memory Disclosure (CVE-2025-14847) - Mongobleed](https://www.rapid7.com/db/modules/auxiliary/scanner/mongodb/cve_2025_14847_mongobleed/)
+[[Pentest/Tools/Metasploit/Metasploit]] - [MongoDB Memory Disclosure (CVE-2025-14847) - Mongobleed](https://www.rapid7.com/db/modules/auxiliary/scanner/mongodb/cve_2025_14847_mongobleed/)
 
 ```sh
 use auxiliary/scanner/mongodb/cve_2025_14847_mongobleed

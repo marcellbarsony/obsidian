@@ -135,7 +135,7 @@ nmap -sV $target -p 873 --script "rsync-list-modules" -oA rsync-script-list-modu
 > ```
 <!-- }}} -->
 
-[[Metasploit]] — List Rsync Modules
+[[Pentest/Tools/Metasploit/Metasploit]] — List Rsync Modules
 (*[modules-list](https://www.rapid7.com/db/modules/auxiliary/scanner/rsync/modules_list/)*)
 
 ```sh

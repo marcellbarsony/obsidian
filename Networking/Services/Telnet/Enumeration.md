@@ -51,7 +51,7 @@ shodan stream --ports 23,1023,2323 --datadir telnet-data/ --limit 10000
 nmap -sCV $target -p 23 --script "*telnet* and safe" -oA telnet-banner-grabbing
 ```
 
-[[Metasploit]] — Telnet Login Check Scanner
+[[Pentest/Tools/Metasploit/Metasploit]] — Telnet Login Check Scanner
 (*[telnet_version](https://www.rapid7.com/db/modules/auxiliary/scanner/telnet/telnet_login/)*)
 
 ```sh

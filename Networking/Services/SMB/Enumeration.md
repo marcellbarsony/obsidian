@@ -127,7 +127,7 @@ sudo nmap -sC -sV $target -p 139,445 -oA smb-default-scripts
 
 Get SMB version
 
-[[Metasploit]] — [SMB Version Detection](https://www.rapid7.com/db/modules/auxiliary/scanner/smb/smb_version/)
+[[Pentest/Tools/Metasploit/Metasploit]] — [SMB Version Detection](https://www.rapid7.com/db/modules/auxiliary/scanner/smb/smb_version/)
 
 ```sh
 use auxiliary/scanner/smb/smb_version
@@ -179,7 +179,7 @@ nmap $target -p 445 --script smb-os-discovery.nse -oA smb-os-discovery
 
 Enumerate SMB protocols
 
-[[Metasploit]] — [SMB 2.0 Protocol Detection](https://www.rapid7.com/db/modules/auxiliary/scanner/smb/smb2/)
+[[Pentest/Tools/Metasploit/Metasploit]] — [SMB 2.0 Protocol Detection](https://www.rapid7.com/db/modules/auxiliary/scanner/smb/smb2/)
 
 ```sh
 use auxiliary/scanner/smb/smb2
@@ -531,7 +531,7 @@ nxc smb $target -u "" -p "" --shares
 nxc smb $target -u 'guest' -p '' --shares
 ```
 
-[[Metasploit]] — [SMB Share Enumeration](https://www.rapid7.com/db/modules/auxiliary/scanner/smb/smb_enumshares/)
+[[Pentest/Tools/Metasploit/Metasploit]] — [SMB Share Enumeration](https://www.rapid7.com/db/modules/auxiliary/scanner/smb/smb_enumshares/)
 
 ```sh
 use auxiliary/scanner/smb/smb_enumshares

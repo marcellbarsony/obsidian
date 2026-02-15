@@ -94,7 +94,7 @@ Thus, an attacker can exploit this by uploading a `.php` file
 to `vendor.php` that contains arbitrary PHP code
 and changing the content-type to image/gif.
 
-[[Metasploit]] — [rConfig Vendors Auth File Upload RCE](https://www.rapid7.com/db/modules/exploit/linux/http/rconfig_vendors_auth_file_upload_rce/)
+[[Pentest/Tools/Metasploit/Metasploit]] — [rConfig Vendors Auth File Upload RCE](https://www.rapid7.com/db/modules/exploit/linux/http/rconfig_vendors_auth_file_upload_rce/)
 
 <!-- Info {{{-->
 > [!info]-
@@ -153,7 +153,7 @@ use exploit/linux/http/rconfig_vendors_auth_file_upload_rce
 
 Arbitrary File Upload RCE in rConfig version <= `v3.9.6`
 
-[[Metasploit]] — [rConfig Vendors Auth File Upload RCE](https://www.rapid7.com/db/modules/exploit/linux/http/rconfig_vendors_auth_file_upload_rce/)
+[[Pentest/Tools/Metasploit/Metasploit]] — [rConfig Vendors Auth File Upload RCE](https://www.rapid7.com/db/modules/exploit/linux/http/rconfig_vendors_auth_file_upload_rce/)
 
 ```sh
 use rconfig_vendors_auth_file_upload_rce

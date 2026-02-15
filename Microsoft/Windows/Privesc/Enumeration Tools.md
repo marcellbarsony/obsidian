@@ -125,7 +125,7 @@ ___
 
 > [!todo]
 
-[[Metasploit]]
+[[Pentest/Tools/Metasploit/Metasploit]]
 
 No UAC format
 

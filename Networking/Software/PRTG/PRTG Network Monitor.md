@@ -70,7 +70,7 @@ ___
 <!-- CVE {{{-->
 ## CVE
 
-[[Metasploit]] - [PRTG Network Monitor Authenticated RCE](https://www.rapid7.com/db/modules/exploit/windows/http/prtg_authenticated_rce/)
+[[Pentest/Tools/Metasploit/Metasploit]] - [PRTG Network Monitor Authenticated RCE](https://www.rapid7.com/db/modules/exploit/windows/http/prtg_authenticated_rce/)
 
 ```sh
 use exploit/windows/http/prtg_authenticated_rce

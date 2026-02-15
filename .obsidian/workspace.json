@@ -8,38 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "b53eaec95172394a",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Pentest/Secrets/Found Secrets.md",
-                "mode": "preview",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "pinned": true,
-              "icon": "lucide-file",
-              "title": "Found Secrets"
-            }
-          },
-          {
             "id": "1550c3a57caa22be",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Networking/Services/FTP/Exploitation.md",
+                "file": "Networking/Services/IMAP-POP3/Exploitation.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -56,9 +30,32 @@
               "icon": "lucide-file",
               "title": "Exploitation"
             }
+          },
+          {
+            "id": "3455fb4d1537b660",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Pentest/Brute Force/Tools/Medusa.md",
+                "mode": "preview",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Medusa"
+            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -147,7 +144,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/Services/FTP/Exploitation.md",
+                "file": "Networking/Services/IMAP-POP3/Exploitation.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -202,7 +199,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/Services/FTP/Exploitation.md",
+                "file": "Networking/Services/IMAP-POP3/Exploitation.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -252,42 +249,44 @@
   },
   "active": "1550c3a57caa22be",
   "lastOpenFiles": [
-    "Pentest/Shells/Web Shell/General.md",
+    "Pentest/Brute Force/Tools/Hydra.md",
+    "Networking/Services/HTTP/Enumeration_1.md",
+    "Pentest/Brute Force/Tools/Medusa.md",
     "Networking/Services/FTP/Exploitation.md",
+    "FTP/Exploitation",
+    "FTP",
+    "Brute Force",
+    "Wordlists",
     "Pentest/Secrets/Found Secrets.md",
+    "SSH",
+    "HTTP",
+    "Pentest/Brute Force/General.md",
+    "Pentest/Brute Force/src/credential-stuffing.png",
+    "Pentest/Brute Force/Dictionary.md",
+    "Pentest/Brute Force/PIN.md",
+    "Pentest/Brute Force/src/hybrid-attack.png",
+    "Pentest/Brute Force/src",
+    "Pentest/Brute Force/PIN_1.md",
+    "Webapp/Technology/Drupal",
+    "Webapp/Enumeration/Infrastructure/VHost.md",
+    "Webapp/Enumeration/Infrastructure/Subdomain.md",
+    "Webapp/Enumeration/Discovery/Execution Paths.md",
+    "Webapp/Exploitation/Server-Side/File Upload/Exploitation.md",
+    "Reverse Shell",
+    "Webapp/Exploitation/Server-Side/File Upload/Enumeration.md",
+    "Webapp/Enumeration/General.md",
+    "Networking/Services/FTP/Enumeration.md",
+    "Networking/Services/FTP/Usage.md",
+    "Networking/Services/FTP/General.md",
+    "Networking/Services/DNS/Exploitation.md",
+    "Networking/Services/DNS/Enumeration.md",
+    "Networking/Services/DNS/General.md",
+    "FTP.md",
+    "Pentest/Shells/Web Shell/General.md",
     "Networking/Tools/OpenSSL.md",
     "Web Shell",
     "Networking/Services/WMI/General.md",
     "Networking/Services/WMI/Enumeration.md",
-    "Networking/Services/WinRM/Exploitation.md",
-    "Networking/Services/VNC/Enumeration.md",
-    "Networking/Services/VNC/Exploitation.md",
-    "Networking/Services/Telnet/Exploitation.md",
-    "Networking/Services/SSH/Exploitation.md",
-    "SSH/Exploitation",
-    "Networking/Services/SSH/Enumeration.md",
-    "Networking/Services/SQL/Exploitation.md",
-    "Networking/Services/SQL/General.md",
-    "Networking/Services/SNMP/Exploitation.md",
-    "Networking/Services/SNMP/Enumeration.md",
-    "Networking/Services/SMTP/Exploitation.md",
-    "Networking/Services/SMB/Exploitation.md",
-    "Networking/Services/Rsync/Exploitation.md",
-    "Networking/Services/Oracle TNS/Exploitation.md",
-    "Networking/Services/Oracle TNS/Enumeration.md",
-    "Networking/Services/NFS/Exploitation.md",
-    "Networking/Services/MongoDB/Exploitation.md",
-    "Networking/Services/LDAP/Enumeration.md",
-    "Networking/Services/IPMI/Exploitation.md",
-    "Networking/Services/IMAP-POP3/Exploitation.md",
-    "MSSQL",
-    "MySQL",
-    "SSH",
-    "WinRM",
-    "SMB",
-    "RDP",
-    "Pentest/Secrets",
-    "SMTP",
     "Networking/Services/RDP/src/david-martinez-v-5120x2880-18745.jpg",
     "Networking/Services/RDP/src/restricted-admin-mode-reg.png",
     "Webapp/Technology/Dolibarr/src/preview.png",
@@ -296,8 +295,6 @@
     "Webapp/Technology/Dolibarr/src/20260211-000247.png",
     "Webapp/Technology/Dolibarr/src/20260211-000212.png",
     "Webapp/Technology/Dolibarr/src/edit-html.png",
-    "Webapp/Technology/Dolibarr/src/20260210-235102.png",
-    "Webapp/Technology/Dolibarr/src/page.png",
     "Webapp/Exploitation/Server-Side/File Upload/src/canvas.canvas",
     "Webapp/Exploitation/Server-Side/File Inclusion/src/Untitled.canvas",
     "Untitled.canvas",

@@ -14,7 +14,7 @@ ___
 > [!todo]
 >
 > Change to the `%TEMP%` directory
-> as a large portion of [[Metasploit]]’s Windows privilege escalation modules
+> as a large portion of [[Pentest/Tools/Metasploit/Metasploit]]’s Windows privilege escalation modules
 > require a file to be written to the target during exploitation
 >
 > ```sh

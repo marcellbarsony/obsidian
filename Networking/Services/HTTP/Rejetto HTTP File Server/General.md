@@ -33,7 +33,7 @@ ___
 >
 <!-- }}} -->
 
-[[Metasploit]] - [Rejetto HttpFileServer Remote Command Execution](https://www.rapid7.com/db/modules/exploit/windows/http/rejetto_hfs_exec/)
+[[Pentest/Tools/Metasploit/Metasploit]] - [Rejetto HttpFileServer Remote Command Execution](https://www.rapid7.com/db/modules/exploit/windows/http/rejetto_hfs_exec/)
 
 ```sh
 use exploit/windows/http/rejetto_hfs_exec
@@ -61,7 +61,7 @@ use exploit/windows/http/rejetto_hfs_exec
 >
 <!-- }}} -->
 
-[[Metasploit]] - [Rejetto HTTP File Server (HFS) Unauthenticated Remote Code Execution](https://www.rapid7.com/db/modules/exploit/windows/http/rejetto_hfs_rce_cve_2024_23692/)
+[[Pentest/Tools/Metasploit/Metasploit]] - [Rejetto HTTP File Server (HFS) Unauthenticated Remote Code Execution](https://www.rapid7.com/db/modules/exploit/windows/http/rejetto_hfs_rce_cve_2024_23692/)
 
 ```sh
 use exploit/windows/http/rejetto_hfs_rce_cve_2024_23692

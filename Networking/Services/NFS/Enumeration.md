@@ -44,7 +44,7 @@ sudo nmap -sC -sV $target -p 111,2049 -oA nfs-default-scripts
 sudo nmap -sV $target -p 111,2049 --script nfs* -oA nfs-rpc-detection
 ```
 
-[[Metasploit]] — [NFS Mount Scanner](https://www.rapid7.com/db/modules/auxiliary/scanner/nfs/nfsmount/)
+[[Pentest/Tools/Metasploit/Metasploit]] — [NFS Mount Scanner](https://www.rapid7.com/db/modules/auxiliary/scanner/nfs/nfsmount/)
 
 ```sh
 use scanner/nfs/nfsmount
@@ -55,27 +55,27 @@ use scanner/nfs/nfsmount
 >
 > Scan NFS mounts and list permissions
 >
-> 1. [[Metasploit#Launch Metasploit|Launch Metasploit]]
+> 1. [[Pentest/Tools/Metasploit/Metasploit#Launch Metasploit|Launch Metasploit]]
 >
-> 2. [[Metasploit#Search Exploit|Search ]] for some useful modules
+> 2. [[Pentest/Tools/Metasploit/Metasploit#Search Exploit|Search ]] for some useful modules
 >
 > ```sh
 > search nfs
 > ```
 >
-> 3. [[Metasploit#Select Exploit|Select]] the the scanner
+> 3. [[Pentest/Tools/Metasploit/Metasploit#Select Exploit|Select]] the the scanner
 >
 > ```sh
 > use scanner/nfs/nfsmount
 > ```
 >
-> 4. [[Metasploit#Show Options|Show options]]
+> 4. [[Pentest/Tools/Metasploit/Metasploit#Show Options|Show options]]
 >
-> 5. [[Metasploit#Set Options|Set options]]
+> 5. [[Pentest/Tools/Metasploit/Metasploit#Set Options|Set options]]
 >
-> 6. [[Metasploit#Check Exploit|Check Module]]
+> 6. [[Pentest/Tools/Metasploit/Metasploit#Check Exploit|Check Module]]
 >
-> 7. [[Metasploit#Run Exploit|Run Module]]
+> 7. [[Pentest/Tools/Metasploit/Metasploit#Run Exploit|Run Module]]
 <!-- }}} -->
 
 ___

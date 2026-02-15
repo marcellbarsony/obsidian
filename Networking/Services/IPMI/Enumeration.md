@@ -74,7 +74,7 @@ sudo nmap -sU $target -p 623 --script ipmi-version -oA ipmi-version
 >
 <!-- }}} -->
 
-[[Metasploit]] —
+[[Pentest/Tools/Metasploit/Metasploit]] —
 Discover host information through IPMI Channel Auth probes
 (*[ipmi_version](https://www.rapid7.com/db/modules/auxiliary/scanner/ipmi/ipmi_version/)*)
 
@@ -85,19 +85,19 @@ use auxiliary/scanner/ipmi/ipmi_version
 <!-- Example {{{-->
 > [!example]-
 >
-> 1. [[Metasploit#Select Exploit|Select scanner]]
+> 1. [[Pentest/Tools/Metasploit/Metasploit#Select Exploit|Select scanner]]
 >
 > ```sh
 > msf6 > use auxiliary/scanner/ipmi/ipmi_version
 > ```
 >
-> 2. [[Metasploit#Set Options|Select options]]
+> 2. [[Pentest/Tools/Metasploit/Metasploit#Set Options|Select options]]
 >
 > ```sh
 > msf6 auxiliary(scanner/ipmi/ipmi_version) > set rhosts 10.129.42.195
 > ```
 >
-> 3. [[Metasploit#Show Options|Show options]]
+> 3. [[Pentest/Tools/Metasploit/Metasploit#Show Options|Show options]]
 >
 > ```sh
 > msf6 auxiliary(scanner/ipmi/ipmi_version) > show options
@@ -114,7 +114,7 @@ use auxiliary/scanner/ipmi/ipmi_version
 >    THREADS    10               yes       The number of concurrent threads
 > ```
 >
-> 4. [[Metasploit#Run Exploit|Run the scan]]
+> 4. [[Pentest/Tools/Metasploit/Metasploit#Run Exploit|Run the scan]]
 >
 > ```sh
 > msf6 auxiliary(scanner/ipmi/ipmi_version) > run
@@ -251,7 +251,7 @@ nmap -sU $target -p 623 --script ipmi-cipher-zero -oA ipmi-script-cipher-zero
 > ```
 <!-- }}} -->
 
-[[Metasploit]] — IPMI 2.0 Cipher Zero Authentication Bypass Scanner
+[[Pentest/Tools/Metasploit/Metasploit]] — IPMI 2.0 Cipher Zero Authentication Bypass Scanner
 (*[ipmi_cipher_zero](https://www.rapid7.com/db/modules/auxiliary/scanner/ipmi/ipmi_cipher_zero/)*)
 
 ```sh
@@ -305,7 +305,7 @@ before authentication takes place
 >   by implementing network segmentation rules
 <!-- }}} -->
 
-1. [[Metasploit]] — IPMI 2.0 RAKP Remote SHA1 Password Hash Retrieval
+1. [[Pentest/Tools/Metasploit/Metasploit]] — IPMI 2.0 RAKP Remote SHA1 Password Hash Retrieval
    (*[ipmi_dumphashes](https://www.rapid7.com/db/modules/auxiliary/scanner/ipmi/ipmi_dumphashes/)*)
 
 ```sh
@@ -315,19 +315,19 @@ use auxiliary/scanner/ipmi/ipmi_dumphashes
 <!-- Example {{{-->
 > [!example]-
 >
-> 1. [[Metasploit#Select Exploit|Select scanner]]
+> 1. [[Pentest/Tools/Metasploit/Metasploit#Select Exploit|Select scanner]]
 >
 > ```sh
 > msf6 > use auxiliary/scanner/ipmi/ipmi_dumphashes
 > ```
 >
-> 2. [[Metasploit#Set Options|Select options]]
+> 2. [[Pentest/Tools/Metasploit/Metasploit#Set Options|Select options]]
 >
 > ```sh
 > msf6 auxiliary(scanner/ipmi/ipmi_dumphashes) > set rhosts 10.129.42.195
 > ```
 >
-> 3. [[Metasploit#Show Options|Show options]]
+> 3. [[Pentest/Tools/Metasploit/Metasploit#Show Options|Show options]]
 >
 > ```sh
 > msf6 auxiliary(scanner/ipmi/ipmi_dumphashes) > show options
@@ -348,7 +348,7 @@ use auxiliary/scanner/ipmi/ipmi_dumphashes
 >    USER_FILE            /usr/share/metasploit-framework/data/wordlists/ipmi_users.txt      yes       File containing usernames, one per line
 > ```
 >
-> 4. [[Metasploit#Run Exploit|Run the scan]]
+> 4. [[Pentest/Tools/Metasploit/Metasploit#Run Exploit|Run the scan]]
 >
 > ```sh
 > msf6 auxiliary(scanner/ipmi/ipmi_dumphashes) > run

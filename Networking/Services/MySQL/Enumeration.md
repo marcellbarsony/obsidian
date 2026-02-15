@@ -151,7 +151,7 @@ telnet $target 3306
 <!-- Metasploit {{{-->
 ### Metasploit
 
-[[Metasploit]]
+[[Pentest/Tools/Metasploit/Metasploit]]
 
 [MySQL Server Version Enumeration](https://www.rapid7.com/db/modules/auxiliary/scanner/mysql/mysql_version/)
 

@@ -168,7 +168,7 @@ Databate operations — Enumerate databases to identify high-value targets
 <!-- Tip {{{-->
 > [!tip]
 >
-> Common [[General#MySQL Database|MySQL Databases]]
+> Common [[Networking/Services/MySQL/General#MySQL Database|MySQL Databases]]
 >
 <!-- }}} -->
 

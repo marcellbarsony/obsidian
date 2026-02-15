@@ -137,7 +137,7 @@ sudo nmap -sV $target -p 1521 --open --script oracle-sid-brute -oA oracle-sid-br
 > ```
 <!-- }}} -->
 
-[[Metasploit]] — [Oracle TNS Listener SID Enumeration](https://www.rapid7.com/db/modules/auxiliary/scanner/oracle/sid_enum/)
+[[Pentest/Tools/Metasploit/Metasploit]] — [Oracle TNS Listener SID Enumeration](https://www.rapid7.com/db/modules/auxiliary/scanner/oracle/sid_enum/)
 
 ```sh
 use auxiliary/scanner/oracle/sid_enum
