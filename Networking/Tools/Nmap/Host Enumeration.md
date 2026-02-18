@@ -380,3 +380,35 @@ sudo nmap -sU $target -p <port> -Pn -n --disable-arp-ping --packet-trace --reaso
 
 ___
 <!-- }}} -->
+
+<!-- Localhost {{{-->
+## Localhost
+
+Enumerate localhost for open ports and running services
+
+```sh
+nmap localhost
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> nmap localhost
+>
+> Starting Nmap 7.80 ( https://nmap.org ) at 2024-09-05 13:19 UTC
+> Nmap scan report for localhost (127.0.0.1)
+> Host is up (0.000078s latency).
+> Other addresses for localhost (not scanned): ::1
+> Not shown: 998 closed ports
+> PORT   STATE SERVICE
+> 21/tcp open  ftp
+> 22/tcp open  ssh
+>
+> Nmap done: 1 IP address (1 host up) scanned in 0.05 seconds
+> ```
+>
+<!-- }}} -->
+
+___
+<!-- }}} -->

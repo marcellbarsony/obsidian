@@ -124,7 +124,7 @@ ___
     - [ ] [[Execution Paths#Investigate Findings|Investigate Findings]]
 - [ ] [[Crawling]]
     - [ ] [[ReconSpider]]
-- [ ] [[Login Functionality]]
+- [ ] [[Webapp/Enumeration/Discovery/Login Functionality]]
 
 ___
 <!-- }}} -->

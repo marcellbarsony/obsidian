@@ -4,42 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "d45237cb47d29b20",
+        "id": "436f41202ab4ce54",
         "type": "tabs",
         "children": [
           {
-            "id": "1550c3a57caa22be",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Pentest/Brute Force/Tools/Hydra.md",
-                "mode": "preview",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "pinned": true,
-              "icon": "lucide-file",
-              "title": "Hydra"
-            }
-          },
-          {
-            "id": "07dd8f1a9e41b563",
+            "id": "ce4606fbde31c8c1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Webapp/Exploitation/Login/Login Functionality.md",
+                "file": "Webapp/Exploitation/Client-Side/XSS/Exploitation.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -54,11 +28,10 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Login Functionality"
+              "title": "Exploitation"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -147,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Webapp/Exploitation/Login/Login Functionality.md",
+                "file": "Webapp/Exploitation/Client-Side/XSS/Exploitation.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Login Functionality"
+              "title": "Outline of Exploitation"
             }
           },
           {
@@ -202,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Webapp/Exploitation/Login/Login Functionality.md",
+                "file": "Webapp/Exploitation/Client-Side/XSS/Exploitation.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -230,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Login Functionality"
+              "title": "Graph of Exploitation"
             }
           }
         ]
@@ -250,54 +223,54 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "07dd8f1a9e41b563",
+  "active": "ce4606fbde31c8c1",
   "lastOpenFiles": [
-    "Webapp/Exploitation/Login/Authentication.md",
-    "Webapp/Exploitation/Login/Brute Force.md",
-    "Webapp/Exploitation/Login/SQL Injection.md",
-    "Webapp/Exploitation/Login/Login Functionality.md",
-    "HTTP",
+    "Webapp/Exploitation/Client-Side/XSS/General.md",
+    "Webapp/Exploitation/Client-Side/XSS/Exploitation.md",
+    "Webapp/Exploitation/Client-Side/XSS/Tools/XSS Strike.md",
+    "Webapp/Exploitation/Client-Side/XSS/Tools/DalFox.md",
+    "Webapp/Exploitation/Client-Side/XSS/Tools/XSS Strike.MD",
+    "Webapp/Exploitation/Client-Side/XSS/Tools/XSSer.md",
+    "Webapp/Exploitation/Client-Side/XSS/Tools/tools.md",
+    "Webapp/Exploitation/Client-Side/XSS/Tools",
+    "Webapp/Exploitation/Login Functionality/Exploitation.md",
+    "Pentest/Brute Force/Wordlists/Username Anarchy.md",
+    "Pentest/Brute Force/Wordlists/CUPP.md",
+    "Webapp/Exploitation/Login Functionality/General.md",
+    "Pentest/Brute Force/Wordlists/CUPP_1.md",
+    "Pentest/Brute Force/Wordlists/Metasploit_1.md",
+    "Pentest/Brute Force/Tools/Medusa.md",
+    "Webapp/Exploitation/Login Functionality/src/developer-tools.png",
+    "Webapp/Exploitation/Login Functionality/src",
+    "Webapp/Exploitation/Login Functionality/Brute Force.md",
+    "Webapp/Exploitation/Login Functionality/SQL Injection.md",
     "Pentest/Brute Force/Tools/Hydra.md",
+    "Webapp/Exploitation/Login Functionality/src/Pasted image 20260217215801.png",
+    "Webapp/Exploitation/Login Functionality/src/pastedimage.png",
+    "Webapp/Exploitation/Login Functionality/src/image.png",
+    "Networking/Services/IPMI/Enumeration.md",
+    "Networking/Services/LDAP/Enumeration.md",
+    "Networking/Services/IPMI/Exploitation.md",
+    "Login Functionality",
+    "Brute Force",
+    "Response",
+    "HTTP",
     "RDP/Exploitation",
     "RDP",
     "VNC/Exploitation",
     "VNC",
-    "MSSQL",
-    "MySQL",
-    "IMAP-POP3",
-    "SMTP",
-    "FTP",
     "Pentest/Security Assesment/General.md",
     "Networking/Services/IMAP-POP3/Exploitation.md",
-    "Pentest/Brute Force/Tools/Medusa.md",
     "Networking/Services/HTTP/Enumeration_1.md",
     "Networking/Services/FTP/Exploitation.md",
     "Pentest/Secrets/Found Secrets.md",
     "Pentest/Brute Force/General.md",
     "Pentest/Brute Force/src/credential-stuffing.png",
-    "Pentest/Brute Force/Dictionary.md",
-    "Pentest/Brute Force/PIN.md",
     "Pentest/Brute Force/src/hybrid-attack.png",
-    "Pentest/Brute Force/PIN_1.md",
-    "Webapp/Enumeration/Infrastructure/VHost.md",
-    "Webapp/Enumeration/Infrastructure/Subdomain.md",
-    "Webapp/Enumeration/Discovery/Execution Paths.md",
-    "Webapp/Exploitation/Server-Side/File Upload/Exploitation.md",
-    "Webapp/Exploitation/Server-Side/File Upload/Enumeration.md",
-    "Webapp/Enumeration/General.md",
-    "Networking/Services/FTP/Enumeration.md",
-    "Networking/Services/FTP/Usage.md",
-    "Networking/Services/FTP/General.md",
-    "Networking/Services/DNS/Exploitation.md",
-    "Networking/Services/DNS/Enumeration.md",
     "Networking/Services/RDP/src/david-martinez-v-5120x2880-18745.jpg",
     "Networking/Services/RDP/src/restricted-admin-mode-reg.png",
     "Webapp/Technology/Dolibarr/src/preview.png",
     "Webapp/Technology/Dolibarr/src/inspect.png",
-    "Webapp/Technology/Dolibarr/src/payload.png",
-    "Webapp/Technology/Dolibarr/src/20260211-000247.png",
-    "Webapp/Technology/Dolibarr/src/20260211-000212.png",
-    "Webapp/Technology/Dolibarr/src/edit-html.png",
     "Webapp/Exploitation/Server-Side/File Upload/src/canvas.canvas",
     "Webapp/Exploitation/Server-Side/File Inclusion/src/Untitled.canvas",
     "Untitled.canvas",

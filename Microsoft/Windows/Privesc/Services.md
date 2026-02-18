@@ -44,7 +44,6 @@ List services
 Get-Service
 ```
 
-
 [Get-Service](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-service?view=powershell-7.5) —
 List services (*filter by name*)
 
@@ -108,6 +107,12 @@ List active TCP and UDP connections on a specific port
 
 ```sh
 netstat -ano | findstr 6064
+```
+
+[[Nmap/Host Enumeration#Localhost|Nmap]]
+
+```sh
+nmap localhost
 ```
 
 [tasklist](https://en.wikipedia.org/wiki/Tasklist) —

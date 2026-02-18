@@ -96,6 +96,17 @@ ftp://<username>:<password>@<ip>
 
 <!-- }}} -->
 
+<!-- Localhost {{{-->
+### Localhost
+
+Access local FTP server
+
+```sh
+ftp ftp://<user>:<password>@localhost
+```
+
+<!-- }}} -->
+
 <!-- Exit {{{-->
 ### Exit
 

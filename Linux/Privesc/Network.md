@@ -167,6 +167,7 @@ are daemons that manage Internet-based connectivity
 ```sh
 cat /etc/inetd.conf /etc/xinetd.conf
 ```
+
 ___
 <!-- }}} -->
 
@@ -207,6 +208,16 @@ Enumerate open ports
 
 ```sh
 (netstat -punta || ss --ntpu) | grep "127.0"
+```
+
+```sh
+netstat -tulpn | grep LISTEN
+```
+
+[[Nmap/Host Enumeration#Localhost|Nmap]]
+
+```sh
+nmap localhost
 ```
 
 ___

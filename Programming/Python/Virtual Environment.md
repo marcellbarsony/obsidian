@@ -14,6 +14,7 @@ other virtual environments, and (by default) any libraries installed in a
 
 ___
 
+<!-- Initialize {{{-->
 ## Initialize
 
 Initialize venv
@@ -27,7 +28,9 @@ python3 -m venv venv
 ```
 
 ___
+<!-- }}} -->
 
+<!-- Activate {{{-->
 ## Activate
 
 Activate venv
@@ -41,7 +44,9 @@ source venv/bin/activate
 ```
 
 ___
+<!-- }}} -->
 
+<!-- Environment Info {{{-->
 ## Environment Info
 
 Check active environment
@@ -57,7 +62,9 @@ pip list --local
 ```
 
 ___
+<!-- }}} -->
 
+<!-- Delete & Deactivate {{{-->
 ## Delete & Deactivate
 
 Deactivate Environment
@@ -69,7 +76,9 @@ deactivate
 To delete the virtual environment, simply delete the environment folder
 
 ___
+<!-- }}} -->
 
+<!-- Requirements {{{-->
 ## Requirements
 
 Generate Requirements
@@ -85,3 +94,4 @@ pip install -r requirements.txt
 ```
 
 ___
+<!-- }}} -->

@@ -8,5 +8,6 @@
   "defaultViewMode": "preview",
   "alwaysUpdateLinks": true,
   "showInlineTitle": true,
-  "attachmentFolderPath": "./"
+  "attachmentFolderPath": "./",
+  "showUnsupportedFiles": true
 }
