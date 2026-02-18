@@ -12,12 +12,17 @@ ___
 <!-- OS {{{-->
 ## OS
 
-OS default web server roots
+Default OS web server roots
 
-| OS      | Path                     |
-| ------- | ------------------------ |
-| Linux   | `/var/www/html`          |
-| Windows | `C:\inetpub\wwwroot`     |
+<!-- Info {{{-->
+> [!info]
+>
+> | OS      | Path                     |
+> | ------- | ------------------------ |
+> | Linux   | `/var/www/html`          |
+> | Windows | `C:\inetpub\wwwroot`     |
+>
+<!-- }}} -->
 
 ___
 <!-- }}} -->
@@ -25,12 +30,19 @@ ___
 <!-- Web Server {{{-->
 ## Web Server
 
-| Web Server                                                         | Default Webroot          |
-| ------------------------------------------------------------------ | ------------------------ |
-| [Apache](https://en.wikipedia.org/wiki/Apache_HTTP_Server)         | `/var/www/html/`         |
-| [Nginx](https://en.wikipedia.org/wiki/Nginx)                       | `/usr/local/nginx/html/` |
-| [IIS](https://en.wikipedia.org/wiki/Internet_Information_Services) | `C:\inetpub\wwwroot\`    |
-| [XAMPP](https://en.wikipedia.org/wiki/XAMPP)                       | `C:\xampp\htdocs\`       |
+Default web server roots
+
+<!-- Info {{{-->
+> [!info]
+>
+> | Web Server                                   | Default Webroot          |
+> | -------------------------------------------- | ------------------------ |
+> | [[Apache HTTP Server/General\|aisernt]]      | `/var/www/html/`         |
+> | [[Nginx/General\|Nginx]]                     | `/usr/local/nginx/html/` |
+> | [[Microsoft IIS/General\|Microsoft IIS]]     | `C:\inetpub\wwwroot\`    |
+> | [XAMPP](https://en.wikipedia.org/wiki/XAMPP) | `C:\xampp\htdocs\`       |
+>
+<!-- }}} -->
 
 ___
 <!-- }}} -->

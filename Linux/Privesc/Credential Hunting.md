@@ -16,6 +16,14 @@ shell files, user history files, etc.
 > - [Password Hunting – Linux Privilege Escalation](https://juggernaut-sec.com/password-hunting-lpe/)
 <!-- }}} -->
 
+<!-- Tip {{{-->
+> [!tip]
+>
+> [[Found Secrets]]
+>
+<!-- }}} -->
+
+
 ___
 
 <!-- Directories {{{-->
@@ -518,23 +526,6 @@ ps -eo pid,user,cmd --no-header \
 > - `i`: Ignore case
 > - `I`: Ignore binary
 <!-- }}} -->
-
-___
-<!-- }}} -->
-
-<!-- Found Secrets {{{-->
-# Found Secrets
-
-| Secret             | Action                                 |
-| ------------------ | -------------------------------------- |
-| NTLM hash          | Crack it or spray with CME             |
-| Password string    | Try RDP, SMB, WinRM                    |
-| SSH Key            | Pivot via SSH to other boxes           |
-| Database creds     | Try MySQL/MSSQL pivot and xp_cmdshell  |
-| Browser creds      | Pivot web apps, internal portals       |
-| Wi-Fi key          | Try new wireless pivot                 |
-| Sticky Notes/Notes | Decode plaintext secrets               |
-| .kdbx (KeePass)    | Hash dump → crack with [[Hashcat]]     |
 
 ___
 <!-- }}} -->

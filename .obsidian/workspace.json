@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Webapp/Exploitation/Client-Side/XSS/Exploitation.md",
+                "file": "Webapp/Exploitation/Server-Side/SSRF/General.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Exploitation"
+              "title": "General"
             }
           }
         ]
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Webapp/Exploitation/Client-Side/XSS/Exploitation.md",
+                "file": "Webapp/Exploitation/Server-Side/SSRF/General.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Exploitation"
+              "title": "Outline of General"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Webapp/Exploitation/Client-Side/XSS/Exploitation.md",
+                "file": "Webapp/Exploitation/Server-Side/SSRF/General.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Exploitation"
+              "title": "Graph of General"
             }
           }
         ]
@@ -223,10 +223,29 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "ce4606fbde31c8c1",
+  "active": "5f07e9f23936f1f0",
   "lastOpenFiles": [
-    "Webapp/Exploitation/Client-Side/XSS/General.md",
+    "Webapp/Exploitation/Server-Side/SSRF/Enumeration.md",
+    "Webapp/Exploitation/Server-Side/Path Traversal/General.md",
+    "Webapp/Exploitation/Server-Side/Login Functionality/Exploitation.md",
+    "Webapp/Exploitation/Server-Side/Login Functionality/General.md",
+    "Webapp/Exploitation/Server-Side/Access Control/General.md",
+    "Webapp/Exploitation/Server-Side/Access Control/Exploitation.md",
+    "Webapp/Exploitation/Server-Side/Access Control/IDOR.md",
+    "Webapp/Exploitation/Server-Side/Dashboard/Admin Panel.md",
+    "Webapp/General.md",
+    "Webapp/Tools/proxychains.md",
+    "Webapp/Tools/katana.md",
+    "Webapp/Tools/sqlmap/sqlmap.md",
+    "Webapp/General/Web Server/Web Server Root.md",
+    "Webapp/Exploitation/Server-Side/Cookies & Parameters.md",
+    "Webapp/Exploitation/Checklist.md",
+    "Microsoft/Windows/Privesc/Credential Hunting.md",
     "Webapp/Exploitation/Client-Side/XSS/Exploitation.md",
+    "Webapp/Exploitation/Server-Side/Login Functionality/src/developer-tools.png",
+    "Webapp/Exploitation/Server-Side/Login Functionality/src",
+    "Webapp/Exploitation/Server-Side/Login Functionality",
+    "Webapp/Exploitation/Client-Side/XSS/General.md",
     "Webapp/Exploitation/Client-Side/XSS/Tools/XSS Strike.md",
     "Webapp/Exploitation/Client-Side/XSS/Tools/DalFox.md",
     "Webapp/Exploitation/Client-Side/XSS/Tools/XSS Strike.MD",
@@ -236,41 +255,22 @@
     "Webapp/Exploitation/Login Functionality/Exploitation.md",
     "Pentest/Brute Force/Wordlists/Username Anarchy.md",
     "Pentest/Brute Force/Wordlists/CUPP.md",
-    "Webapp/Exploitation/Login Functionality/General.md",
-    "Pentest/Brute Force/Wordlists/CUPP_1.md",
-    "Pentest/Brute Force/Wordlists/Metasploit_1.md",
-    "Pentest/Brute Force/Tools/Medusa.md",
     "Webapp/Exploitation/Login Functionality/src/developer-tools.png",
     "Webapp/Exploitation/Login Functionality/src",
-    "Webapp/Exploitation/Login Functionality/Brute Force.md",
-    "Webapp/Exploitation/Login Functionality/SQL Injection.md",
-    "Pentest/Brute Force/Tools/Hydra.md",
     "Webapp/Exploitation/Login Functionality/src/Pasted image 20260217215801.png",
     "Webapp/Exploitation/Login Functionality/src/pastedimage.png",
     "Webapp/Exploitation/Login Functionality/src/image.png",
-    "Networking/Services/IPMI/Enumeration.md",
-    "Networking/Services/LDAP/Enumeration.md",
-    "Networking/Services/IPMI/Exploitation.md",
     "Login Functionality",
     "Brute Force",
     "Response",
     "HTTP",
     "RDP/Exploitation",
     "RDP",
-    "VNC/Exploitation",
-    "VNC",
-    "Pentest/Security Assesment/General.md",
-    "Networking/Services/IMAP-POP3/Exploitation.md",
-    "Networking/Services/HTTP/Enumeration_1.md",
-    "Networking/Services/FTP/Exploitation.md",
-    "Pentest/Secrets/Found Secrets.md",
-    "Pentest/Brute Force/General.md",
     "Pentest/Brute Force/src/credential-stuffing.png",
     "Pentest/Brute Force/src/hybrid-attack.png",
     "Networking/Services/RDP/src/david-martinez-v-5120x2880-18745.jpg",
     "Networking/Services/RDP/src/restricted-admin-mode-reg.png",
-    "Webapp/Technology/Dolibarr/src/preview.png",
-    "Webapp/Technology/Dolibarr/src/inspect.png",
+    "Webapp/Software/Dolibarr/src/preview.png",
     "Webapp/Exploitation/Server-Side/File Upload/src/canvas.canvas",
     "Webapp/Exploitation/Server-Side/File Inclusion/src/Untitled.canvas",
     "Untitled.canvas",

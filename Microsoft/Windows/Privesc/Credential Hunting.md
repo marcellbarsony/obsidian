@@ -11,14 +11,12 @@ links: Privesc
 Look for exposed credentials in configuration files,
 log files, and user history files
 
-Search for [[Secrets]] like `username`, `password`, `key`, `secret`, etc.
-
 ___
 
 <!-- Application Configuration Files {{{-->
 ## Application Configuration Files
 
-Applications may store credentials in configuration files
+Applications may store [[Secrets]] in configuration files
 
 ```powershell
 findstr /SIM /C:"user" /C:"pass" /C:"htb" *.cfg *.conf *.config *.ini *.xml *.json *.yaml
@@ -80,6 +78,20 @@ C:\Users\<User>\AppData\Local\<AppName>\config.yaml
 
 Enumerate the [[Web Server Root]] for [[Secrets]]
 
+[[Web Server Root#OS|OS-Specific Root]] (*`/var/www/`*)
+
+```sh
+findstr /I /S /M /C:"user" /C:"pass" /C:"htb" "C:\inetpub\wwwroot\*.*"
+```
+
+<!-- Info {{{-->
+> [!info]-
+>
+> - `/S`: Search subdirectories recursively
+> - `/I`: Case-insensitive search
+> - `/M`: Print file names instead of matching lines
+<!-- }}} -->
+
 Web server config
 
 ```powershell
@@ -89,9 +101,7 @@ findstr /I /C:"user" /C:"pass" /C:"htb" C:\inetpub\wwwroot\web.config
 <!-- Info {{{-->
 > [!info]-
 >
-> - `/S`: Search subdirectories recursively
 > - `/I`: Case-insensitive search
-> - `/M`: Print file names instead of matching lines
 <!-- }}} -->
 
 <!-- }}} -->
@@ -202,10 +212,12 @@ ___
 [procdump](https://learn.microsoft.com/en-us/sysinternals/downloads/procdump) —
 Create a memory dump of a running process
 
+<!-- Tip {{{-->
 > [!tip]
 >
 > Services like [[FTP/General|FTP]] store their credentials
 > in clear text in memory
+<!-- }}} -->
 
 1. [[Processes#Identify|Identify]] the process name
 
@@ -241,6 +253,7 @@ procdump.exe -accepteula -ma <proc_name>
 > ```
 <!-- }}} -->
 
+___
 <!-- }}} -->
 
 <!-- PowerShell {{{-->
