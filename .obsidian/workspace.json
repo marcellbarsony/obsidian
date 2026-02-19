@@ -8,12 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "ce4606fbde31c8c1",
+            "id": "50caee0bf0e74f0c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Webapp/Exploitation/Server-Side/SSRF/General.md",
+                "file": "Networking/Services/MySQL/Usage.md",
                 "mode": "preview",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "General"
+              "title": "Usage"
             }
           }
         ]
@@ -120,13 +120,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Webapp/Exploitation/Server-Side/SSRF/General.md",
+                "file": "Networking/Services/MySQL/Usage.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of General"
+              "title": "Outline of Usage"
             }
           },
           {
@@ -175,7 +175,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Webapp/Exploitation/Server-Side/SSRF/General.md",
+                "file": "Networking/Services/MySQL/Usage.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +203,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of General"
+              "title": "Graph of Usage"
             }
           }
         ]
@@ -223,54 +223,53 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "5f07e9f23936f1f0",
+  "active": "50caee0bf0e74f0c",
   "lastOpenFiles": [
-    "Webapp/Exploitation/Server-Side/SSRF/Enumeration.md",
-    "Webapp/Exploitation/Server-Side/Path Traversal/General.md",
-    "Webapp/Exploitation/Server-Side/Login Functionality/Exploitation.md",
-    "Webapp/Exploitation/Server-Side/Login Functionality/General.md",
-    "Webapp/Exploitation/Server-Side/Access Control/General.md",
-    "Webapp/Exploitation/Server-Side/Access Control/Exploitation.md",
-    "Webapp/Exploitation/Server-Side/Access Control/IDOR.md",
-    "Webapp/Exploitation/Server-Side/Dashboard/Admin Panel.md",
-    "Webapp/General.md",
-    "Webapp/Tools/proxychains.md",
-    "Webapp/Tools/katana.md",
-    "Webapp/Tools/sqlmap/sqlmap.md",
-    "Webapp/General/Web Server/Web Server Root.md",
-    "Webapp/Exploitation/Server-Side/Cookies & Parameters.md",
-    "Webapp/Exploitation/Checklist.md",
-    "Microsoft/Windows/Privesc/Credential Hunting.md",
+    "Webapp/Exploitation/Server-Side/SQL Injection/General.md",
+    "Webapp/Exploitation/Server-Side/SQL Injection/src/sql-general.png",
+    "Webapp/Exploitation/Server-Side/SQL Injection/src",
     "Webapp/Exploitation/Client-Side/XSS/Exploitation.md",
+    "Webapp/Exploitation/Server-Side/SQL Injection",
+    "Webapp/Exploitation/Client-Side/XSS/General.md",
+    "Webapp/Exploitation/Client-Side/XSS/Enumeration.md",
+    "Webapp/Exploitation/Client-Side/XSS/src/xss-dom-parameter.png",
+    "Webapp/Exploitation/Client-Side/XSS/src/xss-dom-network.png",
+    "Webapp/Exploitation/Client-Side/XSS/src/xss-reflected-alert.png",
+    "Webapp/Exploitation/Client-Side/XSS/src/xss-reflected-dev-tools.png",
+    "Webapp/Exploitation/Client-Side/XSS/src/xss-reflected-test.png",
+    "Webapp/Exploitation/Client-Side/XSS/src/xss-reflected-network.png",
+    "Webapp/Exploitation/Client-Side/XSS/src/xss-reflected-network.jpg",
+    "Linux/General/Systemd.md",
+    "Linux/General/System Logs_1.md",
+    "Webapp/Exploitation/Client-Side/XSS/Tools/BruteXSS.md",
+    "Webapp/Exploitation/Client-Side/XSS/Tools/XSSer_1.md",
+    "Webapp/Exploitation/Client-Side/XSS/General_1.md",
+    "Pentest/Tools/Nuclei.md",
+    "Programming/Rust/FS/File_Create.md",
+    "Programming/Rust/FS/File_Copy.md",
+    "Programming/Rust/Conversion/From-and-Into.md",
+    "Programming/Rust/Control-flow/For and Range.md",
+    "Programming/Rust/Comments/Comments.md",
+    "Programming/Rust/Collections/Strings.md",
+    "Programming/Rust/Collections/Hashmaps.md",
+    "Programming/Bash/Functions/wildcards.md",
+    "Programming/Bash/Functions/positional-parameters.md",
+    "Programming/Bash/Functions/Function.md",
+    "Programming/Bash/Conditionals/Tests.md",
+    "Programming/Bash/Conditionals/Logical Operators.md",
+    "Programming/Bash/Conditionals/if-else.md",
+    "Programming/Bash/Conditionals/if-elif-else.md",
+    "Programming/Bash/Conditionals/if.md",
     "Webapp/Exploitation/Server-Side/Login Functionality/src/developer-tools.png",
     "Webapp/Exploitation/Server-Side/Login Functionality/src",
     "Webapp/Exploitation/Server-Side/Login Functionality",
-    "Webapp/Exploitation/Client-Side/XSS/General.md",
-    "Webapp/Exploitation/Client-Side/XSS/Tools/XSS Strike.md",
-    "Webapp/Exploitation/Client-Side/XSS/Tools/DalFox.md",
-    "Webapp/Exploitation/Client-Side/XSS/Tools/XSS Strike.MD",
-    "Webapp/Exploitation/Client-Side/XSS/Tools/XSSer.md",
-    "Webapp/Exploitation/Client-Side/XSS/Tools/tools.md",
     "Webapp/Exploitation/Client-Side/XSS/Tools",
-    "Webapp/Exploitation/Login Functionality/Exploitation.md",
-    "Pentest/Brute Force/Wordlists/Username Anarchy.md",
-    "Pentest/Brute Force/Wordlists/CUPP.md",
     "Webapp/Exploitation/Login Functionality/src/developer-tools.png",
     "Webapp/Exploitation/Login Functionality/src",
-    "Webapp/Exploitation/Login Functionality/src/Pasted image 20260217215801.png",
-    "Webapp/Exploitation/Login Functionality/src/pastedimage.png",
-    "Webapp/Exploitation/Login Functionality/src/image.png",
     "Login Functionality",
     "Brute Force",
     "Response",
     "HTTP",
-    "RDP/Exploitation",
-    "RDP",
-    "Pentest/Brute Force/src/credential-stuffing.png",
-    "Pentest/Brute Force/src/hybrid-attack.png",
-    "Networking/Services/RDP/src/david-martinez-v-5120x2880-18745.jpg",
-    "Networking/Services/RDP/src/restricted-admin-mode-reg.png",
-    "Webapp/Software/Dolibarr/src/preview.png",
     "Webapp/Exploitation/Server-Side/File Upload/src/canvas.canvas",
     "Webapp/Exploitation/Server-Side/File Inclusion/src/Untitled.canvas",
     "Untitled.canvas",

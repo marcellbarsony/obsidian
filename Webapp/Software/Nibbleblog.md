@@ -93,14 +93,13 @@ allows an authenticated remote attacker to execute arbitrary PHP code
 >
 <!-- }}} -->
 
-[[Pentest/Tools/Metasploit/Metasploit]] - [Nibbleblog File Upload Vulnerability](https://www.rapid7.com/db/modules/exploit/multi/http/nibbleblog_file_upload/)
+[[Metasploit]] - [Nibbleblog File Upload Vulnerability](https://www.rapid7.com/db/modules/exploit/multi/http/nibbleblog_file_upload/)
 
 <!-- Warning {{{-->
 > [!warning]
 >
 > Valid [[#Credentials]] required
 <!-- }}} -->
-
 
 ```sh
 use exploit/multi/http/nibbleblog_file_upload
@@ -128,7 +127,6 @@ use exploit/multi/http/nibbleblog_file_upload
 > exploit
 > ```
 <!-- }}} -->
-
 
 <!-- }}} -->
 

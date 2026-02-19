@@ -58,7 +58,7 @@ mysql -u <user> -p<password> -h $target
 ```
 
 ```sh
-mysql -h <hostname> -p<password> -u root@localhost
+mysql -u root@loaclhost -p<password> -h <hostname> -P <port>
 ```
 
 <!-- Example {{{-->
@@ -142,7 +142,7 @@ mysql -h <hostname> -p<password> -u root@localhost
 > --skip-ssl
 > ```
 > ```sh
-> --ssl --ssl-verify-server-cert=0 
+> --ssl --ssl-verify-server-cert=0
 > ```
 >
 > - above MySQL 5.7 / MariaDB 10.2
@@ -175,7 +175,8 @@ Databate operations — Enumerate databases to identify high-value targets
 <!-- Discover {{{-->
 ### Discover
 
-List all databases
+[SHOW](https://dev.mysql.com/doc/en/show-databases.html)
+all databases
 
 ```sql
 SHOW DATABASES;
@@ -198,7 +199,8 @@ SHOW DATABASES;
 > ```
 <!-- }}} -->
 
-List all database information
+[SHOW](https://dev.mysql.com/doc/en/show-databases.html)
+all database information
 
 ```sql
 SELECT * FROM INFORMATION_SCHEMA.SCHEMATA;
@@ -206,20 +208,23 @@ SELECT * FROM INFORMATION_SCHEMA.SCHEMATA;
 
 <!-- }}} -->
 
-<!-- Select {{{-->
-### Select
+<!-- Use {{{-->
+### Use
 
-Select a database
+[USE](https://dev.mysql.com/doc/en/use.html)
+a database
 
 ```sql
-USE <database_name>;
+USE database_name;
 ```
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sql
 > USE my_database;
 > ```
+<!-- }}} -->
 
 <!-- }}} -->
 
@@ -243,50 +248,56 @@ SELECT SCHEMA_NAME, CREATE_TIME FROM INFORMATION_SCHEMA.SCHEMATA;
 <!-- Create {{{-->
 ### Create
 
-Create a database
+[CREATE](https://dev.mysql.com/doc/en/create-database.html)
+a database
 
 ```sql
-CREATE DATABASE <name>;
+CREATE DATABASE database_name;
 ```
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sql
 > CREATE DATABASE my_database;
 > ```
+<!-- }}} -->
 
 <!-- }}} -->
 
 <!-- Delete {{{-->
 ### Delete
 
-Delete a database
+[DROP](https://dev.mysql.com/doc/en/drop-database.html)
+a database
 
 ```sql
-DROP DATABASE <name>;
+DROP DATABASE database_name;
 ```
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sql
 > DROP DATABASE my_database;
 > ```
+<!-- }}} -->
 
 <!-- }}} -->
 
 ___
-
 <!-- }}} -->
 
 <!-- Table {{{-->
 ## Table
 
-Table operations —  Extract table and column information from databases
+Table operations — Extract table and column information from databases
 
 <!-- Discover {{{-->
 ### Discover
 
-List tables in current database
+[SHOW](https://dev.mysql.com/doc/en/show-tables.html)
+tables in current database
 
 ```sql
 SHOW TABLES;
@@ -317,6 +328,7 @@ SELECT table_name FROM information_schema.TABLES WHERE table_schema=DATABASE();
 > +----------------------------+
 > 8 rows in set (0.00 sec)
 > ```
+>
 <!-- }}} -->
 
 <!-- }}} -->
@@ -324,7 +336,8 @@ SELECT table_name FROM information_schema.TABLES WHERE table_schema=DATABASE();
 <!-- Structure {{{-->
 ### Structure
 
-Show table structure
+[DESCRIBE](https://dev.mysql.com/doc/en/describe.html)
+table structure
 (e.g., *column names, data types, keys, default values, etc.*)
 
 ```sql
@@ -368,16 +381,95 @@ WHERE column_name LIKE '%search_term%'
 
 Modify tables
 
+<!-- Alter {{{-->
+#### Alter
+
+[ALTER](https://dev.mysql.com/doc/en/alter-table.html)
+table name or field
+
+```sql
+ALTER TABLE table_name ADD column_name INT;
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sql
+> mysql> ALTER TABLE logins ADD newColumn INT;
+> ```
+> ```sh
+> Query OK, 0 rows affected (0.01 sec)
+> ```
+>
+<!-- }}} -->
+
+Rename a column
+
+```sql
+ALTER TABLE table_name RENAME COLUMN column_old TO column_new;
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sql
+> mysql> ALTER TABLE logins RENAME COLUMN newColumn TO newerColumn;
+> ```
+> ```sh
+> Query OK, 0 rows affected (0.01 sec)
+> ```
+>
+<!-- }}} -->
+
+Change a column's datatype
+
+```sql
+ALTER TABLE table_name MODIFY column_name DATE;
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sql
+> mysql> ALTER TABLE logins MODIFY newerColumn DATE;
+> ```
+> ```sh
+> Query OK, 0 rows affected (0.01 sec)
+> ```
+>
+<!-- }}} -->
+
+Delete a column
+
+```sql
+ALTER TABLE table_name DROP column_name;
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sql
+> mysql> ALTER TABLE logins DROP newerColumn;
+> ```
+> ```sh
+> Query OK, 0 rows affected (0.01 sec)
+> ```
+>
+<!-- }}} -->
+
+<!-- }}} -->
+
 <!-- Create {{{-->
 #### Create
 
+[CREATE](https://dev.mysql.com/doc/en/create-table.html)
 Create a table with header
 
 ```sql
-CREATE TABLE <table_name> (
-    <column_1> INT AUTO_INCREMENT PRIMARY KEY,
-    <column_2> VARCHAR(100),
-    <column_3> DATETIME
+CREATE TABLE table_name (
+    column_1 INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    column_2 VARCHAR(100) UNIQUE NOT NULL,
+    column_3 DATETIME
 );
 ```
 
@@ -386,8 +478,8 @@ CREATE TABLE <table_name> (
 >
 > ```sql
 > CREATE TABLE users (
->     id INT AUTO_INCREMENT PRIMARY KEY,
->     name VARCHAR(100),
+>     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+>     name VARCHAR(100) UNIQUE NOT NULL,
 >     email DATETIME
 > );
 > ```
@@ -398,17 +490,21 @@ CREATE TABLE <table_name> (
 <!-- Delete {{{-->
 #### Delete
 
-Delete a table
+[DROP](https://dev.mysql.com/doc/en/drop-table.html)
+(*delete*) a table
 
 ```sql
-DROP TABLE <table_name>;
+DROP TABLE table_name;
 ```
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sql
 > DROP TABLE users;
 > ```
+>
+<!-- }}} -->
 
 <!-- }}} -->
 
@@ -417,10 +513,259 @@ DROP TABLE <table_name>;
 ___
 <!-- }}} -->
 
+<!-- Record {{{-->
+## Record
+
+Modify **SQL records**
+
+<!-- Delete {{{-->
+### Delete
+
+[DELETE](https://dev.mysql.com/doc/en/delete.html)
+a record
+
+```sql
+DELETE FROM users WHERE id = 1;
+```
+
+<!-- }}} -->
+
+<!-- Insert {{{-->
+### Insert
+
+[INSERT](https://dev.mysql.com/doc/en/insert.html)
+a single record
+
+```sql
+INSERT INTO table_name VALUES (1, 'value_1', 'value_2');
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sql
+> INSERT INTO logins VALUES (1, 'admin', 'p@ssw0rd', '2020-07-02');
+> ```
+<!-- }}} -->
+
+[INSERT](https://dev.mysql.com/doc/en/insert.html)
+mulpitle records
+
+```sql
+INSERT INTO table_name (column_1, column_2) VALUES ('value_1', 'value_2');
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sql
+> INSERT INTO users (name, email) VALUES ('Alice', 'alice@email.com');
+> ```
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- Select {{{-->
+### Select
+
+[SELECT](https://dev.mysql.com/doc/en/select.html)
+everything
+
+```sql
+SELECT * FROM table_name;
+```
+
+[SELECT](https://dev.mysql.com/doc/en/select.html)
+specific columns
+
+```sql
+SELECT column_1, column_2 FROM table;
+```
+
+<!-- }}} -->
+
+<!-- Update {{{-->
+### Update
+
+[UPDATE](https://dev.mysql.com/doc/en/update.html)
+a record
+
+```sql
+UPDATE table_name SET record = 'value' WHERE id = 1;
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sql
+> UPDATE users SET email = 'new@email.com' WHERE id = 1;
+> ```
+<!-- }}} -->
+
+
+<!-- }}} -->
+
+___
+
+<!-- }}} -->
+
 <!-- Data {{{-->
 ## Data
 
-Table data operations
+Table data operations and
+[Pattern Matching](https://dev.mysql.com/doc/en/pattern-matching.html)
+
+<!-- Filter {{{-->
+### Filter
+
+[WHERE](https://dev.mysql.com/doc/en/where-optimization.html)
+
+Filter table data
+
+```sql
+SELECT * FROM table_name WHERE column_name = value;
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sql
+> SELECT * FROM table_name WHERE id = 5;
+> ```
+>
+> ```sql
+> SELECT * FROM table_name WHERE name = 'Alice';
+> ```
+>
+<!-- }}} -->
+
+Filter table data (*multiple*)
+
+```sql
+SELECT * FROM table_name WHERE column_1 = value AND column_2 > value;
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sql
+> SELECT * FROM table_name WHERE age > 30 AND city = 'London';
+> ```
+>
+<!-- }}} -->
+
+[LIKE](https://dev.mysql.com/doc/en/pattern-matching.html)
+
+```sql
+SELECT * FROM table_name WHERE column_name LIKE condition;
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> mysql> SELECT * FROM logins WHERE username LIKE 'admin%';
+> ```
+> ```sh
+> +----+---------------+------------+---------------------+
+> | id | username      | password   | date_of_joining     |
+> +----+---------------+------------+---------------------+
+> |  1 | admin         | p@ssw0rd   | 2020-07-02 00:00:00 |
+> |  4 | administrator | adm1n_p@ss | 2020-07-02 15:19:02 |
+> +----+---------------+------------+---------------------+
+> 2 rows in set (0.00 sec)
+> ```
+>
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- Limit {{{-->
+### Limit
+
+[LIMIT](https://dev.mysql.com/doc/en/select.html)
+table data to `10` rows
+
+```sql
+SELECT * FROM table_name LIMIT 10;
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> SELECT * FROM logins LIMIT 2;
+> ```
+> ```sh
+> +----+---------------+------------+---------------------+
+> | id | username      | password   | date_of_joining     |
+> +----+---------------+------------+---------------------+
+> |  1 | admin         | p@ssw0rd   | 2020-07-02 00:00:00 |
+> |  2 | administrator | adm1n_p@ss | 2020-07-02 11:30:50 |
+> +----+---------------+------------+---------------------+
+> 2 rows in set (0.00 sec)
+> ```
+>
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- Sort {{{-->
+### Sort
+
+[ORDER BY](https://dev.mysql.com/doc/en/order-by-optimization.html)
+
+```sql
+SELECT * FROM table_name ORDER BY column_name;
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> mysql> SELECT * FROM logins ORDER BY password;
+> ```
+> ```sh
+> +----+---------------+------------+---------------------+
+> | id | username      | password   | date_of_joining     |
+> +----+---------------+------------+---------------------+
+> |  2 | administrator | adm1n_p@ss | 2020-07-02 11:30:50 |
+> |  3 | john          | john123!   | 2020-07-02 11:47:16 |
+> |  1 | admin         | p@ssw0rd   | 2020-07-02 00:00:00 |
+> |  4 | tom           | tom123!    | 2020-07-02 11:47:16 |
+> +----+---------------+------------+---------------------+
+> 4 rows in set (0.00 sec)
+> ```
+>
+<!-- }}} -->
+
+Order by `ASC` or `DSC`
+
+```sql
+SELECT * FROM table_name ORDER BY column_name DESC;
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> mysql> SELECT * FROM logins ORDER BY password;
+> ```
+> ```sh
+> +----+---------------+------------+---------------------+
+> | id | username      | password   | date_of_joining     |
+> +----+---------------+------------+---------------------+
+> |  2 | administrator | adm1n_p@ss | 2020-07-02 11:30:50 |
+> |  3 | john          | john123!   | 2020-07-02 11:47:16 |
+> |  1 | admin         | p@ssw0rd   | 2020-07-02 00:00:00 |
+> |  4 | tom           | tom123!    | 2020-07-02 11:47:16 |
+> +----+---------------+------------+---------------------+
+> 4 rows in set (0.00 sec)
+> ```
+>
+<!-- }}} -->
+
+<!-- }}} -->
 
 <!-- View {{{-->
 ### View
@@ -431,94 +776,7 @@ View table data
 SELECT * FROM table_name;
 ```
 
-Limit table data to `10` rows
-
-```sql
-SELECT * FROM table_name LIMIT 10;
-```
-
-<!-- Example {{{-->
-> [!example]-
->
-> ```sh
-> mysql> SELECT * FROM users;
-> ```
-> ```sh
-> +----+---------------+------------+---------------------+
-> | id | username      | password   | date_of_joining     |
-> +----+---------------+------------+---------------------+
-> |  1 | admin         | p@ssw0rd   | 2020-07-02 00:00:00 |
-> |  2 | administrator | adm1n_p@ss | 2020-07-02 11:30:50 |
-> |  3 | john          | john123!   | 2020-07-02 11:47:16 |
-> |  4 | tom           | tom123!    | 2020-07-02 12:23:16 |
-> +----+---------------+------------+---------------------+
-> 4 rows in set (0.00 sec)
-> ```
->
-<!-- }}} -->
-
-<!-- }}} -->
-
-<!-- Filter {{{-->
-### Filter
-
-Filter table data
-
-```sql
-SELECT * FROM myTable WHERE id = 5;
-```
-
-```sql
-SELECT * FROM myTable WHERE name = 'Alice';
-```
-
-Filter table data (*multiple*)
-
-```sql
-SELECT * FROM myTable WHERE age > 30 AND city = 'London';
-```
-<!-- }}} -->
-___
-<!-- }}} -->
-
-<!-- Record {{{-->
-## Record
-
-Modify **SQL records**
-
-<!-- Insert {{{-->
-### Insert
-
-Insert a record
-
-```sql
-INSERT INTO users (name, email) VALUES ('Alice', 'alice@email.com');
-```
-
-<!-- }}} -->
-
-<!-- Update {{{-->
-### Update
-
-Update a record
-
-```sql
-UPDATE users SET email = 'new@email.com' WHERE id = 1;
-```
-
-<!-- }}} -->
-
-<!-- Delete {{{-->
-### Delete
-
-Delete a record
-
-```sql
-DELETE FROM users WHERE id = 1;
-```
-
 <!-- }}} -->
 
 ___
-
 <!-- }}} -->

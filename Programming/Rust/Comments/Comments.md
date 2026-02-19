@@ -1,16 +1,26 @@
+---
+id: Comments
+aliases: []
+tags: []
+---
 # Comments
 
-[Comments - Rust By Example](https://doc.rust-lang.org/stable/rust-by-example/hello/comment.html)
+<!-- Info {{{-->
+> [!info]- Resources
+>
+> [Comments - Rust By Example](https://doc.rust-lang.org/stable/rust-by-example/hello/comment.html)
+>
+<!-- }}} -->
 
 Line comment
 
-```rs
+```rust
 // Example line comment
 ```
 
 Block comment
 
-```rs
+```rust
 /*
  * This is another type of comment, a block comment.
  * Line comments are the recommended comment style.
@@ -25,7 +35,7 @@ It's for styling purposes only
 
 In-line comment
 
-```rs
+```rust
 // In-line comments
 let x = 5 + /* 90 + */ 5;
 println!("Is `x` 10 or 100? x = {}", x);
