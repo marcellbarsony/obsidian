@@ -8,7 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "50caee0bf0e74f0c",
+            "id": "ea38e2ad7967ec80",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -30,8 +30,33 @@
               "icon": "lucide-file",
               "title": "Usage"
             }
+          },
+          {
+            "id": "af96fe37232dea33",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Webapp/Exploitation/Server-Side/SQL Injection/Exploitation.md",
+                "mode": "preview",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Exploitation"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -120,13 +145,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Networking/Services/MySQL/Usage.md",
+                "file": "Webapp/Exploitation/Server-Side/SQL Injection/Exploitation.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Usage"
+              "title": "Outline of Exploitation"
             }
           },
           {
@@ -175,7 +200,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Networking/Services/MySQL/Usage.md",
+                "file": "Webapp/Exploitation/Server-Side/SQL Injection/Exploitation.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -203,7 +228,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Usage"
+              "title": "Graph of Exploitation"
             }
           }
         ]
@@ -223,9 +248,19 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "50caee0bf0e74f0c",
+  "active": "af96fe37232dea33",
   "lastOpenFiles": [
+    "Networking/Services/MySQL/Usage.md",
+    "Webapp/Exploitation/Server-Side/SQL Injection/Exploitation.md",
+    "Webapp/Exploitation/Server-Side/SQL Injection/src/or-injection.png",
     "Webapp/Exploitation/Server-Side/SQL Injection/General.md",
+    "Webapp/Exploitation/Server-Side/SQL Injection/Tools/sqlmap.md",
+    "Webapp/Exploitation/Server-Side/Template Injection/General.md",
+    "Webapp/Exploitation/Server-Side/Template Injection",
+    "Programming/RegEx/General.md",
+    "Programming/RegEx",
+    "Webapp/Exploitation/Server-Side/SQL Injection/src/sql-injection-types.png",
+    "Networking/Services/MSSQL/Usage.md",
     "Webapp/Exploitation/Server-Side/SQL Injection/src/sql-general.png",
     "Webapp/Exploitation/Server-Side/SQL Injection/src",
     "Webapp/Exploitation/Client-Side/XSS/Exploitation.md",
@@ -254,22 +289,12 @@
     "Programming/Rust/Collections/Hashmaps.md",
     "Programming/Bash/Functions/wildcards.md",
     "Programming/Bash/Functions/positional-parameters.md",
-    "Programming/Bash/Functions/Function.md",
-    "Programming/Bash/Conditionals/Tests.md",
-    "Programming/Bash/Conditionals/Logical Operators.md",
-    "Programming/Bash/Conditionals/if-else.md",
-    "Programming/Bash/Conditionals/if-elif-else.md",
-    "Programming/Bash/Conditionals/if.md",
-    "Webapp/Exploitation/Server-Side/Login Functionality/src/developer-tools.png",
     "Webapp/Exploitation/Server-Side/Login Functionality/src",
     "Webapp/Exploitation/Server-Side/Login Functionality",
     "Webapp/Exploitation/Client-Side/XSS/Tools",
-    "Webapp/Exploitation/Login Functionality/src/developer-tools.png",
     "Webapp/Exploitation/Login Functionality/src",
     "Login Functionality",
     "Brute Force",
-    "Response",
-    "HTTP",
     "Webapp/Exploitation/Server-Side/File Upload/src/canvas.canvas",
     "Webapp/Exploitation/Server-Side/File Inclusion/src/Untitled.canvas",
     "Untitled.canvas",

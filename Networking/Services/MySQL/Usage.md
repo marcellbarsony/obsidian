@@ -34,10 +34,10 @@ mysql -u root -p
 <!-- Remote {{{-->
 ### Remote
 
-Connect to a remote MySQL server without password
+Connect to a remote server without password
 
 ```sh
-mysql -h <hostname> -u root
+mysql -u <user> -h <hostname>
 ```
 
 <!-- Example {{{-->
@@ -51,14 +51,10 @@ mysql -h <hostname> -u root
 > ```
 <!-- }}} -->
 
-Connect to a remote MySQL server with password
+Connect to a remote server with password
 
 ```sh
 mysql -u <user> -p<password> -h $target
-```
-
-```sh
-mysql -u root@loaclhost -p<password> -h <hostname> -P <port>
 ```
 
 <!-- Example {{{-->
@@ -73,55 +69,12 @@ mysql -u root@loaclhost -p<password> -h <hostname> -P <port>
 > Server version: 8.0.27-0ubuntu0.20.04.1 (Ubuntu)
 > Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
 > Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
->
-> MySQL [(none)]> show databases;
-> +--------------------+
-> | Database           |
-> +--------------------+
-> | information_schema |
-> | mysql              |
-> | performance_schema |
-> | sys                |
-> +--------------------+
-> 4 rows in set (0.006 sec)
->
->
-> MySQL [(none)]> select version();
-> +-------------------------+
-> | version()               |
-> +-------------------------+
-> | 8.0.27-0ubuntu0.20.04.1 |
-> +-------------------------+
-> 1 row in set (0.001 sec)
->
->
-> MySQL [(none)]> use mysql;
-> MySQL [mysql]> show tables;
-> +------------------------------------------------------+
-> | Tables_in_mysql                                      |
-> +------------------------------------------------------+
-> | columns_priv                                         |
-> | component                                            |
-> | db                                                   |
-> | default_roles                                        |
-> | engine_cost                                          |
-> | func                                                 |
-> | general_log                                          |
-> | global_grants                                        |
-> | gtid_executed                                        |
-> | help_category                                        |
-> | help_keyword                                         |
-> | help_relation                                        |
-> | help_topic                                           |
-> | innodb_index_stats                                   |
-> | innodb_table_stats                                   |
-> | password_history                                     |
-> ...SNIP...
-> | user                                                 |
-> +------------------------------------------------------+
-> 37 rows in set (0.002 sec)
 > ```
 <!-- }}} -->
+
+```sh
+mysql -u <user>[@loaclhost] -p<password> -h <hostname> -P <port>
+```
 
 <!-- Tip {{{-->
 > [!tip]- SSL/TLS ERROR 2026 (HY000)
@@ -236,6 +189,23 @@ Show current database
 ```sql
 SELECT DATABASE();
 ```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sh
+> MariaDB [employees]> SELECT DATABASE();
+> ```
+> ```sh
+> +------------+
+> | DATABASE() |
+> +------------+
+> | employees  |
+> +------------+
+> 1 row in set (0.053 sec)
+> ```
+>
+<!-- }}} -->
 
 Show current database information
 
@@ -352,11 +322,13 @@ SHOW COLUMNS FROM table_name;
 SELECT column_name, data_type FROM information_schema.COLUMNS WHERE table_name='<table>';
 ```
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sql
 > SELECT column_name, data_type FROM information_schema.COLUMNS WHERE table_name='users';
 > ```
+<!-- }}} -->
 
 Search for a specific column in a table
 
@@ -366,6 +338,7 @@ FROM information_schema.columns
 WHERE column_name LIKE '%search_term%'
 ```
 
+<!-- Example {{{-->
 > [!example]-
 >
 > ```sql
@@ -373,6 +346,7 @@ WHERE column_name LIKE '%search_term%'
 > FROM information_schema.columns
 > WHERE column_name LIKE '%password%'
 > ```
+<!-- }}} -->
 
 <!-- }}} -->
 
@@ -510,6 +484,52 @@ DROP TABLE table_name;
 
 <!-- }}} -->
 
+<!-- Union {{{-->
+### Union
+
+Combine the results of two [[#Filter|WHERE]] clauses
+(*select from multiple tables and databases*)
+
+A UNION statement can operate
+
+- On [[#SELECT]] statements with an equal number of columns
+- On selected columns that have the same data types
+  in corresponding positions
+
+```sql
+SELECT * FROM table_name UNION SELECT * FROM table_name_2;
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> Both tables (*`ports` and `ships`*) has `city`
+>
+> ```sql
+> SELECT * FROM ports UNION SELECT * FROM ships;
+> ```
+>
+> ```sql
+> +----------+-----------+
+> | code     | city      |
+> +----------+-----------+
+> | CN SHA   | Shanghai  |
+> | SG SIN   | Singapore |
+> | Morrison | New York  |
+> | ZZ-21    | Shenzhen  |
+> +----------+-----------+
+> 4 rows in set (0.00 sec)
+> ```
+<!-- }}} -->
+
+<!-- Info {{{-->
+> [!info]
+>
+>
+<!-- }}} -->
+
+<!-- }}} -->
+
 ___
 <!-- }}} -->
 
@@ -565,25 +585,6 @@ INSERT INTO table_name (column_1, column_2) VALUES ('value_1', 'value_2');
 
 <!-- }}} -->
 
-<!-- Select {{{-->
-### Select
-
-[SELECT](https://dev.mysql.com/doc/en/select.html)
-everything
-
-```sql
-SELECT * FROM table_name;
-```
-
-[SELECT](https://dev.mysql.com/doc/en/select.html)
-specific columns
-
-```sql
-SELECT column_1, column_2 FROM table;
-```
-
-<!-- }}} -->
-
 <!-- Update {{{-->
 ### Update
 
@@ -602,11 +603,9 @@ UPDATE table_name SET record = 'value' WHERE id = 1;
 > ```
 <!-- }}} -->
 
-
 <!-- }}} -->
 
 ___
-
 <!-- }}} -->
 
 <!-- Data {{{-->
@@ -614,6 +613,55 @@ ___
 
 Table data operations and
 [Pattern Matching](https://dev.mysql.com/doc/en/pattern-matching.html)
+
+<!-- Select {{{-->
+### Select
+
+[SELECT](https://dev.mysql.com/doc/en/select.html)
+(*view*) everything
+
+```sql
+SELECT * FROM table_name;
+```
+
+[SELECT](https://dev.mysql.com/doc/en/select.html)
+specific columns
+
+```sql
+SELECT column_1, column_2 FROM table;
+```
+
+<!-- }}} -->
+
+<!-- Count {{{-->
+### Count
+
+[COUNT](https://dev.mysql.com/doc/en/counting-rows.html)
+
+Count table rows
+
+```sql
+SELECT COUNT(*) FROM table_name;
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sql
+> MariaDB [employees]> SELECT COUNT(*) FROM titles WHERE emp_no > 10000 OR title NOT LIKE '%engineer%';
+> ```
+> ```sql
+> +----------+
+> | COUNT(*) |
+> +----------+
+> |      654 |
+> +----------+
+> 1 row in set (0.042 sec)
+> ```
+>
+<!-- }}} -->
+
+<!-- }}} -->
 
 <!-- Filter {{{-->
 ### Filter
@@ -739,42 +787,232 @@ SELECT * FROM table_name ORDER BY column_name;
 >
 <!-- }}} -->
 
-Order by `ASC` or `DSC`
+Order by `ASC` or `DESC`
 
 ```sql
-SELECT * FROM table_name ORDER BY column_name DESC;
+SELECT * FROM table_name ORDER BY column_name ASC;
 ```
 
 <!-- Example {{{-->
 > [!example]-
 >
 > ```sh
-> mysql> SELECT * FROM logins ORDER BY password;
+> MariaDB [employees]> SELECT * FROM employees ORDER BY first_name DESC;
 > ```
 > ```sh
-> +----+---------------+------------+---------------------+
-> | id | username      | password   | date_of_joining     |
-> +----+---------------+------------+---------------------+
-> |  2 | administrator | adm1n_p@ss | 2020-07-02 11:30:50 |
-> |  3 | john          | john123!   | 2020-07-02 11:47:16 |
-> |  1 | admin         | p@ssw0rd   | 2020-07-02 00:00:00 |
-> |  4 | tom           | tom123!    | 2020-07-02 11:47:16 |
-> +----+---------------+------------+---------------------+
-> 4 rows in set (0.00 sec)
+> +--------+------------+--------------+-----------------+--------+------------+
+> | emp_no | birth_date | first_name   | last_name       | gender | hire_date  |
+> +--------+------------+--------------+-----------------+--------+------------+
+> |  10237 | 1961-12-26 | Zvonko       | Pollacia        | M      | 1985-08-01 |
+> |  10371 | 1960-11-11 | Zsolt        | Quaggetto       | M      | 1988-04-13 |
+> |  10128 | 1962-12-05 | Ziyad        | Takanami        | F      | 1992-11-03 |
+> |  10598 | 1956-08-04 | Ziyad        | Baaz            | M      | 1987-09-09 |
+> |  10459 | 1957-10-13 | Zito         | Thombley        | F      | 1988-02-11 |
 > ```
 >
 <!-- }}} -->
 
 <!-- }}} -->
 
-<!-- View {{{-->
-### View
+<!-- Group {{{-->
+### Group
 
-View table data
+[GROUP BY](https://dev.mysql.com/doc/en/group-by-modifiers.html)
+statement groups rows that have the same values
+into summary rows
+
+```sh
+SELECT * FROM table_name WHERE condition GROUP BY column_name ORDER BY column_name;
+```
+
+<!-- }}} -->
+
+___
+<!-- }}} -->
+
+<!-- Operators {{{-->
+## Operators
+
+[Logical Operators](https://dev.mysql.com/doc/en/logical-operators.html)
+
+<!-- Tip {{{-->
+> [!tip]- Operators
+>
+> | Name | Symbol | Description  |
+> | ---- | ------ | ------------ |
+> | AND  |`&&`    | Logical AND  |
+> | NOT  | `!`    | Negate value |
+> | OR   | `||`   | Logical OR   |
+> | XOR  |        | Logical XOR  |
+>
+<!-- }}} -->
+
+<!-- AND {{{-->
+### AND
+
+The `AND` operator evaluates two conditions
+and returns `true` or `false`
 
 ```sql
-SELECT * FROM table_name;
+condition1 AND condition2
 ```
+```sql
+condition1 && condition2
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> Condition evaluates to `true`
+>
+> ```sql
+> mysql> SELECT 1 = 1 AND 'test' = 'test';
+> ```
+> ```sql
+> +---------------------------+
+> | 1 = 1 AND 'test' = 'test' |
+> +---------------------------+
+> |                         1 |
+> +---------------------------+
+> 1 row in set (0.00 sec)
+> ```
+>
+> Condition evaluates to `false`
+>
+> ```sql
+> mysql> SELECT 1 = 1 AND 'test' = 'abc';
+> ```
+> ```sql
+> +--------------------------+
+> | 1 = 1 AND 'test' = 'abc' |
+> +--------------------------+
+> |                        0 |
+> +--------------------------+
+> 1 row in set (0.00 sec)
+> ```
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- OR {{{-->
+### OR
+
+The `OR` operator takes in two expressions (*operands*),
+and returns `true` when at least one of them evaluates to `true`
+
+```sql
+condition1 OR condition2
+```
+```sql
+condition1 || condition2
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> Operator evaluates to `true`
+>
+> ```sql
+> mysql> SELECT 1 = 1 OR 'test' = 'abc';
+> ```
+> ```sql
+> +-------------------------+
+> | 1 = 1 OR 'test' = 'abc' |
+> +-------------------------+
+> |                       1 |
+> +-------------------------+
+> 1 row in set (0.00 sec)
+> ```
+>
+> Operator evaluates to `false`
+>
+> ```sql
+> mysql> SELECT 1 = 2 OR 'test' = 'abc';
+> ```
+> ```sql
+> +-------------------------+
+> | 1 = 2 OR 'test' = 'abc' |
+> +-------------------------+
+> |                       0 |
+> +-------------------------+
+> 1 row in set (0.00 sec)
+> ```
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- NOT {{{-->
+### NOT
+
+The `NOT` operator toggles a boolean value
+(*converts `true` to `false`, and `false` to `true`*)
+
+```sql
+NOT condition
+```
+
+```sql
+! condition
+```
+
+```sql
+condition1 != condition2
+```
+
+<!-- Example {{{-->
+> [!example]-
+>
+> Operator toggles `true` to `false`
+>
+> ```sql
+> mysql> SELECT NOT 1 = 1;
+> ```
+> ```sql
+> +-----------+
+> | NOT 1 = 1 |
+> +-----------+
+> |         0 |
+> +-----------+
+> 1 row in set (0.00 sec)
+> ```
+>
+> Operator toggles `false` to `true`
+>
+> ```sql
+> mysql> SELECT NOT 1 = 2;
+> ```
+> ```sql
+> +-----------+
+> | NOT 1 = 2 |
+> +-----------+
+> |         1 |
+> +-----------+
+> 1 row in set (0.00 sec)
+> ```
+<!-- }}} -->
+
+<!-- }}} -->
+
+<!-- Misc {{{-->
+### Misc
+
+SQL supports additional operators
+
+- Division (`/`)
+- Multiplication (`*`)
+- Modulus (`%`)
+- Addition (`+`)
+- Subtraction (`-`)
+- Comparison (`=`, `>`, `<`, `<=`, `>=`, `!=`, `LIKE`)
+
+<!-- Example {{{-->
+> [!example]-
+>
+> ```sql
+> SELECT * FROM logins WHERE username != 'tom' AND id > 3 - 2;
+> ```
+>
+<!-- }}} -->
 
 <!-- }}} -->
 

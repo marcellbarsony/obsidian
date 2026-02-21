@@ -12,7 +12,8 @@ Connect to an MSSQL database and run queries
 <!-- Tip {{{-->
 > [!tip]
 >
-> MSSQL syntax requires to issue `GO` after the query
+> MSSQL syntax requires to issue [GO](https://learn.microsoft.com/en-us/sql/t-sql/language-elements/sql-server-utilities-statements-go)
+> after the query
 >
 > ```sh
 > SELECT name FROM master.dbo.sysdatabases
@@ -78,7 +79,7 @@ impacket-mssqlclient <DOMAIN>/<user>@$target -windows-auth
 > [*] ENVCHANGE(PACKETSIZE): Old Value: 4096, New Value: 16192
 > [*] INFO(SQL-01): Line 1: Changed database context to 'master'.
 > [*] INFO(SQL-01): Line 1: Changed language setting to us_english.
-> [*] ACK: Result: 1 - Microsoft SQL Server (150 7208) 
+> [*] ACK: Result: 1 - Microsoft SQL Server (150 7208)
 > [!] Press help for extra shell commands
 > ```
 >
@@ -386,7 +387,7 @@ ___
 <!-- Table {{{-->
 ## Table
 
-Table operations —  Extract table and column information from databases
+Table operations — Extract table and column information from databases
 
 <!-- Discover {{{-->
 ### Discover
@@ -579,6 +580,7 @@ Filter table data (*multiple*)
 SELECT * FROM <table> WHERE age > 30 AND city = 'London';
 ```
 <!-- }}} -->
+
 ___
 <!-- }}} -->
 
